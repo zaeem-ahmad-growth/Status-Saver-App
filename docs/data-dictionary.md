@@ -11,6 +11,8 @@
 | `PAYLOAD.features` | object | 3 keys |
 | `PAYLOAD.ours` | object | 5 keys |
 | `PAYLOAD.listing` | object | 8 keys |
+| `PAYLOAD.graphics` | object | 2 keys |
+| `PAYLOAD.gnotes` | object | 6 keys |
 
 ## PAYLOAD
 
@@ -156,3 +158,22 @@
   - `policy[][]` · array of 7 arrays · e.g. `["No brand name in any field","The proposed title, short description and full description were checked for every brand name in this category. None appears. The copy says \"your messaging app\", which is what Play's impersonation policy asks for and what the current listing already does."]`
   - `risks[][]` · array of 6 arrays · e.g. `["The highest-demand phrases in this category are brand phrases","\"whatsapp status downloader\", \"whatsapp status saver\" and their variants carry the most autocomplete demand on the board, and house rules keep all of them out of our copy. That is a deliberate ceiling: this listing competes only on generic phrases, and the plan has to be judged on that basis, not against apps that spend their titles on a brand name."]`
   - `built[][]` · array of 4 arrays · e.g. `["The scrape","Google Play's own search results to depth 30, its autocomplete, and the full listing of every app that reached a top-10 slot, read on 23 Sep 2026 in the United States, Pakistan and India. 110 keywords, 330 live result lists, 217 app listings."]`
+- `graphics` · object with 2 keys:
+  - `fetchedAt` · string · e.g. `"2026-09-23"`
+  - `apps[]` · array of 9 objects:
+    - `id` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
+    - `title` · string · e.g. `"Status Downloader: Video Saver"`
+    - `developer` · string · e.g. `"Cell Cave"`
+    - `installs` · number · e.g. `10`
+    - `score` · number · e.g. `4.6`
+    - `ratings` · number · e.g. `0`
+    - `icon` · string · e.g. `"img/com-statussaver-videosaver-downloadstatus-storysaver/icon.png"`
+    - `feature` · string · e.g. `"img/com-statussaver-videosaver-downloadstatus-storysaver/feature.png"`
+    - `shots[]` · array of 4 string · e.g. `["img/com-statussaver-videosaver-downloadstatus-storysaver/shot-1.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-2.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-3.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-4.jpg"]`
+- `gnotes` · object with 6 keys:
+  - `checkedOn` · string · e.g. `"2026-09-23"`
+  - `note` · string · e.g. `"Every assessment here was written after looking at the asset itself, d…"`
+  - `iconRead[][]` · array of 4 arrays · e.g. `["Eight of the nine icons are green","The shelf has one colour. Eight icons sit on the same messaging-app green, six of them on an almost identical gradient. The only app that breaks it — Status Saver & Video Download, on a dark teal-to-black gradient with a glowing ring — is the one icon you can pick out of a result list at a glance."]`
+  - `fgRead[][]` · array of 4 arrays · e.g. `["One template, eight times","Headline left, phone mock right, category phrase as the headline: \"Status Saver\", \"Status Download\", \"Save All Status\", \"One tap Save Status\". Nobody sells a brand here; everybody sells the job."]`
+  - `systems[][]` · array of 9 arrays · e.g. `["Status Downloader: Video Saver","Splash screen with the app logo","Two-line caption above the phone, green on pale blue","Purple-framed phone, blurred teal background","Leads with the wrong screen, and the mock status bar carries the Instagram, Facebook and TikTok logos"]`
+  - `ours[][]` · array of 6 arrays · e.g. `["Do not lead with the splash screen","Our first screenshot is the app's own loading screen: a logo and a progress bar. Every competitor leads with content — their grid, or the status list they read from. The first screenshot is the one most people see; it should show a grid full of statuses with save badges, captioned with the benefit."]`

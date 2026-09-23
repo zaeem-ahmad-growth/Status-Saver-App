@@ -10,7 +10,7 @@
 
 ## research/aso-pipeline/
 
-17 files · 3.0 MB
+20 files · 3.0 MB
 
 - **[analyze.ps1](../research/aso-pipeline/analyze.ps1)** · 7 KB · PowerShell script, 162 lines. Stage 3 of the Status Saver ASO pipeline: turn the raw scrape into the compact payload the tabs read. Reads suggest/demand/universe/serps/apps.json, writes data.json (and prints a summary for the write-up). powershell -ExecutionPolicy Bypass -File analyze.ps1 Functions: `Read-Json`, `ToHash`, `Get-Category`.
 - **[apps.json](../research/aso-pipeline/apps.json)** · 1.1 MB · JSON, object with 221 keys:
@@ -5234,7 +5234,7 @@
     - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/E-6VIfVizGalBAm2tGwcj3WiWI1708Ef…"`
     - `header` · string · e.g. `"https://play-lh.googleusercontent.com/uUertTwb-PFPXgv3Pmb9Svrufu6L0uQt…"`
     - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/f9a5iJDm_7I4DHZSF7zFgaV13wqKPxEJIFT9Gy9rT0rdrkIxWDJ2xEpdXcV38Mk4PXjTKJclLTD0nFHxmqkLXw","https://play-lh.googleusercontent.com/Py7O4PIsKuBrFXp6NFAsYBO06QWdhzM25ePeaoacBGNHvZr-3WFfySakKRmo8DiYqOckyUoJVZby4jXaUr0khpY","https://play-lh.googleusercontent.com/0i0PBGU0-YYBuacliQhvaN6epts5-saw9c6JDP6Y_Thdd_QQ8akdaToxFHc1AAM6Egh-cAv4Gf42NTMNC9MhpA","https://play-lh.googleusercontent.com/7lLLpvjjzxBJgt0PNRH1k97WXDAhLDnIAcLmAQiMrvHhjgbLZaysuAk_pY4Tw_FbvFiHG6IEHMdTVp-Lg-p2"]`
-- **[build.ps1](../research/aso-pipeline/build.ps1)** · 2 KB · PowerShell script, 52 lines. Stage 5: assemble assets/data.js — the single payload every data-driven tab reads. Sources: data.json (scrape + scores), features.json (feature evidence), ours.json (our app, checked on the emulator), listing.json (the proposed copy and the written sections). Nothing is typed twice: if a number is wrong here, it is wrong in the JSON, and the JSON came from Google Play. powershell -ExecutionPolicy Bypass -File build.ps1 Functions: `Read-Json`.
+- **[build.ps1](../research/aso-pipeline/build.ps1)** · 2 KB · PowerShell script, 56 lines. Stage 5: assemble assets/data.js — the single payload every data-driven tab reads. Sources: data.json (scrape + scores), features.json (feature evidence), ours.json (our app, checked on the emulator), listing.json (the proposed copy and the written sections). Nothing is typed twice: if a number is wrong here, it is wrong in the JSON, and the JSON came from Google Play. powershell -ExecutionPolicy Bypass -File build.ps1 Functions: `Read-Json`.
 - **[candidates.json](../research/aso-pipeline/candidates.json)** · 22 KB · JSON, array of 667:
   - `(root)[]` · array of 667 string · e.g. `["ai god status video","all festival video status app","all god video status","all god video status app"]`
 - **[collect.ps1](../research/aso-pipeline/collect.ps1)** · 6 KB · PowerShell script, 141 lines. Stage 1-2 of the Status Saver ASO pipeline: build the keyword universe from Play autocomplete, fetch live result lists (depth 30) for every keyword in every market, then fetch details for every app that reaches a top-10 slot. Everything is cached by lib.ps1, so re-running is cheap. powershell -ExecutionPolicy Bypass -File collect.ps1 Writes: suggest.json, universe.json, serps.json, apps.json Functions: `Norm`.
@@ -5317,6 +5317,26 @@
     - `[2]` · array · e.g. `[1,1,1,1,1,1,1,1,1]`
     - `[3]` · array · e.g. `["status downloader: video saver save video and photo statuses fast. download, repost and watch them offline sav","s download - saver app let you download photo images, gif, video of new status feature of 2 new app wa 2025 st","status downloader app is for you. save videos and images status easily.<br><br>status saver is an app that he","status saver - video saver save photos &amp; video status, view status of friends without seen. <b> you can do","someone to send it. you can delete any image or video anytime you feel like it.<br><br>status saver app is a","status saver - video download tap, view and save your friend's status images and videos and reshare them want","he ultimate tool for downloading status videos, status photos, and status images from wa. with statussaver, yo","status saver & video download save status photos &amp; videos to gallery, auto save, direct chat &amp; widgets","er: video downloader status saver &amp; video downloader! save status videos, photos, auto-save &amp; repost <"]`
 - **[features.ps1](../research/aso-pipeline/features.ps1)** · 6 KB · PowerShell script, 106 lines. Stage 4: the feature matrix. For every competitor, look for evidence of each tracked feature in its live Play listing text (title + short description + full description) and record the phrase that proved it, so every tick in the matrix can be traced back to the words the app itself published. powershell -ExecutionPolicy Bypass -File features.ps1 Reads apps.json + data.json, writes features.json. Functions: `Read-Json`, `ToHash`.
+- **[graphics-notes.json](../research/aso-pipeline/graphics-notes.json)** · 7 KB · JSON, object with 6 keys:
+  - `checkedOn` · string · e.g. `"2026-09-23"`
+  - `note` · string · e.g. `"Every assessment here was written after looking at the asset itself, d…"`
+  - `iconRead[][]` · array of 4 arrays · e.g. `["Eight of the nine icons are green","The shelf has one colour. Eight icons sit on the same messaging-app green, six of them on an almost identical gradient. The only app that breaks it — Status Saver & Video Download, on a dark teal-to-black gradient with a glowing ring — is the one icon you can pick out of a result list at a glance."]`
+  - `fgRead[][]` · array of 4 arrays · e.g. `["One template, eight times","Headline left, phone mock right, category phrase as the headline: \"Status Saver\", \"Status Download\", \"Save All Status\", \"One tap Save Status\". Nobody sells a brand here; everybody sells the job."]`
+  - `systems[][]` · array of 9 arrays · e.g. `["Status Downloader: Video Saver","Splash screen with the app logo","Two-line caption above the phone, green on pale blue","Purple-framed phone, blurred teal background","Leads with the wrong screen, and the mock status bar carries the Instagram, Facebook and TikTok logos"]`
+  - `ours[][]` · array of 6 arrays · e.g. `["Do not lead with the splash screen","Our first screenshot is the app's own loading screen: a logo and a progress bar. Every competitor leads with content — their grid, or the status list they read from. The first screenshot is the one most people see; it should show a grid full of statuses with save badges, captioned with the benefit."]`
+- **[graphics.json](../research/aso-pipeline/graphics.json)** · 9 KB · JSON, object with 2 keys:
+  - `fetchedAt` · string · e.g. `"2026-09-23"`
+  - `apps[]` · array of 9 objects:
+    - `id` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
+    - `title` · string · e.g. `"Status Downloader: Video Saver"`
+    - `developer` · string · e.g. `"Cell Cave"`
+    - `installs` · number · e.g. `10`
+    - `score` · number · e.g. `4.6`
+    - `ratings` · number · e.g. `0`
+    - `icon` · string · e.g. `"img/com-statussaver-videosaver-downloadstatus-storysaver/icon.png"`
+    - `feature` · string · e.g. `"img/com-statussaver-videosaver-downloadstatus-storysaver/feature.png"`
+    - `shots[]` · array of 4 string · e.g. `["img/com-statussaver-videosaver-downloadstatus-storysaver/shot-1.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-2.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-3.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-4.jpg"]`
+- **[graphics.ps1](../research/aso-pipeline/graphics.ps1)** · 3 KB · PowerShell script, 71 lines. Stage 6: the competitors' store graphics. Downloads the icon, feature graphic and screenshots of every app in the feature comparison straight from Google Play's image host into the Competitor's Graphics tab folder, and writes graphics.json with the local paths so the tab never hotlinks Google's servers. powershell -ExecutionPolicy Bypass -File graphics.ps1 Functions: `Read-Json`, `ToHash`, `Save-Image`.
 - **[lib.ps1](../research/aso-pipeline/lib.ps1)** · 9 KB · PowerShell script, 196 lines. Google Play scraping library for the Status Saver ASO pipeline. A PowerShell 5.1 port of the Node lib.js used for the Cloud Storage app's pipeline, because this PC has no Node. Every response is cached under cache/ by an MD5 of its key; delete cache/ to force a fresh scrape. . .\lib.ps1 $r = Get-PlaySearch -Query 'status saver' -Depth 30 -Gl US $d = Get-PlayDetails -AppId com.whatsapp $s = Get-PlaySuggest -Term 'status s' -Gl US Functions: `Get-CacheFile`, `Invoke-Cached`, `Get-Text`, `Get-DsBlocks`, `Get-At`, `Get-FirstAppId`, `Get-PlaySearch`, `Get-PlayDetails`, `Get-PlaySuggest`.
 - **[listing.json](../research/aso-pipeline/listing.json)** · 13 KB · JSON, object with 8 keys:
   - `app` · object with 6 keys:

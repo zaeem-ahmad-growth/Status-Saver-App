@@ -9,10 +9,13 @@
 - [research/aso-pipeline/build.ps1](#researchaso-pipelinebuildps1)
 - [research/aso-pipeline/collect.ps1](#researchaso-pipelinecollectps1)
 - [research/aso-pipeline/features.ps1](#researchaso-pipelinefeaturesps1)
+- [research/aso-pipeline/graphics.ps1](#researchaso-pipelinegraphicsps1)
 - [research/aso-pipeline/lib.ps1](#researchaso-pipelinelibps1)
 - [research/aso-pipeline/titlecheck.ps1](#researchaso-pipelinetitlecheckps1)
 - [research/aso-pipeline/candidates.json](#researchaso-pipelinecandidatesjson)
 - [research/aso-pipeline/features.json](#researchaso-pipelinefeaturesjson)
+- [research/aso-pipeline/graphics-notes.json](#researchaso-pipelinegraphics-notesjson)
+- [research/aso-pipeline/graphics.json](#researchaso-pipelinegraphicsjson)
 - [research/aso-pipeline/listing.json](#researchaso-pipelinelistingjson)
 - [research/aso-pipeline/ours.json](#researchaso-pipelineoursjson)
 - [research/aso-pipeline/titlecheck.json](#researchaso-pipelinetitlecheckjson)
@@ -211,6 +214,8 @@ $data = Read-Json 'data.json'
 $features = Read-Json 'features.json'
 $ours = Read-Json 'ours.json'
 $listing = Read-Json 'listing.json'
+$graphics = Read-Json 'graphics.json'
+$gnotes = Read-Json 'graphics-notes.json'
 
 # Our own column in the feature matrix is the emulator check, not the listing text.
 $ourIdx = 0
@@ -229,6 +234,8 @@ $payload = [ordered]@{
   features = $features
   ours     = $ours
   listing  = $listing
+  graphics = $graphics
+  gnotes   = $gnotes
 }
 
 $json = $payload | ConvertTo-Json -Depth 14 -Compress
@@ -495,6 +502,81 @@ foreach ($r in $rows) {
   $line = ($r[2] | ForEach-Object { if ($_ -eq 1) { 'Y' } else { '.' } }) -join ' '
   Write-Host ("{0,-42} {1}" -f $r[1], $line)
 }
+```
+
+### research/aso-pipeline/graphics.ps1
+
+```powershell
+# Stage 6: the competitors' store graphics. Downloads the icon, feature graphic and screenshots of every app
+# in the feature comparison straight from Google Play's image host into the Competitor's Graphics tab folder,
+# and writes graphics.json with the local paths so the tab never hotlinks Google's servers.
+#
+#   powershell -ExecutionPolicy Bypass -File graphics.ps1
+
+$ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'lib.ps1')
+$OUT = $PSScriptRoot
+$REPO = Split-Path (Split-Path $OUT -Parent) -Parent
+$IMG = Join-Path $REPO 'tabs\05-competitors-graphics\img'
+if (-not (Test-Path $IMG)) { New-Item -ItemType Directory -Path $IMG -Force | Out-Null }
+
+function Read-Json([string]$n) {
+  $t = Get-Content (Join-Path $OUT $n) -Raw -Encoding UTF8
+  , ($t | ConvertFrom-Json)
+}
+function ToHash($o) { $h = @{}; if ($o) { foreach ($p in $o.PSObject.Properties) { $h[$p.Name] = $p.Value } }; $h }
+
+$apps = ToHash (Read-Json 'apps.json')
+$features = Read-Json 'features.json'
+
+# Play's image host takes a size suffix; ask for what the page actually shows instead of the original.
+function Save-Image([string]$url, [string]$path, [int]$w) {
+  if (-not $url) { return $false }
+  $base = ($url -split '=')[0]
+  $u = "$base=w$w"
+  try {
+    Invoke-WebRequest -Uri $u -OutFile $path -UseBasicParsing -TimeoutSec 40 -Headers @{ 'User-Agent' = $script:UA }
+    return $true
+  } catch { Write-Host ("  ! failed: " + $u); return $false }
+}
+
+$rows = New-Object System.Collections.ArrayList
+foreach ($row in $features.apps) {
+  $id = $row[0]
+  $a = $apps[$id]
+  if (-not $a) { continue }
+  $slug = ($id -replace '[^a-zA-Z0-9]', '-')
+  $dir = Join-Path $IMG $slug
+  if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+
+  $iconRel = "img/$slug/icon.png"
+  $okIcon = Save-Image $a.icon (Join-Path $dir 'icon.png') 256
+  $fgRel = "img/$slug/feature.png"
+  $okFg = Save-Image $a.header (Join-Path $dir 'feature.png') 1024
+
+  $shots = @()
+  $n = 0
+  foreach ($s in $a.screenshots) {
+    if ($n -ge 6) { break }
+    $n++
+    $p = Join-Path $dir ("shot-$n.jpg")
+    if (Save-Image $s $p 360) { $shots += "img/$slug/shot-$n.jpg" }
+  }
+
+  [void]$rows.Add([ordered]@{
+      id = $id; title = $a.title; developer = $a.developer; installs = [int64]$a.minInstalls
+      score = $a.score; ratings = [int64]$a.ratings
+      icon = $(if ($okIcon) { $iconRel } else { $null })
+      feature = $(if ($okFg) { $fgRel } else { $null })
+      shots = $shots
+    })
+  Write-Host ("{0,-56} icon:{1} feature:{2} shots:{3}" -f $a.title, $okIcon, $okFg, $shots.Count)
+}
+
+$payload = [ordered]@{ fetchedAt = (Get-Date).ToString('yyyy-MM-dd'); apps = $rows }
+($payload | ConvertTo-Json -Depth 8) | Out-File (Join-Path $OUT 'graphics.json') -Encoding utf8
+Write-Host ''
+Write-Host ("graphics.json written: {0} apps" -f $rows.Count)
 ```
 
 ### research/aso-pipeline/lib.ps1
@@ -1175,6 +1257,262 @@ foreach ($c in $CANDIDATES) {
     [
       "Edge", "Folder access, no all-files permission", [0,0,0,0,0,0,0,0,0], ["","","","","","","","",""]
     ]
+  ]
+}
+```
+
+### research/aso-pipeline/graphics-notes.json
+
+```json
+{
+  "checkedOn": "2026-09-23",
+  "note": "Every assessment here was written after looking at the asset itself, downloaded from the live listing on 23 Sep 2026 by research/aso-pipeline/graphics.ps1. Nothing is inferred from the listing text.",
+  "iconRead": [
+    [
+      "Eight of the nine icons are green",
+      "The shelf has one colour. Eight icons sit on the same messaging-app green, six of them on an almost identical gradient. The only app that breaks it — Status Saver & Video Download, on a dark teal-to-black gradient with a glowing ring — is the one icon you can pick out of a result list at a glance."
+    ],
+    [
+      "Every icon is a downward arrow",
+      "All nine draw the same symbol: a down arrow, seven of them inside a white ring or circle, four with a chat-bubble tail. The category has a universal glyph, so the arrow is not a decision — what surrounds it is."
+    ],
+    [
+      "A year badge is a shelf habit, not a differentiator",
+      "Three icons carry a year: ours and one competitor stamp a red 2026 corner, another a 2025 band. It reads as freshness for a moment and as clutter at 48 px, and it dates the icon the day the year turns."
+    ],
+    [
+      "Our icon is the closest twin on the shelf",
+      "Ours — white bubble outline, down arrow, underline, red 2026 corner, green field — is very nearly the same drawing as Status Saver: Video Downloader, which holds 88 top-10 slots and has 50M+ installs. Sitting next to it in a result list, our icon reads as the same app with fewer reviews."
+    ]
+  ],
+  "fgRead": [
+    [
+      "One template, eight times",
+      "Headline left, phone mock right, category phrase as the headline: \"Status Saver\", \"Status Download\", \"Save All Status\", \"One tap Save Status\". Nobody sells a brand here; everybody sells the job."
+    ],
+    [
+      "The two that stand out do it by leaving the green",
+      "Status Saver & Video Download uses a dark teal field with a 3D-rendered download ring and labelled chips (Images, Videos, GIFs, Audio). Status Saver: Video Downloader (Sino) uses a white field with four labelled action circles — Save, Alerts, Share, Repost. Both read cleanly at thumbnail size; the green-on-green ones blur together."
+    ],
+    [
+      "Two competitors put a policy risk straight into the art",
+      "One feature graphic prints \"WhatsApp Status Saver\" as its headline and shows the Facebook, Snapchat, X, Instagram and Gmail logos inside a phone mock. Another shows a \"Recover Deleted Messages\" row in its screenshot. Both are exactly what our rules and Play's impersonation policy tell us not to do — and useful evidence that doing it is survivable for them but not a model to copy."
+    ],
+    [
+      "Ours already competes on craft — and overclaims",
+      "Our feature graphic is one of the stronger ones: a clean headline, a readable subhead and two phone mocks of the real grid. But its bullets say \"Save · View · Reply Instantly\", and the app has no reply or direct-chat feature at all. That is a claim the listing cannot support."
+    ]
+  ],
+  "systems": [
+    [
+      "Status Downloader: Video Saver", "Splash screen with the app logo", "Two-line caption above the phone, green on pale blue",
+      "Purple-framed phone, blurred teal background",
+      "Leads with the wrong screen, and the mock status bar carries the Instagram, Facebook and TikTok logos"
+    ],
+    [
+      "Status Download - Video Saver", "The messaging app's own status list", "\"One Tap to Download All\", white on green",
+      "Dark phone frame, flat green field", "Sells the source, not the app; a giant download button is composited over the list"
+    ],
+    [
+      "Status Saver: Video Downloader (BlueLine)", "The app's own status grid with download badges", "\"Instant Save Status\", white on green",
+      "Frameless white card on green", "Cleanest read of the shelf: the product does the talking, one benefit per screen"
+    ],
+    [
+      "Status Saver - Video Saver", "The app's grid, full of real status images", "\"SAVE ALL STATUS\", white on green",
+      "Light phone frame on flat green", "Content is localised — Hindi and Hinglish status cards — which sells the market it is aimed at"
+    ],
+    [
+      "Status Saver・Status Downloader (Falnesc)", "The app's grid of quote and photo statuses", "\"Save Status\", white on teal",
+      "White phone frame, generous margin", "The most restrained set: one word of caption, no badges, no arrows"
+    ],
+    [
+      "Status Saver - Video Download (Heethjain)", "The messaging app's status list", "\"One Tap to Download\", white on teal gradient",
+      "Dark phone frame with a pulsing action button", "Four-panel feature graphic doubles as the screenshot script"
+    ],
+    [
+      "Status Saver (Lite)", "The app's saved tab with story rings", "\"Save All Status\", black on a doodle background",
+      "Rounded light frame, doodle pattern field", "The only set with an illustrated background instead of a flat colour"
+    ],
+    [
+      "Status Saver & Video Download (MDTech)", "The app's grid with floating media cards", "\"Save Your Moments\" plus a three-line subhead",
+      "3D-tilted dark phone, deep teal field", "The most designed set on the shelf, and the only one that states Fast / Simple / Reliable as badges"
+    ],
+    [
+      "Status Saver: Video Downloader (Sino)", "The app's grid with a NO ADS ribbon", "\"One tap Save Status\", black on white",
+      "Dark phone frame on white", "Uses the screenshot to make a commercial promise, not a feature claim"
+    ]
+  ],
+  "ours": [
+    [
+      "Do not lead with the splash screen",
+      "Our first screenshot is the app's own loading screen: a logo and a progress bar. Every competitor leads with content — their grid, or the status list they read from. The first screenshot is the one most people see; it should show a grid full of statuses with save badges, captioned with the benefit."
+    ],
+    [
+      "Take the platform logos out of the store assets",
+      "Our screenshots and feature graphic show a mock status bar carrying the Instagram, Facebook and TikTok logos. Those are other companies' brand marks in our own store art. It breaks our own rule, it is the kind of thing Play's impersonation policy exists for, and it promises sources the app does not read."
+    ],
+    [
+      "Fix the \"Reply Instantly\" claim",
+      "The feature graphic promises a reply feature the app does not have. Replace it with something true and specific that the shelf does not say: original quality, favourites, or nine languages."
+    ],
+    [
+      "Use real, varied content in the mocks",
+      "Our grid screenshots repeat the same three stock photos in a 4×3 tile. Competitors fill the grid with different images, which is what a real status feed looks like. The repetition reads as a mock-up, not an app."
+    ],
+    [
+      "Break the green",
+      "Eight of nine icons are the same green with the same white arrow, and ours is the closest twin of a 50M-install competitor. The two apps that stand out on this shelf did it by leaving the colour, not by redrawing the arrow. A distinct field colour is the cheapest differentiation available, and it costs nothing but a re-export."
+    ],
+    [
+      "Ship the missing sizes",
+      "The 512 × 512 Play icon and the 1024 × 500 feature graphic are live on the listing but absent from the app repository, so nobody can re-export or version them. Put the sources next to the app, not only on the store."
+    ]
+  ]
+}
+```
+
+### research/aso-pipeline/graphics.json
+
+```json
+{
+  "fetchedAt": "2026-09-23",
+  "apps": [
+    {
+      "id": "com.statussaver.videosaver.downloadstatus.storysaver",
+      "title": "Status Downloader: Video Saver",
+      "developer": "Cell Cave",
+      "installs": 10,
+      "score": null,
+      "ratings": 0,
+      "icon": "img/com-statussaver-videosaver-downloadstatus-storysaver/icon.png",
+      "feature": "img/com-statussaver-videosaver-downloadstatus-storysaver/feature.png",
+      "shots": [
+        "img/com-statussaver-videosaver-downloadstatus-storysaver/shot-1.jpg", "img/com-statussaver-videosaver-downloadstatus-storysaver/shot-2.jpg",
+        "img/com-statussaver-videosaver-downloadstatus-storysaver/shot-3.jpg", "img/com-statussaver-videosaver-downloadstatus-storysaver/shot-4.jpg"
+      ]
+    },
+    {
+      "id": "com.downlood.sav.whmedia",
+      "title": "Status Download - Video Saver",
+      "developer": "Shree Ganesha Labs",
+      "installs": 100000000,
+      "score": 4.6,
+      "ratings": 1710342,
+      "icon": "img/com-downlood-sav-whmedia/icon.png",
+      "feature": "img/com-downlood-sav-whmedia/feature.png",
+      "shots": [
+        "img/com-downlood-sav-whmedia/shot-1.jpg", "img/com-downlood-sav-whmedia/shot-2.jpg", "img/com-downlood-sav-whmedia/shot-3.jpg",
+        "img/com-downlood-sav-whmedia/shot-4.jpg"
+      ]
+    },
+    {
+      "id": "statussaver.statusdownloader.downloadstatus.savestatus",
+      "title": "Status Saver: Video Downloader",
+      "developer": "BlueLine. Tech",
+      "installs": 50000000,
+      "score": 4.7657895,
+      "ratings": 205392,
+      "icon": "img/statussaver-statusdownloader-downloadstatus-savestatus/icon.png",
+      "feature": "img/statussaver-statusdownloader-downloadstatus-savestatus/feature.png",
+      "shots": [
+        "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-1.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-2.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-3.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-4.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-5.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-6.jpg"
+      ]
+    },
+    {
+      "id": "statussaver.statusdownloader.downloadstatus.videoimagesaver",
+      "title": "Status Saver - Video Saver",
+      "developer": "Save Status, Video & Image Downloader",
+      "installs": 100000000,
+      "score": 4.585443,
+      "ratings": 275075,
+      "icon": "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/icon.png",
+      "feature": "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/feature.png",
+      "shots": [
+        "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-1.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-2.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-3.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-4.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-5.jpg",
+        "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-6.jpg"
+      ]
+    },
+    {
+      "id": "com.falnesc.statussaver",
+      "title": "Status Saver・Status Downloader",
+      "developer": "Battery Stats Saver",
+      "installs": 10000000,
+      "score": 4.79602,
+      "ratings": 225685,
+      "icon": "img/com-falnesc-statussaver/icon.png",
+      "feature": "img/com-falnesc-statussaver/feature.png",
+      "shots": [
+        "img/com-falnesc-statussaver/shot-1.jpg", "img/com-falnesc-statussaver/shot-2.jpg", "img/com-falnesc-statussaver/shot-3.jpg",
+        "img/com-falnesc-statussaver/shot-4.jpg", "img/com-falnesc-statussaver/shot-5.jpg", "img/com-falnesc-statussaver/shot-6.jpg"
+      ]
+    },
+    {
+      "id": "com.heethjain.apps.statussaver",
+      "title": "Status Saver - Video Download",
+      "developer": "Heeth Jain",
+      "installs": 500000,
+      "score": 4.413793,
+      "ratings": 7448,
+      "icon": "img/com-heethjain-apps-statussaver/icon.png",
+      "feature": "img/com-heethjain-apps-statussaver/feature.png",
+      "shots": [
+        "img/com-heethjain-apps-statussaver/shot-1.jpg", "img/com-heethjain-apps-statussaver/shot-2.jpg",
+        "img/com-heethjain-apps-statussaver/shot-3.jpg", "img/com-heethjain-apps-statussaver/shot-4.jpg",
+        "img/com-heethjain-apps-statussaver/shot-5.jpg", "img/com-heethjain-apps-statussaver/shot-6.jpg"
+      ]
+    },
+    {
+      "id": "com.statussaver.statusdownloader.lite",
+      "title": "Status Saver",
+      "developer": "Fun and Hi Tool",
+      "installs": 10000000,
+      "score": 4.304348,
+      "ratings": 7390,
+      "icon": "img/com-statussaver-statusdownloader-lite/icon.png",
+      "feature": "img/com-statussaver-statusdownloader-lite/feature.png",
+      "shots": [
+        "img/com-statussaver-statusdownloader-lite/shot-1.jpg", "img/com-statussaver-statusdownloader-lite/shot-2.jpg",
+        "img/com-statussaver-statusdownloader-lite/shot-3.jpg", "img/com-statussaver-statusdownloader-lite/shot-4.jpg",
+        "img/com-statussaver-statusdownloader-lite/shot-5.jpg"
+      ]
+    },
+    {
+      "id": "com.mdtech.status.saver",
+      "title": "Status Saver & Video Download",
+      "developer": "MD TECH",
+      "installs": 100,
+      "score": null,
+      "ratings": 0,
+      "icon": "img/com-mdtech-status-saver/icon.png",
+      "feature": "img/com-mdtech-status-saver/feature.png",
+      "shots": [
+        "img/com-mdtech-status-saver/shot-1.jpg", "img/com-mdtech-status-saver/shot-2.jpg", "img/com-mdtech-status-saver/shot-3.jpg",
+        "img/com-mdtech-status-saver/shot-4.jpg", "img/com-mdtech-status-saver/shot-5.jpg", "img/com-mdtech-status-saver/shot-6.jpg"
+      ]
+    },
+    {
+      "id": "com.sinosystems.status",
+      "title": "Status Saver: Video Downloader",
+      "developer": "SinoSystems, Inc",
+      "installs": 100000,
+      "score": null,
+      "ratings": 0,
+      "icon": "img/com-sinosystems-status/icon.png",
+      "feature": "img/com-sinosystems-status/feature.png",
+      "shots": [
+        "img/com-sinosystems-status/shot-1.jpg", "img/com-sinosystems-status/shot-2.jpg", "img/com-sinosystems-status/shot-3.jpg",
+        "img/com-sinosystems-status/shot-4.jpg", "img/com-sinosystems-status/shot-5.jpg"
+      ]
+    }
   ]
 }
 ```
