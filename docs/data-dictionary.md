@@ -13,6 +13,7 @@
 | `PAYLOAD.listing` | object | 8 keys |
 | `PAYLOAD.graphics` | object | 2 keys |
 | `PAYLOAD.gnotes` | object | 6 keys |
+| `PAYLOAD.offersChecked` | object | 3 keys |
 
 ## PAYLOAD
 
@@ -177,3 +178,11 @@
   - `fgRead[][]` · array of 4 arrays · e.g. `["One template, eight times","Headline left, phone mock right, category phrase as the headline: \"Status Saver\", \"Status Download\", \"Save All Status\", \"One tap Save Status\". Nobody sells a brand here; everybody sells the job."]`
   - `systems[][]` · array of 9 arrays · e.g. `["Status Downloader: Video Saver","Splash screen with the app logo","Two-line caption above the phone, green on pale blue","Purple-framed phone, blurred teal background","Leads with the wrong screen, and the mock status bar carries the Instagram, Facebook and TikTok logos"]`
   - `ours[][]` · array of 6 arrays · e.g. `["Do not lead with the splash screen","Our first screenshot is the app's own loading screen: a logo and a progress bar. Every competitor leads with content — their grid, or the status list they read from. The first screenshot is the one most people see; it should show a grid full of statuses with save badges, captioned with the benefit."]`
+- `offersChecked` · object with 3 keys:
+  - `checkedOn` · string · e.g. `"2026-09-23"`
+  - `markets[]` · array of 3 string · e.g. `["US","PK","IN"]`
+  - `apps[]` · array of 13 objects:
+    - `id` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
+    - `US` · boolean · e.g. `false`
+    - `PK` · boolean · e.g. `false`
+    - `IN` · boolean · e.g. `false`

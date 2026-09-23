@@ -41,6 +41,26 @@ Share of all top-10 positions across every keyword · United States
 | Chat tools | 3 |  | ×0.15 |
 | File manager / cleaner | 1 |  | ×0 |
 
+<a id="categories"></a>
+
+Shelf composition · United States
+
+## Who fills the top-10 slots
+
+Every top-10 slot on the board, resolved to the category of the app holding it. This is the check that comes before keyword choice: if a phrase is held by apps doing a different job, ranking on it would not bring the right installs.
+
+| Category | Top-10 slots | Share | Relevance weight | Most slots held by |
+| --- | --- | --- | --- | --- |
+| **Status / story saver** | 1015 | 92% | 1.00 | Status Download - Video Saver (90), Status Saver: Video Downloader (88) |
+| **Other** | 45 | 4% | 0.00 | WhatsApp Business (7), All Status and Stories Saver (3) |
+| **Video downloader** | 20 | 2% | 0.50 | Video Downloader (5), Stories Saver - Video Download (2) |
+| **Sticker maker** | 12 | 1% | 0.35 | Status, Sticker Saver (3), Animated Sticker Maker (FSM) (1) |
+| **Chat tools** | 7 | 1% | 0.15 | WhatsApp Messenger (3), Status Video Splitter & Saver (2) |
+| **File manager / cleaner** | 1 | 0% | 0.00 | Status Hub: Save, Chat, Repost (1) |
+| **All slots** | **1100** | 100% |  | 110 keywords × 10 slots, gaps excluded |
+
+On the United States board, **92%** of every top-10 slot is held by an app whose own category is status saving — the shelf is not shared with a neighbouring category the way a video-downloader or file-manager board is. That is what makes relevance the first filter in this research: a phrase that pulls in sticker makers or gallery apps is a phrase this app cannot win on intent alone.
+
 <a id="competitors"></a>
 
 Direct competitors · live listings · United States
@@ -75,6 +95,58 @@ The competitors average **1.0** board phrases word for word in their titles. Tit
 ### Where we stand today
 
 Our listing does not appear in United States for any board keyword yet.
+
+<a id="comp-keywords"></a>
+
+Keywords by competitor · United States
+
+## Keywords by competitor
+
+The rank tracker below asks who holds a keyword. This asks the other way round: what each app on the shelf actually holds, and how deep its coverage goes. Our own listing is the first row.
+
+| App | Top 3 | Top 10 | In results | Best | Where it ranks |
+| --- | --- | --- | --- | --- | --- |
+| **Status Downloader: Video Saver** ours<br>Cell Cave · 10+ installs | 0 | 0 | 0 | — | no top-10 keyword on this board |
+| **Status Download - Video Saver**<br>Shree Ganesha Labs · 100M+ installs | 75 | 90 | 95 | #1 | status video downloader app *#1*<br>status saver video downloader *#1*<br>status video downloader *#1*<br>save status app *#1*<br>+86 more |
+| **Status Saver: Video Downloader**<br>BlueLine. Tech · 50M+ installs | 21 | 88 | 95 | #2 | mx player status downloader *#2*<br>vmate status video status status downloader *#2*<br>long video status downloader *#2*<br>whatsapp status downloader video *#2*<br>+84 more |
+| **Status Saver - Video Saver**<br>Save Status, Video & Image Downloader · 100M+ installs | 46 | 88 | 92 | #1 | status save to gallery *#1*<br>status saver gallery *#1*<br>save status video saver *#1*<br>status saver *#1*<br>+84 more |
+| **Status Saver・Status Downloader**<br>Battery Stats Saver · 10M+ installs | 41 | 87 | 92 | #1 | status saver app *#1*<br>save status and message recovery *#1*<br>status downloader and saver *#1*<br>status saver downloader *#1*<br>+83 more |
+| **Status Saver - Video Download**<br>Heeth Jain · 500K+ installs | 22 | 81 | 91 | #1 | save status app download *#1*<br>status saver hd video download *#1*<br>status saver message recovery *#1*<br>vmate status video status status downloader *#1*<br>+77 more |
+| **Status Saver**<br>Fun and Hi Tool · 10M+ installs | 16 | 64 | 80 | #1 | status saver photo *#1*<br>status saver app update *#2*<br>status saver hd *#2*<br>save status and message recovery *#2*<br>+60 more |
+| **Status Saver & Video Download**<br>MD TECH · 100+ installs | 2 | 37 | 58 | #3 | status saver hd video download *#3*<br>status video download *#3*<br>status saver video downloader *#4*<br>status saver video download *#4*<br>+33 more |
+| **Status Saver: Video Downloader**<br>SinoSystems, Inc · 100K+ installs | 1 | 31 | 82 | #3 | mx player status downloader *#3*<br>status saver youtube video *#4*<br>status video download app tamil *#5*<br>status saver dp downloader *#6*<br>+27 more |
+| **Status Saver: Save & Share**<br>Jawad108 · 10K+ installs | 0 | 31 | 72 | #4 | save status app download *#4*<br>save status and message recovery *#4*<br>save status app *#5*<br>save status *#5*<br>+27 more |
+| **Status Saver・Status Downloader**<br>Status Saver Sol · 5M+ installs | 0 | 30 | 87 | #4 | status photo download *#4*<br>whatsapp status downloader *#6*<br>status downloader *#6*<br>status downloader for whatsapp status *#6*<br>+26 more |
+| **Video downloader - Story Saver**<br>Video Downloader Story Saver · 50M+ installs | 12 | 22 | 27 | #1 | story saver reels video downloader *#1*<br>story downloader ig saver gratis *#1*<br>story saver download app *#1*<br>story downloader *#1*<br>+18 more |
+| **InSaver: All Video Downloader**<br>Video Downloader Story Saver · 10M+ installs | 7 | 18 | 25 | #2 | story saver reels video downloader *#2*<br>story downloader *#2*<br>story saver instagram app 2025 *#2*<br>story saver without login *#3*<br>+14 more |
+
+Read this next to the matrix above: the matrix asks who holds a keyword, this asks what each app holds. **Status Download - Video Saver** leads the United States board with **90** top-10 placements. Our listing holds **0**, and appears in results **0** times across 110 keywords.
+
+<a id="events"></a>
+
+Events & offers · checked live 23 Sep 2026 · US, PK, IN
+
+## Events & offers
+
+Google Play lets a listing run a promotional card under its screenshots. Every listing on this shelf was opened in all three markets to see who uses one.
+
+| App | US | PK | IN |
+| --- | --- | --- | --- |
+| **Status Downloader: Video Saver** ours<br>10+ installs | none | none | none |
+| **Status Download - Video Saver**<br>100M+ installs | none | none | none |
+| **Status Saver: Video Downloader**<br>50M+ installs | none | none | none |
+| **Status Saver - Video Saver**<br>100M+ installs | none | none | none |
+| **Status Saver・Status Downloader**<br>10M+ installs | running | running | none |
+| **Status Saver - Video Download**<br>500K+ installs | none | none | none |
+| **Status Saver**<br>10M+ installs | none | none | none |
+| **Status Saver & Video Download**<br>100+ installs | none | none | none |
+| **Status Saver: Video Downloader**<br>100K+ installs | none | none | none |
+| **Status Saver: Save & Share**<br>10K+ installs | none | none | none |
+| **Status Saver・Status Downloader**<br>5M+ installs | none | none | none |
+| **Video downloader - Story Saver**<br>50M+ installs | none | none | none |
+| **InSaver: All Video Downloader**<br>10M+ installs | none | none | none |
+
+An **Events & offers** card is free promotional space under a listing, and on this shelf it is almost entirely unused: **1 of 13** listings run one. Only **Status Saver・Status Downloader** does, and not in every market. Checked live on 2026-09-23 in US, PK, IN. It costs nothing to run one and nobody here is competing for it.
 
 <a id="matrix"></a>
 
@@ -289,6 +361,22 @@ Every keyword in the universe, scored. **Relevance** is how close the phrase is 
 | A **status repost**<br>0 autocomplete hits | 0 | 69<br>1.5M · 0 apps ≥10M | 0 | **0** | Reshare · Auto Status Store & Repost · Status Saver | — |
 | A **status saver without watermark**<br>0 autocomplete hits | 0 | 94<br>317.5M · 5 apps ≥10M | 0 | **0** | VideoSaver · Status Saver · Status Saver | — |
 | B **status sticker maker**<br>0 autocomplete hits | 0 | 93<br>252M · 7 apps ≥10M | 0 | **0** | Sticker.ly · Sticker Maker · Sticker Maker | — |
+
+<a id="markets"></a>
+
+Markets · the same 110 phrases in each
+
+## How the category differs by market
+
+The same keyword list was scraped in all three markets, so what changes between these rows is the shelf, not the sample: who defends it, how expensive the top ten is, and how much of the demand is locked behind a platform name.
+
+| Market | Keywords | Core-intent | Name a platform | Median entry bar | We appear | Top opportunity |
+| --- | --- | --- | --- | --- | --- | --- |
+| **United States** | 110 | 106 | 42 | 275.7M | 0 | status video downloader app *P37* |
+| **Pakistan** | 110 | 106 | 42 | 320.5M | 0 | status video downloader app *P38* |
+| **India** | 110 | 106 | 42 | 261.4M | 0 | status video downloader app *P38* |
+
+The same 110 phrases were scraped in all three markets, so the differences here are the shelf, not the sample. **India** has the lowest median entry bar at **261.4M** installs, which makes it the cheapest place to prove the listing before spending anywhere else. The number of phrases that name another company's product is also worth watching: those are the phrases with the most demand and the ones this listing can never use.
 
 <a id="ladder"></a>
 

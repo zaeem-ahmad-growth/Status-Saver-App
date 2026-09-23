@@ -5,7 +5,7 @@
 
 ## How the page is put together
 
-- Markup: [tabs/02-aso-playbook/index.html](../../tabs/02-aso-playbook/index.html) (150 lines), `<body data-page="playbook">`
+- Markup: [tabs/02-aso-playbook/index.html](../../tabs/02-aso-playbook/index.html) (190 lines), `<body data-page="playbook">`
 - Drawn by [assets/app.js](../../assets/app.js) from [assets/data.js](../../assets/data.js); styles in [assets/site.css](../../assets/site.css); tab bar from [assets/nav.js](../../assets/nav.js)
 - Sections and the functions that fill them: see the [code map](../code-map.md#02-aso-playbook)
 
@@ -747,16 +747,136 @@
   }
 ```
 
-### `renderOursGraphics()` (assets/app.js L611-615)
+### `renderOursGraphics()` (assets/app.js L611-617)
 
 ```js
   function renderOursGraphics() {
     const box = $('ours-graphics'); if (!box) return;
     box.innerHTML = (GN.ours || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
   }
+
+  // ---------- playbook · who fills the shelf ----------
+  // Every top-10 slot on the board, resolved to the category of the app holding it.
 ```
 
-### `renderFoot()` (assets/app.js L616-620)
+### `renderCategories()` (assets/app.js L618-641)
+
+```js
+  function renderCategories() {
+    const box = $('cat-table'); if (!box) return;
+    const B = boardOf(state.gl);
+    const tally = {}, appHits = {};
+    let slots = 0;
+    B.forEach(r => r.slots.slice(0, 10).forEach(idx => {
+      if (idx < 0 || !A[idx]) return;
+      slots++;
+      const c = A[idx].c || 'other';
+      tally[c] = (tally[c] || 0) + 1;
+      appHits[idx] = (appHits[idx] || 0) + 1;
+    }));
+    const rows = Object.entries(tally).sort((a, b) => b[1] - a[1]);
+    const topOf = c => Object.entries(appHits).filter(([i]) => (A[i].c || 'other') === c)
+      .sort((a, b) => b[1] - a[1]).slice(0, 2).map(([i, n]) => `${esc(A[i].t)} (${n})`).join(', ');
+    box.innerHTML = `<thead><tr><th>Category</th><th class="num">Top-10 slots</th><th class="num">Share</th><th class="num">Relevance weight</th><th>Most slots held by</th></tr></thead><tbody>` +
+      rows.map(([c, n]) => `<tr${c === 'status' ? ' class="ours"' : ''}><td><strong>${esc(CAT[c] || c)}</strong></td><td class="num">${n}</td><td class="num">${pct(n / slots)}</td><td class="num">${WEIGHT[c] == null ? '—' : WEIGHT[c].toFixed(2)}</td><td class="small">${topOf(c)}</td></tr>`).join('') +
+      `<tr><td><strong>All slots</strong></td><td class="num"><strong>${slots}</strong></td><td class="num">100%</td><td></td><td class="small muted">${B.length} keywords × 10 slots, gaps excluded</td></tr></tbody>`;
+    const share = pct((tally.status || 0) / slots);
+    const r = $('cat-read');
+    if (r) r.innerHTML = `<p>On the ${esc(MNAME[state.gl] || state.gl)} board, <b>${share}</b> of every top-10 slot is held by an app whose own category is status saving — the shelf is not shared with a neighbouring category the way a video-downloader or file-manager board is. That is what makes relevance the first filter in this research: a phrase that pulls in sticker makers or gallery apps is a phrase this app cannot win on intent alone.</p>`;
+  }
+
+  // ---------- playbook · keywords by competitor ----------
+```
+
+### `renderCompKeywords()` (assets/app.js L642-670)
+
+```js
+  function renderCompKeywords() {
+    const box = $('compkw-table'); if (!box) return;
+    const B = boardOf(state.gl);
+    const rowsFor = idx => {
+      const hits = [];
+      B.forEach(r => { const p = r.slots.indexOf(idx); if (p >= 0 && p < 30) hits.push({ q: r.k, pos: p + 1, P: r.P, tier: r.tier }); });
+      return hits.sort((a, b) => a.pos - b.pos || b.P - a.P);
+    };
+    const all = COMP.map(idx => ({ idx, hits: rowsFor(idx) }))
+      .sort((a, b) => b.hits.filter(h => h.pos <= 10).length - a.hits.filter(h => h.pos <= 10).length);
+    const mine = rowsFor(OURS);
+    const line = (idx, hits, ours) => {
+      const t10 = hits.filter(h => h.pos <= 10), t3 = hits.filter(h => h.pos <= 3);
+      const best = hits[0];
+      return `<tr${ours ? ' class="ours"' : ''}><td><strong>${esc(A[idx].t)}</strong>${ours ? ' <span class="pill p-acc">ours</span>' : ''}<div class="small muted">${esc(A[idx].dev)} · ${fmt(A[idx].i)}+ installs</div></td>
+        <td class="num">${t3.length}</td><td class="num">${t10.length}</td><td class="num">${hits.length}</td>
+        <td class="num">${best ? '#' + best.pos : '—'}</td>
+        <td class="small">${t10.slice(0, 4).map(h => `<span class="nowrap">${esc(h.q)} <i>#${h.pos}</i></span>`).join('<br>') || '<span class="muted">no top-10 keyword on this board</span>'}${t10.length > 4 ? `<div class="muted">+${t10.length - 4} more</div>` : ''}</td></tr>`;
+    };
+    box.innerHTML = `<thead><tr><th>App</th><th class="num">Top 3</th><th class="num">Top 10</th><th class="num">In results</th><th class="num">Best</th><th>Where it ranks</th></tr></thead><tbody>` +
+      line(OURS, mine, true) + all.map(x => line(x.idx, x.hits, false)).join('') + '</tbody>';
+    const r = $('compkw-read');
+    if (r) {
+      const lead = all[0];
+      r.innerHTML = `<p>Read this next to the matrix above: the matrix asks who holds a keyword, this asks what each app holds. <b>${esc(A[lead.idx].t)}</b> leads the ${esc(MNAME[state.gl] || state.gl)} board with <b>${lead.hits.filter(h => h.pos <= 10).length}</b> top-10 placements. Our listing holds <b>${mine.filter(h => h.pos <= 10).length}</b>, and appears in results <b>${mine.length}</b> times across ${B.length} keywords.</p>`;
+    }
+  }
+
+  // ---------- playbook · events & offers ----------
+```
+
+### `renderEvents()` (assets/app.js L671-690)
+
+```js
+  function renderEvents() {
+    const box = $('events-table'); if (!box) return;
+    const E = PAYLOAD.offersChecked;
+    if (!E) { box.innerHTML = ''; return; }
+    const byId = {};
+    E.apps.forEach(x => { byId[x.id] = x; });
+    const order = [OURS].concat(COMP);
+    const cell = v => v ? '<span class="pill p-good">running</span>' : '<span class="muted">none</span>';
+    box.innerHTML = `<thead><tr><th>App</th>${E.markets.map(m => `<th class="num">${m}</th>`).join('')}</tr></thead><tbody>` +
+      order.map(idx => {
+        const a = A[idx], e = byId[a.id];
+        return `<tr${idx === OURS ? ' class="ours"' : ''}><td><strong>${esc(a.t)}</strong>${idx === OURS ? ' <span class="pill p-acc">ours</span>' : ''}<div class="small muted">${fmt(a.i)}+ installs</div></td>` +
+          E.markets.map(m => `<td class="num">${e ? cell(e[m]) : '<span class="muted">—</span>'}</td>`).join('') + '</tr>';
+      }).join('') + '</tbody>';
+    const running = E.apps.filter(x => E.markets.some(m => x[m]));
+    const r = $('events-read');
+    if (r) r.innerHTML = `<p>An <b>Events &amp; offers</b> card is free promotional space under a listing, and on this shelf it is almost entirely unused: <b>${running.length} of ${E.apps.length}</b> listings run one. ${running.length ? `Only ${running.map(x => { const a = A.find(y => y.id === x.id); return `<b>${esc(a ? a.t : x.id)}</b>`; }).join(', ')} does, and not in every market.` : ''} Checked live on ${esc(E.checkedOn)} in ${E.markets.join(', ')}. It costs nothing to run one and nobody here is competing for it.</p>`;
+  }
+
+  // ---------- playbook · how the category differs by market ----------
+```
+
+### `renderMarketsCompare()` (assets/app.js L691-714)
+
+```js
+  function renderMarketsCompare() {
+    const box = $('markets-table'); if (!box) return;
+    const med = a => { if (!a.length) return null; const s = a.slice().sort((x, y) => x - y); const m = Math.floor(s.length / 2); return s.length % 2 ? s[m] : Math.round((s[m - 1] + s[m]) / 2); };
+    const rows = MARKETS.map(gl => {
+      const B = boardOf(gl);
+      const top = B[0];
+      const entry = med(B.map(r => r.installs).filter(n => n != null && n > 0));
+      const ours = B.filter(r => r.ourRank > 0);
+      const core = B.filter(r => r.tier === 'A').length;
+      const brandy = B.filter(r => r.brand).length;
+      return { gl, n: B.length, top, entry, ours: ours.length, bestOurs: ours.length ? Math.min(...ours.map(r => r.ourRank)) : null, core, brandy };
+    });
+    box.innerHTML = `<thead><tr><th>Market</th><th class="num">Keywords</th><th class="num">Core-intent</th><th class="num">Name a platform</th><th class="num">Median entry bar</th><th class="num">We appear</th><th>Top opportunity</th></tr></thead><tbody>` +
+      rows.map(r => `<tr${r.gl === state.gl ? ' class="ours"' : ''}><td><strong>${esc(MNAME[r.gl] || r.gl)}</strong></td>
+        <td class="num">${r.n}</td><td class="num">${r.core}</td><td class="num">${r.brandy}</td>
+        <td class="num">${r.entry == null ? '—' : fmt(r.entry)}</td>
+        <td class="num">${r.ours}${r.bestOurs ? ` <i>best #${r.bestOurs}</i>` : ''}</td>
+        <td class="small">${r.top ? `${esc(r.top.k)} <i>P${r.top.P}</i>` : '—'}</td></tr>`).join('') + '</tbody>';
+    const easiest = rows.slice().sort((a, b) => (a.entry || Infinity) - (b.entry || Infinity))[0];
+    const r2 = $('markets-read');
+    if (r2) r2.innerHTML = `<p>The same 110 phrases were scraped in all three markets, so the differences here are the shelf, not the sample. <b>${esc(MNAME[easiest.gl] || easiest.gl)}</b> has the lowest median entry bar at <b>${easiest.entry == null ? '—' : fmt(easiest.entry)}</b> installs, which makes it the cheapest place to prove the listing before spending anywhere else. The number of phrases that name another company's product is also worth watching: those are the phrases with the most demand and the ones this listing can never use.</p>`;
+  }
+
+  // ---------- metadata · our own store graphics ----------
+```
+
+### `renderFoot()` (assets/app.js L742-746)
 
 ```js
   function renderFoot() {
@@ -765,12 +885,12 @@
   }
 ```
 
-### `renderAll()` (assets/app.js L621-638)
+### `renderAll()` (assets/app.js L747-764)
 
 ```js
   function renderAll() {
     renderScope();
-    if (PAGE === 'playbook') { renderChips(); renderPlays(); renderComp(); renderMatrix(); renderStrips(); renderBoard(); renderLadder(); renderListingPack(); renderMethod(); renderRisks(); }
+    if (PAGE === 'playbook') { renderChips(); renderPlays(); renderCategories(); renderComp(); renderCompKeywords(); renderEvents(); renderMatrix(); renderStrips(); renderBoard(); renderMarketsCompare(); renderLadder(); renderListingPack(); renderMethod(); renderRisks(); }
     if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderFieldTable(); renderCoverage(); renderTargets(); renderRankTable(); renderPolicy(); }
     if (PAGE === 'features') { renderFeatChips(); renderCompleteness(); renderFmx(); renderOursCards(); renderEdgesGaps(); renderPricing(); renderSource(); }
     if (PAGE === 'graphics') { renderGfxChips(); renderIconWall(); renderFgGrid(); renderSystems(); renderCatalogue(); renderOursGraphics(); }
@@ -800,6 +920,9 @@
 - [`graphics.apps`](#graphicsapps)
 - [`graphics.fetchedAt`](#graphicsfetchedat)
 - [`listing`](#listing)
+- [`offersChecked.apps`](#offerscheckedapps)
+- [`offersChecked.checkedOn`](#offerscheckedcheckedon)
+- [`offersChecked.markets`](#offerscheckedmarkets)
 - [`ours`](#ours)
 
 These are exact copies of the values in [assets/data.js](../../assets/data.js); edit them there. Field meanings are in the [data dictionary](../data-dictionary.md).
@@ -4997,6 +5120,38 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
     ]
   ]
 }
+```
+
+### offersChecked.apps
+
+```json
+[
+  {"id":"com.statussaver.videosaver.downloadstatus.storysaver","US":false,"PK":false,"IN":false},
+  {"id":"com.downlood.sav.whmedia","US":false,"PK":false,"IN":false},
+  {"id":"statussaver.statusdownloader.downloadstatus.savestatus","US":false,"PK":false,"IN":false},
+  {"id":"statussaver.statusdownloader.downloadstatus.videoimagesaver","US":false,"PK":false,"IN":false},
+  {"id":"com.falnesc.statussaver","US":true,"PK":true,"IN":false},
+  {"id":"com.heethjain.apps.statussaver","US":false,"PK":false,"IN":false},
+  {"id":"com.statussaver.statusdownloader.lite","US":false,"PK":false,"IN":false},
+  {"id":"com.mdtech.status.saver","US":false,"PK":false,"IN":false},
+  {"id":"com.sinosystems.status","US":false,"PK":false,"IN":false},
+  {"id":"com.jam.status_saver","US":false,"PK":false,"IN":false},
+  {"id":"com.studio.zm.statussaver","US":false,"PK":false,"IN":false},
+  {"id":"instagram.video.downloader.story.saver.ig","US":false,"PK":false,"IN":false},
+  {"id":"instagram.video.downloader.story.saver.ig.insaver","US":false,"PK":false,"IN":false}
+]
+```
+
+### offersChecked.checkedOn
+
+```json
+"2026-09-23"
+```
+
+### offersChecked.markets
+
+```json
+["US","PK","IN"]
 ```
 
 ### ours
