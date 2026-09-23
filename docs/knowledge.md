@@ -19,6 +19,7 @@ Key facts and decisions for this repository. Loaded automatically in every Claud
 ## This repository
 
 - **Status Saver** (`tabs/01-status-saver/`) — the full product dossier, with eight sections: Overview, Spec, Market research, Versions & APK, Monetization, Screenshots, Graphics, QA history.
+- **PlayStore Metadata** (`tabs/03-playstore-metadata/`) — the live listing against the proposed one: title, short and full description with character counts, the keyword-to-field plan, the coverage check, competitor ranks on the targeted phrases, and the policy record.
 - **ASO Playbook** (`tabs/02-aso-playbook/`) — the Google Play keyword research of 23 Sep 2026: plays in the category, competitors, rank tracker, result slots, keyword board, launch ladder and the proposed listing. Data-driven from `assets/data.js` through `assets/app.js`.
 - Source: the Claude artifact <https://claude.ai/artifact/2fsUhwUKAit9zHrJGuSYNC> ("Status Flow Dossier", version of 17 Sep 2026). The repository is the master copy; the artifact is a snapshot and is read-only to anyone but its owning account.
 - The tab keeps the artifact's own design, so it loads `assets/bar.css` (not `site.css`) for the tab bar. The artifact's left-hand section rail was replaced by the sections row in the tab bar, matching the other repositories' dossier tabs.

@@ -302,6 +302,115 @@
     box.innerHTML = (L.risks || []).map(r => `<div class="issue"><h3>${esc(r[0])}</h3><p>${esc(r[1])}</p></div>`).join('');
   }
 
+  // ---------- metadata ----------
+  const P = L.proposed || {};
+  const fullTextOf = p => [p.title, p.short, (p.outline || []).map(o => o[0] + ' ' + o[1]).join(' '), p.close].join(' ').toLowerCase();
+  const fullDescOf = p => (p.outline || []).map(o => o[0].toUpperCase() + '\n\n' + o[1]).join('\n\n') + '\n\n' + (p.close || '');
+  function coverage(k, text) {
+    if (text.includes(k)) return 'exact';
+    const toks = k.split(' ').filter(Boolean);
+    return toks.every(t => text.includes(t.replace(/s$/, ''))) ? 'tokens' : 'no';
+  }
+
+  function renderMetaHead() {
+    const a = L.app || {};
+    const pkg = $('pkg'); if (pkg) pkg.textContent = a.package || '';
+    const t = $('apptitle'); if (t) t.textContent = L.current ? L.current.title : 'PlayStore Metadata';
+    const box = $('chips'); if (!box) return;
+    box.innerHTML = [`${a.installs || '—'} installs`, a.ads ? 'ad-supported' : 'no ads', a.iap ? 'in-app purchases' : 'no IAP',
+    `${D.meta.keywords} keywords on the board`, `listing read on ${a.readOn || D.meta.fetchedAt}`]
+      .map(c => `<span class="chip">${esc(c)}</span>`).join('');
+  }
+
+  function field(label, value, max, cls) {
+    const n = (value || '').length;
+    const over = max && n > max;
+    return `<div class="field"><div class="field-label">${esc(label)} · <span class="tmono${over ? ' over' : ''}">${n}${max ? '/' + max : ''}</span></div>
+      <div class="listing ${cls || ''}">${esc(value)}</div></div>`;
+  }
+
+  function renderLive() {
+    const c = L.current; if (!c || !$('live-listing')) return;
+    $('live-listing').innerHTML = field('Title', c.title, 30, 'tmono') + field('Short description', c.short, 80) +
+      `<div class="field"><div class="field-label">Full description · <span class="tmono">${c.descChars} characters</span></div>
+       <div class="note small">The live full description is in <span class="mono">research/aso-pipeline/apps.json</span>, exactly as Play returned it.</div></div>`;
+    $('live-read').innerHTML = (c.read || []).map(r => `<div class="insight"><h3>${esc(r[0])}</h3><p>${r[1]}</p></div>`).join('');
+  }
+
+  function renderPackage() {
+    const box = $('package-fields'); if (!box || !P.title) return;
+    const full = fullDescOf(P);
+    box.innerHTML = field('Title', P.title, 30, 'tmono') +
+      `<div class="note small"><strong>Title check.</strong> ${esc(P.titleWhy)}</div>` +
+      field('Short description', P.short, 80) +
+      `<div class="field"><div class="field-label">Full description · <span class="tmono">${full.length}/4000</span></div>
+        <div class="longdesc">${P.outline.map(o => `<h4>${esc(o[0])}</h4><p>${esc(o[1])}</p>`).join('')}<p class="small muted">${esc(P.close)}</p></div></div>` +
+      `<div class="note"><strong>Why these words.</strong> ${esc(P.why)}</div>`;
+  }
+
+  function renderFieldTable() {
+    const t = $('field-table'); if (!t) return;
+    const board = {};
+    boardOf(state.gl).forEach(r => { board[r.k] = r; });
+    t.innerHTML = `<thead><tr><th>Keyword</th><th>Carried by</th><th>Demand</th><th>Competition</th><th>Why there</th></tr></thead><tbody>${(L.fields || []).map(f => {
+      const r = board[f[0]];
+      return `<tr><td class="kw"><strong>${esc(f[0])}</strong></td><td><span class="pill p-acc">${esc(f[1])}</span></td>
+        <td class="num tmono">${r ? r.D : '—'}</td><td class="num tmono">${r ? r.C : '—'}${r ? `<span class="small muted block">${fmt(r.installs)}</span>` : ''}</td>
+        <td class="small">${esc(f[2])}</td></tr>`;
+    }).join('')}</tbody>
+    <tfoot><tr><td colspan="5" class="small muted">Held back for a later version of the listing: ${(L.reserved || []).map(x => `<strong>${esc(x[0])}</strong> — ${esc(x[1])}`).join('<br>')}</td></tr></tfoot>`;
+  }
+
+  function renderCoverage() {
+    const t = $('cov-table'); if (!t) return;
+    const text = fullTextOf(P);
+    let rows = boardOf(state.gl).map(r => ({ r, cov: coverage(r.k, text) }));
+    const all = $('cov-all') && $('cov-all').checked;
+    if (!all) rows = rows.filter(x => x.cov !== 'no' || x.r.tier === 'A');
+    const pillOf = c => c === 'exact' ? '<span class="pill p-good">word for word</span>' : c === 'tokens' ? '<span class="pill p-acc">every word present</span>' : '<span class="pill p-mute">not covered</span>';
+    const usable = rows.filter(x => !x.r.brand);
+    const hit = usable.filter(x => x.cov !== 'no').length;
+    const brandCount = rows.length - usable.length;
+    t.innerHTML = `<thead><tr><th>Keyword</th><th>Tier</th><th>In the proposed listing</th><th>Priority</th></tr></thead>
+      <tbody>${rows.map(x => `<tr><td class="kw">${esc(x.r.k)}${x.r.brand ? ' <span class="pill p-risk">brand · never used</span>' : ''}</td>
+        <td><span class="pill ${TIER_PILL[x.r.tier]}">${x.r.tier}</span></td><td>${pillOf(x.cov)}</td><td class="num tmono">${x.r.P}</td></tr>`).join('')}</tbody>
+      <tfoot><tr><td colspan="4" class="small muted"><strong>${hit} of ${usable.length}</strong> phrases this listing is allowed to use appear in it, word for word or with every word present. The other ${brandCount} shown here carry another company's brand name and are excluded by rule, whatever they would earn. A phrase the listing does not contain cannot rank for it.</td></tr></tfoot>`;
+  }
+
+  function renderTargets() {
+    const t = $('target-table'); if (!t) return;
+    const text = fullTextOf(P);
+    const rows = boardOf(state.gl).filter(r => !r.brand && coverage(r.k, text) !== 'no').slice(0, 24);
+    t.innerHTML = `<thead><tr><th>Keyword</th><th>Demand</th><th>Competition</th><th>Top ten holders</th><th>Us today</th></tr></thead><tbody>${rows.map(r =>
+      `<tr><td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong></td>
+        <td class="num tmono">${r.D}</td>
+        <td class="num tmono">${r.C}<span class="small muted block">${fmt(r.installs)} · ${r.big} ≥10M</span></td>
+        <td class="small">${r.slots.slice(0, 3).map(i => i < 0 ? '—' : esc(A[i].t.split(/[-–—:·]/)[0].trim())).join(' · ')}</td>
+        <td class="num tmono">${r.ourRank ? '#' + r.ourRank : '<span class="dim">no rank</span>'}</td></tr>`).join('')}</tbody>`;
+  }
+
+  function renderRankTable() {
+    const t = $('rank-table'); if (!t) return;
+    const text = fullTextOf(P);
+    const rows = boardOf(state.gl).filter(r => !r.brand && coverage(r.k, text) !== 'no').slice(0, 20);
+    const cols = COMP.slice(0, 8);
+    t.innerHTML = `<thead><tr><th class="kw">Keyword</th><th class="ours-col">Us</th>${cols.map(i => `<th class="comp-name"><span>${esc(A[i].t.split(/[-–—:·]/)[0].trim())}</span></th>`).join('')}</tr></thead>
+      <tbody>${rows.map(r => {
+      const cell = i => {
+        const at = r.slots.indexOf(i);
+        if (at < 0) return '<td class="rk"><span class="dim">·</span></td>';
+        const rank = at + 1;
+        return `<td class="rk ${rank <= 3 ? 'b1' : rank <= 10 ? 'b2' : rank <= 20 ? 'b3' : 'b4'}">${rank}</td>`;
+      };
+      return `<tr><td class="kw">${esc(r.k)}</td>${cell(OURS)}${cols.map(cell).join('')}</tr>`;
+    }).join('')}</tbody>`;
+  }
+
+  function renderPolicy() {
+    const p = $('policy-list'); if (p) p.innerHTML = (L.policy || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
+    const b = $('built-list'); if (b) b.innerHTML = (L.built || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
+  }
+
   function renderFoot() {
     const f = $('foot'); if (!f) return;
     f.innerHTML = `Google Play data read on ${esc(D.meta.fetchedAt)} in ${MARKETS.join(', ')} · ${D.meta.keywords} keywords · ${D.meta.apps} listings · collected by the scripts in <a href="https://github.com/zaeem-ahmad-growth/Status-Saver-App/tree/main/research/aso-pipeline">research/aso-pipeline</a>. Ranks move daily.`;
@@ -310,6 +419,7 @@
   function renderAll() {
     renderScope();
     if (PAGE === 'playbook') { renderChips(); renderPlays(); renderComp(); renderMatrix(); renderStrips(); renderBoard(); renderLadder(); renderListingPack(); renderMethod(); renderRisks(); }
+    if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderFieldTable(); renderCoverage(); renderTargets(); renderRankTable(); renderPolicy(); }
     renderFoot();
   }
 
@@ -317,5 +427,6 @@
   on('matrix-all', 'change', e => { state.matrixAll = e.target.checked; renderMatrix(); });
   on('strips-more', 'click', () => { state.stripsAll = !state.stripsAll; renderStrips(); });
   on('kw-search', 'input', e => { state.q = e.target.value.trim().toLowerCase(); renderBoard(); });
+  on('cov-all', 'change', renderCoverage);
   renderAll();
 })();

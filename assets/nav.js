@@ -3,7 +3,8 @@
 (function () {
   var TABS = [
     { slug: '01-status-saver', label: 'Status Saver' },
-    { slug: '02-aso-playbook', label: 'ASO Playbook' }
+    { slug: '02-aso-playbook', label: 'ASO Playbook' },
+    { slug: '03-playstore-metadata', label: 'PlayStore Metadata' }
   ];
   var RESEARCH = 'https://github.com/zaeem-ahmad-growth/Status-Saver-App/tree/main/research';
 
