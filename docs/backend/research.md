@@ -159,7 +159,15 @@ foreach ($ci in $compIdx) {
     }
   }
 }
-$ngrams = @($terms.GetEnumerator() | Where-Object { $_.Value -ge 2 } | Sort-Object -Property Value -Descending | Select-Object -First 60 | ForEach-Object { @($_.Key, $_.Value) })
+# ArrayLists again: piping two-element rows out of ForEach-Object would flatten them into one long list.
+$ngrams = New-Object System.Collections.ArrayList
+foreach ($e in ($terms.GetEnumerator() | Where-Object { $_.Value -ge 2 } | Sort-Object -Property Value -Descending | Select-Object -First 60)) {
+  [void]$ngrams.Add(@($e.Key, $e.Value))
+}
+$demandRows = New-Object System.Collections.ArrayList
+foreach ($e in ($demand | Sort-Object -Property hits -Descending | Select-Object -First 200)) {
+  [void]$demandRows.Add(@($e.phrase, $e.hits, $e.bestPos, ($e.markets -join '')))
+}
 
 # ---------- write ----------
 $data = [ordered]@{
@@ -171,7 +179,7 @@ $data = [ordered]@{
   compIdx = $compIdx
   markets = $marketRows
   ngrams  = $ngrams
-  demand  = @($demand | Sort-Object -Property hits -Descending | Select-Object -First 200 | ForEach-Object { @($_.phrase, $_.hits, $_.bestPos, ($_.markets -join '')) })
+  demand  = $demandRows
 }
 ($data | ConvertTo-Json -Depth 12 -Compress) | Out-File (Join-Path $OUT 'data.json') -Encoding utf8
 Write-Host ''
@@ -465,9 +473,17 @@ foreach ($f in $FEATURES) {
   [void]$rows.Add(@($f[0], $f[1], $marks, $ev))
 }
 
+# One row per app, added through an ArrayList: piping the rows out of ForEach-Object would flatten
+# them into a single list of fields.
+$appRows = New-Object System.Collections.ArrayList
+foreach ($id in $ids) {
+  $a = $apps[$id]
+  [void]$appRows.Add(@($id, $a.title, $a.developer, [int64]$a.minInstalls, $a.iap))
+}
+
 $payload = [ordered]@{
   fetchedAt = $data.meta.fetchedAt
-  apps      = @($ids | ForEach-Object { $id = $_; $a = $apps[$id]; @($id, $a.title, $a.developer, [int64]$a.minInstalls, $a.iap) })
+  apps      = $appRows
   features  = $rows
 }
 ($payload | ConvertTo-Json -Depth 8 -Compress) | Out-File (Join-Path $OUT 'features.json') -Encoding utf8
@@ -917,14 +933,18 @@ foreach ($c in $CANDIDATES) {
 {
   "fetchedAt": "2026-09-23",
   "apps": [
-    "com.statussaver.videosaver.downloadstatus.storysaver", "Status Downloader: Video Saver", "Cell Cave", 10, "$3.99 - $9.99 per item",
-    "com.downlood.sav.whmedia", "Status Download - Video Saver", "Shree Ganesha Labs", 100000000, "$0.99 per item",
-    "statussaver.statusdownloader.downloadstatus.savestatus", "Status Saver: Video Downloader", "BlueLine. Tech", 50000000, "$9.99 - $29.99 per item",
-    "statussaver.statusdownloader.downloadstatus.videoimagesaver", "Status Saver - Video Saver", "Save Status, Video & Image Downloader", 100000000,
-    "$9.00 per item", "com.falnesc.statussaver", "Status Saver・Status Downloader", "Battery Stats Saver", 10000000, "$0.99 - $99.99 per item",
-    "com.heethjain.apps.statussaver", "Status Saver - Video Download", "Heeth Jain", 500000, null, "com.statussaver.statusdownloader.lite",
-    "Status Saver", "Fun and Hi Tool", 10000000, null, "com.mdtech.status.saver", "Status Saver & Video Download", "MD TECH", 100,
-    "$4.99 - $39.99 per item", "com.sinosystems.status", "Status Saver: Video Downloader", "SinoSystems, Inc", 100000, null
+    ["com.statussaver.videosaver.downloadstatus.storysaver","Status Downloader: Video Saver","Cell Cave",10,"$3.99 - $9.99 per item"],
+    ["com.downlood.sav.whmedia","Status Download - Video Saver","Shree Ganesha Labs",100000000,"$0.99 per item"],
+    ["statussaver.statusdownloader.downloadstatus.savestatus","Status Saver: Video Downloader","BlueLine. Tech",50000000,"$9.99 - $29.99 per item"],
+    [
+      "statussaver.statusdownloader.downloadstatus.videoimagesaver", "Status Saver - Video Saver", "Save Status, Video & Image Downloader", 100000000,
+      "$9.00 per item"
+    ],
+    ["com.falnesc.statussaver","Status Saver・Status Downloader","Battery Stats Saver",10000000,"$0.99 - $99.99 per item"],
+    ["com.heethjain.apps.statussaver","Status Saver - Video Download","Heeth Jain",500000,null],
+    ["com.statussaver.statusdownloader.lite","Status Saver","Fun and Hi Tool",10000000,null],
+    ["com.mdtech.status.saver","Status Saver & Video Download","MD TECH",100,"$4.99 - $39.99 per item"],
+    ["com.sinosystems.status","Status Saver: Video Downloader","SinoSystems, Inc",100000,null]
   ],
   "features": [
     [
@@ -1617,7 +1637,7 @@ foreach ($c in $CANDIDATES) {
 ## Large data files (structure in the research index)
 
 - [research/aso-pipeline/apps.json](../../research/aso-pipeline/apps.json) · 1082 KB
-- [research/aso-pipeline/data.json](../../research/aso-pipeline/data.json) · 89 KB
+- [research/aso-pipeline/data.json](../../research/aso-pipeline/data.json) · 90 KB
 - [research/aso-pipeline/demand.json](../../research/aso-pipeline/demand.json) · 148 KB
 - [research/aso-pipeline/serps.json](../../research/aso-pipeline/serps.json) · 1507 KB
 - [research/aso-pipeline/suggest.json](../../research/aso-pipeline/suggest.json) · 155 KB

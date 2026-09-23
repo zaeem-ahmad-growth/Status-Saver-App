@@ -179,116 +179,116 @@ Every keyword in the universe, scored. **Relevance** is how close the phrase is 
 
 | Keyword | Demand | Competition | Opportunity | Priority | Top ten holders | Us |
 | --- | --- | --- | --- | --- | --- | --- |
-| A **status video downloader app** 15 autocomplete hits · best slot 2 | 99 | 96411.2M · 6 apps ≥10M | 37 | **37** | Status Download · Status Saver · Video Downloader | — |
-| A **status saver video downloader** 12 autocomplete hits · best slot 2 | 84 | 94270.6M · 5 apps ≥10M | 33 | **33** | Status Download · Status Saver · Status Saver | — |
-| A **save status app download** 9 autocomplete hits · best slot 2 | 69 | 92175.5M · 4 apps ≥10M | 28 | **28** | Status Saver · Status Download · Status Saver | — |
-| A **status save to gallery** 9 autocomplete hits · best slot 1 | 70 | 94270.6M · 5 apps ≥10M | 27 | **27** | Status Saver · Status Saver・Status Downloader · Status Download | — |
-| A **status saver app** 9 autocomplete hits · best slot 1 | 70 | 94270.5M · 5 apps ≥10M | 27 | **27** | Status Saver・Status Downloader · Status Saver · Status Download | — |
-| A **status video downloader** 9 autocomplete hits · best slot 1 | 70 | 96420.6M · 7 apps ≥10M | 26 | **26** | Status Download · Status Saver · Status Saver | — |
-| A **status saver dp downloader** 7 autocomplete hits · best slot 2 | 59 | 92181.1M · 5 apps ≥10M | 24 | **24** | Status Saver & Dp Download · Status Saver & Dp Downloader · Status Saver & Dp Downloader | — |
-| A **save status app** 7 autocomplete hits · best slot 1 | 60 | 94275.5M · 5 apps ≥10M | 23 | **23** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **status downloader app** 7 autocomplete hits · best slot 1 | 60 | 95325.7M · 6 apps ≥10M | 23 | **23** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **status saver video download** 7 autocomplete hits · best slot 1 | 60 | 94270.6M · 5 apps ≥10M | 23 | **23** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **story saver sara tech** 6 autocomplete hits · best slot 2 | 54 | 8877M · 2 apps ≥10M | 23 | **23** | Story Saver · Reshare · Insget | — |
-| A **story saver without login** 6 autocomplete hits · best slot 3 | 53 | 8882M · 3 apps ≥10M | 23 | **23** | Story Downloader · Video downloader · InSaver | — |
-| A **save status app update** 6 autocomplete hits · best slot 2 | 54 | 92190.2M · 5 apps ≥10M | 22 | **22** | Status Saver · Status Saver · Status Saver・Status Downloader | — |
-| A **status saver app update** 7 autocomplete hits · best slot 3 | 57 | 94275.5M · 5 apps ≥10M | 22 | **22** | Status Download · Status Saver · Status Saver | — |
-| A **status saver gallery** 6 autocomplete hits · best slot 1 | 55 | 94270.6M · 5 apps ≥10M | 22 | **22** | Status Saver · Status Download · Status Saver | — |
-| A **status saver hd** 6 autocomplete hits · best slot 1 | 55 | 94270M · 5 apps ≥10M | 22 | **22** | Status Download · Status Saver · Status Saver | — |
-| A **xtx status saver and downloader** 6 autocomplete hits · best slot 1 | 55 | 91170.6M · 3 apps ≥10M | 22 | **22** | XTX All Video Downloader · X Saver•Download Twitter Video · X Saver | — |
-| A **save status and message recovery** 6 autocomplete hits · best slot 2 | 54 | 94280.6M · 6 apps ≥10M | 21 | **21** | Status Saver・Status Downloader · Status Saver · Save Status | — |
-| A **save status video** 6 autocomplete hits · best slot 1 | 55 | 95320.6M · 6 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
-| A **save status video app** 6 autocomplete hits · best slot 2 | 54 | 95370.6M · 7 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
-| A **save status video download** 6 autocomplete hits · best slot 2 | 54 | 95370.6M · 7 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
-| A **save status video saver** 6 autocomplete hits · best slot 2 | 54 | 95371.1M · 7 apps ≥10M | 21 | **21** | Status Saver · Status Saver・Status Downloader · Status Download | — |
-| A **status downloader hd** 6 autocomplete hits · best slot 1 | 55 | 95385.1M · 8 apps ≥10M | 21 | **21** | Status Saver・Status Downloader · Status Download · Video Downloader, Status | — |
-| A **status saver** 6 autocomplete hits · best slot 1 | 55 | 96445M · 9 apps ≥10M | 21 | **21** | Status Saver · Status Saver・Status Downloader · Status Download | — |
-| A **status saver app download** 6 autocomplete hits · best slot 2 | 54 | 94275.5M · 5 apps ≥10M | 21 | **21** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **status saver hd video download** 6 autocomplete hits · best slot 2 | 54 | 94261.6M · 4 apps ≥10M | 21 | **21** | Status Saver · Status Download · Status Saver & Video Download | — |
-| A **status saver lazy genius** 6 autocomplete hits · best slot 2 | 54 | 95385.5M · 8 apps ≥10M | 21 | **21** | Status, Sticker Saver · Status Saver・Status Downloader · Status Saver | — |
-| A **status saver photo** 6 autocomplete hits · best slot 2 | 54 | 94270.5M · 5 apps ≥10M | 21 | **21** | Status Saver · Status Download · Status Saver | — |
-| A **status saver photo and video** 6 autocomplete hits · best slot 1 | 55 | 94271.6M · 5 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
-| A **status saver video download app** 6 autocomplete hits · best slot 3 | 53 | 94281.6M · 6 apps ≥10M | 21 | **21** | Status Saver · Status Download · Video Downloader, Status | — |
-| A **status saver youtube video** 6 autocomplete hits · best slot 2 | 54 | 94270.8M · 5 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
-| A **status video download app** 6 autocomplete hits · best slot 1 | 55 | 96420.7M · 7 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **status video download app tamil** 6 autocomplete hits · best slot 4 | 51 | 91160.9M · 3 apps ≥10M | 21 | **21** | Status Download · Tamil Video Status · Status Saver | — |
-| A **story saver reels video downloader** 5 autocomplete hits · best slot 1 | 50 | 90127M · 4 apps ≥10M | 21 | **21** | Video downloader · InSaver · Video Downloader & Story Saver | — |
-| B **radha krishna status video** 6 autocomplete hits · best slot 3 | 53 | 58166K · 0 apps ≥10M | 33 | **20** | Radha Krishna Status Video · Krishna Video Status · Radha Krishna Status | — |
-| A **hd video and status downloader** 6 autocomplete hits · best slot 3 | 53 | 96431M · 8 apps ≥10M | 20 | **20** | HD Video & Status Downloader · Full Video Status & Downloader · Status Saver・Status Downloader | — |
-| A **status saver native craft** 6 autocomplete hits · best slot 4 | 51 | 93236.5M · 6 apps ≥10M | 20 | **20** | Status Saver · Status Saver · Status Saver・Status Downloader | — |
-| A **status downloader and saver** 5 autocomplete hits · best slot 3 | 48 | 95320.5M · 6 apps ≥10M | 19 | **19** | Status Saver・Status Downloader · Status Download · Status Saver | — |
-| A **status video download** 6 autocomplete hits · best slot 2 | 54 | 99775.6M · 6 apps ≥10M | 19 | **19** | Status Download · Status Saver · Status Saver & Video Download | — |
-| A **story downloader ig saver gratis** 4 autocomplete hits · best slot 1 | 45 | 8877.1M · 3 apps ≥10M | 19 | **19** | Video downloader · Story Downloader · Insget | — |
-| A **story saver download app** 4 autocomplete hits · best slot 1 | 45 | 8881.5M · 3 apps ≥10M | 19 | **19** | Video downloader · Story Saver · InSaver | — |
-| A **whatsapp status downloader** brand 12 autocomplete hits · best slot 1 | 85 | 94265.7M · 4 apps ≥10M | 33 | **18** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **mx player status downloader** 5 autocomplete hits · best slot 1 | 50 | 1002.85B · 7 apps ≥10M | 18 | **18** | MX Player · Status Saver · Status Saver | — |
-| A **status saver message recovery** 4 autocomplete hits · best slot 1 | 45 | 94270.6M · 5 apps ≥10M | 18 | **18** | Status Saver · Status Saver · Status Saver | — |
-| A **status saver save to gallery** 5 autocomplete hits · best slot 4 | 46 | 95320.6M · 6 apps ≥10M | 18 | **18** | Status Download · Status Saver · Status Saver | — |
-| A **story saver no login** 4 autocomplete hits · best slot 4 | 41 | 8886M · 3 apps ≥10M | 18 | **18** | Story Saver · Story Downloader · Video downloader | — |
-| A **vmate status video status status downloader** 5 autocomplete hits · best slot 4 | 46 | 94270.9M · 5 apps ≥10M | 18 | **18** | Status Saver · Status Saver · Status Download | — |
-| A **long video status downloader** 4 autocomplete hits · best slot 1 | 45 | 95325.6M · 6 apps ≥10M | 17 | **17** | Status Download · Status Saver · Status Saver | — |
-| A **save status download** 4 autocomplete hits · best slot 1 | 45 | 95325.6M · 6 apps ≥10M | 17 | **17** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **status saver downloader** 4 autocomplete hits · best slot 3 | 43 | 94270.6M · 5 apps ≥10M | 17 | **17** | Status Saver・Status Downloader · Status Download · Status Saver | — |
-| A **story downloader** 3 autocomplete hits · best slot 1 | 40 | 90132M · 4 apps ≥10M | 17 | **17** | Video downloader · InSaver · Video Downloader & Story Saver | — |
-| A **story saver** 3 autocomplete hits · best slot 1 | 40 | 8877.1M · 2 apps ≥10M | 17 | **17** | Story Saver · Video downloader · Story Saver | — |
-| A **whatsapp status downloader app** brand 10 autocomplete hits · best slot 1 | 75 | 94275.7M · 5 apps ≥10M | 29 | **16** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **whatsapp status saver** brand 10 autocomplete hits · best slot 2 | 74 | 94285.5M · 6 apps ≥10M | 29 | **16** | Status Saver · Status Saver・Status Downloader · Status Saver・Status Downloader | — |
-| A **all status saver** 3 autocomplete hits · best slot 1 | 40 | 94271M · 5 apps ≥10M | 16 | **16** | Status Download · Status Saver · Status Saver | — |
-| A **business status saver** 3 autocomplete hits · best slot 1 | 40 | 94272M · 5 apps ≥10M | 16 | **16** | Status Saver · Status Saver · Status Saver For WA & Business | — |
-| A **status downloader** 3 autocomplete hits · best slot 1 | 40 | 94265.7M · 4 apps ≥10M | 16 | **16** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **status saver and downloader** 3 autocomplete hits · best slot 1 | 40 | 94275.5M · 5 apps ≥10M | 16 | **16** | Status Download · Status Saver · Status Saver | — |
-| A **video status saver** 3 autocomplete hits · best slot 1 | 40 | 94270.7M · 5 apps ≥10M | 16 | **16** | Status Saver · Status Download · Status Saver | — |
-| A **status saver whatsapp** brand 9 autocomplete hits · best slot 1 | 70 | 95325.5M · 6 apps ≥10M | 27 | **15** | Status Saver・Status Downloader · Status Saver · Status Download | — |
-| A **download status** 3 autocomplete hits · best slot 2 | 39 | 94275.6M · 5 apps ≥10M | 15 | **15** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **save status** 3 autocomplete hits · best slot 1 | 40 | 95325.5M · 6 apps ≥10M | 15 | **15** | Status Saver · Status Saver・Status Downloader · Status Download | — |
-| A **status downloader video** 3 autocomplete hits · best slot 1 | 40 | 95370.7M · 6 apps ≥10M | 15 | **15** | Status Download · Status Saver · Status Saver | — |
-| A **status photo download** 3 autocomplete hits · best slot 1 | 40 | 95336.5M · 7 apps ≥10M | 15 | **15** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **save status video whatsapp** brand 9 autocomplete hits · best slot 5 | 65 | 94275.6M · 5 apps ≥10M | 25 | **14** | Status Download · Status Saver · Status Saver | — |
-| A **status saver for whatsapp** brand 8 autocomplete hits · best slot 1 | 65 | 95320.5M · 6 apps ≥10M | 25 | **14** | Status Saver・Status Downloader · Status Saver · Status Download | — |
-| A **story saver for whatsapp** brand 8 autocomplete hits · best slot 1 | 65 | 95320.5M · 6 apps ≥10M | 25 | **14** | Story Saver for Whatsapp · Status Download · Video downloader | — |
-| A **status keeper** 3 autocomplete hits · best slot 1 | 40 | 10010.12B · 3 apps ≥10M | 14 | **14** | Status Keeper · Keeper Password Manager · status | — |
-| A **whatsapp status saver app** brand 7 autocomplete hits · best slot 1 | 60 | 95330.5M · 7 apps ≥10M | 23 | **13** | Status Saver · Status Saver・Status Downloader · Status Download | — |
-| A **save status whatsapp** brand 6 autocomplete hits · best slot 1 | 55 | 94275.5M · 5 apps ≥10M | 21 | **12** | Status Saver・Status Downloader · Status Saver · Status Download | — |
-| A **status downloader app for whatsapp** brand 6 autocomplete hits · best slot 2 | 54 | 94285.7M · 6 apps ≥10M | 21 | **12** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **status downloader for whatsapp** brand 6 autocomplete hits · best slot 1 | 55 | 94275.7M · 5 apps ≥10M | 21 | **12** | Status Saver・Status Downloader · Status Download · Status Saver | — |
-| A **status saver for whatsapp business** brand 7 autocomplete hits · best slot 2 | 59 | 1001.27B · 6 apps ≥10M | 21 | **12** | Status Saver · WhatsApp Business · Status Download | — |
-| A **status saver whatsapp business** brand 7 autocomplete hits · best slot 2 | 59 | 1001.27B · 6 apps ≥10M | 21 | **12** | Status Saver · Status Saver · WhatsApp Business | — |
-| A **whatsapp status download** brand 7 autocomplete hits · best slot 1 | 60 | 10010.32B · 7 apps ≥10M | 21 | **12** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **whatsapp status download app** brand 7 autocomplete hits · best slot 1 | 60 | 10010.27B · 6 apps ≥10M | 21 | **12** | Status Download · WhatsApp Messenger · Status Saver・Status Downloader | — |
-| A **whatsapp status downloader hd** brand 6 autocomplete hits · best slot 2 | 54 | 95355M · 9 apps ≥10M | 21 | **12** | Status Download · Video Downloader, Status · Status Saver | — |
-| A **whatsapp status downloader video** brand 6 autocomplete hits · best slot 2 | 54 | 95320.7M · 6 apps ≥10M | 21 | **12** | Status Download · Status Saver · Status Saver | — |
-| A **whatsapp status photo saver app** brand 6 autocomplete hits · best slot 1 | 55 | 95321.5M · 6 apps ≥10M | 21 | **12** | Status Download · Status Saver · Status Saver | — |
-| A **status download app** 1 autocomplete hits · best slot 1 | 30 | 94275.6M · 5 apps ≥10M | 12 | **12** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| A **save status for whatsapp** brand 5 autocomplete hits · best slot 1 | 50 | 94270.5M · 5 apps ≥10M | 20 | **11** | Status Saver・Status Downloader · Status Saver · Status Download | — |
-| B **full video status uploader** 4 autocomplete hits · best slot 3 | 43 | 89107.8M · 1 apps ≥10M | 18 | **11** | Full Video Status & Downloader · Upload High Quality Status · PureStatus | — |
-| A **status saver app for whatsapp** brand 5 autocomplete hits · best slot 3 | 48 | 94275.5M · 5 apps ≥10M | 19 | **10** | Status Saver · Status Saver・Status Downloader · Status Download | — |
-| A **status saver whatsapp download** brand 5 autocomplete hits · best slot 3 | 48 | 94270.5M · 5 apps ≥10M | 19 | **10** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **story saver app instagram** brand 4 autocomplete hits · best slot 2 | 44 | 8882M · 3 apps ≥10M | 19 | **10** | Video downloader · Insget · InSaver | — |
-| A **story saver for facebook stories** brand 4 autocomplete hits · best slot 1 | 45 | 8891M · 4 apps ≥10M | 19 | **10** | Stories Saver · Video downloader · InSaver | — |
-| A **story saver instagram app 2025** brand 4 autocomplete hits · best slot 1 | 45 | 8877.5M · 3 apps ≥10M | 19 | **10** | Video downloader · InSaver · Insget | — |
-| A **story saver instagram insta story download** brand 4 autocomplete hits · best slot 2 | 44 | 8882.5M · 3 apps ≥10M | 19 | **10** | Video downloader · Story Saver · Insget | — |
-| A **story saver whatsapp** brand 5 autocomplete hits · best slot 1 | 50 | 94315.5M · 5 apps ≥10M | 19 | **10** | Story Saver for Whatsapp · Status Download · Status Saver | — |
-| A **whatsapp business status saver 2026** brand 6 autocomplete hits · best slot 3 | 53 | 1001.27B · 6 apps ≥10M | 19 | **10** | WhatsApp Business · Status Saver · Status Saver For WA & Business | — |
-| A **whatsapp status save** brand 5 autocomplete hits · best slot 3 | 48 | 94275.5M · 5 apps ≥10M | 19 | **10** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **status saver whatsapp 2026** brand 5 autocomplete hits · best slot 4 | 46 | 95335.5M · 7 apps ≥10M | 18 | **10** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **whatsapp business status saver app** brand 5 autocomplete hits · best slot 1 | 50 | 1001.27B · 6 apps ≥10M | 18 | **10** | WhatsApp Business · Status Saver · Status Saver | — |
-| A **whatsapp status saver app 2023** brand 5 autocomplete hits · best slot 3 | 48 | 95325.6M · 6 apps ≥10M | 18 | **10** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **whatsapp status saver app download** brand 5 autocomplete hits · best slot 4 | 46 | 94270.5M · 5 apps ≥10M | 18 | **10** | Status Download · Status Saver・Status Downloader · Status Saver | — |
-| B **status gallery** 3 autocomplete hits · best slot 1 | 40 | 93225.5M · 4 apps ≥10M | 16 | **10** | Status Gallery · Status Saver · Status Download | — |
-| A **save status app whatsapp** brand 4 autocomplete hits · best slot 3 | 43 | 95320.5M · 6 apps ≥10M | 17 | **9** | Status Download · Status Saver · Status Saver | — |
-| A **status downloader for whatsapp status** brand 4 autocomplete hits · best slot 2 | 44 | 95325.7M · 6 apps ≥10M | 17 | **9** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **story saver whatsapp status** brand 4 autocomplete hits · best slot 2 | 44 | 96410M · 6 apps ≥10M | 17 | **9** | Story Saver for Whatsapp · Status Download · Status Saver & Story Download | — |
-| A **whatsapp status photo download** brand 4 autocomplete hits · best slot 2 | 44 | 95370.6M · 7 apps ≥10M | 17 | **9** | Status Download · Status Saver · Status Saver | — |
-| A **wa status saver** brand 3 autocomplete hits · best slot 1 | 40 | 94275.5M · 5 apps ≥10M | 16 | **9** | Status Download · Status Saver · Status Saver | — |
-| A **whatsapp status video downloader** brand 4 autocomplete hits · best slot 3 | 43 | 96420.6M · 7 apps ≥10M | 16 | **9** | Status Download · Status Saver · Status Saver・Status Downloader | — |
-| A **save status whatsapp business** brand 4 autocomplete hits · best slot 2 | 44 | 1001.16B · 4 apps ≥10M | 15 | **8** | WhatsApp Business · Status Saver · Status Saver | — |
-| A **whatsapp business status downloader app** brand 4 autocomplete hits · best slot 4 | 41 | 1001.32B · 7 apps ≥10M | 14 | **8** | WhatsApp Business · Status Download · Status Saver | — |
-| A **whatsapp business status saver** brand 3 autocomplete hits · best slot 2 | 39 | 1001.26B · 5 apps ≥10M | 14 | **8** | Status Saver · WhatsApp Business · Status Saver | — |
-| A **whatsapp status download app 2026** brand 4 autocomplete hits · best slot 5 | 40 | 10010.32B · 7 apps ≥10M | 14 | **8** | WhatsApp Messenger · Status Download · Status Saver・Status Downloader | — |
-| A **photo status saver** 0 autocomplete hits | 0 | 94286.1M · 6 apps ≥10M | 0 | **0** | Status Saver · Status Saver・Status Downloader · Status Saver | — |
-| A **status repost** 0 autocomplete hits | 0 | 691.5M · 0 apps ≥10M | 0 | **0** | Reshare · Auto Status Store & Repost · Status Saver | — |
-| A **status saver without watermark** 0 autocomplete hits | 0 | 94317.5M · 5 apps ≥10M | 0 | **0** | VideoSaver · Status Saver · Status Saver | — |
-| B **status sticker maker** 0 autocomplete hits | 0 | 93252M · 7 apps ≥10M | 0 | **0** | Sticker.ly · Sticker Maker · Sticker Maker | — |
+| A **status video downloader app**<br>15 autocomplete hits · best slot 2 | 99 | 96<br>411.2M · 6 apps ≥10M | 37 | **37** | Status Download · Status Saver · Video Downloader | — |
+| A **status saver video downloader**<br>12 autocomplete hits · best slot 2 | 84 | 94<br>270.6M · 5 apps ≥10M | 33 | **33** | Status Download · Status Saver · Status Saver | — |
+| A **save status app download**<br>9 autocomplete hits · best slot 2 | 69 | 92<br>175.5M · 4 apps ≥10M | 28 | **28** | Status Saver · Status Download · Status Saver | — |
+| A **status save to gallery**<br>9 autocomplete hits · best slot 1 | 70 | 94<br>270.6M · 5 apps ≥10M | 27 | **27** | Status Saver · Status Saver・Status Downloader · Status Download | — |
+| A **status saver app**<br>9 autocomplete hits · best slot 1 | 70 | 94<br>270.5M · 5 apps ≥10M | 27 | **27** | Status Saver・Status Downloader · Status Saver · Status Download | — |
+| A **status video downloader**<br>9 autocomplete hits · best slot 1 | 70 | 96<br>420.6M · 7 apps ≥10M | 26 | **26** | Status Download · Status Saver · Status Saver | — |
+| A **status saver dp downloader**<br>7 autocomplete hits · best slot 2 | 59 | 92<br>181.1M · 5 apps ≥10M | 24 | **24** | Status Saver & Dp Download · Status Saver & Dp Downloader · Status Saver & Dp Downloader | — |
+| A **save status app**<br>7 autocomplete hits · best slot 1 | 60 | 94<br>275.5M · 5 apps ≥10M | 23 | **23** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **status downloader app**<br>7 autocomplete hits · best slot 1 | 60 | 95<br>325.7M · 6 apps ≥10M | 23 | **23** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **status saver video download**<br>7 autocomplete hits · best slot 1 | 60 | 94<br>270.6M · 5 apps ≥10M | 23 | **23** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **story saver sara tech**<br>6 autocomplete hits · best slot 2 | 54 | 88<br>77M · 2 apps ≥10M | 23 | **23** | Story Saver · Reshare · Insget | — |
+| A **story saver without login**<br>6 autocomplete hits · best slot 3 | 53 | 88<br>82M · 3 apps ≥10M | 23 | **23** | Story Downloader · Video downloader · InSaver | — |
+| A **save status app update**<br>6 autocomplete hits · best slot 2 | 54 | 92<br>190.2M · 5 apps ≥10M | 22 | **22** | Status Saver · Status Saver · Status Saver・Status Downloader | — |
+| A **status saver app update**<br>7 autocomplete hits · best slot 3 | 57 | 94<br>275.5M · 5 apps ≥10M | 22 | **22** | Status Download · Status Saver · Status Saver | — |
+| A **status saver gallery**<br>6 autocomplete hits · best slot 1 | 55 | 94<br>270.6M · 5 apps ≥10M | 22 | **22** | Status Saver · Status Download · Status Saver | — |
+| A **status saver hd**<br>6 autocomplete hits · best slot 1 | 55 | 94<br>270M · 5 apps ≥10M | 22 | **22** | Status Download · Status Saver · Status Saver | — |
+| A **xtx status saver and downloader**<br>6 autocomplete hits · best slot 1 | 55 | 91<br>170.6M · 3 apps ≥10M | 22 | **22** | XTX All Video Downloader · X Saver•Download Twitter Video · X Saver | — |
+| A **save status and message recovery**<br>6 autocomplete hits · best slot 2 | 54 | 94<br>280.6M · 6 apps ≥10M | 21 | **21** | Status Saver・Status Downloader · Status Saver · Save Status | — |
+| A **save status video**<br>6 autocomplete hits · best slot 1 | 55 | 95<br>320.6M · 6 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
+| A **save status video app**<br>6 autocomplete hits · best slot 2 | 54 | 95<br>370.6M · 7 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
+| A **save status video download**<br>6 autocomplete hits · best slot 2 | 54 | 95<br>370.6M · 7 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
+| A **save status video saver**<br>6 autocomplete hits · best slot 2 | 54 | 95<br>371.1M · 7 apps ≥10M | 21 | **21** | Status Saver · Status Saver・Status Downloader · Status Download | — |
+| A **status downloader hd**<br>6 autocomplete hits · best slot 1 | 55 | 95<br>385.1M · 8 apps ≥10M | 21 | **21** | Status Saver・Status Downloader · Status Download · Video Downloader, Status | — |
+| A **status saver**<br>6 autocomplete hits · best slot 1 | 55 | 96<br>445M · 9 apps ≥10M | 21 | **21** | Status Saver · Status Saver・Status Downloader · Status Download | — |
+| A **status saver app download**<br>6 autocomplete hits · best slot 2 | 54 | 94<br>275.5M · 5 apps ≥10M | 21 | **21** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **status saver hd video download**<br>6 autocomplete hits · best slot 2 | 54 | 94<br>261.6M · 4 apps ≥10M | 21 | **21** | Status Saver · Status Download · Status Saver & Video Download | — |
+| A **status saver lazy genius**<br>6 autocomplete hits · best slot 2 | 54 | 95<br>385.5M · 8 apps ≥10M | 21 | **21** | Status, Sticker Saver · Status Saver・Status Downloader · Status Saver | — |
+| A **status saver photo**<br>6 autocomplete hits · best slot 2 | 54 | 94<br>270.5M · 5 apps ≥10M | 21 | **21** | Status Saver · Status Download · Status Saver | — |
+| A **status saver photo and video**<br>6 autocomplete hits · best slot 1 | 55 | 94<br>271.6M · 5 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
+| A **status saver video download app**<br>6 autocomplete hits · best slot 3 | 53 | 94<br>281.6M · 6 apps ≥10M | 21 | **21** | Status Saver · Status Download · Video Downloader, Status | — |
+| A **status saver youtube video**<br>6 autocomplete hits · best slot 2 | 54 | 94<br>270.8M · 5 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver | — |
+| A **status video download app**<br>6 autocomplete hits · best slot 1 | 55 | 96<br>420.7M · 7 apps ≥10M | 21 | **21** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **status video download app tamil**<br>6 autocomplete hits · best slot 4 | 51 | 91<br>160.9M · 3 apps ≥10M | 21 | **21** | Status Download · Tamil Video Status · Status Saver | — |
+| A **story saver reels video downloader**<br>5 autocomplete hits · best slot 1 | 50 | 90<br>127M · 4 apps ≥10M | 21 | **21** | Video downloader · InSaver · Video Downloader & Story Saver | — |
+| B **radha krishna status video**<br>6 autocomplete hits · best slot 3 | 53 | 58<br>166K · 0 apps ≥10M | 33 | **20** | Radha Krishna Status Video · Krishna Video Status · Radha Krishna Status | — |
+| A **hd video and status downloader**<br>6 autocomplete hits · best slot 3 | 53 | 96<br>431M · 8 apps ≥10M | 20 | **20** | HD Video & Status Downloader · Full Video Status & Downloader · Status Saver・Status Downloader | — |
+| A **status saver native craft**<br>6 autocomplete hits · best slot 4 | 51 | 93<br>236.5M · 6 apps ≥10M | 20 | **20** | Status Saver · Status Saver · Status Saver・Status Downloader | — |
+| A **status downloader and saver**<br>5 autocomplete hits · best slot 3 | 48 | 95<br>320.5M · 6 apps ≥10M | 19 | **19** | Status Saver・Status Downloader · Status Download · Status Saver | — |
+| A **status video download**<br>6 autocomplete hits · best slot 2 | 54 | 99<br>775.6M · 6 apps ≥10M | 19 | **19** | Status Download · Status Saver · Status Saver & Video Download | — |
+| A **story downloader ig saver gratis**<br>4 autocomplete hits · best slot 1 | 45 | 88<br>77.1M · 3 apps ≥10M | 19 | **19** | Video downloader · Story Downloader · Insget | — |
+| A **story saver download app**<br>4 autocomplete hits · best slot 1 | 45 | 88<br>81.5M · 3 apps ≥10M | 19 | **19** | Video downloader · Story Saver · InSaver | — |
+| A **whatsapp status downloader** brand<br>12 autocomplete hits · best slot 1 | 85 | 94<br>265.7M · 4 apps ≥10M | 33 | **18** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **mx player status downloader**<br>5 autocomplete hits · best slot 1 | 50 | 100<br>2.85B · 7 apps ≥10M | 18 | **18** | MX Player · Status Saver · Status Saver | — |
+| A **status saver message recovery**<br>4 autocomplete hits · best slot 1 | 45 | 94<br>270.6M · 5 apps ≥10M | 18 | **18** | Status Saver · Status Saver · Status Saver | — |
+| A **status saver save to gallery**<br>5 autocomplete hits · best slot 4 | 46 | 95<br>320.6M · 6 apps ≥10M | 18 | **18** | Status Download · Status Saver · Status Saver | — |
+| A **story saver no login**<br>4 autocomplete hits · best slot 4 | 41 | 88<br>86M · 3 apps ≥10M | 18 | **18** | Story Saver · Story Downloader · Video downloader | — |
+| A **vmate status video status status downloader**<br>5 autocomplete hits · best slot 4 | 46 | 94<br>270.9M · 5 apps ≥10M | 18 | **18** | Status Saver · Status Saver · Status Download | — |
+| A **long video status downloader**<br>4 autocomplete hits · best slot 1 | 45 | 95<br>325.6M · 6 apps ≥10M | 17 | **17** | Status Download · Status Saver · Status Saver | — |
+| A **save status download**<br>4 autocomplete hits · best slot 1 | 45 | 95<br>325.6M · 6 apps ≥10M | 17 | **17** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **status saver downloader**<br>4 autocomplete hits · best slot 3 | 43 | 94<br>270.6M · 5 apps ≥10M | 17 | **17** | Status Saver・Status Downloader · Status Download · Status Saver | — |
+| A **story downloader**<br>3 autocomplete hits · best slot 1 | 40 | 90<br>132M · 4 apps ≥10M | 17 | **17** | Video downloader · InSaver · Video Downloader & Story Saver | — |
+| A **story saver**<br>3 autocomplete hits · best slot 1 | 40 | 88<br>77.1M · 2 apps ≥10M | 17 | **17** | Story Saver · Video downloader · Story Saver | — |
+| A **whatsapp status downloader app** brand<br>10 autocomplete hits · best slot 1 | 75 | 94<br>275.7M · 5 apps ≥10M | 29 | **16** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **whatsapp status saver** brand<br>10 autocomplete hits · best slot 2 | 74 | 94<br>285.5M · 6 apps ≥10M | 29 | **16** | Status Saver · Status Saver・Status Downloader · Status Saver・Status Downloader | — |
+| A **all status saver**<br>3 autocomplete hits · best slot 1 | 40 | 94<br>271M · 5 apps ≥10M | 16 | **16** | Status Download · Status Saver · Status Saver | — |
+| A **business status saver**<br>3 autocomplete hits · best slot 1 | 40 | 94<br>272M · 5 apps ≥10M | 16 | **16** | Status Saver · Status Saver · Status Saver For WA & Business | — |
+| A **status downloader**<br>3 autocomplete hits · best slot 1 | 40 | 94<br>265.7M · 4 apps ≥10M | 16 | **16** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **status saver and downloader**<br>3 autocomplete hits · best slot 1 | 40 | 94<br>275.5M · 5 apps ≥10M | 16 | **16** | Status Download · Status Saver · Status Saver | — |
+| A **video status saver**<br>3 autocomplete hits · best slot 1 | 40 | 94<br>270.7M · 5 apps ≥10M | 16 | **16** | Status Saver · Status Download · Status Saver | — |
+| A **status saver whatsapp** brand<br>9 autocomplete hits · best slot 1 | 70 | 95<br>325.5M · 6 apps ≥10M | 27 | **15** | Status Saver・Status Downloader · Status Saver · Status Download | — |
+| A **download status**<br>3 autocomplete hits · best slot 2 | 39 | 94<br>275.6M · 5 apps ≥10M | 15 | **15** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **save status**<br>3 autocomplete hits · best slot 1 | 40 | 95<br>325.5M · 6 apps ≥10M | 15 | **15** | Status Saver · Status Saver・Status Downloader · Status Download | — |
+| A **status downloader video**<br>3 autocomplete hits · best slot 1 | 40 | 95<br>370.7M · 6 apps ≥10M | 15 | **15** | Status Download · Status Saver · Status Saver | — |
+| A **status photo download**<br>3 autocomplete hits · best slot 1 | 40 | 95<br>336.5M · 7 apps ≥10M | 15 | **15** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **save status video whatsapp** brand<br>9 autocomplete hits · best slot 5 | 65 | 94<br>275.6M · 5 apps ≥10M | 25 | **14** | Status Download · Status Saver · Status Saver | — |
+| A **status saver for whatsapp** brand<br>8 autocomplete hits · best slot 1 | 65 | 95<br>320.5M · 6 apps ≥10M | 25 | **14** | Status Saver・Status Downloader · Status Saver · Status Download | — |
+| A **story saver for whatsapp** brand<br>8 autocomplete hits · best slot 1 | 65 | 95<br>320.5M · 6 apps ≥10M | 25 | **14** | Story Saver for Whatsapp · Status Download · Video downloader | — |
+| A **status keeper**<br>3 autocomplete hits · best slot 1 | 40 | 100<br>10.12B · 3 apps ≥10M | 14 | **14** | Status Keeper · Keeper Password Manager · status | — |
+| A **whatsapp status saver app** brand<br>7 autocomplete hits · best slot 1 | 60 | 95<br>330.5M · 7 apps ≥10M | 23 | **13** | Status Saver · Status Saver・Status Downloader · Status Download | — |
+| A **save status whatsapp** brand<br>6 autocomplete hits · best slot 1 | 55 | 94<br>275.5M · 5 apps ≥10M | 21 | **12** | Status Saver・Status Downloader · Status Saver · Status Download | — |
+| A **status downloader app for whatsapp** brand<br>6 autocomplete hits · best slot 2 | 54 | 94<br>285.7M · 6 apps ≥10M | 21 | **12** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **status downloader for whatsapp** brand<br>6 autocomplete hits · best slot 1 | 55 | 94<br>275.7M · 5 apps ≥10M | 21 | **12** | Status Saver・Status Downloader · Status Download · Status Saver | — |
+| A **status saver for whatsapp business** brand<br>7 autocomplete hits · best slot 2 | 59 | 100<br>1.27B · 6 apps ≥10M | 21 | **12** | Status Saver · WhatsApp Business · Status Download | — |
+| A **status saver whatsapp business** brand<br>7 autocomplete hits · best slot 2 | 59 | 100<br>1.27B · 6 apps ≥10M | 21 | **12** | Status Saver · Status Saver · WhatsApp Business | — |
+| A **whatsapp status download** brand<br>7 autocomplete hits · best slot 1 | 60 | 100<br>10.32B · 7 apps ≥10M | 21 | **12** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **whatsapp status download app** brand<br>7 autocomplete hits · best slot 1 | 60 | 100<br>10.27B · 6 apps ≥10M | 21 | **12** | Status Download · WhatsApp Messenger · Status Saver・Status Downloader | — |
+| A **whatsapp status downloader hd** brand<br>6 autocomplete hits · best slot 2 | 54 | 95<br>355M · 9 apps ≥10M | 21 | **12** | Status Download · Video Downloader, Status · Status Saver | — |
+| A **whatsapp status downloader video** brand<br>6 autocomplete hits · best slot 2 | 54 | 95<br>320.7M · 6 apps ≥10M | 21 | **12** | Status Download · Status Saver · Status Saver | — |
+| A **whatsapp status photo saver app** brand<br>6 autocomplete hits · best slot 1 | 55 | 95<br>321.5M · 6 apps ≥10M | 21 | **12** | Status Download · Status Saver · Status Saver | — |
+| A **status download app**<br>1 autocomplete hits · best slot 1 | 30 | 94<br>275.6M · 5 apps ≥10M | 12 | **12** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| A **save status for whatsapp** brand<br>5 autocomplete hits · best slot 1 | 50 | 94<br>270.5M · 5 apps ≥10M | 20 | **11** | Status Saver・Status Downloader · Status Saver · Status Download | — |
+| B **full video status uploader**<br>4 autocomplete hits · best slot 3 | 43 | 89<br>107.8M · 1 apps ≥10M | 18 | **11** | Full Video Status & Downloader · Upload High Quality Status · PureStatus | — |
+| A **status saver app for whatsapp** brand<br>5 autocomplete hits · best slot 3 | 48 | 94<br>275.5M · 5 apps ≥10M | 19 | **10** | Status Saver · Status Saver・Status Downloader · Status Download | — |
+| A **status saver whatsapp download** brand<br>5 autocomplete hits · best slot 3 | 48 | 94<br>270.5M · 5 apps ≥10M | 19 | **10** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **story saver app instagram** brand<br>4 autocomplete hits · best slot 2 | 44 | 88<br>82M · 3 apps ≥10M | 19 | **10** | Video downloader · Insget · InSaver | — |
+| A **story saver for facebook stories** brand<br>4 autocomplete hits · best slot 1 | 45 | 88<br>91M · 4 apps ≥10M | 19 | **10** | Stories Saver · Video downloader · InSaver | — |
+| A **story saver instagram app 2025** brand<br>4 autocomplete hits · best slot 1 | 45 | 88<br>77.5M · 3 apps ≥10M | 19 | **10** | Video downloader · InSaver · Insget | — |
+| A **story saver instagram insta story download** brand<br>4 autocomplete hits · best slot 2 | 44 | 88<br>82.5M · 3 apps ≥10M | 19 | **10** | Video downloader · Story Saver · Insget | — |
+| A **story saver whatsapp** brand<br>5 autocomplete hits · best slot 1 | 50 | 94<br>315.5M · 5 apps ≥10M | 19 | **10** | Story Saver for Whatsapp · Status Download · Status Saver | — |
+| A **whatsapp business status saver 2026** brand<br>6 autocomplete hits · best slot 3 | 53 | 100<br>1.27B · 6 apps ≥10M | 19 | **10** | WhatsApp Business · Status Saver · Status Saver For WA & Business | — |
+| A **whatsapp status save** brand<br>5 autocomplete hits · best slot 3 | 48 | 94<br>275.5M · 5 apps ≥10M | 19 | **10** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **status saver whatsapp 2026** brand<br>5 autocomplete hits · best slot 4 | 46 | 95<br>335.5M · 7 apps ≥10M | 18 | **10** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **whatsapp business status saver app** brand<br>5 autocomplete hits · best slot 1 | 50 | 100<br>1.27B · 6 apps ≥10M | 18 | **10** | WhatsApp Business · Status Saver · Status Saver | — |
+| A **whatsapp status saver app 2023** brand<br>5 autocomplete hits · best slot 3 | 48 | 95<br>325.6M · 6 apps ≥10M | 18 | **10** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **whatsapp status saver app download** brand<br>5 autocomplete hits · best slot 4 | 46 | 94<br>270.5M · 5 apps ≥10M | 18 | **10** | Status Download · Status Saver・Status Downloader · Status Saver | — |
+| B **status gallery**<br>3 autocomplete hits · best slot 1 | 40 | 93<br>225.5M · 4 apps ≥10M | 16 | **10** | Status Gallery · Status Saver · Status Download | — |
+| A **save status app whatsapp** brand<br>4 autocomplete hits · best slot 3 | 43 | 95<br>320.5M · 6 apps ≥10M | 17 | **9** | Status Download · Status Saver · Status Saver | — |
+| A **status downloader for whatsapp status** brand<br>4 autocomplete hits · best slot 2 | 44 | 95<br>325.7M · 6 apps ≥10M | 17 | **9** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **story saver whatsapp status** brand<br>4 autocomplete hits · best slot 2 | 44 | 96<br>410M · 6 apps ≥10M | 17 | **9** | Story Saver for Whatsapp · Status Download · Status Saver & Story Download | — |
+| A **whatsapp status photo download** brand<br>4 autocomplete hits · best slot 2 | 44 | 95<br>370.6M · 7 apps ≥10M | 17 | **9** | Status Download · Status Saver · Status Saver | — |
+| A **wa status saver** brand<br>3 autocomplete hits · best slot 1 | 40 | 94<br>275.5M · 5 apps ≥10M | 16 | **9** | Status Download · Status Saver · Status Saver | — |
+| A **whatsapp status video downloader** brand<br>4 autocomplete hits · best slot 3 | 43 | 96<br>420.6M · 7 apps ≥10M | 16 | **9** | Status Download · Status Saver · Status Saver・Status Downloader | — |
+| A **save status whatsapp business** brand<br>4 autocomplete hits · best slot 2 | 44 | 100<br>1.16B · 4 apps ≥10M | 15 | **8** | WhatsApp Business · Status Saver · Status Saver | — |
+| A **whatsapp business status downloader app** brand<br>4 autocomplete hits · best slot 4 | 41 | 100<br>1.32B · 7 apps ≥10M | 14 | **8** | WhatsApp Business · Status Download · Status Saver | — |
+| A **whatsapp business status saver** brand<br>3 autocomplete hits · best slot 2 | 39 | 100<br>1.26B · 5 apps ≥10M | 14 | **8** | Status Saver · WhatsApp Business · Status Saver | — |
+| A **whatsapp status download app 2026** brand<br>4 autocomplete hits · best slot 5 | 40 | 100<br>10.32B · 7 apps ≥10M | 14 | **8** | WhatsApp Messenger · Status Download · Status Saver・Status Downloader | — |
+| A **photo status saver**<br>0 autocomplete hits | 0 | 94<br>286.1M · 6 apps ≥10M | 0 | **0** | Status Saver · Status Saver・Status Downloader · Status Saver | — |
+| A **status repost**<br>0 autocomplete hits | 0 | 69<br>1.5M · 0 apps ≥10M | 0 | **0** | Reshare · Auto Status Store & Repost · Status Saver | — |
+| A **status saver without watermark**<br>0 autocomplete hits | 0 | 94<br>317.5M · 5 apps ≥10M | 0 | **0** | VideoSaver · Status Saver · Status Saver | — |
+| B **status sticker maker**<br>0 autocomplete hits | 0 | 93<br>252M · 7 apps ≥10M | 0 | **0** | Sticker.ly · Sticker Maker · Sticker Maker | — |
 
 <a id="ladder"></a>
 

@@ -67,11 +67,20 @@
       - `[6]` · number · e.g. `5`
       - `[7]` · number · e.g. `0.9`
       - `[8]` · number · e.g. `29`
-  - `ngrams[]` · array of 84 string/number · e.g. `["status",28,"saver",19]`
-  - `demand[]` · array of 800 string/number · e.g. `["status video downloader app",15,1,"INUSPK"]`
+  - `ngrams[][]` · array of 42 arrays · e.g. `["status",28]`
+  - `demand[]` · array of 200 records, each an array of 4 values:
+    - `[0]` · string · e.g. `"status video downloader app"`
+    - `[1]` · number · e.g. `15`
+    - `[2]` · number · e.g. `1`
+    - `[3]` · string · e.g. `"INUSPK"`
 - `features` · object with 3 keys:
   - `fetchedAt` · string · e.g. `"2026-09-23"`
-  - `apps[]` · array of 45 string/number/null · e.g. `["com.statussaver.videosaver.downloadstatus.storysaver","Status Downloader: Video Saver","Cell Cave",10]`
+  - `apps[]` · array of 9 records, each an array of 5 values:
+    - `[0]` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
+    - `[1]` · string · e.g. `"Status Downloader: Video Saver"`
+    - `[2]` · string · e.g. `"Cell Cave"`
+    - `[3]` · number · e.g. `10`
+    - `[4]` · string or null · e.g. `"$3.99 - $9.99 per item"`
   - `features[]` · array of 24 records, each an array of 4 values:
     - `[0]` · string · e.g. `"Core"`
     - `[1]` · string · e.g. `"Statuses: photos and videos"`

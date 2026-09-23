@@ -30,9 +30,9 @@ Markup: [tabs/02-aso-playbook/index.html](../tabs/02-aso-playbook/index.html) ·
 | --- | --- | --- | --- | --- | --- |
 | [#plays](tabs/02-aso-playbook.md#plays) | Plays | Four plays, one opening | [L41](../tabs/02-aso-playbook/index.html#L41) | static markup |  |
 | [#competitors](tabs/02-aso-playbook.md#competitors) | Competitors | The apps that own this shelf | [L57](../tabs/02-aso-playbook/index.html#L57) | static markup |  |
-| [#matrix](tabs/02-aso-playbook.md#matrix) | Rank tracker | Where each competitor ranks, keyword by keyword | [L67](../tabs/02-aso-playbook/index.html#L67) | `renderAll()` [L419-433](../assets/app.js#L419) |  |
-| [#serps](tabs/02-aso-playbook.md#serps) | Result slots | Every search, slot by slot | [L82](../tabs/02-aso-playbook/index.html#L82) | `renderAll()` [L419-433](../assets/app.js#L419) |  |
-| [#keywords](tabs/02-aso-playbook.md#keywords) | Keyword board | Keyword opportunity board, relevance first | [L93](../tabs/02-aso-playbook/index.html#L93) | `renderAll()` [L419-433](../assets/app.js#L419) |  |
+| [#matrix](tabs/02-aso-playbook.md#matrix) | Rank tracker | Where each competitor ranks, keyword by keyword | [L67](../tabs/02-aso-playbook/index.html#L67) | `renderAll()` [L521-537](../assets/app.js#L521) |  |
+| [#serps](tabs/02-aso-playbook.md#serps) | Result slots | Every search, slot by slot | [L82](../tabs/02-aso-playbook/index.html#L82) | `renderAll()` [L521-537](../assets/app.js#L521) |  |
+| [#keywords](tabs/02-aso-playbook.md#keywords) | Keyword board | Keyword opportunity board, relevance first | [L93](../tabs/02-aso-playbook/index.html#L93) | `renderAll()` [L521-537](../assets/app.js#L521) |  |
 | [#ladder](tabs/02-aso-playbook.md#ladder) | Ladder | Launch keyword ladder | [L106](../tabs/02-aso-playbook/index.html#L106) | static markup |  |
 | [#listing](tabs/02-aso-playbook.md#listing) | Proposed listing | The listing this research argues for | [L115](../tabs/02-aso-playbook/index.html#L115) | static markup |  |
 | [#practice](tabs/02-aso-playbook.md#practice) | Method | Measured, not estimated | [L124](../tabs/02-aso-playbook/index.html#L124) | static markup |  |
@@ -50,12 +50,28 @@ Markup: [tabs/03-playstore-metadata/index.html](../tabs/03-playstore-metadata/in
 | [#live](tabs/03-playstore-metadata.md#live) | Live listing | What the listing says now | [L41](../tabs/03-playstore-metadata/index.html#L41) | static markup |  |
 | [#package](tabs/03-playstore-metadata.md#package) | Proposed listing | Title, short description and full description | [L51](../tabs/03-playstore-metadata/index.html#L51) | static markup |  |
 | [#fields](tabs/03-playstore-metadata.md#fields) | Keywords by field | Finalized keywords by field | [L60](../tabs/03-playstore-metadata/index.html#L60) | static markup |  |
-| [#coverage](tabs/03-playstore-metadata.md#coverage) | Coverage | Board keywords in this metadata | [L69](../tabs/03-playstore-metadata/index.html#L69) | `renderAll()` [L419-433](../assets/app.js#L419) |  |
+| [#coverage](tabs/03-playstore-metadata.md#coverage) | Coverage | Board keywords in this metadata | [L69](../tabs/03-playstore-metadata/index.html#L69) | `renderAll()` [L521-537](../assets/app.js#L521) |  |
 | [#targets](tabs/03-playstore-metadata.md#targets) | Every keyword targeted | Every keyword this metadata targets | [L79](../tabs/03-playstore-metadata/index.html#L79) | static markup |  |
 | [#ranks](tabs/03-playstore-metadata.md#ranks) | Competitor ranks | How the shelf holders rank on the keywords we use | [L88](../tabs/03-playstore-metadata/index.html#L88) | static markup |  |
 | [#policy](tabs/03-playstore-metadata.md#policy) | Policy record | Why each field is worded the way it is | [L97](../tabs/03-playstore-metadata/index.html#L97) | static markup |  |
 | [#built](tabs/03-playstore-metadata.md#built) | How this was built | How this tab was built | [L106](../tabs/03-playstore-metadata/index.html#L106) | static markup |  |
 | [#foot](tabs/03-playstore-metadata.md#foot) |  | (built by script) | [L116](../tabs/03-playstore-metadata/index.html#L116) | static markup |  |
+
+<a id="04-features-comparison"></a>
+
+## Features Comparison
+
+Markup: [tabs/04-features-comparison/index.html](../tabs/04-features-comparison/index.html) · `<body data-page="features">` · content drawn by assets/app.js · [text snapshot](tabs/04-features-comparison.md)
+
+| Section | Menu label | Heading in the markup | Markup line | Filled by (assets/app.js) | Data read |
+| --- | --- | --- | --- | --- | --- |
+| [#complete](tabs/04-features-comparison.md#complete) | Completeness | How complete each app is | [L37](../tabs/04-features-comparison/index.html#L37) | static markup |  |
+| [#matrix](tabs/04-features-comparison.md#matrix) | Feature matrix | Every feature, every app | [L47](../tabs/04-features-comparison/index.html#L47) | `renderAll()` [L521-537](../assets/app.js#L521) |  |
+| [#ours](tabs/04-features-comparison.md#ours) | What we ship | What ships in our app | [L57](../tabs/04-features-comparison/index.html#L57) | static markup |  |
+| [#gaps](tabs/04-features-comparison.md#gaps) | Gaps and edges | Where we are ahead, and where we are behind | [L66](../tabs/04-features-comparison/index.html#L66) | static markup |  |
+| [#pricing](tabs/04-features-comparison.md#pricing) | Pricing | What each app charges to remove the ads | [L77](../tabs/04-features-comparison/index.html#L77) | static markup |  |
+| [#source](tabs/04-features-comparison.md#source) | Where this comes from | Where this comes from | [L87](../tabs/04-features-comparison/index.html#L87) | static markup |  |
+| [#foot](tabs/04-features-comparison.md#foot) |  | (built by script) | [L97](../tabs/04-features-comparison/index.html#L97) | static markup |  |
 
 ## All functions in assets/app.js
 
@@ -94,6 +110,15 @@ Markup: [tabs/03-playstore-metadata/index.html](../tabs/03-playstore-metadata/in
 | `renderCoverage` | [L364-379](../assets/app.js#L364) | `data.apps`, `listing.proposed` |
 | `renderTargets` | [L380-391](../assets/app.js#L380) | `data.apps`, `listing.proposed` |
 | `renderRankTable` | [L392-408](../assets/app.js#L392) | `data.apps`, `data.compIdx`, `listing.proposed` |
-| `renderPolicy` | [L409-413](../assets/app.js#L409) | `listing.built`, `listing.policy` |
-| `renderFoot` | [L414-418](../assets/app.js#L414) | `data.meta.apps`, `data.meta.fetchedAt`, `data.meta.keywords`, `data.meta.markets` |
-| `renderAll` | [L419-433](../assets/app.js#L419) |  |
+| `renderPolicy` | [L409-417](../assets/app.js#L409) | `features.apps`, `features.features`, `listing.built`, `listing.policy`, `ours` |
+| `shortName` | [L418-420](../assets/app.js#L418) |  |
+| `renderFeatChips` | [L421-427](../assets/app.js#L421) | `data.meta.fetchedAt`, `features.fetchedAt`, `ours.checkedOn` |
+| `completeness` | [L428-434](../assets/app.js#L428) |  |
+| `renderCompleteness` | [L435-453](../assets/app.js#L435) |  |
+| `renderFmx` | [L454-475](../assets/app.js#L454) |  |
+| `renderOursCards` | [L476-480](../assets/app.js#L476) | `ours.ships` |
+| `renderEdgesGaps` | [L481-493](../assets/app.js#L481) | `ours.evidence` |
+| `renderPricing` | [L494-505](../assets/app.js#L494) | `data.apps` |
+| `renderSource` | [L506-515](../assets/app.js#L506) | `data.meta.fetchedAt`, `data.meta.keywords`, `ours.checkedOn`, `ours.note` |
+| `renderFoot` | [L516-520](../assets/app.js#L516) | `data.meta.apps`, `data.meta.fetchedAt`, `data.meta.keywords`, `data.meta.markets` |
+| `renderAll` | [L521-537](../assets/app.js#L521) |  |

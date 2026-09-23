@@ -116,20 +116,20 @@ Which phrase is carried by which field, and which are deliberately held back for
 
 | Keyword | Carried by | Demand | Competition | Why there |
 | --- | --- | --- | --- | --- |
-| **status saver** | Title | 55 | 96445M | The category head term. Every shelf holder carries it; our current title does not. |
-| **status saver app** | Title | 70 | 94270.5M | Same tokens as the head term plus "app", which autocomplete offers nine times. |
-| **status downloader app** | Title | 60 | 95325.7M | Keeps the phrase the current title already earns, so nothing is lost in the rewrite. |
-| **status saver and downloader** | Title | 40 | 94275.5M | Carried word for word by the ampersand form. |
-| **save status video** | Short description | 55 | 95320.6M | Highest-demand save phrase that carries no brand name. |
-| **status save to gallery** | Short description | 70 | 94270.6M | "to gallery" is the differentiator phrase on the board with the lowest competition of the save cluster. |
-| **status video download** | Short description | 54 | 99775.6M | Covered by the same tokens, no extra characters spent. |
-| **story saver** | Short description | 40 | 8877.1M | One token away from the status cluster and a real search in its own right. |
-| **status saver photo and video** | Full description · opening | 55 | 94271.6M | Written into the first sentence, where Play weights the description most. |
-| **business status saver** | Full description · both inboxes | 40 | 94272M | A feature the app has and the listing never mentioned. |
-| **status saver gallery** | Full description · saved library | 55 | 94270.6M | Pairs the saved-library section with the gallery phrasing. |
-| **status saver hd** | Full description · original quality | 55 | 94270M | Quality claim stated as "original quality", which is literally true — files are byte-identical. |
-| **status repost** | Full description · share and repost | 0 | 691.5M | Kept permission-framed for the intellectual-property policy. |
-| **status keeper** | Full description · favourites | 40 | 10010.12B | Covered by "keep" wording without spending title characters. |
+| **status saver** | Title | 55 | 96<br>445M | The category head term. Every shelf holder carries it; our current title does not. |
+| **status saver app** | Title | 70 | 94<br>270.5M | Same tokens as the head term plus "app", which autocomplete offers nine times. |
+| **status downloader app** | Title | 60 | 95<br>325.7M | Keeps the phrase the current title already earns, so nothing is lost in the rewrite. |
+| **status saver and downloader** | Title | 40 | 94<br>275.5M | Carried word for word by the ampersand form. |
+| **save status video** | Short description | 55 | 95<br>320.6M | Highest-demand save phrase that carries no brand name. |
+| **status save to gallery** | Short description | 70 | 94<br>270.6M | "to gallery" is the differentiator phrase on the board with the lowest competition of the save cluster. |
+| **status video download** | Short description | 54 | 99<br>775.6M | Covered by the same tokens, no extra characters spent. |
+| **story saver** | Short description | 40 | 88<br>77.1M | One token away from the status cluster and a real search in its own right. |
+| **status saver photo and video** | Full description · opening | 55 | 94<br>271.6M | Written into the first sentence, where Play weights the description most. |
+| **business status saver** | Full description · both inboxes | 40 | 94<br>272M | A feature the app has and the listing never mentioned. |
+| **status saver gallery** | Full description · saved library | 55 | 94<br>270.6M | Pairs the saved-library section with the gallery phrasing. |
+| **status saver hd** | Full description · original quality | 55 | 94<br>270M | Quality claim stated as "original quality", which is literally true — files are byte-identical. |
+| **status repost** | Full description · share and repost | 0 | 69<br>1.5M | Kept permission-framed for the intellectual-property policy. |
+| **status keeper** | Full description · favourites | 40 | 100<br>10.12B | Covered by "keep" wording without spending title characters. |
 | Held back for a later version of the listing: **status saver video downloader** — Second-highest demand phrase with no brand name, but its top ten holds five apps above 10M installs. Worth the title only once the app has ratings.<br>**status video downloader app** — The highest-demand non-brand phrase on the whole board (15 autocomplete hits) and the most defended: 411M installs across its top ten.<br>**auto status saver** — Only worth targeting if auto-save is ever built. Claiming it now would be false.<br>**status saver without watermark** — True of our app, but the phrase reads as a competitor's problem; hold it for a later version.<br>**whatsapp status saver and every other brand phrase** — Highest demand in the category and permanently off-limits in our copy by house rule: no other company's brand name in store-listing or ad copy. |  |  |  |  |
 
 <a id="coverage"></a>
@@ -263,30 +263,30 @@ The phrases the listing is written to win, in priority order, with the competiti
 
 | Keyword | Demand | Competition | Top ten holders | Us today |
 | --- | --- | --- | --- | --- |
-| A **status video downloader app** | 99 | 96411.2M · 6 ≥10M | Status Download · Status Saver · Video Downloader | no rank |
-| A **status saver video downloader** | 84 | 94270.6M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status app download** | 69 | 92175.5M · 4 ≥10M | Status Saver · Status Download · Status Saver | no rank |
-| A **status save to gallery** | 70 | 94270.6M · 5 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
-| A **status saver app** | 70 | 94270.5M · 5 ≥10M | Status Saver・Status Downloader · Status Saver · Status Download | no rank |
-| A **status video downloader** | 70 | 96420.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status app** | 60 | 94275.5M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **status downloader app** | 60 | 95325.7M · 6 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **status saver video download** | 60 | 94270.6M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **save status app update** | 54 | 92190.2M · 5 ≥10M | Status Saver · Status Saver · Status Saver・Status Downloader | no rank |
-| A **status saver app update** | 57 | 94275.5M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **status saver gallery** | 55 | 94270.6M · 5 ≥10M | Status Saver · Status Download · Status Saver | no rank |
-| A **save status video** | 55 | 95320.6M · 6 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status video app** | 54 | 95370.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status video download** | 54 | 95370.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status video saver** | 54 | 95371.1M · 7 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
-| A **status saver** | 55 | 96445M · 9 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
-| A **status saver app download** | 54 | 94275.5M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **status saver photo** | 54 | 94270.5M · 5 ≥10M | Status Saver · Status Download · Status Saver | no rank |
-| A **status saver photo and video** | 55 | 94271.6M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **status saver video download app** | 53 | 94281.6M · 6 ≥10M | Status Saver · Status Download · Video Downloader, Status | no rank |
-| A **status video download app** | 55 | 96420.7M · 7 ≥10M | Status Download · Status Saver · Status Saver・Status Downloader | no rank |
-| A **status downloader and saver** | 48 | 95320.5M · 6 ≥10M | Status Saver・Status Downloader · Status Download · Status Saver | no rank |
-| A **status video download** | 54 | 99775.6M · 6 ≥10M | Status Download · Status Saver · Status Saver & Video Download | no rank |
+| A **status video downloader app** | 99 | 96<br>411.2M · 6 ≥10M | Status Download · Status Saver · Video Downloader | no rank |
+| A **status saver video downloader** | 84 | 94<br>270.6M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
+| A **save status app download** | 69 | 92<br>175.5M · 4 ≥10M | Status Saver · Status Download · Status Saver | no rank |
+| A **status save to gallery** | 70 | 94<br>270.6M · 5 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
+| A **status saver app** | 70 | 94<br>270.5M · 5 ≥10M | Status Saver・Status Downloader · Status Saver · Status Download | no rank |
+| A **status video downloader** | 70 | 96<br>420.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
+| A **save status app** | 60 | 94<br>275.5M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
+| A **status downloader app** | 60 | 95<br>325.7M · 6 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
+| A **status saver video download** | 60 | 94<br>270.6M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
+| A **save status app update** | 54 | 92<br>190.2M · 5 ≥10M | Status Saver · Status Saver · Status Saver・Status Downloader | no rank |
+| A **status saver app update** | 57 | 94<br>275.5M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
+| A **status saver gallery** | 55 | 94<br>270.6M · 5 ≥10M | Status Saver · Status Download · Status Saver | no rank |
+| A **save status video** | 55 | 95<br>320.6M · 6 ≥10M | Status Download · Status Saver · Status Saver | no rank |
+| A **save status video app** | 54 | 95<br>370.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
+| A **save status video download** | 54 | 95<br>370.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
+| A **save status video saver** | 54 | 95<br>371.1M · 7 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
+| A **status saver** | 55 | 96<br>445M · 9 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
+| A **status saver app download** | 54 | 94<br>275.5M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
+| A **status saver photo** | 54 | 94<br>270.5M · 5 ≥10M | Status Saver · Status Download · Status Saver | no rank |
+| A **status saver photo and video** | 55 | 94<br>271.6M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
+| A **status saver video download app** | 53 | 94<br>281.6M · 6 ≥10M | Status Saver · Status Download · Video Downloader, Status | no rank |
+| A **status video download app** | 55 | 96<br>420.7M · 7 ≥10M | Status Download · Status Saver · Status Saver・Status Downloader | no rank |
+| A **status downloader and saver** | 48 | 95<br>320.5M · 6 ≥10M | Status Saver・Status Downloader · Status Download · Status Saver | no rank |
+| A **status video download** | 54 | 99<br>775.6M · 6 ≥10M | Status Download · Status Saver · Status Saver & Video Download | no rank |
 
 <a id="ranks"></a>
 

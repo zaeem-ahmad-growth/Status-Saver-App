@@ -487,16 +487,148 @@
   }
 ```
 
-### `renderPolicy()` (assets/app.js L409-413)
+### `renderPolicy()` (assets/app.js L409-417)
 
 ```js
   function renderPolicy() {
     const p = $('policy-list'); if (p) p.innerHTML = (L.policy || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
     const b = $('built-list'); if (b) b.innerHTML = (L.built || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
   }
+
+  // ---------- features ----------
+  const F = PAYLOAD.features || {}, OU = PAYLOAD.ours || {};
+  const fApps = (F.apps || []).map(a => ({ id: a[0], t: a[1] || a[0], dev: a[2], i: a[3], iap: a[4] }));
+  const fRows = F.features || [];
 ```
 
-### `renderFoot()` (assets/app.js L414-418)
+### `renderFeatChips()` (assets/app.js L421-427)
+
+```js
+  function renderFeatChips() {
+    const box = $('chips'); if (!box) return;
+    box.innerHTML = [`${fRows.length} features tracked`, `${fApps.length - 1} shelf holders`, 'evidence from each live listing',
+    `our column checked on the emulator ${OU.checkedOn || ''}`, `read on ${F.fetchedAt || D.meta.fetchedAt}`]
+      .map(c => `<span class="chip">${esc(c)}</span>`).join('');
+  }
+```
+
+### `completeness()` (assets/app.js L428-434)
+
+```js
+  function completeness() {
+    return fApps.map((a, i) => {
+      const has = fRows.reduce((s, r) => s + (r[2][i] ? 1 : 0), 0);
+      return { a, i, has, pct: has / fRows.length };
+    });
+  }
+```
+
+### `renderCompleteness()` (assets/app.js L435-453)
+
+```js
+  function renderCompleteness() {
+    const box = $('complete-list'); if (!box) return;
+    const rows = completeness().slice().sort((x, y) => y.has - x.has);
+    box.innerHTML = rows.map(r => `<div class="barrow${r.i === 0 ? ' ours' : ''}">
+      <div class="lbl"><strong>${esc(shortName(r.a.t))}</strong><span class="small muted block">${fmt(r.a.i)}+ installs</span></div>
+      <div class="track"><span class="fill" style="width:${(r.pct * 100).toFixed(0)}%"></span></div>
+      <div class="val">${r.has}/${fRows.length}</div></div>`).join('');
+    const ins = $('complete-insights'); if (!ins) return;
+    const ours = completeness()[0];
+    const others = completeness().slice(1);
+    const avg = (others.reduce((s, r) => s + r.has, 0) / Math.max(1, others.length)).toFixed(1);
+    const nobody = fRows.filter(r => r[2].slice(1).every(m => !m)).map(r => r[1]);
+    ins.innerHTML = [
+      ['Where we sit', `Our app ships <strong>${ours.has} of ${fRows.length}</strong> tracked features against a shelf average of <strong>${avg}</strong>. Feature count is not what wins this category — the leaders win on installs and review counts — but it shows the listing has more to say than it currently says.`],
+      ['Nobody on this shelf claims these', nobody.length ? `<strong>${nobody.join(', ')}</strong>. Open ground: anything here is a real differentiator if it is built and shown in the screenshots.` : 'Every tracked feature is claimed by at least one shelf holder.'],
+      ['Read this as evidence, not marketing', 'A tick means the app\'s own Play listing says so, in words we can quote. Our column is the exception: it comes from the 17 Sep 2026 emulator round, because a listing can overstate and an emulator cannot.']
+    ].map(x => `<div class="insight"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
+  }
+```
+
+### `renderFmx()` (assets/app.js L454-475)
+
+```js
+  function renderFmx() {
+    const t = $('fmx-table'); if (!t) return;
+    let rows = fRows.map((r, i) => ({ r, i }));
+    if (state2.gapsOnly) rows = rows.filter(x => {
+      const shelf = x.r[2].slice(1).filter(Boolean).length;
+      return (x.r[2][0] === 1 && shelf <= 2) || (x.r[2][0] === 0 && shelf >= 3);
+    });
+    let lastGroup = '';
+    const body = rows.map(x => {
+      const r = x.r;
+      let head = '';
+      if (r[0] !== lastGroup) { lastGroup = r[0]; head = `<tr class="grp"><td colspan="${fApps.length + 1}">${esc(r[0] === 'Core' ? 'What a status saver must do' : r[0] === 'Shelf' ? 'What separates the shelf' : 'What almost nobody ships')}</td></tr>`; }
+      const cells = r[2].map((m, i) => `<td class="${m ? 'yes' : 'no'}${i === 0 ? ' ours-col' : ''}" data-ev="${esc(r[3][i] || '')}">${m ? '✓' : '✗'}</td>`).join('');
+      return head + `<tr><td class="kw">${esc(r[1])}</td>${cells}</tr>`;
+    }).join('');
+    t.innerHTML = `<thead><tr><th class="kw">Feature</th>${fApps.map((a, i) => `<th class="comp-name${i === 0 ? ' ours-col' : ''}"><span>${esc(shortName(a.t))}</span><span class="small muted block">${fmt(a.i)}+</span></th>`).join('')}</tr></thead><tbody>${body}</tbody>`;
+    t.querySelectorAll('td[data-ev]').forEach(td => {
+      const ev = td.dataset.ev;
+      if (ev) bindTip(td, `<b>Evidence</b><br>${esc(ev)}`);
+    });
+  }
+```
+
+### `renderOursCards()` (assets/app.js L476-480)
+
+```js
+  function renderOursCards() {
+    const box = $('ours-cards'); if (!box) return;
+    box.innerHTML = (OU.ships || []).map(s => `<div class="card"><h4>${esc(s[0])}</h4><p class="small">${esc(s[1])}</p></div>`).join('');
+  }
+```
+
+### `renderEdgesGaps()` (assets/app.js L481-493)
+
+```js
+  function renderEdgesGaps() {
+    const e = $('edges'), g = $('gaps-list'); if (!e || !g) return;
+    const edges = [], gaps = [];
+    fRows.forEach(r => {
+      const shelf = r[2].slice(1).filter(Boolean).length;
+      const n = fApps.length - 1;
+      if (r[2][0] === 1 && shelf <= Math.floor(n / 2)) edges.push(`<li><strong>${esc(r[1])}</strong> — we have it; ${shelf} of ${n} shelf holders claim it.${OU.evidence && OU.evidence[r[1]] ? ' <span class="small muted">' + esc(OU.evidence[r[1]]) + '</span>' : ''}</li>`);
+      if (r[2][0] === 0 && shelf >= 2) gaps.push(`<li><strong>${esc(r[1])}</strong> — ${shelf} of ${n} shelf holders advertise it; we do not have it.${OU.evidence && OU.evidence[r[1]] ? ' <span class="small muted">' + esc(OU.evidence[r[1]]) + '</span>' : ''}</li>`);
+    });
+    e.innerHTML = edges.join('') || '<li>None yet.</li>';
+    g.innerHTML = gaps.join('') || '<li>None.</li>';
+  }
+```
+
+### `renderPricing()` (assets/app.js L494-505)
+
+```js
+  function renderPricing() {
+    const t = $('price-table'); if (!t) return;
+    t.innerHTML = `<thead><tr><th>App</th><th>Installs</th><th>Ads</th><th>What Google Play lists for in-app purchases</th></tr></thead><tbody>${fApps.map((a, i) => {
+      const app = A[A.findIndex(x => x.id === a.id)];
+      return `<tr${i === 0 ? ' class="ours"' : ''}><td><strong>${esc(shortName(a.t))}</strong><br><span class="small muted">${esc(a.dev || '')}</span></td>
+        <td class="num tmono">${fmt(a.i)}+</td><td>${app && app.ads ? '<span class="pill p-warn">ads</span>' : '<span class="pill p-mute">—</span>'}</td>
+        <td class="tmono small">${esc(a.iap || 'no in-app purchases listed')}</td></tr>`;
+    }).join('')}</tbody>`;
+    const n = $('price-note');
+    if (n) n.innerHTML = `<strong>Reading the prices.</strong> Google Play publishes only a range per listing, not the plan names, so these are ranges and not like-for-like plans. Our own plans, read off the Play sheet on the emulator in the Pakistan store, are <strong>Rs 1,100 weekly</strong> and <strong>Rs 2,750 monthly</strong>, both removing every ad. Every app on this shelf is free to install, ad-supported, and sells a way to switch the ads off — so the paid tier is table stakes, not a differentiator.`;
+  }
+```
+
+### `renderSource()` (assets/app.js L506-515)
+
+```js
+  function renderSource() {
+    const box = $('source-list'); if (!box) return;
+    box.innerHTML = [
+      ['The competitors', `The status savers holding the most top-10 slots across the ${D.meta.keywords}-keyword board in the United States, as measured on ${D.meta.fetchedAt}. Adjacent story-saver apps were left out of this comparison on purpose.`],
+      ['Their ticks', 'Each tick was matched in the app\'s own Play listing — title, short description and full description — by the script in research/aso-pipeline/features.ps1, which stores the matched phrase next to every mark. Hover any tick to read the words that proved it.'],
+      ['Our ticks', `Our column comes from the app itself, checked on a Pixel 10 emulator during the QA round of ${OU.checkedOn}. ${esc(OU.note || '')}`],
+      ['What a cross means', 'No evidence on the listing. An app may still ship a feature it never mentions — but on Play, a feature nobody mentions earns nothing, which is exactly the point of this table.']
+    ].map(x => `<div class="check"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
+  }
+```
+
+### `renderFoot()` (assets/app.js L516-520)
 
 ```js
   function renderFoot() {
@@ -505,13 +637,14 @@
   }
 ```
 
-### `renderAll()` (assets/app.js L419-433)
+### `renderAll()` (assets/app.js L521-537)
 
 ```js
   function renderAll() {
     renderScope();
     if (PAGE === 'playbook') { renderChips(); renderPlays(); renderComp(); renderMatrix(); renderStrips(); renderBoard(); renderLadder(); renderListingPack(); renderMethod(); renderRisks(); }
     if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderFieldTable(); renderCoverage(); renderTargets(); renderRankTable(); renderPolicy(); }
+    if (PAGE === 'features') { renderFeatChips(); renderCompleteness(); renderFmx(); renderOursCards(); renderEdgesGaps(); renderPricing(); renderSource(); }
     renderFoot();
   }
 
@@ -520,6 +653,7 @@
   on('strips-more', 'click', () => { state.stripsAll = !state.stripsAll; renderStrips(); });
   on('kw-search', 'input', e => { state.q = e.target.value.trim().toLowerCase(); renderBoard(); });
   on('cov-all', 'change', renderCoverage);
+  on('fmx-gaps', 'change', e => { state2.gapsOnly = e.target.checked; renderFmx(); });
   renderAll();
 })();
 ```
@@ -530,7 +664,11 @@
 - [`data.compIdx`](#datacompidx)
 - [`data.markets`](#datamarkets)
 - [`data.meta`](#datameta)
+- [`features.apps`](#featuresapps)
+- [`features.features`](#featuresfeatures)
+- [`features.fetchedAt`](#featuresfetchedat)
 - [`listing`](#listing)
+- [`ours`](#ours)
 
 These are exact copies of the values in [assets/data.js](../../assets/data.js); edit them there. Field meanings are in the [data dictionary](../data-dictionary.md).
 
@@ -3998,6 +4136,279 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
 }
 ```
 
+### features.apps
+
+```json
+[
+  ["com.statussaver.videosaver.downloadstatus.storysaver","Status Downloader: Video Saver","Cell Cave",10,"$3.99 - $9.99 per item"],
+  ["com.downlood.sav.whmedia","Status Download - Video Saver","Shree Ganesha Labs",100000000,"$0.99 per item"],
+  ["statussaver.statusdownloader.downloadstatus.savestatus","Status Saver: Video Downloader","BlueLine. Tech",50000000,"$9.99 - $29.99 per item"],
+  [
+    "statussaver.statusdownloader.downloadstatus.videoimagesaver", "Status Saver - Video Saver", "Save Status, Video & Image Downloader", 100000000,
+    "$9.00 per item"
+  ],
+  ["com.falnesc.statussaver","Status Saver・Status Downloader","Battery Stats Saver",10000000,"$0.99 - $99.99 per item"],
+  ["com.heethjain.apps.statussaver","Status Saver - Video Download","Heeth Jain",500000,null],
+  ["com.statussaver.statusdownloader.lite","Status Saver","Fun and Hi Tool",10000000,null],
+  ["com.mdtech.status.saver","Status Saver & Video Download","MD TECH",100,"$4.99 - $39.99 per item"],
+  ["com.sinosystems.status","Status Saver: Video Downloader","SinoSystems, Inc",100000,null]
+]
+```
+
+### features.features
+
+```json
+[
+  [
+    "Core",
+    "Statuses: photos and videos",
+    [1,1,1,1,1,1,1,1,1],
+    [
+      "Both sources checked on the emulator: images and videos, WhatsApp and Business",
+      "s download - saver app let you download photo images, gif, video of new status feature of 2 new app wa 2025 st",
+      "status downloader app is for you. save videos and images status easily.<br><br>status saver is an app that he",
+      "status saver - video saver save photos &amp; video status, view status of friends without seen. <b> you can do",
+      "someone to send it. you can delete any image or video anytime you feel like it.<br><br>status saver app is a",
+      "status saver - video download tap, view and save your friend's status images and videos and reshare them want",
+      "he ultimate tool for downloading status videos, status photos, and status images from wa. with statussaver, yo",
+      "status saver & video download save status photos &amp; videos to gallery, auto save, direct chat &amp; widgets",
+      "er: video downloader status saver &amp; video downloader! save status videos, photos, auto-save &amp; repost <"
+    ]
+  ],
+  [
+    "Core",
+    "Business statuses",
+    [1,1,0,0,0,0,0,1,1],
+    [
+      "", "status download - saver app for watsapp business , 2 dual parallel space and fm gb what&#39;s app all statuses", "", "", "", "", "",
+      "act just to send one message. ideal for business enquiries, deliveries, and one-time conversations.<br><br>hom",
+      "ements.<br>✔ <b>works on personal &amp; business:</b> full compatibility with business, status saver needs, an"
+    ]
+  ],
+  [
+    "Core",
+    "Original quality, no watermark",
+    [1,1,1,1,0,0,1,1,0],
+    [
+      "Saved files compared with the originals byte for byte",
+      "da, malayalam, odia<br><br>reshare your hd video songs, romantic love, funny, heart broken, miss you, i love y",
+      "app for download status. re-share your hd videos and images with the status downloader. open this app, it wil",
+      "ferent tabs<br>☆support downloading all hd video and photo<br>☆play videos offline with the built-in video pla", "", "",
+      "no ads.<br>-one-tap download: download hd videos, photos, and images instantly with a single click.<br>-full",
+      "- saved straight to your phone, in full original quality.<br><br>watch a status in your messaging app, then op", ""
+    ]
+  ],
+  [
+    "Core",
+    "Built-in viewer and player",
+    [1,1,1,1,1,1,1,1,1],
+    [
+      "oto statuses fast. download, repost and watch them offline save the moments you want to keep with status downl",
+      "br>app feature:<br>- first you have to watch status from your original descargar whats gb app plus 2025 messe",
+      "videos with a status downloader app and watch them offline. this new status saver is safe and super-fast.<br><",
+      "o saver save photos &amp; video status, view status of friends without seen. <b> you can download photos and v",
+      "saver<br>👉 save status you like<br>👉 watch videos right in the app<br>👉 easy and fast status saver - the s",
+      "status saver - video download tap, view and save your friend's status images and videos and reshare them want",
+      "and gifs.<br>-simple interface: quickly view, select, and download status updates in seconds.<br>-lightweight",
+      "phone, in full original quality.<br><br>watch a status in your messaging app, then open status saver. every im",
+      "a finger.<br>✔ <b>built-in gallery:</b> view, play, and manage your saved videos, photos, and stickers directl"
+    ]
+  ],
+  [
+    "Core",
+    "Saved library in the app",
+    [1,1,1,1,1,1,1,1,1],
+    [
+      "d save videos or images for later. keep downloaded files organised in one place, watch them offline, share the",
+      "s setatus saver on keeper .<br>- watch saved 30 sec video on story saver and particle - lyrical vid status vi",
+      "status videos and photos in the mobile gallery.<br>* one tap to download status.<br>* share or repost any vid",
+      "a little package to save status to the gallery. the best video status saving app is fit for storing the lates",
+      "y downloads pictures and videos to your gallery with one click.<br><br>status saver - status app is a fantasti",
+      "oto viewer and video player to view the saved images and videos<br>- repost the status with share button<br><b",
+      "rs are responsible for how they use the downloaded videos, images, or photos.",
+      "load save status photos &amp; videos to gallery, auto save, direct chat &amp; widgets status saver is the fast",
+      "your favorite content directly in your gallery forever!<br><br>whether you want to recover an old status, aut"
+    ]
+  ],
+  [
+    "Core",
+    "Share to other apps",
+    [1,1,1,1,1,1,1,1,1],
+    [
+      "nised in one place, watch them offline, share them with friends or repost them with the content owner’s permis",
+      "2025 story. status downloader allows to share right from app to your friends story saver and wa status editors",
+      "saver: video downloader tap, save &amp; share all status. video status saver app. do you love to download stat",
+      "story photos and status videos anytime, share them with friends, or repost the downloaded status on other soci",
+      "s:</b><br>👉 elegant design<br>👉 save, share or delete<br>👉 share without saving<br>👉 easy &amp; fast savin",
+      "download app helps you view, save, and share images and video status very easily.<br><br>steps to save status",
+      "status saver effortlessly download and share status content with our status saver! welcome to statussaver - yo",
+      "grid, ready to preview, save, repost or share. no screenshots. no screen recording. no loss of quality.<br><br",
+      "/b> find fun, new, and viral content to share with your network.<br>✔ <b>repost &amp; share:</b> easily share"
+    ]
+  ],
+  [
+    "Core",
+    "Offline viewing",
+    [1,0,1,1,0,0,0,0,0],
+    [
+      "Home reached in about 6.7 s with no network, saving still worked", "",
+      "a status downloader app and watch them offline. this new status saver is safe and super-fast.<br><br><h1> key",
+      "all hd video and photo<br>☆play videos offline with the built-in video player<br>☆view photos offline with th", "", "", "", "", ""
+    ]
+  ],
+  [
+    "Shelf",
+    "Repost status",
+    [1,0,1,1,1,1,0,1,1],
+    [
+      "ideo and photo statuses fast. download, repost and watch them offline save the moments you want to keep with s", "",
+      "e tap to download status.<br>* share or repost any video.<br>* built-in video player to view status offline<br",
+      "os anytime, share them with friends, or repost the downloaded status on other social media. save story &amp; v",
+      "os anytime, share them with friends, or repost the downloaded status on any social media. <b>view the friend&#",
+      "o view the saved images and videos<br>- repost the status with share button<br><br>disclaimer:<br>- the keywor", "",
+      "n a clean grid, ready to preview, save, repost or share. no screenshots. no screen recording. no loss of quali",
+      "status videos, photos, auto-save &amp; repost <b>looking for how to save a status before it disappears?</b><b"
+    ]
+  ],
+  [
+    "Shelf",
+    "Auto-save new statuses",
+    [0,1,1,0,0,0,0,1,1],
+    [
+      "Not built: every save is a deliberate tap",
+      "er maker.<br>- turn on notification to auto save ( churane wala ) viewed status on whats app+<br>- save wa r",
+      "simple and unique user interface.<br>* automatically save statuses, photos, videos, and gifs.<br>* save recen", "", "", "", "",
+      "status photos &amp; videos to gallery, auto save, direct chat &amp; widgets status saver is the fastest way t",
+      "ther you want to recover an old status, autosave new ones, or discover trending videos, our fast and secure st"
+    ]
+  ],
+  [
+    "Shelf",
+    "Multi-select save",
+    [0,0,1,0,0,0,1,0,0],
+    [
+      "Not built: one status at a time", "",
+      "page of the correct status saver app to download all statuses. all status downloader app is for you. save vide", "", "", "",
+      "single click.<br>-full status support: save all types of wa statuses, including videos, images, and gifs.<br>", "", ""
+    ]
+  ],
+  [
+    "Shelf", "Multi-select delete", [0,0,0,0,0,0,0,0,0], ["Not built","","","","","","","",""]
+  ],
+  [
+    "Shelf",
+    "Direct chat without saving a number",
+    [0,0,1,0,0,0,0,1,0],
+    [
+      "Not built", "", "ffline<br>* save and share easily.<br>* direct chat to unsaved contacts.<br><br><h1> how to save the status of", "", "", "",
+      "", "tos &amp; videos to gallery, auto save, direct chat &amp; widgets status saver is the fastest way to keep the", ""
+    ]
+  ],
+  [
+    "Shelf",
+    "Sticker packs",
+    [1,1,0,0,0,0,0,0,1],
+    [
+      "Bundled packs with Add to WhatsApp from the pack screen",
+      "us for copy easily in female voice in wastickers apps on wa group also can upload video created by snack and t", "", "", "", "", "", "",
+      "d manage your saved videos, photos, and stickers directly within the app.<br>✔ <b>discover trending statuses:<"
+    ]
+  ],
+  [
+    "Shelf",
+    "Favourites",
+    [1,0,1,0,1,0,0,0,1],
+    [
+      "clips, funny videos, useful updates and favourite photos directly to your device.<br><br>fast status downloade", "",
+      "os stories. status saver downloads your favorite videos from your contacts without prompting them. all status", "",
+      "le and intuitive status saver app. save favorite status updates - status app status saver - status downloader", "", "", "",
+      "load videos, save photos, and keep your favorite content directly in your gallery forever!<br><br>whether you"
+    ]
+  ],
+  [
+    "Shelf",
+    "New-status notification",
+    [1,1,0,0,0,0,0,1,0],
+    [
+      "", "as well as player maker.<br>- turn on notification to auto save ( churane wala ) viewed status on whats app+", "", "", "", "", "",
+      "ours.<br><br>new status alerts<br>get a notification the moment new items are available, plus a new badge on a", ""
+    ]
+  ],
+  [
+    "Shelf",
+    "Dark theme",
+    [1,0,0,0,0,0,0,1,0],
+    ["","","","","","","","tures you use most one tap away.<br><br>dark mode<br>a comfortable dark theme for night-time browsing and a cl",""]
+  ],
+  [
+    "Shelf",
+    "Multiple languages",
+    [1,1,0,0,0,0,0,1,0],
+    [
+      "9 languages including Urdu and Arabic, right-to-left layout checked",
+      "reply by watsapp and app++<br>following languages supported :<br>english, hindi, marathi, gujarati, tamil, tel", "", "", "", "", "",
+      "d a clean light theme by day.<br><br>11 languages<br>english, hindi, bengali, telugu, marathi, tamil, gujarati", ""
+    ]
+  ],
+  [
+    "Edge",
+    "Other sources than statuses",
+    [0,1,0,1,1,0,0,0,0],
+    [
+      "ored by or endorsed by any messaging or social media platform. all trademarks belong to their respective owner",
+      "ur storage or you can share or clone on social media whats.app or web tracker online as well as player maker.<", "",
+      "r repost the downloaded status on other social media. save story &amp; view the status of friends without seen",
+      "or repost the downloaded status on any social media. <b>view the friend&#39;s status without &quot;seen.&quot", "", "", "", ""
+    ]
+  ],
+  [
+    "Edge", "Audio / MP3 extraction", [0,0,0,0,0,0,0,0,0], ["","","","","","","","",""]
+  ],
+  [
+    "Edge", "Video trim or edit", [0,0,0,0,0,0,0,0,0], ["","","","","","","","",""]
+  ],
+  [
+    "Edge",
+    "Private vault or lock",
+    [0,0,0,0,0,0,0,0,0],
+    ["Not built; the old paywall row claiming a private vault was removed in fix round 2","","","","","","","",""]
+  ],
+  [
+    "Edge",
+    "Recover deleted messages",
+    [0,1,0,0,0,0,0,0,1],
+    [
+      "Deliberately not built and never claimed: the category's riskiest claim",
+      "saver save status even after 24 hours, recover deleted chats status download - saver app let you download pho", "", "", "", "", "", "",
+      "ery forever!<br><br>whether you want to recover an old status, autosave new ones, or discover trending videos,"
+    ]
+  ],
+  [
+    "Edge",
+    "Remove ads purchase",
+    [1,0,0,0,0,0,1,1,1],
+    [
+      "Premium: weekly Rs 1,100, monthly Rs 2,750 (Pakistan store)", "", "", "", "", "",
+      "us saver! welcome to statussaver - your ad-free app for downloading and saving status updates!<br>experience t",
+      "saved and in your phone gallery.<br><br>premium<br>save without limits for 30 days after you install the app.",
+      "hone&#39;s wallpaper instantly.<br>✔ <b>ad-free experience:</b> enjoy all features without any annoying or int"
+    ]
+  ],
+  [
+    "Edge",
+    "Folder access, no all-files permission",
+    [1,0,0,0,0,0,0,0,0],
+    ["Folder access through the system picker; READ_MEDIA_IMAGES and READ_MEDIA_VIDEO removed in fix round 2","","","","","","","",""]
+  ]
+]
+```
+
+### features.fetchedAt
+
+```json
+"2026-09-23"
+```
+
 ### listing
 
 ```json
@@ -4196,6 +4607,71 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
       "The checks",
       "The title check and the brand check are scripts in research/aso-pipeline, and their output is committed next to the data, so any claim on this tab can be re-run."
     ]
+  ]
+}
+```
+
+### ours
+
+```json
+{
+  "note": "Our app's column in the feature matrix comes from the app itself, checked on a Pixel 10 emulator during the 17 Sep 2026 QA round (see the Status Saver tab), not from its Play listing text. A listing can understate or overstate what ships; the emulator cannot.",
+  "checkedOn": "2026-09-17",
+  "features": {
+    "Statuses: photos and videos": 1,
+    "Business statuses": 1,
+    "Original quality, no watermark": 1,
+    "Built-in viewer and player": 1,
+    "Saved library in the app": 1,
+    "Share to other apps": 1,
+    "Offline viewing": 1,
+    "Repost status": 1,
+    "Auto-save new statuses": 0,
+    "Multi-select save": 0,
+    "Multi-select delete": 0,
+    "Direct chat without saving a number": 0,
+    "Sticker packs": 1,
+    "Favourites": 1,
+    "New-status notification": 1,
+    "Dark theme": 1,
+    "Multiple languages": 1,
+    "Other sources than statuses": 0,
+    "Audio / MP3 extraction": 0,
+    "Video trim or edit": 0,
+    "Private vault or lock": 0,
+    "Recover deleted messages": 0,
+    "Remove ads purchase": 1,
+    "Folder access, no all-files permission": 1
+  },
+  "evidence": {
+    "Statuses: photos and videos": "Both sources checked on the emulator: images and videos, WhatsApp and Business",
+    "Original quality, no watermark": "Saved files compared with the originals byte for byte",
+    "Sticker packs": "Bundled packs with Add to WhatsApp from the pack screen",
+    "Multiple languages": "9 languages including Urdu and Arabic, right-to-left layout checked",
+    "Offline viewing": "Home reached in about 6.7 s with no network, saving still worked",
+    "Remove ads purchase": "Premium: weekly Rs 1,100, monthly Rs 2,750 (Pakistan store)",
+    "Folder access, no all-files permission": "Folder access through the system picker; READ_MEDIA_IMAGES and READ_MEDIA_VIDEO removed in fix round 2",
+    "Auto-save new statuses": "Not built: every save is a deliberate tap",
+    "Multi-select save": "Not built: one status at a time",
+    "Multi-select delete": "Not built",
+    "Direct chat without saving a number": "Not built",
+    "Private vault or lock": "Not built; the old paywall row claiming a private vault was removed in fix round 2",
+    "Recover deleted messages": "Deliberately not built and never claimed: the category's riskiest claim"
+  },
+  "ships": [
+    [
+      "Two sources, one grid",
+      "WhatsApp and WhatsApp Business statuses, images and videos, read through folder access granted by the system picker — no all-files permission, and no media permission on Android 13+."
+    ],
+    [
+      "Saving that does not touch the file",
+      "Saved to Pictures and Movies, byte-identical to the original. Checked by comparing the saved file with the source during QA."
+    ],
+    ["Viewer, share, repost","Full-screen viewer with repost, share, save and delete. Repost and Add to WhatsApp hand off to WhatsApp itself."],
+    ["Saved library and favourites","Everything saved stays in the app's own list, with favourites — which most of the shelf does not offer."],
+    ["Stickers","Bundled sticker packs that can be added to WhatsApp from the pack screen."],
+    ["Nine languages, dark theme","Including Urdu and Arabic with right-to-left layouts, plus new-status notifications."],
+    ["Ads, and a way to switch them off","Ad-supported with a rewarded opt-in before saving; Premium removes all ads (weekly or monthly)."]
   ]
 }
 ```
