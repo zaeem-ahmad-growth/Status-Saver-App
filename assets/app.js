@@ -418,16 +418,74 @@
       <tfoot><tr><td colspan="5" class="small muted"><strong>${hit} of ${usable.length}</strong> phrases this listing may use appear in it, word for word or with every word present — including <strong>${compatHit} of ${compat.length}</strong> compatibility phrases, the ones that name WhatsApp to say what the app reads. The other ${blocked} are not excluded for naming a product: they name a platform this app cannot read, a modified client, or another developer's app, and each row says which. A phrase the listing does not contain cannot rank for it.</td></tr></tfoot>`;
   }
 
+  // Where a phrase entered the board. ngrams are word sequences mined from the competitors' own
+  // titles; demand rows carry the autocomplete hit count and the markets that suggested it.
+  const NGRAM = {}; (D.ngrams || []).forEach(n => { NGRAM[n[0]] = n[1]; });
+  const DEMAND = {}; (D.demand || []).forEach(x => { DEMAND[x[0]] = { hits: x[1], seed: x[2], mk: x[3] }; });
+  const compTitles = COMP.map(i => (A[i] && A[i].t ? A[i].t.toLowerCase() : ''));
+
+  function sourceOf(k) {
+    const out = [];
+    const inTitles = compTitles.filter(t => t.includes(k)).length;
+    if (inTitles) out.push(`<span class="pill p-good">in ${inTitles} competitor title${inTitles > 1 ? 's' : ''}</span>`);
+    else if (NGRAM[k]) out.push(`<span class="pill p-good">${NGRAM[k]} titles carry it</span>`);
+    const d = DEMAND[k];
+    if (d && d.hits) out.push(`<span class="pill p-acc">autocomplete ×${d.hits}</span>`);
+    if (!out.length) out.push('<span class="pill p-mute">tracked live</span>');
+    if (d && d.mk) out.push(`<span class="small muted">${esc((d.mk.match(/../g) || []).join(' '))}</span>`);
+    return out.join(' ');
+  }
+  // How many of the 12 tracked competitors hold a top-ten slot on a phrase.
+  const rivalsTop10 = r => r.slots.slice(0, 10).filter(i => COMP.indexOf(i) >= 0).length;
+  const holderOf = r => {
+    const i = r.slots[0];
+    return i == null || i < 0 ? '—' : esc(A[i].t.split(/[-–—:·・]/)[0].trim()) + `<span class="small muted block">${fmt(A[i].i)}</span>`;
+  };
+
   function renderTargets() {
     const t = $('target-table'); if (!t) return;
     const text = fullTextOf(P);
-    const rows = boardOf(state.gl).filter(r => r.usable && coverage(r.k, text) !== 'no').slice(0, 24);
-    t.innerHTML = `<thead><tr><th>Keyword</th><th>Demand</th><th>Competition</th><th>Top ten holders</th><th>Us today</th></tr></thead><tbody>${rows.map(r =>
-      `<tr><td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong></td>
+    const board = {}; boardOf(state.gl).forEach(r => { board[r.k] = r; });
+    // Group the keyword-to-field plan by the field that carries each phrase, in Play's weighting order.
+    const order = ['Title', 'Short description', 'Full description'];
+    const groups = {};
+    (L.fields || []).forEach(f => {
+      const key = order.find(o => f[1].indexOf(o) === 0) || f[1];
+      (groups[key] = groups[key] || []).push(f);
+    });
+    const head = `<thead><tr><th>Keyword</th><th>How it is used</th><th>Where it came from</th><th class="num">Demand</th>
+      <th class="num">Competition</th><th class="num">Rivals in top 10</th><th>Who holds #1</th><th class="num">Us</th></tr></thead>`;
+    const rowFor = f => {
+      const r = board[f[0]];
+      const cov = coverage(f[0], text);
+      const covPill = cov === 'exact' ? '<span class="pill p-good">word for word</span>'
+        : cov === 'tokens' ? '<span class="pill p-acc">every word present</span>'
+          : '<span class="pill p-risk">NOT COVERED</span>';
+      if (!r) return `<tr><td class="kw"><strong>${esc(f[0])}</strong></td><td>${covPill}</td><td colspan="6" class="small muted">Not on the ${esc(MNAME[state.gl] || state.gl)} board.</td></tr>`;
+      return `<tr><td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong>
+          <span class="small muted block">${esc(f[2])}</span></td>
+        <td>${covPill}<span class="small muted block">${esc(f[1])}</span></td>
+        <td class="small">${sourceOf(r.k)}</td>
         <td class="num tmono">${r.D}</td>
         <td class="num tmono">${r.C}<span class="small muted block">${fmt(r.installs)} · ${r.big} ≥10M</span></td>
-        <td class="small">${r.slots.slice(0, 3).map(i => i < 0 ? '—' : esc(A[i].t.split(/[-–—:·]/)[0].trim())).join(' · ')}</td>
-        <td class="num tmono">${r.ourRank ? '#' + r.ourRank : '<span class="dim">no rank</span>'}</td></tr>`).join('')}</tbody>`;
+        <td class="num tmono">${rivalsTop10(r)} of 12</td>
+        <td class="small">${holderOf(r)}</td>
+        <td class="num tmono">${r.ourRank ? '#' + r.ourRank : '<span class="dim">none</span>'}</td></tr>`;
+    };
+    t.innerHTML = head + order.filter(o => groups[o]).map(o => {
+      const rows = groups[o];
+      const weight = o === 'Title' ? 'Play weights this field most' : o === 'Short description' ? 'second by weight' : 'largest field, lowest weight per word';
+      return `<tbody><tr class="grp"><td colspan="8"><strong>${esc(o)}</strong> · ${rows.length} phrase${rows.length > 1 ? 's' : ''} · ${weight}</td></tr>
+        ${rows.map(rowFor).join('')}</tbody>`;
+    }).join('');
+    const n = $('target-note');
+    if (n) {
+      const all = (L.fields || []).map(f => board[f[0]]).filter(Boolean);
+      const avgC = Math.round(all.reduce((s, r) => s + r.C, 0) / (all.length || 1));
+      const contested = all.filter(r => rivalsTop10(r) >= 5).length;
+      const open = all.filter(r => rivalsTop10(r) <= 2).length;
+      n.innerHTML = `<b>${(L.fields || []).length}</b> phrases are targeted across the three fields. Average competition score <b>${avgC}</b> of 100: <b>${contested}</b> of them have five or more of the twelve tracked competitors already inside the top ten, and only <b>${open}</b> have two or fewer. We hold <b>no rank on any of them</b> today, which is what a listing with 10+ installs and no ratings should expect — the metadata sets eligibility, the installs decide placement.`;
+    }
   }
 
   function renderRankTable() {
@@ -473,12 +531,14 @@
     const hit = board.filter(r => coverage(r.k, text) !== 'no');
     const miss = board.filter(r => coverage(r.k, text) === 'no');
     const row = r => `<tr><td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong>
-        <span class="pill ${USE_PILL[r.use]}" title="${esc(USE_WHY[r.use])}">${USE_SHORT[r.use]}</span></td>
+        <span class="pill ${USE_PILL[r.use]}" title="${esc(USE_WHY[r.use])}">${USE_SHORT[r.use]}</span>
+        <span class="small muted block">${sourceOf(r.k)}</span></td>
       <td class="num tmono">${r.P}</td><td class="num tmono">${r.D}</td>
       <td class="num tmono">${r.C}<span class="small muted block">${fmt(r.installs)} · ${r.big} ≥10M</span></td>
+      <td class="num tmono">${rivalsTop10(r)} of 12</td>
       <td class="tmono">${carriedBy(r.k)}</td>
       <td class="small">${r.slots.slice(0, 3).map(i => i < 0 ? '—' : esc(A[i].t.split(/[-–—:·]/)[0].trim())).join(' · ')}</td></tr>`;
-    const head = `<thead><tr><th>Keyword</th><th class="num">Priority</th><th class="num">Demand</th><th class="num">Competition</th><th>Field</th><th>Who holds the top three</th></tr></thead>`;
+    const head = `<thead><tr><th>Keyword · where it came from</th><th class="num">Priority</th><th class="num">Demand</th><th class="num">Competition</th><th class="num">Rivals in top 10</th><th>Field</th><th>Who holds the top three</th></tr></thead>`;
     now.innerHTML = head + `<tbody>${hit.map(row).join('')}</tbody>`;
     const fut = $('kw-future');
     if (fut) fut.innerHTML = head + `<tbody>${miss.map(row).join('')}</tbody>`;

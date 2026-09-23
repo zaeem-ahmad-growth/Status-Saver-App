@@ -332,6 +332,10 @@ img{max-width:100%}
   .m-shots figure{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden}
   .m-shots img{display:block; width:100%; height:auto; background:var(--sunk)}
   .m-shots figcaption{font-size:12.5px; color:var(--muted); padding:6px 9px}
+  /* group header row inside a table, used to band keywords by the field that carries them */
+  tr.grp td{background:var(--sunk); border-top:2px solid var(--line-strong); font-size:13.5px;
+    color:var(--ink-2); letter-spacing:.01em; padding-top:10px; padding-bottom:10px}
+  tr.grp td strong{color:var(--ink)}
   /* the rank legend above the competitor matrix, matching .rk.b1-.b4 */
   .sw.rk-b1{background:var(--rk1)} .sw.rk-b2{background:var(--rk2)}
   .sw.rk-b3{background:var(--rk3)} .sw.rk-b4{background:var(--rk4)}
