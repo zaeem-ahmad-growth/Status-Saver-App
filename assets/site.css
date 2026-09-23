@@ -430,3 +430,48 @@ img{max-width:100%}
   .over{color:var(--risk); font-weight:700}
   .longdesc h4{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:14px 0 4px}
   .longdesc p{font-size:15px; white-space:pre-line}
+
+/* ---------- competitor's graphics (tab 05) ----------
+   This page reuses class names that already mean something else in this file:
+   .fv is the 26x26 feature-matrix badge, .shot and .m-shots belong to the metadata tab,
+   and .icoplate is a bare white plate with no caption. Every rule below is scoped to
+   the graphics page, so it fixes this tab without touching the others. */
+[data-page="graphics"] .iconwall{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,148px),1fr)); gap:14px; width:auto; min-width:0}
+[data-page="graphics"] .icoplate{display:flex; flex-direction:column; align-items:center; gap:9px; margin:0; padding:14px 10px; background:var(--surface); border:1px solid var(--line); border-radius:12px; box-shadow:none}
+[data-page="graphics"] .icoplate img{width:92px; height:92px; border-radius:22%; background:#FFFFFF}
+[data-page="graphics"] .icoplate figcaption{font-size:13px; font-weight:600; line-height:1.3; text-align:center; color:var(--ink)}
+[data-page="graphics"] .icoplate .block{display:block; font-weight:500; color:var(--muted)}
+[data-page="graphics"] .icoplate.ours{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+
+/* the feature-graphic cards: .fv must not be the 26px matrix badge here */
+[data-page="graphics"] .fv{display:flex; flex-direction:column; width:auto; height:auto; place-items:stretch; font:inherit; background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin:0}
+[data-page="graphics"] .fv.ours{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+[data-page="graphics"] .fv figcaption{padding:10px 12px 12px; font-size:13.5px; line-height:1.45; color:var(--ink); display:flex; flex-direction:column; gap:2px}
+[data-page="graphics"] .fv figcaption .block{color:var(--muted)}
+
+/* .shot is a plain image button on this page, not the metadata tab's figure card */
+[data-page="graphics"] .shot{display:block; width:100%; margin:0; padding:0; border:0; border-radius:10px; overflow:hidden; background:var(--sunk); cursor:zoom-in}
+[data-page="graphics"] .shot img{display:block; width:100%; height:auto}
+[data-page="graphics"] .fv .shot{border-radius:0; border-bottom:1px solid var(--line)}
+[data-page="graphics"] .shot:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+[data-page="graphics"] .m-shots{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,176px),1fr)); gap:12px; margin-top:16px; align-items:start}
+[data-page="graphics"] .m-shots figure{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+[data-page="graphics"] .m-shots figcaption{font-size:12.5px; color:var(--muted); padding:6px 9px}
+
+[data-page="graphics"] .g-app{border-top:1px solid var(--line-strong); padding-top:30px; margin-top:36px}
+[data-page="graphics"] .g-app:first-child{border-top:0; margin-top:0}
+[data-page="graphics"] .g-app.ours{border-top:2px solid var(--accent)}
+[data-page="graphics"] .g-apphead{display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:14px}
+[data-page="graphics"] .g-apphead .appicon{width:64px; height:64px; border-radius:15px; flex:none; display:block; background:#FFFFFF; box-shadow:0 0 0 1px var(--line)}
+[data-page="graphics"] .g-apphead h3{font-size:1.2rem; margin:0}
+[data-page="graphics"] .g-play{font-weight:600; white-space:nowrap; margin-left:auto}
+[data-page="graphics"] .g-read{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); gap:10px; margin:14px 0 4px}
+[data-page="graphics"] .g-read div{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:11px 13px}
+[data-page="graphics"] .g-read h4{font:600 11px var(--mono); letter-spacing:.07em; text-transform:uppercase; color:var(--accent); margin:0 0 5px}
+[data-page="graphics"] .g-read p{font-size:14px; color:var(--ink-2); margin:0}
+[data-page="graphics"] .g-rowlabel{font:600 11px var(--mono); letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin:18px 0 8px}
+[data-page="graphics"] tr.ours td{background:var(--accent-soft)}
+/* the icon button inside a plate is just the icon, not a full-width image card */
+[data-page="graphics"] .icoplate .shot{width:auto; background:transparent; border-radius:22%}
+[data-page="graphics"] .icoplate .shot img{width:92px; height:92px; border-radius:22%; background:#FFFFFF}

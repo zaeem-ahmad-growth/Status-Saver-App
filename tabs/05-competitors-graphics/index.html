@@ -85,7 +85,13 @@
 
 <footer class="wrap foot" id="foot"></footer>
 <div id="tip" class="tt" role="status" aria-live="polite"></div>
-<dialog class="lb" id="lb"><button class="lb-close" id="lb-close" type="button">Close</button><img class="lb-in" id="lb-img" alt=""><p class="lb-cap" id="lb-cap"></p></dialog>
+<dialog class="lb" id="lb" aria-label="Image viewer">
+  <div class="lb-in" id="lb-in">
+    <img id="lb-img" alt="">
+    <p class="lb-cap" id="lb-cap"></p>
+    <button type="button" class="lb-btn lb-close" id="lb-close" aria-label="Close viewer">✕</button>
+  </div>
+</dialog>
 
 <script src="../../assets/data.js"></script>
 <script src="../../assets/app.js"></script>
