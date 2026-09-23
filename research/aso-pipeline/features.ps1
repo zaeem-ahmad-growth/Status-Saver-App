@@ -81,9 +81,17 @@ foreach ($f in $FEATURES) {
   [void]$rows.Add(@($f[0], $f[1], $marks, $ev))
 }
 
+# One row per app, added through an ArrayList: piping the rows out of ForEach-Object would flatten
+# them into a single list of fields.
+$appRows = New-Object System.Collections.ArrayList
+foreach ($id in $ids) {
+  $a = $apps[$id]
+  [void]$appRows.Add(@($id, $a.title, $a.developer, [int64]$a.minInstalls, $a.iap))
+}
+
 $payload = [ordered]@{
   fetchedAt = $data.meta.fetchedAt
-  apps      = @($ids | ForEach-Object { $id = $_; $a = $apps[$id]; @($id, $a.title, $a.developer, [int64]$a.minInstalls, $a.iap) })
+  apps      = $appRows
   features  = $rows
 }
 ($payload | ConvertTo-Json -Depth 8 -Compress) | Out-File (Join-Path $OUT 'features.json') -Encoding utf8

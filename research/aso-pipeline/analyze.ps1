@@ -134,7 +134,15 @@ foreach ($ci in $compIdx) {
     }
   }
 }
-$ngrams = @($terms.GetEnumerator() | Where-Object { $_.Value -ge 2 } | Sort-Object -Property Value -Descending | Select-Object -First 60 | ForEach-Object { @($_.Key, $_.Value) })
+# ArrayLists again: piping two-element rows out of ForEach-Object would flatten them into one long list.
+$ngrams = New-Object System.Collections.ArrayList
+foreach ($e in ($terms.GetEnumerator() | Where-Object { $_.Value -ge 2 } | Sort-Object -Property Value -Descending | Select-Object -First 60)) {
+  [void]$ngrams.Add(@($e.Key, $e.Value))
+}
+$demandRows = New-Object System.Collections.ArrayList
+foreach ($e in ($demand | Sort-Object -Property hits -Descending | Select-Object -First 200)) {
+  [void]$demandRows.Add(@($e.phrase, $e.hits, $e.bestPos, ($e.markets -join '')))
+}
 
 # ---------- write ----------
 $data = [ordered]@{
@@ -146,7 +154,7 @@ $data = [ordered]@{
   compIdx = $compIdx
   markets = $marketRows
   ngrams  = $ngrams
-  demand  = @($demand | Sort-Object -Property hits -Descending | Select-Object -First 200 | ForEach-Object { @($_.phrase, $_.hits, $_.bestPos, ($_.markets -join '')) })
+  demand  = $demandRows
 }
 ($data | ConvertTo-Json -Depth 12 -Compress) | Out-File (Join-Path $OUT 'data.json') -Encoding utf8
 Write-Host ''

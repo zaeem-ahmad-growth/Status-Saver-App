@@ -410,3 +410,23 @@ img{max-width:100%}
 .tabs a.ext{color:var(--muted); font-weight:500; margin-left:auto}
 /* A { section: '<name>' } line in nav.js draws this label, then the tabs that belong to it. */
 .tabs .grp{display:inline-flex; align-items:center; align-self:stretch; margin-left:7px; padding:0 10px 0 12px; border-left:1px solid var(--line-strong); font:600 11px/1 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); white-space:nowrap}
+
+  /* ---- Status Saver tabs: blocks the shared sheet did not already carry ---- */
+  .checks{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; padding-left:0; list-style:none}
+  .check{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .check h3{font-size:1rem; margin-bottom:6px}
+  .check p{font-size:14.5px; color:var(--ink-2)}
+  .risks{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px}
+  div.issue{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--risk); border-radius:0 12px 12px 0; padding:16px 18px}
+  div.issue h3{font-size:1rem; margin-bottom:6px}
+  div.issue p{font-size:14.5px; color:var(--ink-2)}
+  .fmx td.yes{color:var(--good); font-weight:700; font-size:16px}
+  .fmx td.no{color:var(--muted)}
+  .fmx td.ours-col, .fmx th.ours-col{background:var(--accent-soft)}
+  .fmx tr.grp td{background:var(--sunk); text-align:left; font:600 11px var(--mono); letter-spacing:.07em; text-transform:uppercase; color:var(--muted)}
+  .block{display:block}
+  th[data-sort]{cursor:pointer; user-select:none}
+  th[data-sort].on{color:var(--accent)}
+  .over{color:var(--risk); font-weight:700}
+  .longdesc h4{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:14px 0 4px}
+  .longdesc p{font-size:15px; white-space:pre-line}

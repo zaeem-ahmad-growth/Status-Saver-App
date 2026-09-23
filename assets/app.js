@@ -411,6 +411,108 @@
     const b = $('built-list'); if (b) b.innerHTML = (L.built || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
   }
 
+  // ---------- features ----------
+  const F = PAYLOAD.features || {}, OU = PAYLOAD.ours || {};
+  const fApps = (F.apps || []).map(a => ({ id: a[0], t: a[1] || a[0], dev: a[2], i: a[3], iap: a[4] }));
+  const fRows = F.features || [];
+  const shortName = t => String(t).split(/[-–—:·・]/)[0].trim();
+  const state2 = { gapsOnly: false };
+
+  function renderFeatChips() {
+    const box = $('chips'); if (!box) return;
+    box.innerHTML = [`${fRows.length} features tracked`, `${fApps.length - 1} shelf holders`, 'evidence from each live listing',
+    `our column checked on the emulator ${OU.checkedOn || ''}`, `read on ${F.fetchedAt || D.meta.fetchedAt}`]
+      .map(c => `<span class="chip">${esc(c)}</span>`).join('');
+  }
+
+  function completeness() {
+    return fApps.map((a, i) => {
+      const has = fRows.reduce((s, r) => s + (r[2][i] ? 1 : 0), 0);
+      return { a, i, has, pct: has / fRows.length };
+    });
+  }
+
+  function renderCompleteness() {
+    const box = $('complete-list'); if (!box) return;
+    const rows = completeness().slice().sort((x, y) => y.has - x.has);
+    box.innerHTML = rows.map(r => `<div class="barrow${r.i === 0 ? ' ours' : ''}">
+      <div class="lbl"><strong>${esc(shortName(r.a.t))}</strong><span class="small muted block">${fmt(r.a.i)}+ installs</span></div>
+      <div class="track"><span class="fill" style="width:${(r.pct * 100).toFixed(0)}%"></span></div>
+      <div class="val">${r.has}/${fRows.length}</div></div>`).join('');
+    const ins = $('complete-insights'); if (!ins) return;
+    const ours = completeness()[0];
+    const others = completeness().slice(1);
+    const avg = (others.reduce((s, r) => s + r.has, 0) / Math.max(1, others.length)).toFixed(1);
+    const nobody = fRows.filter(r => r[2].slice(1).every(m => !m)).map(r => r[1]);
+    ins.innerHTML = [
+      ['Where we sit', `Our app ships <strong>${ours.has} of ${fRows.length}</strong> tracked features against a shelf average of <strong>${avg}</strong>. Feature count is not what wins this category — the leaders win on installs and review counts — but it shows the listing has more to say than it currently says.`],
+      ['Nobody on this shelf claims these', nobody.length ? `<strong>${nobody.join(', ')}</strong>. Open ground: anything here is a real differentiator if it is built and shown in the screenshots.` : 'Every tracked feature is claimed by at least one shelf holder.'],
+      ['Read this as evidence, not marketing', 'A tick means the app\'s own Play listing says so, in words we can quote. Our column is the exception: it comes from the 17 Sep 2026 emulator round, because a listing can overstate and an emulator cannot.']
+    ].map(x => `<div class="insight"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
+  }
+
+  function renderFmx() {
+    const t = $('fmx-table'); if (!t) return;
+    let rows = fRows.map((r, i) => ({ r, i }));
+    if (state2.gapsOnly) rows = rows.filter(x => {
+      const shelf = x.r[2].slice(1).filter(Boolean).length;
+      return (x.r[2][0] === 1 && shelf <= 2) || (x.r[2][0] === 0 && shelf >= 3);
+    });
+    let lastGroup = '';
+    const body = rows.map(x => {
+      const r = x.r;
+      let head = '';
+      if (r[0] !== lastGroup) { lastGroup = r[0]; head = `<tr class="grp"><td colspan="${fApps.length + 1}">${esc(r[0] === 'Core' ? 'What a status saver must do' : r[0] === 'Shelf' ? 'What separates the shelf' : 'What almost nobody ships')}</td></tr>`; }
+      const cells = r[2].map((m, i) => `<td class="${m ? 'yes' : 'no'}${i === 0 ? ' ours-col' : ''}" data-ev="${esc(r[3][i] || '')}">${m ? '✓' : '✗'}</td>`).join('');
+      return head + `<tr><td class="kw">${esc(r[1])}</td>${cells}</tr>`;
+    }).join('');
+    t.innerHTML = `<thead><tr><th class="kw">Feature</th>${fApps.map((a, i) => `<th class="comp-name${i === 0 ? ' ours-col' : ''}"><span>${esc(shortName(a.t))}</span><span class="small muted block">${fmt(a.i)}+</span></th>`).join('')}</tr></thead><tbody>${body}</tbody>`;
+    t.querySelectorAll('td[data-ev]').forEach(td => {
+      const ev = td.dataset.ev;
+      if (ev) bindTip(td, `<b>Evidence</b><br>${esc(ev)}`);
+    });
+  }
+
+  function renderOursCards() {
+    const box = $('ours-cards'); if (!box) return;
+    box.innerHTML = (OU.ships || []).map(s => `<div class="card"><h4>${esc(s[0])}</h4><p class="small">${esc(s[1])}</p></div>`).join('');
+  }
+
+  function renderEdgesGaps() {
+    const e = $('edges'), g = $('gaps-list'); if (!e || !g) return;
+    const edges = [], gaps = [];
+    fRows.forEach(r => {
+      const shelf = r[2].slice(1).filter(Boolean).length;
+      const n = fApps.length - 1;
+      if (r[2][0] === 1 && shelf <= Math.floor(n / 2)) edges.push(`<li><strong>${esc(r[1])}</strong> — we have it; ${shelf} of ${n} shelf holders claim it.${OU.evidence && OU.evidence[r[1]] ? ' <span class="small muted">' + esc(OU.evidence[r[1]]) + '</span>' : ''}</li>`);
+      if (r[2][0] === 0 && shelf >= 2) gaps.push(`<li><strong>${esc(r[1])}</strong> — ${shelf} of ${n} shelf holders advertise it; we do not have it.${OU.evidence && OU.evidence[r[1]] ? ' <span class="small muted">' + esc(OU.evidence[r[1]]) + '</span>' : ''}</li>`);
+    });
+    e.innerHTML = edges.join('') || '<li>None yet.</li>';
+    g.innerHTML = gaps.join('') || '<li>None.</li>';
+  }
+
+  function renderPricing() {
+    const t = $('price-table'); if (!t) return;
+    t.innerHTML = `<thead><tr><th>App</th><th>Installs</th><th>Ads</th><th>What Google Play lists for in-app purchases</th></tr></thead><tbody>${fApps.map((a, i) => {
+      const app = A[A.findIndex(x => x.id === a.id)];
+      return `<tr${i === 0 ? ' class="ours"' : ''}><td><strong>${esc(shortName(a.t))}</strong><br><span class="small muted">${esc(a.dev || '')}</span></td>
+        <td class="num tmono">${fmt(a.i)}+</td><td>${app && app.ads ? '<span class="pill p-warn">ads</span>' : '<span class="pill p-mute">—</span>'}</td>
+        <td class="tmono small">${esc(a.iap || 'no in-app purchases listed')}</td></tr>`;
+    }).join('')}</tbody>`;
+    const n = $('price-note');
+    if (n) n.innerHTML = `<strong>Reading the prices.</strong> Google Play publishes only a range per listing, not the plan names, so these are ranges and not like-for-like plans. Our own plans, read off the Play sheet on the emulator in the Pakistan store, are <strong>Rs 1,100 weekly</strong> and <strong>Rs 2,750 monthly</strong>, both removing every ad. Every app on this shelf is free to install, ad-supported, and sells a way to switch the ads off — so the paid tier is table stakes, not a differentiator.`;
+  }
+
+  function renderSource() {
+    const box = $('source-list'); if (!box) return;
+    box.innerHTML = [
+      ['The competitors', `The status savers holding the most top-10 slots across the ${D.meta.keywords}-keyword board in the United States, as measured on ${D.meta.fetchedAt}. Adjacent story-saver apps were left out of this comparison on purpose.`],
+      ['Their ticks', 'Each tick was matched in the app\'s own Play listing — title, short description and full description — by the script in research/aso-pipeline/features.ps1, which stores the matched phrase next to every mark. Hover any tick to read the words that proved it.'],
+      ['Our ticks', `Our column comes from the app itself, checked on a Pixel 10 emulator during the QA round of ${OU.checkedOn}. ${esc(OU.note || '')}`],
+      ['What a cross means', 'No evidence on the listing. An app may still ship a feature it never mentions — but on Play, a feature nobody mentions earns nothing, which is exactly the point of this table.']
+    ].map(x => `<div class="check"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
+  }
+
   function renderFoot() {
     const f = $('foot'); if (!f) return;
     f.innerHTML = `Google Play data read on ${esc(D.meta.fetchedAt)} in ${MARKETS.join(', ')} · ${D.meta.keywords} keywords · ${D.meta.apps} listings · collected by the scripts in <a href="https://github.com/zaeem-ahmad-growth/Status-Saver-App/tree/main/research/aso-pipeline">research/aso-pipeline</a>. Ranks move daily.`;
@@ -420,6 +522,7 @@
     renderScope();
     if (PAGE === 'playbook') { renderChips(); renderPlays(); renderComp(); renderMatrix(); renderStrips(); renderBoard(); renderLadder(); renderListingPack(); renderMethod(); renderRisks(); }
     if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderFieldTable(); renderCoverage(); renderTargets(); renderRankTable(); renderPolicy(); }
+    if (PAGE === 'features') { renderFeatChips(); renderCompleteness(); renderFmx(); renderOursCards(); renderEdgesGaps(); renderPricing(); renderSource(); }
     renderFoot();
   }
 
@@ -428,5 +531,6 @@
   on('strips-more', 'click', () => { state.stripsAll = !state.stripsAll; renderStrips(); });
   on('kw-search', 'input', e => { state.q = e.target.value.trim().toLowerCase(); renderBoard(); });
   on('cov-all', 'change', renderCoverage);
+  on('fmx-gaps', 'change', e => { state2.gapsOnly = e.target.checked; renderFmx(); });
   renderAll();
 })();
