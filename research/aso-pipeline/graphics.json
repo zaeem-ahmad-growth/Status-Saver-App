@@ -1,0 +1,161 @@
+﻿{
+    "fetchedAt":  "2026-09-23",
+    "apps":  [
+                 {
+                     "id":  "com.statussaver.videosaver.downloadstatus.storysaver",
+                     "title":  "Status Downloader: Video Saver",
+                     "developer":  "Cell Cave",
+                     "installs":  10,
+                     "score":  null,
+                     "ratings":  0,
+                     "icon":  "img/com-statussaver-videosaver-downloadstatus-storysaver/icon.png",
+                     "feature":  "img/com-statussaver-videosaver-downloadstatus-storysaver/feature.png",
+                     "shots":  [
+                                   "img/com-statussaver-videosaver-downloadstatus-storysaver/shot-1.jpg",
+                                   "img/com-statussaver-videosaver-downloadstatus-storysaver/shot-2.jpg",
+                                   "img/com-statussaver-videosaver-downloadstatus-storysaver/shot-3.jpg",
+                                   "img/com-statussaver-videosaver-downloadstatus-storysaver/shot-4.jpg"
+                               ]
+                 },
+                 {
+                     "id":  "com.downlood.sav.whmedia",
+                     "title":  "Status Download - Video Saver",
+                     "developer":  "Shree Ganesha Labs",
+                     "installs":  100000000,
+                     "score":  4.6,
+                     "ratings":  1710342,
+                     "icon":  "img/com-downlood-sav-whmedia/icon.png",
+                     "feature":  "img/com-downlood-sav-whmedia/feature.png",
+                     "shots":  [
+                                   "img/com-downlood-sav-whmedia/shot-1.jpg",
+                                   "img/com-downlood-sav-whmedia/shot-2.jpg",
+                                   "img/com-downlood-sav-whmedia/shot-3.jpg",
+                                   "img/com-downlood-sav-whmedia/shot-4.jpg"
+                               ]
+                 },
+                 {
+                     "id":  "statussaver.statusdownloader.downloadstatus.savestatus",
+                     "title":  "Status Saver: Video Downloader",
+                     "developer":  "BlueLine. Tech",
+                     "installs":  50000000,
+                     "score":  4.7657895,
+                     "ratings":  205392,
+                     "icon":  "img/statussaver-statusdownloader-downloadstatus-savestatus/icon.png",
+                     "feature":  "img/statussaver-statusdownloader-downloadstatus-savestatus/feature.png",
+                     "shots":  [
+                                   "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-1.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-2.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-3.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-4.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-5.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-savestatus/shot-6.jpg"
+                               ]
+                 },
+                 {
+                     "id":  "statussaver.statusdownloader.downloadstatus.videoimagesaver",
+                     "title":  "Status Saver - Video Saver",
+                     "developer":  "Save Status, Video \u0026 Image Downloader",
+                     "installs":  100000000,
+                     "score":  4.585443,
+                     "ratings":  275075,
+                     "icon":  "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/icon.png",
+                     "feature":  "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/feature.png",
+                     "shots":  [
+                                   "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-1.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-2.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-3.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-4.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-5.jpg",
+                                   "img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-6.jpg"
+                               ]
+                 },
+                 {
+                     "id":  "com.falnesc.statussaver",
+                     "title":  "Status Saver・Status Downloader",
+                     "developer":  "Battery Stats Saver",
+                     "installs":  10000000,
+                     "score":  4.79602,
+                     "ratings":  225685,
+                     "icon":  "img/com-falnesc-statussaver/icon.png",
+                     "feature":  "img/com-falnesc-statussaver/feature.png",
+                     "shots":  [
+                                   "img/com-falnesc-statussaver/shot-1.jpg",
+                                   "img/com-falnesc-statussaver/shot-2.jpg",
+                                   "img/com-falnesc-statussaver/shot-3.jpg",
+                                   "img/com-falnesc-statussaver/shot-4.jpg",
+                                   "img/com-falnesc-statussaver/shot-5.jpg",
+                                   "img/com-falnesc-statussaver/shot-6.jpg"
+                               ]
+                 },
+                 {
+                     "id":  "com.heethjain.apps.statussaver",
+                     "title":  "Status Saver - Video Download",
+                     "developer":  "Heeth Jain",
+                     "installs":  500000,
+                     "score":  4.413793,
+                     "ratings":  7448,
+                     "icon":  "img/com-heethjain-apps-statussaver/icon.png",
+                     "feature":  "img/com-heethjain-apps-statussaver/feature.png",
+                     "shots":  [
+                                   "img/com-heethjain-apps-statussaver/shot-1.jpg",
+                                   "img/com-heethjain-apps-statussaver/shot-2.jpg",
+                                   "img/com-heethjain-apps-statussaver/shot-3.jpg",
+                                   "img/com-heethjain-apps-statussaver/shot-4.jpg",
+                                   "img/com-heethjain-apps-statussaver/shot-5.jpg",
+                                   "img/com-heethjain-apps-statussaver/shot-6.jpg"
+                               ]
+                 },
+                 {
+                     "id":  "com.statussaver.statusdownloader.lite",
+                     "title":  "Status Saver",
+                     "developer":  "Fun and Hi Tool",
+                     "installs":  10000000,
+                     "score":  4.304348,
+                     "ratings":  7390,
+                     "icon":  "img/com-statussaver-statusdownloader-lite/icon.png",
+                     "feature":  "img/com-statussaver-statusdownloader-lite/feature.png",
+                     "shots":  [
+                                   "img/com-statussaver-statusdownloader-lite/shot-1.jpg",
+                                   "img/com-statussaver-statusdownloader-lite/shot-2.jpg",
+                                   "img/com-statussaver-statusdownloader-lite/shot-3.jpg",
+                                   "img/com-statussaver-statusdownloader-lite/shot-4.jpg",
+                                   "img/com-statussaver-statusdownloader-lite/shot-5.jpg"
+                               ]
+                 },
+                 {
+                     "id":  "com.mdtech.status.saver",
+                     "title":  "Status Saver \u0026 Video Download",
+                     "developer":  "MD TECH",
+                     "installs":  100,
+                     "score":  null,
+                     "ratings":  0,
+                     "icon":  "img/com-mdtech-status-saver/icon.png",
+                     "feature":  "img/com-mdtech-status-saver/feature.png",
+                     "shots":  [
+                                   "img/com-mdtech-status-saver/shot-1.jpg",
+                                   "img/com-mdtech-status-saver/shot-2.jpg",
+                                   "img/com-mdtech-status-saver/shot-3.jpg",
+                                   "img/com-mdtech-status-saver/shot-4.jpg",
+                                   "img/com-mdtech-status-saver/shot-5.jpg",
+                                   "img/com-mdtech-status-saver/shot-6.jpg"
+                               ]
+                 },
+                 {
+                     "id":  "com.sinosystems.status",
+                     "title":  "Status Saver: Video Downloader",
+                     "developer":  "SinoSystems, Inc",
+                     "installs":  100000,
+                     "score":  null,
+                     "ratings":  0,
+                     "icon":  "img/com-sinosystems-status/icon.png",
+                     "feature":  "img/com-sinosystems-status/feature.png",
+                     "shots":  [
+                                   "img/com-sinosystems-status/shot-1.jpg",
+                                   "img/com-sinosystems-status/shot-2.jpg",
+                                   "img/com-sinosystems-status/shot-3.jpg",
+                                   "img/com-sinosystems-status/shot-4.jpg",
+                                   "img/com-sinosystems-status/shot-5.jpg"
+                               ]
+                 }
+             ]
+}

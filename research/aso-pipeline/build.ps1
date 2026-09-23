@@ -20,6 +20,8 @@ $data = Read-Json 'data.json'
 $features = Read-Json 'features.json'
 $ours = Read-Json 'ours.json'
 $listing = Read-Json 'listing.json'
+$graphics = Read-Json 'graphics.json'
+$gnotes = Read-Json 'graphics-notes.json'
 
 # Our own column in the feature matrix is the emulator check, not the listing text.
 $ourIdx = 0
@@ -38,6 +40,8 @@ $payload = [ordered]@{
   features = $features
   ours     = $ours
   listing  = $listing
+  graphics = $graphics
+  gnotes   = $gnotes
 }
 
 $json = $payload | ConvertTo-Json -Depth 14 -Compress

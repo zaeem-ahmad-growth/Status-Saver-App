@@ -513,6 +513,86 @@
     ].map(x => `<div class="check"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
   }
 
+  // ---------- graphics ----------
+  const G = PAYLOAD.graphics || {}, GN = PAYLOAD.gnotes || {};
+  const gApps = G.apps || [];
+
+  function renderGfxChips() {
+    const box = $('chips'); if (!box) return;
+    const shots = gApps.reduce((s, a) => s + (a.shots ? a.shots.length : 0), 0);
+    box.innerHTML = [`${gApps.length} listings`, `${gApps.filter(a => a.icon).length} icons`, `${gApps.filter(a => a.feature).length} feature graphics`,
+    `${shots} screenshots`, `saved from Google Play on ${G.fetchedAt || D.meta.fetchedAt}`]
+      .map(c => `<span class="chip">${esc(c)}</span>`).join('');
+  }
+
+  function isOurs(a) { return a.id === D.meta.ours; }
+
+  function renderIconWall() {
+    const box = $('iconwall'); if (!box) return;
+    box.innerHTML = gApps.map(a => `<figure class="icoplate${isOurs(a) ? ' ours' : ''}" data-id="${esc(a.id)}">
+      <img src="${esc(a.icon)}" alt="Icon of ${esc(a.title)}" loading="lazy">
+      <figcaption>${esc(shortName(a.title))}<span class="small muted block">${fmt(a.installs)}+</span></figcaption></figure>`).join('');
+    box.querySelectorAll('.icoplate').forEach(el => {
+      const a = gApps.find(x => x.id === el.dataset.id);
+      bindTip(el, `<b>${esc(a.title)}</b><br>${esc(a.developer || '')}<br>${fmt(a.installs)}+ installs${a.score ? ' · ' + a.score.toFixed(1) + '★' : ''}`);
+    });
+    const r = $('icon-read');
+    if (r) r.innerHTML = (GN.iconRead || []).map(x => `<div class="insight"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
+  }
+
+  function renderFgGrid() {
+    const box = $('fg-grid'); if (!box) return;
+    box.innerHTML = gApps.filter(a => a.feature).map(a => `<figure class="fv${isOurs(a) ? ' ours' : ''}">
+      <button class="shot" type="button" data-full="${esc(a.feature)}" data-cap="${esc(a.title)} · feature graphic">
+        <img src="${esc(a.feature)}" alt="Feature graphic of ${esc(a.title)}" loading="lazy"></button>
+      <figcaption>${esc(shortName(a.title))}${isOurs(a) ? ' <span class="pill p-acc">ours</span>' : ''}<span class="small muted block">${fmt(a.installs)}+ installs</span></figcaption></figure>`).join('');
+    const r = $('fg-read');
+    if (r) r.innerHTML = (GN.fgRead || []).map(x => `<div class="insight"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
+    bindLightbox();
+  }
+
+  function renderSystems() {
+    const t = $('sys-table'); if (!t) return;
+    t.innerHTML = `<thead><tr><th>App</th><th>First screen shows</th><th>Caption</th><th>Framing</th><th>Read</th></tr></thead>
+      <tbody>${(GN.systems || []).map(s => `<tr${s[0].indexOf('Status Downloader: Video Saver') === 0 ? ' class="ours"' : ''}>
+        <td><strong>${esc(s[0])}</strong></td><td class="small">${esc(s[1])}</td><td class="small">${esc(s[2])}</td><td class="small">${esc(s[3])}</td><td class="small">${esc(s[4])}</td></tr>`).join('')}</tbody>`;
+  }
+
+  function renderCatalogue() {
+    const box = $('app-catalogue'); if (!box) return;
+    box.innerHTML = gApps.map(a => `<section class="g-app${isOurs(a) ? ' ours' : ''}">
+      <div class="g-apphead">
+        ${a.icon ? `<img class="appicon" src="${esc(a.icon)}" alt="" loading="lazy">` : ''}
+        <div><h3>${esc(a.title)}${isOurs(a) ? ' <span class="pill p-acc">our app</span>' : ''}</h3>
+          <p class="small muted">${esc(a.developer || '')} · ${fmt(a.installs)}+ installs${a.score ? ' · ' + a.score.toFixed(1) + '★ (' + fmt(a.ratings) + ')' : ' · no rating yet'}</p></div>
+      </div>
+      ${a.feature ? `<button class="shot" type="button" data-full="${esc(a.feature)}" data-cap="${esc(a.title)} · feature graphic"><img src="${esc(a.feature)}" alt="Feature graphic of ${esc(a.title)}" loading="lazy"></button>` : '<p class="small muted">No feature graphic on the listing.</p>'}
+      <div class="m-shots">${(a.shots || []).map((s, i) => `<button class="shot" type="button" data-full="${esc(s)}" data-cap="${esc(a.title)} · screenshot ${i + 1}"><img src="${esc(s)}" alt="Screenshot ${i + 1} of ${esc(a.title)}" loading="lazy"></button>`).join('')}</div>
+    </section>`).join('');
+    bindLightbox();
+  }
+
+  function bindLightbox() {
+    const lb = $('lb'), img = $('lb-img'), cap = $('lb-cap');
+    if (!lb) return;
+    document.querySelectorAll('.shot').forEach(b => {
+      if (b.dataset.bound) return;
+      b.dataset.bound = '1';
+      b.addEventListener('click', () => {
+        img.src = b.dataset.full; img.alt = b.querySelector('img').alt; cap.textContent = b.dataset.cap || '';
+        if (typeof lb.showModal === 'function') lb.showModal();
+      });
+    });
+    const close = $('lb-close');
+    if (close && !close.dataset.bound) { close.dataset.bound = '1'; close.addEventListener('click', () => lb.close()); }
+    if (!lb.dataset.bound) { lb.dataset.bound = '1'; lb.addEventListener('click', e => { if (e.target === lb) lb.close(); }); }
+  }
+
+  function renderOursGraphics() {
+    const box = $('ours-graphics'); if (!box) return;
+    box.innerHTML = (GN.ours || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
+  }
+
   function renderFoot() {
     const f = $('foot'); if (!f) return;
     f.innerHTML = `Google Play data read on ${esc(D.meta.fetchedAt)} in ${MARKETS.join(', ')} · ${D.meta.keywords} keywords · ${D.meta.apps} listings · collected by the scripts in <a href="https://github.com/zaeem-ahmad-growth/Status-Saver-App/tree/main/research/aso-pipeline">research/aso-pipeline</a>. Ranks move daily.`;
@@ -523,6 +603,7 @@
     if (PAGE === 'playbook') { renderChips(); renderPlays(); renderComp(); renderMatrix(); renderStrips(); renderBoard(); renderLadder(); renderListingPack(); renderMethod(); renderRisks(); }
     if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderFieldTable(); renderCoverage(); renderTargets(); renderRankTable(); renderPolicy(); }
     if (PAGE === 'features') { renderFeatChips(); renderCompleteness(); renderFmx(); renderOursCards(); renderEdgesGaps(); renderPricing(); renderSource(); }
+    if (PAGE === 'graphics') { renderGfxChips(); renderIconWall(); renderFgGrid(); renderSystems(); renderCatalogue(); renderOursGraphics(); }
     renderFoot();
   }
 

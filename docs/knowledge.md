@@ -19,6 +19,7 @@ Key facts and decisions for this repository. Loaded automatically in every Claud
 ## This repository
 
 - **Status Saver** (`tabs/01-status-saver/`) — the full product dossier, with eight sections: Overview, Spec, Market research, Versions & APK, Monetization, Screenshots, Graphics, QA history.
+- **Competitor's Graphics** (`tabs/05-competitors-graphics/`) — every icon, feature graphic and screenshot the shelf is running, saved from the live listings into the tab's own `img/` folder (66 files), with an assessment of each written after looking at the asset.
 - **Features Comparison** (`tabs/04-features-comparison/`) — 24 tracked features across our app and the 8 status savers holding the shelf. Every competitor tick is matched in that app's own listing text and the matched phrase is stored as evidence; our column comes from the 17 Sep 2026 emulator round instead, because a listing can overstate what ships.
 - **PlayStore Metadata** (`tabs/03-playstore-metadata/`) — the live listing against the proposed one: title, short and full description with character counts, the keyword-to-field plan, the coverage check, competitor ranks on the targeted phrases, and the policy record.
 - **ASO Playbook** (`tabs/02-aso-playbook/`) — the Google Play keyword research of 23 Sep 2026: plays in the category, competitors, rank tracker, result slots, keyword board, launch ladder and the proposed listing. Data-driven from `assets/data.js` through `assets/app.js`.
@@ -56,6 +57,15 @@ Key facts and decisions for this repository. Loaded automatically in every Claud
 - **Recommended title: `Status Saver & Downloader App`** (29 chars) — passed the live check against 25 titles, and carries four board phrases our current title misses. Current title `Status Downloader: Video Saver` passes too (only our own app uses it) but misses the head term "status saver".
 - The shelf holders (by top-10 slots held in the US): Status Download - Video Saver (com.downlood.sav.whmedia, 90), Status Saver: Video Downloader (savestatus, 88), Status Saver - Video Saver (videoimagesaver, 88), Status Saver・Status Downloader (falnesc, 87), Status Saver - Video Download (heethjain, 81).
 - Feature evidence from the shelf: nobody advertises MP3 extraction, video editing, a private vault or multi-select delete; 2 of 8 advertise recovering deleted messages (a claim we do not make and must not copy).
+
+## Store graphics findings (23 Sep 2026)
+
+- **Our store assets carry other companies' logos.** The mock status bar in our screenshots and feature graphic shows the Instagram, Facebook and TikTok marks. That breaks the house brand rule and is exactly what Play's impersonation policy covers. Fix before the next listing update.
+- **Our feature graphic claims "Reply Instantly"** — the app has no reply or direct-chat feature. Replace the claim.
+- **Our first screenshot is the splash screen.** Every competitor leads with content (their grid, or the status list they read from).
+- **Our icon is the closest twin on the shelf** to Status Saver: Video Downloader (50M+ installs, 88 top-10 slots): same green, same white ring/bubble, same down arrow and underline, same red year badge.
+- 8 of 9 icons on this shelf are the same green with a white down arrow; the only two listings that stand out visually did it by leaving the green (dark teal, or white).
+- The 512 × 512 Play icon and the 1024 × 500 feature graphic exist on the live listing but are **not in the app repository**, so they cannot be re-exported or versioned.
 
 ## Rules that apply here
 

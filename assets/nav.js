@@ -5,7 +5,8 @@
     { slug: '01-status-saver', label: 'Status Saver' },
     { slug: '02-aso-playbook', label: 'ASO Playbook' },
     { slug: '03-playstore-metadata', label: 'PlayStore Metadata' },
-    { slug: '04-features-comparison', label: 'Features Comparison' }
+    { slug: '04-features-comparison', label: 'Features Comparison' },
+    { slug: '05-competitors-graphics', label: 'Competitor’s Graphics' }
   ];
   var RESEARCH = 'https://github.com/zaeem-ahmad-growth/Status-Saver-App/tree/main/research';
 
