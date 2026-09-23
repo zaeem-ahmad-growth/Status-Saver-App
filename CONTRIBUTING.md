@@ -6,6 +6,8 @@ Nothing here is tied to one app. Wherever you see `<repo>`, `<app>`, `<tab>` or 
 
 Version: 23 Sep 2026. Merges and supersedes *App Research Repositories - Read and Write Guide* and *What Happens When a Contributor Adds a Tab*.
 
+**Changed 23 Sep 2026 — §10 and the brand-names rule.** The old wording ("no other company's brand name in store-listing or ad copy", "real product and company names are not [free], in any form or abbreviation") was wrong and had already damaged one piece of research. Play's policy is about impersonation, not about names: naming an app ours genuinely works with, descriptively, is allowed and is often the highest-value keyword in the category. The rule now turns on *why* a term could not be used. Repositories whose keyword research was scored under the old wording need re-checking — see the note at the end of §10.
+
 ---
 
 ## 0. The four outcomes these rules exist to produce
@@ -30,7 +32,7 @@ Version: 23 Sep 2026. Merges and supersedes *App Research Repositories - Read an
 7. **No doc export, builds, browsers or scrapers for wording and number changes.** Code changes get one browser console check, nothing more.
 8. **The repository is the master copy.** Claude artifacts are read-only snapshots for everyone except the account that owns them.
 9. **Never commit secrets** — keys, tokens, service files, ad unit IDs, store console exports, personal emails, builds.
-10. **No other companies' brand names in store-listing or ad copy.** Generic category words are free; borderline terms need the live Play title check, actually run and dated.
+10. **No impersonation in store-listing or ad copy** — which is not the same as no names. Generic category words are free; naming an app ours genuinely works with is allowed in a descriptive form, with the disclaimer and no logo; borderline terms need the live Play title check, actually run and dated, before they are used *or* rejected.
 11. **Change only what was asked.** Someone else's tab or section: check the author, then confirm before rewriting. Never renumber other tabs.
 12. **Every page keeps** `<meta name="robots" content="noindex">`.
 13. **Push small, push often, never force-push.** Pull again before the next change, because the automation commits the regenerated docs.
@@ -205,11 +207,14 @@ All repositories are public. The sites are public but hidden from search engines
 
 **Never commit:** passwords, API keys, tokens, service files (`google-services.json` and similar), ad unit IDs, signing keys, `.aab`/`.apk` builds, store console exports (installs, traffic, revenue) or personal email addresses. GitHub push protection blocks well-known key formats but **not** ad unit IDs or a service file — that part is on you. Secrets belong in the project's secret store, never in chat, code or notes.
 
-**Brand names.** No other company's brand name in our apps' store-listing or ad copy. Competitor names are fine inside research content.
+**Brand names.** The rule is *no impersonation*, not *no names*. Play's policy prohibits store listings that falsely imply a relationship with another company — it does not prohibit naming the app ours works with, because a listing is required to describe what the app actually does. Judge a phrase by **why** it could not be used, never by whether a product name appears in it. Competitor names are fine inside research content in any case.
 
 - Shared category words that describe what a whole category does are generic and free to use.
-- Real product and company names are not, in any form or abbreviation.
-- A borderline term may be used only after a **live Google Play title check**: at least 5 third-party titles using it, at least 2 of them with 1M+ installs, the oldest live 3+ years. Record the result and the date in that repository's `docs/knowledge.md`.
+- **Compatibility phrases are allowed**: naming a third-party app our app genuinely reads, writes to or works with, in a descriptive form — "status saver for WhatsApp", "video downloader for Instagram". This is supported functionality, not brand identity. It needs four things to stay descriptive: our own word first in the title, the other company's logo or mark nowhere in the icon or store art, no "official"/"affiliated"/"endorsed" wording, and a disclaimer in the description naming the trademark owner and stating we are independent.
+- **Not allowed, each for its own reason:** a platform our app *cannot* actually handle (the claim would be false, which is a metadata-accuracy breach, not a trademark one); a modified or unofficial client of another app (Play bans facilitating them); another developer's product name or exact full app title used as our own identity (that is the impersonation the policy is about).
+- A borderline term may be used only after a **live Google Play title check**: at least 5 third-party titles using it, at least 2 of them with 1M+ installs, the oldest live 3+ years. Record the result and the date in that repository's `docs/knowledge.md`. Never report the check as passed without running it — and never block a term as a "brand" without running it either. Blocking on sight is the more expensive mistake: in the Status Saver repository it cost 36% of the keyword board's opportunity and produced a listing written in euphemisms before it was caught on 23 Sep 2026.
+
+**Re-check needed.** Any repository whose keyword board or listing copy was produced before 23 Sep 2026 was scored under the old wording and is probably under-counting its own category. The tell is a scoring rule that tests for a list of brand words and zeroes or halves the score, or listing copy that talks around a name ("your messaging app", "the platform"). `Status-Saver-App/research/aso-pipeline/brandcheck.ps1` is the worked example of the corrected classification and the live title check; the other repositories have not been re-checked yet.
 - **Never report a check as passed unless it was actually run** — a script plus a live Play search, not memory.
 
 **Titles and headlines** must not repeat another app's exact or near-exact title. Same check discipline.
@@ -243,7 +248,7 @@ All repositories are public. The sites are public but hidden from search engines
 | Tab page added, `assets/nav.js` line forgotten | Page live at its URL, missing from the tab bar and from the generated docs |
 | `assets/data.js` broken (one missing comma) | Every data-driven tab goes blank on the live site; the docs automation fails, shown only as a red mark on Actions; the push is not blocked |
 | Someone else's tab edited or deleted, or history force-pushed | Nothing prevents it |
-| Brand names put into listing copy | Nothing checks for it |
+| Impersonation in listing copy, or a usable term wrongly blocked as a brand | Nothing checks for either |
 | Generated docs edited by hand | Overwritten on the next push |
 | Secrets committed | Push protection catches known key formats only |
 
@@ -288,7 +293,7 @@ open Claude Code inside the repository folder, pull --rebase first, answer from
 docs/knowledge.md, stop at the first row of the read ladder that answers the question,
 edit exactly one place found via docs/code-map.md, never edit generated docs, never run
 the doc export or the scrapers, no builds or browsers for wording edits, no secrets, no
-other companies' brand names in listing copy, keep the noindex meta, never force-push.
+no impersonation in listing copy, keep the noindex meta, never force-push.
 
 **Why:** the generated docs give the owner full backend visibility for free, and loading
 only what a request needs is what keeps credits and time down.
@@ -314,8 +319,8 @@ from that repository's own CLAUDE.md and docs/knowledge.md.
 - [ ] No generated `docs/` file edited by hand.
 - [ ] `assets/data.js` still valid JSON (if touched); a new tab has its `nav.js` line.
 - [ ] Page keeps `noindex`; images live in the tab's own folder.
-- [ ] No secrets, no other companies' brand names in listing copy, claims true to the app.
-- [ ] Any brand or title check reported as passed was actually run, and dated in `docs/knowledge.md`.
+- [ ] No secrets, no impersonation in listing copy (names of apps ours works with are fine, with the disclaimer and no logo), claims true to the app.
+- [ ] Any brand or title check reported as passed - or used to reject a term - was actually run, and dated in `docs/knowledge.md`.
 - [ ] `docs/knowledge.md` updated if a fact, decision or tab changed.
 - [ ] Only the intended files staged; commit message `"<Tab>: <what changed>"`; pushed without `--force`.
 - [ ] Actions run green a couple of minutes later; `git pull --rebase` before the next change.

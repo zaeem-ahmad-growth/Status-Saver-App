@@ -332,6 +332,17 @@ img{max-width:100%}
   .m-shots figure{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden}
   .m-shots img{display:block; width:100%; height:auto; background:var(--sunk)}
   .m-shots figcaption{font-size:12.5px; color:var(--muted); padding:6px 9px}
+  /* the rank legend above the competitor matrix, matching .rk.b1-.b4 */
+  .sw.rk-b1{background:var(--rk1)} .sw.rk-b2{background:var(--rk2)}
+  .sw.rk-b3{background:var(--rk3)} .sw.rk-b4{background:var(--rk4)}
+  /* our own store art, above the screenshot strip: feature graphic wide, icon beside it */
+  .m-assets{display:grid; grid-template-columns:minmax(0,3fr) minmax(0,1fr); gap:12px; margin-top:16px; align-items:start}
+  @media (max-width:640px){ .m-assets{grid-template-columns:minmax(0,1fr)} }
+  .m-assets figure{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+  .m-assets img{display:block; width:100%; height:auto; background:var(--sunk)}
+  .m-assets figcaption{font-size:12.5px; color:var(--muted); padding:6px 9px}
+  .m-assets .shot{display:block; width:100%; margin:0; padding:0; border:0; background:none; cursor:zoom-in}
+  .m-shots .shot{display:block; width:100%; margin:0; padding:0; border:0; background:none; cursor:zoom-in}
   mark.kwm{background:var(--accent-soft); color:var(--ink); border-radius:3px; padding:0 2px; box-shadow:inset 0 -2px 0 var(--accent)}
   mark.issue{background:var(--risk-soft); color:var(--risk); border-radius:3px; padding:0 2px; box-shadow:inset 0 -2px 0 var(--risk); font-weight:600}
   mark.chg{background:var(--good-soft); color:var(--ink); border-radius:3px; padding:0 2px; box-shadow:inset 0 -2px 0 var(--good)}

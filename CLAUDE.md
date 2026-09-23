@@ -19,7 +19,7 @@ research/                     the sources behind the numbers
 tools/export-docs.js          the generator the "Update docs" workflow runs: never run it yourself
 ```
 
-There is no `assets/data.js` or `assets/app.js` yet — tab 01 is a self-contained page. Add them with the first data-driven tab.
+`assets/data.js` is **generated** by `research/aso-pipeline/build.ps1` from the JSON sources next to it — edit `listing.json` (the copy and written sections) or the other sources and re-run `build.ps1`, never edit the payload. `build.ps1` touches no network. The scrapers beside it (`collect.ps1`, `analyze.ps1`, `graphics.ps1`, `features.ps1`, `titlecheck.ps1`) must not be re-run; `brandcheck.ps1` is an offline analyser and is safe. Tab 01 is a self-contained page and reads neither `data.js` nor `app.js`.
 
 ## Before anything
 
@@ -43,8 +43,9 @@ Find the text in `docs/tabs/<tab>.md`, find the place to edit in `docs/code-map.
 ## Content rules
 
 - Public repository. Never commit keys, tokens, ad identifiers (including AdMob app and unit IDs), `google-services.json`, signing keys, `.aab`/`.apk` builds, Play Console exports or personal email addresses. The AdMob app ID from the source artifact was deliberately removed from tab 01 — do not put it back.
-- WhatsApp is named throughout the dossier because it is research content. Never put it, or any other company's brand name, into Play listing or ad copy for this app.
-- A borderline listing term needs a live Google Play title check (5+ third-party titles, 2+ with 1M+ installs, oldest 3+ years), run and dated in `docs/knowledge.md`. Never report a check as passed unless it was run.
+- **WhatsApp may be named in the Play listing copy** — to say what the app reads, and nothing more. Play's impersonation policy bans falsely implying a relationship, not the name itself; a utility is required to describe what it does. Keep our own word first in the title, keep the WhatsApp mark out of the icon and store art, never say or imply "official" or "affiliated", and keep the disclaimer in the description. Those four are what make the naming defensible — do not drop any of them.
+- Names that stay out of the copy, each for its own reason: platforms the app **cannot read** (Instagram, Facebook, TikTok) because the claim would be false; modified clients (GB/FM/YO WhatsApp) because Play bans facilitating them; another developer's app name because that is impersonation. A phrase is judged by why it could not be used, never by whether a product name appears in it.
+- A borderline listing term needs a live Google Play title check (5+ third-party titles, 2+ with 1M+ installs, oldest 3+ years), run and dated in `docs/knowledge.md`. Never report a check as passed unless it was run — and never block a term as a "brand" without running it either. Run it with `research/aso-pipeline/brandcheck.ps1`.
 - Claims must match what the app does, including that it shows ads.
 - Every page keeps `<meta name="robots" content="noindex">`.
 - Change only what was asked; check the author before rewriting someone else's section.

@@ -18,14 +18,17 @@ The Google Play scrape of **23 Sep 2026** and the PowerShell scripts that collec
 Hand-written inputs, not generated:
 
 - `ours.json` — our app's own feature column, taken from the 17 Sep 2026 QA round on the emulator rather than from our listing text, plus the evidence for each mark.
-- `listing.json` — the proposed title, short description and full description, the keyword-to-field plan, the policy record and the watch-outs.
+- `listing.json` — the proposed title, short description and full description, the keyword-to-field plan, the field composition, the title strategy, the comparison against the playbook's first-run package, the policy record and the watch-outs. **This is the file to edit when the copy changes**, then re-run `build.ps1`.
+- `offers.json` — the live Events & offers check of all 13 listings in US, PK and IN on 23 Sep 2026. Was appended to `assets/data.js` by hand; now a build source so a rebuild cannot drop it.
+- `brandcheck.ps1` — the use check. Reads `data.json` only, makes no network calls, so it is safe to re-run. Answers two things: whether the house live-title check passes for naming WhatsApp (it does — 10 third-party titles, 3 above 1M installs, oldest live 7.8 years), and how each board phrase is classed. Run with `-Json` to write `usecheck.json`.
+- `usecheck.json` — that script's output: the title-check evidence, the board split by use class, and every keyword with its class and score.
 
 ### What the run of 23 Sep 2026 found
 
 - 564 autocomplete probes across the United States, Pakistan and India produced 667 candidate phrases; the **110 highest-demand** were tracked live.
 - **330 live result lists** (110 keywords × 3 markets, depth 30) and **217 full app listings**.
 - Our listing holds **zero placements** across all 110 keywords in all three markets.
-- The category's highest-demand phrases nearly all carry another company's brand name, which house rules keep out of our listing copy. The board scores them separately: measured, never used.
+- The category's highest-demand phrases nearly all name WhatsApp. **The first pass of this research scored every one of them at zero and wrote the listing copy around the euphemism "your messaging app". That was wrong, and it was corrected on 23 Sep 2026.** Play's impersonation policy bans falsely implying a relationship with another company, not naming the app ours reads from, and the house live-title check passes on every limb. The board now classes each phrase by *why* it could not be used: `free` 59 phrases (52% of US opportunity), `compat` 38 (36%), `rival` 7 (7%), `offapp` 6 (5%) — and only the last three score zero. The 36% compat share was the cost of the old rule.
 - Four of the six most natural titles for this app are already the exact title of live apps — `Status Saver: Video Downloader` alone is used by five.
 
 `cache/` is not committed: it is 25 MB of raw Play responses and is rebuilt by re-running `collect.ps1`. The scrape results themselves (`serps.json`, `apps.json`, `data.json`) are committed.

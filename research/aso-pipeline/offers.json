@@ -1,0 +1,88 @@
+﻿{
+    "checkedOn":  "2026-09-23",
+    "markets":  [
+                    "US",
+                    "PK",
+                    "IN"
+                ],
+    "apps":  [
+                 {
+                     "id":  "com.statussaver.videosaver.downloadstatus.storysaver",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "com.downlood.sav.whmedia",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "statussaver.statusdownloader.downloadstatus.savestatus",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "statussaver.statusdownloader.downloadstatus.videoimagesaver",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "com.falnesc.statussaver",
+                     "US":  true,
+                     "PK":  true,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "com.heethjain.apps.statussaver",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "com.statussaver.statusdownloader.lite",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "com.mdtech.status.saver",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "com.sinosystems.status",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "com.jam.status_saver",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "com.studio.zm.statussaver",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "instagram.video.downloader.story.saver.ig",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 },
+                 {
+                     "id":  "instagram.video.downloader.story.saver.ig.insaver",
+                     "US":  false,
+                     "PK":  false,
+                     "IN":  false
+                 }
+             ]
+}

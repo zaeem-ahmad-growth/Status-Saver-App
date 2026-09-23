@@ -18,8 +18,44 @@
   const TIER = { A: 'Core', B: 'Adjacent', C: 'Peripheral', D: 'Off-intent' };
   const TIER_PILL = { A: 'p-good', B: 'p-acc', C: 'p-warn', D: 'p-risk' };
   const TIER_W = { A: 1, B: 0.6, C: 0.3, D: 0 };
-  // Brand words may be researched, but may never appear in our own listing copy.
-  const BRAND_RX = /\b(whatsapp|whats app|wa|insta|instagram|facebook|fb|snapchat|snap|tiktok|telegram|gb|fm|yo)\b/;
+  // ---------- how a phrase may be used in our own listing ----------
+  // Play's impersonation policy bans falsely implying a relationship with another company. It does not ban
+  // naming the app this one reads from: a status saver that says "for WhatsApp" is describing its own
+  // function, which is exactly what Play asks a listing to do. The house live-title check was run against the
+  // scrape on 23 Sep 2026 and passed — 10 third-party titles name WhatsApp, 3 of them above 1M installs, the
+  // oldest live since Nov 2018. So a phrase is judged by WHY it could not be used, not by whether a product
+  // name appears in it at all:
+  //   free   - names nobody. Always usable.
+  //   compat - names the app we read (WhatsApp, WhatsApp Business, WA). Usable as a descriptive phrase.
+  //   offapp - names a platform we do not read. Unusable: the claim would be false, which is a metadata
+  //            problem, not a trademark one.
+  //   mod    - names a modified client (GB/FM/YO WhatsApp). Unusable: Play bans facilitating them.
+  //   rival  - names another developer's product outright. Unusable: that is the impersonation the policy means.
+  const MOD_RX = /\b(gb ?whatsapp|fm ?whatsapp|yo ?whatsapp|gbwa|whatsapp plus)\b/;
+  const RIVAL_RX = /\b(lazy genius|native craft|sara tech|xtx|vmate|mx player|radha krishna)\b/;
+  const OFFAPP_RX = /\b(instagram|insta|ig|facebook|fb|tiktok|snapchat|snap|telegram|youtube)\b/;
+  const HOST_RX = /\b(whatsapp|whats app|wa)\b/;
+  const USE_W = { free: 1, compat: 1, offapp: 0, mod: 0, rival: 0 };
+  const USE_LABEL = {
+    free: 'Names nobody', compat: 'Names the app we read', offapp: 'Platform we do not read',
+    mod: 'Modified client', rival: "Another developer's product"
+  };
+  const USE_SHORT = { free: 'generic', compat: 'compatibility', offapp: 'off-app', mod: 'mod client', rival: 'rival name' };
+  const USE_PILL = { free: 'p-good', compat: 'p-acc', offapp: 'p-warn', mod: 'p-risk', rival: 'p-risk' };
+  const USE_WHY = {
+    free: 'Carries no product name at all, so nothing constrains its use.',
+    compat: 'Names the app this one reads. Play allows a listing to say what it works with, as long as it does not imply the two are affiliated — so this phrase is usable, and the closing paragraph carries the disclaimer that keeps it usable.',
+    offapp: 'Names a platform this app cannot read. Using it would claim a feature the app does not have, which Play’s metadata policy treats as a misleading listing.',
+    mod: 'Names a modified WhatsApp client. Play bans apps that facilitate them, whatever the demand.',
+    rival: 'Names another developer’s product. That is the impersonation Play’s policy is actually about.'
+  };
+  function useOf(k) {
+    if (MOD_RX.test(k)) return 'mod';
+    if (RIVAL_RX.test(k)) return 'rival';
+    if (OFFAPP_RX.test(k)) return 'offapp';
+    if (HOST_RX.test(k)) return 'compat';
+    return 'free';
+  }
 
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const fmt = n => n == null ? '—' : n >= 1e9 ? (n / 1e9).toFixed(2).replace(/\.?0+$/, '') + 'B' : n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'K' : String(n);
@@ -48,11 +84,12 @@
     const comp = Math.min(1, Math.log10((r[5] || 0) + 10) / 9);
     const winnable = 1 - comp;
     const opp = Math.round(100 * (dScore / 100) * (0.35 + 0.65 * winnable));
-    const brand = BRAND_RX.test(k);
+    const use = useOf(k);
+    const usable = USE_W[use] > 0;
     return {
-      k, tier, brand, ourRank: r[1], hits: r[2], bestPos: r[3], slots,
+      k, tier, use, usable, ourRank: r[1], hits: r[2], bestPos: r[3], slots,
       installs: r[5], big: r[6], relMix: r[7], results: r[8],
-      D: dScore, C: Math.round(comp * 100), O: opp, P: Math.round(TIER_W[tier] * opp * (brand ? 0.55 : 1))
+      D: dScore, C: Math.round(comp * 100), O: opp, P: Math.round(TIER_W[tier] * opp * USE_W[use])
     };
   }
   const boardOf = gl => (D.markets[gl] || []).map(scoreRow).sort((a, b) => b.P - a.P || b.O - a.O);
@@ -182,7 +219,7 @@
       return `<td class="rk ${b}">${rank}</td>`;
     };
     t.innerHTML = head + `<tbody>${rows.map(r => `<tr>
-      <td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> ${esc(r.k)}${r.brand ? ' <span class="pill p-risk" title="Brand phrase: research only, never in our listing copy">brand</span>' : ''}</td>
+      <td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> ${esc(r.k)}${r.usable ? '' : ` <span class="pill ${USE_PILL[r.use]}" title="${esc(USE_WHY[r.use])}">${USE_SHORT[r.use]}</span>`}</td>
       ${cell(r, OURS)}${cols.map(i => cell(r, i)).join('')}</tr>`).join('')}</tbody>`;
     const btn = $('matrix-all'); if (btn) btn.checked = state.matrixAll;
   }
@@ -236,10 +273,10 @@
       <th>Keyword</th>${th('D', 'Demand', 'How often and how high Play autocomplete offers this phrase')}
       ${th('C', 'Competition', 'Installs behind the top ten, log scale')}
       ${th('O', 'Opportunity', 'Demand weighted by how winnable the top ten looks')}
-      ${th('P', 'Priority', 'Opportunity weighted by relevance, and halved for brand phrases we cannot use')}
+      ${th('P', 'Priority', 'Opportunity weighted by relevance, and zeroed for phrases this listing may not use')}
       <th>Top ten holders</th><th>Us</th></tr></thead>
       <tbody>${rows.map(r => `<tr>
-        <td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong>${r.brand ? ' <span class="pill p-risk">brand</span>' : ''}
+        <td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong>${r.use === 'free' ? '' : ` <span class="pill ${USE_PILL[r.use]}" title="${esc(USE_WHY[r.use])}">${USE_SHORT[r.use]}</span>`}
           <span class="small muted block">${r.hits} autocomplete hits${r.bestPos < 99 ? ' · best slot ' + (r.bestPos + 1) : ''}</span></td>
         <td class="num tmono">${r.D}</td>
         <td class="num tmono">${r.C}<span class="small muted block">${fmt(r.installs)} · ${r.big} apps ≥10M</span></td>
@@ -257,7 +294,7 @@
 
   function renderLadder() {
     const box = $('ladder-list'); if (!box) return;
-    const board = boardOf(state.gl).filter(r => r.tier !== 'D' && !r.brand);
+    const board = boardOf(state.gl).filter(r => r.tier !== 'D' && r.usable);
     const rung1 = board.filter(r => r.C <= 88).slice(0, 8);
     const rung2 = board.filter(r => r.C > 88 && r.C <= 93).slice(0, 8);
     const rung3 = board.filter(r => r.C > 93).slice(0, 8);
@@ -292,7 +329,7 @@
       ['What was read', `Google Play's own search results (depth 30), autocomplete and app listings, on ${m.fetchedAt}, in ${MARKETS.map(x => MNAME[x]).join(', ')}. ${m.keywords} keywords, ${m.lists} live result lists, ${m.apps} app listings.`],
       ['Demand', 'Play does not publish search volume. Demand here counts how many autocomplete probes returned the phrase and how high it sat — a phrase Play offers early and in several markets is one people type.'],
       ['Competition', 'The installs behind the top ten for that search, on a log scale, plus how many of those ten have 10M+ installs.'],
-      ['Opportunity and priority', 'Opportunity is demand discounted by how walled-off the top ten looks. Priority multiplies that by relevance, and halves any phrase carrying another company\'s brand name, because that phrase can be researched but never used in our listing.'],
+      ['Opportunity and priority', 'Opportunity is demand discounted by how walled-off the top ten looks. Priority multiplies that by relevance, then by whether the listing may use the phrase at all. Naming WhatsApp does not disqualify a phrase — a status saver is allowed to say which app it reads — so those keep full priority. Priority goes to zero only for a phrase naming a platform this app cannot read, a modified client, or another developer\'s product.'],
       ['What it is not', 'No third-party rank tool, no estimated volumes, no paid data. Ranks move daily: treat every rank as "on the day it was read".']
     ].map(x => `<div class="check"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
   }
@@ -368,19 +405,23 @@
     const all = $('cov-all') && $('cov-all').checked;
     if (!all) rows = rows.filter(x => x.cov !== 'no' || x.r.tier === 'A');
     const pillOf = c => c === 'exact' ? '<span class="pill p-good">word for word</span>' : c === 'tokens' ? '<span class="pill p-acc">every word present</span>' : '<span class="pill p-mute">not covered</span>';
-    const usable = rows.filter(x => !x.r.brand);
+    const usable = rows.filter(x => x.r.usable);
     const hit = usable.filter(x => x.cov !== 'no').length;
-    const brandCount = rows.length - usable.length;
-    t.innerHTML = `<thead><tr><th>Keyword</th><th>Tier</th><th>In the proposed listing</th><th>Priority</th></tr></thead>
-      <tbody>${rows.map(x => `<tr><td class="kw">${esc(x.r.k)}${x.r.brand ? ' <span class="pill p-risk">brand · never used</span>' : ''}</td>
-        <td><span class="pill ${TIER_PILL[x.r.tier]}">${x.r.tier}</span></td><td>${pillOf(x.cov)}</td><td class="num tmono">${x.r.P}</td></tr>`).join('')}</tbody>
-      <tfoot><tr><td colspan="4" class="small muted"><strong>${hit} of ${usable.length}</strong> phrases this listing is allowed to use appear in it, word for word or with every word present. The other ${brandCount} shown here carry another company's brand name and are excluded by rule, whatever they would earn. A phrase the listing does not contain cannot rank for it.</td></tr></tfoot>`;
+    const blocked = rows.length - usable.length;
+    const compat = usable.filter(x => x.r.use === 'compat');
+    const compatHit = compat.filter(x => x.cov !== 'no').length;
+    t.innerHTML = `<thead><tr><th>Keyword</th><th>Tier</th><th>Use</th><th>In the proposed listing</th><th>Priority</th></tr></thead>
+      <tbody>${rows.map(x => `<tr><td class="kw">${esc(x.r.k)}</td>
+        <td><span class="pill ${TIER_PILL[x.r.tier]}">${x.r.tier}</span></td>
+        <td><span class="pill ${USE_PILL[x.r.use]}" title="${esc(USE_WHY[x.r.use])}">${USE_SHORT[x.r.use]}</span></td>
+        <td>${pillOf(x.cov)}</td><td class="num tmono">${x.r.P}</td></tr>`).join('')}</tbody>
+      <tfoot><tr><td colspan="5" class="small muted"><strong>${hit} of ${usable.length}</strong> phrases this listing may use appear in it, word for word or with every word present — including <strong>${compatHit} of ${compat.length}</strong> compatibility phrases, the ones that name WhatsApp to say what the app reads. The other ${blocked} are not excluded for naming a product: they name a platform this app cannot read, a modified client, or another developer's app, and each row says which. A phrase the listing does not contain cannot rank for it.</td></tr></tfoot>`;
   }
 
   function renderTargets() {
     const t = $('target-table'); if (!t) return;
     const text = fullTextOf(P);
-    const rows = boardOf(state.gl).filter(r => !r.brand && coverage(r.k, text) !== 'no').slice(0, 24);
+    const rows = boardOf(state.gl).filter(r => r.usable && coverage(r.k, text) !== 'no').slice(0, 24);
     t.innerHTML = `<thead><tr><th>Keyword</th><th>Demand</th><th>Competition</th><th>Top ten holders</th><th>Us today</th></tr></thead><tbody>${rows.map(r =>
       `<tr><td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong></td>
         <td class="num tmono">${r.D}</td>
@@ -392,7 +433,7 @@
   function renderRankTable() {
     const t = $('rank-table'); if (!t) return;
     const text = fullTextOf(P);
-    const rows = boardOf(state.gl).filter(r => !r.brand && coverage(r.k, text) !== 'no').slice(0, 20);
+    const rows = boardOf(state.gl).filter(r => r.usable && coverage(r.k, text) !== 'no').slice(0, 20);
     const cols = COMP.slice(0, 8);
     t.innerHTML = `<thead><tr><th class="kw">Keyword</th><th class="ours-col">Us</th>${cols.map(i => `<th class="comp-name"><span>${esc(A[i].t.split(/[-–—:·]/)[0].trim())}</span></th>`).join('')}</tr></thead>
       <tbody>${rows.map(r => {
@@ -409,6 +450,101 @@
   function renderPolicy() {
     const p = $('policy-list'); if (p) p.innerHTML = (L.policy || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
     const b = $('built-list'); if (b) b.innerHTML = (L.built || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
+  }
+
+  // ---------- metadata · which field carries a phrase ----------
+  // 'T' title, 'S' short description, 'L' full description, '—' not in this version.
+  function carriedBy(k) {
+    const inField = s => coverage(k, String(s || '').toLowerCase()) !== 'no';
+    const t = inField(P.title), s = inField(P.short);
+    const l = inField((P.outline || []).map(o => o[0] + ' ' + o[1]).join(' ') + ' ' + (P.close || ''));
+    if (t && s) return 'T+S';
+    if (t) return 'T';
+    if (s) return 'S';
+    if (l) return 'L';
+    return '—';
+  }
+
+  // ---------- metadata · finalized keywords, targeted now vs held back ----------
+  function renderFinalKw() {
+    const now = $('kw-now'); if (!now) return;
+    const text = fullTextOf(P);
+    const board = boardOf(state.gl).filter(r => r.usable && r.tier !== 'D').slice(0, 24);
+    const hit = board.filter(r => coverage(r.k, text) !== 'no');
+    const miss = board.filter(r => coverage(r.k, text) === 'no');
+    const row = r => `<tr><td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong>
+        <span class="pill ${USE_PILL[r.use]}" title="${esc(USE_WHY[r.use])}">${USE_SHORT[r.use]}</span></td>
+      <td class="num tmono">${r.P}</td><td class="num tmono">${r.D}</td>
+      <td class="num tmono">${r.C}<span class="small muted block">${fmt(r.installs)} · ${r.big} ≥10M</span></td>
+      <td class="tmono">${carriedBy(r.k)}</td>
+      <td class="small">${r.slots.slice(0, 3).map(i => i < 0 ? '—' : esc(A[i].t.split(/[-–—:·]/)[0].trim())).join(' · ')}</td></tr>`;
+    const head = `<thead><tr><th>Keyword</th><th class="num">Priority</th><th class="num">Demand</th><th class="num">Competition</th><th>Field</th><th>Who holds the top three</th></tr></thead>`;
+    now.innerHTML = head + `<tbody>${hit.map(row).join('')}</tbody>`;
+    const fut = $('kw-future');
+    if (fut) fut.innerHTML = head + `<tbody>${miss.map(row).join('')}</tbody>`;
+    const h1 = $('kw-now-h'); if (h1) h1.textContent = `Targeted in this metadata · ${hit.length} of ${board.length}`;
+    const h2 = $('kw-future-h'); if (h2) h2.textContent = `Reserved for a later version · ${miss.length} of ${board.length}`;
+    const n = $('kw-note');
+    if (n) {
+      const compat = hit.filter(r => r.use === 'compat').length;
+      n.innerHTML = `The ${board.length} highest-priority phrases on the ${esc(MNAME[state.gl] || state.gl)} board that this listing is allowed to use, split by whether it actually carries them. <b>${compat}</b> of the ${hit.length} it carries are compatibility phrases — the ones naming WhatsApp, which the first run of this research scored at zero and left out of the copy entirely. The reasons for holding the rest back are listed under the keyword-to-field table.`;
+    }
+  }
+
+  // ---------- metadata · the ladder, marked with the field that carries each phrase ----------
+  function renderMetaLadder() {
+    const box = $('meta-ladder'); if (!box) return;
+    const text = fullTextOf(P);
+    const board = boardOf(state.gl).filter(r => r.tier !== 'D' && r.usable);
+    const rungs = [
+      ['Rung 1 · win now', board.filter(r => r.C <= 88).slice(0, 8), 'Long-tail phrases whose top ten is not walled off by 10M+ apps. This version of the listing should own them outright.'],
+      ['Rung 2 · win next', board.filter(r => r.C > 88 && r.C <= 93).slice(0, 8), 'Mid-competition phrases, reachable once the app has ratings and a few thousand installs behind it.'],
+      ['Rung 3 · the head', board.filter(r => r.C > 93).slice(0, 8), 'The shelf itself, held by apps with 10M–100M installs. Covered in the full description so the listing is eligible, never in the title yet.']
+    ];
+    box.innerHTML = rungs.map(([title, rows, why]) => `<div class="rung">
+      <h3>${title} <span class="small muted">${rows.length} phrases</span></h3>
+      <p class="small">${why}</p>
+      <div class="kwlist">${rows.map(r => {
+      const f = carriedBy(r.k);
+      return `<span class="kw"><strong>${esc(r.k)}</strong><span class="small muted"> ${f} · ${r.slots.filter(i => COMP.indexOf(i) >= 0).length} rivals in the top ten</span></span>`;
+    }).join('')}</div>
+    </div>`).join('');
+    const n = $('meta-ladder-note');
+    if (n) n.innerHTML = `<b>T</b> = in the title, <b>T+S</b> = across title and short description, <b>S</b> = short description, <b>L</b> = full description, <b>—</b> = not in this version. The count after each phrase is how many of the twelve tracked competitors hold a top-ten slot on it in ${esc(MNAME[state.gl] || state.gl)}.`;
+  }
+
+  // ---------- metadata · how the fields were composed ----------
+  function renderCompose() {
+    const t = $('compose-table'); if (!t) return;
+    const text = { Title: P.title, 'Short description': P.short, 'Full description': fullDescOf(P) };
+    const limits = { Title: 30, 'Short description': 80, 'Full description': 4000 };
+    const byField = {};
+    (L.fields || []).forEach(f => {
+      const key = f[1].split('·')[0].trim();
+      (byField[key] = byField[key] || []).push(f[0]);
+    });
+    t.innerHTML = `<thead><tr><th>Field</th><th class="num">Characters</th><th class="num">Phrases</th><th>What it is built to carry</th></tr></thead><tbody>` +
+      Object.keys(text).map(f => {
+        const v = text[f] || '', kws = byField[f] || [];
+        return `<tr><td><strong>${esc(f)}</strong></td>
+          <td class="num tmono">${v.length}/${limits[f]}</td>
+          <td class="num tmono">${kws.length}</td>
+          <td class="small">${kws.map(k => `<span class="pill p-mute">${esc(k)}</span>`).join(' ')}</td></tr>`;
+      }).join('') + '</tbody>';
+    const ts = $('title-strategy');
+    if (ts && L.titleStrategy) ts.innerHTML = `<h3>${esc(L.titleStrategy.head)}</h3><p>${esc(L.titleStrategy.body)}</p>`;
+    const pr = $('practices');
+    if (pr) pr.innerHTML = '<h3>Playbook practices this metadata applies</h3>' +
+      (L.practices || []).map(x => `<p><strong>${esc(x[0])}.</strong> ${esc(x[1])}</p>`).join('');
+  }
+
+  // ---------- metadata · this listing against the playbook's proposed package ----------
+  function renderVsPackage() {
+    const t = $('vs-table'); if (!t) return;
+    t.innerHTML = `<thead><tr><th>Field</th><th>Playbook package (first run)</th><th>This metadata</th><th>Why it changed</th></tr></thead><tbody>` +
+      (L.vsPackage || []).map(x => `<tr><td><strong>${esc(x[0])}</strong></td>
+        <td class="small">${esc(x[1])}</td><td class="small"><strong>${esc(x[2])}</strong></td>
+        <td class="small">${esc(x[3])}</td></tr>`).join('') + '</tbody>';
   }
 
   // ---------- features ----------
@@ -697,18 +833,18 @@
       const entry = med(B.map(r => r.installs).filter(n => n != null && n > 0));
       const ours = B.filter(r => r.ourRank > 0);
       const core = B.filter(r => r.tier === 'A').length;
-      const brandy = B.filter(r => r.brand).length;
-      return { gl, n: B.length, top, entry, ours: ours.length, bestOurs: ours.length ? Math.min(...ours.map(r => r.ourRank)) : null, core, brandy };
+      const blocked = B.filter(r => !r.usable).length;
+      return { gl, n: B.length, top, entry, ours: ours.length, bestOurs: ours.length ? Math.min(...ours.map(r => r.ourRank)) : null, core, blocked };
     });
-    box.innerHTML = `<thead><tr><th>Market</th><th class="num">Keywords</th><th class="num">Core-intent</th><th class="num">Name a platform</th><th class="num">Median entry bar</th><th class="num">We appear</th><th>Top opportunity</th></tr></thead><tbody>` +
+    box.innerHTML = `<thead><tr><th>Market</th><th class="num">Keywords</th><th class="num">Core-intent</th><th class="num">Cannot be used</th><th class="num">Median entry bar</th><th class="num">We appear</th><th>Top opportunity</th></tr></thead><tbody>` +
       rows.map(r => `<tr${r.gl === state.gl ? ' class="ours"' : ''}><td><strong>${esc(MNAME[r.gl] || r.gl)}</strong></td>
-        <td class="num">${r.n}</td><td class="num">${r.core}</td><td class="num">${r.brandy}</td>
+        <td class="num">${r.n}</td><td class="num">${r.core}</td><td class="num">${r.blocked}</td>
         <td class="num">${r.entry == null ? '—' : fmt(r.entry)}</td>
         <td class="num">${r.ours}${r.bestOurs ? ` <i>best #${r.bestOurs}</i>` : ''}</td>
         <td class="small">${r.top ? `${esc(r.top.k)} <i>P${r.top.P}</i>` : '—'}</td></tr>`).join('') + '</tbody>';
     const easiest = rows.slice().sort((a, b) => (a.entry || Infinity) - (b.entry || Infinity))[0];
     const r2 = $('markets-read');
-    if (r2) r2.innerHTML = `<p>The same 110 phrases were scraped in all three markets, so the differences here are the shelf, not the sample. <b>${esc(MNAME[easiest.gl] || easiest.gl)}</b> has the lowest median entry bar at <b>${easiest.entry == null ? '—' : fmt(easiest.entry)}</b> installs, which makes it the cheapest place to prove the listing before spending anywhere else. The number of phrases that name another company's product is also worth watching: those are the phrases with the most demand and the ones this listing can never use.</p>`;
+    if (r2) r2.innerHTML = `<p>The same 110 phrases were scraped in all three markets, so the differences here are the shelf, not the sample. <b>${esc(MNAME[easiest.gl] || easiest.gl)}</b> has the lowest median entry bar at <b>${easiest.entry == null ? '—' : fmt(easiest.entry)}</b> installs, which makes it the cheapest place to prove the listing before spending anywhere else. The "cannot be used" column is small on every board: it counts only phrases naming a platform this app does not read, a modified client, or another developer's app. The WhatsApp phrases are not in it — those are compatibility phrases and this listing uses them.</p>`;
   }
 
   // ---------- metadata · our own store graphics ----------
@@ -726,16 +862,22 @@
     if (typeof bindLightbox === 'function') bindLightbox();
   }
 
-  // ---------- metadata · keywords that name another company's product ----------
+  // ---------- metadata · the phrases this listing does not use, and why ----------
   function renderPlatformKw() {
     const box = $('m-platform-table'); if (!box) return;
-    const B = boardOf(state.gl).filter(r => r.brand).sort((a, b) => b.O - a.O);
-    box.innerHTML = `<thead><tr><th>Keyword</th><th class="num">Opportunity</th><th class="num">Demand</th><th class="num">Entry bar</th><th>Why it is not in this metadata</th></tr></thead><tbody>` +
-      B.slice(0, 12).map(r => `<tr><td class="kw">${esc(r.k)}</td><td class="num">${r.O}</td><td class="num">${r.D}</td><td class="num">${r.installs == null ? '—' : fmt(r.installs)}</td><td class="small">Names another company's product. Play's impersonation and intellectual-property policies cover the listing text, not just the icon.</td></tr>`).join('') + '</tbody>';
+    const all = boardOf(state.gl);
+    const B = all.filter(r => !r.usable).sort((a, b) => b.O - a.O);
+    box.innerHTML = `<thead><tr><th>Keyword</th><th>Reason</th><th class="num">Opportunity</th><th class="num">Demand</th><th class="num">Entry bar</th><th>Why it is not in this metadata</th></tr></thead><tbody>` +
+      B.slice(0, 14).map(r => `<tr><td class="kw">${esc(r.k)}</td>
+        <td><span class="pill ${USE_PILL[r.use]}">${USE_LABEL[r.use]}</span></td>
+        <td class="num">${r.O}</td><td class="num">${r.D}</td><td class="num">${r.installs == null ? '—' : fmt(r.installs)}</td>
+        <td class="small">${esc(USE_WHY[r.use])}</td></tr>`).join('') + '</tbody>';
     const n = $('m-platform-note');
     if (n) {
-      const lost = B.reduce((s, r) => s + r.O, 0), total = boardOf(state.gl).reduce((s, r) => s + r.O, 0);
-      n.innerHTML = `<b>${B.length}</b> of the ${boardOf(state.gl).length} phrases on this board name another company's product, and between them they carry <b>${pct(lost / total)}</b> of all the opportunity on the board. This metadata uses none of them, in any field. That is the single largest deliberate cost in this package, and it is not optional: the app is an independent utility and the listing has to read like one.`;
+      const compat = all.filter(r => r.use === 'compat');
+      const compatO = compat.reduce((s, r) => s + r.O, 0), total = all.reduce((s, r) => s + r.O, 0);
+      const lost = B.reduce((s, r) => s + r.O, 0);
+      n.innerHTML = `<b>${compat.length}</b> of the ${all.length} phrases on this board name WhatsApp or WhatsApp Business, and between them they carry <b>${pct(compatO / total)}</b> of all the opportunity here. <b>This metadata uses them.</b> Naming the app a status saver reads is a description of its own function, not a claim of affiliation, and the live title check of 23 Sep 2026 found ten third-party titles doing exactly that — three above 1M installs, the oldest running since November 2018. The closing paragraph carries the disclaimer that keeps the usage descriptive. Only <b>${B.length}</b> phrases, worth <b>${pct(lost / total)}</b> of the board, are genuinely unusable, and the reason column says which of the three reasons applies to each.`;
     }
   }
 
@@ -747,7 +889,7 @@
   function renderAll() {
     renderScope();
     if (PAGE === 'playbook') { renderChips(); renderPlays(); renderCategories(); renderComp(); renderCompKeywords(); renderEvents(); renderMatrix(); renderStrips(); renderBoard(); renderMarketsCompare(); renderLadder(); renderListingPack(); renderMethod(); renderRisks(); }
-    if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderFieldTable(); renderCoverage(); renderTargets(); renderRankTable(); renderPolicy(); }
+    if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderCompose(); renderFieldTable(); renderCoverage(); renderTargets(); renderFinalKw(); renderMetaLadder(); renderRankTable(); renderPlatformKw(); renderVsPackage(); renderMetaAssets(); renderPolicy(); }
     if (PAGE === 'features') { renderFeatChips(); renderCompleteness(); renderFmx(); renderOursCards(); renderEdgesGaps(); renderPricing(); renderSource(); }
     if (PAGE === 'graphics') { renderGfxChips(); renderIconWall(); renderFgGrid(); renderSystems(); renderCatalogue(); renderOursGraphics(); }
     renderFoot();

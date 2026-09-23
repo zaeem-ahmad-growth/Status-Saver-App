@@ -22,6 +22,9 @@ $ours = Read-Json 'ours.json'
 $listing = Read-Json 'listing.json'
 $graphics = Read-Json 'graphics.json'
 $gnotes = Read-Json 'graphics-notes.json'
+# The live Events & offers check of all 13 listings. Kept as its own source so a rebuild cannot drop it;
+# it used to be appended to assets/data.js by hand after this script ran.
+$offers = Read-Json 'offers.json'
 
 # Our own column in the feature matrix is the emulator check, not the listing text.
 $ourIdx = 0
@@ -42,6 +45,7 @@ $payload = [ordered]@{
   listing  = $listing
   graphics = $graphics
   gnotes   = $gnotes
+  offersChecked = $offers
 }
 
 $json = $payload | ConvertTo-Json -Depth 14 -Compress

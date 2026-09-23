@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>PlayStore Metadata · Status Saver App</title>
-<meta name="description" content="The Google Play listing for the Status Saver app: the live listing today, the proposed title, short description and full description, every keyword each field targets, and the policy record behind the wording.">
+<meta name="description" content="The Google Play listing for the Status Saver app: the live listing today, the proposed title, short description and full description, how the fields were composed, every keyword each field targets, the finalized keyword set, the launch ladder, live US competitor ranks, the phrases the listing does not use and why, and the policy record behind the wording.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
@@ -23,7 +23,7 @@
   </div>
   <div class="wrap bar-sections" aria-label="Sections">
     <div class="jump" id="jump-metadata">
-      <a href="#live">Live listing</a><a href="#package">Proposed listing</a><a href="#fields">Keywords by field</a><a href="#coverage">Coverage</a><a href="#targets">Every keyword targeted</a><a href="#ranks">Competitor ranks</a><a href="#policy">Policy record</a><a href="#built">How this was built</a>
+      <a href="#live">Live listing</a><a href="#package">Proposed listing</a><a href="#compose">Composition</a><a href="#fields">Keywords by field</a><a href="#coverage">Coverage</a><a href="#targets">Every keyword targeted</a><a href="#keywords">Finalized keywords</a><a href="#ladder">Ladder</a><a href="#ranks">Competitor ranks</a><a href="#platform">Phrases not used</a><a href="#vspackage">vs Playbook package</a><a href="#assets">Store graphics</a><a href="#policy">Policy record</a><a href="#built">How this was built</a>
     </div>
   </div>
 </nav>
@@ -52,9 +52,22 @@
     <div class="sec-head">
       <p class="kicker">Proposed</p>
       <h2>Title, short description and full description</h2>
-      <p class="sub">Ready to paste into the Play Console. Every phrase here appears on the keyword board, every claim matches what the app actually does, and no other company's brand name appears in any field.</p>
+      <p class="sub">Ready to paste into the Play Console. Every phrase here appears on the keyword board, every claim matches what the app actually does, and WhatsApp is named only to say which statuses the app reads — with our own word first in the title and the independence notice in the closing paragraph.</p>
     </div>
     <div id="package-fields"></div>
+  </section>
+
+  <section id="compose">
+    <div class="sec-head">
+      <p class="kicker">Composition · from the ASO Playbook</p>
+      <h2>How this metadata follows the ASO Playbook</h2>
+      <p class="sub">What each field is built to carry, the evidence behind the title decision, and the playbook practices this metadata applies.</p>
+    </div>
+    <div class="tscroll"><table class="cmp" id="compose-table"></table></div>
+    <div class="two" style="margin-top:18px">
+      <div class="panel" style="padding:16px 18px" id="title-strategy"></div>
+      <div class="panel" style="padding:16px 18px" id="practices"></div>
+    </div>
   </section>
 
   <section id="fields">
@@ -85,13 +98,71 @@
     <div class="tscroll"><table id="target-table"></table></div>
   </section>
 
+  <section id="keywords">
+    <div class="sec-head">
+      <p class="kicker">Keyword analysis · <span class="scope" data-scope></span> · from the playbook board</p>
+      <h2>Finalized keywords</h2>
+      <p class="sub">The highest-priority phrases this listing is allowed to use, split by whether this version of the metadata actually carries them. Each row shows the field that carries it and who holds the top three slots today.</p>
+    </div>
+    <h3 style="margin:0 0 10px" id="kw-now-h"></h3>
+    <div class="tscroll"><table class="board" id="kw-now"></table></div>
+    <h3 style="margin:28px 0 10px" id="kw-future-h"></h3>
+    <div class="tscroll"><table class="board" id="kw-future"></table></div>
+    <p class="note" id="kw-note"></p>
+  </section>
+
+  <section id="ladder">
+    <div class="sec-head">
+      <p class="kicker">Roadmap · <span class="scope" data-scope></span></p>
+      <h2>Launch keyword ladder of this metadata</h2>
+      <p class="sub">The playbook's ladder with the field that carries each phrase in this version of the listing, so it is clear what shipping this metadata actually buys at each rung.</p>
+    </div>
+    <div class="ladder" id="meta-ladder"></div>
+    <p class="note" id="meta-ladder-note"></p>
+  </section>
+
   <section id="ranks">
     <div class="sec-head">
-      <p class="kicker">Competitor ranks · <span class="scope" data-scope></span></p>
+      <p class="kicker">Competitor ranks · <span class="scope" data-scope></span> · keywords in this metadata</p>
       <h2>How the shelf holders rank on the keywords we use</h2>
-      <p class="sub">For each phrase this listing targets, who already holds the top slots — the wall this metadata has to climb.</p>
+      <p class="sub">For each phrase this listing targets, the rank each tracked competitor holds for it in live search — the wall this metadata has to climb. Ranks were read on 23 Sep 2026 and move daily.</p>
+    </div>
+    <div class="controls">
+      <div class="legend" style="margin:0">
+        <span><i class="sw rk-b1"></i>#1–3</span><span><i class="sw rk-b2"></i>#4–10</span><span><i class="sw rk-b3"></i>#11–20</span><span><i class="sw rk-b4"></i>#21–30</span><span><i class="sw none"></i>not in results</span>
+      </div>
     </div>
     <div class="tscroll"><table class="matrix" id="rank-table"></table></div>
+  </section>
+
+  <section id="platform">
+    <div class="sec-head">
+      <p class="kicker">Exclusions · <span class="scope" data-scope></span></p>
+      <h2>The phrases this listing does not use, and why</h2>
+      <p class="sub">Naming WhatsApp is not on this list. A phrase is excluded only when using it would make the listing false, would break a specific Play rule, or would take another developer's product name — and the reason column says which.</p>
+    </div>
+    <div class="tscroll"><table id="m-platform-table"></table></div>
+    <p class="note" id="m-platform-note"></p>
+  </section>
+
+  <section id="vspackage">
+    <div class="sec-head">
+      <p class="kicker">The listing · this metadata vs the playbook's first run</p>
+      <h2>How this metadata follows the Proposed ASO package</h2>
+      <p class="sub">What was adopted from the playbook's package, what changed when the use rule was corrected on 23 Sep 2026, and why.</p>
+    </div>
+    <div class="tscroll"><table class="cmp" id="vs-table"></table></div>
+  </section>
+
+  <section id="assets">
+    <div class="sec-head">
+      <p class="kicker">Store graphics · live listing</p>
+      <h2>The art this metadata ships against</h2>
+      <p class="sub">The icon, feature graphic and screenshots Google Play serves today. The copy below is compliant; the art is not, and that gap is the open item on this listing.</p>
+    </div>
+    <div class="m-assets" id="m-assets-top"></div>
+    <div class="m-shots" id="m-assets-shots"></div>
+    <p class="note" id="m-assets-note"></p>
   </section>
 
   <section id="policy">
@@ -115,6 +186,13 @@
 
 <footer class="wrap foot" id="foot"></footer>
 <div id="tip" class="tt" role="status" aria-live="polite"></div>
+<dialog class="lb" id="lb" aria-label="Image viewer">
+  <div class="lb-in" id="lb-in">
+    <img id="lb-img" alt="">
+    <p class="lb-cap" id="lb-cap"></p>
+    <button type="button" class="lb-btn lb-close" id="lb-close" aria-label="Close viewer">✕</button>
+  </div>
+</dialog>
 
 <script src="../../assets/data.js"></script>
 <script src="../../assets/app.js"></script>

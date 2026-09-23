@@ -1,0 +1,1221 @@
+﻿{
+    "checkedOn":  "2026-09-23",
+    "market":  "US",
+    "titleCheck":  {
+                       "rule":  "5+ third-party titles, 2+ above 1M installs, oldest live 3+ years",
+                       "titles":  [
+                                      {
+                                          "title":  "Sticker Maker for WhatsApp",
+                                          "appId":  "isticker.stickermaker.createsticker.stickersforwhatsapp",
+                                          "installs":  10000000,
+                                          "ratings":  146894,
+                                          "released":  "Dec 30, 2019",
+                                          "years":  6.7
+                                      },
+                                      {
+                                          "title":  "Sticker Maker for WhatsApp",
+                                          "appId":  "stickerwhatsapp.com.stickers",
+                                          "installs":  10000000,
+                                          "ratings":  550985,
+                                          "released":  "Nov 19, 2018",
+                                          "years":  7.8
+                                      },
+                                      {
+                                          "title":  "Status Saver - for WA Business",
+                                          "appId":  "com.ashaquavision.status.saver.downloader",
+                                          "installs":  1000000,
+                                          "ratings":  10038,
+                                          "released":  "Oct 26, 2020",
+                                          "years":  5.9
+                                      },
+                                      {
+                                          "title":  "WhatsApp Status Saver",
+                                          "appId":  "com.macd.developer.status_saver",
+                                          "installs":  50000,
+                                          "ratings":  0,
+                                          "released":  "Oct 7, 2023",
+                                          "years":  3
+                                      },
+                                      {
+                                          "title":  "Status Saver For WA \u0026 Business",
+                                          "appId":  "com.StatusSticker.Saver",
+                                          "installs":  10000,
+                                          "ratings":  0,
+                                          "released":  "May 24, 2024",
+                                          "years":  2.3
+                                      },
+                                      {
+                                          "title":  "Story Saver for Whatsapp",
+                                          "appId":  "com.mariaxcodexpert.whatsdownloadplus",
+                                          "installs":  5000,
+                                          "ratings":  0,
+                                          "released":  "Mar 15, 2026",
+                                          "years":  0.5
+                                      },
+                                      {
+                                          "title":  "Whatsapp Status Saver",
+                                          "appId":  "com.async.whatsappstatus",
+                                          "installs":  1000,
+                                          "ratings":  0,
+                                          "released":  "Apr 29, 2026",
+                                          "years":  0.4
+                                      },
+                                      {
+                                          "title":  "Status Save, Download-WhatsApp",
+                                          "appId":  "com.yhs.statusdownloader",
+                                          "installs":  1000,
+                                          "ratings":  0,
+                                          "released":  "Feb 10, 2026",
+                                          "years":  0.6
+                                      },
+                                      {
+                                          "title":  "WA Status Saver Video Download",
+                                          "appId":  "com.atulsharma.downloader",
+                                          "installs":  500,
+                                          "ratings":  0,
+                                          "released":  null,
+                                          "years":  null
+                                      },
+                                      {
+                                          "title":  "Status Saver \u0026 Repost for WA",
+                                          "appId":  "com.falcon.whatscan",
+                                          "installs":  100,
+                                          "ratings":  0,
+                                          "released":  "Mar 29, 2026",
+                                          "years":  0.5
+                                      }
+                                  ],
+                       "thirdParty":  10,
+                       "aboveOneM":  3,
+                       "oldestYears":  7.8,
+                       "verdict":  "PASS"
+                   },
+    "byClass":  [
+                    {
+                        "use":  "free",
+                        "keywords":  59,
+                        "opportunity":  1111,
+                        "shareOfBoard":  52
+                    },
+                    {
+                        "use":  "compat",
+                        "keywords":  38,
+                        "opportunity":  769,
+                        "shareOfBoard":  36
+                    },
+                    {
+                        "use":  "rival",
+                        "keywords":  7,
+                        "opportunity":  154,
+                        "shareOfBoard":  7
+                    },
+                    {
+                        "use":  "offapp",
+                        "keywords":  6,
+                        "opportunity":  116,
+                        "shareOfBoard":  5
+                    }
+                ],
+    "board":  [
+                  {
+                      "keyword":  "status video downloader app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  15,
+                      "demand":  99,
+                      "competition":  96,
+                      "opportunity":  37,
+                      "priority":  37
+                  },
+                  {
+                      "keyword":  "status saver video downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  12,
+                      "demand":  84,
+                      "competition":  94,
+                      "opportunity":  33,
+                      "priority":  33
+                  },
+                  {
+                      "keyword":  "whatsapp status downloader",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  12,
+                      "demand":  85,
+                      "competition":  94,
+                      "opportunity":  33,
+                      "priority":  33
+                  },
+                  {
+                      "keyword":  "whatsapp status saver",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  10,
+                      "demand":  74,
+                      "competition":  94,
+                      "opportunity":  29,
+                      "priority":  29
+                  },
+                  {
+                      "keyword":  "whatsapp status downloader app",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  10,
+                      "demand":  75,
+                      "competition":  94,
+                      "opportunity":  29,
+                      "priority":  29
+                  },
+                  {
+                      "keyword":  "save status app download",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  9,
+                      "demand":  69,
+                      "competition":  92,
+                      "opportunity":  28,
+                      "priority":  28
+                  },
+                  {
+                      "keyword":  "status saver whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  9,
+                      "demand":  70,
+                      "competition":  95,
+                      "opportunity":  27,
+                      "priority":  27
+                  },
+                  {
+                      "keyword":  "status save to gallery",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  9,
+                      "demand":  70,
+                      "competition":  94,
+                      "opportunity":  27,
+                      "priority":  27
+                  },
+                  {
+                      "keyword":  "status saver app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  9,
+                      "demand":  70,
+                      "competition":  94,
+                      "opportunity":  27,
+                      "priority":  27
+                  },
+                  {
+                      "keyword":  "status video downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  9,
+                      "demand":  70,
+                      "competition":  96,
+                      "opportunity":  26,
+                      "priority":  26
+                  },
+                  {
+                      "keyword":  "status saver for whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  8,
+                      "demand":  65,
+                      "competition":  95,
+                      "opportunity":  25,
+                      "priority":  25
+                  },
+                  {
+                      "keyword":  "story saver for whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  8,
+                      "demand":  65,
+                      "competition":  95,
+                      "opportunity":  25,
+                      "priority":  25
+                  },
+                  {
+                      "keyword":  "save status video whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  9,
+                      "demand":  65,
+                      "competition":  94,
+                      "opportunity":  25,
+                      "priority":  25
+                  },
+                  {
+                      "keyword":  "status saver dp downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  7,
+                      "demand":  59,
+                      "competition":  92,
+                      "opportunity":  24,
+                      "priority":  24
+                  },
+                  {
+                      "keyword":  "status downloader app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  7,
+                      "demand":  60,
+                      "competition":  95,
+                      "opportunity":  23,
+                      "priority":  23
+                  },
+                  {
+                      "keyword":  "whatsapp status saver app",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  7,
+                      "demand":  60,
+                      "competition":  95,
+                      "opportunity":  23,
+                      "priority":  23
+                  },
+                  {
+                      "keyword":  "save status app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  7,
+                      "demand":  60,
+                      "competition":  94,
+                      "opportunity":  23,
+                      "priority":  23
+                  },
+                  {
+                      "keyword":  "status saver video download",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  7,
+                      "demand":  60,
+                      "competition":  94,
+                      "opportunity":  23,
+                      "priority":  23
+                  },
+                  {
+                      "keyword":  "story saver without login",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  52,
+                      "competition":  88,
+                      "opportunity":  22,
+                      "priority":  22
+                  },
+                  {
+                      "keyword":  "save status app update",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  92,
+                      "opportunity":  22,
+                      "priority":  22
+                  },
+                  {
+                      "keyword":  "status saver app update",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  7,
+                      "demand":  57,
+                      "competition":  94,
+                      "opportunity":  22,
+                      "priority":  22
+                  },
+                  {
+                      "keyword":  "status saver gallery",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  94,
+                      "opportunity":  22,
+                      "priority":  22
+                  },
+                  {
+                      "keyword":  "status saver hd",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  94,
+                      "opportunity":  22,
+                      "priority":  22
+                  },
+                  {
+                      "keyword":  "whatsapp status download",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  7,
+                      "demand":  60,
+                      "competition":  100,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status video download app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  96,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "whatsapp status download app",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  7,
+                      "demand":  60,
+                      "competition":  100,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status video download app tamil",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  51,
+                      "competition":  91,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status saver photo and video",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status saver",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  96,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status saver for whatsapp business",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  7,
+                      "demand":  59,
+                      "competition":  100,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status saver whatsapp business",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  7,
+                      "demand":  59,
+                      "competition":  100,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status saver app download",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status saver hd video download",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "story saver reels video downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  5,
+                      "demand":  50,
+                      "competition":  90,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "whatsapp status downloader video",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "save status video app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "whatsapp status downloader hd",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "save status video download",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "save status video saver",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "save status whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "whatsapp status photo saver app",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status downloader for whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status saver photo",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status downloader hd",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "save status and message recovery",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "save status video",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status downloader app for whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  21
+                  },
+                  {
+                      "keyword":  "status saver video download app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  52,
+                      "competition":  94,
+                      "opportunity":  20,
+                      "priority":  20
+                  },
+                  {
+                      "keyword":  "hd video and status downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  52,
+                      "competition":  96,
+                      "opportunity":  20,
+                      "priority":  20
+                  },
+                  {
+                      "keyword":  "save status for whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  50,
+                      "competition":  94,
+                      "opportunity":  20,
+                      "priority":  20
+                  },
+                  {
+                      "keyword":  "whatsapp status save",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  48,
+                      "competition":  94,
+                      "opportunity":  19,
+                      "priority":  19
+                  },
+                  {
+                      "keyword":  "story saver download app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  4,
+                      "demand":  45,
+                      "competition":  88,
+                      "opportunity":  19,
+                      "priority":  19
+                  },
+                  {
+                      "keyword":  "status saver whatsapp download",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  48,
+                      "competition":  94,
+                      "opportunity":  19,
+                      "priority":  19
+                  },
+                  {
+                      "keyword":  "story saver whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  50,
+                      "competition":  94,
+                      "opportunity":  19,
+                      "priority":  19
+                  },
+                  {
+                      "keyword":  "status video download",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  99,
+                      "opportunity":  19,
+                      "priority":  19
+                  },
+                  {
+                      "keyword":  "status saver app for whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  48,
+                      "competition":  94,
+                      "opportunity":  19,
+                      "priority":  19
+                  },
+                  {
+                      "keyword":  "status downloader and saver",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  5,
+                      "demand":  48,
+                      "competition":  95,
+                      "opportunity":  19,
+                      "priority":  19
+                  },
+                  {
+                      "keyword":  "whatsapp status saver app download",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  46,
+                      "competition":  94,
+                      "opportunity":  18,
+                      "priority":  18
+                  },
+                  {
+                      "keyword":  "whatsapp business status saver app",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  50,
+                      "competition":  100,
+                      "opportunity":  18,
+                      "priority":  18
+                  },
+                  {
+                      "keyword":  "whatsapp business status saver 2026",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  6,
+                      "demand":  52,
+                      "competition":  100,
+                      "opportunity":  18,
+                      "priority":  18
+                  },
+                  {
+                      "keyword":  "whatsapp status saver app 2023",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  48,
+                      "competition":  95,
+                      "opportunity":  18,
+                      "priority":  18
+                  },
+                  {
+                      "keyword":  "status saver whatsapp 2026",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  5,
+                      "demand":  46,
+                      "competition":  95,
+                      "opportunity":  18,
+                      "priority":  18
+                  },
+                  {
+                      "keyword":  "status saver message recovery",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  4,
+                      "demand":  45,
+                      "competition":  94,
+                      "opportunity":  18,
+                      "priority":  18
+                  },
+                  {
+                      "keyword":  "story saver no login",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  4,
+                      "demand":  41,
+                      "competition":  88,
+                      "opportunity":  18,
+                      "priority":  18
+                  },
+                  {
+                      "keyword":  "status saver save to gallery",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  5,
+                      "demand":  46,
+                      "competition":  95,
+                      "opportunity":  18,
+                      "priority":  18
+                  },
+                  {
+                      "keyword":  "story downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  90,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "status downloader for whatsapp status",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  4,
+                      "demand":  44,
+                      "competition":  95,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "story saver",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  88,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "status saver downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  4,
+                      "demand":  43,
+                      "competition":  94,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "whatsapp status photo download",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  4,
+                      "demand":  44,
+                      "competition":  95,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "save status app whatsapp",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  4,
+                      "demand":  43,
+                      "competition":  95,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "long video status downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  4,
+                      "demand":  45,
+                      "competition":  95,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "story saver whatsapp status",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  4,
+                      "demand":  44,
+                      "competition":  96,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "save status download",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  4,
+                      "demand":  45,
+                      "competition":  95,
+                      "opportunity":  17,
+                      "priority":  17
+                  },
+                  {
+                      "keyword":  "video status saver",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  94,
+                      "opportunity":  16,
+                      "priority":  16
+                  },
+                  {
+                      "keyword":  "whatsapp status video downloader",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  4,
+                      "demand":  43,
+                      "competition":  96,
+                      "opportunity":  16,
+                      "priority":  16
+                  },
+                  {
+                      "keyword":  "wa status saver",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  94,
+                      "opportunity":  16,
+                      "priority":  16
+                  },
+                  {
+                      "keyword":  "all status saver",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  94,
+                      "opportunity":  16,
+                      "priority":  16
+                  },
+                  {
+                      "keyword":  "status saver and downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  94,
+                      "opportunity":  16,
+                      "priority":  16
+                  },
+                  {
+                      "keyword":  "status downloader",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  94,
+                      "opportunity":  16,
+                      "priority":  16
+                  },
+                  {
+                      "keyword":  "business status saver",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  94,
+                      "opportunity":  16,
+                      "priority":  16
+                  },
+                  {
+                      "keyword":  "save status whatsapp business",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  4,
+                      "demand":  44,
+                      "competition":  100,
+                      "opportunity":  15,
+                      "priority":  15
+                  },
+                  {
+                      "keyword":  "status photo download",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  95,
+                      "opportunity":  15,
+                      "priority":  15
+                  },
+                  {
+                      "keyword":  "save status",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  95,
+                      "opportunity":  15,
+                      "priority":  15
+                  },
+                  {
+                      "keyword":  "download status",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  39,
+                      "competition":  94,
+                      "opportunity":  15,
+                      "priority":  15
+                  },
+                  {
+                      "keyword":  "status downloader video",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  95,
+                      "opportunity":  15,
+                      "priority":  15
+                  },
+                  {
+                      "keyword":  "whatsapp business status downloader app",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  4,
+                      "demand":  41,
+                      "competition":  100,
+                      "opportunity":  14,
+                      "priority":  14
+                  },
+                  {
+                      "keyword":  "status keeper",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  100,
+                      "opportunity":  14,
+                      "priority":  14
+                  },
+                  {
+                      "keyword":  "whatsapp business status saver",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  3,
+                      "demand":  39,
+                      "competition":  100,
+                      "opportunity":  14,
+                      "priority":  14
+                  },
+                  {
+                      "keyword":  "whatsapp status download app 2026",
+                      "tier":  "A",
+                      "use":  "compat",
+                      "hits":  4,
+                      "demand":  40,
+                      "competition":  100,
+                      "opportunity":  14,
+                      "priority":  14
+                  },
+                  {
+                      "keyword":  "status download app",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  1,
+                      "demand":  30,
+                      "competition":  94,
+                      "opportunity":  12,
+                      "priority":  12
+                  },
+                  {
+                      "keyword":  "full video status uploader",
+                      "tier":  "B",
+                      "use":  "free",
+                      "hits":  4,
+                      "demand":  43,
+                      "competition":  89,
+                      "opportunity":  18,
+                      "priority":  11
+                  },
+                  {
+                      "keyword":  "status gallery",
+                      "tier":  "B",
+                      "use":  "free",
+                      "hits":  3,
+                      "demand":  40,
+                      "competition":  93,
+                      "opportunity":  16,
+                      "priority":  10
+                  },
+                  {
+                      "keyword":  "radha krishna status video",
+                      "tier":  "B",
+                      "use":  "rival",
+                      "hits":  6,
+                      "demand":  52,
+                      "competition":  58,
+                      "opportunity":  32,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "story saver sara tech",
+                      "tier":  "A",
+                      "use":  "rival",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  88,
+                      "opportunity":  23,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "xtx status saver and downloader",
+                      "tier":  "A",
+                      "use":  "rival",
+                      "hits":  6,
+                      "demand":  55,
+                      "competition":  91,
+                      "opportunity":  22,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "status saver youtube video",
+                      "tier":  "A",
+                      "use":  "offapp",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  94,
+                      "opportunity":  21,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "status saver lazy genius",
+                      "tier":  "A",
+                      "use":  "rival",
+                      "hits":  6,
+                      "demand":  54,
+                      "competition":  95,
+                      "opportunity":  21,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "status saver native craft",
+                      "tier":  "A",
+                      "use":  "rival",
+                      "hits":  6,
+                      "demand":  51,
+                      "competition":  93,
+                      "opportunity":  20,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "story downloader ig saver gratis",
+                      "tier":  "A",
+                      "use":  "offapp",
+                      "hits":  4,
+                      "demand":  45,
+                      "competition":  88,
+                      "opportunity":  19,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "story saver instagram app 2025",
+                      "tier":  "A",
+                      "use":  "offapp",
+                      "hits":  4,
+                      "demand":  45,
+                      "competition":  88,
+                      "opportunity":  19,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "story saver instagram insta story download",
+                      "tier":  "A",
+                      "use":  "offapp",
+                      "hits":  4,
+                      "demand":  44,
+                      "competition":  88,
+                      "opportunity":  19,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "story saver app instagram",
+                      "tier":  "A",
+                      "use":  "offapp",
+                      "hits":  4,
+                      "demand":  44,
+                      "competition":  88,
+                      "opportunity":  19,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "story saver for facebook stories",
+                      "tier":  "A",
+                      "use":  "offapp",
+                      "hits":  4,
+                      "demand":  45,
+                      "competition":  88,
+                      "opportunity":  19,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "mx player status downloader",
+                      "tier":  "A",
+                      "use":  "rival",
+                      "hits":  5,
+                      "demand":  50,
+                      "competition":  100,
+                      "opportunity":  18,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "vmate status video status status downloader",
+                      "tier":  "A",
+                      "use":  "rival",
+                      "hits":  5,
+                      "demand":  46,
+                      "competition":  94,
+                      "opportunity":  18,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "status repost",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  0,
+                      "demand":  0,
+                      "competition":  69,
+                      "opportunity":  0,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "status saver without watermark",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  0,
+                      "demand":  0,
+                      "competition":  94,
+                      "opportunity":  0,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "status sticker maker",
+                      "tier":  "B",
+                      "use":  "free",
+                      "hits":  0,
+                      "demand":  0,
+                      "competition":  93,
+                      "opportunity":  0,
+                      "priority":  0
+                  },
+                  {
+                      "keyword":  "photo status saver",
+                      "tier":  "A",
+                      "use":  "free",
+                      "hits":  0,
+                      "demand":  0,
+                      "competition":  94,
+                      "opportunity":  0,
+                      "priority":  0
+                  }
+              ]
+}
