@@ -1,0 +1,250 @@
+﻿[
+    {
+        "title":  "Status Saver \u0026 Video Download",
+        "chars":  29,
+        "verdict":  "FAIL Â· exact title in use",
+        "exact":  [
+                      "Status Saver - Video Download [com.downlood.sav.whmedia]",
+                      "Status Saver \u0026 Video Download [com.dualapps.video.downloader.fast.fbvideosaver]",
+                      "Status Saver \u0026 Video download [com.StatusSaver.downloadvideo]",
+                      "Status Saver \u0026 Video Download [com.zm_.status.saver.status_saver]",
+                      "Status Saver \u0026 Video Download [com.statussaver.statusdownloader.watsapp.savestatus.whatsappsaver]",
+                      "Status Saver \u0026 Video Download [com.mdtech.status.saver]",
+                      "Status Saver - Video Download [com.heethjain.apps.statussaver]"
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  23,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver: Save to Gallery",
+        "chars":  29,
+        "verdict":  "FAIL Â· exact title in use",
+        "exact":  [
+                      "Status Saver - Save to Gallery [app.statusdownloader.statussaver]"
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  22,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver Video Download HD",
+        "chars":  30,
+        "verdict":  "FAIL Â· exact title in use",
+        "exact":  [
+                      "Status Saver Video Download HD [com.ra.statussaver.storydownloader.app]"
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  21,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver \u0026 Story Keeper",
+        "chars":  27,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  24,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver: Video Downloader",
+        "chars":  30,
+        "verdict":  "FAIL Â· exact title in use",
+        "exact":  [
+                      "Status Saver: Video Downloader [com.tech.video.image.statussaver.download]",
+                      "Status Saver: Video Downloader [com.sanjay.phirke.statussaverplus]",
+                      "Status Saver: Video Downloader [com.bytecode.wappstatussaver]",
+                      "Status Saver: Video Downloader [com.sinosystems.status]",
+                      "Status Saver: Video Downloader [statussaver.statusdownloader.downloadstatus.savestatus]"
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  22,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Downloader: Video Saver",
+        "chars":  30,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  24,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver: Keep \u0026 Repost",
+        "chars":  27,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  25,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Save Status: Photo \u0026 Video HD",
+        "chars":  29,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  29,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver \u0026 Gallery Keeper",
+        "chars":  29,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  22,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Keeper: Save \u0026 Share",
+        "chars":  27,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  26,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver \u0026 Story Studio",
+        "chars":  27,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  26,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver \u0026 Downloader App",
+        "chars":  29,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  25,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Video Saver \u0026 Keeper",
+        "chars":  27,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  25,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    },
+    {
+        "title":  "Status Saver: HD Video Keeper",
+        "chars":  29,
+        "verdict":  "PASS",
+        "exact":  [
+
+                  ],
+        "near":  [
+
+                 ],
+        "titlesSeen":  23,
+        "checkedOn":  "2026-09-23",
+        "markets":  [
+                        "US",
+                        "PK"
+                    ]
+    }
+]

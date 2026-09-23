@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ASO Playbook · Status Saver App</title>
+<meta name="description" content="Google Play ASO research for the Status Saver app: the plays in this category, direct competitors, keyword ranks, result slots, the keyword board, the launch ladder and the proposed listing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-page="playbook">
+
+<nav class="bar" aria-label="Tabs, sections and controls" id="bar">
+  <div class="wrap bar-top">
+    <div class="tabs" id="site-tabs" aria-label="Tabs"></div>
+    <div class="mk" id="mk">
+      <span class="mk-label" id="mk-label">Market</span>
+      <div class="seg" role="group" aria-labelledby="mk-label" id="market-seg"></div>
+    </div>
+  </div>
+  <div class="wrap bar-sections" aria-label="Sections">
+    <div class="jump" id="jump-playbook">
+      <a href="#plays">Plays</a><a href="#competitors">Competitors</a><a href="#matrix">Rank tracker</a><a href="#serps">Result slots</a><a href="#keywords">Keyword board</a><a href="#ladder">Ladder</a><a href="#listing">Proposed listing</a><a href="#practice">Method</a><a href="#risks">Watch-outs</a>
+    </div>
+  </div>
+</nav>
+<script src="../../assets/nav.js"></script>
+
+<header class="masthead wrap">
+  <p class="eyebrow">Google Play ASO · status savers · <span data-scope></span></p>
+  <h1>Status Saver ASO</h1>
+  <p class="lede">Every number here was read off Google Play on the day in the chips below: live result lists to depth 30, autocomplete demand, and the listing of every app that reaches a top-10 slot. Nothing is estimated, and nothing comes from a third-party rank tool.</p>
+  <div class="chips" id="chips"></div>
+</header>
+
+<main class="wrap doc">
+
+  <section id="plays">
+    <div class="sec-head">
+      <p class="kicker">Market map · <span class="scope" data-scope></span></p>
+      <h2>Four plays, one opening</h2>
+      <p class="sub">Every non-brand app that wins slots in this category runs one of four plays. The table on the right shows who actually fills the top-10 slots across the whole keyword board today, and how much each kind of app counts toward a keyword's relevance.</p>
+    </div>
+    <div class="two">
+      <div class="tscroll"><table id="plays-table"></table></div>
+      <div class="panel" style="padding:16px 18px">
+        <h3 style="margin-bottom:4px">Who fills the top-10 slots</h3>
+        <p class="small muted" style="margin-bottom:10px">Share of all top-10 positions across every keyword · <span data-scope></span></p>
+        <table id="share"></table>
+      </div>
+    </div>
+  </section>
+
+  <section id="competitors">
+    <div class="sec-head">
+      <p class="kicker">Direct competitors · live listings · <span class="scope" data-scope></span></p>
+      <h2>The apps that own this shelf</h2>
+      <p class="sub">The status savers holding the most top-10 slots in the chosen market, with their live listing facts. Placements count how many keywords each app holds. Title phrases are board keywords that appear word for word in the app's title.</p>
+    </div>
+    <div class="tscroll"><table id="comp-table"></table></div>
+    <div class="insights" id="comp-insights"></div>
+  </section>
+
+  <section id="matrix">
+    <div class="sec-head">
+      <p class="kicker">Rank tracker · <span class="scope" data-scope></span></p>
+      <h2>Where each competitor ranks, keyword by keyword</h2>
+      <p class="sub">Rows follow the keyword board's priority order. A dot means the app was not among the results Play returned for that search, which for short lists means "not in the first few", not "nowhere".</p>
+    </div>
+    <div class="controls">
+      <label class="toggle"><input type="checkbox" id="matrix-all"> Show every keyword</label>
+      <div class="legend" style="margin:0">
+        <span><i class="sw" style="background:var(--rk1)"></i>#1–3</span><span><i class="sw" style="background:var(--rk2)"></i>#4–10</span><span><i class="sw" style="background:var(--rk3)"></i>#11–20</span><span><i class="sw" style="background:var(--rk4)"></i>#21–30</span>
+      </div>
+    </div>
+    <div class="tscroll"><table class="matrix" id="matrix-table"></table></div>
+  </section>
+
+  <section id="serps">
+    <div class="sec-head">
+      <p class="kicker">Result slots · <span class="scope" data-scope></span></p>
+      <h2>Every search, slot by slot</h2>
+      <p class="sub">Each strip is one Play search: slots 1–10 on the left, 11–30 after the gap. Colour shows who holds the slot. Hover a slot to see the app.</p>
+    </div>
+    <div class="legend" id="strip-legend"></div>
+    <div class="strips" id="strips"></div>
+    <button class="linkbtn" id="strips-more" type="button"></button>
+  </section>
+
+  <section id="keywords">
+    <div class="sec-head">
+      <p class="kicker">Keyword board · <span class="scope" data-scope></span></p>
+      <h2>Keyword opportunity board, relevance first</h2>
+      <p class="sub">Every keyword in the universe, scored. <strong>Relevance</strong> is how close the phrase is to what this app does. <strong>Demand</strong> is how often Play's own autocomplete offers the phrase and how high. <strong>Competition</strong> is the installs behind the top ten. <strong>Priority</strong> puts relevance first: a phrase nobody searches for is worthless, but so is a phrase this app cannot honestly answer.</p>
+    </div>
+    <div class="controls">
+      <input type="search" id="kw-search" class="search" placeholder="Filter keywords…" aria-label="Filter keywords">
+      <div class="chipset" id="tier-filter"></div>
+    </div>
+    <div class="tscroll"><table id="board"></table></div>
+  </section>
+
+  <section id="ladder">
+    <div class="sec-head">
+      <p class="kicker">Launch plan · <span class="scope" data-scope></span></p>
+      <h2>Launch keyword ladder</h2>
+      <p class="sub">What to win first, and what to leave until the install base can carry it. Each rung lists the phrases, why they are winnable now, and what has to be true before the next rung is worth attacking.</p>
+    </div>
+    <div class="ladder" id="ladder-list"></div>
+  </section>
+
+  <section id="listing">
+    <div class="sec-head">
+      <p class="kicker">Proposed ASO package</p>
+      <h2>The listing this research argues for</h2>
+      <p class="sub">Title, short description and the full description outline, built only from phrases on the board, and written so every claim matches what the app actually does. The finished copy, field by field with character counts, is on the <a href="../03-playstore-metadata/">PlayStore Metadata</a> tab.</p>
+    </div>
+    <div id="listing-pack"></div>
+  </section>
+
+  <section id="practice">
+    <div class="sec-head">
+      <p class="kicker">Method</p>
+      <h2>Measured, not estimated</h2>
+      <p class="sub">What was collected, how, and what each number does and does not mean.</p>
+    </div>
+    <div class="checks" id="method"></div>
+  </section>
+
+  <section id="risks">
+    <div class="sec-head">
+      <p class="kicker">Watch-outs</p>
+      <h2>What can cost this listing its ranking, or the app its place on Play</h2>
+    </div>
+    <div class="risks" id="risk-list"></div>
+  </section>
+
+</main>
+
+<footer class="wrap foot" id="foot"></footer>
+<div id="tip" class="tt" role="status" aria-live="polite"></div>
+
+<script src="../../assets/data.js"></script>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

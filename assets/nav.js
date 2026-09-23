@@ -2,7 +2,8 @@
 // To add a tab: create tabs/<NN>-<slug>/index.html, then add one line to TABS below (the order here is the order on screen).
 (function () {
   var TABS = [
-    { slug: '01-status-saver', label: 'Status Saver' }
+    { slug: '01-status-saver', label: 'Status Saver' },
+    { slug: '02-aso-playbook', label: 'ASO Playbook' }
   ];
   var RESEARCH = 'https://github.com/zaeem-ahmad-growth/Status-Saver-App/tree/main/research';
 

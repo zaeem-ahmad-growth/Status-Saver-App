@@ -4,3 +4,8 @@ Thumbs.db
 __test.html
 __md.html
 __parity.html
+
+# The pipeline fetch cache: 25 MB of raw Play responses, rebuilt by re-running collect.ps1.
+# The scrape itself (serps.json, apps.json, data.json) is committed; this is only the cache behind it.
+research/aso-pipeline/cache/
+research/aso-pipeline/collect.log

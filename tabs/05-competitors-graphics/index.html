@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Competitor’s Graphics · Status Saver App</title>
+<meta name="description" content="Every store graphic the status savers that hold the Google Play shelf are running: icons, feature graphics and screenshot systems, with what each one does and what ours should take from it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-page="graphics">
+
+<nav class="bar" aria-label="Tabs, sections and controls" id="bar">
+  <div class="wrap bar-top">
+    <div class="tabs" id="site-tabs" aria-label="Tabs"></div>
+  </div>
+  <div class="wrap bar-sections" aria-label="Sections">
+    <div class="jump" id="jump-graphics">
+      <a href="#icons">Icons</a><a href="#features">Feature graphics</a><a href="#systems">Screenshot systems</a><a href="#apps">App by app</a><a href="#ours">What ours should do</a>
+    </div>
+  </div>
+</nav>
+<script src="../../assets/nav.js"></script>
+
+<header class="masthead wrap">
+  <p class="eyebrow">Store graphics · status savers · read from Google Play</p>
+  <h1>Competitor’s Graphics</h1>
+  <p class="lede">The icons, feature graphics and screenshots the shelf holders are running right now, saved from their live listings. This is the visual shelf our icon has to stand next to in a search result, so the patterns here are the ones a buyer's eye is already trained on.</p>
+  <div class="chips" id="chips"></div>
+</header>
+
+<main class="wrap doc">
+
+  <section id="icons">
+    <div class="sec-head">
+      <p class="kicker">Icons</p>
+      <h2>Every icon side by side</h2>
+      <p class="sub">How the shelf looks in a result list. Hover an icon for the app and its installs.</p>
+    </div>
+    <div class="iconwall" id="iconwall"></div>
+    <div class="insights" id="icon-read"></div>
+  </section>
+
+  <section id="features">
+    <div class="sec-head">
+      <p class="kicker">Feature graphics</p>
+      <h2>Every feature graphic</h2>
+      <p class="sub">The 1024 × 500 banner at the top of each listing — the one asset our app does not have yet.</p>
+    </div>
+    <div class="fg-grid" id="fg-grid"></div>
+    <div class="insights" id="fg-read"></div>
+  </section>
+
+  <section id="systems">
+    <div class="sec-head">
+      <p class="kicker">Screenshot systems</p>
+      <h2>How the shelf builds a screenshot set</h2>
+      <p class="sub">The repeatable system behind each set: caption placement, device framing, colour and what the first screen leads with.</p>
+    </div>
+    <div class="tscroll"><table id="sys-table"></table></div>
+  </section>
+
+  <section id="apps">
+    <div class="sec-head">
+      <p class="kicker">Catalogue</p>
+      <h2>Every asset, app by app</h2>
+      <p class="sub">Each app's icon, feature graphic and full screenshot set, with a read on what the design is doing. Click any screenshot to enlarge it.</p>
+    </div>
+    <div id="app-catalogue"></div>
+  </section>
+
+  <section id="ours">
+    <div class="sec-head">
+      <p class="kicker">For our listing</p>
+      <h2>What our graphics should do</h2>
+      <p class="sub">What to copy, what to avoid, and what our listing is missing today.</p>
+    </div>
+    <div class="checks" id="ours-graphics"></div>
+  </section>
+
+</main>
+
+<footer class="wrap foot" id="foot"></footer>
+<div id="tip" class="tt" role="status" aria-live="polite"></div>
+<dialog class="lb" id="lb"><button class="lb-close" id="lb-close" type="button">Close</button><img class="lb-in" id="lb-img" alt=""><p class="lb-cap" id="lb-cap"></p></dialog>
+
+<script src="../../assets/data.js"></script>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "app": {
+    "package": "com.statussaver.videosaver.downloadstatus.storysaver",
+    "developer": "Cell Cave",
+    "installs": "10+",
+    "ads": true,
+    "iap": "$3.99 - $9.99 per item",
+    "readOn": "2026-09-23"
+  },
+  "current": {
+    "title": "Status Downloader: Video Saver",
+    "short": "Save video and photo statuses fast. Download, repost and watch them offline",
+    "descChars": 2577,
+    "read": [
+      ["The title spends 30 characters without the head term", "Every app holding this shelf says \"Status Saver\" in its title. Ours says \"Status Downloader\". Both phrases are on the board, but \"status saver\" and its variants carry the demand: our title covers \"status downloader\" and \"video saver\", and misses \"status saver\", \"status saver app\" and \"status saver video download\" entirely."],
+      ["The copy is already clean", "No other company's brand name appears anywhere in the listing, repost is framed as permission-based, and the closing paragraph states the app is independent and unaffiliated. That is the hard part of this category, and it is already right — the rewrite keeps all of it."],
+      ["It under-sells what the app actually does", "Business statuses, sticker packs, favourites, nine languages, the dark theme and new-status notifications all ship in the app and none of them appear in the listing. Four of those map straight onto board phrases."],
+      ["Nothing ranks yet", "Across 110 keywords in three markets, this listing holds zero placements. At 10+ installs that is expected: metadata decides what an app is eligible to rank for, installs and ratings decide whether it does."]
+    ]
+  },
+  "proposed": {
+    "title": "Status Saver & Downloader App",
+    "titleChars": 29,
+    "titleWhy": "Checked live against Google Play on 23 Sep 2026 in the United States and Pakistan: 25 live titles compared, no exact or near-exact collision. It carries four board phrases word for word — \"status saver\", \"status saver app\", \"status downloader app\" and \"status saver and downloader\" — where the current title carries none of them. The obvious alternatives are all taken: \"Status Saver: Video Downloader\" is the exact title of five live apps and \"Status Saver & Video Download\" of seven.",
+    "short": "Status saver and downloader: save status video, photo and story to gallery",
+    "shortChars": 73,
+    "outline": [
+      ["Save status video and photo to your gallery", "Browse the status updates available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality — the same file, not a re-encoded copy."],
+      ["Both inboxes, one grid", "Statuses from the standard and business versions of your messaging app appear in the same grid, images and videos together."],
+      ["Watch offline, any time", "Anything you save stays on your phone and opens from the app's own saved library, with or without a connection, long after the original update has gone."],
+      ["Share, repost, keep favourites", "Share a saved status to any app, repost it with the content owner's permission, and mark the ones you want to find again as favourites."],
+      ["Sticker packs built in", "Bundled sticker packs you can add to your messaging app from the pack screen."],
+      ["Nine languages and a dark theme", "English, Arabic, German, French, Hindi, Portuguese, Turkish, Urdu and Chinese, with right-to-left layouts, plus a dark theme and a notification when new statuses arrive."],
+      ["Private by design", "The app reads only the status folder you grant it through the system picker. It asks for no all-files access, and on Android 13 and later it asks for no photo or video permission at all."],
+      ["What it costs", "The app is free and shows ads. A short opt-in video ad can appear before a save. Premium removes every ad — weekly or monthly, cancellable in Google Play."]
+    ],
+    "close": "Only save, share or repost content you own or have permission to use. This app is an independent utility, not affiliated with, sponsored by or endorsed by any messaging or social media platform. All trademarks belong to their respective owners.",
+    "why": "Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those — two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk."
+  },
+  "fields": [
+    ["status saver", "Title", "The category head term. Every shelf holder carries it; our current title does not."],
+    ["status saver app", "Title", "Same tokens as the head term plus \"app\", which autocomplete offers nine times."],
+    ["status downloader app", "Title", "Keeps the phrase the current title already earns, so nothing is lost in the rewrite."],
+    ["status saver and downloader", "Title", "Carried word for word by the ampersand form."],
+    ["save status video", "Short description", "Highest-demand save phrase that carries no brand name."],
+    ["status save to gallery", "Short description", "\"to gallery\" is the differentiator phrase on the board with the lowest competition of the save cluster."],
+    ["status video download", "Short description", "Covered by the same tokens, no extra characters spent."],
+    ["story saver", "Short description", "One token away from the status cluster and a real search in its own right."],
+    ["status saver photo and video", "Full description · opening", "Written into the first sentence, where Play weights the description most."],
+    ["business status saver", "Full description · both inboxes", "A feature the app has and the listing never mentioned."],
+    ["status saver gallery", "Full description · saved library", "Pairs the saved-library section with the gallery phrasing."],
+    ["status saver hd", "Full description · original quality", "Quality claim stated as \"original quality\", which is literally true — files are byte-identical."],
+    ["status repost", "Full description · share and repost", "Kept permission-framed for the intellectual-property policy."],
+    ["status keeper", "Full description · favourites", "Covered by \"keep\" wording without spending title characters."]
+  ],
+  "reserved": [
+    ["status saver video downloader", "Second-highest demand phrase with no brand name, but its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."],
+    ["status video downloader app", "The highest-demand non-brand phrase on the whole board (15 autocomplete hits) and the most defended: 411M installs across its top ten."],
+    ["auto status saver", "Only worth targeting if auto-save is ever built. Claiming it now would be false."],
+    ["status saver without watermark", "True of our app, but the phrase reads as a competitor's problem; hold it for a later version."],
+    ["whatsapp status saver and every other brand phrase", "Highest demand in the category and permanently off-limits in our copy by house rule: no other company's brand name in store-listing or ad copy."]
+  ],
+  "policy": [
+    ["No brand name in any field", "The proposed title, short description and full description were checked for every brand name in this category. None appears. The copy says \"your messaging app\", which is what Play's impersonation policy asks for and what the current listing already does."],
+    ["Live title check, run on 23 Sep 2026", "Fourteen candidate titles were searched on Google Play in the United States and Pakistan and compared against every title returned. Five failed on an exact or near-exact collision — \"Status Saver: Video Downloader\" alone is the live title of five different apps. The chosen title was compared against 25 live titles with no collision. The full result is in research/aso-pipeline/titlecheck.json."],
+    ["Every claim matches the app", "Each line of the proposed description maps to a feature confirmed on the emulator during the 17 Sep 2026 QA round. The features the app does not have are listed in the Features Comparison tab as crosses, not softened."],
+    ["Ads are disclosed in the listing", "The app is ad-supported with a rewarded opt-in before saving, and the description says so. Play requires the monetisation to be evident, and reviewers look for it."],
+    ["Repost stays permission-framed", "Repost is described as \"with the content owner's permission\", and the closing paragraph keeps the independence and trademark notice the current listing already carries."],
+    ["Permissions match the wording", "The listing claims folder access only. The app asks for no all-files access and, since fix round 2, no photo or video permission on Android 13 and later — so the privacy paragraph is literally true."],
+    ["No message-recovery claim", "Two of the eight shelf holders advertise recovering deleted messages. The app does not do it, so the listing does not say it."]
+  ],
+  "risks": [
+    ["The highest-demand phrases in this category are brand phrases", "\"whatsapp status downloader\", \"whatsapp status saver\" and their variants carry the most autocomplete demand on the board, and house rules keep all of them out of our copy. That is a deliberate ceiling: this listing competes only on generic phrases, and the plan has to be judged on that basis, not against apps that spend their titles on a brand name."],
+    ["Metadata alone will not move a listing with 10+ installs", "Zero placements today across 110 keywords in three markets. Metadata decides what the app is eligible for; installs, ratings and retention decide whether it ranks. Expect the rewrite to show up first on the long tail, not on \"status saver\"."],
+    ["The obvious titles are taken, several times over", "Four of the six most natural titles for this app are already the exact title of live apps. Never ship a title without running the check again on the day — this shelf changes monthly."],
+    ["The rewarded ad before saving is the policy tripwire", "It must stay an opt-in a user can decline, and the save must still work when they do. Anything that looks like a forced ad before the app's core action risks a disruptive-ads enforcement."],
+    ["Do not copy the shelf's riskiest claims", "Message recovery, \"view deleted messages\" and mod-app support appear on competitor listings in this category. They attract both takedowns and one-star reviews, and the app does none of them."],
+    ["Data safety still says data is not encrypted", "The live listing's data-safety section reports that data is not encrypted, while the app's ad and analytics traffic runs over HTTPS. Worth rechecking in the Play Console: a wrong data-safety answer is its own policy problem."]
+  ],
+  "built": [
+    ["The scrape", "Google Play's own search results to depth 30, its autocomplete, and the full listing of every app that reached a top-10 slot, read on 23 Sep 2026 in the United States, Pakistan and India. 110 keywords, 330 live result lists, 217 app listings."],
+    ["The board", "Every phrase is scored for relevance to what this app does, demand from autocomplete, and the installs behind its top ten. Priority puts relevance first and halves any phrase carrying a brand name, because those can be measured but never used."],
+    ["The copy", "Written from the board, then checked back against the app: the QA round of 17 Sep 2026 decides what may be claimed, not the keyword list."],
+    ["The checks", "The title check and the brand check are scripts in research/aso-pipeline, and their output is committed next to the data, so any claim on this tab can be re-run."]
+  ]
+}

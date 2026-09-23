@@ -18,7 +18,8 @@ Key facts and decisions for this repository. Loaded automatically in every Claud
 
 ## This repository
 
-- One tab so far: **Status Saver** (`tabs/01-status-saver/`) — the full product dossier, with eight sections: Overview, Spec, Market research, Versions & APK, Monetization, Screenshots, Graphics, QA history.
+- **Status Saver** (`tabs/01-status-saver/`) — the full product dossier, with eight sections: Overview, Spec, Market research, Versions & APK, Monetization, Screenshots, Graphics, QA history.
+- **ASO Playbook** (`tabs/02-aso-playbook/`) — the Google Play keyword research of 23 Sep 2026: plays in the category, competitors, rank tracker, result slots, keyword board, launch ladder and the proposed listing. Data-driven from `assets/data.js` through `assets/app.js`.
 - Source: the Claude artifact <https://claude.ai/artifact/2fsUhwUKAit9zHrJGuSYNC> ("Status Flow Dossier", version of 17 Sep 2026). The repository is the master copy; the artifact is a snapshot and is read-only to anyone but its owning account.
 - The tab keeps the artifact's own design, so it loads `assets/bar.css` (not `site.css`) for the tab bar. The artifact's left-hand section rail was replaced by the sections row in the tab bar, matching the other repositories' dossier tabs.
 - 31 images came across with it: `tabs/01-status-saver/gfx/icon.png` and 30 emulator screenshots in `tabs/01-status-saver/shots/`.
@@ -42,6 +43,17 @@ Key facts and decisions for this repository. Loaded automatically in every Claud
 - Monetization: ads on by default (app open, 5 banners, 2 MRECs, 2 native, 3 interstitials, 1 rewarded before saving), Premium subscription removes them — weekly Rs 1,100, monthly Rs 2,750 (Pakistan store, as shown on the emulator).
 - READ_MEDIA_IMAGES and READ_MEDIA_VIDEO were removed in fix round 2; statuses come through folder access, which is what Play expects from a status saver.
 - Missing store assets: 512 × 512 Play icon and the 1024 × 500 feature graphic are not in the app repository.
+
+## ASO findings (Google Play, 23 Sep 2026)
+
+- The scrape: 110 keywords × 3 markets (US, PK, IN), depth 30 = **330 live result lists**, plus **217 full app listings**. Scripts and raw JSON in `research/aso-pipeline/`.
+- **Our listing holds zero placements** on all 110 keywords in all three markets. Metadata decides eligibility; installs and ratings decide ranking, and the app has 10+ installs.
+- **The demand in this category is brand demand.** "whatsapp status downloader/saver" and their variants lead the board, and house rules keep every one of them out of our copy. The board halves their priority: measured, never used. Our ceiling is the generic phrases.
+- Highest-demand non-brand phrases: `status video downloader app` (15 autocomplete hits), `status saver video downloader` (12), `status save to gallery` (9), `status saver app` (9), `save status app download` (9). Their top tens carry 270M–780M installs, with 4–9 apps above 10M.
+- **Title collisions are the norm.** Of 14 candidates checked live on 23 Sep 2026 in US and PK: `Status Saver: Video Downloader` is the exact title of **5** live apps, `Status Saver & Video Download` of **7**. Result in `research/aso-pipeline/titlecheck.json`.
+- **Recommended title: `Status Saver & Downloader App`** (29 chars) — passed the live check against 25 titles, and carries four board phrases our current title misses. Current title `Status Downloader: Video Saver` passes too (only our own app uses it) but misses the head term "status saver".
+- The shelf holders (by top-10 slots held in the US): Status Download - Video Saver (com.downlood.sav.whmedia, 90), Status Saver: Video Downloader (savestatus, 88), Status Saver - Video Saver (videoimagesaver, 88), Status Saver・Status Downloader (falnesc, 87), Status Saver - Video Download (heethjain, 81).
+- Feature evidence from the shelf: nobody advertises MP3 extraction, video editing, a private vault or multi-select delete; 2 of 8 advertise recovering deleted messages (a claim we do not make and must not copy).
 
 ## Rules that apply here
 

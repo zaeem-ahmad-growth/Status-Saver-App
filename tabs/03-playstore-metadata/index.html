@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>PlayStore Metadata · Status Saver App</title>
+<meta name="description" content="The Google Play listing for the Status Saver app: the live listing today, the proposed title, short description and full description, every keyword each field targets, and the policy record behind the wording.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-page="metadata">
+
+<nav class="bar" aria-label="Tabs, sections and controls" id="bar">
+  <div class="wrap bar-top">
+    <div class="tabs" id="site-tabs" aria-label="Tabs"></div>
+    <div class="mk" id="mk">
+      <span class="mk-label" id="mk-label">Market</span>
+      <div class="seg" role="group" aria-labelledby="mk-label" id="market-seg"></div>
+    </div>
+  </div>
+  <div class="wrap bar-sections" aria-label="Sections">
+    <div class="jump" id="jump-metadata">
+      <a href="#live">Live listing</a><a href="#package">Proposed listing</a><a href="#fields">Keywords by field</a><a href="#coverage">Coverage</a><a href="#targets">Every keyword targeted</a><a href="#ranks">Competitor ranks</a><a href="#policy">Policy record</a><a href="#built">How this was built</a>
+    </div>
+  </div>
+</nav>
+<script src="../../assets/nav.js"></script>
+
+<header class="masthead wrap">
+  <p class="eyebrow">Google Play listing · <span id="pkg" class="mono"></span></p>
+  <h1 id="apptitle">PlayStore Metadata</h1>
+  <p class="lede">The listing as Google Play serves it today, and the listing this research argues for — every field written from phrases on the <a href="../02-aso-playbook/">ASO Playbook</a> board, with character counts, the keywords each field targets, and a record of the policy checks behind the wording.</p>
+  <div class="chips" id="chips"></div>
+</header>
+
+<main class="wrap doc">
+
+  <section id="live">
+    <div class="sec-head">
+      <p class="kicker">Today · read from Google Play</p>
+      <h2>What the listing says now</h2>
+      <p class="sub">The live fields, exactly as Play returned them, with what each one currently earns on the keyword board.</p>
+    </div>
+    <div id="live-listing"></div>
+    <div class="insights" id="live-read"></div>
+  </section>
+
+  <section id="package">
+    <div class="sec-head">
+      <p class="kicker">Proposed</p>
+      <h2>Title, short description and full description</h2>
+      <p class="sub">Ready to paste into the Play Console. Every phrase here appears on the keyword board, every claim matches what the app actually does, and no other company's brand name appears in any field.</p>
+    </div>
+    <div id="package-fields"></div>
+  </section>
+
+  <section id="fields">
+    <div class="sec-head">
+      <p class="kicker">Keyword plan</p>
+      <h2>Finalized keywords by field</h2>
+      <p class="sub">Which phrase is carried by which field, and which are deliberately held back for a later version of the listing. Play weights the title most, then the short description, then the full description.</p>
+    </div>
+    <div class="tscroll"><table id="field-table"></table></div>
+  </section>
+
+  <section id="coverage">
+    <div class="sec-head">
+      <p class="kicker">Coverage check</p>
+      <h2>Board keywords in this metadata</h2>
+      <p class="sub">Every keyword on the board, and whether the proposed listing actually contains it. A phrase the listing does not contain cannot rank for it.</p>
+    </div>
+    <div class="controls"><label class="toggle"><input type="checkbox" id="cov-all"> Show every keyword, covered or not</label></div>
+    <div class="tscroll"><table id="cov-table"></table></div>
+  </section>
+
+  <section id="targets">
+    <div class="sec-head">
+      <p class="kicker">Targets · <span class="scope" data-scope></span></p>
+      <h2>Every keyword this metadata targets</h2>
+      <p class="sub">The phrases the listing is written to win, in priority order, with the competition behind each one and where our listing stands today.</p>
+    </div>
+    <div class="tscroll"><table id="target-table"></table></div>
+  </section>
+
+  <section id="ranks">
+    <div class="sec-head">
+      <p class="kicker">Competitor ranks · <span class="scope" data-scope></span></p>
+      <h2>How the shelf holders rank on the keywords we use</h2>
+      <p class="sub">For each phrase this listing targets, who already holds the top slots — the wall this metadata has to climb.</p>
+    </div>
+    <div class="tscroll"><table class="matrix" id="rank-table"></table></div>
+  </section>
+
+  <section id="policy">
+    <div class="sec-head">
+      <p class="kicker">Policy record</p>
+      <h2>Why each field is worded the way it is</h2>
+      <p class="sub">The checks run before this wording was accepted, so the record exists if the listing is ever questioned.</p>
+    </div>
+    <div class="checks" id="policy-list"></div>
+  </section>
+
+  <section id="built">
+    <div class="sec-head">
+      <p class="kicker">Method</p>
+      <h2>How this tab was built</h2>
+    </div>
+    <div class="checks" id="built-list"></div>
+  </section>
+
+</main>
+
+<footer class="wrap foot" id="foot"></footer>
+<div id="tip" class="tt" role="status" aria-live="polite"></div>
+
+<script src="../../assets/data.js"></script>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

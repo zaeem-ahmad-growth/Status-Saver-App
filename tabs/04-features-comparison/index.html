@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Features Comparison · Status Saver App</title>
+<meta name="description" content="Feature-by-feature comparison of the Status Saver app against the status savers that hold the Google Play shelf: what each app ships, how complete each one is, and what they charge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-page="features">
+
+<nav class="bar" aria-label="Tabs, sections and controls" id="bar">
+  <div class="wrap bar-top">
+    <div class="tabs" id="site-tabs" aria-label="Tabs"></div>
+  </div>
+  <div class="wrap bar-sections" aria-label="Sections">
+    <div class="jump" id="jump-features">
+      <a href="#complete">Completeness</a><a href="#matrix">Feature matrix</a><a href="#ours">What we ship</a><a href="#gaps">Gaps and edges</a><a href="#pricing">Pricing</a><a href="#source">Where this comes from</a>
+    </div>
+  </div>
+</nav>
+<script src="../../assets/nav.js"></script>
+
+<header class="masthead wrap">
+  <p class="eyebrow">Feature-wise competitor analysis · status savers</p>
+  <h1>Features Comparison</h1>
+  <p class="lede">What every shelf holder actually ships, feature by feature, against what our app ships. Each mark was read from the app's live Play listing — its description, its feature list and its screenshots — on the date in the chips below, not from memory or from the app's marketing claims alone.</p>
+  <div class="chips" id="chips"></div>
+</header>
+
+<main class="wrap doc">
+
+  <section id="complete">
+    <div class="sec-head">
+      <p class="kicker">Completeness</p>
+      <h2>How complete each app is</h2>
+      <p class="sub">Share of the tracked features each app ships. Completeness is not the same as success — the biggest apps here win on installs and reviews, not on feature count — but it shows where the category's floor and ceiling actually sit.</p>
+    </div>
+    <div class="barlist" id="complete-list"></div>
+    <div class="insights" id="complete-insights"></div>
+  </section>
+
+  <section id="matrix">
+    <div class="sec-head">
+      <p class="kicker">Feature matrix</p>
+      <h2>Every feature, every app</h2>
+      <p class="sub">A tick means the listing or its screenshots show the feature. A cross means no evidence of it on the listing. Features are grouped: the ones a status saver must have, the ones that separate the shelf, and the ones almost nobody ships.</p>
+    </div>
+    <div class="controls"><label class="toggle"><input type="checkbox" id="fmx-gaps"> Only features where we differ from the shelf</label></div>
+    <div class="tscroll"><table class="fmx" id="fmx-table"></table></div>
+  </section>
+
+  <section id="ours">
+    <div class="sec-head">
+      <p class="kicker">Our app</p>
+      <h2>What ships in our app</h2>
+      <p class="sub">Read from the app itself during the 17 Sep 2026 QA round, not from the listing. Anything marked as missing is a real gap, not a wording problem.</p>
+    </div>
+    <div class="cards" id="ours-cards"></div>
+  </section>
+
+  <section id="gaps">
+    <div class="sec-head">
+      <p class="kicker">Read</p>
+      <h2>Where we are ahead, and where we are behind</h2>
+    </div>
+    <div class="two">
+      <div class="panel"><h3>Our edges</h3><ul id="edges"></ul></div>
+      <div class="panel"><h3>Our gaps</h3><ul id="gaps-list"></ul></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="sec-head">
+      <p class="kicker">Money</p>
+      <h2>What each app charges to remove the ads</h2>
+      <p class="sub">Every app on this shelf is ad-supported with an in-app purchase to switch the ads off. The prices are the in-app purchase range Google Play publishes for each listing.</p>
+    </div>
+    <div class="tscroll"><table id="price-table"></table></div>
+    <div class="note" id="price-note"></div>
+  </section>
+
+  <section id="source">
+    <div class="sec-head">
+      <p class="kicker">Method</p>
+      <h2>Where this comes from</h2>
+    </div>
+    <div class="checks" id="source-list"></div>
+  </section>
+
+</main>
+
+<footer class="wrap foot" id="foot"></footer>
+<div id="tip" class="tt" role="status" aria-live="polite"></div>
+
+<script src="../../assets/data.js"></script>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
