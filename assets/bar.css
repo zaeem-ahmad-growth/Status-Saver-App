@@ -1,0 +1,41 @@
+/* The shared tab bar, for tab pages that bring their own styles (for example a Claude artifact) instead of site.css.
+   Every rule is scoped to #bar and uses its own colour tokens, so it cannot clash with the page's CSS, and the page's CSS cannot reach it. */
+#bar{
+  --bar-ground:#F1F4F6; --bar-surface:#FFFFFF; --bar-sunk:#E8EDF1;
+  --bar-ink:#12202B; --bar-ink-2:#3B4B58; --bar-muted:#5F6F7C; --bar-line:#D5DDE3;
+  --bar-accent:#1D5BC6; --bar-accent-ink:#FFFFFF;
+  position:sticky; top:0; z-index:20; margin:0; padding:0; height:auto; min-width:0; border-radius:0;
+  background:var(--bar-ground); background:color-mix(in srgb, var(--bar-ground) 88%, transparent);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--bar-line);
+  font:400 16px/1.6 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--bar-ink);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) #bar{
+    --bar-ground:#0B1117; --bar-surface:#111A22; --bar-sunk:#0D151C;
+    --bar-ink:#E2EAF0; --bar-ink-2:#B6C3CD; --bar-muted:#8C9CA8; --bar-line:#223039;
+    --bar-accent:#6FA8F6; --bar-accent-ink:#08121C;
+  }
+}
+:root[data-theme="dark"] #bar{
+  --bar-ground:#0B1117; --bar-surface:#111A22; --bar-sunk:#0D151C;
+  --bar-ink:#E2EAF0; --bar-ink-2:#B6C3CD; --bar-muted:#8C9CA8; --bar-line:#223039;
+  --bar-accent:#6FA8F6; --bar-accent-ink:#08121C;
+}
+#bar *{box-sizing:border-box}
+#bar .wrap{max-width:1160px; margin:0 auto; padding:0 20px; display:flex; flex-direction:row; align-items:center; gap:12px}
+#bar .bar-top{min-height:54px; padding-block:8px}
+#bar .bar-sections{min-height:38px; padding-block:4px; border-top:1px solid var(--bar-line); gap:0}
+#bar .tabs{display:flex; gap:2px; background:var(--bar-sunk); border:1px solid var(--bar-line); border-radius:9px; padding:3px; flex:1 1 auto; min-width:0; overflow-x:auto; scrollbar-width:none}
+#bar .tabs::-webkit-scrollbar{display:none}
+#bar .tabs a{font:600 14px/1 "Source Sans 3",system-ui,sans-serif; color:var(--bar-ink-2); padding:9px 13px; border-radius:6px; white-space:nowrap; text-decoration:none}
+#bar .tabs a[aria-current="page"]{background:var(--bar-accent); color:var(--bar-accent-ink)}
+#bar .tabs a:hover:not([aria-current="page"]){color:var(--bar-ink); background:var(--bar-surface)}
+#bar .tabs a.ext{color:var(--bar-muted); font-weight:500; margin-left:auto}
+/* A { section: '<name>' } line in nav.js draws this label, then the tabs that belong to it. */
+#bar .tabs .grp{display:inline-flex; align-items:center; align-self:stretch; margin-left:7px; padding:0 10px 0 12px; border-left:1px solid var(--bar-line); font:600 11px/1 "IBM Plex Mono",ui-monospace,Consolas,monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--bar-muted); white-space:nowrap}
+#bar .jump{display:flex; gap:2px; overflow-x:auto; flex:1 1 auto; scrollbar-width:none; min-width:0}
+#bar .jump::-webkit-scrollbar{display:none}
+#bar .jump a{white-space:nowrap; font-size:14px; line-height:1.6; color:var(--bar-ink-2); text-decoration:none; padding:6px 9px; border-radius:6px}
+#bar .jump a:hover{background:var(--bar-sunk); color:var(--bar-ink)}
+#bar a:focus-visible{outline:2px solid var(--bar-accent); outline-offset:2px}
+html{scroll-padding-top:116px}

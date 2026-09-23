@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Status Saver · Status Saver App</title>
+<meta name="description" content="Product dossier for Status Flow 1.8.0 (9): overview, spec, market research, versions and APK, monetization, screenshots, graphics and QA history.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..150,500..900&family=Albert+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../assets/bar.css">
+<style>
+:root{
+  --ground:#F3F1F5; --surface:#FFFFFF; --sunk:#EAE6EE; --ink:#17131B; --ink-2:#463F4C; --muted:#71697A; --line:#DED8E3;
+  --flame-1:#4FD655; --flame-2:#1FA43A; --accent:#007A3D; --accent-soft:#E3F6E6;
+  --cyan:#12B8BF; --pink:#E8367F;
+  --pass:#177A43; --pass-bg:#DFF2E7; --warn:#935E00; --warn-bg:#F9EDD2; --fail:#B8232F; --fail-bg:#FADFE2;
+  --shadow:0 1px 2px rgba(23,19,27,.06),0 8px 24px rgba(23,19,27,.06);
+  --display:"Anybody","Arial Narrow",system-ui,sans-serif;
+  --body:"Albert Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F0D12; --surface:#18151C; --sunk:#221E27; --ink:#F2EEF5; --ink-2:#D0C8D6; --muted:#9E95A5; --line:#2F2A36;
+    --accent:#5EE36A; --accent-soft:#16301C; --cyan:#4CFEFC; --pink:#FF629F;
+    --pass:#58CF8E; --pass-bg:#15301F; --warn:#E6B04A; --warn-bg:#33270F; --fail:#FF7480; --fail-bg:#3A171B;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F0D12; --surface:#18151C; --sunk:#221E27; --ink:#F2EEF5; --ink-2:#D0C8D6; --muted:#9E95A5; --line:#2F2A36;
+  --accent:#5EE36A; --accent-soft:#16301C; --cyan:#4CFEFC; --pink:#FF629F;
+  --pass:#58CF8E; --pass-bg:#15301F; --warn:#E6B04A; --warn-bg:#33270F; --fail:#FF7480; --fail-bg:#3A171B;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 var(--body);padding-inline:20px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.08}
+h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;font-stretch:112%;letter-spacing:-.01em}
+h3{font-size:19px;font-weight:700;font-stretch:110%}
+p{margin:0}
+.mono{font-family:var(--mono);font-size:.86em}
+.tnum{font-variant-numeric:tabular-nums}
+.label{font:600 11px/1.2 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* shell: timeline scrubber + content */
+.shell{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px;padding-block:40px 96px}
+.scrub{position:sticky;top:24px;align-self:start;padding-top:8px}
+.scrub .label{margin-bottom:14px}
+.track-wrap{position:relative}
+.track{position:relative;list-style:none;margin:0;padding:0 0 0 22px}
+.track-wrap::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:3px;border-radius:3px;background:var(--sunk)}
+.fill{position:absolute;z-index:1;left:5px;top:6px;width:3px;border-radius:3px;height:0;background:linear-gradient(var(--flame-1),var(--flame-2));transition:height .25s ease}
+.track li{position:relative}
+.track a{display:block;padding:7px 0;color:var(--muted);text-decoration:none;font-weight:500;font-size:14.5px}
+.track a::before{content:"";position:absolute;left:-21px;top:13px;width:9px;height:9px;border-radius:2px;background:var(--surface);border:2px solid var(--line);transform:rotate(45deg)}
+.track a:hover{color:var(--ink)}
+.track a[aria-current="true"]{color:var(--ink);font-weight:700}
+.track a[aria-current="true"]::before{background:var(--flame-1);border-color:var(--flame-1)}
+.scrub .meta{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:grid;gap:4px}
+
+main{display:grid;gap:88px;min-width:0}
+section{display:grid;gap:28px;min-width:0}
+.sec-head{display:grid;gap:10px;max-width:68ch}
+.sec-head p{color:var(--ink-2)}
+
+/* hero */
+.hero{display:grid;gap:28px;padding-bottom:8px}
+.hero-top{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.hero-top img{width:92px;height:92px;border-radius:22px;box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(40px,7vw,78px);font-weight:900;font-stretch:128%;letter-spacing:-.02em;line-height:.95}
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply}
+.glitch::before{color:var(--cyan);transform:translate(-3px,0);clip-path:inset(12% 0 52% 0)}
+.glitch::after{color:var(--pink);transform:translate(3px,0);clip-path:inset(58% 0 8% 0)}
+:root[data-theme="dark"] .glitch::before,:root[data-theme="dark"] .glitch::after{mix-blend-mode:screen}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .glitch::before,:root:not([data-theme="light"]) .glitch::after{mix-blend-mode:screen}}
+.hero .tag{font-size:19px;color:var(--ink-2);max-width:60ch}
+.pkg{color:var(--muted)}
+.dl{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:grid;gap:12px;box-shadow:var(--shadow)}
+.dl-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.dl-row strong{font-family:var(--display);font-stretch:112%;font-size:22px}
+.bar{height:12px;border-radius:99px;background:var(--sunk);overflow:hidden;position:relative}
+.bar span{position:absolute;inset:0 auto 0 0;border-radius:99px;background:linear-gradient(90deg,var(--flame-1),var(--flame-2))}
+.bar i{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);opacity:.55}
+.facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.facts div{background:var(--surface);padding:14px 16px;display:grid;gap:4px}
+.facts b{font-family:var(--display);font-stretch:104%;font-size:19px;font-weight:800;white-space:nowrap}
+
+/* generic panels */
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:12px;align-content:start}
+.panel ul{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--ink-2)}
+.pillar h3{display:flex;align-items:center;gap:10px}
+.pillar svg{width:22px;height:22px;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:99px;font-size:13.5px;font-weight:600;background:var(--sunk);color:var(--ink-2);border:1px solid transparent}
+.chip.pass{background:var(--pass-bg);color:var(--pass)}
+.chip.warn{background:var(--warn-bg);color:var(--warn)}
+.chip.fail{background:var(--fail-bg);color:var(--fail)}
+.chip.mono{font-family:var(--mono);font-weight:500;font-size:12.5px}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+
+dl.kv{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 18px;font-size:15px}
+dl.kv dt{color:var(--muted)}
+dl.kv dd{margin:0;font-weight:500;min-width:0;overflow-wrap:anywhere}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:760px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 11px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--sunk)}
+tr:last-child td{border-bottom:0}
+tr.ours td{background:var(--accent-soft)}
+.inst{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:center;min-width:170px}
+.inst .bar{height:8px}
+td small{color:var(--muted);display:block}
+
+.callout{border-left:3px solid var(--flame-1);background:var(--surface);border-radius:0 14px 14px 0;padding:16px 20px;color:var(--ink-2)}
+.callout strong{color:var(--ink)}
+
+/* versions */
+.versions{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.versions li{display:grid;grid-template-columns:108px 22px minmax(0,1fr);gap:14px;padding-bottom:22px;position:relative}
+.versions li::after{content:"";position:absolute;left:129px;top:22px;bottom:0;width:2px;background:var(--line)}
+.versions li:last-child::after{display:none}
+.versions time{color:var(--muted);font-family:var(--mono);font-size:13px;padding-top:3px;text-align:right}
+.versions .node{width:14px;height:14px;margin:5px 0 0 3px;border-radius:3px;transform:rotate(45deg);background:var(--surface);border:2px solid var(--muted)}
+.versions li.now .node{background:var(--flame-1);border-color:var(--flame-1)}
+.versions .v{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:20px}
+.versions .v span{font-family:var(--mono);font-weight:500;font-size:13px;color:var(--muted);margin-left:6px}
+.versions p{color:var(--ink-2);font-size:15px}
+.apk{display:grid;gap:14px}
+.apk .file{font-family:var(--mono);font-size:14px;background:var(--sunk);padding:10px 12px;border-radius:10px;overflow-x:auto;white-space:nowrap}
+.hash{font-family:var(--mono);font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+
+/* monetization */
+.flags{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.flag{font-family:var(--mono);font-size:13px;padding:7px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.flag b{font-weight:500}
+.flag.on b{color:var(--pass)} .flag.off b{color:var(--muted)}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.plan{border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:2px}
+.plan b{font-family:var(--display);font-stretch:112%;font-size:24px}
+.with-shot{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:22px;align-items:start}
+
+/* screenshots */
+.shots-group{display:grid;gap:12px}
+.shots-group header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.strip{display:flex;gap:16px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x mandatory}
+.strip figure{margin:0;flex:0 0 172px;scroll-snap-align:start;display:grid;gap:8px}
+.phone{display:block;padding:0;border:0;background:none;cursor:zoom-in;border-radius:22px}
+.phone img{display:block;width:100%;aspect-ratio:9/20;object-fit:cover;border-radius:20px;border:5px solid var(--ink);background:var(--sunk);box-shadow:var(--shadow)}
+figcaption{font-size:13.5px;line-height:1.35;color:var(--ink-2)}
+figcaption b{display:block;color:var(--ink);font-weight:600}
+dialog.lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,440px)}
+dialog.lightbox::backdrop{background:rgba(10,8,12,.82)}
+dialog.lightbox img{display:block;width:100%;max-height:86vh;object-fit:contain;border-radius:18px}
+dialog.lightbox p{color:#F2EEF5;text-align:center;margin-top:10px;font-size:14px}
+dialog.lightbox button{position:absolute;top:-44px;right:0;background:#F2EEF5;color:#17131B;border:0;border-radius:99px;padding:6px 14px;font:600 14px var(--body);cursor:pointer}
+
+/* graphics */
+.assets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.asset{display:grid;gap:10px;align-content:start}
+.asset .art{aspect-ratio:1;border-radius:16px;background:var(--sunk);display:grid;place-items:center;overflow:hidden;border:1px solid var(--line)}
+.asset .art img{width:62%;border-radius:18%}
+.asset .art.missing{border-style:dashed;color:var(--muted);font-size:13px;text-align:center;padding:12px;aspect-ratio:auto;min-height:0}
+.fg{aspect-ratio:1024/500!important}
+.swatches{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.sw{display:grid;gap:6px;font-size:12.5px}
+.sw i{display:block;aspect-ratio:1.3;border-radius:10px;border:1px solid var(--line)}
+.sw code{font-family:var(--mono);color:var(--muted);font-size:11.5px}
+
+/* QA */
+.score{display:grid;gap:14px}
+.score-row{display:grid;grid-template-columns:150px minmax(0,1fr) 54px;gap:14px;align-items:center;font-size:14.5px}
+.score-row .bar{height:14px}
+.score-row .bar.muted span{background:var(--muted);opacity:.55}
+.scale{display:grid;grid-template-columns:150px minmax(0,1fr) 54px;gap:14px;font-size:12px;color:var(--muted)}
+.scale div{position:relative;height:16px;font-family:var(--mono)}
+.scale div span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.scale div span:first-child{transform:none}
+.scale div span:last-child{transform:translateX(-100%)}
+.qa-log{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.qa-log li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:18px;padding:16px 20px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.qa-log time{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:2px}
+.qa-log h3{font-size:17px;margin-bottom:4px}
+.qa-log p{color:var(--ink-2);font-size:15px}
+.fixlist{columns:2;column-gap:28px;margin:0;padding-left:18px;color:var(--ink-2)}
+.fixlist li{break-inside:avoid;margin-bottom:7px}
+.status{display:grid;gap:10px}
+.status div{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.tally{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.tally div{background:var(--surface);padding:18px 20px;display:grid;gap:6px;align-content:start}
+.tally b{font-family:var(--display);font-stretch:112%;font-weight:900;font-size:clamp(34px,4.6vw,48px);line-height:1}
+.tally small{color:var(--muted);font-size:13.5px;line-height:1.35}
+.tally .t-fixed b{color:var(--pass)} .tally .t-open b{color:var(--warn)}
+.stack{display:flex;height:16px;border-radius:99px;overflow:hidden;background:var(--sunk)}
+.stack span{display:block;height:100%}
+.stack .s-fixed{background:var(--pass)} .stack .s-open{background:var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.sev{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.sev div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:2px}
+.sev b{font-family:var(--display);font-stretch:108%;font-size:24px;font-weight:800}
+.ledger td .stack{height:10px;min-width:120px}
+.ledger td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.ledger tfoot td{font-weight:700;background:var(--sunk)}
+.reasons{display:grid;gap:14px}
+.reason{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr) 34px;gap:16px;align-items:start;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.reason:last-child{border-bottom:0;padding-bottom:0}
+.reason h3{font-size:16px}
+.reason p{color:var(--ink-2);font-size:14.5px}
+.reason .ids{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.reason .ids span{font-family:var(--mono);font-size:12px;padding:2px 7px;border-radius:6px;background:var(--sunk);color:var(--ink-2)}
+.reason > b{font-family:var(--display);font-stretch:108%;font-size:24px;font-weight:800;text-align:right;color:var(--warn)}
+.method{font-size:14px;color:var(--muted)}
+@media (max-width:980px){.tally{grid-template-columns:repeat(2,minmax(0,1fr))}.sev{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.reason{grid-template-columns:minmax(0,1fr) 34px}.reason > div:nth-child(2){grid-column:1 / -1;grid-row:2}.sev{grid-template-columns:repeat(2,minmax(0,1fr))}}
+footer{max-width:1180px;margin:0 auto;padding:28px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+
+@media (max-width:980px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:0}
+  .scrub{position:sticky;top:0;z-index:5;background:var(--ground);padding:10px 0;margin-inline:-20px;padding-inline:20px;border-bottom:1px solid var(--line)}
+  .scrub .label,.scrub .meta,.track-wrap::before,.fill{display:none}
+  .track{display:flex;gap:6px;overflow-x:auto;padding:0}
+  .track a{white-space:nowrap;padding:6px 12px;border-radius:99px;background:var(--surface);border:1px solid var(--line);font-size:13.5px}
+  .track a::before{display:none}
+  .track a[aria-current="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+  .facts{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid-4,.assets{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .swatches{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .with-shot{grid-template-columns:minmax(0,1fr)}
+  .with-shot figure{max-width:190px}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-2,.grid-4,.plans{grid-template-columns:minmax(0,1fr)}
+  .assets{grid-template-columns:minmax(0,1fr)}
+  .fixlist{columns:1}
+  .qa-log li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .versions li{grid-template-columns:78px 22px minmax(0,1fr)}
+  .versions li::after{left:99px}
+  .score-row,.scale{grid-template-columns:96px minmax(0,1fr) 40px}
+}
+</style>
+<style>
+/* This tab keeps the design of the Claude artifact it came from (https://claude.ai/artifact/2fsUhwUKAit9zHrJGuSYNC),
+   so it loads bar.css for the tab bar instead of site.css. The artifact's own left-hand section rail is replaced by
+   the sections row in the tab bar, so the dossier runs full width underneath it. */
+body{padding-inline:20px}
+#bar{margin-inline:-20px;overflow:visible}
+#bar .jump a[aria-current="true"]{background:var(--bar-sunk);color:var(--bar-ink);font-weight:600}
+html{scroll-padding-top:var(--barh,116px)}
+.shell{grid-template-columns:minmax(0,1fr);gap:0;max-width:1160px;padding-block:36px 96px}
+footer{max-width:1160px}
+@media (max-width:980px){.shell{padding-top:28px}}
+</style>
+</head>
+<body data-page="dossier">
+
+<nav aria-label="Tabs and sections" id="bar">
+  <div class="wrap bar-top">
+    <div class="tabs" id="site-tabs" aria-label="Tabs"></div>
+  </div>
+  <div class="wrap bar-sections" aria-label="Sections">
+    <div class="jump" id="jump">
+      <a href="#overview">Overview</a><a href="#spec">Spec</a><a href="#market">Market research</a><a href="#versions">Versions &amp; APK</a><a href="#money">Monetization</a><a href="#shots">Screenshots</a><a href="#graphics">Graphics</a><a href="#qa">QA history</a>
+    </div>
+  </div>
+</nav>
+<script src="../../assets/nav.js"></script>
+
+<div id="dossier">
+<div class="shell">
+  <main>
+<section id="overview" class="hero">
+  <div class="hero-top"><img src="gfx/icon.png" alt="Status Flow app icon: a white chat bubble with a download arrow on a bright green square">
+    <div style="display:grid;gap:6px;min-width:0"><span class="label">Android app · Product dossier</span><span class="mono pkg">com.statussaver.videosaver.downloadstatus.storysaver</span></div></div>
+  <h1>Status<br>Flow</h1>
+  <p class="tag">Open WhatsApp and WhatsApp Business statuses, save the photos and videos you want to keep, and add sticker packs to WhatsApp.</p>
+  <div class="dl" role="group" aria-label="QA score">
+    <div class="dl-row"><span class="label">QA score · 17 Sep 2026</span><span class="tnum"><strong>84</strong> / 100</span></div>
+    <div class="bar" aria-hidden="true"><span style="width:84%"></span><i style="left:90%" title="90 target"></i></div>
+    <div class="dl-row" style="font-size:13.5px;color:var(--muted)"><span>Started at 84 · 13 of 15 bugs fixed, 2 open</span><span>Target line at 90</span></div>
+  </div>
+  <div class="facts"><div><span class="label">Version</span><b class="tnum">1.8.0 (9)</b></div><div><span class="label">Runs on</span><b class="tnum">Android 8.0+</b></div><div><span class="label">Languages</span><b class="tnum">9</b></div><div><span class="label">Ad placements</span><b class="tnum">14</b></div><div><span class="label">Debug APK</span><b class="tnum">16.3 MB</b></div></div>
+  <div class="grid-4"><article class="panel pillar"><h3><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg>View</h3><ul><li>WhatsApp and Business statuses, images and videos</li><li>Folder access through the system picker, no all-files access</li></ul></article><article class="panel pillar"><h3><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Save</h3><ul><li>Saved to Pictures and Movies, byte-identical to the original</li><li>Saved list, favourites, share and repost</li></ul></article><article class="panel pillar"><h3><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.6 6.3.9-4.5 4.4 1 6.1L12 17l-5.5 3 1-6.1L3 9.5l6.3-.9z"/></svg>Stickers</h3><ul><li>Bundled sticker packs</li><li>Add to WhatsApp from the pack screen</li></ul></article><article class="panel pillar"><h3><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Everywhere</h3><ul><li>9 languages, including Urdu and Arabic (RTL)</li><li>Dark theme and new-status notifications</li></ul></article></div>
+  <div class="panel"><div class="dl-row"><h3>Checked on the emulator</h3><span class="label">17 Sep 2026 · Pixel 10 AVD, Android 17</span></div><div class="chips"><span class="chip pass"><span class="dot"></span>WhatsApp statuses</span><span class="chip pass"><span class="dot"></span>Business statuses</span><span class="chip pass"><span class="dot"></span>Save image and video</span><span class="chip pass"><span class="dot"></span>Delete after reinstall</span><span class="chip pass"><span class="dot"></span>Offline launch and save</span><span class="chip pass"><span class="dot"></span>Urdu RTL and dark theme</span><span class="chip pass"><span class="dot"></span>Save from the tile badge</span><span class="chip pass"><span class="dot"></span>No media permission on Android 13+</span><span class="chip fail"><span class="dot"></span>Home native ad · AdMob unit is the wrong format</span><span class="chip">Repost and sticker add · need real WhatsApp</span></div><p style="color:var(--muted);font-size:14px">WhatsApp itself was replaced by two empty stub apps so the status folders could exist. Repost and Add to WhatsApp were only checked up to the point where WhatsApp would open.</p></div>
+</section>
+
+<section id="spec"><div class="sec-head"><span class="label">Spec</span><h2>What ships inside the APK</h2><p>Numbers come from <span class="mono">app/build.gradle.kts</span> and from the built APK (<span class="mono">aapt2</span>).</p></div>
+<div class="grid-2"><div class="panel"><span class="label">Identity</span><dl class="kv"><dt>App name</dt><dd class="tnum">Status Flow</dd><dt>Package</dt><dd class="mono">com.statussaver.videosaver.downloadstatus.storysaver</dd><dt>Version</dt><dd class="tnum">versionName 1.8.0 · versionCode 9</dd><dt>Source namespace</dt><dd class="mono">com.wassaver.storysaver</dd></dl></div><div class="panel"><span class="label">Platform</span><dl class="kv"><dt>minSdk</dt><dd class="tnum">26 · Android 8.0</dd><dt>target / compile</dt><dd class="tnum">37 / 37</dd><dt>UI</dt><dd class="tnum">Android Views + ViewBinding</dd><dt>ABIs</dt><dd class="tnum">arm64-v8a, armeabi-v7a, x86, x86_64</dd></dl></div><div class="panel"><span class="label">Toolchain</span><dl class="kv"><dt>Android Gradle Plugin</dt><dd class="tnum">9.2.1</dd><dt>Gradle</dt><dd class="tnum">9.4.1</dd><dt>Kotlin</dt><dd class="tnum">2.2.10 · KSP 2.2.10-2.0.2</dd></dl></div><div class="panel"><span class="label">Key libraries</span><dl class="kv"><dt>Google Mobile Ads</dt><dd class="tnum">25.4.0 · UMP 4.0.0</dd><dt>Play Billing</dt><dd class="tnum">9.1.0</dd><dt>Play In-App Update</dt><dd class="tnum">2.1.0 (immediate)</dd><dt>Firebase BoM</dt><dd class="tnum">34.17.0 · Analytics, Crashlytics, Messaging, Firestore, Remote Config</dd><dt>Media</dt><dd class="tnum">Media3 ExoPlayer 1.11.0 · Coil 2.7.0 · Lottie 6.7.1</dd><dt>Storage</dt><dd class="tnum">Room 2.8.4 · WorkManager 2.11.2 · DocumentFile 1.1.0</dd></dl></div></div>
+<div class="grid-2"><div class="panel"><span class="label">Permissions from the APK · 10 of 15 shown</span><div class="chips"><span class="chip mono">INTERNET</span><span class="chip mono">ACCESS_NETWORK_STATE</span><span class="chip mono">READ_EXTERNAL_STORAGE ≤ Android 12</span><span class="chip mono">WRITE_EXTERNAL_STORAGE</span><span class="chip mono">POST_NOTIFICATIONS</span><span class="chip mono">FOREGROUND_SERVICE</span><span class="chip mono">WAKE_LOCK</span><span class="chip mono">BILLING</span><span class="chip mono">AD_ID</span><span class="chip mono">ACCESS_ADSERVICES_*</span></div><p style="font-size:14px;color:var(--muted)">READ_MEDIA_IMAGES and READ_MEDIA_VIDEO were removed in fix round 2 (H2): statuses come through the folder the user grants, and saved files are the app's own. Exported without a permission: SplashActivity (launcher) and the sticker content provider (required by WhatsApp).</p></div><div class="panel"><span class="label">Languages · 9</span><div class="chips"><span class="chip">English</span><span class="chip">العربية · Arabic</span><span class="chip">Deutsch</span><span class="chip">Français</span><span class="chip">हिन्दी · Hindi</span><span class="chip">Português (Brasil)</span><span class="chip">Türkçe</span><span class="chip">اردو · Urdu</span><span class="chip">中文 · Chinese</span></div></div></div>
+</section>
+
+<section id="market"><div class="sec-head"><span class="label">Market research</span><h2>A shelf of 50M-install savers, and a listing with 5 installs</h2><p>Google Play listings (US English) loaded on 17 Sep 2026. Competitors are the largest results for “status saver whatsapp”.</p></div>
+<div class="table-wrap"><table style="min-width:720px"><thead><tr><th>App</th><th>Developer</th><th>Installs</th><th>Rating</th><th>Leads with</th></tr></thead><tbody>
+<tr><td><a href="https://play.google.com/store/apps/details?id=com.downlood.sav.whmedia&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Status Download - Video Saver</a></td><td>Shree Ganesha Labs</td><td>100M+</td><td>4.6<small>1.71M ratings</small></td><td>Auto-save, “recover deleted messages”, stickers, dual apps</td></tr>
+<tr><td><a href="https://play.google.com/store/apps/details?id=statussaver.statusdownloader.downloadstatus.videoimagesaver&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Status Saver - Video Saver</a></td><td>Save Status, Video &amp; Image Downloader</td><td>100M+</td><td>4.6<small>275K ratings</small></td><td>Fast, free photo and video saving</td></tr>
+<tr><td><a href="https://play.google.com/store/apps/details?id=statussaver.statusdownloader.videodownloader&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Status Saver - Save Status</a></td><td>Lite Media</td><td>50M+</td><td>4.8<small>431K ratings</small></td><td>Multi-save, multi-delete, repost, video player</td></tr>
+<tr><td><a href="https://play.google.com/store/apps/details?id=statussaver.statusdownloader.downloadstatus.savestatus&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Status Saver: Video Downloader</a></td><td>BlueLine. Tech</td><td>50M+</td><td>4.8<small>205K ratings</small></td><td>Auto-save, direct chat to unsaved numbers, offline viewing</td></tr>
+<tr><td><a href="https://play.google.com/store/apps/details?id=com.wa.status.app.downloader.photo.video.status&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Status Saver-Status Downloader</a></td><td>AimzSol Technology</td><td>50M+</td><td>4.2<small>87.5K ratings</small></td><td>Private viewing, multi-save and delete</td></tr>
+<tr><td><a href="https://play.google.com/store/apps/details?id=com.falnesc.statussaver&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Status Saver・Status Downloader</a></td><td>Battery Stats Saver</td><td>10M+</td><td>4.8<small>225K ratings</small></td><td>One-click download, share without saving</td></tr>
+<tr><td><a href="https://play.google.com/store/apps/details?id=com.downloadwhatsappstatus.statussaver.videodownloader&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Status Saver - Download Status</a></td><td>Office Tools.</td><td>10M+</td><td>4.3<small>167K ratings</small></td><td>Save many statuses in one tap</td></tr>
+<tr class="ours"><td><b><a href="https://play.google.com/store/apps/details?id=com.statussaver.videosaver.downloadstatus.storysaver&amp;hl=en&amp;gl=us" target="_blank" rel="noopener">Status Downloader: Video Saver</a></b><small>our live listing · app name Status Flow</small></td><td>Cell Cave</td><td>5+</td><td>—<small>not enough ratings</small></td><td>Browse, preview, save, offline viewing, share and repost</td></tr>
+</tbody></table></div><p class="method">Every competitor in the table shows ads and in-app purchases. Our listing was last updated 8 Sep 2026, and its Data safety section says “Data isn’t encrypted”.</p>
+<div class="grid-2"><div class="panel"><span class="label">Where we are stronger</span><ul><li>Favourites, 9 languages with RTL and a dark theme; the leaders' listings mention none of these except languages (one app).</li><li>Sticker packs built in; only one of the top apps offers stickers.</li><li>No risky claims: no “recover deleted messages”, no “GB” mod support, no “save without being seen”.</li></ul></div><div class="panel"><span class="label">Where we are weaker</span><ul><li>5+ installs and no rating, against 87K–1.7M ratings.</li><li>No multi-select save or delete (three leaders advertise it), no auto-save and no direct chat.</li><li>A rewarded ad before each save (now one tap from the tile), while a rival sells ad-free one-click saving.</li><li>The listing title says “Status Downloader”; the leaders all say “Status Saver”.</li></ul></div></div>
+<div class="panel"><span class="label">Play policy that applies</span><ul><li><a href="https://support.google.com/googleplay/android-developer/answer/9888374?hl=en" target="_blank" rel="noopener">Impersonation</a>: keep the WhatsApp name and logo out of the title and icon; state that the app is not affiliated with WhatsApp.</li><li><a href="https://support.google.com/googleplay/android-developer/answer/9888072?hl=en" target="_blank" rel="noopener">Intellectual property</a>: repost stays framed as “with the content owner's permission”, as the listing already says.</li><li><a href="https://support.google.com/googleplay/android-developer/answer/14115180?hl=en" target="_blank" rel="noopener">Photo and video permissions</a>: READ_MEDIA_IMAGES/VIDEO only when the system pickers are not enough. Removed from the app in fix round 2 (H2).</li><li><a href="https://support.google.com/googleplay/android-developer/answer/10467955?hl=en" target="_blank" rel="noopener">All files access</a>: a status saver does not qualify; the app correctly uses folder access instead.</li><li><a href="https://support.google.com/googleplay/android-developer/answer/9857753?hl=en" target="_blank" rel="noopener">Disruptive ads</a>: the rewarded ad before saving must stay a clear opt-in; onboarding now keeps 32 dp between ads and its buttons (H3).</li><li><a href="https://support.google.com/googleplay/android-developer/answer/9900533?hl=en" target="_blank" rel="noopener">Subscriptions</a>: the paywall must not mislead; its benefits were corrected in fix round 2 (H4).</li><li><a href="https://support.google.com/googleplay/android-developer/answer/10787469?hl=en" target="_blank" rel="noopener">Data safety</a>: ad and Firebase traffic goes over HTTPS, so “Data isn't encrypted” is worth rechecking in the Play Console.</li></ul></div>
+</section>
+
+<section id="versions"><div class="sec-head"><span class="label">Versions &amp; APK</span><h2>1.7.0 on the new AdMob account, 1.8.0 in QA</h2><p>Dates are the commits in the app repository that set or opened each version.</p></div>
+<div class="grid-2" style="align-items:start"><ol class="versions"><li class="now"><time>17 Sep 2026</time><span class="node"></span><div><div class="v">1.8.0 <span>code 9 · QA build</span></div><p>Fix rounds 1 and 2: 13 of 15 QA findings fixed on <span class="mono">development/dev_1.8.0(9)</span>, <b>not yet committed</b>. The signing-key folder is untracked and ignored (staged, not committed).</p></div></li><li><time>08 Sep 2026</time><span class="node"></span><div><div class="v">1.8.0 <span>code 9</span></div><p>Development branch opened (<span class="mono">69f158e</span>).</p></div></li><li><time>08 Sep 2026</time><span class="node"></span><div><div class="v">1.7.0 <span>code 8 · release</span></div><p>AdMob moved to the migrated live account, in-app update in immediate mode, new Remote Config ad keys (<span class="mono">f45f215</span>).</p></div></li><li><time>10 Aug 2026</time><span class="node"></span><div><div class="v">earlier <span></span></div><p>QA-driven flow fixes (<span class="mono">9e2dcff</span>); the app was first committed on 06 Jul 2026.</p></div></li></ol><div class="panel apk"><span class="label">Latest APK</span><div class="file">exports/apk/status-saver-v1.8.0-debug-20260917-qafix2.apk</div><dl class="kv"><dt>Size</dt><dd class="tnum">16.3 MB · 16,261,152 bytes (debug, not a release figure)</dd><dt>Variant</dt><dd class="tnum">debug · live ad units; emulators always receive test ads</dd><dt>Built</dt><dd class="tnum">17 Sep 2026, 18:14</dd><dt>Installed on</dt><dd class="tnum">Pixel 10 emulator, Android 17</dd></dl><div><span class="label">SHA-256</span><p class="hash">cb6df7f66f1ad4dd7d3f1150d5b8451b23307c29c3b4db6f1531cd194303c663</p></div><div class="callout" style="font-size:14.5px"><strong>Before a Play upload:</strong> commit the QA fixes, reset the upload key in Play Console (H1), create a Native unit for the Home feed in AdMob (M1), then build a signed release AAB.</div><span class="label">Earlier builds</span><dl class="kv" style="font-size:14px"><dt>v1.8.0 debug, fix round 1</dt><dd class="tnum">17 Sep 2026 · 16.7 MB</dd><dt>v1.8.0 debug, before the fixes</dt><dd class="tnum">17 Sep 2026 · 13.8 MB</dd></dl></div></div>
+</section>
+
+<section id="money"><div class="sec-head"><span class="label">Monetization</span><h2>Ads by default, a subscription to switch them off</h2></div>
+<div class="flags" aria-label="Flags"><span class="flag on">ADS_ENABLED <b>true</b></span><span class="flag off">TEST_ADS_ENABLED <b>false</b></span><span class="flag on">LIVE_ADS_ENABLED <b>true</b></span><span style="color:var(--ink-2);font-size:14.5px">→ live ad units from Remote Config (<span class="mono">SS1_*_id</span>), each with its own on/off key. The AdMob app ID is kept out of this public repository.</span></div>
+<div class="table-wrap"><table><thead><tr><th>Format</th><th>Where it appears</th><th>Rules</th></tr></thead><tbody>
+<tr><td><b>App open</b><small>SPLASH_APP_OPEN</small></td><td>During the splash on a cold start</td><td>One request per start; the splash does not wait for a slow fill.</td></tr>
+<tr><td><b>Banner</b><small>5 placements</small></td><td>Language, onboarding, Home, feature screens; splash banner off by default</td><td>Adaptive, with a loading placeholder; collapses when not eligible. Onboarding Skip sits 32 dp below the banner (was 4 dp).</td></tr>
+<tr><td><b>MREC</b><small>OB_MRB, FEATURES_MRB</small></td><td>Onboarding pages and feature screens</td><td>32 dp clear space above Next and Get Started (was 24 dp).</td></tr>
+<tr><td><b>Native</b><small>LANGUAGE_RMB, HOME_RMB</small></td><td>Language list and the Home status grid</td><td>The Home unit is set up as the wrong format in AdMob (M1). The app now stops after the first “doesn't match format” answer: 1 request per session instead of 3.</td></tr>
+<tr><td><b>Interstitial</b><small>3 placements</small></td><td>After language, after onboarding, before feature transitions</td><td>Remote action interval; navigation never waits for the ad.</td></tr>
+<tr><td><b>Rewarded</b><small>DOWNLOAD_REWARDED</small></td><td>“Watch a short ad?” before saving a status, from the viewer or the tile's download badge</td><td>Opt-in; if no ad is ready the save goes ahead.</td></tr>
+</tbody></table></div>
+<div class="with-shot"><div class="panel"><span class="label">Premium · removes all ads</span><div class="plans"><div class="plan"><span class="label">Weekly</span><b class="tnum">Rs 1,100</b><span class="mono" style="color:var(--muted)">weekly_plan</span></div><div class="plan"><span class="label">Monthly</span><b class="tnum">Rs 2,750</b><span class="mono" style="color:var(--muted)">monthly_plan</span></div></div><p style="color:var(--ink-2)">Prices as Google Play showed them on the emulator (Pakistan store). Older lifetime and yearly purchases are still honoured.</p><div class="callout"><strong>Paywall claims checked:</strong> all three rows are now true — Remove Ads, Instant Saves (no video ad before saving) and No Interruptions (no full-screen ads). The old “Faster Downloads” and “Private Vault” rows were removed in all 9 languages (H4).</div></div><figure style="margin:0;display:grid;gap:8px"><button class="phone" type="button" data-full="shots/r2-02-paywall.jpg" data-cap="Paywall"><img src="shots/r2-02-paywall.jpg" alt="Unlock Premium screen listing Remove Ads, Instant Saves and No Interruptions" loading="lazy"></button><figcaption><b>Paywall</b>Three true benefits, plans, Restore, Privacy and Terms</figcaption></figure></div>
+</section>
+
+<section id="shots"><div class="sec-head"><span class="label">Screenshots</span><h2>Captured during testing</h2><p>Emulator captures from this QA round. Tap any screen to enlarge it.</p></div>
+<div class="shots-group"><header><h3>First run</h3><span class="label">5 screens</span></header><div class="strip"><figure><button class="phone" type="button" data-full="shots/01-splash.jpg" data-cap="Splash"><img src="shots/01-splash.jpg" alt="Splash screen" loading="lazy"></button><figcaption><b>Splash</b>Consent and app-open ad</figcaption></figure><figure><button class="phone" type="button" data-full="shots/03-language.jpg" data-cap="Language"><img src="shots/03-language.jpg" alt="Language picker" loading="lazy"></button><figcaption><b>Language</b>9 languages, banner below the list</figcaption></figure><figure><button class="phone" type="button" data-full="shots/05-onboarding-1.jpg" data-cap="Onboarding"><img src="shots/05-onboarding-1.jpg" alt="First onboarding page" loading="lazy"></button><figcaption><b>Onboarding</b>Before fix round 2: Next 24 dp under the MREC</figcaption></figure><figure><button class="phone" type="button" data-full="shots/r2-01-onboarding-1.jpg" data-cap="Onboarding · now"><img src="shots/r2-01-onboarding-1.jpg" alt="Onboarding page with more space between ads and buttons" loading="lazy"></button><figcaption><b>Onboarding · now</b>32 dp clear space around the ads</figcaption></figure><figure><button class="phone" type="button" data-full="shots/18-saf-picker.jpg" data-cap="Folder access"><img src="shots/18-saf-picker.jpg" alt="System folder picker at the WhatsApp statuses folder" loading="lazy"></button><figcaption><b>Folder access</b>Picker opens straight at .Statuses</figcaption></figure></div></div>
+<div class="shots-group"><header><h3>Core flow</h3><span class="label">8 screens</span></header><div class="strip"><figure><button class="phone" type="button" data-full="shots/21-home-statuses.jpg" data-cap="Home"><img src="shots/21-home-statuses.jpg" alt="Home screen with three status images" loading="lazy"></button><figcaption><b>Home</b>WhatsApp images</figcaption></figure><figure><button class="phone" type="button" data-full="shots/37-business-videos.jpg" data-cap="Business videos"><img src="shots/37-business-videos.jpg" alt="Home screen on Business videos" loading="lazy"></button><figcaption><b>Business videos</b>Second source works the same way</figcaption></figure><figure><button class="phone" type="button" data-full="shots/24-viewer-image.jpg" data-cap="Viewer"><img src="shots/24-viewer-image.jpg" alt="Status image viewer" loading="lazy"></button><figcaption><b>Viewer</b>Repost, Save, Share, Delete</figcaption></figure><figure><button class="phone" type="button" data-full="shots/r2-03-badge-optin.jpg" data-cap="Save from the tile"><img src="shots/r2-03-badge-optin.jpg" alt="Viewer with the Watch a short ad dialog after tapping a tile's save badge" loading="lazy"></button><figcaption><b>Save from the tile</b>Badge tap → opt-in → saved</figcaption></figure><figure><button class="phone" type="button" data-full="shots/26-save-success.jpg" data-cap="Saved"><img src="shots/26-save-success.jpg" alt="Saved Successfully screen" loading="lazy"></button><figcaption><b>Saved</b>File matches the original byte for byte</figcaption></figure><figure><button class="phone" type="button" data-full="shots/30-share-sheet.jpg" data-cap="Share"><img src="shots/30-share-sheet.jpg" alt="Share sheet" loading="lazy"></button><figcaption><b>Share</b>System share sheet</figcaption></figure><figure><button class="phone" type="button" data-full="shots/32-save-tab.jpg" data-cap="Saved list"><img src="shots/32-save-tab.jpg" alt="Saved tab" loading="lazy"></button><figcaption><b>Saved list</b>Saved images and videos</figcaption></figure><figure><button class="phone" type="button" data-full="shots/33-saved-denied.jpg" data-cap="Saved list"><img src="shots/33-saved-denied.jpg" alt="Saved tab with media permission denied" loading="lazy"></button><figcaption><b>Saved list</b>Before round 2, with the media permission denied</figcaption></figure></div></div>
+<div class="shots-group"><header><h3>Stickers, settings, conditions</h3><span class="label">7 screens</span></header><div class="strip"><figure><button class="phone" type="button" data-full="shots/46-stickers.jpg" data-cap="Stickers"><img src="shots/46-stickers.jpg" alt="Sticker pack list" loading="lazy"></button><figcaption><b>Stickers</b>Bundled packs</figcaption></figure><figure><button class="phone" type="button" data-full="shots/47-sticker-detail.jpg" data-cap="Sticker pack"><img src="shots/47-sticker-detail.jpg" alt="Sticker pack detail" loading="lazy"></button><figcaption><b>Sticker pack</b>Add to WhatsApp</figcaption></figure><figure><button class="phone" type="button" data-full="shots/49-settings.jpg" data-cap="Settings"><img src="shots/49-settings.jpg" alt="Settings screen" loading="lazy"></button><figcaption><b>Settings</b>Premium tile, theme, language, notifications</figcaption></figure><figure><button class="phone" type="button" data-full="shots/58-rate-us.jpg" data-cap="Rate us"><img src="shots/58-rate-us.jpg" alt="Rate us dialog" loading="lazy"></button><figcaption><b>Rate us</b>Before round 2 (Urdu, dark)</figcaption></figure><figure><button class="phone" type="button" data-full="shots/r2-04-rateus.jpg" data-cap="Rate us · now"><img src="shots/r2-04-rateus.jpg" alt="Rate us dialog in English" loading="lazy"></button><figcaption><b>Rate us · now</b>48 dp stars, same drawn size</figcaption></figure><figure><button class="phone" type="button" data-full="shots/60-offline-home.jpg" data-cap="Offline"><img src="shots/60-offline-home.jpg" alt="Home screen offline" loading="lazy"></button><figcaption><b>Offline</b>Home in about 6.7 s with no network</figcaption></figure><figure><button class="phone" type="button" data-full="shots/62-font130-home.jpg" data-cap="130% font"><img src="shots/62-font130-home.jpg" alt="Home screen at 130 percent font size" loading="lazy"></button><figcaption><b>130% font</b>No clipped text on Home</figcaption></figure></div></div>
+<div class="shots-group"><header><h3>Urdu (RTL) and dark theme</h3><span class="label">2 screens</span></header><div class="strip"><figure><button class="phone" type="button" data-full="shots/51-home-urdu.jpg" data-cap="Home · Urdu"><img src="shots/51-home-urdu.jpg" alt="Home screen in Urdu" loading="lazy"></button><figcaption><b>Home · Urdu</b>Mirrored layout</figcaption></figure><figure><button class="phone" type="button" data-full="shots/52-settings-dark-urdu.jpg" data-cap="Settings · dark"><img src="shots/52-settings-dark-urdu.jpg" alt="Settings in Urdu with dark theme" loading="lazy"></button><figcaption><b>Settings · dark</b>Readable text in dark theme</figcaption></figure></div></div>
+</section>
+
+<section id="graphics"><div class="sec-head"><span class="label">Graphics</span><h2>Brand assets and store readiness</h2></div>
+<div class="assets"><div class="asset"><div class="art"><img src="gfx/icon.png" alt="Launcher icon"></div><div><b>Launcher icon</b><p class="mono" style="color:var(--muted)">192 × 192 PNG (xxxhdpi)</p><span class="chip warn"><span class="dot"></span>512 × 512 Play icon not in the repo</span></div></div><div class="asset"><div class="art missing fg"><span>1024 × 500<br>not in the repo</span></div><div><b>Feature graphic</b><p class="mono" style="color:var(--muted)">Required by Play</p><span class="chip fail"><span class="dot"></span>Missing locally</span></div></div></div>
+<div class="panel"><span class="label">Palette, sampled from the icon and the app</span><div class="swatches"><div class="sw"><i style="background:#36D03C"></i>Icon green<code>#36D03C</code></div><div class="sw"><i style="background:#4FD655"></i>Icon average<code>#4FD655</code></div><div class="sw"><i style="background:#007A3D"></i>App green<code>#007A3D</code></div><div class="sw"><i style="background:#116B2E"></i>Toolbar green<code>#116B2E</code></div><div class="sw"><i style="background:#FFFFFF"></i>Bubble white<code>#FFFFFF</code></div></div><p style="font-size:14px;color:var(--muted)">The Play listing's own graphics were not checked in this round.</p></div>
+</section>
+
+<section id="qa"><div class="sec-head"><span class="label">QA history</span><h2>One emulator, nineteen categories, thirteen fixes</h2><p>Every finding from the 17 Sep 2026 audit, counted once. Saved files were compared with the originals by size, deletes were checked on disk and in MediaStore, and ad fixes were checked in the ad log.</p></div>
+<div class="tally">
+  <div><span class="label">Bugs found</span><b class="tnum">15</b><small>Across 2 QA rounds, 17 Sep 2026</small></div>
+  <div class="t-fixed"><span class="label">Fixed</span><b class="tnum">13</b><small>87% fix rate · 1 awaiting a device check</small></div>
+  <div class="t-open"><span class="label">Still open</span><b class="tnum">2</b><small>0 critical, 1 high, 1 medium, 0 low · reasons below</small></div>
+  <div><span class="label">QA score</span><b class="tnum">84<span style="font-size:.45em;color:var(--muted)"> / 100</span></b><small>Target 90 · started at 84</small></div>
+</div>
+<div class="panel">
+  <div class="dl-row"><span class="label">Fixed vs open · all rounds</span><span class="tnum" style="font-size:14px;color:var(--ink-2)">13 fixed · 2 open</span></div>
+  <div class="stack" role="img" aria-label="13 of 15 bugs fixed, 2 open"><span class="s-fixed" style="width:86.7%"></span><span class="s-open" style="width:13.3%"></span></div>
+  <div class="legend"><span><i style="background:var(--pass)"></i>Fixed 13</span><span><i style="background:var(--warn)"></i>Open 2</span></div>
+  <span class="label" style="margin-top:6px">Open bugs by severity</span>
+  <div class="sev"><div><span class="label">Critical</span><b class="tnum" style="color:var(--pass)">0</b></div><div><span class="label">High</span><b class="tnum">1</b></div><div><span class="label">Medium</span><b class="tnum">1</b></div><div><span class="label">Low</span><b class="tnum" style="color:var(--pass)">0</b></div><div><span class="label">Not rated</span><b class="tnum">0</b></div></div>
+</div>
+<div class="table-wrap"><table class="ledger"><thead><tr><th>QA round</th><th>Found</th><th>Fixed</th><th>Open</th><th>Fix rate</th></tr></thead><tbody>
+<tr><td><b>19-category audit</b><small>17 Sep 2026 · v1.8.0 (9) debug · Pixel 10 emulator, Android 17</small></td><td class="num">15</td><td class="num">13</td><td class="num">2</td><td><div class="dl-row" style="flex-wrap:nowrap;align-items:center"><div class="stack" style="flex:1"><span class="s-fixed" style="width:86.7%"></span><span class="s-open" style="width:13.3%"></span></div><span class="tnum">87%</span></div></td></tr>
+<tr><td><b>Fix round 2 · all open items</b><small>17 Sep 2026 · v1.8.0 (9) debug round-2 build · Pixel 10 emulator, Android 17</small></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td><div class="dl-row" style="flex-wrap:nowrap;align-items:center"><div class="stack" style="flex:1"><span class="s-fixed" style="width:100%"></span><span class="s-open" style="width:0%"></span></div><span class="tnum">100%</span></div></td></tr>
+</tbody><tfoot><tr><td>Total</td><td class="num">15</td><td class="num">13</td><td class="num">2</td><td><div class="dl-row" style="flex-wrap:nowrap;align-items:center"><div class="stack" style="flex:1"><span class="s-fixed" style="width:86.7%"></span><span class="s-open" style="width:13.3%"></span></div><span class="tnum">87%</span></div></td></tr></tfoot></table></div>
+<div class="panel"><div class="dl-row"><h3>Why 2 bugs are still open</h3><span class="label">What is still open, and why</span></div><div class="reasons"><div class="reason"><div><h3>Outside the app code</h3><div class="ids"><span>H1</span><span>M1</span></div></div><div><p>The app-side part is done; what is left is a console action (Play Console key reset, AdMob unit), not app code.</p></div><b class="tnum">2</b></div></div></div>
+<div class="panel score"><span class="label">QA score · out of 100</span>
+<div class="score-row"><span>Audit (emulator), 2026-09-17</span><div class="bar muted"><span style="width:84%"></span><i style="left:90%"></i></div><b class="tnum">84</b></div>
+<div class="score-row"><span>Fix round 1 (6 fixed), 2026-09-17</span><div class="bar muted"><span style="width:84%"></span><i style="left:90%"></i></div><b class="tnum">84</b></div>
+<div class="score-row"><span>Fix round 2 (13 fixed), 2026-09-17</span><div class="bar"><span style="width:84%"></span><i style="left:90%"></i></div><b class="tnum">84</b></div>
+<div class="scale"><span></span><div><span style="left:0">0</span><span style="left:50%">50</span><span style="left:90%">90 target</span><span style="left:100%">100</span></div><span></span></div>
+<p class="method">How the score works: each of the 18 scored categories starts at 100 and loses 25 per open critical, 12 per high, 6 per medium, 2 per low and 4 per unrated bug, 3 per fix not yet checked on a device, and 5 per planned test that could not be run. The total is the average, capped while serious items remain: at most 69 with an open critical, 84 with an open high, 94 with an open medium, 95 with an unrated bug, 98 with an open low, and 99 until every fix is device-checked and every planned test has run. Now: average 98, capped at 84 (1 open high bug). Not scored: Load (no server-side component to load).</p>
+<div class="table-wrap" style="margin-top:4px"><table style="min-width:520px"><thead><tr><th>Category</th><th>Score</th><th>Why not 100</th></tr></thead><tbody><tr><td>Functional</td><td class="tnum">91</td><td>−6 M1 open (medium)<br>−3 M2 fixed, not device-verified</td></tr><tr><td>UI</td><td class="tnum">100</td><td>—</td></tr><tr><td>UX</td><td class="tnum">100</td><td>—</td></tr><tr><td>Compatibility</td><td class="tnum">95</td><td>−5 not tested: Emulator only (Pixel 10 AVD, Android 17, 411x923 dp). No real phone, no Android 8–16, no tablet or small screen this round.</td></tr><tr><td>Installation</td><td class="tnum">100</td><td>—</td></tr><tr><td>Performance</td><td class="tnum">95</td><td>−5 not tested: Emulator figures are not device figures: startup, jank and memory measured here are indicative only.</td></tr><tr><td>Load</td><td class="tnum">—</td><td>no server-side component to load</td></tr><tr><td>Stress</td><td class="tnum">100</td><td>—</td></tr><tr><td>Network</td><td class="tnum">100</td><td>—</td></tr><tr><td>Security</td><td class="tnum">88</td><td>−12 H1 open (high)</td></tr><tr><td>Usability</td><td class="tnum">100</td><td>—</td></tr><tr><td>Regression</td><td class="tnum">100</td><td>—</td></tr><tr><td>Smoke</td><td class="tnum">100</td><td>—</td></tr><tr><td>Sanity</td><td class="tnum">100</td><td>—</td></tr><tr><td>Interrupt</td><td class="tnum">100</td><td>—</td></tr><tr><td>Battery</td><td class="tnum">95</td><td>−5 not tested: Battery drain cannot be measured on an emulator.</td></tr><tr><td>Permission</td><td class="tnum">100</td><td>—</td></tr><tr><td>Localization</td><td class="tnum">100</td><td>—</td></tr><tr><td>Accessibility</td><td class="tnum">100</td><td>—</td></tr></tbody></table></div>
+</div>
+<div class="panel"><div class="dl-row"><h3>Fix round 2 · the nine open items</h3><span class="label">Checked on the emulator · 17 Sep, 18:14 build</span></div><p style="color:var(--ink-2)">The owner asked for all nine open items. Seven are fixed and checked. H1 and M1 are fixed on the app side and now wait on a console action.</p><div class="strip"><figure><button class="phone" type="button" data-full="shots/05-onboarding-1.jpg" data-cap="H3 · before"><img src="shots/05-onboarding-1.jpg" alt="Onboarding with buttons close to the ads" loading="lazy"></button><figcaption><b>H3 · before</b>Next 24 dp under the MREC, Skip 4 dp under the banner</figcaption></figure><figure><button class="phone" type="button" data-full="shots/r2-01-onboarding-1.jpg" data-cap="H3 · after"><img src="shots/r2-01-onboarding-1.jpg" alt="Onboarding with more space between ads and buttons" loading="lazy"></button><figcaption><b>H3 · after</b>32 dp and 40 dp of clear space</figcaption></figure><figure><button class="phone" type="button" data-full="shots/08-paywall.jpg" data-cap="H4 · before"><img src="shots/08-paywall.jpg" alt="Paywall listing benefits the app does not have" loading="lazy"></button><figcaption><b>H4 · before</b>Faster Downloads, Private Vault</figcaption></figure><figure><button class="phone" type="button" data-full="shots/r2-02-paywall.jpg" data-cap="H4 · after"><img src="shots/r2-02-paywall.jpg" alt="Paywall listing Remove Ads, Instant Saves and No Interruptions" loading="lazy"></button><figcaption><b>H4 · after</b>Three benefits the app delivers</figcaption></figure></div><div class="table-wrap"><table style="min-width:560px"><thead><tr><th>Bug</th><th>Before</th><th>After</th></tr></thead><tbody>
+<tr><td><b>H1</b> Signing key in git</td><td>Key and password tracked and pushed</td><td>Untracked and ignored (files kept on disk) · <i>key still in history: reset the upload key in Play Console</i></td></tr>
+<tr><td><b>H2</b> Media permissions</td><td>READ_MEDIA_IMAGES/VIDEO declared and requested</td><td>Not in the APK; no prompt on Saved or Favorites; saved list and delete still work</td></tr>
+<tr><td><b>H3</b> Ads next to buttons</td><td>Skip 4 dp, Next 24 dp from the ads</td><td>Skip 32 dp, Next 40 dp</td></tr>
+<tr><td><b>H4</b> Paywall claims</td><td>2 of 3 benefits did not exist</td><td>3 true benefits, 9 languages</td></tr>
+<tr><td><b>M1</b> Home native ad</td><td>3 doomed requests per session</td><td>1 request, then skipped · <i>AdMob unit still the wrong format</i></td></tr>
+<tr><td><b>L2</b> Test device id</td><td>Infinix id in the code</td><td>Per machine in local.properties; 0 matches in the APK</td></tr>
+<tr><td><b>L3</b> Tile download badge</td><td>Opened the viewer only</td><td>Saves in one tap (opt-in when an ad is ready); 2 files saved byte-identical</td></tr>
+<tr><td><b>L4</b> Small or unlabeled controls</td><td>6 findings</td><td>Back labelled; 48 dp touch areas on back, badges, tabs, switch row, arrows, stars</td></tr>
+<tr><td><b>L5</b> Favorites label</td><td>5 px (2 dp) lower</td><td>1 px (rounding)</td></tr>
+</tbody></table></div><p class="method">Regression on the same build: first run from a data clear, folder access for both apps, delete of a saved file (gone from disk and MediaStore), Business video saved at 169,020 bytes, 0 crashes and 0 ANRs.</p></div>
+<div class="panel"><div class="dl-row"><h3>H5 · ads after the app is restored</h3><span class="label">Fixed and checked on the emulator · 17 Sep</span></div><p style="color:var(--ink-2)">When Android killed the app in the background and later restored it straight onto Home, the splash never ran, so ad consent was never checked and no ad loaded for the rest of the session.</p><div class="strip"><figure><button class="phone" type="button" data-full="shots/34-h5-restored-home.jpg" data-cap="H5 · before"><img src="shots/34-h5-restored-home.jpg" alt="Home screen after restore with no banner" loading="lazy"></button><figcaption><b>H5 · before</b>Restored Home, no ads all session</figcaption></figure><figure><button class="phone" type="button" data-full="shots/35-h5-restored-fixed.jpg" data-cap="H5 · after"><img src="shots/35-h5-restored-fixed.jpg" alt="Home screen after restore with a banner" loading="lazy"></button><figcaption><b>H5 · after</b>Consent resolved on Home, banner loads</figcaption></figure></div><div class="table-wrap"><table style="min-width:560px"><thead><tr><th>Check</th><th>Before</th><th>After</th></tr></thead><tbody>
+<tr><td>Ads after a restore</td><td>Every placement skipped: consent not granted</td><td>Consent in 1.5 s, SDK ready 2.1 s later, banner shown</td></tr>
+</tbody></table></div><p class="method">Method: home, <span class="mono">am kill</span>, relaunch from recents. Ads on (live units serving as test ads).</p></div>
+<div class="panel"><div class="dl-row"><h3>M3, M4, M5 · before and after</h3><span class="label">Fixed and checked on the emulator · 17 Sep</span></div><p style="color:var(--ink-2)">M3: the viewer zoomed every video to fill the screen, so a 1280×720 status lost most of its picture. M4 and M5 below.</p><div class="strip"><figure><button class="phone" type="button" data-full="shots/29-play-a.jpg" data-cap="M3 · before"><img src="shots/29-play-a.jpg" alt="Landscape video cropped to two bars" loading="lazy"></button><figcaption><b>M3 · before</b>Only two of seven colour bars visible</figcaption></figure><figure><button class="phone" type="button" data-full="shots/36-m3-video-fit.jpg" data-cap="M3 · after"><img src="shots/36-m3-video-fit.jpg" alt="Landscape video shown in full" loading="lazy"></button><figcaption><b>M3 · after</b>Whole frame, letterboxed</figcaption></figure><figure><button class="phone" type="button" data-full="shots/44-delete-consent-dialog.jpg" data-cap="M4 · after"><img src="shots/44-delete-consent-dialog.jpg" alt="System dialog asking to allow deleting the photo" loading="lazy"></button><figcaption><b>M4 · after</b>The delete permission dialog</figcaption></figure><figure><button class="phone" type="button" data-full="shots/57-notification.jpg" data-cap="M5 · before"><img src="shots/57-notification.jpg" alt="Notification announcing 8 new statuses" loading="lazy"></button><figcaption><b>M5 · before</b>“8 new statuses” after switching on</figcaption></figure></div><div class="table-wrap"><table style="min-width:560px"><thead><tr><th>Bug</th><th>Before</th><th>After</th></tr></thead><tbody>
+<tr><td><b>M4</b> Delete a status saved before a reinstall</td><td>Only a “delete failed” toast; file stays on disk and in MediaStore</td><td>System “Allow … to delete?” dialog; Deny keeps it, Allow removes it from disk and MediaStore</td></tr>
+<tr><td><b>M5</b> New-status notification</td><td>“8 new statuses” with one actually new</td><td>Silent first scan, then “1 new” for one new status</td></tr>
+<tr><td><b>M2</b> Splash app-open requests</td><td>Duplicate request while the first was still loading; show skipped, both ads wasted</td><td>1 request per start in 5 cold starts, all shown · <i>slow-fill case not reproduced</i></td></tr>
+<tr><td><b>L1</b> Arabic notification text</td><td>Garbled word</td><td>Correct text in the APK resources · <i>notification not shown in Arabic</i></td></tr>
+</tbody></table></div><p class="method">Same test files and the same emulator before and after.</p></div>
+<div class="panel"><div class="dl-row"><h3>Performance and stress</h3><span class="label">Emulator figures · indicative only</span></div><p style="color:var(--ink-2)">Measured on the final QA build with ads on.</p><div class="table-wrap"><table style="min-width:560px"><thead><tr><th>Measure</th><th>Result</th></tr></thead><tbody>
+<tr><td>Cold start, online (3 runs)</td><td>1,738 · 2,002 · 1,791 ms</td></tr>
+<tr><td>Cold start, offline (3 runs)</td><td>1,452 · 1,869 · 1,684 ms</td></tr>
+<tr><td>Rapid tab switching, 4 cycles × 10 rounds</td><td>PSS 204 → 250 → 252 → 232 → 234 MB · views steady at 249 · no leak</td></tr>
+<tr><td>5 min in background</td><td>Process ended by a WebView crash that also hit Chrome at the same second; app reopened normally</td></tr>
+<tr><td>Crashes and ANRs in app code</td><td>0</td></tr>
+</tbody></table></div><p class="method">The background crash was a native <span class="mono">SIGILL</span> in Chromium's memory-trim code, seen in Chrome too, on this Android 17 emulator image. It is not in the app's code and was not seen elsewhere.</p></div>
+<ol class="qa-log"><li><time>17 Sep</time><div><h3>Fix round 2</h3><p>The owner asked for all nine open items. Seven are fixed and checked, and H1 and M1 are fixed on the app side. The score stays at 84 until the upload key is reset in Play Console, because a leaked key stays in git history. Changes are not committed.</p></div></li>
+<li><time>17 Sep</time><div><h3>Fix round 1</h3><p>Six of 15 findings fixed; five checked on the emulator, M2 fixed but its slow-fill case could not be recreated. Final smoke passed: an image and a Business video saved byte-identical, no crashes. Score stays at 84 while four high findings wait on the owner. Changes are not committed.</p></div></li>
+<li><time>17 Sep</time><div><h3>19-category audit</h3><p>15 findings (5 high, 5 medium, 5 low) on a Pixel 10 emulator with Android 17. Started at 84, capped by the open high findings.</p></div></li></ol>
+<div class="grid-2" style="align-items:start"><div class="panel"><span class="label">Fixed in 19-category audit · 13</span><ul class="fixlist"><li><b>H2</b> READ_MEDIA_IMAGES / READ_MEDIA_VIDEO requested for a secondary need (Play photo-and-video policy risk)</li><li><b>L1</b> Arabic new-status notification has a garbled word</li><li><b>L2</b> Debug builds on the Infinix test phone always receive test ads</li><li><b>M2</b> Splash app-open ad is skipped on slow starts, and two ad requests are wasted every time <i>(device check pending)</i></li><li><b>H3</b> Onboarding Next and Skip buttons sit right next to ads (accidental-click risk)</li><li><b>H4</b> Paywall sells two premium benefits the app does not have</li><li><b>H5</b> No ads for the whole session after Android restores the app from the background</li><li><b>L3</b> The download icon on a status tile opens the viewer instead of saving</li><li><b>M3</b> Landscape status videos are cropped in the viewer; most of the picture is cut off</li><li><b>M4</b> Saved statuses from before a reinstall (or data clear) can never be deleted</li><li><b>M5</b> New-status notification is wrong: announces old statuses as new, and misses real ones</li><li><b>L4</b> Several controls are below 48 dp or unlabeled</li><li><b>L5</b> Bottom-nav “Favorites” label sits lower than the other four</li></ul></div><div class="panel"><span class="label">Release to-do (not counted as bugs)</span><p style="color:var(--ink-2);font-size:14.5px">Commit the QA fixes (the key folder removal is staged); reset the upload key in Play Console and keep the new key outside the repo (H1); create a Native ad unit and publish its id to <span class="mono">SS1_home_RMB_id</span> (M1); make a 512 × 512 icon and a feature graphic; test on a real phone with real WhatsApp; build a signed release AAB.</p></div></div>
+</section>
+  </main>
+</div>
+
+<footer>Status Flow 1.8.0 (9) · compiled 17 Sep 2026 (updated after fix round 2) from the WhatsAppStatusSaver repository (branch development/dev_1.8.0(9)), testing on a Pixel 10 emulator with Android 17, and Google Play listings checked the same day.</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Screenshot">
+  <button type="button" id="lb-close">Close</button>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</dialog>
+
+<script>
+// Sections row in the tab bar: marks the section you are reading, and the screenshot lightbox.
+(function () {
+  var bar = document.getElementById('bar');
+  var links = [].slice.call(document.querySelectorAll('#jump a'));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var jump = document.getElementById('jump');
+
+  function syncBar() { document.documentElement.style.setProperty('--barh', bar.offsetHeight + 'px'); }
+
+  function update() {
+    var y = window.scrollY + bar.offsetHeight + window.innerHeight * 0.2, idx = 0;
+    sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top + window.scrollY <= y) idx = i; });
+    links.forEach(function (a, i) { a.setAttribute('aria-current', i === idx ? 'true' : 'false'); });
+    var active = links[idx];
+    if (active && jump.scrollWidth > jump.clientWidth) {
+      var left = active.offsetLeft - jump.offsetLeft;
+      if (left < jump.scrollLeft || left + active.offsetWidth > jump.scrollLeft + jump.clientWidth) jump.scrollLeft = left - 16;
+    }
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', function () { syncBar(); update(); });
+  syncBar(); update();
+
+  var lb = document.getElementById('lightbox'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  if (!lb) return;
+  document.querySelectorAll('#dossier .phone').forEach(function (b) {
+    b.addEventListener('click', function () {
+      img.src = b.dataset.full; img.alt = b.querySelector('img').alt; cap.textContent = b.dataset.cap || '';
+      if (typeof lb.showModal === 'function') lb.showModal();
+    });
+  });
+  document.getElementById('lb-close').addEventListener('click', function () { lb.close(); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+})();
+</script>
+
+</div>
+</body>
+</html>
