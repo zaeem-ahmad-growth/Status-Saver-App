@@ -376,7 +376,7 @@ Title · 29/30 · Status Saver & Downloader App
 
 Short description · 74/80 · Status saver and downloader: save status video, photo and story to gallery
 
-Full description outline · 8 blocks
+Full description outline · 11 blocks
 
 #### Save status video and photo to your gallery
 
@@ -409,6 +409,18 @@ The app reads only the status folder you grant it through the system picker. It 
 #### What it costs
 
 The app is free and shows ads. A short opt-in video ad can appear before a save. Premium removes every ad — weekly or monthly, cancellable in Google Play.
+
+#### How to save a status
+
+1. Open the status you want in your messaging app so it downloads there. 2. Open this status saver app and grant the status folder once, through the system picker. 3. Tap any photo or video in the grid to preview it. 4. Tap save, and the status video or photo downloads straight to your gallery. 5. Find it again in the saved library, where you can share it, repost it, favourite it or delete it.
+
+#### Everything this status saver does
+
+✓ Save status video and status photo to gallery ✓ Status downloader for both the standard and business inbox ✓ Original quality, no re-encoding and no watermark added ✓ Preview before you save ✓ Saved library with favourites ✓ Watch saved statuses offline ✓ Share or repost with permission ✓ Sticker packs you can add to your messaging app ✓ Dark theme, nine languages and right-to-left layouts ✓ New-status notifications ✓ Folder access only — no all-files permission
+
+#### Who it is for
+
+If you have been looking for a status saver, a status downloader app, a story saver, a video status saver, a photo status downloader or simply a way to save status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs.
 
 **Why these words.** Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those — two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk.
 

@@ -139,7 +139,7 @@
     - `titleWhy` · string · e.g. `"Checked live against Google Play on 23 Sep 2026 in the United States a…"`
     - `short` · string · e.g. `"Status saver and downloader: save status video, photo and story to gal…"`
     - `shortChars` · number · e.g. `73`
-    - `outline[][]` · array of 8 arrays · e.g. `["Save status video and photo to your gallery","Browse the status updates available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality — the same file, not a re-encoded copy."]`
+    - `outline[][]` · array of 11 arrays · e.g. `["Save status video and photo to your gallery","Browse the status updates available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality — the same file, not a re-encoded copy."]`
     - `close` · string · e.g. `"Only save, share or repost content you own or have permission to use. …"`
     - `why` · string · e.g. `"Every phrase in these fields appears on the keyword board, and every c…"`
   - `fields[][]` · array of 14 arrays · e.g. `["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."]`

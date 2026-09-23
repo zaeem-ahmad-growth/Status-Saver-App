@@ -1,13 +1,13 @@
-# ASO Playbook: code and data
+# PlayStore Metadata: code and data
 
 > **Generated file: do not edit by hand.** Produced by `node tools/export-docs.js` (GitHub runs it after every push).
-> Everything behind the [ASO Playbook](../../tabs/02-aso-playbook/index.html) tab in one place: how the page is put together, the full source of the code that draws it, and the full data it reads. **Load it when a question or change concerns how this tab works** (its calculations, data, filters or behaviour); wording-only edits do not need it. The visible text is in [docs/tabs/02-aso-playbook.md](../tabs/02-aso-playbook.md); where the data came from is in [research.md](research.md).
+> Everything behind the [PlayStore Metadata](../../tabs/03-playstore-metadata/index.html) tab in one place: how the page is put together, the full source of the code that draws it, and the full data it reads. **Load it when a question or change concerns how this tab works** (its calculations, data, filters or behaviour); wording-only edits do not need it. The visible text is in [docs/tabs/03-playstore-metadata.md](../tabs/03-playstore-metadata.md); where the data came from is in [research.md](research.md).
 
 ## How the page is put together
 
-- Markup: [tabs/02-aso-playbook/index.html](../../tabs/02-aso-playbook/index.html) (150 lines), `<body data-page="playbook">`
+- Markup: [tabs/03-playstore-metadata/index.html](../../tabs/03-playstore-metadata/index.html) (123 lines), `<body data-page="metadata">`
 - Drawn by [assets/app.js](../../assets/app.js) from [assets/data.js](../../assets/data.js); styles in [assets/site.css](../../assets/site.css); tab bar from [assets/nav.js](../../assets/nav.js)
-- Sections and the functions that fill them: see the [code map](../code-map.md#02-aso-playbook)
+- Sections and the functions that fill them: see the [code map](../code-map.md#03-playstore-metadata)
 
 ## Code
 
