@@ -446,15 +446,15 @@ Proposed ASO package
 
 Title, short description and the full description outline, built only from phrases on the board, and written so every claim matches what the app actually does. The finished copy, field by field with character counts, is on the [PlayStore Metadata](../../tabs/03-playstore-metadata) tab.
 
-Title · 29/30 · Status Saver App for WhatsApp
+Title · 28/30 · Status Saver App Download HD
 
-Short description · 75/80 · Save WhatsApp status video & photo to gallery - status saver and downloader
+Short description · 66/80 · Status video downloader: save status video & photo to your gallery
 
 Full description outline · 11 blocks
 
 #### Save WhatsApp status video and photo to your gallery
 
-Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added.
+Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added. It is a status saver for WhatsApp and a status video downloader in one app.
 
 #### WhatsApp and WhatsApp Business, one grid
 
@@ -490,13 +490,13 @@ The app is free and shows ads. A short opt-in video ad can appear before a save.
 
 #### Everything this status saver does
 
-✓ Save status video and status photo to gallery ✓ Status downloader for WhatsApp and WhatsApp Business ✓ HD status saver - original quality, no re-encoding and no watermark added ✓ Preview before you save ✓ Saved library with favourites ✓ Watch saved statuses offline ✓ Share or repost with permission ✓ Sticker packs you can add to WhatsApp ✓ Dark theme, nine languages and right-to-left layouts ✓ New-status notifications ✓ Folder access only - no all-files permission
+✓ Save status video and status photo to gallery ✓ Status downloader for WhatsApp and WhatsApp Business ✓ Works as a status video downloader app and a status saver video downloader ✓ HD status saver - original quality, no re-encoding and no watermark added ✓ Preview before you save ✓ Saved library with favourites, and a status saver gallery you can search ✓ Watch saved statuses offline ✓ Share or repost with permission ✓ Sticker packs you can add to WhatsApp ✓ Dark theme, nine languages and right-to-left layouts ✓ New-status notifications ✓ Folder access only - no all-files permission
 
 #### Who it is for
 
-If you have been looking for a status saver, a status saver app for WhatsApp, a status downloader app, a story saver, a video status saver, a photo status downloader or simply a way to save WhatsApp status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs.
+If you have been looking for a status saver, a status saver app for WhatsApp, a WhatsApp status downloader, a status downloader app, a story saver for WhatsApp, a video status saver, a photo status downloader or simply a way to save WhatsApp status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs.
 
-**Why these words.** Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Naming WhatsApp is a description of what the app reads, not a claim of affiliation, and the closing paragraph carries the disclaimer that keeps it descriptive. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those - two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk.
+**Why these words.** The title and short description carry no brand name at all. The full description names WhatsApp, descriptively, to say which statuses the app reads - which is where the demand is, where the practice is normal on this shelf, and where the risk is lowest. Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those - two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk.
 
 <a id="practice"></a>
 
@@ -536,13 +536,17 @@ Watch-outs
 
 Zero placements today across 110 keywords in three markets. Metadata decides what the app is eligible for; installs, ratings and retention decide whether it ranks. Expect the rewrite to show up first on the long tail, not on "status saver".
 
-### Descriptive use is allowed by Play, and still annoys trademark owners
+### Naming WhatsApp in the description is defensible, not free
 
-Play's policy is the test this listing has to pass, and it passes it. Separately from Play, a trademark owner can file a complaint against any app naming their mark, and Meta has done so in this category before. Keeping our own word first in the title, keeping the disclaimer in the description, and keeping the mark out of the icon are what make that complaint fail. Do not drop any of the three.
+Referential use is a real defence and the category norm, but a trademark owner can still complain and Google's process is complaint-driven, so a notice can arrive without warning. The three things that make the defence work are the disclaimer, the absence of the mark from the icon and store art, and the brand staying out of the title. Do not drop any of them, and do not let the description drift from describing what the app reads into suggesting a relationship.
+
+### The store graphics are still non-compliant
+
+Our screenshots and feature graphic carry the Instagram, Facebook and TikTok marks, and the feature graphic claims "Reply Instantly", which the app cannot do. Keeping the brand out of the title does nothing for this. Fix the art before the next listing update - it is the single most likely trigger for a complaint on this listing.
 
 ### The obvious titles are taken, several times over
 
-Four of the six most natural titles for this app are already the exact title of live apps. Never ship a title without running the check again on the day - this shelf changes monthly.
+Ten live apps share "Status Saver: Video Downloader" once punctuation is normalised, and six share "Status Saver - Video Download". Never ship a title without running the collision check again on the day - this shelf changes monthly.
 
 ### The rewarded ad before saving is the policy tripwire
 
@@ -551,10 +555,6 @@ It must stay an opt-in a user can decline, and the save must still work when the
 ### Do not copy the shelf's riskiest claims
 
 Message recovery, "view deleted messages" and mod-app support appear on competitor listings in this category. They attract both takedowns and one-star reviews, and the app does none of them.
-
-### The store graphics are still non-compliant
-
-Our screenshots and feature graphic carry the Instagram, Facebook and TikTok marks, and the feature graphic claims "Reply Instantly", which the app cannot do. Naming WhatsApp in the text does not license any of that. Fix the art before the next listing update.
 
 ### Data safety still says data is not encrypted
 

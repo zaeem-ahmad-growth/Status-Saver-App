@@ -28,11 +28,11 @@ Full description · · 2577 characters · The live full description is in resear
 
 ### The title spends 30 characters without the head term
 
-Every app holding this shelf says "Status Saver" in its title. Ours says "Status Downloader". Both phrases are on the board, but "status saver" and its variants carry the demand: our title covers "status downloader" and "video saver", and misses "status saver", "status saver app" and "status saver video download" entirely.
+Every app holding this shelf says "Status Saver" in its title. Ours says "Status Downloader". Both phrases are on the board, but "status saver" and its variants carry the demand: our title carries no board phrase word for word at all, and misses "status saver", "status saver app" and "status saver app download" entirely.
 
 ### It never says which app it reads
 
-The live listing describes statuses without naming WhatsApp once. That costs the whole compatibility cluster — 38 of the 110 phrases on this board name WhatsApp or WhatsApp Business, and they carry 36% of all the opportunity measured here. It also costs clarity: a user scanning the shelf cannot tell whether this app reads the statuses they actually have.
+The live listing describes statuses without naming WhatsApp once, in any field. That costs the whole compatibility cluster in the full description — 38 of the 110 phrases on this board name WhatsApp or WhatsApp Business, and they carry 36% of all the opportunity measured here. It also costs clarity: a user scanning the shelf cannot tell whether this app reads the statuses they actually have.
 
 ### It under-sells what the app actually does
 
@@ -50,17 +50,17 @@ Proposed
 
 Ready to paste into the Play Console. Every phrase here appears on the keyword board, every claim matches what the app actually does, and WhatsApp is named only to say which statuses the app reads — with our own word first in the title and the independence notice in the closing paragraph.
 
-Title · · 29/30 · Status Saver App for WhatsApp
+Title · · 28/30 · Status Saver App Download HD
 
-**Title check.** Checked live against the 23 Sep 2026 scrape of 217 listings: no exact or near-exact collision. It carries three board phrases word for word — "status saver", "status saver app" and "status saver app for whatsapp" — and every word of ten more, for 15% of the whole US board's priority, against 16% for the current title and 13% for the generic-only alternative "Status Saver & Downloader App". The "X for WhatsApp" form is the one Play's own shelf has validated: ten third-party titles name WhatsApp, three above 1M installs, and "Sticker Maker for WhatsApp" has run at 10M+ installs since November 2018. Leading with the brand — "WhatsApp Status Saver" — scores no better and reads like a first-party app, which is the form the impersonation policy actually catches. The obvious generic titles are all taken: "Status Saver: Video Downloader" is the exact title of five live apps and "Status Saver & Video Download" of seven.
+**Title check.** No brand name, by decision — see the policy record. Checked against all 217 scraped listings for exact and near-exact collisions (same words in the same order once "and", "&", "app" and punctuation are ignored) and it is clear. It carries three board phrases word for word — "status saver", "status saver app" and "status saver app download" — where the current title carries none, and every word of two more. That is the most any collision-free generic title on this shelf achieves: the obvious ones are all taken, several times over. "Status Saver: Video Downloader" and its punctuation variants are the live title of ten apps including a 50M and a 10M one, and "Status Saver - Video Download" of six more.
 
-Short description · · 75/80 · Save WhatsApp status video & photo to gallery - status saver and downloader
+Short description · · 66/80 · Status video downloader: save status video & photo to your gallery
 
-Full description · · 3335/4000
+Full description · · 3580/4000
 
 #### Save WhatsApp status video and photo to your gallery
 
-Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added.
+Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added. It is a status saver for WhatsApp and a status video downloader in one app.
 
 #### WhatsApp and WhatsApp Business, one grid
 
@@ -96,15 +96,15 @@ The app is free and shows ads. A short opt-in video ad can appear before a save.
 
 #### Everything this status saver does
 
-✓ Save status video and status photo to gallery ✓ Status downloader for WhatsApp and WhatsApp Business ✓ HD status saver - original quality, no re-encoding and no watermark added ✓ Preview before you save ✓ Saved library with favourites ✓ Watch saved statuses offline ✓ Share or repost with permission ✓ Sticker packs you can add to WhatsApp ✓ Dark theme, nine languages and right-to-left layouts ✓ New-status notifications ✓ Folder access only - no all-files permission
+✓ Save status video and status photo to gallery ✓ Status downloader for WhatsApp and WhatsApp Business ✓ Works as a status video downloader app and a status saver video downloader ✓ HD status saver - original quality, no re-encoding and no watermark added ✓ Preview before you save ✓ Saved library with favourites, and a status saver gallery you can search ✓ Watch saved statuses offline ✓ Share or repost with permission ✓ Sticker packs you can add to WhatsApp ✓ Dark theme, nine languages and right-to-left layouts ✓ New-status notifications ✓ Folder access only - no all-files permission
 
 #### Who it is for
 
-If you have been looking for a status saver, a status saver app for WhatsApp, a status downloader app, a story saver, a video status saver, a photo status downloader or simply a way to save WhatsApp status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs.
+If you have been looking for a status saver, a status saver app for WhatsApp, a WhatsApp status downloader, a status downloader app, a story saver for WhatsApp, a video status saver, a photo status downloader or simply a way to save WhatsApp status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs.
 
-Status Saver App for WhatsApp is an independent utility. It is not affiliated with, sponsored by or endorsed by WhatsApp LLC or Meta Platforms, Inc. WhatsApp and WhatsApp Business are trademarks of WhatsApp LLC, used here only to describe the app this one reads statuses from. The app does not modify WhatsApp, does not support modified WhatsApp clients, and does not recover deleted messages. Only save, share or repost content you own or have permission to use. All trademarks belong to their respective owners.
+Status Saver App Download HD is an independent utility. It is not affiliated with, sponsored by or endorsed by WhatsApp LLC or Meta Platforms, Inc. WhatsApp and WhatsApp Business are trademarks of WhatsApp LLC, referred to here only to describe the app this one reads statuses from. The app does not modify WhatsApp, does not support modified WhatsApp clients, and does not recover deleted messages. Only save, share or repost content you own or have permission to use. All trademarks belong to their respective owners.
 
-**Why these words.** Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Naming WhatsApp is a description of what the app reads, not a claim of affiliation, and the closing paragraph carries the disclaimer that keeps it descriptive. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those - two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk.
+**Why these words.** The title and short description carry no brand name at all. The full description names WhatsApp, descriptively, to say which statuses the app reads - which is where the demand is, where the practice is normal on this shelf, and where the risk is lowest. Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those - two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk.
 
 <a id="compose"></a>
 
@@ -116,13 +116,13 @@ What each field is built to carry, the evidence behind the title decision, and t
 
 | Field | Characters | Phrases | What it is built to carry |
 | --- | --- | --- | --- |
-| **Title** | 29/30 | 5 | status saver status saver app status saver for whatsapp status saver whatsapp save status whatsapp |
-| **Short description** | 75/80 | 4 | save status video whatsapp status save to gallery save status video status downloader |
-| **Full description** | 3335/4000 | 11 | whatsapp status downloader whatsapp status saver whatsapp status video downloader status video downloader app status saver video downloader whatsapp business status saver status saver for whatsapp business status saver gallery status saver hd status repost story saver for whatsapp |
+| **Title** | 28/30 | 5 | status saver status saver app status saver app download status saver hd save status app download |
+| **Short description** | 66/80 | 4 | status video downloader save status video status save to gallery status video download |
+| **Full description** | 3580/4000 | 14 | whatsapp status downloader whatsapp status saver status saver for whatsapp whatsapp status video downloader status saver whatsapp save status whatsapp save status video whatsapp status video downloader app status saver video downloader whatsapp business status saver status saver for whatsapp business status saver gallery status repost story saver for whatsapp |
 
-### Why this title, in 29 characters
+### Why this title, in 28 characters
 
-A title on this shelf is a keyword carrier, not a brand statement: the shelf holders average 3.1 board phrases word for word in theirs. The decision was between a generic-only title and one that names what the app reads. Generic-only tops out at 13% of board priority and says nothing a user can act on. "Status Saver App for WhatsApp" reaches 15%, carries three phrases word for word, and answers the one question a status-saver shopper actually has. It keeps our own word first, so the title reads as our product working with WhatsApp rather than as WhatsApp's own app - which is the line the impersonation policy draws.
+A title on this shelf is a keyword carrier, not a brand statement: the shelf holders average 3.1 board phrases word for word in theirs, and ours currently carries none. Two constraints shaped the choice. First, no brand name - a deliberate decision, because the title is the field WhatsApp's brand guidelines speak to directly and the field Meta's enforcement team looks at, while the shelf's own winners keep it clean: zero of the top twenty name WhatsApp in the title. Second, the generic space is saturated, so most natural titles are already someone's near-exact title. "Status Saver App Download HD" is the best collision-free generic available: three board phrases word for word, the head term first, and 11% of the board's priority against 15% for the branded form we rejected and 16% for a current title that carries no exact phrase at all.
 
 ### Playbook practices this metadata applies
 
@@ -130,9 +130,9 @@ A title on this shelf is a keyword carrier, not a brand statement: the shelf hol
 
 **Word for word beats every word present.** Play matches phrases, so the title and short description spend their characters on exact board phrases and let the full description pick up token coverage.
 
-**The title holds the head term.** "status saver" and "status saver app" go in the title because Play weights it most, and because every app holding this shelf does the same.
+**Put the risk where the reward is.** The compatibility cluster carries 36% of the board's opportunity and almost none of it is reachable from 28 title characters. Naming WhatsApp in the full description captures nearly all of that value in the field where the practice is normal and the legal footing is strongest.
 
-**The description carries the defended phrases.** "status video downloader app" and "status saver video downloader" have 411M-install top tens. They are covered in the description, where coverage is free, rather than in a title that cannot win them yet.
+**The title holds the head term.** "status saver" and "status saver app" go in the title because Play weights it most, and because every app holding this shelf does the same.
 
 **Every claim is checked against the emulator, not the board.** The 17 Sep 2026 QA round decides what may be written. The keyword list only decides which true things to say first.
 
@@ -146,27 +146,30 @@ Which phrase is carried by which field, and which are deliberately held back for
 
 | Keyword | Carried by | Demand | Competition | Why there |
 | --- | --- | --- | --- | --- |
-| **status saver** | Title | 55 | 96<br>445M | The category head term. Every shelf holder carries it; our current title does not. |
-| **status saver app** | Title | 70 | 94<br>270.5M | Same tokens as the head term plus "app", which autocomplete offers nine times. |
-| **status saver for whatsapp** | Title | 65 | 95<br>320.5M | Word for word in the title. The highest-priority compatibility phrase the title can hold in 29 characters, and the form the shelf has validated at 10M+ installs. |
-| **status saver whatsapp** | Title | 70 | 95<br>325.5M | Every word present in the title, at no extra character cost. |
-| **save status whatsapp** | Title | 55 | 94<br>275.5M | Covered by the title's own words; "save" is carried by "saver". |
-| **save status video whatsapp** | Short description | 65 | 94<br>275.6M | The save cluster's highest-demand compatibility phrase, carried word for word by the short description. |
+| **status saver** | Title | 55 | 96<br>445M | The category head term, word for word. Every shelf holder carries it; our current title does not. |
+| **status saver app** | Title | 70 | 94<br>270.5M | Word for word. Same tokens as the head term plus "app", which autocomplete offers nine times. |
+| **status saver app download** | Title | 54 | 94<br>275.5M | Word for word, and the longest board phrase any collision-free generic title on this shelf can carry. |
+| **status saver hd** | Title | 55 | 94<br>270M | Every word present. "HD" is literally true here - files are byte-identical to the original. |
+| **save status app download** | Title | 69 | 92<br>175.5M | Every word present at no extra character cost; "save" is carried by "saver". |
+| **status video downloader** | Short description | 70 | 96<br>420.6M | P37, the highest-priority phrase on the whole board, carried word for word by the short description because the title cannot reach it. |
+| **save status video** | Short description | 55 | 95<br>320.6M | Highest-demand save phrase on the board, word for word. |
 | **status save to gallery** | Short description | 70 | 94<br>270.6M | "to gallery" is the differentiator phrase on the board with the lowest competition of the save cluster. |
-| **save status video** | Short description | 55 | 95<br>320.6M | Highest-demand save phrase on the board, covered by the same words. |
-| **status downloader** | Short description | 40 | 94<br>265.7M | Keeps the phrase the current title already earns, so nothing is lost in the rewrite. |
+| **status video download** | Short description | 54 | 99<br>775.6M | Covered by the same words, no extra characters spent. |
 | **whatsapp status downloader** | Full description · opening | 85 | 94<br>265.7M | The board's highest-priority compatibility phrase at P33. Written into the first section, where Play weights the description most. |
 | **whatsapp status saver** | Full description · opening | 74 | 94<br>285.5M | P29, second of the compatibility cluster, carried by the opening section and the checklist. |
+| **status saver for whatsapp** | Full description · opening | 65 | 95<br>320.5M | Word for word in the opening section - the descriptive "X for WhatsApp" form, which is the one nominative fair use actually protects. |
 | **whatsapp status video downloader** | Full description · opening | 43 | 96<br>420.6M | Covered by the opening section's own words, at no extra length. |
-| **status video downloader app** | Full description · checklist | 99 | 96<br>411.2M | The highest-demand phrase on the whole board, 15 autocomplete hits. Covered without spending title characters on its 411M-install top ten. |
-| **status saver video downloader** | Full description · checklist | 84 | 94<br>270.6M | Second-highest demand phrase on the board, covered by the checklist's own words. |
+| **status saver whatsapp** | Full description · opening | 70 | 95<br>325.5M | Every word present across the opening section. |
+| **save status whatsapp** | Full description · how to save | 55 | 94<br>275.5M | Carried by the step-by-step section, which names WhatsApp as the place the status comes from. |
+| **save status video whatsapp** | Full description · how to save | 65 | 94<br>275.6M | The save cluster's highest-demand compatibility phrase, covered by the same section. |
+| **status video downloader app** | Full description · checklist | 99 | 96<br>411.2M | The highest-demand phrase on the whole board, 15 autocomplete hits, carried word for word by the checklist rather than by a title that cannot win its 411M-install top ten. |
+| **status saver video downloader** | Full description · checklist | 84 | 94<br>270.6M | Second-highest demand phrase on the board, word for word in the checklist. |
 | **whatsapp business status saver** | Full description · both inboxes | 39 | 100<br>1.26B | A feature the app has and the listing never mentioned. Named explicitly now. |
-| **status saver for whatsapp business** | Full description · both inboxes | 59 | 100<br>1.27B | Carried word for word by the business-status section. |
-| **status saver gallery** | Full description · saved library | 55 | 94<br>270.6M | Pairs the saved-library section with the gallery phrasing. |
-| **status saver hd** | Full description · original quality | 55 | 94<br>270M | Quality claim stated as "original quality", which is literally true - files are byte-identical. |
+| **status saver for whatsapp business** | Full description · both inboxes | 59 | 100<br>1.27B | Every word present across the business-status section. |
+| **status saver gallery** | Full description · saved library | 55 | 94<br>270.6M | Word for word in the checklist, pairing the saved library with the gallery phrasing. |
 | **status repost** | Full description · share and repost | 0 | 69<br>1.5M | Kept permission-framed for the intellectual-property policy. |
 | **story saver for whatsapp** | Full description · who it is for | 65 | 95<br>320.5M | A real search in its own right, one token from the status cluster, and true of the app. |
-| Held back for a later version of the listing: **status video downloader app** — Carried by the full description but not the title. The most defended phrase on the board - 411M installs across its top ten - so it is worth title characters only once the app has ratings.<br>**status saver video downloader** — Second-highest demand phrase on the board, and its top ten holds five apps above 10M installs. Worth the title only once the app has ratings.<br>**auto status saver** — Only worth targeting if auto-save is ever built. Claiming it now would be false.<br>**status saver without watermark** — True of our app, but the phrase reads as a competitor's problem; hold it for a later version.<br>**status saver dp downloader** — P24 and genuinely adjacent, but the app does not download profile pictures. Build it or leave the phrase alone.<br>**story saver instagram, facebook and tiktok phrases** — Not a brand problem - a truth problem. This app reads the WhatsApp status folder and nothing else, so claiming any of them would be a false listing, which is what Play's metadata policy actually prohibits.<br>**gb whatsapp, fm whatsapp and other modified clients** — Real demand, permanently off-limits. Play bans apps that facilitate modified clients, and the app does not support them. |  |  |  |  |
+| Held back for a later version of the listing: **every WhatsApp phrase, for the title and short description** — Barred by decision, not by score. They are the highest-demand phrases on the board and they stay in the full description, where the practice is normal and the legal footing is strongest. In the title they would put our 30 most valuable characters directly against WhatsApp's published brand guidelines and in front of Meta's enforcement team. See the policy record.<br>**status saver: video downloader** — Unusable: the live title of ten apps in the scrape, including one at 50M installs and one at 10M, once punctuation is normalised.<br>**auto status saver** — Only worth targeting if auto-save is ever built. Claiming it now would be false.<br>**status saver without watermark** — True of our app, but the phrase reads as a competitor's problem; hold it for a later version.<br>**status saver dp downloader** — P24 and genuinely adjacent, but the app does not download profile pictures. Build it or leave the phrase alone.<br>**story saver instagram, facebook and tiktok phrases** — Not a brand problem - a truth problem. This app reads the WhatsApp status folder and nothing else, so claiming any of them would be a false listing, which is what Play's metadata policy actually prohibits.<br>**gb whatsapp, fm whatsapp and other modified clients** — Real demand, permanently off-limits. Play bans apps that facilitate modified clients, and the app does not support them. |  |  |  |  |
 
 <a id="coverage"></a>
 
@@ -180,28 +183,28 @@ Show every keyword, covered or not
 
 | Keyword | Tier | Use | In the proposed listing | Priority |
 | --- | --- | --- | --- | --- |
-| status video downloader app | A | generic | every word present | 37 |
-| status saver video downloader | A | generic | every word present | 33 |
-| whatsapp status downloader | A | compatibility | every word present | 33 |
+| status video downloader app | A | generic | word for word | 37 |
+| status saver video downloader | A | generic | word for word | 33 |
+| whatsapp status downloader | A | compatibility | word for word | 33 |
 | whatsapp status downloader app | A | compatibility | every word present | 29 |
 | whatsapp status saver | A | compatibility | every word present | 29 |
 | save status app download | A | generic | every word present | 28 |
 | status save to gallery | A | generic | every word present | 27 |
 | status saver app | A | generic | word for word | 27 |
 | status saver whatsapp | A | compatibility | every word present | 27 |
-| status video downloader | A | generic | every word present | 26 |
+| status video downloader | A | generic | word for word | 26 |
 | save status video whatsapp | A | compatibility | every word present | 25 |
-| status saver for whatsapp | A | compatibility | every word present | 25 |
-| story saver for whatsapp | A | compatibility | every word present | 25 |
+| status saver for whatsapp | A | compatibility | word for word | 25 |
+| story saver for whatsapp | A | compatibility | word for word | 25 |
 | status saver dp downloader | A | generic | not covered | 24 |
 | save status app | A | generic | every word present | 23 |
 | status downloader app | A | generic | word for word | 23 |
-| status saver video download | A | generic | every word present | 23 |
+| status saver video download | A | generic | word for word | 23 |
 | story saver without login | A | generic | not covered | 23 |
 | whatsapp status saver app | A | compatibility | every word present | 23 |
 | save status app update | A | generic | not covered | 22 |
 | status saver app update | A | generic | not covered | 22 |
-| status saver gallery | A | generic | every word present | 22 |
+| status saver gallery | A | generic | word for word | 22 |
 | status saver hd | A | generic | every word present | 22 |
 | save status and message recovery | A | generic | not covered | 21 |
 | save status video | A | generic | word for word | 21 |
@@ -213,7 +216,7 @@ Show every keyword, covered or not
 | status downloader for whatsapp | A | compatibility | word for word | 21 |
 | status downloader hd | A | generic | every word present | 21 |
 | status saver | A | generic | word for word | 21 |
-| status saver app download | A | generic | every word present | 21 |
+| status saver app download | A | generic | word for word | 21 |
 | status saver for whatsapp business | A | compatibility | every word present | 21 |
 | status saver hd video download | A | generic | every word present | 21 |
 | status saver photo | A | generic | every word present | 21 |
@@ -223,7 +226,7 @@ Show every keyword, covered or not
 | status video download app | A | generic | every word present | 21 |
 | status video download app tamil | A | generic | not covered | 21 |
 | story saver reels video downloader | A | generic | not covered | 21 |
-| whatsapp status download | A | compatibility | every word present | 21 |
+| whatsapp status download | A | compatibility | word for word | 21 |
 | whatsapp status download app | A | compatibility | every word present | 21 |
 | whatsapp status downloader hd | A | compatibility | every word present | 21 |
 | whatsapp status downloader video | A | compatibility | every word present | 21 |
@@ -233,7 +236,7 @@ Show every keyword, covered or not
 | status downloader and saver | A | generic | every word present | 19 |
 | status saver app for whatsapp | A | compatibility | word for word | 19 |
 | status saver whatsapp download | A | compatibility | every word present | 19 |
-| status video download | A | generic | every word present | 19 |
+| status video download | A | generic | word for word | 19 |
 | story saver download app | A | generic | every word present | 19 |
 | story saver whatsapp | A | compatibility | every word present | 19 |
 | whatsapp business status saver 2026 | A | compatibility | not covered | 19 |
@@ -257,7 +260,7 @@ Show every keyword, covered or not
 | all status saver | A | generic | every word present | 16 |
 | business status saver | A | generic | word for word | 16 |
 | status downloader | A | generic | word for word | 16 |
-| status saver and downloader | A | generic | word for word | 16 |
+| status saver and downloader | A | generic | every word present | 16 |
 | video status saver | A | generic | word for word | 16 |
 | wa status saver | A | compatibility | every word present | 16 |
 | whatsapp status video downloader | A | compatibility | every word present | 16 |
@@ -295,34 +298,38 @@ Targets · United States
 
 ## Every keyword this metadata targets
 
-The phrases the listing is written to win, in priority order, with the competition behind each one and where our listing stands today.
+Every phrase the listing is written to win, grouped by the field that carries it, with how it is used, where it entered the board, the competition behind it, how many of the twelve tracked competitors already hold a top-ten slot, who holds #1, and where our listing stands today.
 
-| Keyword | Demand | Competition | Top ten holders | Us today |
-| --- | --- | --- | --- | --- |
-| A **status video downloader app** | 99 | 96<br>411.2M · 6 ≥10M | Status Download · Status Saver · Video Downloader | no rank |
-| A **status saver video downloader** | 84 | 94<br>270.6M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **whatsapp status downloader** | 85 | 94<br>265.7M · 4 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **whatsapp status downloader app** | 75 | 94<br>275.7M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **whatsapp status saver** | 74 | 94<br>285.5M · 6 ≥10M | Status Saver · Status Saver・Status Downloader · Status Saver・Status Downloader | no rank |
-| A **save status app download** | 69 | 92<br>175.5M · 4 ≥10M | Status Saver · Status Download · Status Saver | no rank |
-| A **status save to gallery** | 70 | 94<br>270.6M · 5 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
-| A **status saver app** | 70 | 94<br>270.5M · 5 ≥10M | Status Saver・Status Downloader · Status Saver · Status Download | no rank |
-| A **status saver whatsapp** | 70 | 95<br>325.5M · 6 ≥10M | Status Saver・Status Downloader · Status Saver · Status Download | no rank |
-| A **status video downloader** | 70 | 96<br>420.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status video whatsapp** | 65 | 94<br>275.6M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **status saver for whatsapp** | 65 | 95<br>320.5M · 6 ≥10M | Status Saver・Status Downloader · Status Saver · Status Download | no rank |
-| A **story saver for whatsapp** | 65 | 95<br>320.5M · 6 ≥10M | Story Saver for Whatsapp · Status Download · Video downloader | no rank |
-| A **save status app** | 60 | 94<br>275.5M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **status downloader app** | 60 | 95<br>325.7M · 6 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **status saver video download** | 60 | 94<br>270.6M · 5 ≥10M | Status Download · Status Saver・Status Downloader · Status Saver | no rank |
-| A **whatsapp status saver app** | 60 | 95<br>330.5M · 7 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
-| A **status saver gallery** | 55 | 94<br>270.6M · 5 ≥10M | Status Saver · Status Download · Status Saver | no rank |
-| A **status saver hd** | 55 | 94<br>270M · 5 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status video** | 55 | 95<br>320.6M · 6 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status video app** | 54 | 95<br>370.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status video download** | 54 | 95<br>370.6M · 7 ≥10M | Status Download · Status Saver · Status Saver | no rank |
-| A **save status video saver** | 54 | 95<br>371.1M · 7 ≥10M | Status Saver · Status Saver・Status Downloader · Status Download | no rank |
-| A **save status whatsapp** | 55 | 94<br>275.5M · 5 ≥10M | Status Saver・Status Downloader · Status Saver · Status Download | no rank |
+| Keyword | How it is used | Where it came from | Demand | Competition | Rivals in top 10 | Who holds #1 | Us |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **Title** · 5 phrases · Play weights this field most |  |  |  |  |  |  |  |
+| A **status saver**<br>The category head term, word for word. Every shelf holder carries it; our current title does not. | word for word<br>Title | in 9 competitor titles autocomplete ×6 PK US IN | 55 | 96<br>445M · 9 ≥10M | 6 of 12 | Status Saver<br>100M | none |
+| A **status saver app**<br>Word for word. Same tokens as the head term plus "app", which autocomplete offers nine times. | word for word<br>Title | autocomplete ×9 PK US IN | 70 | 94<br>270.5M · 5 ≥10M | 8 of 12 | Status Saver<br>10M | none |
+| A **status saver app download**<br>Word for word, and the longest board phrase any collision-free generic title on this shelf can carry. | word for word<br>Title | autocomplete ×6 PK US IN | 54 | 94<br>275.5M · 5 ≥10M | 9 of 12 | Status Download<br>100M | none |
+| A **status saver hd**<br>Every word present. "HD" is literally true here - files are byte-identical to the original. | every word present<br>Title | autocomplete ×6 PK US IN | 55 | 94<br>270M · 5 ≥10M | 5 of 12 | Status Download<br>100M | none |
+| A **save status app download**<br>Every word present at no extra character cost; "save" is carried by "saver". | every word present<br>Title | autocomplete ×9 IN US PK | 69 | 92<br>175.5M · 4 ≥10M | 7 of 12 | Status Saver<br>500K | none |
+| **Short description** · 4 phrases · second by weight |  |  |  |  |  |  |  |
+| A **status video downloader**<br>P37, the highest-priority phrase on the whole board, carried word for word by the short description because the title cannot reach it. | word for word<br>Short description | autocomplete ×9 IN US PK | 70 | 96<br>420.6M · 7 ≥10M | 9 of 12 | Status Download<br>100M | none |
+| A **save status video**<br>Highest-demand save phrase on the board, word for word. | word for word<br>Short description | autocomplete ×6 IN PK US | 55 | 95<br>320.6M · 6 ≥10M | 7 of 12 | Status Download<br>100M | none |
+| A **status save to gallery**<br>"to gallery" is the differentiator phrase on the board with the lowest competition of the save cluster. | every word present<br>Short description | autocomplete ×9 IN US PK | 70 | 94<br>270.6M · 5 ≥10M | 8 of 12 | Status Saver<br>100M | none |
+| A **status video download**<br>Covered by the same words, no extra characters spent. | word for word<br>Short description | autocomplete ×6 IN US PK | 54 | 99<br>775.6M · 6 ≥10M | 7 of 12 | Status Download<br>100M | none |
+| **Full description** · 14 phrases · largest field, lowest weight per word |  |  |  |  |  |  |  |
+| A **whatsapp status downloader**<br>The board's highest-priority compatibility phrase at P33. Written into the first section, where Play weights the description most. | word for word<br>Full description · opening | autocomplete ×12 IN PK US | 85 | 94<br>265.7M · 4 ≥10M | 7 of 12 | Status Download<br>100M | none |
+| A **whatsapp status saver**<br>P29, second of the compatibility cluster, carried by the opening section and the checklist. | every word present<br>Full description · opening | autocomplete ×10 IN PK US | 74 | 94<br>285.5M · 6 ≥10M | 8 of 12 | Status Saver<br>100M | none |
+| A **status saver for whatsapp**<br>Word for word in the opening section - the descriptive "X for WhatsApp" form, which is the one nominative fair use actually protects. | word for word<br>Full description · opening | autocomplete ×8 IN PK US | 65 | 95<br>320.5M · 6 ≥10M | 7 of 12 | Status Saver<br>10M | none |
+| A **whatsapp status video downloader**<br>Covered by the opening section's own words, at no extra length. | every word present<br>Full description · opening | autocomplete ×4 PK IN US | 43 | 96<br>420.6M · 7 ≥10M | 9 of 12 | Status Download<br>100M | none |
+| A **status saver whatsapp**<br>Every word present across the opening section. | every word present<br>Full description · opening | autocomplete ×9 PK IN US | 70 | 95<br>325.5M · 6 ≥10M | 8 of 12 | Status Saver<br>10M | none |
+| A **save status whatsapp**<br>Carried by the step-by-step section, which names WhatsApp as the place the status comes from. | every word present<br>Full description · how to save | autocomplete ×6 IN US PK | 55 | 94<br>275.5M · 5 ≥10M | 8 of 12 | Status Saver<br>10M | none |
+| A **save status video whatsapp**<br>The save cluster's highest-demand compatibility phrase, covered by the same section. | every word present<br>Full description · how to save | autocomplete ×9 IN US PK | 65 | 94<br>275.6M · 5 ≥10M | 8 of 12 | Status Download<br>100M | none |
+| A **status video downloader app**<br>The highest-demand phrase on the whole board, 15 autocomplete hits, carried word for word by the checklist rather than by a title that cannot win its 411M-install top ten. | word for word<br>Full description · checklist | autocomplete ×15 IN US PK | 99 | 96<br>411.2M · 6 ≥10M | 7 of 12 | Status Download<br>100M | none |
+| A **status saver video downloader**<br>Second-highest demand phrase on the board, word for word in the checklist. | word for word<br>Full description · checklist | autocomplete ×12 US IN PK | 84 | 94<br>270.6M · 5 ≥10M | 8 of 12 | Status Download<br>100M | none |
+| A **whatsapp business status saver**<br>A feature the app has and the listing never mentioned. Named explicitly now. | every word present<br>Full description · both inboxes | tracked live | 39 | 100<br>1.26B · 5 ≥10M | 5 of 12 | Status Saver<br>1M | none |
+| A **status saver for whatsapp business**<br>Every word present across the business-status section. | every word present<br>Full description · both inboxes | autocomplete ×7 IN PK US | 59 | 100<br>1.27B · 6 ≥10M | 6 of 12 | Status Saver<br>1M | none |
+| A **status saver gallery**<br>Word for word in the checklist, pairing the saved library with the gallery phrasing. | word for word<br>Full description · saved library | autocomplete ×6 IN PK US | 55 | 94<br>270.6M · 5 ≥10M | 8 of 12 | Status Saver<br>100M | none |
+| A **status repost**<br>Kept permission-framed for the intellectual-property policy. | every word present<br>Full description · share and repost | tracked live | 0 | 69<br>1.5M · 0 ≥10M | 0 of 12 | Reshare<br>500K | none |
+| A **story saver for whatsapp**<br>A real search in its own right, one token from the status cluster, and true of the app. | word for word<br>Full description · who it is for | autocomplete ×8 US PK IN | 65 | 95<br>320.5M · 6 ≥10M | 7 of 12 | Story Saver for Whatsapp<br>5K | none |
+
+**23** phrases are targeted across the three fields. Average competition score **94** of 100: **22** of them have five or more of the twelve tracked competitors already inside the top ten, and only **1** have two or fewer. We hold **no rank on any of them** today, which is what a listing with 10+ installs and no ratings should expect — the metadata sets eligibility, the installs decide placement.
 
 <a id="keywords"></a>
 
@@ -334,37 +341,37 @@ The highest-priority phrases this listing is allowed to use, split by whether th
 
 ### Targeted in this metadata · 19 of 24
 
-| Keyword | Priority | Demand | Competition | Field | Who holds the top three |
-| --- | --- | --- | --- | --- | --- |
-| A **status video downloader app** generic | 37 | 99 | 96<br>411.2M · 6 ≥10M | S | Status Download · Status Saver · Video Downloader |
-| A **status saver video downloader** generic | 33 | 84 | 94<br>270.6M · 5 ≥10M | S | Status Download · Status Saver · Status Saver |
-| A **whatsapp status downloader** compatibility | 33 | 85 | 94<br>265.7M · 4 ≥10M | S | Status Download · Status Saver・Status Downloader · Status Saver |
-| A **whatsapp status downloader app** compatibility | 29 | 75 | 94<br>275.7M · 5 ≥10M | S | Status Download · Status Saver・Status Downloader · Status Saver |
-| A **whatsapp status saver** compatibility | 29 | 74 | 94<br>285.5M · 6 ≥10M | T+S | Status Saver · Status Saver・Status Downloader · Status Saver・Status Downloader |
-| A **save status app download** generic | 28 | 69 | 92<br>175.5M · 4 ≥10M | S | Status Saver · Status Download · Status Saver |
-| A **status save to gallery** generic | 27 | 70 | 94<br>270.6M · 5 ≥10M | S | Status Saver · Status Saver・Status Downloader · Status Download |
-| A **status saver app** generic | 27 | 70 | 94<br>270.5M · 5 ≥10M | T+S | Status Saver・Status Downloader · Status Saver · Status Download |
-| A **status saver whatsapp** compatibility | 27 | 70 | 95<br>325.5M · 6 ≥10M | T+S | Status Saver・Status Downloader · Status Saver · Status Download |
-| A **status video downloader** generic | 26 | 70 | 96<br>420.6M · 7 ≥10M | S | Status Download · Status Saver · Status Saver |
-| A **save status video whatsapp** compatibility | 25 | 65 | 94<br>275.6M · 5 ≥10M | S | Status Download · Status Saver · Status Saver |
-| A **status saver for whatsapp** compatibility | 25 | 65 | 95<br>320.5M · 6 ≥10M | T | Status Saver・Status Downloader · Status Saver · Status Download |
-| A **story saver for whatsapp** compatibility | 25 | 65 | 95<br>320.5M · 6 ≥10M | L | Story Saver for Whatsapp · Status Download · Video downloader |
-| A **save status app** generic | 23 | 60 | 94<br>275.5M · 5 ≥10M | T+S | Status Download · Status Saver・Status Downloader · Status Saver |
-| A **status downloader app** generic | 23 | 60 | 95<br>325.7M · 6 ≥10M | S | Status Download · Status Saver・Status Downloader · Status Saver |
-| A **status saver video download** generic | 23 | 60 | 94<br>270.6M · 5 ≥10M | S | Status Download · Status Saver・Status Downloader · Status Saver |
-| A **whatsapp status saver app** compatibility | 23 | 60 | 95<br>330.5M · 7 ≥10M | T+S | Status Saver · Status Saver・Status Downloader · Status Download |
-| A **status saver gallery** generic | 22 | 55 | 94<br>270.6M · 5 ≥10M | S | Status Saver · Status Download · Status Saver |
-| A **status saver hd** generic | 22 | 55 | 94<br>270M · 5 ≥10M | L | Status Download · Status Saver · Status Saver |
+| Keyword · where it came from | Priority | Demand | Competition | Rivals in top 10 | Field | Who holds the top three |
+| --- | --- | --- | --- | --- | --- | --- |
+| A **status video downloader app** generic<br>autocomplete ×15 IN US PK | 37 | 99 | 96<br>411.2M · 6 ≥10M | 7 of 12 | L | Status Download · Status Saver · Video Downloader |
+| A **status saver video downloader** generic<br>autocomplete ×12 US IN PK | 33 | 84 | 94<br>270.6M · 5 ≥10M | 8 of 12 | L | Status Download · Status Saver · Status Saver |
+| A **whatsapp status downloader** compatibility<br>autocomplete ×12 IN PK US | 33 | 85 | 94<br>265.7M · 4 ≥10M | 7 of 12 | L | Status Download · Status Saver・Status Downloader · Status Saver |
+| A **whatsapp status downloader app** compatibility<br>autocomplete ×10 IN PK US | 29 | 75 | 94<br>275.7M · 5 ≥10M | 9 of 12 | L | Status Download · Status Saver・Status Downloader · Status Saver |
+| A **whatsapp status saver** compatibility<br>autocomplete ×10 IN PK US | 29 | 74 | 94<br>285.5M · 6 ≥10M | 8 of 12 | L | Status Saver · Status Saver・Status Downloader · Status Saver・Status Downloader |
+| A **save status app download** generic<br>autocomplete ×9 IN US PK | 28 | 69 | 92<br>175.5M · 4 ≥10M | 7 of 12 | T | Status Saver · Status Download · Status Saver |
+| A **status save to gallery** generic<br>autocomplete ×9 IN US PK | 27 | 70 | 94<br>270.6M · 5 ≥10M | 8 of 12 | S | Status Saver · Status Saver・Status Downloader · Status Download |
+| A **status saver app** generic<br>autocomplete ×9 PK US IN | 27 | 70 | 94<br>270.5M · 5 ≥10M | 8 of 12 | T | Status Saver・Status Downloader · Status Saver · Status Download |
+| A **status saver whatsapp** compatibility<br>autocomplete ×9 PK IN US | 27 | 70 | 95<br>325.5M · 6 ≥10M | 8 of 12 | L | Status Saver・Status Downloader · Status Saver · Status Download |
+| A **status video downloader** generic<br>autocomplete ×9 IN US PK | 26 | 70 | 96<br>420.6M · 7 ≥10M | 9 of 12 | S | Status Download · Status Saver · Status Saver |
+| A **save status video whatsapp** compatibility<br>autocomplete ×9 IN US PK | 25 | 65 | 94<br>275.6M · 5 ≥10M | 8 of 12 | L | Status Download · Status Saver · Status Saver |
+| A **status saver for whatsapp** compatibility<br>autocomplete ×8 IN PK US | 25 | 65 | 95<br>320.5M · 6 ≥10M | 7 of 12 | L | Status Saver・Status Downloader · Status Saver · Status Download |
+| A **story saver for whatsapp** compatibility<br>autocomplete ×8 US PK IN | 25 | 65 | 95<br>320.5M · 6 ≥10M | 7 of 12 | L | Story Saver for Whatsapp · Status Download · Video downloader |
+| A **save status app** generic<br>autocomplete ×7 IN US PK | 23 | 60 | 94<br>275.5M · 5 ≥10M | 9 of 12 | T | Status Download · Status Saver・Status Downloader · Status Saver |
+| A **status downloader app** generic<br>autocomplete ×7 US PK IN | 23 | 60 | 95<br>325.7M · 6 ≥10M | 8 of 12 | L | Status Download · Status Saver・Status Downloader · Status Saver |
+| A **status saver video download** generic<br>autocomplete ×7 PK IN US | 23 | 60 | 94<br>270.6M · 5 ≥10M | 8 of 12 | L | Status Download · Status Saver・Status Downloader · Status Saver |
+| A **whatsapp status saver app** compatibility<br>autocomplete ×7 IN PK US | 23 | 60 | 95<br>330.5M · 7 ≥10M | 6 of 12 | L | Status Saver · Status Saver・Status Downloader · Status Download |
+| A **status saver gallery** generic<br>autocomplete ×6 IN PK US | 22 | 55 | 94<br>270.6M · 5 ≥10M | 8 of 12 | L | Status Saver · Status Download · Status Saver |
+| A **status saver hd** generic<br>autocomplete ×6 PK US IN | 22 | 55 | 94<br>270M · 5 ≥10M | 5 of 12 | T | Status Download · Status Saver · Status Saver |
 
 ### Reserved for a later version · 5 of 24
 
-| Keyword | Priority | Demand | Competition | Field | Who holds the top three |
-| --- | --- | --- | --- | --- | --- |
-| A **status saver dp downloader** generic | 24 | 59 | 92<br>181.1M · 5 ≥10M | — | Status Saver & Dp Download · Status Saver & Dp Downloader · Status Saver & Dp Downloader |
-| A **story saver without login** generic | 23 | 53 | 88<br>82M · 3 ≥10M | — | Story Downloader · Video downloader · InSaver |
-| A **save status app update** generic | 22 | 54 | 92<br>190.2M · 5 ≥10M | — | Status Saver · Status Saver · Status Saver・Status Downloader |
-| A **status saver app update** generic | 22 | 57 | 94<br>275.5M · 5 ≥10M | — | Status Download · Status Saver · Status Saver |
-| A **save status and message recovery** generic | 21 | 54 | 94<br>280.6M · 6 ≥10M | — | Status Saver・Status Downloader · Status Saver · Save Status |
+| Keyword · where it came from | Priority | Demand | Competition | Rivals in top 10 | Field | Who holds the top three |
+| --- | --- | --- | --- | --- | --- | --- |
+| A **status saver dp downloader** generic<br>autocomplete ×7 US IN PK | 24 | 59 | 92<br>181.1M · 5 ≥10M | 4 of 12 | — | Status Saver & Dp Download · Status Saver & Dp Downloader · Status Saver & Dp Downloader |
+| A **story saver without login** generic<br>autocomplete ×6 PK US IN | 23 | 53 | 88<br>82M · 3 ≥10M | 2 of 12 | — | Story Downloader · Video downloader · InSaver |
+| A **save status app update** generic<br>autocomplete ×6 US IN PK | 22 | 54 | 92<br>190.2M · 5 ≥10M | 2 of 12 | — | Status Saver · Status Saver · Status Saver・Status Downloader |
+| A **status saver app update** generic<br>autocomplete ×7 PK US IN | 22 | 57 | 94<br>275.5M · 5 ≥10M | 9 of 12 | — | Status Download · Status Saver · Status Saver |
+| A **save status and message recovery** generic<br>autocomplete ×6 PK US IN | 21 | 54 | 94<br>280.6M · 6 ≥10M | 6 of 12 | — | Status Saver・Status Downloader · Status Saver · Save Status |
 
 The 24 highest-priority phrases on the United States board that this listing is allowed to use, split by whether it actually carries them. **8** of the 19 it carries are compatibility phrases — the ones naming WhatsApp, which the first run of this research scored at zero and left out of the copy entirely. The reasons for holding the rest back are listed under the keyword-to-field table.
 
@@ -394,7 +401,7 @@ Long-tail phrases whose top ten is not walled off by 10M+ apps. This version of 
 
 Mid-competition phrases, reachable once the app has ratings and a few thousand installs behind it.
 
-**save status app download** S · 9 rivals in the top ten
+**save status app download** T · 9 rivals in the top ten
 
 **status saver dp downloader** — · 6 rivals in the top ten
 
@@ -414,21 +421,21 @@ Mid-competition phrases, reachable once the app has ratings and a few thousand i
 
 The shelf itself, held by apps with 10M–100M installs. Covered in the full description so the listing is eligible, never in the title yet.
 
-**status video downloader app** S · 10 rivals in the top ten
+**status video downloader app** L · 10 rivals in the top ten
 
-**status saver video downloader** S · 12 rivals in the top ten
+**status saver video downloader** L · 12 rivals in the top ten
 
-**whatsapp status downloader** S · 9 rivals in the top ten
+**whatsapp status downloader** L · 9 rivals in the top ten
 
-**whatsapp status downloader app** S · 10 rivals in the top ten
+**whatsapp status downloader app** L · 10 rivals in the top ten
 
-**whatsapp status saver** T+S · 9 rivals in the top ten
+**whatsapp status saver** L · 9 rivals in the top ten
 
 **status save to gallery** S · 10 rivals in the top ten
 
-**status saver app** T+S · 10 rivals in the top ten
+**status saver app** T · 10 rivals in the top ten
 
-**status saver whatsapp** T+S · 9 rivals in the top ten
+**status saver whatsapp** L · 9 rivals in the top ten
 
 **T** = in the title, **T+S** = across title and short description, **S** = short description, **L** = full description, **—** = not in this version. The count after each phrase is how many of the twelve tracked competitors hold a top-ten slot on it in United States.
 
@@ -501,11 +508,11 @@ What was adopted from the playbook's package, what changed when the use rule was
 
 | Field | Playbook package (first run) | This metadata | Why it changed |
 | --- | --- | --- | --- |
-| **Title** | Status Saver & Downloader App | **Status Saver App for WhatsApp** | The playbook's package predates the corrected use rule and was written to avoid every product name. Naming WhatsApp adds the compatibility cluster and 2 points of board priority for the same 29 characters. |
-| **Short description** | Status saver and downloader: save status video, photo and story to gallery | **Save WhatsApp status video & photo to gallery - status saver and downloader** | Same length class, one more exact phrase, and it now says which statuses. |
-| **Full description** | "your messaging app" throughout | **WhatsApp and WhatsApp Business named** | The old copy used a euphemism in eight places to avoid a name it was always allowed to use. Each one is now the actual app name, which is both clearer and searchable. |
-| **Disclaimer** | One sentence, generic | **Four sentences, specific** | Because the copy now names the trademark, the closing paragraph does the work that keeps the use descriptive: independence, ownership, no modification, no message recovery. |
-| **Board priority covered** | 13% | **15%** | Title only. Across all three fields the compatibility cluster adds 36% of the board that the previous package scored at zero. |
+| **Title** | Status Saver & Downloader App | **Status Saver App Download HD** | The playbook's package predates both the corrected use rule and the collision re-check. Its title fails the near-exact test against the live app "Status Saver Downloader", so it was never shippable. The replacement is clear and carries three board phrases word for word instead of one. |
+| **Short description** | Status saver and downloader: save status video, photo and story to gallery | **Status video downloader: save status video & photo to your gallery** | Shorter, and it now carries P37 "status video downloader" word for word - the highest-priority phrase on the board, which the title cannot reach. |
+| **Full description** | "your messaging app" throughout | **WhatsApp and WhatsApp Business named** | The old copy used a euphemism in eight places to avoid a name it was always allowed to use in this field. Each one is now the actual app name, which is both clearer and searchable. |
+| **Disclaimer** | One sentence, generic | **Five sentences, specific** | Because the copy now names the trademark, the closing paragraph does the work that keeps the use referential: independence, ownership, no modification, no mod-client support, no message recovery. 66% of the apps on this shelf that name WhatsApp carry some version of this. |
+| **Board priority covered** | 13%, from a title that collides | **11% from the title, plus the 36% compatibility cluster in the description** | The first run scored the compatibility cluster at zero and lost all of it. This package gives up 4 points of title priority to keep the brand out of the riskiest field, and recovers the 36% where it is safe to do so. |
 
 <a id="assets"></a>
 
@@ -549,19 +556,35 @@ Policy record
 
 The checks run before this wording was accepted, so the record exists if the listing is ever questioned.
 
-### Naming WhatsApp is descriptive use, and it is checked
+### No brand name in the title or the short description
 
-Play's impersonation policy prohibits falsely implying a relationship with another company. It does not prohibit naming the app a utility works with - a listing is required to describe what the app does. This listing names WhatsApp only to say which status folder it reads, never as the app's own identity: the developer name, the icon and the first word of the title are all ours, and the closing paragraph states in full that the app is independent and unaffiliated and that the trademarks belong to WhatsApp LLC.
+A decision taken on 24 Sep 2026, and the reasoning is worth keeping because it is not the obvious one. Play would almost certainly accept a descriptive title: its test is whether use is "likely to cause confusion as to the source", not whether a name appears. But Play is not the only gate. WhatsApp's published brand guidelines are stricter than Play's policy and say plainly: "DON'T use the WhatsApp Brand Resources as part of a name of a product or service of a company other than WhatsApp" and "DON'T combine the WhatsApp name or logos, or any portion of any of them, with any other logo, company name, mark, or generic terms." A title reading "Status Saver ... for WhatsApp" is exactly that combination. Meta runs an enforcement team that issues takedown notices against marks it finds, so the risk is a live complaint channel, not a theoretical one.
+
+### The shelf agrees, and that is the stronger evidence
+
+Of the 20 largest apps in this scrape by installs, zero name WhatsApp in the title and six name it in the description. The ten apps that do put it in the title are the smallest and youngest group in the whole dataset - median 7,500 installs against 500,000 for the apps that never mention it, median age 2.3 years against 4.0. The category's winners all made the same split this listing now makes.
+
+### The full description names WhatsApp, and that is allowed
+
+Naming the app ours reads from, in order to describe what ours does, is referential use: the doctrine of nominative fair use exists precisely because "saves statuses from WhatsApp" cannot be said without saying WhatsApp. It is also the norm here, not an edge case - 99 of the 214 third-party apps in the scrape (46%) name WhatsApp somewhere in the description, including six of the twenty largest. Play's own metadata policy names the brand's logo as the thing that needs permission, not the brand's name.
+
+### The disclaimer is the category convention, and we follow it
+
+Of the 99 apps that name WhatsApp anywhere, 65 (66%) carry a disclaimer sentence. One competitor's, verbatim: "Important: Status Saver is an independent utility app and is not affiliated with, endorsed by, or sponsored by WhatsApp or Meta." Our closing paragraph does the same and goes further - independence, trademark ownership, no modification of WhatsApp, no support for modified clients, no message recovery.
+
+### Why so many apps get away with brand titles, and why that is not a precedent
+
+Google does not police trademarks proactively. Its Intellectual Property policy tells the trademark owner to "reach out to the developer directly" and then file a complaint webform: enforcement is notice-based. So a brand-name title being live for years does not mean Google considered it and approved it - it means nobody has complained yet. A store scrape only shows the apps that are still there; the ones removed after a complaint are invisible to it. Two apps in this scrape do hold the descriptive form at 10M installs for 6.7 and 7.8 years, both still updated in July 2026, so the form is defensible - but it is defensible in a fight, which is not the same as being free.
 
 ### Live title check, run on 23 Sep 2026
 
-The house rule needs at least five third-party titles using the term, at least two above 1M installs, and the oldest live three or more years. The 217 scraped listings return ten third-party titles naming WhatsApp or WA, three of them at or above 1M installs - "Sticker Maker for WhatsApp" twice at 10M+, live since November 2018 and December 2019, and "Status Saver - for WA Business" at 1M, live since October 2020. The check passes on every limb. The result is in research/aso-pipeline/titlecheck.json and the query is in brandcheck.ps1.
+The house rule needs at least five third-party titles using a term, at least two above 1M installs, and the oldest live three or more years. For WhatsApp the scrape returns ten third-party titles, three at or above 1M installs, oldest live 7.8 years - so the term passes the house check, and the decision to keep it out of our title is a risk judgement on top of a passed check, not a failed one. Re-runnable: research/aso-pipeline/brandcheck.ps1, output in usecheck.json.
 
 ### No collision with a live title
 
-Fourteen candidate titles were compared against every title in the scrape. Five failed on an exact collision - "Status Saver: Video Downloader" alone is the live title of five different apps. The chosen title collides with none of them.
+The proposed title was compared against all 217 scraped titles for exact and near-exact matches, normalising punctuation and dropping "and", "&" and "app". It is clear. Four of the six most natural titles for this app are not.
 
-### What is still off-limits, and why
+### What is still off-limits in every field, and why
 
 Three things, none of them "a brand name appeared". Phrases naming a platform this app cannot read - Instagram, Facebook, TikTok - are excluded because the claim would be false, which is a metadata-accuracy problem. Phrases naming modified clients - GB, FM, YO WhatsApp - are excluded because Play bans facilitating them. Phrases naming another developer's app outright are excluded because that is the impersonation the policy is actually about.
 
@@ -573,21 +596,13 @@ Each line of the proposed description maps to a feature confirmed on the emulato
 
 The app is ad-supported with a rewarded opt-in before saving, and the description says so. Play requires the monetisation to be evident, and reviewers look for it.
 
-### Repost stays permission-framed
-
-Repost is described as "with the content owner's permission", and the closing paragraph keeps the independence and trademark notice.
-
 ### Permissions match the wording
 
 The listing claims folder access only. The app asks for no all-files access and, since fix round 2, no photo or video permission on Android 13 and later - so the privacy paragraph is literally true.
 
-### No message-recovery claim
-
-Two of the eight shelf holders advertise recovering deleted messages. The app does not do it, so the listing does not say it - and the closing paragraph says so explicitly, which also distances the app from the modified-client crowd.
-
 ### The icon and feature graphic still have to be fixed
 
-Naming WhatsApp in the text is descriptive use. Putting WhatsApp's green-and-white phone mark, or the Instagram, Facebook and TikTok marks our current screenshots carry, into the store art is not. The store graphics are the open policy problem on this listing, not the copy.
+Referring to WhatsApp in body text is referential use. Putting WhatsApp's green-and-white phone mark, or the Instagram, Facebook and TikTok marks our current screenshots carry, into the store art is not - and the store art is the one place both Play's metadata policy and WhatsApp's brand guidelines name the logo explicitly. This is the open policy problem on this listing.
 
 <a id="built"></a>
 
@@ -607,13 +622,17 @@ Every phrase is scored for relevance to what this app does, demand from autocomp
 
 Each phrase is classed as generic, compatibility, off-app, mod-client or rival-name. Only the last three score zero. The compatibility class was scored at zero in the first run of this research, which was wrong: it cost the board 36% of its opportunity and produced a listing written in euphemisms. Corrected on 23 Sep 2026 against Play's policy text and the live title check.
 
+### The field rule
+
+Scoring a phrase as usable and putting it in the title are different decisions. On 24 Sep 2026 the compatibility phrases were confined to the full description after checking three things: WhatsApp's own brand guidelines, which forbid combining the name with generic terms; Google's trademark process, which is notice-based rather than proactive; and what the shelf's twenty largest apps actually do, which is name WhatsApp in the description and never in the title.
+
 ### The copy
 
 Written from the board, then checked back against the app: the QA round of 17 Sep 2026 decides what may be claimed, not the keyword list.
 
 ### The checks
 
-The title check and the use check are scripts in research/aso-pipeline - titlecheck.ps1 and brandcheck.ps1 - and their output is committed next to the data, so any claim on this tab can be re-run.
+The title collision check, the use check and the live brand title check are scripts in research/aso-pipeline - titlecheck.ps1 and brandcheck.ps1 - and their output is committed next to the data, so any claim on this tab can be re-run.
 
 <a id="foot"></a>
 

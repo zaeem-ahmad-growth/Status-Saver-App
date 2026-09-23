@@ -1672,11 +1672,11 @@ foreach ($c in $CANDIDATES) {
     "read": [
       [
         "The title spends 30 characters without the head term",
-        "Every app holding this shelf says \"Status Saver\" in its title. Ours says \"Status Downloader\". Both phrases are on the board, but \"status saver\" and its variants carry the demand: our title covers \"status downloader\" and \"video saver\", and misses \"status saver\", \"status saver app\" and \"status saver video download\" entirely."
+        "Every app holding this shelf says \"Status Saver\" in its title. Ours says \"Status Downloader\". Both phrases are on the board, but \"status saver\" and its variants carry the demand: our title carries no board phrase word for word at all, and misses \"status saver\", \"status saver app\" and \"status saver app download\" entirely."
       ],
       [
         "It never says which app it reads",
-        "The live listing describes statuses without naming WhatsApp once. That costs the whole compatibility cluster — 38 of the 110 phrases on this board name WhatsApp or WhatsApp Business, and they carry 36% of all the opportunity measured here. It also costs clarity: a user scanning the shelf cannot tell whether this app reads the statuses they actually have."
+        "The live listing describes statuses without naming WhatsApp once, in any field. That costs the whole compatibility cluster in the full description — 38 of the 110 phrases on this board name WhatsApp or WhatsApp Business, and they carry 36% of all the opportunity measured here. It also costs clarity: a user scanning the shelf cannot tell whether this app reads the statuses they actually have."
       ],
       [
         "It under-sells what the app actually does",
@@ -1689,15 +1689,15 @@ foreach ($c in $CANDIDATES) {
     ]
   },
   "proposed": {
-    "title": "Status Saver App for WhatsApp",
-    "titleChars": 29,
-    "titleWhy": "Checked live against the 23 Sep 2026 scrape of 217 listings: no exact or near-exact collision. It carries three board phrases word for word — \"status saver\", \"status saver app\" and \"status saver app for whatsapp\" — and every word of ten more, for 15% of the whole US board's priority, against 16% for the current title and 13% for the generic-only alternative \"Status Saver & Downloader App\". The \"X for WhatsApp\" form is the one Play's own shelf has validated: ten third-party titles name WhatsApp, three above 1M installs, and \"Sticker Maker for WhatsApp\" has run at 10M+ installs since November 2018. Leading with the brand — \"WhatsApp Status Saver\" — scores no better and reads like a first-party app, which is the form the impersonation policy actually catches. The obvious generic titles are all taken: \"Status Saver: Video Downloader\" is the exact title of five live apps and \"Status Saver & Video Download\" of seven.",
-    "short": "Save WhatsApp status video & photo to gallery - status saver and downloader",
-    "shortChars": 75,
+    "title": "Status Saver App Download HD",
+    "titleChars": 28,
+    "titleWhy": "No brand name, by decision — see the policy record. Checked against all 217 scraped listings for exact and near-exact collisions (same words in the same order once \"and\", \"&\", \"app\" and punctuation are ignored) and it is clear. It carries three board phrases word for word — \"status saver\", \"status saver app\" and \"status saver app download\" — where the current title carries none, and every word of two more. That is the most any collision-free generic title on this shelf achieves: the obvious ones are all taken, several times over. \"Status Saver: Video Downloader\" and its punctuation variants are the live title of ten apps including a 50M and a 10M one, and \"Status Saver - Video Download\" of six more.",
+    "short": "Status video downloader: save status video & photo to your gallery",
+    "shortChars": 66,
     "outline": [
       [
         "Save WhatsApp status video and photo to your gallery",
-        "Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added."
+        "Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added. It is a status saver for WhatsApp and a status video downloader in one app."
       ],
       [
         "WhatsApp and WhatsApp Business, one grid",
@@ -1730,35 +1730,32 @@ foreach ($c in $CANDIDATES) {
       ],
       [
         "Everything this status saver does",
-        "✓ Save status video and status photo to gallery\n✓ Status downloader for WhatsApp and WhatsApp Business\n✓ HD status saver - original quality, no re-encoding and no watermark added\n✓ Preview before you save\n✓ Saved library with favourites\n✓ Watch saved statuses offline\n✓ Share or repost with permission\n✓ Sticker packs you can add to WhatsApp\n✓ Dark theme, nine languages and right-to-left layouts\n✓ New-status notifications\n✓ Folder access only - no all-files permission"
+        "✓ Save status video and status photo to gallery\n✓ Status downloader for WhatsApp and WhatsApp Business\n✓ Works as a status video downloader app and a status saver video downloader\n✓ HD status saver - original quality, no re-encoding and no watermark added\n✓ Preview before you save\n✓ Saved library with favourites, and a status saver gallery you can search\n✓ Watch saved statuses offline\n✓ Share or repost with permission\n✓ Sticker packs you can add to WhatsApp\n✓ Dark theme, nine languages and right-to-left layouts\n✓ New-status notifications\n✓ Folder access only - no all-files permission"
       ],
       [
         "Who it is for",
-        "If you have been looking for a status saver, a status saver app for WhatsApp, a status downloader app, a story saver, a video status saver, a photo status downloader or simply a way to save WhatsApp status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs."
+        "If you have been looking for a status saver, a status saver app for WhatsApp, a WhatsApp status downloader, a status downloader app, a story saver for WhatsApp, a video status saver, a photo status downloader or simply a way to save WhatsApp status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs."
       ]
     ],
-    "close": "Status Saver App for WhatsApp is an independent utility. It is not affiliated with, sponsored by or endorsed by WhatsApp LLC or Meta Platforms, Inc. WhatsApp and WhatsApp Business are trademarks of WhatsApp LLC, used here only to describe the app this one reads statuses from. The app does not modify WhatsApp, does not support modified WhatsApp clients, and does not recover deleted messages. Only save, share or repost content you own or have permission to use. All trademarks belong to their respective owners.",
-    "why": "Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Naming WhatsApp is a description of what the app reads, not a claim of affiliation, and the closing paragraph carries the disclaimer that keeps it descriptive. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those - two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk."
+    "close": "Status Saver App Download HD is an independent utility. It is not affiliated with, sponsored by or endorsed by WhatsApp LLC or Meta Platforms, Inc. WhatsApp and WhatsApp Business are trademarks of WhatsApp LLC, referred to here only to describe the app this one reads statuses from. The app does not modify WhatsApp, does not support modified WhatsApp clients, and does not recover deleted messages. Only save, share or repost content you own or have permission to use. All trademarks belong to their respective owners.",
+    "why": "The title and short description carry no brand name at all. The full description names WhatsApp, descriptively, to say which statuses the app reads - which is where the demand is, where the practice is normal on this shelf, and where the risk is lowest. Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those - two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk."
   },
   "fields": [
-    ["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."],
-    ["status saver app","Title","Same tokens as the head term plus \"app\", which autocomplete offers nine times."],
+    ["status saver","Title","The category head term, word for word. Every shelf holder carries it; our current title does not."],
+    ["status saver app","Title","Word for word. Same tokens as the head term plus \"app\", which autocomplete offers nine times."],
+    ["status saver app download","Title","Word for word, and the longest board phrase any collision-free generic title on this shelf can carry."],
+    ["status saver hd","Title","Every word present. \"HD\" is literally true here - files are byte-identical to the original."],
+    ["save status app download","Title","Every word present at no extra character cost; \"save\" is carried by \"saver\"."],
     [
-      "status saver for whatsapp", "Title",
-      "Word for word in the title. The highest-priority compatibility phrase the title can hold in 29 characters, and the form the shelf has validated at 10M+ installs."
+      "status video downloader", "Short description",
+      "P37, the highest-priority phrase on the whole board, carried word for word by the short description because the title cannot reach it."
     ],
-    ["status saver whatsapp","Title","Every word present in the title, at no extra character cost."],
-    ["save status whatsapp","Title","Covered by the title's own words; \"save\" is carried by \"saver\"."],
-    [
-      "save status video whatsapp", "Short description",
-      "The save cluster's highest-demand compatibility phrase, carried word for word by the short description."
-    ],
+    ["save status video","Short description","Highest-demand save phrase on the board, word for word."],
     [
       "status save to gallery", "Short description",
       "\"to gallery\" is the differentiator phrase on the board with the lowest competition of the save cluster."
     ],
-    ["save status video","Short description","Highest-demand save phrase on the board, covered by the same words."],
-    ["status downloader","Short description","Keeps the phrase the current title already earns, so nothing is lost in the rewrite."],
+    ["status video download","Short description","Covered by the same words, no extra characters spent."],
     [
       "whatsapp status downloader", "Full description · opening",
       "The board's highest-priority compatibility phrase at P33. Written into the first section, where Play weights the description most."
@@ -1767,25 +1764,31 @@ foreach ($c in $CANDIDATES) {
       "whatsapp status saver", "Full description · opening",
       "P29, second of the compatibility cluster, carried by the opening section and the checklist."
     ],
+    [
+      "status saver for whatsapp", "Full description · opening",
+      "Word for word in the opening section - the descriptive \"X for WhatsApp\" form, which is the one nominative fair use actually protects."
+    ],
     ["whatsapp status video downloader","Full description · opening","Covered by the opening section's own words, at no extra length."],
+    ["status saver whatsapp","Full description · opening","Every word present across the opening section."],
+    [
+      "save status whatsapp", "Full description · how to save",
+      "Carried by the step-by-step section, which names WhatsApp as the place the status comes from."
+    ],
+    [
+      "save status video whatsapp", "Full description · how to save",
+      "The save cluster's highest-demand compatibility phrase, covered by the same section."
+    ],
     [
       "status video downloader app", "Full description · checklist",
-      "The highest-demand phrase on the whole board, 15 autocomplete hits. Covered without spending title characters on its 411M-install top ten."
+      "The highest-demand phrase on the whole board, 15 autocomplete hits, carried word for word by the checklist rather than by a title that cannot win its 411M-install top ten."
     ],
-    [
-      "status saver video downloader", "Full description · checklist",
-      "Second-highest demand phrase on the board, covered by the checklist's own words."
-    ],
+    ["status saver video downloader","Full description · checklist","Second-highest demand phrase on the board, word for word in the checklist."],
     [
       "whatsapp business status saver", "Full description · both inboxes",
       "A feature the app has and the listing never mentioned. Named explicitly now."
     ],
-    ["status saver for whatsapp business","Full description · both inboxes","Carried word for word by the business-status section."],
-    ["status saver gallery","Full description · saved library","Pairs the saved-library section with the gallery phrasing."],
-    [
-      "status saver hd", "Full description · original quality",
-      "Quality claim stated as \"original quality\", which is literally true - files are byte-identical."
-    ],
+    ["status saver for whatsapp business","Full description · both inboxes","Every word present across the business-status section."],
+    ["status saver gallery","Full description · saved library","Word for word in the checklist, pairing the saved library with the gallery phrasing."],
     ["status repost","Full description · share and repost","Kept permission-framed for the intellectual-property policy."],
     [
       "story saver for whatsapp", "Full description · who it is for",
@@ -1794,12 +1797,12 @@ foreach ($c in $CANDIDATES) {
   ],
   "reserved": [
     [
-      "status video downloader app",
-      "Carried by the full description but not the title. The most defended phrase on the board - 411M installs across its top ten - so it is worth title characters only once the app has ratings."
+      "every WhatsApp phrase, for the title and short description",
+      "Barred by decision, not by score. They are the highest-demand phrases on the board and they stay in the full description, where the practice is normal and the legal footing is strongest. In the title they would put our 30 most valuable characters directly against WhatsApp's published brand guidelines and in front of Meta's enforcement team. See the policy record."
     ],
     [
-      "status saver video downloader",
-      "Second-highest demand phrase on the board, and its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."
+      "status saver: video downloader",
+      "Unusable: the live title of ten apps in the scrape, including one at 50M installs and one at 10M, once punctuation is normalised."
     ],
     ["auto status saver","Only worth targeting if auto-save is ever built. Claiming it now would be false."],
     ["status saver without watermark","True of our app, but the phrase reads as a competitor's problem; hold it for a later version."],
@@ -1815,19 +1818,35 @@ foreach ($c in $CANDIDATES) {
   ],
   "policy": [
     [
-      "Naming WhatsApp is descriptive use, and it is checked",
-      "Play's impersonation policy prohibits falsely implying a relationship with another company. It does not prohibit naming the app a utility works with - a listing is required to describe what the app does. This listing names WhatsApp only to say which status folder it reads, never as the app's own identity: the developer name, the icon and the first word of the title are all ours, and the closing paragraph states in full that the app is independent and unaffiliated and that the trademarks belong to WhatsApp LLC."
+      "No brand name in the title or the short description",
+      "A decision taken on 24 Sep 2026, and the reasoning is worth keeping because it is not the obvious one. Play would almost certainly accept a descriptive title: its test is whether use is \"likely to cause confusion as to the source\", not whether a name appears. But Play is not the only gate. WhatsApp's published brand guidelines are stricter than Play's policy and say plainly: \"DON'T use the WhatsApp Brand Resources as part of a name of a product or service of a company other than WhatsApp\" and \"DON'T combine the WhatsApp name or logos, or any portion of any of them, with any other logo, company name, mark, or generic terms.\" A title reading \"Status Saver ... for WhatsApp\" is exactly that combination. Meta runs an enforcement team that issues takedown notices against marks it finds, so the risk is a live complaint channel, not a theoretical one."
+    ],
+    [
+      "The shelf agrees, and that is the stronger evidence",
+      "Of the 20 largest apps in this scrape by installs, zero name WhatsApp in the title and six name it in the description. The ten apps that do put it in the title are the smallest and youngest group in the whole dataset - median 7,500 installs against 500,000 for the apps that never mention it, median age 2.3 years against 4.0. The category's winners all made the same split this listing now makes."
+    ],
+    [
+      "The full description names WhatsApp, and that is allowed",
+      "Naming the app ours reads from, in order to describe what ours does, is referential use: the doctrine of nominative fair use exists precisely because \"saves statuses from WhatsApp\" cannot be said without saying WhatsApp. It is also the norm here, not an edge case - 99 of the 214 third-party apps in the scrape (46%) name WhatsApp somewhere in the description, including six of the twenty largest. Play's own metadata policy names the brand's logo as the thing that needs permission, not the brand's name."
+    ],
+    [
+      "The disclaimer is the category convention, and we follow it",
+      "Of the 99 apps that name WhatsApp anywhere, 65 (66%) carry a disclaimer sentence. One competitor's, verbatim: \"Important: Status Saver is an independent utility app and is not affiliated with, endorsed by, or sponsored by WhatsApp or Meta.\" Our closing paragraph does the same and goes further - independence, trademark ownership, no modification of WhatsApp, no support for modified clients, no message recovery."
+    ],
+    [
+      "Why so many apps get away with brand titles, and why that is not a precedent",
+      "Google does not police trademarks proactively. Its Intellectual Property policy tells the trademark owner to \"reach out to the developer directly\" and then file a complaint webform: enforcement is notice-based. So a brand-name title being live for years does not mean Google considered it and approved it - it means nobody has complained yet. A store scrape only shows the apps that are still there; the ones removed after a complaint are invisible to it. Two apps in this scrape do hold the descriptive form at 10M installs for 6.7 and 7.8 years, both still updated in July 2026, so the form is defensible - but it is defensible in a fight, which is not the same as being free."
     ],
     [
       "Live title check, run on 23 Sep 2026",
-      "The house rule needs at least five third-party titles using the term, at least two above 1M installs, and the oldest live three or more years. The 217 scraped listings return ten third-party titles naming WhatsApp or WA, three of them at or above 1M installs - \"Sticker Maker for WhatsApp\" twice at 10M+, live since November 2018 and December 2019, and \"Status Saver - for WA Business\" at 1M, live since October 2020. The check passes on every limb. The result is in research/aso-pipeline/titlecheck.json and the query is in brandcheck.ps1."
+      "The house rule needs at least five third-party titles using a term, at least two above 1M installs, and the oldest live three or more years. For WhatsApp the scrape returns ten third-party titles, three at or above 1M installs, oldest live 7.8 years - so the term passes the house check, and the decision to keep it out of our title is a risk judgement on top of a passed check, not a failed one. Re-runnable: research/aso-pipeline/brandcheck.ps1, output in usecheck.json."
     ],
     [
       "No collision with a live title",
-      "Fourteen candidate titles were compared against every title in the scrape. Five failed on an exact collision - \"Status Saver: Video Downloader\" alone is the live title of five different apps. The chosen title collides with none of them."
+      "The proposed title was compared against all 217 scraped titles for exact and near-exact matches, normalising punctuation and dropping \"and\", \"&\" and \"app\". It is clear. Four of the six most natural titles for this app are not."
     ],
     [
-      "What is still off-limits, and why",
+      "What is still off-limits in every field, and why",
       "Three things, none of them \"a brand name appeared\". Phrases naming a platform this app cannot read - Instagram, Facebook, TikTok - are excluded because the claim would be false, which is a metadata-accuracy problem. Phrases naming modified clients - GB, FM, YO WhatsApp - are excluded because Play bans facilitating them. Phrases naming another developer's app outright are excluded because that is the impersonation the policy is actually about."
     ],
     [
@@ -1839,25 +1858,17 @@ foreach ($c in $CANDIDATES) {
       "The app is ad-supported with a rewarded opt-in before saving, and the description says so. Play requires the monetisation to be evident, and reviewers look for it."
     ],
     [
-      "Repost stays permission-framed",
-      "Repost is described as \"with the content owner's permission\", and the closing paragraph keeps the independence and trademark notice."
-    ],
-    [
       "Permissions match the wording",
       "The listing claims folder access only. The app asks for no all-files access and, since fix round 2, no photo or video permission on Android 13 and later - so the privacy paragraph is literally true."
     ],
     [
-      "No message-recovery claim",
-      "Two of the eight shelf holders advertise recovering deleted messages. The app does not do it, so the listing does not say it - and the closing paragraph says so explicitly, which also distances the app from the modified-client crowd."
-    ],
-    [
       "The icon and feature graphic still have to be fixed",
-      "Naming WhatsApp in the text is descriptive use. Putting WhatsApp's green-and-white phone mark, or the Instagram, Facebook and TikTok marks our current screenshots carry, into the store art is not. The store graphics are the open policy problem on this listing, not the copy."
+      "Referring to WhatsApp in body text is referential use. Putting WhatsApp's green-and-white phone mark, or the Instagram, Facebook and TikTok marks our current screenshots carry, into the store art is not - and the store art is the one place both Play's metadata policy and WhatsApp's brand guidelines name the logo explicitly. This is the open policy problem on this listing."
     ]
   ],
   "titleStrategy": {
-    "head": "Why this title, in 29 characters",
-    "body": "A title on this shelf is a keyword carrier, not a brand statement: the shelf holders average 3.1 board phrases word for word in theirs. The decision was between a generic-only title and one that names what the app reads. Generic-only tops out at 13% of board priority and says nothing a user can act on. \"Status Saver App for WhatsApp\" reaches 15%, carries three phrases word for word, and answers the one question a status-saver shopper actually has. It keeps our own word first, so the title reads as our product working with WhatsApp rather than as WhatsApp's own app - which is the line the impersonation policy draws."
+    "head": "Why this title, in 28 characters",
+    "body": "A title on this shelf is a keyword carrier, not a brand statement: the shelf holders average 3.1 board phrases word for word in theirs, and ours currently carries none. Two constraints shaped the choice. First, no brand name - a deliberate decision, because the title is the field WhatsApp's brand guidelines speak to directly and the field Meta's enforcement team looks at, while the shelf's own winners keep it clean: zero of the top twenty name WhatsApp in the title. Second, the generic space is saturated, so most natural titles are already someone's near-exact title. \"Status Saver App Download HD\" is the best collision-free generic available: three board phrases word for word, the head term first, and 11% of the board's priority against 15% for the branded form we rejected and 16% for a current title that carries no exact phrase at all."
   },
   "practices": [
     [
@@ -1869,12 +1880,12 @@ foreach ($c in $CANDIDATES) {
       "Play matches phrases, so the title and short description spend their characters on exact board phrases and let the full description pick up token coverage."
     ],
     [
-      "The title holds the head term",
-      "\"status saver\" and \"status saver app\" go in the title because Play weights it most, and because every app holding this shelf does the same."
+      "Put the risk where the reward is",
+      "The compatibility cluster carries 36% of the board's opportunity and almost none of it is reachable from 28 title characters. Naming WhatsApp in the full description captures nearly all of that value in the field where the practice is normal and the legal footing is strongest."
     ],
     [
-      "The description carries the defended phrases",
-      "\"status video downloader app\" and \"status saver video downloader\" have 411M-install top tens. They are covered in the description, where coverage is free, rather than in a title that cannot win them yet."
+      "The title holds the head term",
+      "\"status saver\" and \"status saver app\" go in the title because Play weights it most, and because every app holding this shelf does the same."
     ],
     [
       "Every claim is checked against the emulator, not the board",
@@ -1883,25 +1894,25 @@ foreach ($c in $CANDIDATES) {
   ],
   "vsPackage": [
     [
-      "Title", "Status Saver & Downloader App", "Status Saver App for WhatsApp",
-      "The playbook's package predates the corrected use rule and was written to avoid every product name. Naming WhatsApp adds the compatibility cluster and 2 points of board priority for the same 29 characters."
+      "Title", "Status Saver & Downloader App", "Status Saver App Download HD",
+      "The playbook's package predates both the corrected use rule and the collision re-check. Its title fails the near-exact test against the live app \"Status Saver Downloader\", so it was never shippable. The replacement is clear and carries three board phrases word for word instead of one."
     ],
     [
       "Short description", "Status saver and downloader: save status video, photo and story to gallery",
-      "Save WhatsApp status video & photo to gallery - status saver and downloader",
-      "Same length class, one more exact phrase, and it now says which statuses."
+      "Status video downloader: save status video & photo to your gallery",
+      "Shorter, and it now carries P37 \"status video downloader\" word for word - the highest-priority phrase on the board, which the title cannot reach."
     ],
     [
       "Full description", "\"your messaging app\" throughout", "WhatsApp and WhatsApp Business named",
-      "The old copy used a euphemism in eight places to avoid a name it was always allowed to use. Each one is now the actual app name, which is both clearer and searchable."
+      "The old copy used a euphemism in eight places to avoid a name it was always allowed to use in this field. Each one is now the actual app name, which is both clearer and searchable."
     ],
     [
-      "Disclaimer", "One sentence, generic", "Four sentences, specific",
-      "Because the copy now names the trademark, the closing paragraph does the work that keeps the use descriptive: independence, ownership, no modification, no message recovery."
+      "Disclaimer", "One sentence, generic", "Five sentences, specific",
+      "Because the copy now names the trademark, the closing paragraph does the work that keeps the use referential: independence, ownership, no modification, no mod-client support, no message recovery. 66% of the apps on this shelf that name WhatsApp carry some version of this."
     ],
     [
-      "Board priority covered", "13%", "15%",
-      "Title only. Across all three fields the compatibility cluster adds 36% of the board that the previous package scored at zero."
+      "Board priority covered", "13%, from a title that collides", "11% from the title, plus the 36% compatibility cluster in the description",
+      "The first run scored the compatibility cluster at zero and lost all of it. This package gives up 4 points of title priority to keep the brand out of the riskiest field, and recovers the 36% where it is safe to do so."
     ]
   ],
   "risks": [
@@ -1910,12 +1921,16 @@ foreach ($c in $CANDIDATES) {
       "Zero placements today across 110 keywords in three markets. Metadata decides what the app is eligible for; installs, ratings and retention decide whether it ranks. Expect the rewrite to show up first on the long tail, not on \"status saver\"."
     ],
     [
-      "Descriptive use is allowed by Play, and still annoys trademark owners",
-      "Play's policy is the test this listing has to pass, and it passes it. Separately from Play, a trademark owner can file a complaint against any app naming their mark, and Meta has done so in this category before. Keeping our own word first in the title, keeping the disclaimer in the description, and keeping the mark out of the icon are what make that complaint fail. Do not drop any of the three."
+      "Naming WhatsApp in the description is defensible, not free",
+      "Referential use is a real defence and the category norm, but a trademark owner can still complain and Google's process is complaint-driven, so a notice can arrive without warning. The three things that make the defence work are the disclaimer, the absence of the mark from the icon and store art, and the brand staying out of the title. Do not drop any of them, and do not let the description drift from describing what the app reads into suggesting a relationship."
+    ],
+    [
+      "The store graphics are still non-compliant",
+      "Our screenshots and feature graphic carry the Instagram, Facebook and TikTok marks, and the feature graphic claims \"Reply Instantly\", which the app cannot do. Keeping the brand out of the title does nothing for this. Fix the art before the next listing update - it is the single most likely trigger for a complaint on this listing."
     ],
     [
       "The obvious titles are taken, several times over",
-      "Four of the six most natural titles for this app are already the exact title of live apps. Never ship a title without running the check again on the day - this shelf changes monthly."
+      "Ten live apps share \"Status Saver: Video Downloader\" once punctuation is normalised, and six share \"Status Saver - Video Download\". Never ship a title without running the collision check again on the day - this shelf changes monthly."
     ],
     [
       "The rewarded ad before saving is the policy tripwire",
@@ -1924,10 +1939,6 @@ foreach ($c in $CANDIDATES) {
     [
       "Do not copy the shelf's riskiest claims",
       "Message recovery, \"view deleted messages\" and mod-app support appear on competitor listings in this category. They attract both takedowns and one-star reviews, and the app does none of them."
-    ],
-    [
-      "The store graphics are still non-compliant",
-      "Our screenshots and feature graphic carry the Instagram, Facebook and TikTok marks, and the feature graphic claims \"Reply Instantly\", which the app cannot do. Naming WhatsApp in the text does not license any of that. Fix the art before the next listing update."
     ],
     [
       "Data safety still says data is not encrypted",
@@ -1948,12 +1959,16 @@ foreach ($c in $CANDIDATES) {
       "Each phrase is classed as generic, compatibility, off-app, mod-client or rival-name. Only the last three score zero. The compatibility class was scored at zero in the first run of this research, which was wrong: it cost the board 36% of its opportunity and produced a listing written in euphemisms. Corrected on 23 Sep 2026 against Play's policy text and the live title check."
     ],
     [
+      "The field rule",
+      "Scoring a phrase as usable and putting it in the title are different decisions. On 24 Sep 2026 the compatibility phrases were confined to the full description after checking three things: WhatsApp's own brand guidelines, which forbid combining the name with generic terms; Google's trademark process, which is notice-based rather than proactive; and what the shelf's twenty largest apps actually do, which is name WhatsApp in the description and never in the title."
+    ],
+    [
       "The copy",
       "Written from the board, then checked back against the app: the QA round of 17 Sep 2026 decides what may be claimed, not the keyword list."
     ],
     [
       "The checks",
-      "The title check and the use check are scripts in research/aso-pipeline - titlecheck.ps1 and brandcheck.ps1 - and their output is committed next to the data, so any claim on this tab can be re-run."
+      "The title collision check, the use check and the live brand title check are scripts in research/aso-pipeline - titlecheck.ps1 and brandcheck.ps1 - and their output is committed next to the data, so any claim on this tab can be re-run."
     ]
   ]
 }
