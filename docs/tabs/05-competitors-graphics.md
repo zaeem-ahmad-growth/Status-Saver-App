@@ -82,7 +82,7 @@ The 1024 × 500 banner at the top of each listing — the one asset our app does
 
 ![Feature graphic of Status Downloader: Video Saver](../../tabs/05-competitors-graphics/img/com-statussaver-videosaver-downloadstatus-storysaver/feature.png)
 
-Status Downloader ours · 10+ installs
+Status Downloader · ours · 10+ installs
 
 ![Feature graphic of Status Download - Video Saver](../../tabs/05-competitors-graphics/img/com-downlood-sav-whmedia/feature.png)
 
@@ -160,173 +160,485 @@ Catalogue
 
 Each app's icon, feature graphic and full screenshot set, with a read on what the design is doing. Click any screenshot to enlarge it.
 
+<a id="app-com.statussaver.videosaver.downloadstatus.storysaver"></a>
+
 ![](../../tabs/05-competitors-graphics/img/com-statussaver-videosaver-downloadstatus-storysaver/icon.png)
 
 ### Status Downloader: Video Saver our app
 
-Cell Cave · 10+ installs · no rating yet
+Cell Cave · 10+ installs · no rating yet · 4 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+Splash screen with the app logo
+
+#### Caption
+
+Two-line caption above the phone, green on pale blue
+
+#### Framing
+
+Purple-framed phone, blurred teal background
+
+#### Read
+
+Leads with the wrong screen, and the mock status bar carries the Instagram, Facebook and TikTok logos
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Downloader: Video Saver](../../tabs/05-competitors-graphics/img/com-statussaver-videosaver-downloadstatus-storysaver/feature.png)
 
+Screenshots · 4
+
 ![Screenshot 1 of Status Downloader: Video Saver](../../tabs/05-competitors-graphics/img/com-statussaver-videosaver-downloadstatus-storysaver/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Downloader: Video Saver](../../tabs/05-competitors-graphics/img/com-statussaver-videosaver-downloadstatus-storysaver/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Downloader: Video Saver](../../tabs/05-competitors-graphics/img/com-statussaver-videosaver-downloadstatus-storysaver/shot-3.jpg)
 
+Screenshot 3
+
 ![Screenshot 4 of Status Downloader: Video Saver](../../tabs/05-competitors-graphics/img/com-statussaver-videosaver-downloadstatus-storysaver/shot-4.jpg)
+
+Screenshot 4
+
+<a id="app-com.downlood.sav.whmedia"></a>
 
 ![](../../tabs/05-competitors-graphics/img/com-downlood-sav-whmedia/icon.png)
 
 ### Status Download - Video Saver
 
-Shree Ganesha Labs · 100M+ installs · 4.6★ (1.7M)
+Shree Ganesha Labs · 100M+ installs · 4.6★ (1.7M) · 4 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+The messaging app's own status list
+
+#### Caption
+
+"One Tap to Download All", white on green
+
+#### Framing
+
+Dark phone frame, flat green field
+
+#### Read
+
+Sells the source, not the app; a giant download button is composited over the list
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Download - Video Saver](../../tabs/05-competitors-graphics/img/com-downlood-sav-whmedia/feature.png)
 
+Screenshots · 4
+
 ![Screenshot 1 of Status Download - Video Saver](../../tabs/05-competitors-graphics/img/com-downlood-sav-whmedia/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Download - Video Saver](../../tabs/05-competitors-graphics/img/com-downlood-sav-whmedia/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Download - Video Saver](../../tabs/05-competitors-graphics/img/com-downlood-sav-whmedia/shot-3.jpg)
 
+Screenshot 3
+
 ![Screenshot 4 of Status Download - Video Saver](../../tabs/05-competitors-graphics/img/com-downlood-sav-whmedia/shot-4.jpg)
+
+Screenshot 4
+
+<a id="app-statussaver.statusdownloader.downloadstatus.savestatus"></a>
 
 ![](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-savestatus/icon.png)
 
 ### Status Saver: Video Downloader
 
-BlueLine. Tech · 50M+ installs · 4.8★ (205K)
+BlueLine. Tech · 50M+ installs · 4.8★ (205K) · 6 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+The app's own status grid with download badges
+
+#### Caption
+
+"Instant Save Status", white on green
+
+#### Framing
+
+Frameless white card on green
+
+#### Read
+
+Cleanest read of the shelf: the product does the talking, one benefit per screen
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-savestatus/feature.png)
 
+Screenshots · 6
+
 ![Screenshot 1 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-savestatus/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-savestatus/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-savestatus/shot-3.jpg)
+
+Screenshot 3
 
 ![Screenshot 4 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-savestatus/shot-4.jpg)
 
+Screenshot 4
+
 ![Screenshot 5 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-savestatus/shot-5.jpg)
 
+Screenshot 5
+
 ![Screenshot 6 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-savestatus/shot-6.jpg)
+
+Screenshot 6
+
+<a id="app-statussaver.statusdownloader.downloadstatus.videoimagesaver"></a>
 
 ![](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-videoimagesaver/icon.png)
 
 ### Status Saver - Video Saver
 
-Save Status, Video & Image Downloader · 100M+ installs · 4.6★ (275K)
+Save Status, Video & Image Downloader · 100M+ installs · 4.6★ (275K) · 6 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+The app's grid, full of real status images
+
+#### Caption
+
+"SAVE ALL STATUS", white on green
+
+#### Framing
+
+Light phone frame on flat green
+
+#### Read
+
+Content is localised — Hindi and Hinglish status cards — which sells the market it is aimed at
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Saver - Video Saver](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-videoimagesaver/feature.png)
 
+Screenshots · 6
+
 ![Screenshot 1 of Status Saver - Video Saver](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Saver - Video Saver](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Saver - Video Saver](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-3.jpg)
+
+Screenshot 3
 
 ![Screenshot 4 of Status Saver - Video Saver](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-4.jpg)
 
+Screenshot 4
+
 ![Screenshot 5 of Status Saver - Video Saver](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-5.jpg)
 
+Screenshot 5
+
 ![Screenshot 6 of Status Saver - Video Saver](../../tabs/05-competitors-graphics/img/statussaver-statusdownloader-downloadstatus-videoimagesaver/shot-6.jpg)
+
+Screenshot 6
+
+<a id="app-com.falnesc.statussaver"></a>
 
 ![](../../tabs/05-competitors-graphics/img/com-falnesc-statussaver/icon.png)
 
 ### Status Saver・Status Downloader
 
-Battery Stats Saver · 10M+ installs · 4.8★ (226K)
+Battery Stats Saver · 10M+ installs · 4.8★ (226K) · 6 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+The app's grid of quote and photo statuses
+
+#### Caption
+
+"Save Status", white on teal
+
+#### Framing
+
+White phone frame, generous margin
+
+#### Read
+
+The most restrained set: one word of caption, no badges, no arrows
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Saver・Status Downloader](../../tabs/05-competitors-graphics/img/com-falnesc-statussaver/feature.png)
 
+Screenshots · 6
+
 ![Screenshot 1 of Status Saver・Status Downloader](../../tabs/05-competitors-graphics/img/com-falnesc-statussaver/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Saver・Status Downloader](../../tabs/05-competitors-graphics/img/com-falnesc-statussaver/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Saver・Status Downloader](../../tabs/05-competitors-graphics/img/com-falnesc-statussaver/shot-3.jpg)
+
+Screenshot 3
 
 ![Screenshot 4 of Status Saver・Status Downloader](../../tabs/05-competitors-graphics/img/com-falnesc-statussaver/shot-4.jpg)
 
+Screenshot 4
+
 ![Screenshot 5 of Status Saver・Status Downloader](../../tabs/05-competitors-graphics/img/com-falnesc-statussaver/shot-5.jpg)
 
+Screenshot 5
+
 ![Screenshot 6 of Status Saver・Status Downloader](../../tabs/05-competitors-graphics/img/com-falnesc-statussaver/shot-6.jpg)
+
+Screenshot 6
+
+<a id="app-com.heethjain.apps.statussaver"></a>
 
 ![](../../tabs/05-competitors-graphics/img/com-heethjain-apps-statussaver/icon.png)
 
 ### Status Saver - Video Download
 
-Heeth Jain · 500K+ installs · 4.4★ (7K)
+Heeth Jain · 500K+ installs · 4.4★ (7K) · 6 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+The messaging app's status list
+
+#### Caption
+
+"One Tap to Download", white on teal gradient
+
+#### Framing
+
+Dark phone frame with a pulsing action button
+
+#### Read
+
+Four-panel feature graphic doubles as the screenshot script
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Saver - Video Download](../../tabs/05-competitors-graphics/img/com-heethjain-apps-statussaver/feature.png)
 
+Screenshots · 6
+
 ![Screenshot 1 of Status Saver - Video Download](../../tabs/05-competitors-graphics/img/com-heethjain-apps-statussaver/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Saver - Video Download](../../tabs/05-competitors-graphics/img/com-heethjain-apps-statussaver/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Saver - Video Download](../../tabs/05-competitors-graphics/img/com-heethjain-apps-statussaver/shot-3.jpg)
+
+Screenshot 3
 
 ![Screenshot 4 of Status Saver - Video Download](../../tabs/05-competitors-graphics/img/com-heethjain-apps-statussaver/shot-4.jpg)
 
+Screenshot 4
+
 ![Screenshot 5 of Status Saver - Video Download](../../tabs/05-competitors-graphics/img/com-heethjain-apps-statussaver/shot-5.jpg)
 
+Screenshot 5
+
 ![Screenshot 6 of Status Saver - Video Download](../../tabs/05-competitors-graphics/img/com-heethjain-apps-statussaver/shot-6.jpg)
+
+Screenshot 6
+
+<a id="app-com.statussaver.statusdownloader.lite"></a>
 
 ![](../../tabs/05-competitors-graphics/img/com-statussaver-statusdownloader-lite/icon.png)
 
 ### Status Saver
 
-Fun and Hi Tool · 10M+ installs · 4.3★ (7K)
+Fun and Hi Tool · 10M+ installs · 4.3★ (7K) · 5 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+The app's saved tab with story rings
+
+#### Caption
+
+"Save All Status", black on a doodle background
+
+#### Framing
+
+Rounded light frame, doodle pattern field
+
+#### Read
+
+The only set with an illustrated background instead of a flat colour
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Saver](../../tabs/05-competitors-graphics/img/com-statussaver-statusdownloader-lite/feature.png)
 
+Screenshots · 5
+
 ![Screenshot 1 of Status Saver](../../tabs/05-competitors-graphics/img/com-statussaver-statusdownloader-lite/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Saver](../../tabs/05-competitors-graphics/img/com-statussaver-statusdownloader-lite/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Saver](../../tabs/05-competitors-graphics/img/com-statussaver-statusdownloader-lite/shot-3.jpg)
+
+Screenshot 3
 
 ![Screenshot 4 of Status Saver](../../tabs/05-competitors-graphics/img/com-statussaver-statusdownloader-lite/shot-4.jpg)
 
+Screenshot 4
+
 ![Screenshot 5 of Status Saver](../../tabs/05-competitors-graphics/img/com-statussaver-statusdownloader-lite/shot-5.jpg)
+
+Screenshot 5
+
+<a id="app-com.mdtech.status.saver"></a>
 
 ![](../../tabs/05-competitors-graphics/img/com-mdtech-status-saver/icon.png)
 
 ### Status Saver & Video Download
 
-MD TECH · 100+ installs · no rating yet
+MD TECH · 100+ installs · no rating yet · 6 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+The app's grid with floating media cards
+
+#### Caption
+
+"Save Your Moments" plus a three-line subhead
+
+#### Framing
+
+3D-tilted dark phone, deep teal field
+
+#### Read
+
+The most designed set on the shelf, and the only one that states Fast / Simple / Reliable as badges
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Saver & Video Download](../../tabs/05-competitors-graphics/img/com-mdtech-status-saver/feature.png)
 
+Screenshots · 6
+
 ![Screenshot 1 of Status Saver & Video Download](../../tabs/05-competitors-graphics/img/com-mdtech-status-saver/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Saver & Video Download](../../tabs/05-competitors-graphics/img/com-mdtech-status-saver/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Saver & Video Download](../../tabs/05-competitors-graphics/img/com-mdtech-status-saver/shot-3.jpg)
+
+Screenshot 3
 
 ![Screenshot 4 of Status Saver & Video Download](../../tabs/05-competitors-graphics/img/com-mdtech-status-saver/shot-4.jpg)
 
+Screenshot 4
+
 ![Screenshot 5 of Status Saver & Video Download](../../tabs/05-competitors-graphics/img/com-mdtech-status-saver/shot-5.jpg)
 
+Screenshot 5
+
 ![Screenshot 6 of Status Saver & Video Download](../../tabs/05-competitors-graphics/img/com-mdtech-status-saver/shot-6.jpg)
+
+Screenshot 6
+
+<a id="app-com.sinosystems.status"></a>
 
 ![](../../tabs/05-competitors-graphics/img/com-sinosystems-status/icon.png)
 
 ### Status Saver: Video Downloader
 
-SinoSystems, Inc · 100K+ installs · no rating yet
+SinoSystems, Inc · 100K+ installs · no rating yet · 5 screenshots
+
+Open listing on Google Play ↗
+
+#### First screen shows
+
+The app's grid with a NO ADS ribbon
+
+#### Caption
+
+"One tap Save Status", black on white
+
+#### Framing
+
+Dark phone frame on white
+
+#### Read
+
+Uses the screenshot to make a commercial promise, not a feature claim
+
+Feature graphic · 1024 × 500
 
 ![Feature graphic of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/com-sinosystems-status/feature.png)
 
+Screenshots · 5
+
 ![Screenshot 1 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/com-sinosystems-status/shot-1.jpg)
+
+Screenshot 1
 
 ![Screenshot 2 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/com-sinosystems-status/shot-2.jpg)
 
+Screenshot 2
+
 ![Screenshot 3 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/com-sinosystems-status/shot-3.jpg)
+
+Screenshot 3
 
 ![Screenshot 4 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/com-sinosystems-status/shot-4.jpg)
 
+Screenshot 4
+
 ![Screenshot 5 of Status Saver: Video Downloader](../../tabs/05-competitors-graphics/img/com-sinosystems-status/shot-5.jpg)
+
+Screenshot 5
 
 <a id="ours"></a>
 

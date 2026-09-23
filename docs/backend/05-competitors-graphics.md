@@ -5,7 +5,7 @@
 
 ## How the page is put together
 
-- Markup: [tabs/05-competitors-graphics/index.html](../../tabs/05-competitors-graphics/index.html) (94 lines), `<body data-page="graphics">`
+- Markup: [tabs/05-competitors-graphics/index.html](../../tabs/05-competitors-graphics/index.html) (100 lines), `<body data-page="graphics">`
 - Drawn by [assets/app.js](../../assets/app.js) from [assets/data.js](../../assets/data.js); styles in [assets/site.css](../../assets/site.css); tab bar from [assets/nav.js](../../assets/nav.js)
 - Sections and the functions that fill them: see the [code map](../code-map.md#05-competitors-graphics)
 

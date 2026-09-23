@@ -650,13 +650,13 @@
   function isOurs(a) { return a.id === D.meta.ours; }
 ```
 
-### `renderIconWall()` (assets/app.js L530-542)
+### `renderIconWall()` (assets/app.js L530-543)
 
 ```js
   function renderIconWall() {
     const box = $('iconwall'); if (!box) return;
     box.innerHTML = gApps.map(a => `<figure class="icoplate${isOurs(a) ? ' ours' : ''}" data-id="${esc(a.id)}">
-      <img src="${esc(a.icon)}" alt="Icon of ${esc(a.title)}" loading="lazy">
+      <button class="shot" type="button" data-full="${esc(a.icon)}" data-cap="${esc(a.title)} · app icon"><img src="${esc(a.icon)}" alt="Icon of ${esc(a.title)}" loading="lazy"></button>
       <figcaption>${esc(shortName(a.title))}<span class="small muted block">${fmt(a.installs)}+</span></figcaption></figure>`).join('');
     box.querySelectorAll('.icoplate').forEach(el => {
       const a = gApps.find(x => x.id === el.dataset.id);
@@ -664,10 +664,11 @@
     });
     const r = $('icon-read');
     if (r) r.innerHTML = (GN.iconRead || []).map(x => `<div class="insight"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
+    bindLightbox();
   }
 ```
 
-### `renderFgGrid()` (assets/app.js L543-553)
+### `renderFgGrid()` (assets/app.js L544-554)
 
 ```js
   function renderFgGrid() {
@@ -682,7 +683,7 @@
   }
 ```
 
-### `renderSystems()` (assets/app.js L554-560)
+### `renderSystems()` (assets/app.js L555-561)
 
 ```js
   function renderSystems() {
@@ -693,25 +694,38 @@
   }
 ```
 
-### `renderCatalogue()` (assets/app.js L561-574)
+### `renderCatalogue()` (assets/app.js L566-592)
 
 ```js
   function renderCatalogue() {
     const box = $('app-catalogue'); if (!box) return;
-    box.innerHTML = gApps.map(a => `<section class="g-app${isOurs(a) ? ' ours' : ''}">
+    box.innerHTML = gApps.map((a, idx) => {
+      const r = readOf(idx);
+      const shots = a.shots || [];
+      return `<section class="g-app${isOurs(a) ? ' ours' : ''}" id="app-${esc(a.id)}">
       <div class="g-apphead">
         ${a.icon ? `<img class="appicon" src="${esc(a.icon)}" alt="" loading="lazy">` : ''}
         <div><h3>${esc(a.title)}${isOurs(a) ? ' <span class="pill p-acc">our app</span>' : ''}</h3>
-          <p class="small muted">${esc(a.developer || '')} · ${fmt(a.installs)}+ installs${a.score ? ' · ' + a.score.toFixed(1) + '★ (' + fmt(a.ratings) + ')' : ' · no rating yet'}</p></div>
+          <p class="small muted">${esc(a.developer || '')} · ${fmt(a.installs)}+ installs${a.score ? ' · ' + a.score.toFixed(1) + '★ (' + fmt(a.ratings) + ')' : ' · no rating yet'} · ${shots.length} screenshot${shots.length === 1 ? '' : 's'}</p></div>
+        <a class="g-play" href="${esc(playUrl(a.id))}" target="_blank" rel="noopener">Open listing on Google Play ↗</a>
       </div>
+      ${r ? `<div class="g-read">
+        <div><h4>First screen shows</h4><p>${esc(r[1])}</p></div>
+        <div><h4>Caption</h4><p>${esc(r[2])}</p></div>
+        <div><h4>Framing</h4><p>${esc(r[3])}</p></div>
+        <div><h4>Read</h4><p>${esc(r[4])}</p></div>
+      </div>` : ''}
+      <div class="g-rowlabel">Feature graphic · 1024 × 500</div>
       ${a.feature ? `<button class="shot" type="button" data-full="${esc(a.feature)}" data-cap="${esc(a.title)} · feature graphic"><img src="${esc(a.feature)}" alt="Feature graphic of ${esc(a.title)}" loading="lazy"></button>` : '<p class="small muted">No feature graphic on the listing.</p>'}
-      <div class="m-shots">${(a.shots || []).map((s, i) => `<button class="shot" type="button" data-full="${esc(s)}" data-cap="${esc(a.title)} · screenshot ${i + 1}"><img src="${esc(s)}" alt="Screenshot ${i + 1} of ${esc(a.title)}" loading="lazy"></button>`).join('')}</div>
-    </section>`).join('');
+      <div class="g-rowlabel">Screenshots · ${shots.length}</div>
+      <div class="m-shots">${shots.map((s, i) => `<figure><button class="shot" type="button" data-full="${esc(s)}" data-cap="${esc(a.title)} · screenshot ${i + 1} of ${shots.length}"><img src="${esc(s)}" alt="Screenshot ${i + 1} of ${esc(a.title)}" loading="lazy"></button><figcaption>Screenshot ${i + 1}</figcaption></figure>`).join('')}</div>
+    </section>`;
+    }).join('');
     bindLightbox();
   }
 ```
 
-### `bindLightbox()` (assets/app.js L575-590)
+### `bindLightbox()` (assets/app.js L593-610)
 
 ```js
   function bindLightbox() {
@@ -727,11 +741,13 @@
     });
     const close = $('lb-close');
     if (close && !close.dataset.bound) { close.dataset.bound = '1'; close.addEventListener('click', () => lb.close()); }
-    if (!lb.dataset.bound) { lb.dataset.bound = '1'; lb.addEventListener('click', e => { if (e.target === lb) lb.close(); }); }
+    // .lb-in fills the dialog, so a backdrop click lands on it rather than on <dialog>.
+    if (!lb.dataset.bound) { lb.dataset.bound = '1'; lb.addEventListener('click', e => { if (e.target === lb || e.target.id === 'lb-in') lb.close(); }); }
+    if (!lb.dataset.esc) { lb.dataset.esc = '1'; lb.addEventListener('close', () => { img.removeAttribute('src'); }); }
   }
 ```
 
-### `renderOursGraphics()` (assets/app.js L591-595)
+### `renderOursGraphics()` (assets/app.js L611-615)
 
 ```js
   function renderOursGraphics() {
@@ -740,7 +756,7 @@
   }
 ```
 
-### `renderFoot()` (assets/app.js L596-600)
+### `renderFoot()` (assets/app.js L616-620)
 
 ```js
   function renderFoot() {
@@ -749,7 +765,7 @@
   }
 ```
 
-### `renderAll()` (assets/app.js L601-618)
+### `renderAll()` (assets/app.js L621-638)
 
 ```js
   function renderAll() {

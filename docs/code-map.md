@@ -30,9 +30,9 @@ Markup: [tabs/02-aso-playbook/index.html](../tabs/02-aso-playbook/index.html) ·
 | --- | --- | --- | --- | --- | --- |
 | [#plays](tabs/02-aso-playbook.md#plays) | Plays | Four plays, one opening | [L41](../tabs/02-aso-playbook/index.html#L41) | static markup |  |
 | [#competitors](tabs/02-aso-playbook.md#competitors) | Competitors | The apps that own this shelf | [L57](../tabs/02-aso-playbook/index.html#L57) | static markup |  |
-| [#matrix](tabs/02-aso-playbook.md#matrix) | Rank tracker | Where each competitor ranks, keyword by keyword | [L67](../tabs/02-aso-playbook/index.html#L67) | `renderAll()` [L601-618](../assets/app.js#L601) |  |
-| [#serps](tabs/02-aso-playbook.md#serps) | Result slots | Every search, slot by slot | [L82](../tabs/02-aso-playbook/index.html#L82) | `renderAll()` [L601-618](../assets/app.js#L601) |  |
-| [#keywords](tabs/02-aso-playbook.md#keywords) | Keyword board | Keyword opportunity board, relevance first | [L93](../tabs/02-aso-playbook/index.html#L93) | `renderAll()` [L601-618](../assets/app.js#L601) |  |
+| [#matrix](tabs/02-aso-playbook.md#matrix) | Rank tracker | Where each competitor ranks, keyword by keyword | [L67](../tabs/02-aso-playbook/index.html#L67) | `renderAll()` [L621-638](../assets/app.js#L621) |  |
+| [#serps](tabs/02-aso-playbook.md#serps) | Result slots | Every search, slot by slot | [L82](../tabs/02-aso-playbook/index.html#L82) | `renderAll()` [L621-638](../assets/app.js#L621) |  |
+| [#keywords](tabs/02-aso-playbook.md#keywords) | Keyword board | Keyword opportunity board, relevance first | [L93](../tabs/02-aso-playbook/index.html#L93) | `renderAll()` [L621-638](../assets/app.js#L621) |  |
 | [#ladder](tabs/02-aso-playbook.md#ladder) | Ladder | Launch keyword ladder | [L106](../tabs/02-aso-playbook/index.html#L106) | static markup |  |
 | [#listing](tabs/02-aso-playbook.md#listing) | Proposed listing | The listing this research argues for | [L115](../tabs/02-aso-playbook/index.html#L115) | static markup |  |
 | [#practice](tabs/02-aso-playbook.md#practice) | Method | Measured, not estimated | [L124](../tabs/02-aso-playbook/index.html#L124) | static markup |  |
@@ -50,7 +50,7 @@ Markup: [tabs/03-playstore-metadata/index.html](../tabs/03-playstore-metadata/in
 | [#live](tabs/03-playstore-metadata.md#live) | Live listing | What the listing says now | [L41](../tabs/03-playstore-metadata/index.html#L41) | static markup |  |
 | [#package](tabs/03-playstore-metadata.md#package) | Proposed listing | Title, short description and full description | [L51](../tabs/03-playstore-metadata/index.html#L51) | static markup |  |
 | [#fields](tabs/03-playstore-metadata.md#fields) | Keywords by field | Finalized keywords by field | [L60](../tabs/03-playstore-metadata/index.html#L60) | static markup |  |
-| [#coverage](tabs/03-playstore-metadata.md#coverage) | Coverage | Board keywords in this metadata | [L69](../tabs/03-playstore-metadata/index.html#L69) | `renderAll()` [L601-618](../assets/app.js#L601) |  |
+| [#coverage](tabs/03-playstore-metadata.md#coverage) | Coverage | Board keywords in this metadata | [L69](../tabs/03-playstore-metadata/index.html#L69) | `renderAll()` [L621-638](../assets/app.js#L621) |  |
 | [#targets](tabs/03-playstore-metadata.md#targets) | Every keyword targeted | Every keyword this metadata targets | [L79](../tabs/03-playstore-metadata/index.html#L79) | static markup |  |
 | [#ranks](tabs/03-playstore-metadata.md#ranks) | Competitor ranks | How the shelf holders rank on the keywords we use | [L88](../tabs/03-playstore-metadata/index.html#L88) | static markup |  |
 | [#policy](tabs/03-playstore-metadata.md#policy) | Policy record | Why each field is worded the way it is | [L97](../tabs/03-playstore-metadata/index.html#L97) | static markup |  |
@@ -66,7 +66,7 @@ Markup: [tabs/04-features-comparison/index.html](../tabs/04-features-comparison/
 | Section | Menu label | Heading in the markup | Markup line | Filled by (assets/app.js) | Data read |
 | --- | --- | --- | --- | --- | --- |
 | [#complete](tabs/04-features-comparison.md#complete) | Completeness | How complete each app is | [L37](../tabs/04-features-comparison/index.html#L37) | static markup |  |
-| [#matrix](tabs/04-features-comparison.md#matrix) | Feature matrix | Every feature, every app | [L47](../tabs/04-features-comparison/index.html#L47) | `renderAll()` [L601-618](../assets/app.js#L601) |  |
+| [#matrix](tabs/04-features-comparison.md#matrix) | Feature matrix | Every feature, every app | [L47](../tabs/04-features-comparison/index.html#L47) | `renderAll()` [L621-638](../assets/app.js#L621) |  |
 | [#ours](tabs/04-features-comparison.md#ours) | What we ship | What ships in our app | [L57](../tabs/04-features-comparison/index.html#L57) | static markup |  |
 | [#gaps](tabs/04-features-comparison.md#gaps) | Gaps and edges | Where we are ahead, and where we are behind | [L66](../tabs/04-features-comparison/index.html#L66) | static markup |  |
 | [#pricing](tabs/04-features-comparison.md#pricing) | Pricing | What each app charges to remove the ads | [L77](../tabs/04-features-comparison/index.html#L77) | static markup |  |
@@ -137,11 +137,13 @@ Markup: [tabs/05-competitors-graphics/index.html](../tabs/05-competitors-graphic
 | `renderSource` | [L506-519](../assets/app.js#L506) | `data.meta.fetchedAt`, `data.meta.keywords`, `gnotes`, `graphics.apps`, `ours.checkedOn`, `ours.note` |
 | `renderGfxChips` | [L520-527](../assets/app.js#L520) | `data.meta.fetchedAt`, `graphics.fetchedAt` |
 | `isOurs` | [L528-529](../assets/app.js#L528) | `data.meta.ours` |
-| `renderIconWall` | [L530-542](../assets/app.js#L530) | `gnotes.iconRead` |
-| `renderFgGrid` | [L543-553](../assets/app.js#L543) | `gnotes.fgRead` |
-| `renderSystems` | [L554-560](../assets/app.js#L554) | `gnotes.systems` |
-| `renderCatalogue` | [L561-574](../assets/app.js#L561) |  |
-| `bindLightbox` | [L575-590](../assets/app.js#L575) |  |
-| `renderOursGraphics` | [L591-595](../assets/app.js#L591) | `gnotes.ours` |
-| `renderFoot` | [L596-600](../assets/app.js#L596) | `data.meta.apps`, `data.meta.fetchedAt`, `data.meta.keywords`, `data.meta.markets` |
-| `renderAll` | [L601-618](../assets/app.js#L601) |  |
+| `renderIconWall` | [L530-543](../assets/app.js#L530) | `gnotes.iconRead` |
+| `renderFgGrid` | [L544-554](../assets/app.js#L544) | `gnotes.fgRead` |
+| `renderSystems` | [L555-561](../assets/app.js#L555) | `gnotes.systems` |
+| `playUrl` | [L562-563](../assets/app.js#L562) |  |
+| `readOf` | [L564-565](../assets/app.js#L564) | `gnotes.systems` |
+| `renderCatalogue` | [L566-592](../assets/app.js#L566) |  |
+| `bindLightbox` | [L593-610](../assets/app.js#L593) |  |
+| `renderOursGraphics` | [L611-615](../assets/app.js#L611) | `gnotes.ours` |
+| `renderFoot` | [L616-620](../assets/app.js#L616) | `data.meta.apps`, `data.meta.fetchedAt`, `data.meta.keywords`, `data.meta.markets` |
+| `renderAll` | [L621-638](../assets/app.js#L621) |  |
