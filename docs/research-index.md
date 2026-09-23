@@ -4,7 +4,8268 @@
 
 ## research/
 
-1 files · 2 KB
+1 files · 4 KB
 
-- **[README.md](../research/README.md)** · 2 KB · Markdown: “Research behind the Status Saver dossier”, “Sources used for the 17 Sep 2026 dossier”, “Notes”
+- **[README.md](../research/README.md)** · 4 KB · Markdown: “Research behind the Status Saver tabs”, “aso-pipeline/”, “What the run of 23 Sep 2026 found”, “Sources behind the product dossier (Status Saver tab)”, “Rules for this folder”
+
+## research/aso-pipeline/
+
+17 files · 3.0 MB
+
+- **[analyze.ps1](../research/aso-pipeline/analyze.ps1)** · 7 KB · PowerShell script, 154 lines. Stage 3 of the Status Saver ASO pipeline: turn the raw scrape into the compact payload the tabs read. Reads suggest/demand/universe/serps/apps.json, writes data.json (and prints a summary for the write-up). powershell -ExecutionPolicy Bypass -File analyze.ps1 Functions: `Read-Json`, `ToHash`, `Get-Category`.
+- **[apps.json](../research/aso-pipeline/apps.json)** · 1.1 MB · JSON, object with 221 keys:
+  - `com.brightstory.videodownload` · object with 23 keys:
+    - `appId` · string · e.g. `"com.brightstory.videodownload"`
+    - `title` · string · e.g. `"Story Saver"`
+    - `summary` · string · e.g. `"You can download story / photo / reels / videos from story saver"`
+    - `description` · string · e.g. `"We have introduced Story Saver, Save all the stories, videos, and reel…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `5343287`
+    - `score` · number · e.g. `3.5`
+    - `ratings` · number · e.g. `10293`
+    - `reviews` · number · e.g. `19`
+    - `developer` · string · e.g. `"Bright Devlopers"`
+    - `developerEmail` · string · e.g. `"brightinfotech04@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Aug 13, 2022"`
+    - `updated` · string · e.g. `"2026-02-26"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"26.02.26.0500"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/GqMSN8v1BCLIQFLowwhb7YMtyaIxMghv…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/EA886vFOZe0HrCxDt3KmuSQ3Z-0Hogo1…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/RZ6hKHCYvNWCXEU9WOaZDe5eYSgfgJB82kBlC7XGcnDf6_ybtVGc82HUMRthJHCscIDyU4ve0ZoGkU6QBSMIdg","https://play-lh.googleusercontent.com/0dIF8fTP1S-If5L9hnmeZXvlQKOUShOo3ADeSCR3fQVr7yF6AkO7-EdZ88CvjwIvOLR19m7y5T8ohrMb7AzZoUs","https://play-lh.googleusercontent.com/l-7Bfo43Ve8sdYn4OesCdWCHHK8Pk7v-SM9siBTkpFc_TTtbKESPJ6-EHTUGefD3Uo3g1OLZhMRySltSZuGn","https://play-lh.googleusercontent.com/ZoB6VwK0kd4vjgIbN6qD6G_rQ9B1bkn1Stou8p38Ey9TsVE-uQ20xu-6C1i0akYVfZS5_uXt7pJ-yoqLPFum"]`
+  - `com.aisolvix.com` · object with 23 keys:
+    - `appId` · string · e.g. `"com.aisolvix.com"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `summary` · string · e.g. `"Video downloader for story saver, download save video."`
+    - `description` · string · e.g. `"📥 Video downloader - Story Saver. Save HD Content Instantly! 🚀  <br>…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `347615`
+    - `score` · number · e.g. `4`
+    - `ratings` · number · e.g. `2568`
+    - `reviews` · number · e.g. `9`
+    - `developer` · string · e.g. `"InsVideo Downloader Photo Saver"`
+    - `developerEmail` · string · e.g. `"ericsegura499@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 20, 2025"`
+    - `updated` · string · e.g. `"2026-08-17"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.99 - $1.99 per item"`
+    - `version` · string · e.g. `"1.2.3.20260817"`
+    - `recentChanges` · string · e.g. `"• Added AI-powered link analysis for faster and more reliable download…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/j8zyT8cYLZkHJo1Q8FCnDriCK_MXkACx…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/jGnkuTCwIiUCAxcVe54Th0aBOBnCu7gk…"`
+    - `screenshots[]` · array of 3 string · e.g. `["https://play-lh.googleusercontent.com/bz_ml4s7glWsgx3YcHPyrI4Ts_4D5PePPQbycRAlHl5dYSlx6-W2tyo0D9i08gYnRV5WVDSxo4AgFmY4amsTnA","https://play-lh.googleusercontent.com/KmUcENgUd6sbXBw1rUM4ePIaq8FtjdSPpiN_dOtutEvN00NIxB1Fj3pr-VTJOhRP2HS4fib8aNKX1lh03ySHNKo","https://play-lh.googleusercontent.com/cMN24jTFsjegm5rSZHNt5MOtyUnDAvFxPKGwKo2tVxttj4qtImuTUP1NFwqXx6paJALOqzmNKqw_OYdQHioQPeU"]`
+  - `com.statushd.saver.utility` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statushd.saver.utility"`
+    - `title` · string · e.g. `"Status Saver HD"`
+    - `summary` · string · e.g. `"Save, repost WhatsApp status in HD. Plus direct message &amp; text rep…"`
+    - `description` · string · e.g. `"Save Every Status in HD — Instantly 🎬<br><br>Never miss a friend&#39;…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `256`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"HShift"`
+    - `developerEmail` · string · e.g. `"hshift.support@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Aug 13, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/5SsPli04-JoFn5wOllvsj1WiT3M7pkby…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/muVUX6tGiXsHVKjKcj51W9KSxbXJnAJa…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/3SZC-571CfS83z3NTw8flxww1DsyFq7-BNCf1oCHJ5KxkI87lXmhefOL2AbgROzpv8uH0-PuaiLdgCB5fh89","https://play-lh.googleusercontent.com/aFYFAlTeHiZmHlahaR5V_rw_r3TbPzog2NXLyu4-ii9PpoA-JqVywFbFpWCaiNY8rhwTMYvZ04BG2TqUjUzV8w","https://play-lh.googleusercontent.com/uIohz-8VoMK3ULI0DUBmGPfFcFp2DR1CAfQefOwD-DBbbcZuEPRE-OuOXDsL-s04oJAU3UdqJgHce9VNbSAl","https://play-lh.googleusercontent.com/qH-tEduBP2_4v4DofAtdmb8iQkrcMxfbGPiRaO9aDORNvU_fbMegXkDB-RWACtbC5LZlswsf8nhaSfhaa7-_Lw"]`
+  - `com.lazygeniouz.saveit` · object with 23 keys:
+    - `appId` · string · e.g. `"com.lazygeniouz.saveit"`
+    - `title` · string · e.g. `"Status, Sticker Saver"`
+    - `summary` · string · e.g. `"Tap, View &amp; Save all the Statuses!"`
+    - `description` · string · e.g. `"Loved a Friend&#39;s Status or a Sticker they sent?<br>Well, You are a…"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `117706852`
+    - `score` · number · e.g. `4.2610965`
+    - `ratings` · number · e.g. `721896`
+    - `reviews` · number · e.g. `1328`
+    - `developer` · string · e.g. `"Lazy Geniouz Pvt. Ltd."`
+    - `developerEmail` · string · e.g. `"itznotabug@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jun 29, 2017"`
+    - `updated` · string · e.g. `"2026-04-03"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $1.49 per item"`
+    - `version` · string · e.g. `"2.25.10.27"`
+    - `recentChanges` · string · e.g. `"* Bug fixes<br>* Internal improvements"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/jmSuNDktn_KmYJ1Vmb1drYWgq1G5TuyX…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/fy1NjDgWTNtz4iTHmm3MjtG6_dbEo2eC…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/kxESQg7b8SmTqKBv6Q9JDFl5HQwTF5KxaSSIjwWu7gExSOd8D9YC26ywLRA00lmABlJPqU9RrHTrm3W4UVJVZBE","https://play-lh.googleusercontent.com/coNhnJhasbGYDPX9o5W5lyKi4I3ygAn5G3pyn5bsSonAe2tTqdQVg-sH-42ojiay8tHSGnJk4uIxpRzUzkC5","https://play-lh.googleusercontent.com/WWVwD-HM4eV3lzzZsSv5swUjj8RhjhwX3jXrGN2j48BxGZNAatEVBV4_eVVh0-A0JtG-OTuiWLqp7fl01Vj4Nus","https://play-lh.googleusercontent.com/IR4HcCUkbOD3mAFXn2MtSEiW16oduJwmr-oARFyq0U2Hz_exYGc9g1_W7KHnNwXjn-3CBbln1FfNyaW1rYdZLw"]`
+  - `com.mahmood.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.mahmood.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Status Reminder"`
+    - `summary` · string · e.g. `"Save WhatsApp status, view business status, direct chat &amp; status r…"`
+    - `description` · string · e.g. `"📱 Status Saver – Status Reminder<br><br>Status Saver – Status Reminde…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `372`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Xavia360"`
+    - `developerEmail` · string · e.g. `"amirme827@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 7, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/IA1zk7x9uxdaR9GloWXxiPdQP7PXhAEM…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/vvshjwv2q5SZ0R2kDWNpFTt9iygJ33fO…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/gXmjQZXmoCLvCQvRuL4fo-KLJxpZUgfGoa-HZPwClcCvqtDV0eEIIw9w9AwtjjXctm33WDwHPOmFYL43Jxb7vg","https://play-lh.googleusercontent.com/bzCFGTHLwQhQUKMs-7pgEdYZoeS2uYa2CDhSUiM7HUYGEdlaTPkqwZ6thu7g_PzzML2NOGWp9TQ6YxWo2ZppRg","https://play-lh.googleusercontent.com/Xrf_Y-V1lVnfpXVVVlsP32dSZ0ZFw72E8JUDQCI6h3FEfBFLKz8dVCLj0cxPQrGJyy7mOcuoyfH2AnDIofEN3g","https://play-lh.googleusercontent.com/ji9VYeNEaMCrkprvhfr9pO0MG7uacTQHsNnyoJB0oE0NirS4d-U6TQi-kC1d4IKDl4qOtVuNUWM7QP3giKQ5lg"]`
+  - `com.status.statuskeeper` · object with 23 keys:
+    - `appId` · string · e.g. `"com.status.statuskeeper"`
+    - `title` · string · e.g. `"Status Keeper"`
+    - `summary` · string · e.g. `"Status Keeper: Download, save and share your favorite social media sta…"`
+    - `description` · string · e.g. `"Status Keeper is a mobile application designed for users who want to d…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `151`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Harsh Verma"`
+    - `developerEmail` · string · e.g. `"harshverma13052005@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 28, 2023"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/PulmSWRWWpgUuJJVS7tsRuZLcEiUwr0d…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/am5NZUOyi2d7uxeae24SkWVqOHI8Lt35…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/1-S5ruBg-GwDD6YGHUz4wOiIZ0IoQPlLp3K8jiQ-z8fu5DGU_T1-_NvsJ81YWxIXfV3RkjYdrgstTtb9HaxJ0g","https://play-lh.googleusercontent.com/vsH7BsSwbGKHNtFK9lBNOySoBiwMkE7UGvPGF8Fv5LEXXzgloa8kMog_bX-Y8yz2WnwPAJOMfVA5CbYr-bRy6kA","https://play-lh.googleusercontent.com/_oE14j7Xxb5FoJPTYiSezcnfrtiA06DC-VqX0CRn_OcrynopK3luFC5t1Wcfl3YAjqgBTus8SsgUtBF2xgk-ZQ","https://play-lh.googleusercontent.com/ZVeaX-Q4NGW3VyqnvqQlK1mgeS8OJN48g3ESuPMPW2P3Owvfmu0FCvfNRpd0x299x1iwHe4iSW9nWjlVp8uiVw"]`
+  - `com.radhecounter` · object with 23 keys:
+    - `appId` · string · e.g. `"com.radhecounter"`
+    - `title` · string · e.g. `"Status Saver & Dp Downloader"`
+    - `summary` · string · e.g. `"Save WhatsApp statuses, images &amp; videos easily. Share, download HD…"`
+    - `description` · string · e.g. `"Status Saver for WhatsApp makes it easy to save, share and manage your…"`
+    - `installsLabel` · string · e.g. `"500+"`
+    - `minInstalls` · number · e.g. `500`
+    - `realInstalls` · number · e.g. `915`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"hitesh joshi"`
+    - `developerEmail` · string · e.g. `"raajjoshi3252@gmail.com"`
+    - `genre` · string · e.g. `"Lifestyle"`
+    - `released` · string · e.g. `"Dec 13, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/aiN_3dM0PMs1gID_glnMCT1VVkgoYxVv…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/9AzH7ZZ8p1h39CaRQXg_aKfIzxm_IgA9…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/CMWruTFl6ntszIyaLk0Lvixgf4aF7ws3zWUSBcaMlmJZj22aGpqjFDgG57oQYBrcKWferVahWgN_HHWhKc-J0bA","https://play-lh.googleusercontent.com/yexpZ0j3x-Rl2cz7f7aKf8RyVpntOzehn4i1b0LDQI9yj7f8lpbVyBc0vD6XD9HP6WSeqVikhaalncqAtZRQbw","https://play-lh.googleusercontent.com/yexpZ0j3x-Rl2cz7f7aKf8RyVpntOzehn4i1b0LDQI9yj7f8lpbVyBc0vD6XD9HP6WSeqVikhaalncqAtZRQbw","https://play-lh.googleusercontent.com/CMWruTFl6ntszIyaLk0Lvixgf4aF7ws3zWUSBcaMlmJZj22aGpqjFDgG57oQYBrcKWferVahWgN_HHWhKc-J0bA"]`
+  - `com.videodownloader.story_saver_for_instagram` · object with 23 keys:
+    - `appId` · string · e.g. `"com.videodownloader.story_saver_for_instagram"`
+    - `title` · string · e.g. `"Story Saver, Story Downloader"`
+    - `summary` · string · e.g. `"Download story video, photo &amp; reels and repost using story saver, …"`
+    - `description` · string · e.g. `"We have introduced Story Saver, Save all the stories, videos, and reel…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `875051`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"BrownHat Labs"`
+    - `developerEmail` · string · e.g. `"brownhatlabs@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · null · e.g. `null`
+    - `updated` · string · e.g. `"2026-08-27"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"0.0.19"`
+    - `recentChanges` · string · e.g. `"Save Insta story photos and videos to your phone in one tap"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/2dydjjPnEe8_3uNJqBo8oWxS3eyyzUhA…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/WH4ohiWpZMYWZrJeIXPFFdKNnc94cg-2…"`
+    - `screenshots[]` · array of 12 string · e.g. `["https://play-lh.googleusercontent.com/3_UGuQLNQvri2pwiO_lfrQIiqNMFDkYsTCSIgM9ErGxoj1nSZ1lTuuW-c0rCTMbHhAfXoeXhd3OhAVdCQS0mVQ","https://play-lh.googleusercontent.com/AWpUaxP6cl48KKUzv3O5ab4aGe6-WuErE2GhU_gmZimJbcGY7d9YLcbSsH3zh3tC2uHtJ8EncoZ0GFH8SVCX","https://play-lh.googleusercontent.com/LFlRcdOJ21LPAOTgpc5lnAV687ukvaPHOLYB41-VtfnRiEO_k6kGV3tM4V6v-Ei9Puo9wDiO-u66jXgmOh4Z6QA","https://play-lh.googleusercontent.com/7r6lZNGHEoYVxXAtOXHs7a1eKIv7N6OZdmqnQYJ-FVqnUt7UO4WVkEDRfFh_uGsMGf_n0v93ZKvngSdolc3w"]`
+  - `com.khanstudio.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.khanstudio.statussaver"`
+    - `title` · string · e.g. `"Status Saver"`
+    - `summary` · string · e.g. `"Save WhatsApp status photos and videos quickly and easily."`
+    - `description` · string · e.g. `"Status Saver makes it simple to view, save, and organize WhatsApp stat…"`
+    - `installsLabel` · string · e.g. `"5+"`
+    - `minInstalls` · number · e.g. `5`
+    - `realInstalls` · number · e.g. `9`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"KhanSoft"`
+    - `developerEmail` · string · e.g. `"khanstudios14@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Sep 11, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/g71rqz2Yu8aapYjEjLKQOQvBgCcafjVy…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/QaXAMsgEUyQ4VPgNva7Wse2m4pprEUsL…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/b3HpCQwXdLH1_TzFg0CF3p0pXGG7FS9Lf8MJ5Y745gs2BWjauiKicDV_LGMLg7Zre2VPC_YK3oIP20R4ojnfIIY","https://play-lh.googleusercontent.com/EPIgGj8uIdbyiC3B9izlKPLcW27OsUi63T70aKMHpVgF5mZb559_OS2DZ_Fn5SjZKLXjhmq-E5c_4kTKIAP88Q","https://play-lh.googleusercontent.com/ueY-5bHGzAWzrUbp6EEq332HpPS0a9UXLvFWTa8syZpRChpGekQLAOawrY42FrtKj1HF40v27TJ0sKtqDjBD","https://play-lh.googleusercontent.com/5w1XIHBfiDkyEAv-2fOhoNElMWmI4rYEfbuwDzMrq-5CkmI4v4gAxB3vuyQMjMAjQPezRIdNiJnE_34Z_ju8lw"]`
+  - `com.facebook.katana` · object with 23 keys:
+    - `appId` · string · e.g. `"com.facebook.katana"`
+    - `title` · string · e.g. `"Facebook"`
+    - `summary` · string · e.g. `"A little connection can go a long way"`
+    - `description` · string · e.g. `"Where real people propel your curiosity. Whether you’re thrifting gear…"`
+    - `installsLabel` · string · e.g. `"10,000,000,000+"`
+    - `minInstalls` · number · e.g. `10000000000`
+    - `realInstalls` · number · e.g. `12082220804`
+    - `score` · number · e.g. `4.5574207`
+    - `ratings` · number · e.g. `186291436`
+    - `reviews` · number · e.g. `4225831`
+    - `developer` · string · e.g. `"Meta Platforms, Inc."`
+    - `developerEmail` · string · e.g. `"facebook.android@fb.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · null · e.g. `null`
+    - `updated` · string · e.g. `"2026-09-15"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.05 - $10,000.00 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/12KEJDhgk6oyE1VgmfCuFzFrQripZ_en…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/rAaLjZmd51ajPRNQ0G7bnzcE5-jj3RkL…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/3H7wdpSX7ipLsCk_X_OvlmJ3FvBDQNVjuBhKHmKKWpDThS63sjmAu34Gx6vt8w5q86sYMRicdkpiQiNiU8-39w","https://play-lh.googleusercontent.com/ilWUr9x_JcqFczNoY-Z6rOEtS26TlKMQH2f9i0qLURpwk2Y8GbUNFj4anA3Lwz6qr0PCrxq3Kur7LJEjIiiPYg","https://play-lh.googleusercontent.com/bptiXUxXFg3fKOaqXYqxJso5L-YstrO209h21zqQSN4B4Hrmn0E9bA8_9rpjdF2BDBRulkPFaNKe99Ag_BSMiA","https://play-lh.googleusercontent.com/qXWLh14mhYx1MmFzrjrQyQHtkxpnvhD19i2StyYPSiswH6iJ6SWPUsT-La1hPUh2Yu8hjGTrGQt7Kjah8KRLKg"]`
+  - `com.repost` · object with 2 keys:
+    - `appId` · string · e.g. `"com.repost"`
+    - `missing` · boolean · e.g. `true`
+  - `repost.share.tiktok.nowatermark.videosave.download.videodownloader.saver` · object with 23 keys:
+    - `appId` · string · e.g. `"repost.share.tiktok.nowatermark.videosave.download.videodownloader.sav…"`
+    - `title` · string · e.g. `"VideoSaver : Watermark Remover"`
+    - `summary` · string · e.g. `"Video downloader for media platform help save no watermark video, no l…"`
+    - `description` · string · e.g. `"Are you looking to download Video Platform videos and audios without w…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `9347229`
+    - `score` · number · e.g. `4.4789915`
+    - `ratings` · number · e.g. `178197`
+    - `reviews` · number · e.g. `449`
+    - `developer` · string · e.g. `"Video Downloader & Story Downloader & Saver"`
+    - `developerEmail` · string · e.g. `"hooyee2021@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Jun 4, 2022"`
+    - `updated` · string · e.g. `"2026-09-09"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.99 - $22.99 per item"`
+    - `version` · string · e.g. `"2.5.6"`
+    - `recentChanges` · string · e.g. `"bugfix"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/uez2pszbt4Mh3-bcSL8VKPqawiPDp5n9…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/02b3Ftvsuqzk6UFC5pG1iZrQ5vSDtFQn…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/-Fx9Ji7ScBEc6_zr0yVmfUIsfoMZUzuX3zAenUuGRR4R3mE8kbZQ9Y9Uq4ikRw41DX411piQqFPwnyuoUO8liyI","https://play-lh.googleusercontent.com/tAnL8L_zWVciB7qjshgeAnGgSCMJMHmpnUfB-9dzJztZ4kuw_ZOODc5QrYHy9rzu791aT5PXw2spuqWTgbC507A","https://play-lh.googleusercontent.com/PEzGGjR5qGj3XZIPUsW6NQUhYPe1RsPQaAUfuNefTM-Jdwp37xpPeU1pCLZszfuaatNkqDliCZIf1QhRM7_Q","https://play-lh.googleusercontent.com/2Q49KsmGSo31SPaWJijuJkzvaJ0gGyfWJfpdcJhawfNK6-uEuIW1t4MCfoOxEseIC9qGEaoyvehZcGWb9UJX-n4"]`
+  - `com.firsttouchgames.dls7` · object with 23 keys:
+    - `appId` · string · e.g. `"com.firsttouchgames.dls7"`
+    - `title` · string · e.g. `"Dream League Soccer 2026"`
+    - `summary` · string · e.g. `"FIFPRO licensed soccer game"`
+    - `description` · string · e.g. `"Includes random-item purchases<br><br>Dream League Soccer 2026 puts yo…"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `459222534`
+    - `score` · number · e.g. `4.4624887`
+    - `ratings` · number · e.g. `14896468`
+    - `reviews` · number · e.g. `92378`
+    - `developer` · string · e.g. `"First Touch Games Ltd."`
+    - `developerEmail` · string · e.g. `"support@ftgames.com"`
+    - `genre` · string · e.g. `"Sports"`
+    - `released` · string · e.g. `"Jan 14, 2020"`
+    - `updated` · string · e.g. `"2026-09-14"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $99.99 per item"`
+    - `version` · string · e.g. `"13.430"`
+    - `recentChanges` · string · e.g. `"It’s our late summer update. Check out what’s new:<br>•New Special Pla…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/ldysRAGsIH0zWeNoCMhAUNx6OXp6SuNy…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/PZgV6-h4upIqMzQgScejyP_PFlLA1LNS…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/ffYSk5S2cc5I1rt9T1hglwjmwu6cPPgsU_T6gAsJYzK_Jjln2WoQYKSwP4awob0FaCCJvETCjJVNiTRFuqaz","https://play-lh.googleusercontent.com/x_246-bsFC08UuCT4MFBba4FP_4OAwmn79JdNkKn3_c71xRbic_g_786PS7EqU5vUI6wjD0bV9sRguW5qFnQAQ","https://play-lh.googleusercontent.com/NF-ERjicP1xzbkCWkQOGZIeR0RWe-RokxLAocXvIB74LMSuX1FbFiEiAf7S7IQmSFtse3PTUwhgH1W5XYHCx","https://play-lh.googleusercontent.com/d0Pfspg2Bqdqp0RHUGGru-ilO-Pyq-4pmCB2_DRIqukkxoDt_vdIHdpAAtf7PWbY53rbLGZfuOLWQDXgJFUTVw"]`
+  - `downloadstatussaver.saver.storydownloader.savewhatsappstory.whatsapp_story` · object with 23 keys:
+    - `appId` · string · e.g. `"downloadstatussaver.saver.storydownloader.savewhatsappstory.whatsapp_s…"`
+    - `title` · string · e.g. `"All Status Saver – Downloader"`
+    - `summary` · string · e.g. `"Status Saver: Save Status Videos &amp; Images. Easy Downloader &amp; R…"`
+    - `description` · string · e.g. `"Looking to download videos and photos from statuses? With the Free Sta…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `4574`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Dogmaz HD"`
+    - `developerEmail` · string · e.g. `"mxbizy@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Jan 27, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.97 - $79.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Vdeh2Rbc_5M6qEFe0t6wwbn66D8YOVFB…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/sopDsTUsXNPGVMmFvtyHgmI7OgOpIOjA…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/H-NFJRntSIUBL690R6lk6NdKSw8TKuBEvF73xMGHUMP37x9bwsQnMXqPR7mM7r5dehONhN21yyGZIDvgKmAYAw","https://play-lh.googleusercontent.com/FoVSv67VYq7QvV3n0lA79qvST-BXAKPC_bTi48G-0DEShh-1bqpQOk6ZsrQ2p8fNsy40pk-sg8gGUg_pl6yl","https://play-lh.googleusercontent.com/C4PQJfv_GBrHXHmyJ-aNAL4KrxQq0r_wUZpcy85jbWdpG6cpsV8LOtu2gwQ0QDVN6ZUi9uB5Pszzcl6iZq7Q7w","https://play-lh.googleusercontent.com/AjbomAUSOJwW7jHaQ_bdktpBWHuqwSwdj7V29CDfkI45Gk5nJKDGxvZUkDnqxk8I61dxSTRwuf6iWO0PJrLDYw"]`
+  - `com.instadownloader.instasave.igsave.ins` · object with 23 keys:
+    - `appId` · string · e.g. `"com.instadownloader.instasave.igsave.ins"`
+    - `title` · string · e.g. `"Video Downloader : Story Saver"`
+    - `summary` · string · e.g. `"Download videos, photos &amp; repost with video downloader :story down…"`
+    - `description` · string · e.g. `"Video downloader - Story Saver helps you save video &amp; photo &amp; …"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `19600911`
+    - `score` · number · e.g. `4.43`
+    - `ratings` · number · e.g. `169115`
+    - `reviews` · number · e.g. `1573`
+    - `developer` · string · e.g. `"Video Downloader & Photo Downloader & Saver"`
+    - `developerEmail` · string · e.g. `"huanbao1996@foxmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Dec 7, 2020"`
+    - `updated` · string · e.g. `"2026-08-16"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $19.99 per item"`
+    - `version` · string · e.g. `"16.0"`
+    - `recentChanges` · string · e.g. `"optimize"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/ncSCCU78JP6qUlDSihRdVgTgOiKsyfAK…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/rQJcip-bNHLfwMX_zfA0c1ofnuKbwaoY…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/YQ6nIpv6vTC3D4P7wLwtxZm69kIxatTG5zDxOVBlyY8uDi83jV6pcU29nwnlLNNaImPhrGjJVvbP9-XZBoNN","https://play-lh.googleusercontent.com/AExNtmwAYFx19OMNIoiaej_ogtweIiYatwOVTzIWR0AxN9YBK-j4_X_Kd0lSYnQAzH85TpvoAmZSrZ7MvIXJ9g","https://play-lh.googleusercontent.com/JD7MIsjKHnJzi59gcxAfXsemEUwX5vRJfIVeT64_xKS7DPTOp9C-og8FbgCXN7hWZKZp5jwZyhz8WAyQz9yi","https://play-lh.googleusercontent.com/u32Skm8_9OlX3c60Z4D4r5A8jhquKZCrgE0u6wDmOPc4xgrB09rsW3xkVcRCX-ZMZzWyY_3ZhO6mKgMPDLTq"]`
+  - `in.k_nesar.vinsta` · object with 23 keys:
+    - `appId` · string · e.g. `"in.k_nesar.vinsta"`
+    - `title` · string · e.g. `"InSave: Story Saver 2026"`
+    - `summary` · string · e.g. `"Save videos &amp; stories from social apps fast, easily &amp; in HD. 1…"`
+    - `description` · string · e.g. `"📥 <b>One tap lets you download and save any story or video quickly us…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `51838`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"OxyLabz Studio"`
+    - `developerEmail` · string · e.g. `"panache.labs@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 31, 2022"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.99 - $24.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Ms4dB617L_9Ul2GUQdcS08-ZFWtG7vQI…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/nvj1BlBq8UDQzMpJoZIZC_mSLafi48Cm…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/nbE0GjqAtPowgwFWd_cWoq9BQIy82x_3JZ0GFxDBe9Z0F_gRQHnomQ3_raPNJSfdjWJzwvkPwk7aPytXVLXE","https://play-lh.googleusercontent.com/9XHwUTXRTNX-VWBQq7D4ex6G9LjsvGN3DJZUNJDspLbNg3pkGX3kZZnBACREezFc_cKT3q2f_ixHvcgTQhk7","https://play-lh.googleusercontent.com/c3zjx3F9tTukCrZKeL64CRKnumc9K2tagcjn99xjBJhfUwR5VvwGP0O5_XbYkgR08jwGk3cXw8YaVH050wy4","https://play-lh.googleusercontent.com/a4a4WlZzYWN6o3Y23lL5DVLwG-8RfzvrTLGfSjXMooWpAGVlIoHxwHxUM7WBPC8L70y02WVU731YL6MkWpoiUg"]`
+  - `com.transsion.magicshow` · object with 23 keys:
+    - `appId` · string · e.g. `"com.transsion.magicshow"`
+    - `title` · string · e.g. `"Visha-Video Player All Formats"`
+    - `summary` · string · e.g. `"Visha Player provides an uninterrupted video experience without any ad…"`
+    - `description` · string · e.g. `"Visha is a practical and stylish app with powerful local video and aud…"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `minInstalls` · number · e.g. `1000000000`
+    - `realInstalls` · number · e.g. `1111525492`
+    - `score` · number · e.g. `4.264416`
+    - `ratings` · number · e.g. `1699690`
+    - `reviews` · number · e.g. `1560`
+    - `developer` · string · e.g. `"Visha Group"`
+    - `developerEmail` · string · e.g. `"quanyuan911@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Apr 5, 2017"`
+    - `updated` · string · e.g. `"2026-08-31"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.49 - $48.99 per item"`
+    - `version` · string · e.g. `"8.3.0.33"`
+    - `recentChanges` · string · e.g. `"  1. Optimized for poor‑network conditions: improved success rate on t…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Y_XsVNWeIMzQu24Gc4ioeCh7zhShGWdp…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/MNHckTvjmRCry3sg-rEhboV1n72w3Jdh…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/VDffi7CuUZBj_H78rfKl9ak5qOOesTM3HZAqi-RTETWVGYV26a1Eudgik_751QbGWSvADTllCahBBmht3R72","https://play-lh.googleusercontent.com/8AhXbyaxZazUMw4WGagTGdN6XEQMpDOj9nHER114VMx5anQtaPu1vwqr9kmSMzDtvc_E2ExepHoZBGKPFGWb","https://play-lh.googleusercontent.com/VdvcU5VwucrB6zUHKfIkXwpcW82GLzRxLlOIdyrKoDBYGboTMpP3nd-eTASF1jI0yX_dz_OxtiueeqPGaPhw3Q","https://play-lh.googleusercontent.com/Nj8kHN3MLsO9uKSg7fSoyFfkljJhlvaGaysBCk7h0pbOaakjKRkUK_fShedGgZBPx5lBWXGzRYvrKS3XXYLzz7A"]`
+  - `com.vido.particle.ly.lyrical.status.maker` · object with 23 keys:
+    - `appId` · string · e.g. `"com.vido.particle.ly.lyrical.status.maker"`
+    - `title` · string · e.g. `"Vido : Video Status Maker"`
+    - `summary` · string · e.g. `"Lyrical Video Status Maker, Photo to video maker and Status Downloader"`
+    - `description` · string · e.g. `"<b>Vido</b> is a <b>Lyrical Video Status Maker</b> and Particle Photo …"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `124154993`
+    - `score` · number · e.g. `4.267327`
+    - `ratings` · number · e.g. `506688`
+    - `reviews` · number · e.g. `268`
+    - `developer` · string · e.g. `"Vido - Video Status Maker"`
+    - `developerEmail` · string · e.g. `"ndappsdigital@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jan 22, 2020"`
+    - `updated` · string · e.g. `"2026-08-27"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"2.3.5"`
+    - `recentChanges` · string · e.g. `"Thanks for using Vido. This release includes bug fixes and performance…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/gnVQEU4ROnwwLiOiXnKHd_tqaNVpIWJN…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/62STA0Q8OPKUebPFVi8_us0j1ybuXCPg…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/OzT1qsP4kagJ3npChGsyqyVkn8YtDqh0njJbL0sM1zSS8I1bKXge_awBv202ExuDXlQ6CsnuP6xLUxaLv4x0","https://play-lh.googleusercontent.com/c0hvSPlDNfH5BG-vQgdHfiu74vc1_R_qSuxU1tBYyXPOFN6WvgcgD490kGV06SWJ-gprQ-hDLWQz1UOHJSPsdA","https://play-lh.googleusercontent.com/L6UaP7GtnpmkdAE4bVK3HCWwZ-9VhD86T3qSIVmgAOA1Hwi2VXcBa9dFwJijCMa_td2wa52WVV6bNqa5NeM-uA","https://play-lh.googleusercontent.com/vkQyN59HKdq1V6evhNvi9nB3lTKttq_23hq8y47TOA-JBolSxQYi6W8p_zEclnLikebOoNbrzlAQ3naqcnS6"]`
+  - `instasaver.videodownloader.photodownloader.repost` · object with 23 keys:
+    - `appId` · string · e.g. `"instasaver.videodownloader.photodownloader.repost"`
+    - `title` · string · e.g. `"All Video Downloader & Browser"`
+    - `summary` · string · e.g. `"Download videos, photos and repost them with video downloader - Story …"`
+    - `description` · string · e.g. `"Video Downloader Story Saver is a free and simple tool that allows you…"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `minInstalls` · number · e.g. `50000000`
+    - `realInstalls` · number · e.g. `67533577`
+    - `score` · number · e.g. `3.8943753`
+    - `ratings` · number · e.g. `649469`
+    - `reviews` · number · e.g. `8495`
+    - `developer` · string · e.g. `"Fast Video Downloader & Story Saver - DevBay"`
+    - `developerEmail` · string · e.g. `"goofflinemaps@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"May 18, 2020"`
+    - `updated` · string · e.g. `"2026-09-19"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.99 - $49.99 per item"`
+    - `version` · string · e.g. `"2.2.3"`
+    - `recentChanges` · string · e.g. `"⬇️ New Platform Support added <br>🌐 New built-in Browser + Search Eng…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/8nlpQOLVFaDrO7HjaY3k09WhRgJCVelb…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/dsB1ZAkEauERXsS4EJ9Xs-41JbAo0qaa…"`
+    - `screenshots[]` · array of 21 string · e.g. `["https://play-lh.googleusercontent.com/fLJClOftqkkO9dqAvudwMP1iBF-NG0jv0DVhPnbG563BLq94xlVwX2FtFj00VsaZcX6Two7xxNQurGgEevW6oA","https://play-lh.googleusercontent.com/KB1_2FN5EwzqR34bU5fEsz7cCUgAnhIHtKSMengBToq2aF5zQ-lWY2C3ClSxrhg56cJplqM5GGIXKJRXCHa8xw","https://play-lh.googleusercontent.com/K_gM9kwcnOpvVVZeBNlJLsq_m-3s1-RApVgpxfSKwJGh8_ASHmvtIzwVfOUf_9RVKgQ5CkGDoSzkR1gzJOSJkA","https://play-lh.googleusercontent.com/nEe3_iWAEp_gk0TZnB0JohgHPwL_qoQCQrFngw2GmajI5srTGgL0IR0ykqA8u08rAaQ61cIMbsdMIg2aXFYbGQ"]`
+  - `tiktok.video.downloader.nowatermark.tiktokdownload` · object with 23 keys:
+    - `appId` · string · e.g. `"tiktok.video.downloader.nowatermark.tiktokdownload"`
+    - `title` · string · e.g. `"Download video no watermark"`
+    - `summary` · string · e.g. `"Snaptik Video downloader for TT: download tictoc video no watermark fa…"`
+    - `description` · string · e.g. `"Wanna download videos <b>Without Watermark</b>? <br>Try Video download…"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `minInstalls` · number · e.g. `50000000`
+    - `realInstalls` · number · e.g. `54214010`
+    - `score` · number · e.g. `4.6292334`
+    - `ratings` · number · e.g. `705705`
+    - `reviews` · number · e.g. `4042`
+    - `developer` · string · e.g. `"ETM Video Downloader"`
+    - `developerEmail` · string · e.g. `"support-tvd@mail.videoconverterdownloadermp3.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Aug 27, 2021"`
+    - `updated` · string · e.g. `"2026-09-20"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $24.99 per item"`
+    - `version` · string · e.g. `"2.8.0"`
+    - `recentChanges` · string · e.g. `"- Optimize user experience"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/2rHnN6HusplBdtW1It8e3DJAB3snc3Xh…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Jxb_9dUZ3bqcA5ensT-vfWGC7TLUhAFm…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/nHo3hL-aOPyVylNMkJbT44Wo95VC3qovIo_4zWKZM9UPL0fwzb2tkb4-R3IA1B-qMh9jgT4q92JOXUFd0OshSA","https://play-lh.googleusercontent.com/CDsu4UNK-RjvdKjMalnva_w60BrWPjzrYVwE19tLF6wVjPmMdRIUTFE_3vtpdmU3QUAZIyGKoxy2d6woQ2yfag","https://play-lh.googleusercontent.com/6Nf7IOJEBn8W7_7ve5M0RiTcpX169J_YNRhLtZuWE9f0hUE0bcpVr3iGbYrPO0ZflIuVDq3uoKvGJlgoYXaKFw","https://play-lh.googleusercontent.com/vy-QFi1GhRrKT9rXyAkzMRY_yH_LpSvGhANpNlmyTBbKVYCxT6IWUu6NcEjmVMi3HjWtdHhm-GA0lJzn36Z_eA"]`
+  - `com.damtechdesigns.purepixel` · object with 23 keys:
+    - `appId` · string · e.g. `"com.damtechdesigns.purepixel"`
+    - `title` · string · e.g. `"PureStatus: ByeBye Blur Status"`
+    - `summary` · string · e.g. `"Share crystal-clear HD videos &amp; photos on WhatsApp Status — no qua…"`
+    - `description` · string · e.g. `"🌟 PureStatus: Say ByeBye to Blurry WhatsApp Status! 🌟<br><br>Tired o…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `8368830`
+    - `score` · number · e.g. `4.6237626`
+    - `ratings` · number · e.g. `60935`
+    - `reviews` · number · e.g. `207`
+    - `developer` · string · e.g. `"DamTech Designs"`
+    - `developerEmail` · string · e.g. `"apps@damtechdesigns.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Dec 21, 2022"`
+    - `updated` · string · e.g. `"2026-09-20"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $64.99 per item"`
+    - `version` · string · e.g. `"2026.14"`
+    - `recentChanges` · string · e.g. `"<br>Version 2026.14<br>✨ New AI Photos, Stickers and Video Tools<br><b…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/ru6iEfbjXOiHFk_NDrznZA_REOawVK-s…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Ys43-Hvc_OHQmeaDR3srN8wiGKDSW1S8…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/CAC_SsOpdPGuERQb4eYGM4dMCv_7CPxppIHdjPgq8hJST5DyjEYoua9bicVn_v6PsXzaIChCp5WzCUlvTBPB","https://play-lh.googleusercontent.com/miWBhvu_JqD5j2a_xkqEnuTCEr-MRbiJBSHwdf4q-xGDGog17nPkRRb8zD7PSaUHHGeyxxwrT9MSz0kxnD10","https://play-lh.googleusercontent.com/1UZrTEPXzVAQdzrvuDhxGHUJyI7Z-KcAJrBlN6AjOYnB06ORtEDzC2Z0vkccw0AjQoxLPTLzao914NbyE3Pc","https://play-lh.googleusercontent.com/FJjR4npEw0TWYfQ2C69PT83vnZKSlisbOsFVpmymOAqqrXxeCBsNQX0y8DLf901ON-5mYPKH9j48WUUSmbjz"]`
+  - `com.noxoro.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.noxoro.statussaver"`
+    - `title` · string · e.g. `"Status Video - Save & Repost"`
+    - `summary` · string · e.g. `"Save status photos &amp; videos, repost, trim, crop, GIF tools and pri…"`
+    - `description` · string · e.g. `"Status Saver - Video Saver helps you save viewed photo and video statu…"`
+    - `installsLabel` · string · e.g. `"500+"`
+    - `minInstalls` · number · e.g. `500`
+    - `realInstalls` · number · e.g. `911`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Noxoro"`
+    - `developerEmail` · string · e.g. `"jay.noxoro@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 4, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $2.49 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/c5l9pow_YM4cOYTyKnxNSxuRkBUDzoPo…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/YyCG2MrdSt1FST6qtud4h1JrYBLLjpFW…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/jfW3zjtQf1XmEFnEpqAwne2ZL3YvTZBB98SW3obS4eI4R9d2_mzj5XTOoAY2RDTN4R-2BezkyoPI1_juLWPK","https://play-lh.googleusercontent.com/CoQiRa5cH4NDgQIVeASs1eZE6b41DgRTqsdJlX_61ggPYh1wGDzVYB7qafcQ6BD_DIcTcx51kl7OZNeHYx2IHw","https://play-lh.googleusercontent.com/5lTxpC4d3MyTFX5jb6vpRKv0BgEs3dzzQJALERIOkTHw7oARFpUxipNiV3nlgdiB7f0WGQq8NOKLDkAwBZDWvw","https://play-lh.googleusercontent.com/i4MWYAEiiET5iVuXcrOjwQN9H0IOlBxNA8h60Uds77AiLL0mDZmxxQv_rSXD5Ob9OWh9-oDCeKPaCQlckxg7IA"]`
+  - `story.saver.insta` · object with 23 keys:
+    - `appId` · string · e.g. `"story.saver.insta"`
+    - `title` · string · e.g. `"Story Saver - Video Downloader"`
+    - `summary` · string · e.g. `"Video downloader, Story downloader, Download Video, Story Saver, Video…"`
+    - `description` · string · e.g. `"Looking for an app that can download videos/photos/stories ? <br>Looki…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `5486823`
+    - `score` · number · e.g. `4.6483517`
+    - `ratings` · number · e.g. `65301`
+    - `reviews` · number · e.g. `1136`
+    - `developer` · string · e.g. `"Story Saver&Video Downloader"`
+    - `developerEmail` · string · e.g. `"storysaverdown@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Feb 8, 2023"`
+    - `updated` · string · e.g. `"2026-08-12"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"2.0.1"`
+    - `recentChanges` · string · e.g. `"fix known issues"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/nWB0PCwJnscHgVmxamRt50Ka_lDeHdV6…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/LE26NwleM7DN-rhSkGxB56dYgQZrwPkr…"`
+    - `screenshots[]` · array of 14 string · e.g. `["https://play-lh.googleusercontent.com/YCOXnCFXSbyF2MRP-6tntvZQI1HfdsVCu4Gcn8A5rjCJnDw8a6IUU4LW9waPESe-KLqSdPH5QT1ZMDmnxjHm","https://play-lh.googleusercontent.com/HWlcOi3YyM-06adtukipOzomgCfd_hid0o4Dwe7XvcgvGJLfmOe4hU7pgvAWJ-TP6lIqu6v9MuZF7ogF0JKz","https://play-lh.googleusercontent.com/_TkAI9Skbf3zci86vkHuAQbBmeos74AoVdaYtlRNQjit55x48i9YgTkbImaFiYXLINIZtxs32fCajhZa1PxVAS8","https://play-lh.googleusercontent.com/3moqVrKc9fK-a05K40fkTTPMeiMVmq9_yQ9QaO3ISxFxmhbzEedArC_80viC9l30tZLMl8ow2vr7HvZV25TUgA"]`
+  - `com.statussaver.whatsappstatussaver.downloader.wapp` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statussaver.whatsappstatussaver.downloader.wapp"`
+    - `title` · string · e.g. `"Status, Image Video Saver"`
+    - `summary` · string · e.g. `"Save photos, videos from status &amp; recover deleted messages in mult…"`
+    - `description` · string · e.g. `"Discover the easiest way to download status updates with status, Image…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `2738340`
+    - `score` · number · e.g. `4.5652175`
+    - `ratings` · number · e.g. `2287`
+    - `reviews` · number · e.g. `12`
+    - `developer` · string · e.g. `"Smart Solution System"`
+    - `developerEmail` · string · e.g. `"kaulla3245@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Dec 6, 2022"`
+    - `updated` · string · e.g. `"2026-09-17"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$9.99 - $19.99 per item"`
+    - `version` · string · e.g. `"3.1.1"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/0t3b1fd_n2WTts4Fzu_Bj1NNm3dtEW68…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/LBVSO7FVK3d0kESoA__m0EgIHGjm9vP7…"`
+    - `screenshots[]` · array of 25 string · e.g. `["https://play-lh.googleusercontent.com/vChqmE6GFshCexcYUeE8VvA8MBvSCG0RmBBloOaa65BypHiCp9ueN5AGVnwbokF_QxghlfoS6Ug0wiwen85aj18","https://play-lh.googleusercontent.com/dndiqqh91fJl5-Sp0eO5cZHoW3rTLPIsgp_Q_eJdr5PmFtVyqpG5Gdd504mW-d2QID9EKrU8tUIAO2OJ_o_Nyg","https://play-lh.googleusercontent.com/hVr90L-JnhQBzPSenrrLzHvRHPewX4R-q4KHoCfyiadhMOf9_7kSg0QX708AD1y6RFOngIkKExkACKr7vfFC","https://play-lh.googleusercontent.com/zUpcOnEvHfoIRRxYoltZzbWVW2whWTlzIFrCFZIZ_FqvsEHifQMqchgHr-5B26agBcCV8VbwaeItePaxA1I3bQ"]`
+  - `com.snapinsta.video.instasaver.instadownloader.igsaver` · object with 2 keys:
+    - `appId` · string · e.g. `"com.snapinsta.video.instasaver.instadownloader.igsaver"`
+    - `missing` · boolean · e.g. `true`
+  - `hd.video.downloader.app.hdvideodownloaderapp` · object with 23 keys:
+    - `appId` · string · e.g. `"hd.video.downloader.app.hdvideodownloaderapp"`
+    - `title` · string · e.g. `"HD Video Downloader App - 2022"`
+    - `summary` · string · e.g. `"Free &amp; Fast HD video downloader to download videos from social web…"`
+    - `description` · string · e.g. `"<b>Quickly</b> and <b>Easily</b> download all <b>HD</b> videos in all …"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `142916942`
+    - `score` · number · e.g. `4.638728`
+    - `ratings` · number · e.g. `356235`
+    - `reviews` · number · e.g. `2992`
+    - `developer` · string · e.g. `"Leap Fitness Group"`
+    - `developerEmail` · string · e.g. `"support@leap.app"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Mar 29, 2019"`
+    - `updated` · string · e.g. `"2026-09-07"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.99 per item"`
+    - `version` · string · e.g. `"1.4.1"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/wKklK--1M2-xBV_x1dvlOzf2-hTUSKmx…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/XTJG2jj1YfkMswzx10fbhLiQ6t6-qT5p…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/VHW3u-baFkNQOoCJP0CofsC-R-lbJszvpcOVzTCNhX91Fbo3zVopTaIDgAfl5YILe5b2nJpCVfGLkP3NAIPuEXA","https://play-lh.googleusercontent.com/BlwuprNL8ecvK_NYzTdfP2BiGfDNhrHnGXwJ0m5-HlhUYG_EukcMjLpTt4_no-RoVwn7RiZq1EDjbxJwZnDLoQ","https://play-lh.googleusercontent.com/GixeuvnW0TEnjpWZrh4-j_230JVT1An_K_w84-YwURbEX4lf4fK4JMXbG1cNCop2j14y-gQc2DpLtxmQO4Sj8g","https://play-lh.googleusercontent.com/WZV1lG3XemHfQJ3ah5yFHU_Ss2KZQdPFaDYxa4qcYVB-9baX5VnqOawomznNzwDadJ47EX6XDY8QHND6a0Rl4A"]`
+  - `com.audiomack` · object with 23 keys:
+    - `appId` · string · e.g. `"com.audiomack"`
+    - `title` · string · e.g. `"Audiomack: Music Downloader"`
+    - `summary` · string · e.g. `"Download full tracks, listen to music offline, make unlimited playlist…"`
+    - `description` · string · e.g. `"<b>Stream and download the best new trending music (full tracks offlin…"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `190807683`
+    - `score` · number · e.g. `4.7980075`
+    - `ratings` · number · e.g. `8979347`
+    - `reviews` · number · e.g. `197523`
+    - `developer` · string · e.g. `"Audiomack Music Apps"`
+    - `developerEmail` · string · e.g. `"support@audiomack.com"`
+    - `genre` · string · e.g. `"Music & Audio"`
+    - `released` · string · e.g. `"Jan 8, 2015"`
+    - `updated` · string · e.g. `"2026-09-18"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.59 - $79.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · string · e.g. `"Welcome to Audiomack v8!<br><br>This update has bug fixes and performa…"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/7TBdEjil-lhQok7Y-jlpEDbgtS4cayV5…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/_f8MoNb9wH2W4PxlNfMrj_Vw8eeZW-el…"`
+    - `screenshots[]` · array of 21 string · e.g. `["https://play-lh.googleusercontent.com/DYONKPWjl_JnkBd-1KaAL_nAVPz5ndCXjVQ6XDmG-4Wf_I3UK7NJhKdERQQMWI6cFIOO1xdlrWn_9vExfDSBOg","https://play-lh.googleusercontent.com/NGXj7oXzUGH-eINo3SxQs04KaJt0DLGdJqiJH6D4vAzovBFisUIukdXMoVxkeJJVvJrObwjzgiEsHokx3OqRKQ","https://play-lh.googleusercontent.com/1ziHmoeYAvcDlIMa_VUDhWSkqbyoT72vFcrlxzKhi7jP7Glq4wVnTY6hGo4hyyVorJqW9gmEnYGDmE3ZPb7i","https://play-lh.googleusercontent.com/cKvk8kTMd2kP-eEzWbYAUG_7jUpLk877fLnw1PDSHApINuQL2fPQ8RAYaPWS5K2AFjwtmgmWKTwCEwQzauDX"]`
+  - `com.playfake.utility.instadownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.playfake.utility.instadownloader"`
+    - `title` · string · e.g. `"Status Vault Video Download"`
+    - `summary` · string · e.g. `"Status Vault Video and Image Downloader to Save Status &amp; Business …"`
+    - `description` · string · e.g. `"Download and Save Videos and Pictures from Status with the Status Vaul…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `300263`
+    - `score` · number · e.g. `4.214286`
+    - `ratings` · number · e.g. `1194`
+    - `reviews` · number · e.g. `5`
+    - `developer` · string · e.g. `"Playfake"`
+    - `developerEmail` · string · e.g. `"contact@playfake.in"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Jun 9, 2019"`
+    - `updated` · string · e.g. `"2026-08-16"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"2.7.0"`
+    - `recentChanges` · string · e.g. `"- Improvements"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/LanoqYwz7qe8E0zdDIT-Id9o_yklEUPD…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/E8nTpFQwYFI8B79-8F9Zx3FFYPglq-39…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/ZPytJhZvPXTrXtX9yRvGFDAzeJPuM4sSsZmu3D4FdKbjECgfLFEdNfH7y5RuMwgLnZRzK8a7YJKdvt09iXwYjoE","https://play-lh.googleusercontent.com/fU-Jws9f_-Cj4vxIqiJ7xe2jzJIG1E3OZpFY3crLWKzWI_vEfzvgU0wDN-8NR5FgKVJv3BxHETA5lXEbV_e0iA","https://play-lh.googleusercontent.com/veG_DBDGfi9OignlMd5NL1TxjZe1vYnlvBfgY7aic33Dng0VaAQF_8zWAMD8KYfJGlg9DjPWMXdMAVVw33Cntg","https://play-lh.googleusercontent.com/cnl3lOFSHTixL1cZfNV44PT8vA4EqUEf5yL71Yy6MSwxWYw4_JyvixSwPELtZrmi6M-3fEgPNu4XpyRNuLGX7Q"]`
+  - `com.repostify.app` · object with 23 keys:
+    - `appId` · string · e.g. `"com.repostify.app"`
+    - `title` · string · e.g. `"Repostify: Auto Repost Videos"`
+    - `summary` · string · e.g. `"Post once. Automatically repost across TikTok, Reels, Shorts and more."`
+    - `description` · string · e.g. `"Repostify is a social media automation tool that automatically reposts…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `2918`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Repostify Team"`
+    - `developerEmail` · string · e.g. `"repostify.io@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"May 5, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$19.99 - $389.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/YWPXIW9I1usQvHtuAYgnnR_W7PgIwvLP…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/9mogVvwd3sCM9Pji_T1DZaPvU5R-2qUQ…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/UaTlmmQ54s0mVu-FoGjKiPuWRmK9vBruNStFqH5AZwvqsxdClJy2Enhl4qzpJWjYmYvug5wBNFPP3hByN2ehpSc","https://play-lh.googleusercontent.com/xoaf94nQTTF8aUbUvv7wznu0--WY6qYoHN6UdvZwPTikxTqB0eMMPb3UYe8-xeR3zYzLhi3nQdGcKOFvnfLI","https://play-lh.googleusercontent.com/OdqCYXm-cO5--I9JmSKP77GW-7XNzZ5QWD7LMJSxeAKlwfPM1XZpBIJmremIfh2vEd4cvk-Om4dYmyE1szn9","https://play-lh.googleusercontent.com/QkKF61ZIEwIHyQjPj1c2RL03rDYEhUdHW8iBjr4Hn66PMtWXVk14SZ9wlWff-1pxF8Mx0ubmBYbqxjOX6DmHFQ"]`
+  - `com.splitvideo.fullvideo.uploader.statussaver.mp3converter.royalprincessmakeover` · object with 23 keys:
+    - `appId` · string · e.g. `"com.splitvideo.fullvideo.uploader.statussaver.mp3converter.royalprince…"`
+    - `title` · string · e.g. `"Full Video Status & Downloader"`
+    - `summary` · string · e.g. `"Full Video Status &amp; Downloader is Powered By Royal Princess."`
+    - `description` · string · e.g. `"It is very nice and best new Full Video Status Uploader and Downloader…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `2967609`
+    - `score` · number · e.g. `3.65`
+    - `ratings` · number · e.g. `9138`
+    - `reviews` · number · e.g. `107`
+    - `developer` · string · e.g. `"Royal Princess Makeover"`
+    - `developerEmail` · string · e.g. `"royalprincessmakeup@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 21, 2019"`
+    - `updated` · string · e.g. `"2025-07-12"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.49 per item"`
+    - `version` · string · e.g. `"2.5"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/7AlLiUcHQkC7zrEFl5XiC3ANCCdZ6xX_…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/4yCSWuyipMPpLkYDnjMnjvz2xm34Dt9j…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/kiilnaOFKYe8lKhF6Xm4dJVa1QJ7gdvupBSGW2DKsLhAN0sXnhovZzCYB1yzVskJOtNCH3bJCKgvoBJOWbI53w","https://play-lh.googleusercontent.com/grmoyvnWCM9gOv3lmra3hfVPhR9GHzwPLxtY6Whl7__tQRVlCVbOuSq2JEmMDq_YnFaCAg_kXsvC1sRaj0nE","https://play-lh.googleusercontent.com/7JAPkVaT3f5PqsUYh49Pkiag-3hb_gAZbv6ccS0cIMHy6AFlo4eOjP_gGbL39ZLqIOX2Bl5csbBssSFyF4zUcg","https://play-lh.googleusercontent.com/e5a8o8fa5pUCdppA8SPzcsX1pxlWGtIr7RaGqAyQCKI21MZUSi8HWeCCYBD8vER74PdlYRrhBjDEoMLta1Fqtg"]`
+  - `romanticlove.stickermaker.wastickerapps` · object with 23 keys:
+    - `appId` · string · e.g. `"romanticlove.stickermaker.wastickerapps"`
+    - `title` · string · e.g. `"Stixy: Romantic stickers Maker"`
+    - `summary` · string · e.g. `"Love and romantic stickers for whatsApp wastickers &amp; Sticker Maker…"`
+    - `description` · string · e.g. `"Express your feelings with Stixy: Romantic Sticker Maker, a simple way…"`
+    - `installsLabel` · null · e.g. `null`
+    - `minInstalls` · null · e.g. `null`
+    - `realInstalls` · number · e.g. `3`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Coding Bizz"`
+    - `developerEmail` · string · e.g. `"findmyphoneadmob@gmail.com"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/EplXIrfq4uU6Ws-zHD3ybU3lDsEsJSuc…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/bbnup7eorTm5MUyzasXSwFRKdtx5pN7U…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/uxtmz3YIdKpBUVp3beCOH5pFqIrXix86Ng40mM_lYOhxDeMD_2_fvwg_h5FymIFnBfE11S9oICYohtTskYmeZuU","https://play-lh.googleusercontent.com/FmNeycJDs3egp7XXLB0hCLdfmbK8pnRG7Vkki0fzUCG1EhfpA1bHxPBmD_Sdqve4W8qAglxmwPicxTzyYc7nFQ","https://play-lh.googleusercontent.com/0_9nBleZg-wxxNptkWpEXt_m4cGezh8XZBHxEa0yUT9mHqFbseqKbWsI54IqpezzwbnF14a66FR-NrDb4XhNYQ","https://play-lh.googleusercontent.com/SFRvmjHSRa1c0QgAGf8OwCpuq3nb3KIelfg72Dg4uHtqhGfGja-vuyTem65KNfeHy0imZShraoLJOdpuBWFAfQ"]`
+  - `com.uc.browser.en` · object with 23 keys:
+    - `appId` · string · e.g. `"com.uc.browser.en"`
+    - `title` · string · e.g. `"UC Mini-Download Video Status "`
+    - `summary` · string · e.g. `"Video app with funny short videos🎥films🎬songs💃 Duet video maker😎"`
+    - `description` · string · e.g. `"<b>UC Mini is the best video browser from UC Team.</b> It is a faster,…"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `420783780`
+    - `score` · number · e.g. `4.385965`
+    - `ratings` · number · e.g. `4682392`
+    - `reviews` · number · e.g. `48610`
+    - `developer` · string · e.g. `"UCWeb Singapore Pte. Ltd."`
+    - `developerEmail` · string · e.g. `"help@idc.ucweb.com"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Aug 25, 2010"`
+    - `updated` · string · e.g. `"2026-04-24"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"12.3.0.1290"`
+    - `recentChanges` · string · e.g. `"1.SDK Upgrade<br>2.Compatibility with Higher Version Android Devices"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/SAQVMZ4tIIGWIsukSkqmaBjFbtlMcO88…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/8bVVWRP1ulD6S2d6CaFsUeg4nATVYmv8…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/t8C85JByG_KMV7O1Yzv95xfEyaRCxkUI5bbE2MSzK4bglEaofg-gKBgC9OlGUlQ0fsE72_JK6DPWNjAPWAKTWg","https://play-lh.googleusercontent.com/baFAp2_-HPF6FHyRernIBcdCEld2FbohyqE8erACPnf1NKtT_22eCInKrWKoDLjTZ6NEriZbJO__KoVvaAb68Q","https://play-lh.googleusercontent.com/PQ8-P4sk4_c398FiRfmhJ3hZMvuEaacpZ7ZR3DV56Yr-hWgvv1xH7Z9royd7beD-dba6AlMQYubeuySTYGzbxQ","https://play-lh.googleusercontent.com/T_LPN32QZgxm-5m-FlqSFxI_nfW1X4NUkXwoyBNGk36SRmdzOBNKj6qeups_ExZ5ZFHmgKwGKPPzARcFt45GVA"]`
+  - `com.vinisha.wstatusdownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.vinisha.wstatusdownloader"`
+    - `title` · string · e.g. `"Status Saver"`
+    - `summary` · string · e.g. `"Save status photos, videos, deleted message alerts, direct chat &amp; …"`
+    - `description` · string · e.g. `"📥 Status Saver is a fast, simple, and powerful status saving toolkit …"`
+    - `installsLabel` · string · e.g. `"0+"`
+    - `minInstalls` · number · e.g. `0`
+    - `realInstalls` · number · e.g. `0`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Vinisha"`
+    - `developerEmail` · string · e.g. `"pradyumangundu@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Sep 11, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/SYdOXV9EIjt2amGegKDaArnsMsTWceUo…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/CkHOO9Ag0TfnK0pC73O4dbcoV9_1D5OH…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/8mKrsY4VhBn7yNl7MznYqd16B_GUs4PRprMUGdMDzqOKeSGNyqDl0hZyJxveYevyc2mynP3ZAoFhBW-VngSViQ","https://play-lh.googleusercontent.com/5gf1ch_MJBZY_EIEu9bDqfvrhpueYSzNfaV9C-Bes4RezHoUz5tAwtJ_GpmJjva1zm0t0ZUvZprUacoAgCoB","https://play-lh.googleusercontent.com/bV4mnCsL8BlXH5Cu9v7VsC7FZRZtWY49rVzGObZbwBip51-aJnPUsDMHttE0qaiuknAB5Ogh4k6H2R8r5YFJ","https://play-lh.googleusercontent.com/jQtuAgkph2WkMn5OXRFRgGm6dS_SkNgC8FACV1XH54nkZJ1cdKAbZUaW9H4gChkB346Vkx7rz0TRwOZ70_uF1g"]`
+  - `statusdownload.statussaver.photosaver.allstatussave.storysaver` · object with 23 keys:
+    - `appId` · string · e.g. `"statusdownload.statussaver.photosaver.allstatussave.storysaver"`
+    - `title` · string · e.g. `"Status Saver-Status Downloader"`
+    - `summary` · string · e.g. `"Save photos &amp; videos from Status. Share &amp; repost easily status…"`
+    - `description` · string · e.g. `"Status Saver Status downloader<br><br>Welcome to Status Saver App – ch…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `1810518`
+    - `score` · number · e.g. `4.2444444`
+    - `ratings` · number · e.g. `24379`
+    - `reviews` · number · e.g. `1`
+    - `developer` · string · e.g. `"Social Media Apps Studio"`
+    - `developerEmail` · string · e.g. `"logicglamerapps@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Apr 20, 2025"`
+    - `updated` · string · e.g. `"2026-09-01"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.99 - $9.99 per item"`
+    - `version` · string · e.g. `"4.9"`
+    - `recentChanges` · string · e.g. `"🚀 **What’s New**<br><br>✨ Improved Status Saving<br>⚡ Better app perf…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/VKOqp2EbicxiPyEvgiCKsIRNNye_fRGJ…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/6fEirUSZuFQcMPqOUIDon9xZ9u-XiuZ3…"`
+    - `screenshots[]` · array of 28 string · e.g. `["https://play-lh.googleusercontent.com/ezI5C4WyLvRYmkNLum9gnxR9Eb5gHuSU5_dKZil_m6zNYFoC9hxDRD55Kj-daOnZBlXL9w6MB24Ed0h5MXNu1g","https://play-lh.googleusercontent.com/5UBHE7GaqsF1zY4ROMknluYe6mrvszWQKW3qCZPA-vhscrVcfQ8WFof3s706bRBOuT533E_rBwBRmAY1jF9pkOs","https://play-lh.googleusercontent.com/tp8JrgstUa5iwTFwt2QVC7WA-EbpdtkuIEMH2sQ_AsWAZafvBFsi84hbX4nIvjVaIOBXqxyORmn9nJGtY0gsYg","https://play-lh.googleusercontent.com/FQ6jY9kLFgjZkFm4KMy6DY-9iZm72mzfMKq_2zHeTJcWU06E7pcdNvtVr82M7KxWROIBQNnTEoKeqT70fcP6qg"]`
+  - `com.itcraftsolution.statussaverforwhatsappdownload` · object with 23 keys:
+    - `appId` · string · e.g. `"com.itcraftsolution.statussaverforwhatsappdownload"`
+    - `title` · string · e.g. `"Status Saver Downloader"`
+    - `summary` · string · e.g. `"Status Saver: Download &amp; Share"`
+    - `description` · string · e.g. `"Would you like to download your friends status videos and photos witho…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `1868`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"IT Craft Solution"`
+    - `developerEmail` · string · e.g. `"prathvik.itcraftsolution@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Jul 28, 2022"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/N2sT0wUOZ5-v7dJNKihYrQf94HXfaN5g…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/u3CJLAuTcJZ0zitRfn_vym1IOUJA_rFJ…"`
+    - `screenshots[]` · array of 21 string · e.g. `["https://play-lh.googleusercontent.com/Xtpyb3rXp5F8RpQEMR17gPdujVAQ3PDH1gXwhA1LpWDvNFA6JZEBc3QSv2MPW_I_psZ9UUbY8O_V7JOya1d8yw","https://play-lh.googleusercontent.com/FTtGsXhpr6ZEJhwXhkYz-fS0jvEv0-0e7zc_SoslEukfnJzw6Zv-JdZxlPkjAUbkJ4ZjYJH28bTqi7zuUShhdg","https://play-lh.googleusercontent.com/PiMjOnWgBcakx19fAUQI4wC_Oohz77mNwaKpxAtWpEX-VxkEE8YR9yhMBFQyBkb8BcNzRUu5dcnBIGQzv1_f","https://play-lh.googleusercontent.com/nWXYC71-gxd9YLd8yH9VliH1TXpYpLHYFDIUoYDroWFV9bzNHt9EX2OPBLvVETMx5fog-yNFW41HanwxGMbp"]`
+  - `com.gbwhats.gbversion2023.statussaver.gbtools` · object with 23 keys:
+    - `appId` · string · e.g. `"com.gbwhats.gbversion2023.statussaver.gbtools"`
+    - `title` · string · e.g. `"Status Video Saver: Downloader"`
+    - `summary` · string · e.g. `"Save status videos &amp; photos in one tap! Auto reply, direct chat, Q…"`
+    - `description` · string · e.g. `"<b>Status Video Saver</b> is a powerful all-in-one utility app that he…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `228139`
+    - `score` · number · e.g. `3.7142856`
+    - `ratings` · number · e.g. `370`
+    - `reviews` · number · e.g. `4`
+    - `developer` · string · e.g. `"VirtualSpace LLC"`
+    - `developerEmail` · string · e.g. `"virtualinfotechllc@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Apr 22, 2023"`
+    - `updated` · string · e.g. `"2026-02-22"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.1.1"`
+    - `recentChanges` · string · e.g. `"● Improve Performance<br>● Bugs Fixes"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/fraqUC8GO1ERPBRatH0gIyGrg4RUPJCe…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/n6IubT0Rk7h8A8UNwpaIv5SvKLMZEjX1…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/iM-krO4cqrW9O343HG5BonBLiX4BGUfce5U1QkhByaQZ2KRSk8Fk4kPPO5s7YuHPodewKxUpRPTx1UA_mfQEjw","https://play-lh.googleusercontent.com/THgz7RZ9hoLaPyEPTQa3uRGkzkc0LGhvJkvSgyyPv_2yIPzrfJTuaif8_GoWUhVnMDOGlfYZSZSg3GZanMZi","https://play-lh.googleusercontent.com/4xivGuFyhrSI-gYlxZdXB1exQrIOcvhiVHzMGCSE18rca83fyj1-IyCMM899ezmoT2759bDqXr_jfV-esfLJ","https://play-lh.googleusercontent.com/-BlYNtsguemlXPpnWWAfpe0RaKqCzP7reTvj06RhfPFAgb5PMvOJLfI4b8-QOZMxkcldQSJbOf3UYq-hSQFGN_0"]`
+  - `krishnavideostatus.kanhaji.jaishreeradhakrushnaapp` · object with 23 keys:
+    - `appId` · string · e.g. `"krishnavideostatus.kanhaji.jaishreeradhakrushnaapp"`
+    - `title` · string · e.g. `"Krishna Video Status, Kanha Ji"`
+    - `summary` · string · e.g. `"Krishna Video Status, Kanha Status Video, Jai Shree Radha Krishna Vide…"`
+    - `description` · string · e.g. `"Krishna Video Status, Kanha Status Video &amp; Jai Shree Radha Krishna…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `31837`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Kiran Goraniya"`
+    - `developerEmail` · string · e.g. `"kgoraniya87@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Jan 30, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/W0a7n6vUg0F8nfu9ob2WSL4b2pjsxzFU…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/M0CxAarU2302FKIvWPxbKjg7RTgx9y9_…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/JZTMmqT40Z6Xm0XSu3wfkDEHMfDqrlkH4Q4MT12NXMlqlixtdiKRryyPe8FquFWR3ZS4vKuf4kW771mi_tV0OA","https://play-lh.googleusercontent.com/MTMxholaO9_5ykKqxivhIUdwfIbHPVd2orSvWSZdNzb94ekVyzeKPJh1KQoqiII3eat_GIBxC0IsO7REjB6tgQ","https://play-lh.googleusercontent.com/mOt2Z3DKtYxqFK5s-0QPc_bygPf0Qd9hr3ut9dyJd3yUCtu8NlMG18T_Y3NTlDRiBohcsU1FLPVtfrz-r8x0HA","https://play-lh.googleusercontent.com/GeOoTY_4RnURupCrm44Zqd4i5GOB8LOH1XNPQ6hqXs4vkN0t3WxnI7cDzMM0NK8CkOFiuIPGrIpCkaMTw_wqdg"]`
+  - `stickerwhatsapp.com.stickers` · object with 23 keys:
+    - `appId` · string · e.g. `"stickerwhatsapp.com.stickers"`
+    - `title` · string · e.g. `"Sticker Maker for WhatsApp"`
+    - `summary` · string · e.g. `"Stickers for WhatsApp"`
+    - `description` · string · e.g. `"Create stickers for WhatsApp and WAStickerApp.<br>Express your emotion…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `46153744`
+    - `score` · number · e.g. `4.566625`
+    - `ratings` · number · e.g. `550985`
+    - `reviews` · number · e.g. `1664`
+    - `developer` · string · e.g. `"runnableapps"`
+    - `developerEmail` · string · e.g. `"runnableapps@gmail.com"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Nov 19, 2018"`
+    - `updated` · string · e.g. `"2025-06-03"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 - $294.99 per item"`
+    - `version` · string · e.g. `"928"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/H3f1AMAd10YerDsDCQ9sZwASK72TG3qc…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/z0JPcsvDdTDd2Ph8qDLm4PXqD4FXnRZs…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/PyTiF0-FJhHCtidC5PKSSAkCOJRtr3zGt9LevCr5p1Ws3Xmp9Cky8dD_ckI8unVOF3S87YP8IWMmOdMMCIe9Z3g","https://play-lh.googleusercontent.com/sPooRF0XzVLMwRSlvKB9ahhJPRWhKcu1lYpktf76XUWgqpTxhKK4k4rAgLjeCPXqGeFem8gutoPyQ9kOqc2zSDc","https://play-lh.googleusercontent.com/H9Rv0N6ToZYSBYRcgA0WH1VA_u-rPrnw9mdPRX8ffa65eGL_3qiit_QLRhpAy9Zg-ZLbkXHbd7up0QxWnL5APg","https://play-lh.googleusercontent.com/Dx3B0C20EGRT0zg0Mw7zr8aXSba7R0RNkEG7PvB2J-u5hQK-UUMFIZ62KTj-x_-H7NDLYyytkBuwEY-rSwNR"]`
+  - `download.video.tiktok.nowatermark.tiktokdownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"download.video.tiktok.nowatermark.tiktokdownloader"`
+    - `title` · string · e.g. `"No Watermark Video Downloader"`
+    - `summary` · string · e.g. `"No watermark video downloader for TT. Remove watermark: snaptik video …"`
+    - `description` · string · e.g. `"This No Watermark Downloader app helps you download videos from TT <b>…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `4438650`
+    - `score` · number · e.g. `4.359649`
+    - `ratings` · number · e.g. `29190`
+    - `reviews` · number · e.g. `355`
+    - `developer` · string · e.g. `"Hatici Video Downloader Apps"`
+    - `developerEmail` · string · e.g. `"haticekurtoglu2@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Sep 29, 2021"`
+    - `updated` · string · e.g. `"2026-09-01"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $24.99 per item"`
+    - `version` · string · e.g. `"1.155"`
+    - `recentChanges` · string · e.g. `"bug fixes and ads improvements"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/d8xZRwTwVXIwStI2qlzpcDKb980kxCOj…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/CRcgrw8B8Ykwmc0DgaJV5uAz_G3wrXux…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/buPySkg2JtWYidTC1KYQS4Pnbs6yDUjdCb1wM9ONeteEgl_ErxJLDdNa5G4Nvaa9nv7CiZAJgQ3OwmQ9k0RrEg","https://play-lh.googleusercontent.com/3QL7jL70e7vgRneHVe52GqDRX-y8d87Cbuq9CDItFF2BvX9v_FQI4PVNJBSA7LQlk2RaIZG8iKDj69gjtDbdjk4","https://play-lh.googleusercontent.com/YPszQBsV60s4j8W5hm-pAQb94s0w0AeCGmOTn2_UYlHoj-VCBaKzlKLnd3p1T5-EB0r9Ou_jr2LV2S4ZmEEJhJI","https://play-lh.googleusercontent.com/HFy1jS4R7k61cSuYa7GObXLtmK4uPbq_w2XW3z1YNPZvJUGLh9E_i6rZWEqGof2myLWcXrhN3mk_5aqoFBoD3nM"]`
+  - `repost.share.whatsapp.statussaver.videosave.photosaver` · object with 23 keys:
+    - `appId` · string · e.g. `"repost.share.whatsapp.statussaver.videosave.photosaver"`
+    - `title` · string · e.g. `"Status saver, video downloader"`
+    - `summary` · string · e.g. `"Help you download your friends' status updates from social media platf…"`
+    - `description` · string · e.g. `"Looking to download and save photos and videos from social platform? W…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `1166976`
+    - `score` · number · e.g. `4.35`
+    - `ratings` · number · e.g. `18064`
+    - `reviews` · number · e.g. `14`
+    - `developer` · string · e.g. `"Video Downloader & Story Downloader & Saver"`
+    - `developerEmail` · string · e.g. `"hooyee2021@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Apr 5, 2022"`
+    - `updated` · string · e.g. `"2026-06-10"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.5.1"`
+    - `recentChanges` · string · e.g. `"bugfix"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/l3KHCoUKZWm8VKM99FqC3ZeuAa3Jh6PS…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/JmtuqUsB83Ox7WVcnYfBWcsXScE_cXoY…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/XL8kH2jPjXXeoktMQoVvq6tC5aacHCeSOrHXP2NmO5NgCJspGU6lhuXCUvwxskVW94sh-VSVB2mQy11RNx1J","https://play-lh.googleusercontent.com/HfGJaK5HFXrMQfuz3FSUzZwFbsOYSE4MPea9l13eNi4QR58D3e1ELf8akefjgYX2h4PgiqgIjXKdPiaCHulGaQ4","https://play-lh.googleusercontent.com/XAJRe5Z-oB08i91JUD5qvDqR22KTxYhTH4FOWpeXchY2bm0Ky2gvQasUJ9yhTZFzHgCVaMtpd8--4XSU2u97Pu0","https://play-lh.googleusercontent.com/1GfAqCGip_qTkJFCAyS0Zz4ZOjiNDmaJjMDxdfCk2YLWRoEorcmzdD2_rPpmE8fhVcAJvmyxe32CVHFIZ_tuekw"]`
+  - `com.savefrom.theappdoor` · object with 23 keys:
+    - `appId` · string · e.g. `"com.savefrom.theappdoor"`
+    - `title` · string · e.g. `"Save From Net Video Downloader"`
+    - `summary` · string · e.g. `"Save From Net Video Downloader allows you to save videos from internet…"`
+    - `description` · string · e.g. `"<h3>SaveFromNet: All Video Downloader – Grab Your Clips!</h3>Have you …"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `749051`
+    - `score` · number · e.g. `4.59`
+    - `ratings` · number · e.g. `15722`
+    - `reviews` · number · e.g. `61`
+    - `developer` · string · e.g. `"Cards"`
+    - `developerEmail` · string · e.g. `"support.savefromnet@cardsapp.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Feb 9, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $99.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/jRipcTdzqREaoasZpk4uMBt3CyqzeSZx…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/PyEmIINpL2H4Yx284fx_IzxCShR5msqg…"`
+    - `screenshots[]` · array of 40 string · e.g. `["https://play-lh.googleusercontent.com/Pq-dkR2R2cqPcQg3NnOgUe4S9_yKckQgjd0fOfgGSDb7o-suGEUrJHZse0m9igsWhZte63upepjIiirH61k3","https://play-lh.googleusercontent.com/UN0fFjinSXv4CJk5poBJZXqETun6tRZjgBl5EOZ7Ry-BTYL2M8lrRyOG2p45ZZuIYa26VKh8tfbwDjALTR8d","https://play-lh.googleusercontent.com/8i4IIah1EJOx5xBCPg5wFPLWH0_35HiZWAr5bLCZA5BMBr2Jp3RVV6rDUdqq1ORO8px9_Zrls2tON1y3a4Vi","https://play-lh.googleusercontent.com/poc5f_oinSuEELtfLhcPbYArxfeoFxuNF_RHryDY9Xm7Wk06EnpB_JcRMlnDE1aW-jIKRJnnMINbGX1UYgBy_Q"]`
+  - `com.tamilvideo.tamilstatus.videostatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.tamilvideo.tamilstatus.videostatus"`
+    - `title` · string · e.g. `"Tamil Video Status 2026"`
+    - `summary` · string · e.g. `"Tamil video status has a large Collection of best Status Videos Songs."`
+    - `description` · string · e.g. `"New Latest Tamil Video Status Songs App has been made with love for tr…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `30674`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Rushil Apps"`
+    - `developerEmail` · string · e.g. `"csappsstudio@gmail.com"`
+    - `genre` · string · e.g. `"Lifestyle"`
+    - `released` · string · e.g. `"Mar 25, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/mB_oAnCBHSOB_AUK1RfKadAX0evHm5Uo…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/S7mJl9a4JvOX3F03bVf7zpIoP7pbqzk2…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/ojPMMWt6__zQvS4u-chJHOsChnRygZfdplky6gMg-HrZfWbQHmhxrE-3jYDeYfWAkfpYiw_ouanERLev6Y4qBQ","https://play-lh.googleusercontent.com/clrUXIMA-VdDvLx1tvp1fZxoKiz0IU1Wd_OZRRHLEkDOUUP_KMJZm4cuhtb6--80PghHPDyl0pzAwt7ieeCmYb0","https://play-lh.googleusercontent.com/w1B0EdUcPO_5_lYhAJ4EFnJzxDYJao8CZ54iYOm4spdZyhbJBhA8TqnJSQQ2672sOrG66HamUWiYH_8GX4CZggY","https://play-lh.googleusercontent.com/6La0dbON6RlVpiOudJ9BWEDn6FFsixGBCpoErHP2W36EzeOx_EV5BfjmFM3PvjFHws6zgB7OQigut1Jawhx_6A"]`
+  - `com.statusSaver.app` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statusSaver.app"`
+    - `title` · string · e.g. `"Status Saver-Downloader 2026"`
+    - `summary` · string · e.g. `"Save HD videos &amp; photos instantly. Secure media archive &amp; stat…"`
+    - `description` · string · e.g. `"Save status videos and photos in HD instantly. Fast Status Backup and …"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `minInstalls` · number · e.g. `5000`
+    - `realInstalls` · number · e.g. `9167`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Nshon"`
+    - `developerEmail` · string · e.g. `"nshon.dev@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 15, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/TWojPuW2FItnvcD-TXxS6_wwW24JRNDS…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/mXLxCpW6Y8ofD7x1nBO0bBL37j2YF3eK…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/qeei_eMmuuMQamBFSZXO5A86K-DWDHPxgPNhwIuDr2fg5X-6Cg9kVQpqoO9Qh6u0yCVEqIfFUWDB4QfYusNLuA","https://play-lh.googleusercontent.com/Q4KlvmVUcGuwegKnHN7f_4A6hYYMQx4KKP6Q5m9BXuQK32czjT8_dHbldyvGslnSleRQAH5tCe1OhCuPw-0Ezw","https://play-lh.googleusercontent.com/TEWVqGN6TCxb29LX4MdVQGLU-GPjUYluyZyUj9_7zkX7UNoVdRIvvt2D9be0dwoQeTEOVxFX-urbtMmpc44F","https://play-lh.googleusercontent.com/eqI-4SsXktaK9aanmWsS6Gc_Bp-4nhxqFErDLkJzJ1wVBRhLpWlPeO_tLfzZP6dn6XyxO_9JIiH2k5R9-KPsl0E"]`
+  - `com.ytcorp.ytdownload` · object with 23 keys:
+    - `appId` · string · e.g. `"com.ytcorp.ytdownload"`
+    - `title` · string · e.g. `"All Video Download: YTDownload"`
+    - `summary` · string · e.g. `"YTDownload: All Video Downloader, Save Videos from Social Media on YTD…"`
+    - `description` · string · e.g. `"YT Download: All In One Video Downloader<br>Here’s a detailed and opti…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `30080`
+    - `score` · number · e.g. `2.8461537`
+    - `ratings` · number · e.g. `195`
+    - `reviews` · number · e.g. `7`
+    - `developer` · string · e.g. `"YT Corp"`
+    - `developerEmail` · string · e.g. `"support@ytcorp.in"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Feb 21, 2025"`
+    - `updated` · string · e.g. `"2026-08-02"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"2.3.0"`
+    - `recentChanges` · string · e.g. `"YT Download v4.2.1 — What&#39;s New<br>• Added 20 plus language suppor…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/X0HAWKNs5rnKE8umTZCY4n3CiPbfw40Y…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/MnRtAPb-fwncdZ5dGuvvSTiNBYyarFTv…"`
+    - `screenshots[]` · array of 10 string · e.g. `["https://play-lh.googleusercontent.com/4HwW-Y9wAT3h9qcxyRen-AbeOZM-wR9N5qmak0oYGemOz6_4QBkmDw3dnGaTRcqRlQMaET-VSzRjeQ3cdhUn","https://play-lh.googleusercontent.com/TTirR9GfUG3svnSueGeH2zlz6-xFHrsxr8WhlcWmp5EXzfY5XEo_BSorEhSMNSLyuivezfY4IRw2LsO3wtFD","https://play-lh.googleusercontent.com/SQcEKiNcLaL1G3RUozBtidWj4WbJenHg0gBo9CtmBvdyrtq3XDmsFfPwqnDtheYSK-UuvCMdB4mnOKSly5FpEw","https://play-lh.googleusercontent.com/UYXdWiUHfsy29Qhyee6DuCkXwPBJCP5iOgrgD2clkWYfxbUWrcE_QjZ7M_Eswdik_UZBWa_Datt0_zkBvsAyww"]`
+  - `blindstory.saver.forinstagram` · object with 23 keys:
+    - `appId` · string · e.g. `"blindstory.saver.forinstagram"`
+    - `title` · string · e.g. `"Blindstory: Story Saver & View"`
+    - `summary` · string · e.g. `"Download Anonymous IG Stories! Watch HD video from private Insta &amp;…"`
+    - `description` · string · e.g. `"Blindstory is your complete tool to <b>watch, download, and save Insta…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `723753`
+    - `score` · number · e.g. `3.76`
+    - `ratings` · number · e.g. `18396`
+    - `reviews` · number · e.g. `94`
+    - `developer` · string · e.g. `"Codeblind Yazılım Teknolojileri A.Ş."`
+    - `developerEmail` · string · e.g. `"support@blindstoryapp.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Jan 1, 2023"`
+    - `updated` · string · e.g. `"2026-09-11"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.99 - $35.99 per item"`
+    - `version` · string · e.g. `"3.0.14"`
+    - `recentChanges` · string · e.g. `"New design, powerful features and smooth experience<br>New Features:<b…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/v2lj_NMtQcvemr7HdWSM-WX1VqluHKsB…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Znoy6-Mz0xF9syd1rwtZez1ajrvvkzPW…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/DLWb0JgsnzMGliRZ4xkwWtJ5xlAIX0jFbPJMhpubWFIa9VJH48kuW6MgwXuMH-fjgax6HtUV_7HdkrsNJctw","https://play-lh.googleusercontent.com/Ek_c2v6xVqfOMSCwvbYfA1wAjaonla2cC-Zy9ukTucr9im4_PgpcDDxg2HsRl3L_dog8A-drxJXikFX88xXvXA","https://play-lh.googleusercontent.com/tIDLNAlkkR60_bf5bU7UMpxkx_OpKB9IxTlpXR7MLuQtxrl0_LNfwfscqztSeGckSYbAQMlJotxO6a94odFj","https://play-lh.googleusercontent.com/6IOZTiVGkJFScLbNF4JPY2gaeL5haq3f00WjUgoxHSuy472zYJPH-gn9tJ5iuJ5o1gJQfz9-VnXnYehReJHitA"]`
+  - `org.crazydevelopers.statusdownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"org.crazydevelopers.statusdownloader"`
+    - `title` · string · e.g. `"Status Downloader"`
+    - `summary` · string · e.g. `"The ultimate app for saving WhatsApp statuses directly to your device …"`
+    - `description` · string · e.g. `"Welcome to Status Downloader!<br>The ultimate app designed for effortl…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `273114`
+    - `score` · number · e.g. `3.5`
+    - `ratings` · number · e.g. `916`
+    - `reviews` · number · e.g. `5`
+    - `developer` · string · e.g. `"Crazy Developers TK"`
+    - `developerEmail` · string · e.g. `"info@crazydevelopers.org"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Jun 13, 2024"`
+    - `updated` · string · e.g. `"2026-09-02"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"3.2.1.7"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/YRqGbgNnS81-qNvg56c346bXgaSavEKL…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/N7zVjdrJOEslhrOLVzV48AsM6ek0et9G…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/xoMrJaksWBjG8rqvDE8KUbt4YK2FUUdieiQmwqBQE0tFHhEP8tpZu6GtL0QwgwBL-43bxbbK5ofj1ANy5sHr1A","https://play-lh.googleusercontent.com/UG3Akk2xrNXeJNRsVAFq5jhemuQ32EAOXqsfIZlkvVxYNlzB4B9iYxRlCChaa5z7cPmTaQqNnEJvKLc5oOTQbTI","https://play-lh.googleusercontent.com/FBIkr3SQoit6j7u4cGbthZricQPZJ_GyjEvfFInjbRhXdFnlzC8vy2RUxTJdEL_J3sUTcmxc_pwhUUCUddRsMg","https://play-lh.googleusercontent.com/dCqvKk_LWRBLX4kwEULHvcaXPNtAZounkvGWQDNgSG2sY8YCTMy5eUdJHRqtIEqIHNNuKXl6SLLkq2i_1wvo"]`
+  - `com.filqgo.storysave` · object with 23 keys:
+    - `appId` · string · e.g. `"com.filqgo.storysave"`
+    - `title` · string · e.g. `"Story & Status Saver"`
+    - `summary` · string · e.g. `"Save Instagram stories, Facebook stories &amp; WhatsApp status to your…"`
+    - `description` · string · e.g. `"Story &amp; Status Saver lets you save Instagram stories, Facebook sto…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `1175`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"FliqGo Technologies"`
+    - `developerEmail` · string · e.g. `"usamaj2106@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 7, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 - $19.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/ff_odZH4chw6VLGF2_uOUVJfjrE2EVMq…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/RO0m7maY9uo9Y0-ONUdPZWsq3aVAr34M…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/PUB3zeq_paK11SczxK4wr-rx-c8kJnlucwXNdnum_ZgjVUC8tqiBl7WCzeyKhhD_mzUYHLODswKgiH8Vpo8R3A","https://play-lh.googleusercontent.com/Hy3UchKXLkxYaWr4jJS47LW3zNw4C9LdAim7ASLIeDdrywq3rbjQpqppLk2zRyYQ7EUfb6T2Yjy_yc6AQRC92g","https://play-lh.googleusercontent.com/Es64qUA_TpnY_V8JSiU1sLITJpxZbgJjgkZ2OZSWgySKSv5jObANYtvZr78VsJqZzFki7uDAy8jcunyyHSU0GHk","https://play-lh.googleusercontent.com/SLTSAls-snU3jDXq246GzA9KThLlD9fgQsOLffIwGi65sFHx0frRlNe34sGhQhUUrvOOR1SItV8-oGSOw_TJ5w"]`
+  - `videodownloader.instagram.videosaver` · object with 23 keys:
+    - `appId` · string · e.g. `"videodownloader.instagram.videosaver"`
+    - `title` · string · e.g. `"Video Downloader & Story Saver"`
+    - `summary` · string · e.g. `"Video downloader &amp; Story Saver to save stories and download videos…"`
+    - `description` · string · e.g. `"With Video Downloader &amp; Story downloader &amp; Story Saver for soc…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `19261935`
+    - `score` · number · e.g. `4.80525`
+    - `ratings` · number · e.g. `377984`
+    - `reviews` · number · e.g. `7332`
+    - `developer` · string · e.g. `"Video Downloader & Fast Saver"`
+    - `developerEmail` · string · e.g. `"support_ins@vidtak.net"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Mar 28, 2024"`
+    - `updated` · string · e.g. `"2026-08-26"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $8.99 per item"`
+    - `version` · string · e.g. `"1.5.33R"`
+    - `recentChanges` · string · e.g. `"- Fix errors."`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/wLtr4WqAcE6CWJkmK7sTpBds7m8rnv3V…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/YnHVhcTPX5dm8XVwrEbqgTISNXdkTNmJ…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/J6pkKwqFaZOljdiVyz4-AkJJ6D9m2qHVrJR2uSicX1DbSOTwKsM-bQlwU_J1p2m9uM6Vh0fmoA6iFsrYay-BBbc","https://play-lh.googleusercontent.com/cAaZ9N7-yf5_nECpM5RMMlWE0GqubpxAUqLtNkuadd9XK_vGOoCzngfXwq3FHkO1FEYDVPzwoNqjrw-7mSJRUJ8","https://play-lh.googleusercontent.com/9cu6wZIYGYKLxLcKHWudlwxYrnLUgnluyWtuxlTLYAoE8DC9vw4ZutHHbL5vGduY6KHu-c5x-4f3pkZHhaUo","https://play-lh.googleusercontent.com/TE7hWi__T-3ahcuFlL5LNf6jN81Y1U9LEuO2Dz1AkP7BVLiVHSDLf6ZBD2IvBakUiOKgxCgq7jNZnE3FoSyfpig"]`
+  - `radhe.krishna.video.status.krishnastatus` · object with 23 keys:
+    - `appId` · string · e.g. `"radhe.krishna.video.status.krishnastatus"`
+    - `title` · string · e.g. `"Krishna Video Status Radhe Kri"`
+    - `summary` · string · e.g. `"No #1 Indian App for Krishna Status Videos 2021 Radhe Krishna Bhakti V…"`
+    - `description` · string · e.g. `"Krishna Video status app serves a variety of short videos which is sui…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `499602`
+    - `score` · number · e.g. `4.5454545`
+    - `ratings` · number · e.g. `6451`
+    - `reviews` · number · e.g. `1`
+    - `developer` · string · e.g. `"Moral Pathway"`
+    - `developerEmail` · string · e.g. `"moral.pathway@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Mar 29, 2021"`
+    - `updated` · string · e.g. `"2022-07-07"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"4.0.0"`
+    - `recentChanges` · string · e.g. `"1000+ Krishna Status 🛕 <br>Updated Beautiful UI ❤️"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/uOKvFxO7obY-Up_dNntJKiyXo4y4YrN0…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/DfBuwpizZ9mlffvRdGQqevPLDBmLUY0L…"`
+    - `screenshots[]` · array of 2 string · e.g. `["https://play-lh.googleusercontent.com/p4WxYVYGa_UueNcmIBSj0uzjbFieBfvsp1moUcYvMr-2rMQDjLT1Uu_F3A-i6VOci23x9IOpFBW2uxZZCqcq","https://play-lh.googleusercontent.com/LztP-RQvYYIp2dDIX1bWv3LazRllD1xyB0US6ixPMQ9HzJ6qminVnjDYHYMGz725Anw852EjiWbOSukoQtTz"]`
+  - `com.gkmutai.wastatussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.gkmutai.wastatussaver"`
+    - `title` · string · e.g. `"StatusNest: Save & Repost"`
+    - `summary` · string · e.g. `"Save, view and repost statuses quickly with a clean privacy-friendly s…"`
+    - `description` · string · e.g. `"StatusNest: Save &amp; Repost helps you view, save and share statuses …"`
+    - `installsLabel` · string · e.g. `"10+"`
+    - `minInstalls` · number · e.g. `10`
+    - `realInstalls` · number · e.g. `24`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Afya Crumbs Africa"`
+    - `developerEmail` · string · e.g. `"afyacrumbsafrica@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Aug 18, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/vKP2cM3qVLUwAntRxeoTZqcZTHVKb5vU…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/H61FXam4MAVZwjgdHRfRF25DTwhhN2KL…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/2j0VDcpFMfLuhcrzSlhfdH8fImllqyu3MCoodYkrr69SgtrIxwl6wmJ1GgdsxppZSGYTA56AJs4bIEPNUB3N","https://play-lh.googleusercontent.com/gO-FwYbN_VqlfKqcacj4SN9p5ru1Za0FHfyrhyH9SIJpLU0SCv2WQBP6X3JjQjN4XZTFHwfSiyWe81Q9TStg9w","https://play-lh.googleusercontent.com/bE9zrOWcEMnFZHHEqtmIOfLgsoPZ0cFIkNmkGNxuZfnJbuQRBufOJN-XXmiL4pu5DJUZyYjrF6t7yvIjyEtk7A","https://play-lh.googleusercontent.com/kAFGOaO0-MkbsIgjO5QRtJ2ENN8OXhLXMuE4N8GhklJCQhUbYH8MA3oIrM6SRO-qjGlIf3wZAADGvLCCk32NCdc"]`
+  - `com.snapstatus.snapstatus2026` · object with 23 keys:
+    - `appId` · string · e.g. `"com.snapstatus.snapstatus2026"`
+    - `title` · string · e.g. `"Status Saver – Save & Repost"`
+    - `summary` · string · e.g. `"Status saver &amp; downloader: save photos/videos in HD, repost in one…"`
+    - `description` · string · e.g. `"Status Saver is a fast and powerful status saver, video downloader &am…"`
+    - `installsLabel` · string · e.g. `"500+"`
+    - `minInstalls` · number · e.g. `500`
+    - `realInstalls` · number · e.g. `913`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"SholoTech"`
+    - `developerEmail` · string · e.g. `"ompethani482@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 10, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/MAZmF4hC1S8rfm1MB7NW51lXH67IXWyr…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/ZAy-TESf9rEPGijQFRkCUzUDFh8si3Jh…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/d5RQvEuHjDtX0GASngIMWFPJ5Q6VuXBo98uH3y5CFGhU2jOCoF8GrjkSD7B-Jzty1erUFAy8aVmIp09XAfRv","https://play-lh.googleusercontent.com/w5t36IKbL8yzYp4ShKQWNKAeCPHGJZ3gglhxxRCGKzFT7Q3w2B9u8-vbdW36aQXAO-Y0vA7nOW3LOT_2A59GPg","https://play-lh.googleusercontent.com/9RDjjQgi2XvrPm5nzEk2QabkucbIppanllNjBNX7QaSAwXYczJQNostfp0dmSEHshsP7qpU8HNShpyuEJlnQ","https://play-lh.googleusercontent.com/oK8zri-0QKEHOgq6so3-VwKrnMFVZPdY2l5sJdYIRyUq1TCvqsJZ6JD_7fMT4QOyN_RNR4HISTBRw1Iz6NOQD64"]`
+  - `com.whatsapp` · object with 23 keys:
+    - `appId` · string · e.g. `"com.whatsapp"`
+    - `title` · string · e.g. `"WhatsApp Messenger"`
+    - `summary` · string · e.g. `"Simple. Reliable. Private."`
+    - `description` · string · e.g. `"WhatsApp from Meta is a FREE messaging and video calling app. It’s use…"`
+    - `installsLabel` · string · e.g. `"10,000,000,000+"`
+    - `minInstalls` · number · e.g. `10000000000`
+    - `realInstalls` · number · e.g. `12322703000`
+    - `score` · number · e.g. `4.6162596`
+    - `ratings` · number · e.g. `244217110`
+    - `reviews` · number · e.g. `1952284`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `developerEmail` · string · e.g. `"android@support.whatsapp.com"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Oct 18, 2010"`
+    - `updated` · string · e.g. `"2026-09-19"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.40 - $199.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · string · e.g. `"• You can now choose to share recent group history with new members wh…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Gqxk4T0uZsDwFp07DE-508hkyvcNmgFu…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/eLX_xvno2Kq_zvpkkP8yPBRfo2TEQSrv…"`
+    - `screenshots[]` · array of 9 string · e.g. `["https://play-lh.googleusercontent.com/GQF4h3VL-kklOrVS_f1QRAJJZa2zQyVNcFbKdOIkvI_Pcu1op0Sy3uiryiTxpdcCDs7vEDA9eq0eWbxo0fx_wc8","https://play-lh.googleusercontent.com/Q042rTbs53V_jW_c5fMqnNLCf-FBKiO2KiFKJJACa65oMCkaxqDSFKPQ7TH8nYetS-js-fMV7ptXSsF-aCkvcw","https://play-lh.googleusercontent.com/EefxorXU8H0etXPHJsq4Nao8Npj7FqVT_h5rumnUS9KvIN7i-3WRotwduyEGi1Zg33BFHcuYRjQ0i01I3zJS","https://play-lh.googleusercontent.com/ZXrWYqhvVeKjNeYwIfLWBcjTXSLG_MuRtvSJ3ve51Kbibq7FHIOJGN5OsyAv7Pj7Ks9D-kbzGQnrG7NR041bPw"]`
+  - `status.saver.karne.wala.app` · object with 23 keys:
+    - `appId` · string · e.g. `"status.saver.karne.wala.app"`
+    - `title` · string · e.g. `"Status save to gallery app"`
+    - `summary` · string · e.g. `"Easily save status to gallery one click. Also read and create text ima…"`
+    - `description` · string · e.g. `"Simple status saver app allows you to save status to gallery easily. O…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `4413`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"AppyBuzz"`
+    - `developerEmail` · string · e.g. `"rakhesh123@zohomail.in"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Feb 8, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/OMONBvzysiyZZr2Tc8et1T9oZ3gAHCjD…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Grr2KTl0DDaD2CQeGRuZEluDEc0XZBsd…"`
+    - `screenshots[]` · array of 12 string · e.g. `["https://play-lh.googleusercontent.com/UOSVtMUwc_TiiWSbKYQf9BUnEF2Nb8rOGg97OEvCTJTArxVYhLX5Hho_s3Wz6RIW2-69HJ7t6_hAmD9ZkfvwRQ","https://play-lh.googleusercontent.com/WJ14sW0cdQl-GPp3c9KTCIHJ7foLY0ZSvK0Yh-dpCMOFKU8DUH3JRAHuOu1UkGHl65gixoZc4hPTGcJJVXqI","https://play-lh.googleusercontent.com/0eThyXNn-s1fX4fK22gpzX_aZru6r8mUSMmJxiBS3ft3VnAd2EL4Sg2QFpsvgRb0BWJE2roHzdigdPyzxHkbpw","https://play-lh.googleusercontent.com/uvHYxfurODua7IDS7XuzL0z7rdK1BJWEO1SJpHU_v-Qw-1-OJYi4JkLAy1pEFzcMJ1y4zhAUlnMnZcDCatyCzQ"]`
+  - `com.xdcreatonz.allstatussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.xdcreatonz.allstatussaver"`
+    - `title` · string · e.g. `"All Status Saver App"`
+    - `summary` · string · e.g. `"Save status to your phone memory in a single click"`
+    - `description` · string · e.g. `"Save the status you loved from social media apps<br><br>You can save v…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `314`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"XD Creatonz"`
+    - `developerEmail` · string · e.g. `"xdcreatonz@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/E6KTRI2J48_m3hCP3fLxqW3t8m2YbZz4…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/WU5Z6W9e9AqXRuZsTH3-kQlIg89z7PSp…"`
+    - `screenshots[]` · array of 20 string · e.g. `["https://play-lh.googleusercontent.com/sdncLUFM0EIjJxysxzlyUMvAZx_ojT36f5jvBovdqr6vNB3ZI6FjwkLRXy2IrNBS62As4gmEpPKtpm7Ez70uSQ","https://play-lh.googleusercontent.com/sxkF-LhEW_LcwU5wvIfHtWrjOhOu_vbE9EWKWE-slKUPRYI6xkFjzpWDb0VB_gEIbm8E9uTVHboqKyW9126kkQ","https://play-lh.googleusercontent.com/H32SGSU--ggMZ3pb2BdTp_U6U5tqoI6iGy0YD5W8oZ6jkERoowVX36SHYrNZHIcfYUmKuFklT3yefkZEATlOfjg","https://play-lh.googleusercontent.com/7tkD3sAf5wt5v6rhzyR60A2c7e97V79uUnGPjrWuyaD30dhoNUa3ZoCydP-Jdp7HUHFOjXJdhn-k_2UOEmEK"]`
+  - `ventures.bench.repost` · object with 2 keys:
+    - `appId` · string · e.g. `"ventures.bench.repost"`
+    - `missing` · boolean · e.g. `true`
+  - `com.arkdev.fbstorysaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.arkdev.fbstorysaver"`
+    - `title` · string · e.g. `"Stories Saver - Video Download"`
+    - `summary` · string · e.g. `"Stories Saver - Download and Share Stories &amp; Videos"`
+    - `description` · string · e.g. `"Easily download and share stories and videos from your favorite social…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `770415`
+    - `score` · number · e.g. `4.53`
+    - `ratings` · number · e.g. `15947`
+    - `reviews` · number · e.g. `60`
+    - `developer` · string · e.g. `"ARK Dev"`
+    - `developerEmail` · string · e.g. `"arkdev.app@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 6, 2021"`
+    - `updated` · string · e.g. `"2026-09-22"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.79 - $5.99 per item"`
+    - `version` · string · e.g. `"7.4"`
+    - `recentChanges` · string · e.g. `"~Added Notification Toggle Options "`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/CdK40auklLS1nPsOXPOoUzAhGtHTj7vH…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/zXUeZI0Y7l89g_npvBpXEVgbUCYcuWLX…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/SOIEjRQYk82n5iV0BQexXoLpAJfIEKN301j6jyMLOfoUKKS2xd3x0p6qr8UNa68gW0-Wz3rr2OvGea7O5gDcDw","https://play-lh.googleusercontent.com/gIz9_4HsqKf5IVoz-AZaI7V9ShtUFnrhJ-7lRVHAqZ3QUVIL7v5Xu6f3o87QhUt6tx5dI3OGLN6ky6Iey6771Uw","https://play-lh.googleusercontent.com/-5yoMq0cgDbvXuc6EV2tviz8YUCsYN4t_cRIlqo5jY9aRGMG9RQoGdzGWdithoRcDbrZB07C3X-Rbfe-rfnR3Ig","https://play-lh.googleusercontent.com/rr2oRdBXagbWd-gZcYXDIkFrwmx4Mbwzq5b8gNTzmdVwvZIC9ACpb33g0oGNHvU56Ua68-1BWryQ5HdMXPua9mg"]`
+  - `com.falnesc.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `summary` · string · e.g. `"Simple and intuitive Status Saver app. Save favorite status updates - …"`
+    - `description` · string · e.g. `"Status Saver - Status Downloader lets you download statuses instantly.…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `18297218`
+    - `score` · number · e.g. `4.79602`
+    - `ratings` · number · e.g. `225685`
+    - `reviews` · number · e.g. `244`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `developerEmail` · string · e.g. `"support.statussavermax@repairbatterylife.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jun 10, 2022"`
+    - `updated` · string · e.g. `"2026-06-08"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $99.99 per item"`
+    - `version` · string · e.g. `"17.2.4"`
+    - `recentChanges` · string · e.g. `"This update brings improvement over speed and stability.<br>- Bug-fixe…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/daOSXAMkBGd9j7Alul3jN2wK_7moIurp…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/hvwoXmOKg5AKA61HPPBVomBfr2nijCDJ…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/Hdgwd6XOMkRQhXeKVAlAL0nqmj6WZ93qTCDsVkdrBHBkEptmVsqzl3NI_Ms_0JiWvRYbTVixNTVFHXT58kBZsQ","https://play-lh.googleusercontent.com/UHhRdaWW-mSSgSRj8rBJnbVPi97st-mpEirWIHCKPCbEVns7lZtY9Ql8CxgIzHo_PS8hV1WkR4mD-NVerh_om18","https://play-lh.googleusercontent.com/vRBrhr9jOWlTnfSuq9K51jSdfVwBlWtsi-tpEbYRha5y8qL5JDAbv53DCBHpsuEdIVTZ4r6PaesOrJeT9PyChQ","https://play-lh.googleusercontent.com/r1CR6TqwXVjVDl2K7-FRIDmb7tjnymaWXPf9ot5-2K8Q_dSsJSVytAHdtoqs_qU_-i826efvnvbIOMYhdoW8WA"]`
+  - `com.medianest.mobile` · object with 23 keys:
+    - `appId` · string · e.g. `"com.medianest.mobile"`
+    - `title` · string · e.g. `"Status Saver & Story Download"`
+    - `summary` · string · e.g. `"Never miss a WhatsApp status. Save photos &amp; videos instantly to yo…"`
+    - `description` · string · e.g. `"The easiest way to save WhatsApp status photos and videos on Android. …"`
+    - `installsLabel` · string · e.g. `"500+"`
+    - `minInstalls` · number · e.g. `500`
+    - `realInstalls` · number · e.g. `601`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Hiren Paghadal"`
+    - `developerEmail` · string · e.g. `"contact@hirenpaghadal.in"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Apr 17, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/j8Izj-niF89QrDuop7JIPWRY8xgtun8k…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/CHW4RGO_L_A22K03PXnpdPOWer6xhJN6…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/VL7KXUjYqD56X2zLrHQxyAc5Zz-vy-MsGFgxijXDEVHrAYiH0XiB-Nf7tfG8tUX3ZVl2RpOcL-lAMaW4gtiE","https://play-lh.googleusercontent.com/ZXHl_gGIH1C3XfTLw35-qnD9giRzpmtJd-wqJ1S1xRGTvltfVKM1NXWRh4nyNMTqsLLKE3NczG-vK66-0AkxAA","https://play-lh.googleusercontent.com/f_hlcJIYUdAT6W7msJLkYdb_Lfh3BnCEgfu4v1Jepjf_dsf1K0N6_XjDan5LB532Wgs3RimguTv4EDFlTbwnOw","https://play-lh.googleusercontent.com/N36NXHjT_LY4Om10JuMVrxs8pHrShoAOLb9Qrx6oLJBv-D2-3SxFY_XcTe6SQOyUJ0M2sXjfyDyhCSnbTK0A"]`
+  - `com.mercatustechnologies.staterbros` · object with 23 keys:
+    - `appId` · string · e.g. `"com.mercatustechnologies.staterbros"`
+    - `title` · string · e.g. `"Stater Bros. Markets"`
+    - `summary` · string · e.g. `"Fresh Groceries &amp; More"`
+    - `description` · string · e.g. `"Stater Bros. Markets. Fresh. Affordable. Community First.<br>The State…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `337447`
+    - `score` · number · e.g. `3.9562683`
+    - `ratings` · number · e.g. `3390`
+    - `reviews` · number · e.g. `501`
+    - `developer` · string · e.g. `"Stater Bros. Markets"`
+    - `developerEmail` · string · e.g. `"customersupport@staterbros.com"`
+    - `genre` · string · e.g. `"Shopping"`
+    - `released` · string · e.g. `"Oct 11, 2022"`
+    - `updated` · string · e.g. `"2026-09-10"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"3.0.24"`
+    - `recentChanges` · string · e.g. `"Bug fixes and performance improvements"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/P24nnEFWjGbJfgU2hDz0Wl59akb9q03k…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/BpfVKOCJoRJwnpsMYI_J9PwTu0uu87SG…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/H9Q_KHCtiAYWKfvXM6BC3TwYsO8SVLpZHHwwOIiA-ZIG7cs64HrN1OSv3uLTsWMi7Bwm4o82QB7QwAmnAGbiVb8","https://play-lh.googleusercontent.com/zpYzlIlfSl1VZwUub9NAGv5lbAC7LqLwd1dK21TiwlWGQjoHLldBVaFJEKrZuY29-QPrNYXeZfaf0P4quFCLlw","https://play-lh.googleusercontent.com/h1TI8DH6xWBYf-YrcAqFlyae1IT10ujC2hJB8GoF4O5jooTC_UsL5KUIcwxONQ43s-R9yKqOj8_oNBOqk5UHF4k","https://play-lh.googleusercontent.com/66BisJ5C0KCZi7wtZ9nK32ppdjNIWa4E7E8MV_q_pXDaRlHlYJX3SeTJXHKDDuctSQV8l_EatJ0ZIKCI88HLHg"]`
+  - `com.falcon.whatscan` · object with 23 keys:
+    - `appId` · string · e.g. `"com.falcon.whatscan"`
+    - `title` · string · e.g. `"Status Saver & Repost for WA"`
+    - `summary` · string · e.g. `"Save HD status &amp; repost stories in 1 tap. Best tool for WA and Bus…"`
+    - `description` · string · e.g. `"Status Saver: Save for WA<br><br>Stop missing out on your friends&#39;…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `228`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Falcon Tech Lab"`
+    - `developerEmail` · string · e.g. `"falcontechlab@gmail.com"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Mar 29, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/-1MJQLlj6cmAy0LwyA6vPfh4DKD91Pnv…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Qe5erTX6fm015i2DCk87zkSj9foP5gEp…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/dhCjj42pJeNM7X08OTaQGQDYwkN2Qn-gsUQhUtyRH67uhR9SJ246v1IdfPVQGz_cohOI7gJXgpBhtwwulYE5Cg","https://play-lh.googleusercontent.com/HN6jnIAsd-itNQSt9fQsn7IcoIrw9OSu_0-YQ_ETnAf6YIQFc3NcRVUPFSdn9N955bZqDSYe3zmTQDp3aqAk","https://play-lh.googleusercontent.com/bE_YrWuU_TLTsMtST9IHoiaAVXdl5d16ohAmcndmvvgVbDPAxwU1uzHzkIuzbqN5Q6pqUWmr6plD_JaWR2Q176w","https://play-lh.googleusercontent.com/nUaDRyONs0Z2KPqEHkU4new8RYXAKIeD9xokByXZwqND-ZWlpEUMZwgu6g8BGWVFANQ-9JO4BnEqSmU1TJWbpFU"]`
+  - `com.mariaxcodexpert.whatsdownloadplus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.mariaxcodexpert.whatsdownloadplus"`
+    - `title` · string · e.g. `"Story Saver for Whatsapp"`
+    - `summary` · string · e.g. `"Story Saver for WhatsApp - Download Status Videos &amp; Photos in HD Q…"`
+    - `description` · string · e.g. `"📥 Story Saver for WhatsApp – Download &amp; Save Status Videos, Photo…"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `minInstalls` · number · e.g. `5000`
+    - `realInstalls` · number · e.g. `5646`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"mariaxcode"`
+    - `developerEmail` · string · e.g. `"mariaadeeb982@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 15, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$1.49 - $6.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/J1xv9647zVb8d9CUNfqmUSYb3BqpVGLt…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/_CS518FbVOt69hJKp1zVOqoa4TAil67z…"`
+    - `screenshots[]` · array of 20 string · e.g. `["https://play-lh.googleusercontent.com/j7O_QGzozNXyvps6sOCtexp7HIhJYj7orBvqAplb8GGC8xs3wUE13DECI4KfxZru__ZAEAzT11W1R5_HfN-b","https://play-lh.googleusercontent.com/3aNAQi6Ntg_m9AhCs-9zcP3jlofXCTzXRtPTTg5cZqm5ONDkHK2PTqFX62qCly0QyGLIHKuVjDscgk-xr2Djag","https://play-lh.googleusercontent.com/e2_P2eU1SeGltFfHw6EJkXFGGpebiNWWRtKbJFuhoOuY36cadPsJPFDWQG2FVDSiplYUzBi2cnP2gSaFu9wu7A","https://play-lh.googleusercontent.com/IFDMi_9eGTS0_C6Bu0k5Rf8wB6ytschgu3dgiOARZE24wK2NhdKCjbGKISKR-LCRs7CAKZ4nWjx15b8Tiim4"]`
+  - `com.statussaver.inaxiod.inc` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statussaver.inaxiod.inc"`
+    - `title` · string · e.g. `"Status Save - Download Status"`
+    - `summary` · string · e.g. `"Status Saver for WhatsApp &amp; WA Business – Download videos &amp; ph…"`
+    - `description` · string · e.g. `"Looking for a fast, simple, and reliable way to save status updates fr…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `71188`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Video Downloader & Photo Saver App"`
+    - `developerEmail` · string · e.g. `"fastars999@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 10, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.00 - $19.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Cx9UGZSq-JVPGu4lDycf7SGmNs8K5XPC…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/EVrjzt_lGRK9J23dPzX2AHAGeO2IH8Iw…"`
+    - `screenshots[]` · array of 10 string · e.g. `["https://play-lh.googleusercontent.com/0W7NQAo_KmvTgHu8Y_q8itcqgRI3KZm1Gam1zuRxNmGB2nX3vqcWV8q1KPVOYhx2VzkQ1FtW2vK9fSVKEWifXQ","https://play-lh.googleusercontent.com/99qPdKq7YvR1FkJ7ZF_uk6UwwMXGbNo4DYJgI_7oOM9tteZl5TAVIv6S31rwZ0eVqaQB2GoPpAGXfMZj0HOEaQ","https://play-lh.googleusercontent.com/5czwKA7j-HWujjouLoUEDuTsHgf_UXf-QuM5bEM-RT_lzpmkega6w-8cYzHhAe4SWGebnReZdBXdZS7ajqiR","https://play-lh.googleusercontent.com/xK4TEwc6G96Eyt0Sr8que8UGyVPZ0t2xFmX-9TOXjxP_Y0m_pGF-lRVoTyb4GvQ_WzwZp3aPCFTANgTHudRZ"]`
+  - `com.magic.whatsapp.status.saver.download` · object with 23 keys:
+    - `appId` · string · e.g. `"com.magic.whatsapp.status.saver.download"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `summary` · string · e.g. `"Use the magic Status Saver App to download status and save video forev…"`
+    - `description` · string · e.g. `"Want to download status videos and photos posted?<br>😏Well, this Stat…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `24342377`
+    - `score` · number · e.g. `4.509554`
+    - `ratings` · number · e.g. `156578`
+    - `reviews` · number · e.g. `460`
+    - `developer` · string · e.g. `"Magic Mobile Studio"`
+    - `developerEmail` · string · e.g. `"LiveCallapps@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 2, 2019"`
+    - `updated` · string · e.g. `"2026-07-03"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.99 - $29.99 per item"`
+    - `version` · string · e.g. `"2.17.3"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/3kI1_O493eCvDZHaEoYHt_UdaaH_3_H_…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Nv1Agh_bE46jQYTpb00p11MS5qA1clY8…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/Ld-rG_YZfls6TjhtnNO7hKggoA1_PnfemN6QXJFF8a2dzjG5qy7_wtyNvNBPLavBGhx5G1FvtKGM4L7qgdPBsg","https://play-lh.googleusercontent.com/qA2d0ngvgC9bDgcqm5bErPU4pwwPMHkh-WA9Ew6J7OFC1qL9J9Dc7jj23caDcGP3FUQauf6kJL9icvQYgruLQcQ","https://play-lh.googleusercontent.com/ruBPHExJdNZ3f3hxJOrmh-Q2Vu1xQqt8GzJN_YxeUsc7gRfg8u2x6VCXNfmGCOcq5YUUOUAu0e_3-odvjE8nuw","https://play-lh.googleusercontent.com/3axGnr_NHR1iDQ0GR7S6ZXnsoKsuHNVW8VbjehlTZJHlJiryCAvhV8nkN49gciiBOxfn9giImPU9Ih65HvdYCA"]`
+  - `stickermaker.statussaver.recovermessages` · object with 23 keys:
+    - `appId` · string · e.g. `"stickermaker.statussaver.recovermessages"`
+    - `title` · string · e.g. `"Sticker Maker & Status Saver"`
+    - `summary` · string · e.g. `"Create stickers, save WA status, recover messages &amp; start direct c…"`
+    - `description` · string · e.g. `"Looking to turn your favorite images into fun and creative WA stickers…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `21876`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"JMD SOL"`
+    - `developerEmail` · string · e.g. `"infostickermaker@jilanhaleb.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"Aug 27, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/qb3Tvoa0VrEi5bp-zZvHfAXnk_SgMr1I…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/ne3_k6RCTbrAIerfA55veig_Q1MxGy5A…"`
+    - `screenshots[]` · array of 12 string · e.g. `["https://play-lh.googleusercontent.com/hLahqralDNS3tsWiUmbOHWyebbvb3KkZldZOZz7BhOK--1Gc8TjsVS1rJnkjRNYR3nKEzxaREA6Oe1Yyr5Qi","https://play-lh.googleusercontent.com/DOFr5qQjp7efmPCNoejJfBBaZGdFOYcRzGMzwrcxP0DLDvhvBlSsfeLx_n3LKzC8OAwfT004oZ5v0n28zGBsfQ","https://play-lh.googleusercontent.com/BKIPnaIiPYrRFxAi0T4eSeLkIvFynovQhEBYBRIOmfejmPaHC-zMOoGyLrWvnZilXZi46PiAIpxpI0NrkMK6Jw","https://play-lh.googleusercontent.com/4E8i2JzbSh5agaH72JYi--kVVBGdG4Th3X5mZjL6-FBykGWlIYze0yc9eOfvOZ4rSEpvGJZmtwgrF0DRHDcc"]`
+  - `com.chucklefish.stardewvalley` · object with 23 keys:
+    - `appId` · string · e.g. `"com.chucklefish.stardewvalley"`
+    - `title` · string · e.g. `"Stardew Valley"`
+    - `summary` · string · e.g. `"The smash hit farming RPG now on mobile!"`
+    - `description` · string · e.g. `"Stardew Valley comes to Mobile!<br><br>Move to the countryside, and cu…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `7126769`
+    - `score` · number · e.g. `4.6064925`
+    - `ratings` · number · e.g. `202560`
+    - `reviews` · number · e.g. `14553`
+    - `developer` · string · e.g. `"ConcernedApe"`
+    - `developerEmail` · string · e.g. `"contact@stardewvalley.net"`
+    - `genre` · string · e.g. `"Role Playing"`
+    - `released` · string · e.g. `"Mar 13, 2019"`
+    - `updated` · string · e.g. `"2026-06-26"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.6.15.3"`
+    - `recentChanges` · string · e.g. `"-Various bug fixes for the 1.6 update."`
+    - `contentRating` · string · e.g. `"Everyone 10+"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/RwIUSwgsFOjwoKAdwCgpajGa6DrS44mu…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/kmLgNVicisTgSP1AyqU8oCx_6zsPytVR…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/FhPkR3KKfOithM43kYq-F4g-Sv5HdeCW50jl-pfgWse13KrUHlbeOi2w3QYomd62eJlJLaC88VHrpNVy76eUGg","https://play-lh.googleusercontent.com/8JzJzjdNq0QEgNyJrdATBhNQEooZZ3MvImEO3unMFzf__ZbtsQToSE7EXrQF_JaEtZvCQCiH_YdeYr6XaEI7IA","https://play-lh.googleusercontent.com/IQ_Hl_ey6ikDi6ybM9U2zCL-EsN88z96ZrpveyH4sjfxhpvRHYUxI_sbsnSf8RBg9Y5u7868SgM1z1KCH9EPdxc","https://play-lh.googleusercontent.com/hYRuHXAmqeo-73Kr_7RPds-tHpPuGKYgYsWrjRmn-ctJrLfdhSdzBolyoM5xPH27NcezXPbCFSy6ZHvXf0d7jA"]`
+  - `vivabit.status.saver` · object with 23 keys:
+    - `appId` · string · e.g. `"vivabit.status.saver"`
+    - `title` · string · e.g. `"Save Status - Download Status"`
+    - `summary` · string · e.g. `"Save, share and re-post status videos and photos"`
+    - `description` · string · e.g. `"Saving your friends status videos and photos to your phone couldn&#39;…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `234921`
+    - `score` · number · e.g. `4.3`
+    - `ratings` · number · e.g. `1619`
+    - `reviews` · number · e.g. `6`
+    - `developer` · string · e.g. `"VivaBit Studio"`
+    - `developerEmail` · string · e.g. `"vivabit2@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 1, 2021"`
+    - `updated` · string · e.g. `"2026-05-28"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 - $4.49 per item"`
+    - `version` · string · e.g. `"3.0.3"`
+    - `recentChanges` · string · e.g. `"- New UI design<br>- Performance improvement"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/aAYte9Srw_E3JGaZQNAEu6579tr7QMEM…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/nmfzm7XiAKH_DfGjOS3A9jC_WeJDZc_Q…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/ZP1DCpd9MFca-uSM3oq5JvWdOCICfMiWvPtoRRMvYKKUpvuRvO-EU5Xzdw98mNq5cHWSIdx1i1zrbYfsSBwYWA","https://play-lh.googleusercontent.com/FTvPFUMSLf-zvynNhB8fVHQv8cjP2Fqls5UJytY7FulbeU7x5dWLST3-NFuXdmuv744OtYUuq9FsB8FS_oab","https://play-lh.googleusercontent.com/FSzWOTLHYeR83Xivu-wRJvwdOhwIAa5o5wmdI39rbpo6SYLcBfHGMLhOtvemQ0AqvsrYJz3zfl-VYiQzJv2q9Q","https://play-lh.googleusercontent.com/HPJdLnKMVa4KLknq9UHhS5QJf2UdbQT4D4Vaj4PDChqyRvgs1wz-x0OrdoZPTLQuaj9WkYOvQ4_PbXIhn5aT_wg"]`
+  - `com.status.statusdownload` · object with 23 keys:
+    - `appId` · string · e.g. `"com.status.statusdownload"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `summary` · string · e.g. `"Status Saver for WhatsApp. Download images, videos from Status and Sha…"`
+    - `description` · string · e.g. `"Status Saver app let you download photo images, GIF, Video of new stat…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `1161125`
+    - `score` · number · e.g. `4.4375`
+    - `ratings` · number · e.g. `2132`
+    - `reviews` · number · e.g. `4`
+    - `developer` · string · e.g. `"Sanatan App"`
+    - `developerEmail` · string · e.g. `"akashchaudharymax@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"May 2, 2020"`
+    - `updated` · string · e.g. `"2024-12-01"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"3.0"`
+    - `recentChanges` · string · e.g. `"• Bug Fixes"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/w-9uvnZvOW6mndh06HT0vAdbMeUd20BA…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/huHWFYtsDm0wtlMR05XKGW5nLprCS5jz…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/Cz5H1cCZ-FCtBzcVcXtHx1XVzKQ7MnS3PbU5-6ZxxayFkyErsj2pTc314Rv0XxPd0KLczsbE23AeWzlVnmaM","https://play-lh.googleusercontent.com/IMh9yearjj9w0q6AB6feat3sHM9Cvyc3uBvOMFzO8U_fh0uW76_L8da0g_SBkcPE4UXqXKcv1vWG3vKraXVQ","https://play-lh.googleusercontent.com/p9yPVIOZcLJDd7tdmA19aW4d287Z2Ekomt-Ha9tRb-GgF399EKKZKgOXIuy23m_QAdCiFk_cJ3WRBJ43BKcaPw","https://play-lh.googleusercontent.com/2NjrUl-uiFwMeRL6Myz33X2ojHbzLNoO1XDjGfUD_gFe66SYrQ0qB6DlBIOQsrwFg1F0gU-Ruu7LyZRKkEi5PQ"]`
+  - `com.hooyee.downloaderinstag.photo.video.stories.saver.new` · object with 2 keys:
+    - `appId` · string · e.g. `"com.hooyee.downloaderinstag.photo.video.stories.saver.new"`
+    - `missing` · boolean · e.g. `true`
+  - `com.StatusSticker.Saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.StatusSticker.Saver"`
+    - `title` · string · e.g. `"Status Saver For WA & Business"`
+    - `summary` · string · e.g. `"Save &amp; Download WhatsApp Status Videos, Photos &amp; Stories. Supp…"`
+    - `description` · string · e.g. `"Looking for the best Status Saver for WhatsApp? 🌟<br>Easily download …"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `17556`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Status Saver Team"`
+    - `developerEmail` · string · e.g. `"saverdownloadstatus@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"May 24, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/7kL7iWe2bu26rKT99iDKmJLbl0ka1nvD…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/0Xln-nfZKSwuhROTd_GhpYDXPcrRJmyR…"`
+    - `screenshots[]` · array of 16 string · e.g. `["https://play-lh.googleusercontent.com/0Xln-nfZKSwuhROTd_GhpYDXPcrRJmyRCE1XSApcXQkN46tp52FkNXApNh_1ngEDxELw5U-_SZ3ziE-t5lqxhw","https://play-lh.googleusercontent.com/swF5-ba4XX6duwG2zzTBuLQPde3z-7anBCYVj97N4aaz_jxmtSilEfKGFMYMXmRyzXc58fn_6FUjhxQqsBQLSg","https://play-lh.googleusercontent.com/wsEe4uPwuGqF45rJx_yKOIO3e4Ap3rmVCONUQsYVO666A0vTejX8lhDRLgxhz9zV_68A5jJ6ROIZhFlM6Lvq4g","https://play-lh.googleusercontent.com/AnTXj7r42cUPehX1WRDM1ltQcwH34yDK2olIoV7H3Zg6vp-8ZpwiYqIxArWCUbkGABBhumoSq023BWJVCyZZ"]`
+  - `com.studio.zm.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.studio.zm.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `summary` · string · e.g. `"Status Saver with Downloader. Easily download, save &amp; share any st…"`
+    - `description` · string · e.g. `"HOW TO USE…?<br>✓ Check your desired statuses.<br>✓ Go back to the Sta…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `6862909`
+    - `score` · number · e.g. `4.57`
+    - `ratings` · number · e.g. `28599`
+    - `reviews` · number · e.g. `68`
+    - `developer` · string · e.g. `"Status Saver Sol"`
+    - `developerEmail` · string · e.g. `"developerzsoul@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Sep 16, 2019"`
+    - `updated` · string · e.g. `"2026-01-28"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"2.6.4"`
+    - `recentChanges` · string · e.g. `"Added 7 days Status backup feature.<br>Fixed Minor Bugs.<br>Problem So…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/ji3DsPwqM2FZJxUmcXnj-9Q_j9dv534J…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/-CZ3-Wzts-tiw3ar9HmL7ayrTuHiEbPo…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/JcMOsQkce2dxUxi1gsPNrPo4bG12NoEzX9xpI_U_IXprCKCEsDu9PGYTCTxXAryfb9jaVx46qBKak2wvGmQX","https://play-lh.googleusercontent.com/etPl2Tz88A0Yn1lWS-aG-hvbMkt9vfKU5el6BsJD6v9NAWVc0QNyzYzhNFV124RM-uDVz4vPiDZNqqvMYwKJaw","https://play-lh.googleusercontent.com/xTt_Bs2AxBYZKNIwfefCM-seZ4Sg-JDZknHVd4UNNvxMNKa2WhBiXfJ0jBC_vo7c9Mugwoz-z9yNx1sRxOxzqqI","https://play-lh.googleusercontent.com/zH7LB7kRLsbpKKlwTjyvVuG0VEmiSC9Cpw8nNONWKvya_xZn2HETwzyWTKcdeev-kmB9f3WC2oJSTcjKintBTF8"]`
+  - `statussaver.statusdownloader.downloadstatus.savestatus` · object with 23 keys:
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.savestatus"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `summary` · string · e.g. `"Tap, save &amp; share all status. Video status saver app."`
+    - `description` · string · e.g. `"Do you love to download status videos? Have you ever wanted to downloa…"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `minInstalls` · number · e.g. `50000000`
+    - `realInstalls` · number · e.g. `69685232`
+    - `score` · number · e.g. `4.7657895`
+    - `ratings` · number · e.g. `205392`
+    - `reviews` · number · e.g. `937`
+    - `developer` · string · e.g. `"BlueLine. Tech"`
+    - `developerEmail` · string · e.g. `"inshorestudio@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Feb 15, 2021"`
+    - `updated` · string · e.g. `"2026-08-28"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$9.99 - $29.99 per item"`
+    - `version` · string · e.g. `"4.6.6"`
+    - `recentChanges` · string · e.g. `"✔ Save status for WhatsApp, WA Business, Dual app.<br>✔ Share, repost …"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/FA3OT01qNNvSQ2GlCCJ-s_A5ox6Jf0gZ…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/7bO8NqY4ipxP51efvRUL7r9JGKns487a…"`
+    - `screenshots[]` · array of 20 string · e.g. `["https://play-lh.googleusercontent.com/CsPFJzDHelIq2vAL3q3ZuT3jqeLuwv24ek8tdBDlypEL_r3PMmOdqMo7EsaqguI2sW2sz10DtOXVkc688C75YQ","https://play-lh.googleusercontent.com/xCJZ7Gzm21Meq_9nsbHPjYJrla-M5TKb3LZAlKKRklYtAyMXD1EVDKDZkP5LcGhZN3x9-ZT8YTwKi7y0XhYZhOQ","https://play-lh.googleusercontent.com/rwZI2XkIfrVuqxZC6aTQhQ8-zB3wQ7dC0eQUgMly2yAmCUZjABx1j9JWhw7Hhi1FVFA4tLNo9pfthIS26_Uu","https://play-lh.googleusercontent.com/AjVEm--mOaur-VkupZlSfdcSKDrK53jRq1rQz7e0-tGorvFxdBZUM0GcL5NS6vMZlqSHAY6DVaPWJD_iQyc9Bh0"]`
+  - `status.save.video.repost.downloader.saver.download.fastsave` · object with 23 keys:
+    - `appId` · string · e.g. `"status.save.video.repost.downloader.saver.download.fastsave"`
+    - `title` · string · e.g. `"Video Downloader, Status-Saver"`
+    - `summary` · string · e.g. `"Status-Saver, Video Downloader, Status Downloader, Repost, Save Status…"`
+    - `description` · string · e.g. `"When you want to save video, save status or download status, picture f…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `12264779`
+    - `score` · number · e.g. `4.6292133`
+    - `ratings` · number · e.g. `23185`
+    - `reviews` · number · e.g. `20`
+    - `developer` · string · e.g. `"Likeme Tech Studio"`
+    - `developerEmail` · string · e.g. `"likeme.techstudio@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Oct 31, 2024"`
+    - `updated` · string · e.g. `"2026-07-10"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $19.99 per item"`
+    - `version` · string · e.g. `"1.5.4"`
+    - `recentChanges` · string · e.g. `"Performance improvements for Status-Saver, Video Downloader  <br>Enhan…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/i2zig3Jk8-1l-rrasXlP3UBP6BJJACfr…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Y4sa4SJaGG9jvXmuQSt_41bjxCc5flHF…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/DKBsskTrCUXIsJFtZcHMLeiICFF-oXt6qeoY9ySia5uvJ8r1mqJr15mciQ5ISu50yPq2sZoxfImPAqwNIHQ18qU","https://play-lh.googleusercontent.com/3AW5JCVXHusg1FH8OHoxIviEmcvh02NZbasKDXQmJ3LD-_gagRwiYQjJXM2kNDDPcQiNvrdDEFG4vcBir1DkrA","https://play-lh.googleusercontent.com/vrhozJPClBkEsKnDe_306IQ-pRa192zdjRaK_mNLpCtO13bahr2upfrPklyO92L-JiF_n3cYphF1i6rS2nSF","https://play-lh.googleusercontent.com/v3O7WPm-vXJp0lO5T8-ws39REcWV5MMDPU3X0KJBiqnmobhvLFlxvnR_LRNcLdafQWv7d-Sn_oGEtMsGgsOBbzM"]`
+  - `com.bytecode.wappstatussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.bytecode.wappstatussaver"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `summary` · string · e.g. `"Save status videos and photos, repost, share, and chat without saving …"`
+    - `description` · string · e.g. `"Status Saver helps you save viewed status photos and videos in a simpl…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `421143`
+    - `score` · number · e.g. `3.8`
+    - `ratings` · number · e.g. `1409`
+    - `reviews` · number · e.g. `2`
+    - `developer` · string · e.g. `"ByteCode Apps"`
+    - `developerEmail` · string · e.g. `"bytecodecircle@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Jun 10, 2020"`
+    - `updated` · string · e.g. `"2026-08-16"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.49 per item"`
+    - `version` · string · e.g. `"3.1"`
+    - `recentChanges` · string · e.g. `"What’s new in version 3.1<br><br>Added support for English, Hindi, Bra…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Frbh-ECoDnr1QKDyZ8nVPnxonAS7-cIr…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/f4apu6zebjyIDZ7oAtUGj7w6kjO9sMBr…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/Ht0YjKrKdl28idfoA6pE1fD6Zg9w5zPfwk4V04WA-2i8C0n2nPpy5hXyT5WwUlO1u63e-liEZ5fc6n-xEZrP7w","https://play-lh.googleusercontent.com/wABrbIxKcltWpzpSMoDPBy707rBYddyBK83YslnAFlGdS_6yVMJivmf_dUzbU6_6BvX3g0QEbjptwm2TC6Oc","https://play-lh.googleusercontent.com/1yQRZ4j2wuTAuw1_GyKg9PR7sNRFJwc_CVuWJ5W2M81NDaoSRnJ-ZXlWce2DynZCJ3novwQ6v97_nwT_7hac","https://play-lh.googleusercontent.com/kCrQJMxm8khh2Ttjc83VImACW1VXtaWkYo7Rv9_lLYYOhphkVdJ-m8s1yzp14F0-ahRvAoiEyZ0KSzU4B3XSKw"]`
+  - `com.aereus.whatsticker` · object with 23 keys:
+    - `appId` · string · e.g. `"com.aereus.whatsticker"`
+    - `title` · string · e.g. `"Whatsticker - Sticker Maker"`
+    - `summary` · string · e.g. `"Sticker Creator for Whatsapp, iMessage and Telegram. Make custom stick…"`
+    - `description` · string · e.g. `"Welcome to WhatSticker - Sticker Maker, your go-to social network for …"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `2055484`
+    - `score` · number · e.g. `4.55`
+    - `ratings` · number · e.g. `33662`
+    - `reviews` · number · e.g. `97`
+    - `developer` · string · e.g. `"Whatsticker"`
+    - `developerEmail` · string · e.g. `"help@whatsticker.app"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Sep 13, 2023"`
+    - `updated` · string · e.g. `"2025-10-14"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$3.99 - $39.99 per item"`
+    - `version` · string · e.g. `"2.21"`
+    - `recentChanges` · string · e.g. `"• Bug fix 🐞"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/CzF__LF6_1yYSIK6lbPu8TWJfOO6fCOG…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/sdOw_nS_0bR_WERaHqeQmxrdR8d9Z2Xb…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/S_6ym4gO0OGvJC_W-KeFp-JSORswvE1UyPxT0MGOx4vX9ER8krDa9_IxRH_RABO1_rgUxfBfrgs1e30sWfkK","https://play-lh.googleusercontent.com/Znkmew_DcEn6acbMlSYiaY-GONyXUxWgWAtNqY-PO59fDrNzP6EnFjOC7DQW9zoomdaYh_CAqp2vgGriCQbc","https://play-lh.googleusercontent.com/5vA5L3mNJoMZN3qGna1vke_bdBzVnxc8eyI4rDY1t1UF9sVixwRGxsbjv2wXa9DsXwQXLlN0LNTIVJpekttJAw","https://play-lh.googleusercontent.com/I9CqbeyqvdwBMVFG4G1Hw2Dv_lCqgSIGVxkdrjVoJKKCVylrhW65z58yna9ZhuNhg4XLkjpdXBXVkdC9W9ujwSA"]`
+  - `appsfy.business_status` · object with 23 keys:
+    - `appId` · string · e.g. `"appsfy.business_status"`
+    - `title` · string · e.g. `"Status Saver for Business"`
+    - `summary` · string · e.g. `"Download  Business status with our app"`
+    - `description` · string · e.g. `"Save &amp; Download Status for  Business is helping you to save friend…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `1032`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Appsfy"`
+    - `developerEmail` · string · e.g. `"basheer.app2020@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 20, 2020"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/1gWdnD2Noi7hdV62JO_bJsA8YzGAGSBM…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/AvdAouEJlZYAdlQnzUL4CCNe-lyrpI5t…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/VGz0OYtzj1fO2cvYb-ui9gH3rtEKZubllU0dgtsZo8xbhman5w_Qz48xPE-xPma3AO02wAfXAxzvoz5xkfWMW-g","https://play-lh.googleusercontent.com/8Pito08ZUldMI8NtopEEF9nB2u6e-NBLp2ZbQX_TUxF79M2ZFGYl7n9wJy8oFh5Mj7q_asq_FMvyzpGCICrb2GQ","https://play-lh.googleusercontent.com/OFQFEjpZ6Vyv8ywWF0Diax20A59JC7n7XmcC8OfKeF2pDelCuQs9mHWBeQkaZ4RhHrf4YPpKkg76jD2rUY-Ffg","https://play-lh.googleusercontent.com/ccUtT5WB7t1C9fMUVvKjUZQirgPA6qVG9OLuC7ywUk_RmCZqPaCNrr3zv2hFu1fNuKvSlCn23O6yQJ3ftE1-dQ"]`
+  - `storysaver.instasave.instagram.downloader.igsaver` · object with 23 keys:
+    - `appId` · string · e.g. `"storysaver.instasave.instagram.downloader.igsaver"`
+    - `title` · string · e.g. `"InSave: Video & Story Saver"`
+    - `summary` · string · e.g. `"Save story, photos, and videos from shared links in one tap"`
+    - `description` · string · e.g. `"InSave helps you save the media you are allowed to keep, with a clean …"`
+    - `installsLabel` · string · e.g. `"500+"`
+    - `minInstalls` · number · e.g. `500`
+    - `realInstalls` · number · e.g. `568`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Watermark Remover & Slow motion & SlowMo"`
+    - `developerEmail` · string · e.g. `"sailinggalaxytech@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jun 3, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$4.99 - $19.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/R75x4npWDeYD-OPGphyjcaUZBkz8I5MM…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/u-UzimQd3oXQpaos1GTKKNWvly3BbM8h…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/Xz9BJYHX_gncXKEANgiGmt3cY98q3F9hnQJcsI155I9v6uoSoukeGgf9UlD4lEVzMBNnpet7b2vSakqReTd4PA","https://play-lh.googleusercontent.com/EO1RACIkWeruwgz8VFlN3xlSmepdi9h4Ff5LwyJlt39_wfmSGrT-YMd6zfW22D01cFQ4L0z-TBL8Uk7kTEAn","https://play-lh.googleusercontent.com/xhNEIfsGy2TgSR9eXnB_O8d-NT-pfE3qKTzdCMfGNrefk74rc_NW1VKa_pCLYpvy6tcwuPzEIsy2_KlB1fzWnP4","https://play-lh.googleusercontent.com/WU8awkjJPgSsD1853zE0m5kIc2E4sWfgFryMWMngbsfP487FeVhmaDp7gCdckeVBn36c7gAZz3YbeUKxO2XXwQ"]`
+  - `com.atulsharma.downloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.atulsharma.downloader"`
+    - `title` · string · e.g. `"WA Status Saver Video Download"`
+    - `summary` · string · e.g. `"Save, share and download OLD WA Status. View images and play status vi…"`
+    - `description` · string · e.g. `"Share and Download OLD WA and business status with the following featu…"`
+    - `installsLabel` · string · e.g. `"500+"`
+    - `minInstalls` · number · e.g. `500`
+    - `realInstalls` · number · e.g. `639`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Root to Froot"`
+    - `developerEmail` · string · e.g. `"activegather@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/pacZwSwe1eAAWvhCYG8RPYWjPpwFAGhs…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/bQhrvDoD5zFS-_YGAtXAqU0x8XZ0kRWV…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/NwZWmuUqEw3K8UF7Wn200VEoE8KJNxnHa-IKP7ETrxubS0g8-r9XT_oxcuKYMi_A0NuzmM8STOUQWwa6tAY2","https://play-lh.googleusercontent.com/phC0wDBf8UpH-px58FXRYgkLYOmJHmv3rfSclQ9_Xp-x8da7tlPS39oRvfLvSBMyl4buab3fVBvmajdZOeEH8g","https://play-lh.googleusercontent.com/6AXE3MuY56PFhFRUvhxK-FVxM87whXNrlqmdPRuWXnYXTCjsBX6B-PrQ7vhdiaZW1Lne09nbZbIQTTS9ibckIps","https://play-lh.googleusercontent.com/9DVx40EWwfhqz0B6o4q3HIzOEjXt5ED8QgwD7cH7u5EQhXzDt6O4ReF1g2thKmldWKFN2eM3LofvoHHD-69X"]`
+  - `com.radhakrishnavideostatus.bhumikabhalala` · object with 23 keys:
+    - `appId` · string · e.g. `"com.radhakrishnavideostatus.bhumikabhalala"`
+    - `title` · string · e.g. `"Radha Krishna Video Status"`
+    - `summary` · string · e.g. `"Explore divine love with our Radha Krishna Video Status collection."`
+    - `description` · string · e.g. `"Radha krisha is a very popular god we all love. They are known for the…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `28817`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Bhumika Bhalala"`
+    - `developerEmail` · string · e.g. `"bhumikabhalala2@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Jul 6, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/83cmp51s92HA3CTNnvmRgkKwF7jSn11A…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/aKYe_iNzUxTF096OjOXH--3Vq5U-thM_…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/FyDu232tYk8WIQ70LcnjUVWgTnFVhHtBRujjF_LBFdHq903rs4nFumdwgqrgkcQFRdZcZDycsMkISX80keRzU-4","https://play-lh.googleusercontent.com/eAqVgu0wWc3W9vyGtELWDmdvAjtq_JSyWW-PeAzddzNqs5QuZx5NIu6nUylxR90gSo7wscugGWxlZfSm-V4YKT8","https://play-lh.googleusercontent.com/E1EjAbFSo_uBZH1Ff0uF8G3-YEMtMI-0JNghvoGFhga31-AaRm5fDUE3MFydsn9x0ptEeqSvZtQ2FPk2-nkknw","https://play-lh.googleusercontent.com/VNjjd3koc2ZCGUy0b2NqU0Z9ruw1g_xZN1vty8_ZfLo3gD1uI3zGxNzjv9vK4Huw_OPtn0abZwZaWYKzKk1KZw"]`
+  - `com.hfbstudioz.statifly` · object with 23 keys:
+    - `appId` · string · e.g. `"com.hfbstudioz.statifly"`
+    - `title` · string · e.g. `"Save Status: Download & More"`
+    - `summary` · string · e.g. `"Status saver &amp; status maker — save, download &amp; create HD video…"`
+    - `description` · string · e.g. `"Statifly – Status Saver, Status Downloader &amp; Status Maker<br><br>S…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `11189`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"HFBStudioz"`
+    - `developerEmail` · string · e.g. `"hfbstudioz@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"May 23, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$4.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/KwGwG0nyEQ3obexxHF_kvIkh1RvLrD0E…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/eQfPEcMy57DWphOo8DzFKb6xvg29DZcc…"`
+    - `screenshots[]` · array of 22 string · e.g. `["https://play-lh.googleusercontent.com/WtwlOsUilnQtiek9PKCGDFD2oe7HLptG8AEuH44uY_idjWMtp-VqHhEG0ieiJ9Kuol_Qc-M5FvxGu0Mv5dAv","https://play-lh.googleusercontent.com/ygxBlkvfqATCWp68uwAAh5JDE8jsVzWi1uknZ0baZvLhCLch0h967nDiP5lrfyLG9gBMa-cQskbiLlTxpTwEFw","https://play-lh.googleusercontent.com/pI4a6pRy5Qus_vuqYSY72WO6-dJIv2BZqiMsJ3VoDlR2-8rb2-V4CCGpR6J34If4ImVBnKNhLhdoWekPY603","https://play-lh.googleusercontent.com/faoLnEE5IUrJPYqt2FBTg3nPJjvNK6Nvb-v2CTa9PHRcjGGq7DRcSoCMvdwjYiyUcUxKniilJNsWJd3tXBSg3g"]`
+  - `com.callpod.android_apps.keeper` · object with 23 keys:
+    - `appId` · string · e.g. `"com.callpod.android_apps.keeper"`
+    - `title` · string · e.g. `"Keeper Password Manager"`
+    - `summary` · string · e.g. `"Password Manager &amp; Vault for Unlimited Storage, Autofill &amp; Dar…"`
+    - `description` · string · e.g. `"Keeper is the leading password manager, combining enterprise-grade sec…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `38209152`
+    - `score` · number · e.g. `4.6694126`
+    - `ratings` · number · e.g. `111276`
+    - `reviews` · number · e.g. `23554`
+    - `developer` · string · e.g. `"Keeper Security, Inc."`
+    - `developerEmail` · string · e.g. `"info@keepersecurity.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · null · e.g. `null`
+    - `updated` · string · e.g. `"2026-08-11"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$9.99 - $239.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · string · e.g. `"Notification Center Improvements: The notification bell icon now pulse…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/zK31yzo5iwVAiejwYohUNdFiZZHkwTIJ…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/nTxMyKNsTsWoBiW4tnx_YQNmIGPyzEFW…"`
+    - `screenshots[]` · array of 30 string · e.g. `["https://play-lh.googleusercontent.com/WgG6Q08bQ7GDuA4YJfHgveJ_wSAWW1e4OhkEsurAdCLtMrMJcrwbSukMYK45gOqTnTbW_c3PtOUw3yFZbR1H","https://play-lh.googleusercontent.com/LNE7GM-O5Cp6J9PHONadlKOoCO__9Q6tnjHkF06AWHax6HYV1H8K5OTCsA_tSY3NPtjzvhzIcueDoRFIpHyTXT8","https://play-lh.googleusercontent.com/xTZskO16oFEuXE-Zuz2w4WGOR3c7K2PllnwltLP_wEoAXeqI4GagilyE81-toUfIxJOqDz48MdYud_WaQ0Y_04Q","https://play-lh.googleusercontent.com/ZxFpYb-7mRosnk3hhqpzmoyH2blruNNaE0kDcb2gWLjU05Z8_-rNsa_8zdCUIwT6dwkNUrQXVdn0WXlIBuUxEQ"]`
+  - `free.insaver.videodownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"free.insaver.videodownloader"`
+    - `title` · string · e.g. `"Story Downloader - Story Saver"`
+    - `summary` · string · e.g. `"Story Downloader &amp; Story Saver in HD. View stories privately. No l…"`
+    - `description` · string · e.g. `"<b>Story Saver</b> &amp; <b>Story Downloader</b> lets you download eve…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `21469`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Daily Apps Mania"`
+    - `developerEmail` · string · e.g. `"dailyappsmania@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 5, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$1.99 - $27.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/hnJt_tEXKhVR6KmZFnb7-b22ER5uGP3j…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/B-sCRY1U7oj70DLDascFpNhCGlaQ5Qaa…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/hh-JKckHH282wc58jp_8KXx9xeCpX2e0NTvEf5KdUaqKH_9Ijo2IFIyXOOE29whb8VpXtJbG8GgLDoeYVSU_QZw","https://play-lh.googleusercontent.com/IRuCsNF_ebjEQPZnpQ7yPcAuQkezf7iuolUwKejLzmEbcJV05EJfpXkXWqLTh-mVjp7K6Y3g3VJXIeTQa8Ex6A","https://play-lh.googleusercontent.com/2R4NJEHmhXAwOSuKqxhFwjKqLwj8CooWulcXWEoCbT1RMgY4SDztrD4vwKzb5akEl4gzQuzXVOWx-Zq3N_kB","https://play-lh.googleusercontent.com/0mfr_YlOqDMQRYTj9b1EDXes5ivXwHcuZ6_8z3UixwzFJcftLXdfjCsWYzRz0SVLTyEi38VBJu4PojO-9Re-7g"]`
+  - `com.whatsdeleted.message.viewdeletedmessage.whatsrecover.messagesrecovery` · object with 23 keys:
+    - `appId` · string · e.g. `"com.whatsdeleted.message.viewdeletedmessage.whatsrecover.messagesrecov…"`
+    - `title` · string · e.g. `"Status App - Save Video Status"`
+    - `summary` · string · e.g. `"Download &amp; Share Photo and Video Status with Save Video Status App…"`
+    - `description` · string · e.g. `"Do you love keeping the photo and video statuses your friends and fami…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `3801513`
+    - `score` · number · e.g. `4.373494`
+    - `ratings` · number · e.g. `8746`
+    - `reviews` · number · e.g. `17`
+    - `developer` · string · e.g. `"Galixo L.L.C-FZ"`
+    - `developerEmail` · string · e.g. `"apps@galixo.net"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Feb 23, 2022"`
+    - `updated` · string · e.g. `"2026-08-26"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$8.99 - $99.99 per item"`
+    - `version` · string · e.g. `"1.0.54"`
+    - `recentChanges` · string · e.g. `"🚀 Better User Experience<br>🔧 Fixed Crashes &amp; Improved App Stabi…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/H1W6kqIrC84PcCjlE0wuH0XT_MO9p1en…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/9OE9hxZ05m62wOMfbZZVeaeeHc9M4-Qi…"`
+    - `screenshots[]` · array of 18 string · e.g. `["https://play-lh.googleusercontent.com/4vxOYpM0Cb-xfZkP98zcUTuEJnmLB6ZKYGUBhh9UmOZ-s4q1ltr7m2XM19wsG8N88WN8yB9yz1id5OlnQJaQAQ","https://play-lh.googleusercontent.com/EaoAJBmV4gFfqhmqn6BCmzj97RxBIFW6xomqzSD44VxTEnxQTDOouhopTwYTZCcof-gee3S5mA2c7tzVb3R7Tw","https://play-lh.googleusercontent.com/e58vlSAdRtB_nX0CdPiEHWEr2om9PGOhVH8die084sizAeN7llJmQaQ1V6Gk4qHlnihQgOHvP8VzkWOQiXVIKw","https://play-lh.googleusercontent.com/xeMDgO5RnGV20MNPwymvD8csJqIuvAVdPw26Wd8AdUs2QO8wFEC6tZvrMf1q-xkUfPCugm4TJcAQZKBFjxjk5g"]`
+  - `radhakrishna.shayoname.infotech.status.app` · object with 23 keys:
+    - `appId` · string · e.g. `"radhakrishna.shayoname.infotech.status.app"`
+    - `title` · string · e.g. `"Radha Krishna Status App"`
+    - `summary` · string · e.g. `"Embrace divine bliss with Radha Krishna Status app from Shayoname Info…"`
+    - `description` · string · e.g. `"Introducing the Radha Krishna Status App by Shayoname Infotech, where …"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `33877`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Shayoname Infotech"`
+    - `developerEmail` · string · e.g. `"shayonaminfotech0@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"May 9, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/qi2_TdZLPcaLilv12KeYd1ba7uqqm_HM…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/MDswaozbOQdoye4XLxTxz7B2WBVlCPds…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/MDswaozbOQdoye4XLxTxz7B2WBVlCPdsBxIRM8qpX8lsUMZHLxAgGzXgkZ4N5lCAJiWn51isNlK6IWj0IpAINA","https://play-lh.googleusercontent.com/ERjRNd_tNE0cesT9h9pDMI9fw-WHJxxrzNLq8OBhweUNkeCBWFiPmht5Tu91Ma6qY7wQZBsVp65iS8iRO1V8","https://play-lh.googleusercontent.com/QrG9APN4T0iEnJ4rtFrKvxJlv90NMXc_Xsw7DGN9U20MKghpemXJHbxhWq2G3yegnwDk8fL3V7c9zA4dkHZ12aM","https://play-lh.googleusercontent.com/cwcA0sD8DnpcdHzi06fvm1JDl1GtBqLRV7vcY93Ku7o3LXapfggBnxlz4ylc12-cYm3CfaNL1-t4UycQwnc5hQ"]`
+  - `com.jam.status_saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.jam.status_saver"`
+    - `title` · string · e.g. `"Status Saver: Save & Share"`
+    - `summary` · string · e.g. `"Save WhatsApp &amp; Business statuses offline. Fast photo &amp; video …"`
+    - `description` · string · e.g. `"Save Your Favourite WhatsApp Statuses<br><br>View, save and share phot…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `29085`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Jawad108"`
+    - `developerEmail` · string · e.g. `"ja358288@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 9, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/cBpMOvH5tkV8KnYntECpjH2L-6msbu9v…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/b8nErcB32k1Wj3wffa8yACBp_zoJIvle…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/JDPa5IqnZJ9LKCjLd_9uO6GlbKR450YkXDRqHcTwZExJUmlNdT-jZ_KtTSWqifJxS735q1c52YcPekVZ7MC8c-4","https://play-lh.googleusercontent.com/8J1XMeITwTzTlOHb9qmdKcCR5GSLd7vshBWB6j751fahBGL-0yejclRJFy5IV5PXmTv3nxEQIxtsQwFy80aEuw","https://play-lh.googleusercontent.com/TFeFnH08U29zH_pSTilH98QR0YxREGSnRIHqDLDr_SVfI4aiwQXyXuqYM5pO4mmADmG9p7rCOLOokwveOIW_","https://play-lh.googleusercontent.com/8boFZ-pValR3IJiktrC1NwgG23LR3srDqJPMX1C7DurN6gfwpKggL-8i0OKk0xodnk4HYYaN5mlqRjiMEjF02pI"]`
+  - `stickermaker.stickercreater.whatsappstickers.stickermakerforwhatsapp` · object with 23 keys:
+    - `appId` · string · e.g. `"stickermaker.stickercreater.whatsappstickers.stickermakerforwhatsapp"`
+    - `title` · string · e.g. `"Sticker Maker - WASticker"`
+    - `summary` · string · e.g. `"Stickers Maker - Make stickers and create stickers"`
+    - `description` · string · e.g. `"Looking for a free whatsapp sticker maker app? Want to turn your photo…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `40708167`
+    - `score` · number · e.g. `4.6427016`
+    - `ratings` · number · e.g. `311685`
+    - `reviews` · number · e.g. `1558`
+    - `developer` · string · e.g. `"Sticker Maker Studio"`
+    - `developerEmail` · string · e.g. `"stickermaker.master@gmail.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"Oct 24, 2020"`
+    - `updated` · string · e.g. `"2026-09-14"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $23.99 per item"`
+    - `version` · string · e.g. `"1.01.71.09.14"`
+    - `recentChanges` · string · e.g. `"* 3 steps to make stickers for WhatsApps with your own photo<br>* Crop…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/JR51JIR42yWTlYHnP5pB8vOwFWd8Ycxa…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/dAnY0gc0ay5q2qzomVGKoGpLXZhxVvfI…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/MuZGYXjGSTfI1CJjsLprOVCgHvS2GdkaAL9aQJ12y3rh1XDXAjTbzddTIreh2qfdVxvQGFEO34DxbqbY4SOl","https://play-lh.googleusercontent.com/qKiVhvNmicTpsVJTJxPpVwsUJY4-uyQ9uSCRAWW7LdkuogJB-iFBmiCmXgeYTr8gMzGvYyJZSv1XkFEKoVOhePw","https://play-lh.googleusercontent.com/8Ymm0zgLwYqmXIoV8ckUO2veg-AyXFPssiEqXwCvbo-J2ESQzjbNLqgebIhoznPFonAHRgkPVsTanBUgROBEaA","https://play-lh.googleusercontent.com/qzPg7q-KW5TBb-e0VoKtroLHEfUiDreidRw7_Ju82CTbLYfDPj1AlHhFJBGwjKB8JTldVwJdoa80qHycRINeQQ"]`
+  - `com.mdtech.status.saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.mdtech.status.saver"`
+    - `title` · string · e.g. `"Status Saver & Video Download"`
+    - `summary` · string · e.g. `"Save status photos &amp; videos to gallery, auto save, direct chat &am…"`
+    - `description` · string · e.g. `"Status Saver is the fastest way to keep the photos and videos you love…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `136`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"MD TECH"`
+    - `developerEmail` · string · e.g. `"app-support@md-tech.in"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Sep 10, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$4.99 - $39.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/AZzI4xduv7-AoZr6ticNpiK_R7P2tdpm…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Mv_iImaefUkTJNzjMK1b4FaMlEefuEJ9…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/9g8eVELG9J-jUulia0cQlM3ez5Y8pYMvYFnE9klpjAnTfmThFosWGAOKhWomKMX89AJAAd1fHJU46aHbsW3coyA","https://play-lh.googleusercontent.com/msMe2n7OEAYxOGIk5mmZNoC1h1YMUNsVEQb7E3dUu3f2zHQ4SAbUeCHF9m-36pIHf1KIhu8H0oSP_qjZ79ezow","https://play-lh.googleusercontent.com/bk4QpjpqCySUT_QtlElp04L8RzDxbNp8sm94U5Mi8ebka2d_H2h2JpqZN_yB1YgwU4cKGUbY-l1XndoQjafRIQ","https://play-lh.googleusercontent.com/UNrOsV2K9V_LtTs-oe6x8qbNqKZNwEmRxACQBwPaxlrmo5fpOK5mw-5E9nnHZlr17WgZYHe3YidgkB9lqJF-_Q"]`
+  - `com.keepertax` · object with 23 keys:
+    - `appId` · string · e.g. `"com.keepertax"`
+    - `title` · string · e.g. `"Keeper"`
+    - `summary` · string · e.g. `"Taxes built for your complexity"`
+    - `description` · string · e.g. `"For those who’ve outgrown traditional DIY tax filing software, there’s…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `375878`
+    - `score` · number · e.g. `4.50173`
+    - `ratings` · number · e.g. `5663`
+    - `reviews` · number · e.g. `1165`
+    - `developer` · string · e.g. `"Keeper Tax"`
+    - `developerEmail` · string · e.g. `"support@keepertax.com"`
+    - `genre` · string · e.g. `"Finance"`
+    - `released` · string · e.g. `"Jul 10, 2019"`
+    - `updated` · string · e.g. `"2026-09-11"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.5.0"`
+    - `recentChanges` · string · e.g. `"Bug fixes and improvements"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/709UX7ldB18gHhCGv_Ea3zRwFPZ5ls0x…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/91ZNQi81trVFCK-Pahsoq8SEMmsZRGwp…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/59ob_EGDV6lyWJbti5CjJqHouTa0cmA9Nb0tNNDwpMgoK01tkJKo2iP5p38P_O7k3pkSWg7jBFZcPum5Aih_6Q","https://play-lh.googleusercontent.com/HvKhwHHMacav6WFiRQvZnPJr-fs3DxX00L_0MeC2KWlP04o16tBvMFUPXN1wGRALBzMo06VNjrRGWEGWi-YzVA","https://play-lh.googleusercontent.com/cz_LObpto10Di0a93Jfz52vPH6mkcvzVCdC_-aZuq29a26w83UI0v4KE2dCcE_iYmszkzfteU2ZXjWBNwAcP","https://play-lh.googleusercontent.com/Fqpo7tE5ZvR57f3ZTZ5iC4axSmQq1efv1XQW31Y8cKbIcZqkj0JdycVnwBpQGSa14T59QRHrlWifhVmRLPezMhk"]`
+  - `statussaver.statusdownloader.videodownloader.wastatus` · object with 23 keys:
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader.wastatus"`
+    - `title` · string · e.g. `"Status Saver - Download Status"`
+    - `summary` · string · e.g. `"Save status and recover deleted messages with this status downloader."`
+    - `description` · string · e.g. `"Want to download your friend&#39;s status? Then you are at the right p…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `7825843`
+    - `score` · number · e.g. `4.2`
+    - `ratings` · number · e.g. `14327`
+    - `reviews` · number · e.g. `50`
+    - `developer` · string · e.g. `"HUBIX Tech - Social & Utility Apps"`
+    - `developerEmail` · string · e.g. `"support@handymobileapp.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Oct 12, 2023"`
+    - `updated` · string · e.g. `"2026-09-22"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$8.49 - $29.99 per item"`
+    - `version` · string · e.g. `"1.3.3"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/s6qnMl5IaseB5BqFZcsFqyWnS4qsjXau…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/_NVSqywK_REZQzLTjoQJ9k4XZ4Zej0Jv…"`
+    - `screenshots[]` · array of 14 string · e.g. `["https://play-lh.googleusercontent.com/tXQgVlP1clf12yd2GQS7CF4Zb8EYJ0ZuQAS6CgiG28cg9J0uja3ktaU7ipMiSmPbjozV812_N8Sxu0Vrz6sm","https://play-lh.googleusercontent.com/I6mVm6xMpSO3cBt9H4KC5bCESeR529XbPRwCrMpoft88grEy4y_mPxcUA7Vs46aN1aM15ngHCL3Pf3wHdxwtUL0","https://play-lh.googleusercontent.com/SZFVdsrSecP43PgDRQYs-XDq7BBILTf3LwQL0xLJ45WBXy9bSH82bbvvDpL4cxbDLzPeD7aCD20hR__VWU4dKw","https://play-lh.googleusercontent.com/zaQk0FlQ6Oy3-MCHxlN0SL4rCXIjMLGPq8T9HmgT_IG6R1gihD4k7m195PN4FKpMX6qUrxg_msjUq66AS4G3"]`
+  - `com.videodownloader.savevideos.socialmedia.video.saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.videodownloader.savevideos.socialmedia.video.saver"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `summary` · string · e.g. `"Video downloader helps to download videos, save story, and reels, with…"`
+    - `description` · string · e.g. `"<b>Video Downloader - Story Saver</b> is an all-in-one solution to <b>…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `2412472`
+    - `score` · number · e.g. `4.716981`
+    - `ratings` · number · e.g. `7916`
+    - `reviews` · number · e.g. `301`
+    - `developer` · string · e.g. `"AimzSol Technology"`
+    - `developerEmail` · string · e.g. `"aimzsoltechnology@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Apr 18, 2024"`
+    - `updated` · string · e.g. `"2026-05-25"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$4.49 - $32.99 per item"`
+    - `version` · string · e.g. `"1.2.5"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/D2_yBOi4PkitSppTzpkFyBteay-qFmHr…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/LD4iMOCErnzaqp2BtbLbn4j77ZMFm9R7…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/FxYetLbZU_RyDk74a_Ve00rpqsa7scs5zX0GG-qK0jyBDQPijtcR_EneLQLBQBuRLzesMOElXEy13VZufqGO","https://play-lh.googleusercontent.com/s0_9L3JYMWUwQt_Ic0ioFwEjaPaGsNUWgbCc39vs5aTdY0Q6gDkq7Z81USK1O89hrXaVbBx-4rcE0sOkjffSYBQ","https://play-lh.googleusercontent.com/MS1dFl9xWc4GgJ0anA2hrJt4X2h2LBIorX31KFzEDbsHlGk-u0t44Myp87HdGhsXgSN9EW4y7Mxq09vtfHR6Kw","https://play-lh.googleusercontent.com/K8xeC2HKGV2b6RmfJ5WJ4XjvH8kWMnYT5FoiNlnVBDCLVkdSZZQ38hB5ZM7Suh-sTFz-QDuw7JZkmwNdz9caNw"]`
+  - `com.ashaquavision.status.saver.downloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `summary` · string · e.g. `"Save Status with Status Saver 2026: Share &amp; download Status for WA…"`
+    - `description` · string · e.g. `"<b>Status Saver: Status Downloader &amp; Story Saver for WA Business &…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `1817182`
+    - `score` · number · e.g. `4.51`
+    - `ratings` · number · e.g. `10038`
+    - `reviews` · number · e.g. `51`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `developerEmail` · string · e.g. `"ashaquavision@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Oct 26, 2020"`
+    - `updated` · string · e.g. `"2026-07-18"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 - $39.99 per item"`
+    - `version` · string · e.g. `"26.JUL.18.0.90"`
+    - `recentChanges` · string · e.g. `"Status Saver For WhatsApp<br>Status Saver for WhatsApp Business<br>NEW…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/0NkGsTuHMCyA2Nc-DwJwJimtUVB0NbVr…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Ala6tg2fUo9y_7miDjBCc27Zf_KitXQo…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/64YX4cKlOdzi7TEsxu9qG7nqCFLxDaebJ8UQRWwZiKqVTI6iT1VkPs0wOyrm4wHSZmSbmKG16OBJWcP74Osd","https://play-lh.googleusercontent.com/u4vjunshcdlL0Qvn2VB13H3PS3EmNc1zU-VC7rNiZRyGI8vuQI1jpQkJacNjzo_XexVTWnhDMUvDlcNxkEvrJWk","https://play-lh.googleusercontent.com/oc-pIeEEQNXwwY2ALHWI1a5V6cEq9RFJCssxaQUIwcxlTGQSlpzpsvrR3CGiV05JcEeVFE7VOjbQMiSwIG8YXQ","https://play-lh.googleusercontent.com/kXP4lhrlgqkiK66qDZjIELoxcylvUk4d-7ankdJ60IDJ8pBqbqjPzYQW88mkrzPwdh9bSBksYyFYWqW2JZabUw"]`
+  - `com.fullvideo.splitvideo.statusdownloader.mp3converter.masterkingsapp` · object with 23 keys:
+    - `appId` · string · e.g. `"com.fullvideo.splitvideo.statusdownloader.mp3converter.masterkingsapp"`
+    - `title` · string · e.g. `"Full Video Status :Video Split"`
+    - `summary` · string · e.g. `"Full Video Status  Is Powered By Kings Apps Studio."`
+    - `description` · string · e.g. `"Upload Full Video Status - Video Splitter is a wonderful and latest ap…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `118369`
+    - `score` · number · e.g. `2.7142856`
+    - `ratings` · number · e.g. `386`
+    - `reviews` · number · e.g. `9`
+    - `developer` · string · e.g. `"MASTER KING APPS"`
+    - `developerEmail` · string · e.g. `"masterkingapps@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Nov 5, 2020"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/0xz15Og5KoBR_E_fm8OA_X7S3uvO_90q…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/cC-bZ05Z709-FeYKgZjTltSkswQhClqZ…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/tUJ3TqOJqTvlCeORkUd80G9dDjnadQ06wJhObljrXrQ0QRj1tDjxSEdK4IsCM9D40J5Yx60JJPNYSNK1xtbU4g","https://play-lh.googleusercontent.com/pomB1t_ni8CeAub8BhobqMkC384dvzTeBDD9KseSpD0afxmM7d55bp5EmUsSibcuT0gVm7w3XAgnGXpjn3nVvHo","https://play-lh.googleusercontent.com/mIE8vIEW5Qo3Z7I3puaoMamUJzkU3id6nyN-aE_2e-ZWskIgFm7ufyugQuLm2kWsAf6wPL0OuKX405wrB9VrBA","https://play-lh.googleusercontent.com/ENf999CDyidxhF_dcQPG5TggNimanEeSICWjzTPOijEQzVnZQwib85efi0iSOxA9xWWMQwm7fNaAeSZWXPus"]`
+  - `com.developermaheshsofttechltd.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.developermaheshsofttechltd.statussaver"`
+    - `title` · string · e.g. `"Save Status-HD Video Download"`
+    - `summary` · string · e.g. `"📥 Save&amp;repost HD photos/videos instantly with smart auto-download…"`
+    - `description` · string · e.g. `"Save Status app let you download photo images, GIF, Video of new statu…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `11419`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"AppsBanao.com"`
+    - `developerEmail` · string · e.g. `"developermaheshsofttechltd@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Aug 25, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $15.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/KJXTGy-sDhjXPzPpCZ8xEnYd_HR79y3q…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/sMlHERI3-2L1-LBq2mX0h8kwIXd2hVQn…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/C46nS5FTluEfJAoLp4Pod9z2RyvachM9dpv9X8P3b1DuHR8AsshlP-2bDht9ewI33a52XFyEcFiXVegNtvDIpQ","https://play-lh.googleusercontent.com/CdmbkbdUhHCnXoRa3jDnLEtMZrRj2Zptd35a-y0lzlYiCkoIO0QyYYVo_jsyBT7JAIck6Rnh3azxJlUIOuOazQ","https://play-lh.googleusercontent.com/Vij7hkR9wIYNQ0Ri-L4-EjelYuTgxJiF0s8-KoJ3Du9OQtt7DJ-vqBYMAwDuSujrZTrRL_7BXCdJ_fVWhXNCAQ","https://play-lh.googleusercontent.com/GUVeW5-8SCzcOT4k0zpGFSeImA4S61ke1mRv_EDGiUp9zedub3uHxHfT5QcUHI3oHr7HJCH7iWBegA2hUFuDIw"]`
+  - `com.risingapps.hdstatusuploader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.risingapps.hdstatusuploader"`
+    - `title` · string · e.g. `"Upload High Quality Status"`
+    - `summary` · string · e.g. `"Share &amp; upload 4K HD status photos and videos on WhatsApp without …"`
+    - `description` · string · e.g. `"Are you tired of your status photos and videos losing their sharpness …"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `734291`
+    - `score` · number · e.g. `4.44`
+    - `ratings` · number · e.g. `33926`
+    - `reviews` · number · e.g. `45`
+    - `developer` · string · e.g. `"Rising Apps Solutions"`
+    - `developerEmail` · string · e.g. `"risingappssolutions@gmail.com"`
+    - `genre` · string · e.g. `"Photography"`
+    - `released` · string · e.g. `"Jun 26, 2023"`
+    - `updated` · string · e.g. `"2026-06-28"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"15.0"`
+    - `recentChanges` · string · e.g. `"✔️ Bug fixes and performance improvements."`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Vi77-bdNo-UKLy7E_56g6xO1m_ff6vE_…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/fEId_mwXYFgsDwCtAFpCp0PMX9dxhYGz…"`
+    - `screenshots[]` · array of 23 string · e.g. `["https://play-lh.googleusercontent.com/slsYyrV_MwPm2ZoTjHHWQkOq-XusQojZaH7jolTOjbSYDSNQIJgWO5cxxY9TAhGfx9e4NJSgpoyPdyG1guTwkg","https://play-lh.googleusercontent.com/Uv9yhe2R43QLbJckcf9r9N4p-V4qq3xbZXQ3ZJFdp7d278JbOx44gQ9KLkH2zuqW_LXpWTh3bwmtXyhMm9x2","https://play-lh.googleusercontent.com/r-7lg00JZeOU1BqEtDsS0AToomhLjqtVSwMKeV_p0Njaqt831JK20o7X_87Hs-arsdkfl3n0xFsx0U8Y1NuhAQ","https://play-lh.googleusercontent.com/RmHoNbh35RXCPJUl_ZCrxXWpdlXmL6hCZqIWy3zk8K-OzWx_jQY2wraXCjIG2iBYY0HBp7KqlHjy-sEJ2_Xb-I4"]`
+  - `com.palladium.pautostatussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.palladium.pautostatussaver"`
+    - `title` · string · e.g. `"Auto Status Store & Repost"`
+    - `summary` · string · e.g. `"Daily Auto Photos and Videos Status Store and Downloader for WhatsApp."`
+    - `description` · string · e.g. `"Status Store :<br><br>Daily Status Store For WhatsApp ! Photos And Vid…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `19168`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Palladium Application"`
+    - `developerEmail` · string · e.g. `"palladiumapplication@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Aug 13, 2022"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/sRKss-ckXw56mY08i1SG9-0QVLF3Qw5a…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/C0JFDEi1Ah6qECMTsxEKFutwpDj-r8YE…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/yj3RLmmv24uZASX11n6aXuhMkQBSCuZsQ9GYyDcwy8UpcE3zVn71MZQCJ68SsA4QK3jOPZi3jBR5W1hJSaxqgw","https://play-lh.googleusercontent.com/ywl62IlG7d7nqtu_UrySzAlxSNZHOQiFncSpwxffjaFNEEcfMcKBPzaSNH4h1n8wRgE_cN_2nJokkhWpBd3rFQ","https://play-lh.googleusercontent.com/4GrI_E_b8V5L-sWVzuyQwXS63wJiOr3aBIzmZpSozvaa5TyCtZWKpzLKgc38aFecEsdXn9VmIzTX5k-ASdq0CA","https://play-lh.googleusercontent.com/3Wo1z_-0jTFty0FyEKR_dGNFFtf3SctFvbRHMGJJUN5AkGdUBRKvUlH0tea4a6wWckNvWyOmw1ttVh1scR6O"]`
+  - `com.hdstatusuploader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.hdstatusuploader"`
+    - `title` · string · e.g. `"Upload High Quality HD Status"`
+    - `summary` · string · e.g. `"AI Photo Enhancer, Video Quality Booster, Status Saver &amp; Thumbnail…"`
+    - `description` · string · e.g. `"Upload High Quality HD Status is an all-in-one AI Photo Enhancer, AI V…"`
+    - `installsLabel` · string · e.g. `"500+"`
+    - `minInstalls` · number · e.g. `500`
+    - `realInstalls` · number · e.g. `929`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Radheshyam Devlopment"`
+    - `developerEmail` · string · e.g. `"kanchanben105@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"May 30, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/19TaWkHnNwlezq6kkUsWV4F6PfxAOOO_…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/cBUWxjqacYROvazcZHmTPTJXfpz2sGon…"`
+    - `screenshots[]` · array of 16 string · e.g. `["https://play-lh.googleusercontent.com/bmrhStpUKcXC9-UUHvv_vSJXTGgveYzdIiIcdcM8BrLbsOp4ygkVblfA5aWfNd9-UCd7PbZdagXd1zhReYxI_w","https://play-lh.googleusercontent.com/wU1CIV--hy1OdnaS0S3M4jpNd2RRPmn3Ut13nOOkh7ljYiGVQJMGT0MAFfTScGMF-s0vuEQlCXWcXRwWFXgrh2U","https://play-lh.googleusercontent.com/9vFfNqE7nzZ3UJbfUEbP4-g9_M_S38vB06M_q2iVugSoZnbgicc7cPfAt0rh1fcTKyYG_CieEkKlMxCj6iIFvA","https://play-lh.googleusercontent.com/1ZAxICkJDlGU6xv3InEWPSNtVMTg_muOWq96OxB1sMwxpaCMqkS61W3KP4w2sqp3nhgc9Zij1tvwIjPiCszyUw"]`
+  - `com.stickers.stickermaker.aistickerapp` · object with 23 keys:
+    - `appId` · string · e.g. `"com.stickers.stickermaker.aistickerapp"`
+    - `title` · string · e.g. `"Sticker Maker - Sticker Vibe"`
+    - `summary` · string · e.g. `"Sticker Maker - WASticker, Sticker app. Make stickers &amp; gif sticke…"`
+    - `description` · string · e.g. `"Sticker Maker – Create Custom Stickers for WhatsApp, Telegram, and Mor…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `2827500`
+    - `score` · number · e.g. `4.83`
+    - `ratings` · number · e.g. `36852`
+    - `reviews` · number · e.g. `68`
+    - `developer` · string · e.g. `"TinyPeak Studio"`
+    - `developerEmail` · string · e.g. `"support@zhiqiaostech.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"Apr 1, 2025"`
+    - `updated` · string · e.g. `"2026-09-17"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $59.99 per item"`
+    - `version` · string · e.g. `"2.3.1.0917"`
+    - `recentChanges` · string · e.g. `"🔄 NEW: Sticker Migration — easily import and organize entire sticker …"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/tmhQxMsX63j4mHaN7o9PP7DqvhgnpHhl…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/tRpp48-UMpeTD2cBoqBAYg0ijRwCxYAX…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/6062Fr01Vggf3pSKmokoGnFoHfLmoy_-mrGffwfV4eI27X5MQigGzbpBfUhvbbFL8N1vHAHCv0qunouxkDS4YA","https://play-lh.googleusercontent.com/EFflHyYY_LxxYo4So2WiiTt-Xm327QCOvXa5hgUt0roIj6f5EsBz2FSNf9XswXQx36YrTLrUqbDjEf-WuJgp-Q","https://play-lh.googleusercontent.com/K71jYBAfkSFTyE2EFQJcIc2D1k6nebsgtU4mwYkg4zUUIT0ALIYHy0jtSsJF9gcHqyXoSG1SZrW5_wR-wngD","https://play-lh.googleusercontent.com/YcmQoSFVZ5vlt42l1Hk0SqtOtVfxKomCuMZF2P-qb7BYBMu5rUoVoQYlDhovVrMpiL9qQOCkLnKJ4zRvEYyn"]`
+  - `com.cosmicmedia.storysaverinstagram.stories.downloader.for.instagram.story.saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.cosmicmedia.storysaverinstagram.stories.downloader.for.instagram.s…"`
+    - `title` · string · e.g. `"Story Saver for IG - HD Format"`
+    - `summary` · string · e.g. `"Download Stories, Images, Videos in HD Format"`
+    - `description` · string · e.g. `"Download HD photos, stories, or videos quickly. It is a super fast🚀 a…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `194646`
+    - `score` · number · e.g. `2.9444444`
+    - `ratings` · number · e.g. `711`
+    - `reviews` · number · e.g. `9`
+    - `developer` · string · e.g. `"Cosmic Media Apps - Video, Image Downloaders"`
+    - `developerEmail` · string · e.g. `"support@cosmicmedia.net"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"May 31, 2022"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/nf3uTh0jUC10KWh5Px-9MMHn5DAY0Eqy…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/3M-u18pA5Qc0RBneiPPVEu4sCrtVR2Yi…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/1XxY0lV1qFUGMHQmlCq685w44W6tNlJZTw9iRAvTIE2rYet_ObXhviffK2FzyZO_NCzDue7lxPGHbtoUfTFFXQ","https://play-lh.googleusercontent.com/JrT8kCTOHn_1bVRge9NbQnWZsBEK66fuFgyzQnk_50puCU-BpBu6JxMTIkVqpIjQe7hPmr5rHRTqbWz6cMl8CtQ","https://play-lh.googleusercontent.com/xMjma33NwJHuOFb-VuOssmFzShNRKXESUKaKGAq4coHjVFN6fMEDqMJcWaOTqz29Qy7OJq5QT17HTQh5-Cz8","https://play-lh.googleusercontent.com/9dj8jmI85YqwKNJ2LfRSK-LfvTiOL771RxjWDZhOQJef1U8QCFSkADqf-VYXuRgzoXZq4SgTWgdwiScbJu2Ljrc"]`
+  - `com.midi.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.midi.statussaver"`
+    - `title` · string · e.g. `"Photo & Video Status Saver"`
+    - `summary` · string · e.g. `"Save &amp; share photo, video, and GIF statuses with Status Saver."`
+    - `description` · string · e.g. `"Status Saver lets you download, save, and share photo, video, and GIF …"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `12438`
+    - `score` · number · e.g. `4.6666665`
+    - `ratings` · number · e.g. `127`
+    - `reviews` · number · e.g. `1`
+    - `developer` · string · e.g. `"Mitali Parekh"`
+    - `developerEmail` · string · e.g. `"mitaliparekh81@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Sep 30, 2018"`
+    - `updated` · string · e.g. `"2026-05-28"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.2.5"`
+    - `recentChanges` · string · e.g. `"• Bug fixes and performance improvements."`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/dxOoWzxDaGAPxBbXlZUL7T2qkk84c10i…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/iNOyHxMWn_TFTDgLsqDxHKI7BbkScvTF…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/DNwRoC6rHVBv7uyP-HZmPfGz-oTn3C9sFEVZ9PcNp8uy04KNwPZu2r4sAyr_sziZxU1Kr_xXFyCTvxeCKw7cBqs","https://play-lh.googleusercontent.com/SB2sXEj5h2kmGXaYH5bzXkkLxobwjrLMHG2dcf2hXbB28HGf8uMj_dlYkKxtLvykfMJmLgzrMTQeR2gvP85Vig","https://play-lh.googleusercontent.com/Pv7mD1yECA8UYazhkFv-mnkV4lz_a5n7c3mdeWkQ5Xb0_7m0hooF2kcVq7nT6MmIj4KGRgS5fyi1nHCgyGdp","https://play-lh.googleusercontent.com/2sL1zCMFUXishoqvNiCxs_C8U0jga_x7bNruKvSJ2Ojss4ZN4a28ysKbSfOqPgc6QgKwlTbvgiN338ttGVMSN_0"]`
+  - `com.downloadwhatsapp.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.downloadwhatsapp.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Download"`
+    - `summary` · string · e.g. `"Auto Save 7-days status in HD! Recover deleted messages &amp; Save Vid…"`
+    - `description` · string · e.g. `"Never lose your favorite status updates again. Status Saver is a simpl…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `339895`
+    - `score` · number · e.g. `3.6666667`
+    - `ratings` · number · e.g. `1230`
+    - `reviews` · number · e.g. `2`
+    - `developer` · string · e.g. `"Sthitpragya Studio"`
+    - `developerEmail` · string · e.g. `"delightstarstudio@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"May 22, 2026"`
+    - `updated` · string · e.g. `"2026-09-11"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.10"`
+    - `recentChanges` · string · e.g. `"Status Saver - Save &amp; Download"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/19zclxcQG9_qsrd1kMp5xyha9bResa2y…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/X3aBfVZSJ-L2PwqFq87ayW1yMwPHsyv7…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/hD3bhWEabfXKuy1ugbYcr7o8ZetBFmdceXU4atqVp5_xteCnIP6gPhRhZ21DyX68EDTofbzi9sdANa3NYocDGbE","https://play-lh.googleusercontent.com/uX4eCHiVWZA3MaDpq6449_ohn7UNiTNlmgP2OpP57e5E7Xvd4V9afWNV49zEPo-YAjYHvvjUnkONCy14HNUvuw","https://play-lh.googleusercontent.com/fKJccmPmeE3N-pN26bJSchloFMLsYApIOYDCr8oDexQBU1-mR_faoAgECTEV7BJrCSflQPY-5dq35EgHrhKu","https://play-lh.googleusercontent.com/TacBlmlJ8CY-blJWb00-c9kXxafm-mrHW2iVZ-uqeDyol4BZbfBwsQVB4b5O-qehR-XprDCMIvFtVk9Mtz2NjeE"]`
+  - `wasaver.downloadstatus.videosaver.wasticker.downloader` · object with 23 keys:
+    - `appId` · string · e.g. `"wasaver.downloadstatus.videosaver.wasticker.downloader"`
+    - `title` · string · e.g. `"Save Status - Download Status"`
+    - `summary` · string · e.g. `"Fast, easy, and secure way to save &amp; download all status stories"`
+    - `description` · string · e.g. `"<b>Save Status - Download Status</b> is a simple and powerful tool tha…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `6121431`
+    - `score` · number · e.g. `4.77`
+    - `ratings` · number · e.g. `32075`
+    - `reviews` · number · e.g. `48`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `developerEmail` · string · e.g. `"xmedia.lite@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 26, 2022"`
+    - `updated` · string · e.g. `"2026-09-14"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$19.99 per item"`
+    - `version` · string · e.g. `"2.1.23"`
+    - `recentChanges` · string · e.g. `"* Auto Save All Status.<br>* Save Statuses in HD.<br>* Build-in Video …"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/HiREh04xhPAHD0v9YfAjGL5zTCjgB8it…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/A9mCtG0WQIxwQP_7gFlJ9TUlt-pqdq2N…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/NYjXzSXjGbs1mTXsyYC69XAG1AcbnNionx6WOq4AN83h91yn_jDErT1OV9hfqyjVxL-6vHsNkilofnJ_kTxMcQ","https://play-lh.googleusercontent.com/WLtU5zYwcCBdRbRkvYGzSoLDCePdQOYih6pAKg5Sr6Fxr9evPPjqrb7Z4qkdjySNA6yt2XmFypzLQmchpOUbuQ","https://play-lh.googleusercontent.com/c3Vy4-m_os21cyE96gitEjE9heRstqCjmqIrGElZibvuf0HHzr_-YM3Clo-4udKLz8K3CfH40C1nMuGvP9Fj","https://play-lh.googleusercontent.com/F6M0rZfUO_pnujGJAu_xqiDSeRnagGryLWuMedwiulf2aHLW-jko3x24wQjqHtjbbrv0wTQevO2mUJz7N24Muw"]`
+  - `alpha.sticker.maker` · object with 23 keys:
+    - `appId` · string · e.g. `"alpha.sticker.maker"`
+    - `title` · string · e.g. `"Animated Sticker Maker (FSM)"`
+    - `summary` · string · e.g. `"Create your own static and animated stickers for WhatsApp (WAStickerAp…"`
+    - `description` · string · e.g. `"Animated Sticker Maker (also known as Free Sticker Maker, FSM) <br><br…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `22813118`
+    - `score` · number · e.g. `4.5531917`
+    - `ratings` · number · e.g. `210042`
+    - `reviews` · number · e.g. `881`
+    - `developer` · string · e.g. `"Memento Apps, Inc"`
+    - `developerEmail` · string · e.g. `"memento.apps@gmail.com"`
+    - `genre` · string · e.g. `"Art & Design"`
+    - `released` · string · e.g. `"Mar 20, 2019"`
+    - `updated` · string · e.g. `"2026-09-16"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $2.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · string · e.g. `"V1.53) Bug fixes<br>V1.52) Bug fixes<br>V1.51) Notifications &amp; imp…"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/_nAOvo_Qu0-YYwwUP7ufqiRemHpWZBcp…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/HujCa9SzDnALWhgGazwhczjXso2LBezI…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/JVB_TMHsZfuwO-CWI52PicPz4KwqRE9psT2DsNgn9wJLqK1VsRzP0OCWknZMxOqFtILi6tZKPSPrm-fx1QiktA","https://play-lh.googleusercontent.com/RqPnYEIwG_xhVO1BnHkdj--SzcNypOIcBj-3SI31fjHUZ5CAGjNpLT2C5-QePGSH7uMc2BMh6Q5QCXsJnGgQ","https://play-lh.googleusercontent.com/pJCKgoIdVVAT8ijTVzf4RGXMRAvQlA_PKb4vo-goiC-xRDelZDPNb1UOebFkw_7TjKPVhxN7TpTLpz_3y3zdDVw","https://play-lh.googleusercontent.com/G4Kpv0NlQrBLURZc57AGeDs2iTniGo0JwY6HQezlt_1XsbO719Z1D4dn4W209TmaJD3x00VyhBE7js1K_tpi2g"]`
+  - `recover.deleted.messages.messagesrestore` · object with 23 keys:
+    - `appId` · string · e.g. `"recover.deleted.messages.messagesrestore"`
+    - `title` · string · e.g. `"Status Saver- Video Downloader"`
+    - `summary` · string · e.g. `"Save status videos &amp; photos from friends. Save, Share &amp; Repost…"`
+    - `description` · string · e.g. `"Status Saver app lets you download your favorite video and image statu…"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `minInstalls` · number · e.g. `50000000`
+    - `realInstalls` · number · e.g. `77876962`
+    - `score` · number · e.g. `4.6408453`
+    - `ratings` · number · e.g. `326271`
+    - `reviews` · number · e.g. `941`
+    - `developer` · string · e.g. `"Native Craft - Status Images, Photo & Video Saver"`
+    - `developerEmail` · string · e.g. `"softappxtech@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Sep 2, 2020"`
+    - `updated` · string · e.g. `"2026-07-27"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.99 - $4.99 per item"`
+    - `version` · string · e.g. `"7.6"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/qW0r45yR3xo8jorHS3RXX9AhqZVF5SJt…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/EhN3X0o-viTztdQruvJVwRTFqLR_EiOS…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/IEieSJMS-msw75XyOuEfLewjMF-unZzauRO_nMYwp57UDnyd9tzQntTFDvRrGOVIPNT7gmhjqgNWE2rRL55PWQ","https://play-lh.googleusercontent.com/-i3PtrIjKq5Ubdm-L9OTwhzCvdUKjKdG9P7oCDQk10coOgV4SdqnIuKa9j6fVG-mGYY1YcuMLkVEjQZs2pOjLg","https://play-lh.googleusercontent.com/UTDSlo17uxh7WktdLCmFrkDvqpjaoRCC8kQ3uKQdqyrIVpsZsgZucByVGrHx6SyrS0YAPDh20grrgPjZNfPGA3Q","https://play-lh.googleusercontent.com/UHgd3HxZeTfMvi-b2DbglzfWaefPCVEfbxLImwfMk1c4l58by03kLRVuf1dDvASDPfxE7xbn-kYDqGqx1yLDn90"]`
+  - `com.wssaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.wssaver"`
+    - `title` · string · e.g. `"Status Saver & Dp Download"`
+    - `summary` · string · e.g. `"Save WhatsApp Status photos &amp; videos easily. simple &amp; secure S…"`
+    - `description` · string · e.g. `"📥 Status Saver – Download &amp; Save Status Easily (2026)<br><br>Stat…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `46355`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"hitesh joshi"`
+    - `developerEmail` · string · e.g. `"raajjoshi3252@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Aug 17, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/0mg98Xn1VnFaa8HyK5dz9EzKJHks8eC9…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/PQVAe_1eWq3x6Lnux83zhgfwaAtnIEpJ…"`
+    - `screenshots[]` · array of 12 string · e.g. `["https://play-lh.googleusercontent.com/LqDRv0Du0dsH1qcCaV_bN4gVr8Ms3kxHdzWi4Kprht0Jh33hejTLBzHkX5lVaN3Znt_fuC8R9tH7z282zSfK","https://play-lh.googleusercontent.com/wnNo-WBT-4atyvsIZyA_gEkovNNhNsw0ha2LTOBYMvH1NOtFkczfklYBDztgbKoncbxbw7hQuKVmpbF-EnIyYw","https://play-lh.googleusercontent.com/B25rhTXfrm6Ml0fVnoxWgYcyHL2JzGbVKBjc4P3IaVNLF6iypM3vcMXxvFE8BDkKpKciGdJSdaKoJDzEyf1rXw","https://play-lh.googleusercontent.com/is7239AETiMaWsB7ANifT7M-WLlZxIVO1dYysCdRTjaPHIwd60uSfuAK2BhhgVtjLGkHRIpHuAZXCcZmQioysGY"]`
+  - `com.codelabs.statusdownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.codelabs.statusdownloader"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `summary` · string · e.g. `"Save Video and Image Status on WA."`
+    - `description` · string · e.g. `"Status saver is a tool to save status (images/videos/gif) to the galle…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `30943`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"code labs"`
+    - `developerEmail` · string · e.g. `"prashant.saini.play@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 27, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/qaQOChpU6XQquiQ5BDD8oyoB4IZIuB8j…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/2Q-QXPWyou1it5rkFTM4fNRMWa0bDmz6…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/DtwzmS5TjLAvLpBpNDthebM5R0TXTiUWHv1jCqMLnDMzb-5UhrjLG4cM8VxFwDPPSbO9NTlt75QiM0iiKbEuwg","https://play-lh.googleusercontent.com/qENQ0_p9tzFhGF3ZbAHrHWhpFPDoZY3yPPHtCqfdzCVTCVdTQ5okJ1M3Uoz_4EnzZUevkVrzseippp-25c4-RRU","https://play-lh.googleusercontent.com/WO8I9prA7EolGJOA4zcTGrXVXL-_28hOuELaslAUWYjzNlmYhZDbLv3QEliVdobFd-d-YsE8h1F9RYvbVDrIOA","https://play-lh.googleusercontent.com/-8ryF-9zxSHlPoS8LA6_8BjJWJWqJH8kBrhiqJyU_xEuxlAfkhgZ9zIy2Lv9sj4uWQ8aYYmn5PoWbc0kDcaP"]`
+  - `app.status.mobile` · object with 23 keys:
+    - `appId` · string · e.g. `"app.status.mobile"`
+    - `title` · string · e.g. `"Status - Chat, Assets, Browser"`
+    - `summary` · string · e.g. `"Privacy super app with messenger, digital accounts, browser, communiti…"`
+    - `description` · string · e.g. `"Status is your privacy companion: private, fully end-to-end encrypted …"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `158153`
+    - `score` · number · e.g. `4.076923`
+    - `ratings` · number · e.g. `43`
+    - `reviews` · number · e.g. `2`
+    - `developer` · string · e.g. `"Status Research and Development GmbH"`
+    - `developerEmail` · string · e.g. `"contact@status.im"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"May 10, 2026"`
+    - `updated` · string · e.g. `"2026-07-20"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · string · e.g. `"Fixed high CPU usage and excessive mobile data consumption causing dev…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/u0u2zZV8BNtK-fFUTt0bCpPphq9B5fFK…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/lDLDn4jfNpbd24sYNHTRooQ-6euDjuiP…"`
+    - `screenshots[]` · array of 18 string · e.g. `["https://play-lh.googleusercontent.com/oU2TUDT_t4b2a7ZEB4HMCxrXrA_hkqs1TBX8iM1k32cBc49T6KbkzyKJCmrGx6KXRaW3HudeRgNtCL_Rb5fc","https://play-lh.googleusercontent.com/VRcGXGTVP0f4nNw_qCAHmGDUkUDAdZOoxdMXiggxE37hTdfurd6F_cv_xSxBVJGOINbjxDQguNIyp9-r_Na3","https://play-lh.googleusercontent.com/0PTeKNV3dMLrAt1mP05YxxRHMt8u7V66dAIl9H_O3p0pqhq4Ml7xld8numOhrVxSGC3C5mmWXXJJ9emd-FU5","https://play-lh.googleusercontent.com/ZgpWf7OJCMoa4V4WVxbS2IOXXmmhyS9rEEmEPTml9utotW0rQlq5z5_kqLaIGX7O5m9we17uVwffF8FzbYvDdA"]`
+  - `com.td.statussavers` · object with 23 keys:
+    - `appId` · string · e.g. `"com.td.statussavers"`
+    - `title` · string · e.g. `"All Status and Stories Saver"`
+    - `summary` · string · e.g. `"Download Status from social media"`
+    - `description` · string · e.g. `"Are you stuck of finding the best saver of all your social media statu…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `591722`
+    - `score` · number · e.g. `3.2142856`
+    - `ratings` · number · e.g. `1478`
+    - `reviews` · number · e.g. `3`
+    - `developer` · string · e.g. `"DV Tech"`
+    - `developerEmail` · string · e.g. `"officialvbtech@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 24, 2021"`
+    - `updated` · string · e.g. `"2026-09-17"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"3.0"`
+    - `recentChanges` · string · e.g. `"Updated to support latest Android.<br>Major bug fixes."`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/B1hXs57vgYcqYLwAM4jibNyRSgyrFdco…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/7KsaCpxldnIYyMl346tHN0Bwh1ZlaVeW…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/rs9tlb2eEXRb_x0bkUar--vEVe76iShOAyc0_YOka3nscn-ueiUBt-f-V22zimrd695OZZqstR2sdiRAaFhS","https://play-lh.googleusercontent.com/XMgOpOqV_KFML-QOerLn3y0kY8aUyJeiYtGz54xnVsxHDs8iZMQgOIzlcCJFVo9s0bGWdk2pAEiprEdidoo5","https://play-lh.googleusercontent.com/j_ZokKbjOCFV9gIRWUDlhWAXUcsKTAlXewCDrWHCFTEGj3HVDCy0ZoQrTm5_QiE2j-ZlRpuHD3LSvBtV5K_-nDc","https://play-lh.googleusercontent.com/KDXo_4kL7u8b5W7OdpUxxjE9dS1CSNe6Kamdd_nSqj1jm9sjgXwDd9VXkbCL8ldaQNwDn3S3ujQNDwDD2_d5UQ"]`
+  - `full.video.whats.statusdownloader.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"full.video.whats.statusdownloader.statussaver"`
+    - `title` · string · e.g. `"Video Status Uploader Download"`
+    - `summary` · string · e.g. `"Download Full video status uploader and downloader"`
+    - `description` · string · e.g. `"Status Uploader and Downloader  is a FREE application available for An…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `492995`
+    - `score` · number · e.g. `3.1875`
+    - `ratings` · number · e.g. `1794`
+    - `reviews` · number · e.g. `22`
+    - `developer` · string · e.g. `"Zee Brothers"`
+    - `developerEmail` · string · e.g. `"appdoor77@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 25, 2018"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/m4ZkTew__nbMZ5ADZEfJJTJBK7cWWLzd…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/8_j47ArM4oSOAUjlavbB3NIPBFp3I07g…"`
+    - `screenshots[]` · array of 9 string · e.g. `["https://play-lh.googleusercontent.com/sd3mj0Wdc-Q21guuPMHH5ScBTiB7ht4MALnuvpLxd4Cp8wqGB1T-9-VRyUFVP4Q8sMUABgxs6-QZQY_ljd_1TQ","https://play-lh.googleusercontent.com/4_mxOMxOdyE5tS_RfM2-SlnS6CQ_ZfugmyrT6zD6Yw_NFVAxXZqUJFKB5wy_Q_e7I0KeZJHTTby7Y82hxM2o","https://play-lh.googleusercontent.com/_cnQi4cxOX5cvSblB2ZcqC320ngziJbGP7wjTgQKSxEbeyGepSaOAX59xHhUO3Lbf4ypTiW198IjJsGZNg6qmw","https://play-lh.googleusercontent.com/fD6lGTOitItPuFUA-8WJDaJCAkqlu506DjfZMttHeA-Drp44OVLqtI0yYa6-Xq6Ul_WqCw5Nb_H0WPWYZ03G"]`
+  - `com.wa.status.app.downloader.photo.video.status` · object with 23 keys:
+    - `appId` · string · e.g. `"com.wa.status.app.downloader.photo.video.status"`
+    - `title` · string · e.g. `"Status Saver-Status Downloader"`
+    - `summary` · string · e.g. `"Save videos, images Status and GIFs from your friend’s status"`
+    - `description` · string · e.g. `"Effortlessly manage your status updates with the Save status. Save vid…"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `minInstalls` · number · e.g. `50000000`
+    - `realInstalls` · number · e.g. `50659416`
+    - `score` · number · e.g. `4.203125`
+    - `ratings` · number · e.g. `87601`
+    - `reviews` · number · e.g. `420`
+    - `developer` · string · e.g. `"AimzSol Technology"`
+    - `developerEmail` · string · e.g. `"aimzsoltechnology@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Dec 28, 2022"`
+    - `updated` · string · e.g. `"2026-08-03"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.99 - $49.99 per item"`
+    - `version` · string · e.g. `"6.8"`
+    - `recentChanges` · string · e.g. `"⚡ Faster app performance and optimized speed<br>📡 Improved data fetch…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/dXIbAgka90ijzadea-yAHC7JGXBHm6sg…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/AHHzy-2r25IlvobOaxc3DAmkpqAIO2yY…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/E9VypNq1vQUhUfuqFtdlxFEN3DQdzwQYrdVTTmYSf_wDkCwM9rUGctipl4DXfXjg6Hyb04uCuPE8iMzwcjalIQ","https://play-lh.googleusercontent.com/BkjlPhfc9QtsFFJstvQ_AKWUmXRFEm6V-H1UazgvYhtuds_6aNqtJcocKfGeLapA8IuWX-KAUMtleD_JSsUrNw","https://play-lh.googleusercontent.com/1JQaHdUgCHad8Jw-fmRGfbk-PrRytk5vjTjNMWpBjrbZ3EBkI1_nY6vvv3XzDb4becHxO74g5tvZzAuSkECR","https://play-lh.googleusercontent.com/sZrVILq8rkk_-kncudVtDLIFxweXFtVdr8Frf9XTMdlOlEUpyrSTzvE4S8GTvrGtwQsNxbZwxkWPV_czHUhSNA"]`
+  - `status.keeper.app` · object with 23 keys:
+    - `appId` · string · e.g. `"status.keeper.app"`
+    - `title` · string · e.g. `"Status Keeper"`
+    - `summary` · string · e.g. `"View and download statuses from your favorite messaging app anonymousl…"`
+    - `description` · string · e.g. `"Never miss friends&#39; updates! Get Status Keeper — the ultimate stat…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `107753`
+    - `score` · number · e.g. `3.6`
+    - `ratings` · number · e.g. `370`
+    - `reviews` · number · e.g. `1`
+    - `developer` · string · e.g. `"Web-Source Ltd"`
+    - `developerEmail` · string · e.g. `"info@status-keeper.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"May 5, 2023"`
+    - `updated` · string · e.g. `"2026-01-19"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.99 - $47.99 per item"`
+    - `version` · string · e.g. `"1.0.8"`
+    - `recentChanges` · string · e.g. `"We’ve improved overall performance, fixed bugs, and updated functional…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/CRd74VUFieHFSdwvyrSfloOtE-F2Y01M…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/b4Kb0usCFnYSBbNkl4yUDX-7vgcPFnme…"`
+    - `screenshots[]` · array of 18 string · e.g. `["https://play-lh.googleusercontent.com/MMQvHXo_mT60gLrQeyIqCJ64XmQdalGiptd_4QvRFEcij7rA1GLiwQ0SWjWHRQ5ffDE_W_Jv6Hjy65D_2OFq","https://play-lh.googleusercontent.com/Dix-RweS0BJC5GHEU_dUxmFTOtYU1pC_uKEka3El9rk3IFQg8v0IQQ2LPOoxR9qsGITv4VYlOXA3S3X56jCP3Q","https://play-lh.googleusercontent.com/34clUWQQFrnjSbtZ4WlfpQgEYu0iHtK3lklbpFYoxDrRzCEO5Ii7gqg4xk2np4ERp2nduexn1ZaAN7HeFmYg2w","https://play-lh.googleusercontent.com/oPKZBMQT2xWlz7WnagWR3hxkOVhWhws-tNjuh6G-IOgBmbIfodZUf1S8lOcOOJFA3GmcdSV3NoS8-Xw8CcNDtA"]`
+  - `com.tamilstatus.videostatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.tamilstatus.videostatus"`
+    - `title` · string · e.g. `"Tamil Video Status - VidStatus"`
+    - `summary` · string · e.g. `"Tamil Status Video App - Trending Tamil Video Status, Tamil Love Statu…"`
+    - `description` · string · e.g. `"Asking for Status Videos of your friends? Let&#39;s Download Tamil Sta…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `244834`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Muththamizh Social"`
+    - `developerEmail` · string · e.g. `"muththamizhsocial@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Oct 31, 2022"`
+    - `updated` · string · e.g. `"2025-10-11"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"10.0.0"`
+    - `recentChanges` · string · e.g. `"What&#39;s New in This Update?<br>1. New Tamil Status Videos Added<br>…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/DWwK_NShwiBDTpho92IrEjAQQYmNzNlt…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/fGA59gV61qJtJyP1e_0Z46wu-z5b3zDB…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/FYh9BQsK-47RILBvj3FlimkWEN5P1UcQVu4Q9L9c_szQIUi89vBPCfYUSRy2YmeIEzDwyQ45dV491-a32kkYiKc","https://play-lh.googleusercontent.com/0WejwIb_mbxAOMBBvU3P_deSRil1MqjyDBTOrmJIk_d_EH0kdiFaJIIaV7WNpITlgucqPH8AHfxNnYq6CBYI_w","https://play-lh.googleusercontent.com/rRb96-xZ1SUQGBOguALMyHsRDhZrVfFhYH6ZDCITBAjgjs-lHaiUxty9jLg0CI_C-xZmkQcdWkKl35HzKWskTw","https://play-lh.googleusercontent.com/1sgILmf88_psW67dUlmOFS2Bg4KO3ZG7qQUV6kLeUNG9HkI-0-iyd13ExS3ONSjhsdaG_njrYZwZjEFU8FU54A"]`
+  - `video.player.videoplayer` · object with 23 keys:
+    - `appId` · string · e.g. `"video.player.videoplayer"`
+    - `title` · string · e.g. `"Video Player All Format"`
+    - `summary` · string · e.g. `"Play ALL formats in 4K &amp; HD. Video downloader, MP3 player, Chromec…"`
+    - `description` · string · e.g. `"Video Player All Format is a professional video playback tool. <br><br…"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `149855720`
+    - `score` · number · e.g. `4.791477`
+    - `ratings` · number · e.g. `1912599`
+    - `reviews` · number · e.g. `34535`
+    - `developer` · string · e.g. `"InShot Inc."`
+    - `developerEmail` · string · e.g. `"xplayer.support@inshot.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Feb 10, 2017"`
+    - `updated` · string · e.g. `"2026-09-14"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $39.99 per item"`
+    - `version` · string · e.g. `"2.8.2"`
+    - `recentChanges` · string · e.g. `"✨ New<br>- Trash: Recover deleted videos with ease.<br>- Optimized vid…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/uI_ZfaVBari9cQx3IbtJET5JN8uwxnMS…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/yJNIBug_05d27AIqNV33M-qT_53LXrS2…"`
+    - `screenshots[]` · array of 10 string · e.g. `["https://play-lh.googleusercontent.com/NWeoZ-fh5ki7r3a5pRXWjVDe0VVI_Z6xr5mCVv7he5FReNw-PAIMEowr2KmLWtXghni32tz4DE2PtnvncaW4dso","https://play-lh.googleusercontent.com/wRt5NbKCnqDXZxncY-4DfrehgloGH6JEHTGRjOXqQnJRzh978yX6fZbwWidCY61V2HZUHDcy3bCJBX-4NtGAAWA","https://play-lh.googleusercontent.com/kwJqQvF5yBV-mci4AKLs5bRfBNjow4yDE3huHCnJ6vd-y6O_yX4ItthHLhvCfkjcPFqtn2onD0w0jck_nJEm","https://play-lh.googleusercontent.com/Eau3fIUJQYtnwriQf1sMH1PlJNHQ5HATX_TljWf83eghy9QnOdLLKcJMmW5jKJMuRZ3mWQ_IUii3u4hd9i2M3Q"]`
+  - `maze.dwarkadhish.videostatus.dp.status.krishnastatus.statusapp` · object with 23 keys:
+    - `appId` · string · e.g. `"maze.dwarkadhish.videostatus.dp.status.krishnastatus.statusapp"`
+    - `title` · string · e.g. `"Krishna - Radhakrishna Status"`
+    - `summary` · string · e.g. `"Jay Dwarkadhish - Jay Shree Krishna Video Status app"`
+    - `description` · string · e.g. `"This video status app is specially for Krishna Related all videos,Imag…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `52053`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Mazikeen Apps"`
+    - `developerEmail` · string · e.g. `"mazikeenapps@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Jun 27, 2020"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/o_h_wdYNZk2oc0pzODEDuu-rIw1ErUY_…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/zFKi2czyFcmMCWZ9cgf_VA79juewqV8v…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/oJM-_pwA22Av5iUwFoGFYk8bk6ijlqsxZr42pP3ncI8_hZFVXaQY64DRNRhXwJyfVn4TjDPrZmFUirLfVEQdXA","https://play-lh.googleusercontent.com/1YPavfAegr-XYyHPJxuIsTHB-7NlUQloSc2cruMs78FwY88sGEUzXxHlkM8C4an470EZ_94IO5o4Sqhuusf4","https://play-lh.googleusercontent.com/FqwX9gGyrh1wTPjM4-91q5yQkzj1KA6K5F4vP2kg-RI6MSHCF2TTdg6DFW-vSK9hxJ8MQNoItJG-2uPtyBuxeXU","https://play-lh.googleusercontent.com/-HqmPL6jvOjKKGZx_gonJnbqKeDEgy6UhhE0Ym9XhDx3Z1kxoNObMfo0IACK_-wMPvEV70l2DSE-31c58pw9"]`
+  - `com.droid.whatsapp.status.saver.downloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.droid.whatsapp.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `summary` · string · e.g. `"Save status, status downloader-photos, video saver, fastsave status"`
+    - `description` · string · e.g. `"Status saver made simple for downloading status videos and photos. The…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `3646105`
+    - `score` · number · e.g. `4.66`
+    - `ratings` · number · e.g. `11713`
+    - `reviews` · number · e.g. `30`
+    - `developer` · string · e.g. `"Droid-Developer"`
+    - `developerEmail` · string · e.g. `"droiddeveloper4us@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Feb 6, 2021"`
+    - `updated` · string · e.g. `"2026-08-11"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $19.99 per item"`
+    - `version` · string · e.g. `"2.2.2"`
+    - `recentChanges` · string · e.g. `"Support downloading multiple status videos or images simultaneously  <…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/U6dqrZXfpRmdcvxiaf6YfM87-ZkxKsuf…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/_ox6HdF4rSRqmXYUogtMeKpFdj1-AYSP…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/JS8IVk7A78AYKqSJxZuTA6lTBN0mmm8PPJa28vZe68G2sdLe7InOmrMTid23TbkpXYlxFA0-jtC-zxF9oiVUNQ","https://play-lh.googleusercontent.com/M7pQkq2rOBUFaGLgPbGixUftC1q6wYupykFypjYb6uPvfd9aRohhvIUyPFwXvoo_RXMiYLiC9zNcMcW5sSfoLA","https://play-lh.googleusercontent.com/zbcusL0CyRIL_CjXEcyf2e15Zn07qMM9REShjOlW4luOsR1Iln9zlWoyMhL7wTmMIRFYRrXjK2fWOF1pMIvgFA","https://play-lh.googleusercontent.com/CygXmh_OaELlu4ssNZPFNUIDv2R2-lajaZfESJVwbOpYeE1Hp42m-EtqlwWHoNA6c3RV2f76jW455nu7Qx7OoQ"]`
+  - `customstickermaker.whatsappstickers.personalstickersforwhatsapp` · object with 23 keys:
+    - `appId` · string · e.g. `"customstickermaker.whatsappstickers.personalstickersforwhatsapp"`
+    - `title` · string · e.g. `"Sticker Maker - WASticker"`
+    - `summary` · string · e.g. `"Create your own animated stickers, memes &amp; emoji with WhatsApp sti…"`
+    - `description` · string · e.g. `"Send any images in any format (<b>jpg</b>, webp, png, etc.) from your …"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `36202844`
+    - `score` · number · e.g. `4.832941`
+    - `ratings` · number · e.g. `390116`
+    - `reviews` · number · e.g. `1232`
+    - `developer` · string · e.g. `"Trusted Tools"`
+    - `developerEmail` · string · e.g. `"support@bestools.group"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Dec 18, 2018"`
+    - `updated` · string · e.g. `"2026-09-09"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.99 - $32.99 per item"`
+    - `version` · string · e.g. `"1.292.79"`
+    - `recentChanges` · string · e.g. `"📸 You can now add multiple images at once when editing stickers!<br>\ud83d…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/p542uzOlTT22UEXNnsNlDA0OuZ8pT22q…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Fz6jja_CHjt6Qemt9y9ZAHU4UGr0EOwL…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/5Hsu0Y8vjpQ-2T8qsJeKQLRAMgCxItirT3iELa3MvcBekKXqa8xE8aFG0D3CcmQslXwlrdiVGPzq9L5V5Bp0","https://play-lh.googleusercontent.com/im39GPsSCXbnPzof7_7VBw8Si6qUE_Ni8f6_qCzk5UM7hnmIVvl4CFfICKO155iZhDL1jn-jfX_LfEvQkAAVg98","https://play-lh.googleusercontent.com/HLPB1vGhg_WlaJlE3idSmSx_-gcD31jK6-IsMHz6DyPxXcNRtWR8FWhkuZmbWT5y7mtrXE0YNhbRFD4SwA_VyA","https://play-lh.googleusercontent.com/qVsSgz0GfomIbGH3eDOKRK6Kk6ZThf-lVDOGR-R-B6RDB589fmi6b0N6veQREee2RXLTlh75Rb4w7q43pr5KFg"]`
+  - `krishnavideostatus.kanhaji.radhekrishnastatus` · object with 23 keys:
+    - `appId` · string · e.g. `"krishnavideostatus.kanhaji.radhekrishnastatus"`
+    - `title` · string · e.g. `"Krishna video Status"`
+    - `summary` · string · e.g. `"Watch and share Krishna videos, quotes, bhajans, and Janmashtami statu…"`
+    - `description` · string · e.g. `"Celebrate Krishna Bhakti with Krishna Video Status &amp; Quotes – Your…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `13070`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Simul"`
+    - `developerEmail` · string · e.g. `"rrwebappworld@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Jul 11, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/8Ge6O1R0XmNVZgaVziK5MMBH8xKymPGh…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/2cQU79HLtbayBo39jEVO1d9T4fEg9bNc…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/gryPdfXgR6A_6KFsagE-JpRqbvLW9o9SS4TBJ-PTpC-0O18gMhHslTcIVRV-JD5gjQS5A1xLbi2fImrUzX1BDw","https://play-lh.googleusercontent.com/RwUzvH0V7JZn96DOU3C8YKtbwqBgDvDzwGjTnrqoTSO7OhLbTIR9lsum3VaG_x1B6oeGMEDuFtEWCKgS1OPRdg","https://play-lh.googleusercontent.com/O7FnWiEqxf_hn8j8QNZlKaoikvie6SvY_ee2mv-cEqZilvJJGVyDL-jGIgiT5otH17G77RmZljKhg7CPOJv8Yw","https://play-lh.googleusercontent.com/5zNVE1r2G27jSBj7VxjprVjQmysi2RctGtYVNv5LTjHYYTI-Uap6gC6v4OYNMglXXDlkf9l7Lb3EfDVhIy5qog"]`
+  - `com.statusglow.app` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statusglow.app"`
+    - `title` · string · e.g. `"Status Glow - HD Status Upload"`
+    - `summary` · string · e.g. `"Compress any video for HD status &amp; story – share without losing qu…"`
+    - `description` · string · e.g. `"STATUSGLOW – Upload Crystal Clear HD Status Videos<br><br>Tired of blu…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `131`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"BtechInfoway"`
+    - `developerEmail` · string · e.g. `"info@btechinfoway.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Jun 23, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/wTTzvYPBYn3rpCyhoMDnn5z-_YcNXFby…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/8EjN6RDu_0y0em0f_pTi9A0vYBPoIv5c…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/p4Ye-VI61wo1T2bmqhhRr5TDqwWcMwVQ-K_KkPp0AWD7D-dKVjmMZKa5FDN4aB_wtneLlPSg0sAOAEeVP9_nOjI","https://play-lh.googleusercontent.com/efpLz-UAL7TXzCfuXBHOkEEoRSf5Id6k7x5TB7VfNVndTeaM0_wdLFf7W4e5N0IwUjmeBnC_g15Tl4LFo_2FwA","https://play-lh.googleusercontent.com/_O8rt6WoqBf7_Cbj_K3L4PmJGAigc98fRFA4qNdcf9Znr5bzeoTtlRy7yr2TVY2X1eZo2fwf-_24bGL4Uu7iSk4","https://play-lh.googleusercontent.com/f6HRVb9b2bNtaCcdtf70aSdNhovvLyzS5sSpNxQNYi-1zNCboGx_WWUaU87vir-9vzmwx7kmdgwrtd396ItUAg"]`
+  - `com.saxvideodownloadermain.videodownloadervthl.xnxvideodownloaderapp` · object with 23 keys:
+    - `appId` · string · e.g. `"com.saxvideodownloadermain.videodownloadervthl.xnxvideodownloaderapp"`
+    - `title` · string · e.g. `"XTX All Video Downloader"`
+    - `summary` · string · e.g. `"Fast video saving with a powerful player for HD entertainment."`
+    - `description` · string · e.g. `"Download Videos Faster • Enjoy HD Playback • Manage Your Videos Easily…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `1373`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Visual Apps Lab"`
+    - `developerEmail` · string · e.g. `"hashimwelfareassociation@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/xwSeMG5YlSlyNj43EMAJ_TQuU2tjjm8v…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/f78VtyBxv5kwQmefhVME0dAzYwdJ8XYG…"`
+    - `screenshots[]` · array of 3 string · e.g. `["https://play-lh.googleusercontent.com/h4kPgv8ObTUcFpg9eI8VMiXhhLLz4NcN-37Ya3ueu0G_l5tKDmbF7FIiNpQsgjeXWs6oxZLZsi2KmQm7_EaSdw","https://play-lh.googleusercontent.com/NNiFvgVe7GUSc2F9fq5U8pJdrTZfzi7VLJUEeKsviRTuE1FbBBItGfxWG2Zpod739GGF2ugddhxkbZ4o8KnZ","https://play-lh.googleusercontent.com/_Bb7UxCw32WljtqvXKbfMj0MxuF4yA0V-GPhCHa2CFbKauzfoSU_RPzmBW5JOmAyaz933-1LQEwTwed0sQeHvg"]`
+  - `instagram.video.downloader.story.saver.ig` · object with 23 keys:
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `summary` · string · e.g. `"Video downloader for story saver. Instsave helps download save &amp; r…"`
+    - `description` · string · e.g. `"While scrolling of social media app and want to share photo &amp; vide…"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `minInstalls` · number · e.g. `50000000`
+    - `realInstalls` · number · e.g. `64791541`
+    - `score` · number · e.g. `4.7380743`
+    - `ratings` · number · e.g. `1429161`
+    - `reviews` · number · e.g. `8731`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `developerEmail` · string · e.g. `"getsupportinsaver@downloader-app.net"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Oct 13, 2023"`
+    - `updated` · string · e.g. `"2026-09-22"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.09 - $119.99 per item"`
+    - `version` · string · e.g. `"3.28.1"`
+    - `recentChanges` · string · e.g. `"Optimize the user experience"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/TBQtIR4nBImNflXpt21UXPoOX_Jykpbh…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/bsU9OfF1Q7vV2d-wAAYS9VzvgknS78ba…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/FfnMY9sP3fbYV4F1RoXhogXbDhJFz_fVSDFAIMYjb7lh5hnbTT6Xb7f_9MUtHUANxzwLHMOKoqSfkMZSZifOMiw","https://play-lh.googleusercontent.com/h0EMMiH0Y8pSs07Hc9_GTlQbfvOT_B20cd0tgQUPqVHaeoNnTlyIi4y5gOCe9pbA8NRvsgPHEaFbmIqM136n","https://play-lh.googleusercontent.com/D-OYINnka5W4ijAPRKz60xTdNFWfOHdcQOtybzrZP_aUSTMWXFMXSbwOGqimhONyW9MfTTcQx2BP39U4FN0JcR8","https://play-lh.googleusercontent.com/N02WJVTF4ukuw_YOLW9K7jXTlERIc6Ft1W_yq6Lf2cHM0_6rQYc8Ww3oxJeiqUuFedqUsjzOvOHKh6RJuNXl21w"]`
+  - `com.storyhub.mediaflow.allvideodownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.storyhub.mediaflow.allvideodownloader"`
+    - `title` · string · e.g. `"XTX All Video Downloader"`
+    - `summary` · string · e.g. `"Fast video saving with a powerful player for HD entertainment."`
+    - `description` · string · e.g. `"XTX All Video Downloader is a modern media utility app built for smoot…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `226889`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"billa Ji"`
+    - `developerEmail` · string · e.g. `"jansdfseneu645aj@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/08KOZqI8scNv1sZA207VuyDPOR2wFcf7…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Y8ptPEJveeKe730x5byYsP93U7SzswfD…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/mVRfe81cAh39E9tHc5w7qU7lQ10-C0xUuOYG1R1N6nzKxChhXH_Vb6P0KPFm8H4cjdr8jmoHgnSH2WfCzoyH0yE","https://play-lh.googleusercontent.com/NsnQ0IKtUfxBMxyEuTWXO-izqyN9HfsZ9DN7jS50DY_ru7B-pObAUkWzOpvSRMVlSzIEyHdXqAIfLv4XQ5HLDe8","https://play-lh.googleusercontent.com/CkzfyQcTNhVsyNZTxCf0uzdUOFzpMXdngAdTT7yI8MU7KipcJg3PTtK95u8z3qGm41kiHCxYUqF5x5sifGAImCs","https://play-lh.googleusercontent.com/OEM3_h92HywP43Yh8iwE4VvwoWjIBJl7xxmQ0jqi4hcRuF1nqpAGlKcNE6QmhKfA5_izcSfdu0qg7x3PJBzNpg"]`
+  - `status.video.allldownloader.videodownload` · object with 23 keys:
+    - `appId` · string · e.g. `"status.video.allldownloader.videodownload"`
+    - `title` · string · e.g. `"Status Saver Video Download"`
+    - `summary` · string · e.g. `"Save videos instantly  enjoy HD playback and discover wallpapers"`
+    - `description` · string · e.g. `"🚀 One App. Endless Possibilities.<br>📥 Save Videos<br>🔥 Discover Tr…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `106429`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Mehra developers"`
+    - `developerEmail` · string · e.g. `"chevitdisa@gmail.com"`
+    - `genre` · string · e.g. `"Finance"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/SdzCQC7Zo4lIp8X7_yBPVPMIGWWTZjkP…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Z2EVI6SY-vatNqbcjf4gfwL7-rQ89-C0…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/p6cTz8r2T6k-g8hskfXhEfLNrzr3i4ElxqPsbsXQrjPye_HS8tIAhJokTBPib8CxhJ3SCQTHdDC88lRI8vFc-A","https://play-lh.googleusercontent.com/XPnrKk2rJd6hP0A_xx6wp-bJ4pNISpbaDIXl4eJXgEJbjIxIT432vURNdU0TzZ_4VnL_vOOwVIQulXbeZp6xGg","https://play-lh.googleusercontent.com/igySmnvCry10AvSJkGsDC_Up3NhJfSTJvGcX2ezFsj_guLK1bJM8XnDjHGeeCpxKVGqbm-O-m6l1sx6MxIBLIA","https://play-lh.googleusercontent.com/pZAyv6mO6D3jl2OZ9wSO4dPRi7MN9_3A5H7zXy2oez5GCtMSSd_T7xec1PlXHUIvthIOr2GdGaBB7a4MoQ1qbg"]`
+  - `com.savestatus.videosaver.status` · object with 23 keys:
+    - `appId` · string · e.g. `"com.savestatus.videosaver.status"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `summary` · string · e.g. `"Status Saver app with Status Downloader tool to save Status. Downloade…"`
+    - `description` · string · e.g. `"<b>Status Saver • Status Downloader App – Stop taking screenshots! Sav…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `41509`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Bestify"`
+    - `developerEmail` · string · e.g. `"mmuaazfarooq786@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/a0cB3lt26j8YrVAY-YnZ6hV-nxfKEViH…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/KWmvsat0OgnKPNJUELdVihivU7AB5tv3…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/0Ype1kfNUZWvgMy-Xy4OIF4CNc7MtsnTn5lM5hvEKFOeviyfOUOc1aZPjCGV3MIvOxPn0TUg7SguIzx_vUJpTw","https://play-lh.googleusercontent.com/pwPuVDpj6tTy4ISkcHhIbywRXhE5FcsqtvsA9qMvuNMeM1XNoslIVBdqYMA43xPp3HOEnFU8PQRoWXldcptONw","https://play-lh.googleusercontent.com/cfdJTe69jS20rQ8p47SW6aQumOelp9jzvxpncCv-U5MYn0KsU9OvjfdnDaIfBT5rR4kY6RZTj8aLbRb0PSTk","https://play-lh.googleusercontent.com/CFDo-AIxNNFpBL2i3NuHXLkhYsdONBCEDLtcoJBzj7S3rH8aQdr6SCK7jRcqIIcpfpFDrWEKAJFP9g5AtWYBwA"]`
+  - `com.falnesc.saveall` · object with 23 keys:
+    - `appId` · string · e.g. `"com.falnesc.saveall"`
+    - `title` · string · e.g. `"Status Saver - Story Saver"`
+    - `summary` · string · e.g. `"Save images, videos and story statuses with our intuitive Status Saver"`
+    - `description` · string · e.g. `"Status Saver instantly saves statuses to your gallery before they disa…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `2063`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Falnesc"`
+    - `developerEmail` · string · e.g. `"support@falnesc.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Feb 24, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/H5yTvHgX2tijSPlRoznc5A0JBavzVNS4…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/N11N31MPgBYoZiR_49eY2y15IxzNy5Ke…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/_jnVJ6K3RWlFregGOJHQOdopPFPkkJljQ3ZB9wqHBJbhO0fBCKdUk0dgLTNwNdReZlq8RjNwkHLd7ki3Dqib","https://play-lh.googleusercontent.com/3LN1UZ1JirIwAsEGLewvoTxIW9FwRrDlHXxY-ulaKm39j_C8uNAbC1uDOd8Iy2l0zqoWhH5aHg0ElSNlJ-N_","https://play-lh.googleusercontent.com/VzSyZYSa46NgvgOKfCOSpGxV1Ra2qaJRqNfHioOhESJfcbxTBQggVcolrGagVE3nW0U1HDCyISPyzM3QxxsC","https://play-lh.googleusercontent.com/6G6Z1_XadEJSBCUuYkRShTPoJy3KKxJ448TBXQUHZojBlAMoB2v65oggJ9S_X92-EVIMpIG5s--R25Cb_a3vCkI"]`
+  - `com.balajitecho.RadhaKrishnaStatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.balajitecho.RadhaKrishnaStatus"`
+    - `title` · string · e.g. `"Radha Krishna Status - Shayari"`
+    - `summary` · string · e.g. `"Radha Krishna Status &amp; Shayari - Radha Krishna Quotes"`
+    - `description` · string · e.g. `"Radha Krishna Status And Shayari app religious people have real faith …"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `37458`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Balajitechno"`
+    - `developerEmail` · string · e.g. `"balajitech967@gmail.com"`
+    - `genre` · string · e.g. `"Lifestyle"`
+    - `released` · string · e.g. `"Jun 25, 2023"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/pDWdaz6op1er4iF-wwoUVxawNrN905J_…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/rfWVoKsEdbYaSuF682vXQhNHqL4CkEmD…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/4XdFbmL-DdgaoqKDcD4Mdf6VdHFhBp-wI6CMYsBm8UP-87YYlViO6_ShcfBaW6xHCRGgrGxxUg7bdLnldcRc","https://play-lh.googleusercontent.com/tmZ7ayu66HAmm3Y3V0PfPYl7sbpmWz5VEWp-NlRr5ivsbuKiPMydeIPZgijcJwWeO4O5flNlXlHceGM_5ldW","https://play-lh.googleusercontent.com/zYkUw4g7qGQxIeacffq5dfq3POl1n32syybkudsXmtSnlsaXXAiyojUZ6AHl3dOzwHP1LyhWMsIA9oAWf1UL","https://play-lh.googleusercontent.com/x7BZtgqOMlf21P0O6YLsc_CH-4hEDiYadIoljVzP3kUusgv65U51la78a6wyyfGQciD3hHDqhZDVMPRzDmHkHA"]`
+  - `instagramstory.maker.playvo` · object with 23 keys:
+    - `appId` · string · e.g. `"instagramstory.maker.playvo"`
+    - `title` · string · e.g. `"Video Status Maker: Playvo"`
+    - `summary` · string · e.g. `"Create music videos from photos with stylish templates, effects &amp; …"`
+    - `description` · string · e.g. `"<b>Playvo – Photo to Video &amp; Slideshow Maker</b><br><br>Turn your …"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `15990497`
+    - `score` · number · e.g. `4.4444447`
+    - `ratings` · number · e.g. `19297`
+    - `reviews` · number · e.g. `3`
+    - `developer` · string · e.g. `"AI Dreamweaver"`
+    - `developerEmail` · string · e.g. `"aiart.gen@outlook.com"`
+    - `genre` · string · e.g. `"Photography"`
+    - `released` · string · e.g. `"Feb 11, 2026"`
+    - `updated` · string · e.g. `"2026-08-26"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.99 - $29.99 per item"`
+    - `version` · string · e.g. `"2.5.62"`
+    - `recentChanges` · string · e.g. `"Version Update"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/djlQjdj435-eeDLyrqdnVcaX7Nrwl-L-…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/YOdSL38sNAnV9PYh-hqvvNTIFsMPhAh7…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/jFMHEObloN8euM_mfBxtIZ880pzNr1bIwPGK0gqO1xt_Is9TaCSxamZj_W0rfsBrz-vVd_rO_LHAMclK33Jt2Q4","https://play-lh.googleusercontent.com/9IozsMQMXbfQjDyQVzLLM80flD6RJVJ_qQJ1jH8aahWVTJ4v1uYKYo2KtaPdMCgPZtvQfh91b9Z0H0QtrOEaLQ","https://play-lh.googleusercontent.com/ErpEnXJdzFEk8umqWWt5-XFVnlYBAhI_LCDjxks24q7YWb7LWQONckUYhRCkO5ylptrzqCHGBo0AXbEpq4TRGHA","https://play-lh.googleusercontent.com/aU5JSfQZ8-6LQOjxPsBng_j1vLj1FBS379-HB_FNZE0HbIV88UsncK0HBh1poEx-DB0dIQyMaWjPYUIS-l4CIw"]`
+  - `storysaverforinstagram.storydownloaderforinstagram` · object with 23 keys:
+    - `appId` · string · e.g. `"storysaverforinstagram.storydownloaderforinstagram"`
+    - `title` · string · e.g. `"Story Saver"`
+    - `summary` · string · e.g. `"Download stories for Instagram"`
+    - `description` · string · e.g. `"<b>Save stories</b>, easily download photo or videos stories for Insta…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `9192277`
+    - `score` · number · e.g. `4.57`
+    - `ratings` · number · e.g. `114657`
+    - `reviews` · number · e.g. `232`
+    - `developer` · string · e.g. `"Sara Tech"`
+    - `developerEmail` · string · e.g. `"saratechsol4u@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Apr 12, 2018"`
+    - `updated` · string · e.g. `"2026-08-27"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $11.99 per item"`
+    - `version` · string · e.g. `"2.93"`
+    - `recentChanges` · string · e.g. `"Language settings — Added a Language option in Settings so you can cha…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/5J-YhAijKxlwV2vzIYp8p8e-3uUBTolb…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/nfST169S5PNUbld3oJoICCU0sJr2uVk2…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/YzBzlygsioLfJ0KeWScGKMMps7LO_t5KyAPt5AigVDCW5DhUjhRcEP9fAR7bAUY3PUuc--2MejlIXc66tlSw5Ww","https://play-lh.googleusercontent.com/3-6_zTt39tEeThj7bzJVCgsiRbPpDq_q_riZY9GMqEXaYT63va48uFCshqOoQr8nWQR6g76vSWMscFvczbMlFQ","https://play-lh.googleusercontent.com/OXIq_yuONaPEDGLl7DTrCTWrG3BlA5YEHqLba5f1H_dU4J7j71r_pzcxUFpsSbh0kNO3ZEMWM1hU6HtP_qLFlg","https://play-lh.googleusercontent.com/pJvmdhUt-NQd3I27Bz-z5iS5Jmr2AJe3gA2mtsGpN-BlUZ6MggzAqqQf-xbtc6v4bhsQkgtFKDcdW9S2wwnsKQ"]`
+  - `com.iyia.repost` · object with 23 keys:
+    - `appId` · string · e.g. `"com.iyia.repost"`
+    - `title` · string · e.g. `"Reshare: Video & Story Saver"`
+    - `summary` · string · e.g. `"Download &amp; save any video, photo or story in HD. No watermark, no …"`
+    - `description` · string · e.g. `"Reshare is a lightweight utility for saving public videos, photos and …"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `945572`
+    - `score` · number · e.g. `4.58`
+    - `ratings` · number · e.g. `12130`
+    - `reviews` · number · e.g. `130`
+    - `developer` · string · e.g. `"iyia"`
+    - `developerEmail` · string · e.g. `"info@repostpro.app"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 28, 2019"`
+    - `updated` · string · e.g. `"2026-09-01"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.99 - $49.99 per item"`
+    - `version` · string · e.g. `"608.1.0"`
+    - `recentChanges` · string · e.g. `"Performance improvements and bug fixes."`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/lKcGZ97fJBXZZ7DHDzs0UVjeZGDVRJ0-…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/WbaKRmRvRR_F5BXVVswcvLodoCgbGBdp…"`
+    - `screenshots[]` · array of 16 string · e.g. `["https://play-lh.googleusercontent.com/mtfWYr1zQR6xFYBDVRylx1rqMnGaBdMjre-k8sAucJWNPG4oN8oCNs2dcprP4ueYc7oJFi1Yj0G0KiaXPTTp","https://play-lh.googleusercontent.com/xlWWgdDRLFS6wa4MONEYp8PkyjI9IHjByEb-NqP5exZXSt4ORgkBQ5amNXcuqWiMpynO3KC48LZ9E_YhFDAUCg","https://play-lh.googleusercontent.com/rykuOJr-yCrI0Vg8zVcVfCO6okv39u_s7Oqwo2F_HkuwyvucT54jc2TTUCztC_wqg75TBbr8bvC2vA0OVx6w","https://play-lh.googleusercontent.com/thObZ4p5J8DqSO-ekxLzt8y5x8chjjwq7eQ-0CxOyiRqBo_qn5XcFgvxWLNsVCBzJxpheBRccKQihvUGeG3PEQ"]`
+  - `com.downlood.sav.whmedia` · object with 23 keys:
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `summary` · string · e.g. `"Save Status even after 24 hours, Recover Deleted Chats"`
+    - `description` · string · e.g. `"Status Download - Saver app let you download photo images, GIF, Video …"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `201855067`
+    - `score` · number · e.g. `4.6`
+    - `ratings` · number · e.g. `1710342`
+    - `reviews` · number · e.g. `926`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `developerEmail` · string · e.g. `"luckajay93@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Feb 28, 2017"`
+    - `updated` · string · e.g. `"2026-09-14"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 per item"`
+    - `version` · string · e.g. `"3.38"`
+    - `recentChanges` · string · e.g. `"Save 7 Days Older Status"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/qjAeMi5-PaB9D85L8f27EMN8LbdlLhGM…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/X8LMEe5o9ayvkJ8y_kz-PXXBtdMxW8NO…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/1WfEDA8tee6MbZiQA2eHPI5bq3_eRWppYIk342QmX1zvjmk9zATAe3qg9oJZfRJGRg7zn6LcyAjnPAAS9g1vdg","https://play-lh.googleusercontent.com/gbrqXoEIfWG3o9aZcEag1dkFTJ1xeAeJpI94us9kBOxpeRtrlfX61n_lAwAYmnjEe2-xScEgGT_1z1ffd2iL","https://play-lh.googleusercontent.com/_dBHsMzFogpho9PAuXkTpyE_iBYI2sakBXcl1QF8uUBncai1EQo34PZZsQyeT0Q3mXUZr35h1R64CVIgw_MUSfo","https://play-lh.googleusercontent.com/CukT3CMbvu1okLT5xj5y9s0tn9LIv6KNyeUiQTSYWHMx0dmRfzYeton9dOmRzCB4Dy_SMTZQuY66aCCM_Gvxcg"]`
+  - `growtons.whatsappstatusdownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"growtons.whatsappstatusdownloader"`
+    - `title` · string · e.g. `"Status Video Splitter & Saver"`
+    - `summary` · string · e.g. `"Split long videos to set as status, direct chat and save video status"`
+    - `description` · string · e.g. `"Easily trim and split lengthy videos into shorter clips, then set them…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `53313`
+    - `score` · number · e.g. `4.4545455`
+    - `ratings` · number · e.g. `550`
+    - `reviews` · number · e.g. `3`
+    - `developer` · string · e.g. `"Growtons Tech"`
+    - `developerEmail` · string · e.g. `"growtons@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 7, 2019"`
+    - `updated` · string · e.g. `"2026-07-28"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.2.5.2"`
+    - `recentChanges` · string · e.g. `"Bug Fixes."`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/fTU7LPV6gQHXKrUDCJHUVRx0LbQ--CVg…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/ZXIR3R7cVwsXrnb4THhXCF7--UJnrmkj…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/kKIz4ccLRTS3P4GKv6EOePT9urB8vYaPBOQXZbiIsVN81LdemoPoJ0XoFrQ0AQ6H_wKohkrMWIQENqaqGTDbsA","https://play-lh.googleusercontent.com/G_tUavl1213jPltWbGoiWIjizYEymhvkGRf3oJnGQLSchZONRCxrNRwRTESE43ZqA1p-nQc85RaObLdjknW_G_M","https://play-lh.googleusercontent.com/C8xwtzbZg9xXv1HjpeLsC1BuaFUsDYv-E8fk5vEWfh9ej3nx8YiMNaMZfOIyOTcKTrucBV6sj1E7KTkWW9ZVVA8","https://play-lh.googleusercontent.com/F2aFhCOLF7AsF1R90QfeO86iasT3uYTAx6Yd8MoT3NUlJwUOmXw0qd1EdIPv5wAg10PrNdOupZKyJG4pNefCfgc"]`
+  - `status_world.status_downloader.status_saver` · object with 23 keys:
+    - `appId` · string · e.g. `"status_world.status_downloader.status_saver"`
+    - `title` · string · e.g. `"Status Video Download & Save"`
+    - `summary` · string · e.g. `"Also directly chat without saving phone number along with saving image…"`
+    - `description` · string · e.g. `"Want to download status videos and photos your friends posted?<br>Then…"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `minInstalls` · number · e.g. `5000`
+    - `realInstalls` · number · e.g. `7338`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Invo Apps"`
+    - `developerEmail` · string · e.g. `"invoapps7@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Aug 26, 2023"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/e2Gf8zXgb1-7JpDvn6CTaTJGwfTg5f5H…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/UG3CxN6jUkNC48khJxR6ZECym5f3BfZ7…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/65tWggMq4BkAyVQjcsQzTr8zq1PO3lawqrX2mrmbZDdGya3xc1CLZffoearbwQfOuk07XKqid9LYI9SkSeUXVA","https://play-lh.googleusercontent.com/Xexk8K3ZyiOfoq-usGzI4GMJIaVo-dAxMKuObalSkDIEtZlAtn9pKHsqZM83vEyupfhZ4saJwOCyLAypu32Qu5M","https://play-lh.googleusercontent.com/5SY6TlhOCjJZq08pfTlr4wModyzX_LAZhKycYC-OiP5kc_p7SPguroefef9pceX2v1px1yrUsivM4sIN0D65ew","https://play-lh.googleusercontent.com/Z3aSFMNq_fUndZQz25VTA8l2VdqRbXViC1Ca3YA1PdGdo4DXJAmKUShW6dSOPQmWET4-PxN9uag4geq3Cv8pdw"]`
+  - `com.async.whatsappstatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.async.whatsappstatus"`
+    - `title` · string · e.g. `"Whatsapp Status Saver"`
+    - `summary` · string · e.g. `"Download and save WhatsApp statuses easily – photos &amp; videos"`
+    - `description` · string · e.g. `"Whatsapp Status Saver makes it easy to download and save your favorite…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `2338`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Async Digital Network"`
+    - `developerEmail` · string · e.g. `"asif.asif@gmail.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"Apr 29, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/hV4AXKn_rFj9aE6lw1Gkkq0SJzCusIdW…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/koqceJJLD-IRTFVTZwStDnWrEeLad5PE…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/JR9wuGQi3XHPyeKUXLbwKyaPS4Er9Uiwoe6i6lp6njZGfHdM25qNlkL9Qz5y4rDtThTELr8p5WfhN76XREqH","https://play-lh.googleusercontent.com/5bxC_NKIp3BaW4FIwqJZjxnpdi_vUYmKdwhiYW3mrd6yWAxKkqmCPsESPMrds5JUavup-hCQFT9LxAqpjhhbag","https://play-lh.googleusercontent.com/oAXjO9rfGunbMN4967Zh2C_K4_sexos_KsFdoCUhO_kJHPNZUSk4atDiXiTgs2FvvupdrG8ENBLrqZKSkZ6Stw","https://play-lh.googleusercontent.com/3kjtqfkw1HJNuf9lizz6QfJZuMHk590E-QhPRfmwMLL75ZEk0HXrMRC1FHZPx0Ov-myu26k_uQ2L07MHf2E1"]`
+  - `savestatus.videodownloader.storysaver.statuskeeper` · object with 23 keys:
+    - `appId` · string · e.g. `"savestatus.videodownloader.storysaver.statuskeeper"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `summary` · string · e.g. `"Save video &amp; photo status, Keep status in gallery."`
+    - `description` · string · e.g. `"<b>Download photos and videos of your friends&#39; status. Easily save…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `49853069`
+    - `score` · number · e.g. `4.8178916`
+    - `ratings` · number · e.g. `220656`
+    - `reviews` · number · e.g. `648`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `developerEmail` · string · e.g. `"reflectapps2020@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 18, 2022"`
+    - `updated` · string · e.g. `"2026-08-31"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$9.99 - $19.99 per item"`
+    - `version` · string · e.g. `"2.3.8"`
+    - `recentChanges` · string · e.g. `"* Now more user-friendly<br>* Auto Save All Status<br>* Video Player E…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/uaZr_sO_zoEq5kroI5aqr1I76QGAPvOZ…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/sKa7Fd8EIs6sSkz6mpB3sLqG0ZIuEuhZ…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/U9l8prpZ85UhEYFm4cRBGjMossl6m6yWf14PXRx9MbhRmBR7z6szgNiDvvmCRHl8Pmkrd2gK-JOC786LQu4l","https://play-lh.googleusercontent.com/7QbWtOV73pZe3wysUIQcnJ2iDaA5l077Ey7m4qBl4SiOaRcaZDXL8NTYHyXjfAVq6AzkH7hXpYCmbUvdi6iaSg","https://play-lh.googleusercontent.com/YjNG--k1UmxMStQH3yaj9DNzd8GVthOooe52yH9D5OaDC0duS7Xsy8tyRcfgBL49iBnGyvnQzYe3bPNgGVXUQ1M","https://play-lh.googleusercontent.com/7o2vW719SR7z8Htd9Mq3JMtFyXXWXdEsxweyicyiMcv3T-shaQgHiL70AkJ2LvAP6sh2Qx02iZruvw34q_D-"]`
+  - `com.atherapps.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.atherapps.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `summary` · string · e.g. `"Save video &amp; photo statuses before they disappear. Auto save, HD &…"`
+    - `description` · string · e.g. `"Statuses vanish after 24 hours — Status Saver keeps them forever. Save…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `368`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Ather Apps"`
+    - `developerEmail` · string · e.g. `"contactatherapps@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Sep 6, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.99 - $69.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/uTzMUT03TLhIUAojjn6dSZV-Ip0eyjLU…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/4_k2RfMrVx3H3GnL3b7xAq3tnmc4C3hF…"`
+    - `screenshots[]` · array of 21 string · e.g. `["https://play-lh.googleusercontent.com/qwxfxMAqXiRp-dZ1l2FFXa3IWt_otbrYjsFzAagTs6BDVh6DjQLUdkNOylC9fvJv5WvWtxpL9d91BROD3BQuN6o","https://play-lh.googleusercontent.com/fdJLZJRMzlIxUzAEGOgQBLD9FWN_PMoJA2UUrok3Y3kfOvKy9ufujXc05XnFOBxWgf8gQfLQ662XYhIL4rryrw","https://play-lh.googleusercontent.com/nLb2cwMKskccVTM9NXlrsKfandGVJH9Y8d3L1nrg8ZfQPWRC2tXUaTg48fZ_4YLKSAvK9M5bA67xFvMJ-p2MKg","https://play-lh.googleusercontent.com/G19bd8h9rdjzeS5mDiuNFatSTiv1jcbJ8D3gngR6ag2Loy8LWYa28hOvE46AX4ortamQ-k8l_Cu1k8RjEtjkBQ"]`
+  - `com.shirokovapp.instasave` · object with 23 keys:
+    - `appId` · string · e.g. `"com.shirokovapp.instasave"`
+    - `title` · string · e.g. `"Insget - Video & Story Saver"`
+    - `summary` · string · e.g. `"Insget is a reliable Instagram Downloader, Story Downloader, Video Dow…"`
+    - `description` · string · e.g. `"Insget is a simple, convenient and fast application for downloading ph…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `4855003`
+    - `score` · number · e.g. `4.785326`
+    - `ratings` · number · e.g. `198840`
+    - `reviews` · number · e.g. `1493`
+    - `developer` · string · e.g. `"Spaple"`
+    - `developerEmail` · string · e.g. `"spaple.developer@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Nov 29, 2019"`
+    - `updated` · string · e.g. `"2026-06-27"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $2.49 per item"`
+    - `version` · string · e.g. `"3.14.3"`
+    - `recentChanges` · string · e.g. `"Download errors fixed."`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/YC_wTabTuGTFnELJI33axzEgETggLrmz…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/ElEOoMaRLqdSpP-MMknLSMDMGGjLPK5O…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/Rkofc89VRY4U-68VWgCEO6VhZXXU6qJtms45vm1IlE3C8XKme8p6UJ63r9fng9ex6fZKanNA8LL8mX8sT1up","https://play-lh.googleusercontent.com/IAi3fFPC96fQPQIvgW5NhF2NBST4Gw_rF9vCF4XijfdpzFSZ8AIf5aBuJ354QjkzOeyyKHeUybE6_aWfpYg2du4","https://play-lh.googleusercontent.com/lVDi2Y6dBTER9q7RKp3l5HsDQf5raLIQzz6F51tdkGnr8bHxfUrgzs27RCs3OdO4UylBpaskVzGaRmybiqC6","https://play-lh.googleusercontent.com/Egs3F_hG0o5DvKYsuvHz4t9XVIBDOFkmn0OeTmL6Vt1RQVr9obtYc0P5FnY3wDADhLHIO0X8__C1_-GZVXVcdQ"]`
+  - `isticker.stickermaker.createsticker.stickersforwhatsapp` · object with 23 keys:
+    - `appId` · string · e.g. `"isticker.stickermaker.createsticker.stickersforwhatsapp"`
+    - `title` · string · e.g. `"Sticker Maker for WhatsApp"`
+    - `summary` · string · e.g. `"Sticker Maker for WhatsApp &amp; Personal WhatsApp sticker maker - Mak…"`
+    - `description` · string · e.g. `"Want to make your personal stickers for WhatsApp? Looking for an app t…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `10692951`
+    - `score` · number · e.g. `4.5513515`
+    - `ratings` · number · e.g. `146894`
+    - `reviews` · number · e.g. `756`
+    - `developer` · string · e.g. `"Make Sticker & Photo Collage & Sticker Maker"`
+    - `developerEmail` · string · e.g. `"wonderpic.lab@gmail.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"Dec 30, 2019"`
+    - `updated` · string · e.g. `"2026-07-28"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $11.99 per item"`
+    - `version` · string · e.g. `"1.03.19.0728"`
+    - `recentChanges` · string · e.g. `"💡New features when adding text: Callouts<br>💡Fix bug that cannot be …"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/0Xy17FfZICoLxRgIrrLAnyBEJgbifE-w…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/iZs2bSgLVWf2KNW2M1TWLK2ZlOmJw17d…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/IeR4ttgy-8ZDj5Jsw3J1HTp9gBMi5yqqx7fu4QSuQJPe85PNGFDFeU7F1Yh-i4zQ3dFI1_pnqFqN_Ju_QhO2gQ","https://play-lh.googleusercontent.com/_wg50VUhMN3IMTvuzTWFnbpEnk3YOXkI2u3yemWdpAHXpNSc_zZk5ZYKIPQJzSR-hDP5R8GyOvwY2Bwa9at8I7s","https://play-lh.googleusercontent.com/ZxRdI_xiUwr_MP1ELg0dz5PzTh4VZrzMN7MnH-6A4DaS2gkKRx3QvVNX9MAdq62RqhgJZ9RUKCP59lP1CGjiPZ0","https://play-lh.googleusercontent.com/UtMtLPXdFr7DQ5Qf9KEdUXXTMEdeXkFFGf0-QzyhF7HZxB15gW1awNkZ905G97-l14IqJLY1GByABvpPs8RgTg"]`
+  - `com.mxtech.videoplayer.ad` · object with 23 keys:
+    - `appId` · string · e.g. `"com.mxtech.videoplayer.ad"`
+    - `title` · string · e.g. `"MX Player"`
+    - `summary` · string · e.g. `"Powerful video player with advanced hardware acceleration and subtitle…"`
+    - `description` · string · e.g. `"<b>Powerful video and music player with advanced hardware acceleration…"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `minInstalls` · number · e.g. `1000000000`
+    - `realInstalls` · number · e.g. `1615712802`
+    - `score` · number · e.g. `4.2140093`
+    - `ratings` · number · e.g. `14261883`
+    - `reviews` · number · e.g. `163361`
+    - `developer` · string · e.g. `"Amazon Mobile LLC"`
+    - `developerEmail` · string · e.g. `"support@mxplayer.in"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Jul 18, 2011"`
+    - `updated` · string · e.g. `"2026-09-21"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 - $239.99 per item"`
+    - `version` · string · e.g. `"3.2.3"`
+    - `recentChanges` · string · e.g. `"Experience a smoother, faster, and more reliable application with our …"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/kuU8L2zHfkE8rDQ8iUwMpYcV8TzUDBz7…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/XKObxGg4qaNsG2mR3W3lFs5Pxwdw32hA…"`
+    - `screenshots[]` · array of 17 string · e.g. `["https://play-lh.googleusercontent.com/R2JCFtBNXN58UToZSvV6Tz0vwrIXqfWNj5BvxXWVvVpMKeNGo-AVVMPzekeQtzxMVFhgcVE-7DU-p_oPzl0T","https://play-lh.googleusercontent.com/-fs7qgh-wQt7hI3g18VUnuyqa81UrIysLsMBLk10bPAIDY4nARdRQXW8Q_8d4r4gaO1QhPWRgIrXpovnCzFpphY","https://play-lh.googleusercontent.com/r0pUk3_BoDnkg_Zau5AqpUed9h88mGdMd1XB6M-_xXP_dSCQwVD7rpEjnQaWVOAINCd_1SeciU5KjlGKgW3_-Q","https://play-lh.googleusercontent.com/zvXMj5tAUiW2IE2ajUsnf79C_6ezT0_S4vj-Lz0RFHw57Nf8el96Vc2TDHNMMK17lCAFbOwu-rV-pTCbb4MAjw"]`
+  - `com.snowcorp.stickerly.android` · object with 23 keys:
+    - `appId` · string · e.g. `"com.snowcorp.stickerly.android"`
+    - `title` · string · e.g. `"Sticker.ly - Sticker Maker"`
+    - `summary` · string · e.g. `"Chat Sticker &amp; Meme Maker for WhatsApp and Telegram - WAStickerApp…"`
+    - `description` · string · e.g. `"Discover billions of funny WhatsApp animated stickers and create your …"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `338867097`
+    - `score` · number · e.g. `4.344921`
+    - `ratings` · number · e.g. `2354010`
+    - `reviews` · number · e.g. `5691`
+    - `developer` · string · e.g. `"Naver Z Corporation"`
+    - `developerEmail` · string · e.g. `"support@sticker.ly"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Apr 12, 2019"`
+    - `updated` · string · e.g. `"2026-09-17"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.49 - $34.99 per item"`
+    - `version` · string · e.g. `"3.37.1"`
+    - `recentChanges` · string · e.g. `"Bug fixes and performance improvements."`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/GDTdv4IhXcgZi5pXufGLXXa-AgXgkQiy…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/-E8oGFS3ywgKN17xhl5-5ytU698q379O…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/JSxSZ-H0qhaIONWjiZVh4jCMPmNQJOIy9ryHySQjYOdIiyWkzAXOe2HHXsL8Lt3KY6Dj6dCAq5nJjT7HZ0i_wg","https://play-lh.googleusercontent.com/oMKGqDzOr8DOaabEJYE9N1-WPDIKFHW6q_6p8R0FwBL3TSw_eAwe_CmU20kmhgTuNDWfDutDIZdyTqzaC-_Ejg","https://play-lh.googleusercontent.com/YFUv0fEcgoZmXY3jEaNi8DVZsbhhlwt9hoFKlPm4cym8iKmBxdmdGCb6OddeKBP05dfjVJtjKrblooF7b5Ndbw","https://play-lh.googleusercontent.com/SKN-NSWYe6A1lEeOMmiLhDQlakd-dAxJQhFGV5STYjSFAj9mDP_yBLcq8Ql0qnG7fEexU4LNQ3-VbSk8DvMdQA"]`
+  - `com.cardfeed` · object with 23 keys:
+    - `appId` · string · e.g. `"com.cardfeed"`
+    - `title` · string · e.g. `"Inpix: Status with your Photo"`
+    - `summary` · string · e.g. `"Daily Good Morning wishes, quotes, posters &amp; status with your NAME…"`
+    - `description` · string · e.g. `"InPix is your one-stop app for creating and sharing Good Morning wishe…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `14134603`
+    - `score` · number · e.g. `4.2941175`
+    - `ratings` · number · e.g. `29600`
+    - `reviews` · number · e.g. `5`
+    - `developer` · string · e.g. `"Inshorts"`
+    - `developerEmail` · string · e.g. `"inpixfeedback@gmail.com"`
+    - `genre` · string · e.g. `"Art & Design"`
+    - `released` · string · e.g. `"Mar 31, 2017"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/09vqHgR-AWVK1yM5ouBK4l5A5wol1otr…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/96ZT7396lrmLN_ajuKAeFIWaiPbIsGA7…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/WhJDqbgiftzxeZC4aFoySJefPar_wzf4ZdH7CqOcqSHryiFMWDkdQYZYhge22DJ_ssX1s-FADSmiARzwKXMad68","https://play-lh.googleusercontent.com/Nje3-B8mVSLyI9mJmqE-7pZlQ68gnQpcBHPClSMDaZoGftlruycIaEDl5lWcb0A0KHbmC48BiqupgcjFTnL_","https://play-lh.googleusercontent.com/SSTfyw8QgNGAWRVOmI6bLhHi4reKYmN47tElLjiIDsT6egFfwc60q7WGyT0YyvsFgjuJg-BKLvgs2slZH6ing9s","https://play-lh.googleusercontent.com/9n-7Z7KqZTLCle6dsrAbsWHuRBQyErTUSp_CewMcFuMwzHPAnhYkrVKTQJJ9ZsxVykoQv5CXv_HJHUUf5hiKUw"]`
+  - `com.statussaver.videosaver.downloadstatus.storysaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
+    - `title` · string · e.g. `"Status Downloader: Video Saver"`
+    - `summary` · string · e.g. `"Save video and photo statuses fast. Download, repost and watch them of…"`
+    - `description` · string · e.g. `"Save the moments you want to keep with Status Downloader: Video Saver,…"`
+    - `installsLabel` · string · e.g. `"10+"`
+    - `minInstalls` · number · e.g. `10`
+    - `realInstalls` · number · e.g. `10`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Cell Cave"`
+    - `developerEmail` · string · e.g. `"cellcave70@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.99 - $9.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/0zm1uqzORQgLwtfBYag5EubgngP1e9tF…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/kAJA_TV8bZR9yaOkl9h82lEUhaxSN2bn…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/7iAZey2Hg5EZK19uY4t0EjGvpZtTdRy5DN7ETEeRO7r4YiHSuX38VNyvyMTUG0OfbiINgFOrOtATitv-z9pQKA","https://play-lh.googleusercontent.com/c8pOlGKk8LKygmP-2vwHhOcdEnTfJvAv1ENoyxbjyGHXIk3ff1pCnlJh70AfPtewPsr3IWYrgTtQDLlvZByuZg","https://play-lh.googleusercontent.com/ApeBuv5uD7QPiOwvRRyM_9zx2I8eRozqyGQV9w4o2MYClxQ7GTPw7FfUNMRGwNq9fWDGyqKg13PHzMaxf6sEaA","https://play-lh.googleusercontent.com/5qVFCcon1_TxKVGXxWlKlwqU5LlXUBw-J3CWbZ1JmoukoP33iLrDC1xlI0c4w-rpXTOhuMIZaNTxJ8hCHwLeepg"]`
+  - `com.gulumuluapps.instadp` · object with 23 keys:
+    - `appId` · string · e.g. `"com.gulumuluapps.instadp"`
+    - `title` · string · e.g. `"DP Downloader\| Profile Picture"`
+    - `summary` · string · e.g. `"Effortlessly download profile pictures and media without any issue"`
+    - `description` · string · e.g. `"Unleash the Ultimate DP Downloader: Effortless Profile Picture and Med…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `80628`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Gulumulu Apps"`
+    - `developerEmail` · string · e.g. `"gulumuluapps@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 18, 2022"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/42bTB2jp30iqUF6yTfjaKxsXVGSdE-fz…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/O5k18mEofKB-GU2vn2C0d77QwOabP9VX…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/MTRwEPpGKYatQxFSPsUdXUF2I8-2G47bqUyuatsYPPEDUGdvpn7oEAO1rp6OuZDpRiLoBX8LK6QxYtOjmc-m0w","https://play-lh.googleusercontent.com/TjdBZYrTszyCRc1raM0OEuStmUW1FXvOsklepxqlBWhDNeAcKf7JFlF3awYooTfDp5osuvJutq8lWHmXR_VvFA","https://play-lh.googleusercontent.com/w6gQ41O2bz3JhEvMPcmJCEy3N5RzVXQHc7sK5nhwJfvTpy_O3fIeM9agfF_exsA0nI0k7mvrSGjvbBlIEWH9Vh4","https://play-lh.googleusercontent.com/nGyE6kivqHRe-zmY3DCJTfG_Xx15W6Dl8vLzj6nEWm8bF_3i0lGSyXhTHqsSsKNS0bHOrJCtB86JxgRs2p3wmLM"]`
+  - `com.heethjain.apps.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.heethjain.apps.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `summary` · string · e.g. `"Tap, View and Save your friend's Status Images and Videos and reshare …"`
+    - `description` · string · e.g. `"Want to download status videos and photos your friends posted?<br>Then…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `789287`
+    - `score` · number · e.g. `4.413793`
+    - `ratings` · number · e.g. `7448`
+    - `reviews` · number · e.g. `8`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `developerEmail` · string · e.g. `"hello@heethsapps.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Aug 6, 2023"`
+    - `updated` · string · e.g. `"2026-08-01"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"0.5.2"`
+    - `recentChanges` · string · e.g. `"- Android SDK updated to 37"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/ss2h89RIlOSEpmbOBk18AtQTz1W9bu-R…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/qL02elKTujZIW4uIF0W-Jm7i5eIp6IwP…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/UWD8NoJFSxUa05tj5smkgcB9GxyUKwQuXsBFBnPN33nhPB_5EFCau9qQGR1HQP5GgbIl8qFQ9LpWlQAGHachrQ","https://play-lh.googleusercontent.com/8VPOBM5BcchU8ZRVv_DSW2rP7vzE3o8Y3uf6yZ7g4W-tv8qiMnnE_k-aBVWXxYIzRbEmiV4eWTKC08V2OZ8nhA","https://play-lh.googleusercontent.com/AFPni0BKj6IlClZEjdmPy33hEwelJ4-6jkAfvutYz9oWUbEVKwnTQAy4j7TM5WR3Z-S4b0HEgR1GFaITWAQ8Ng","https://play-lh.googleusercontent.com/sHOJ2le6VGwzSKIbQXMMQnADgJcJ3Js1-DhVnnaW58yny2wBS7OfzEd17ZVc1uqHkTeAgyv1v7U8hyAhwG0x"]`
+  - `com.luckydog.wastatusgrab` · object with 23 keys:
+    - `appId` · string · e.g. `"com.luckydog.wastatusgrab"`
+    - `title` · string · e.g. `"Save Status - Video Downloader"`
+    - `summary` · string · e.g. `"WA status downloader for you to download video/photo from WhatsApp Sta…"`
+    - `description` · string · e.g. `"Save Status - Video Downloader is an extraordinary status downloader f…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `14402`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"iToolab"`
+    - `developerEmail` · string · e.g. `"contact@itoolab.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jan 7, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/dJwOsxbOXVd9L0vsMJT0H5EcBoM4IRxf…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/ZAjN_7uUZ2_SH_gs3--GlaDqBwd5SoRe…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/tEh1Gk4pwm1K8tGPQz5OeTiUTQatVJlQbJDlCkryGOeoa9DbiA-xSyuLh-f56XONZYqrX4Hp8Z58P55iDgao","https://play-lh.googleusercontent.com/e5_Sw4y27j7S7ErQJR0LSJJby-EDjGpp90sqmsMAbq1YBhjt_eTqYIvuBK5xXpOjU1rSdjB6L2Lp1TgejnGI","https://play-lh.googleusercontent.com/RvUgtn9VW7smtf_Pydd0PQKyGLDPp-D0OW-9XBRNTOPSkkOuQCLsgUWH-hmb6kqO9Bo3apKspHjAbdPihBNR","https://play-lh.googleusercontent.com/-kM8vjpTCytdRFaBp7U9_RdSNGoYR6V-L-ranccOW9b_uV3RJpf-CgHaPlfKehM8N4mwrnFdPP5qxYKVoAtBO7c"]`
+  - `com.stickify.stickermaker` · object with 23 keys:
+    - `appId` · string · e.g. `"com.stickify.stickermaker"`
+    - `title` · string · e.g. `"Sticker Maker"`
+    - `summary` · string · e.g. `"Sticker Maker by Stickify: Create your own stickers or choose from tho…"`
+    - `description` · string · e.g. `"A powerful tool for creating your own custom stickers for WhatsApp. Yo…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `44369725`
+    - `score` · number · e.g. `4.5695276`
+    - `ratings` · number · e.g. `916333`
+    - `reviews` · number · e.g. `2388`
+    - `developer` · string · e.g. `"Stickify"`
+    - `developerEmail` · string · e.g. `"utilities@clusterdev.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Nov 14, 2018"`
+    - `updated` · string · e.g. `"2026-07-15"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.99 - $2.49 per item"`
+    - `version` · string · e.g. `"6.1.0"`
+    - `recentChanges` · string · e.g. `"- Bug fixes and stability improvements "`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/eQ1FYE-Btm1geeTl9TFn0l5JQsOvipWD…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/96SKQ77eqXUAj2wZA-RABfuDJ8rWipBh…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/6NQeZXUV_8lXbrcBFl2W37h_hfqS96IHIH3ZHlKspA3yFq0zvwHTQHmus7B7m2fJxXCzMHJ1x_YLnGQSDKVgnw","https://play-lh.googleusercontent.com/nNJsyXopjp-aoPatRdU2UQg6Gfd9i3IQ1T4WGBjoDsVFyJAMe9Eajgt3ZL1PDmePAq4F8oTZ9zksO0hXYbgT-w","https://play-lh.googleusercontent.com/bMe8YoiZikkPDAETK3gxqWPFUiCAUyuUSJCXG_Ook9MwhfSyY8z1N5Tkg-3_JfAKjd0KSyrx2Hu2cG_CKXqNVw","https://play-lh.googleusercontent.com/myh71UzFa0TE2u9PhVTwXSmCwOjtFFrbBZkz3ZgefRdx2DjXrnFIqqJuRQYv7pDB7kmw7-e5sWM2mtjjQ5ON"]`
+  - `com.appsbyanandakumar.statushub` · object with 23 keys:
+    - `appId` · string · e.g. `"com.appsbyanandakumar.statushub"`
+    - `title` · string · e.g. `"Status Hub: Save, Chat, Repost"`
+    - `summary` · string · e.g. `"Save &amp; repost statuses, recover deleted messages, &amp; chat witho…"`
+    - `description` · string · e.g. `"Status Hub: Save, Chat, Repost is your all-in-one companion for smarte…"`
+    - `installsLabel` · string · e.g. `"50+"`
+    - `minInstalls` · number · e.g. `50`
+    - `realInstalls` · number · e.g. `60`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"appsbyanandakumar"`
+    - `developerEmail` · string · e.g. `"appsbyanandakumar@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 8, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/1aTWqA9VoICXNGtr5hAJRLRU_NWIuvHW…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/9IQzFKRKAIbxjaYbMqS89oW8uDBMWb0y…"`
+    - `screenshots[]` · array of 12 string · e.g. `["https://play-lh.googleusercontent.com/gEK_TGRJtoUHKHYU-2SlkqQbwmvsirb3aj3ldVAZqvA6voGcI_dzh1bM0rL3wGUUqN_JoxCgG-vNvZ9wG8vkGA","https://play-lh.googleusercontent.com/XzGIs2vtHd4aST-0t3fY1y2kslWr-WWW12DsKgFPKZM2TxEOezosVJjT_mXBcGf-R27xYAdjWJZFprX5KFFYUZ4","https://play-lh.googleusercontent.com/Yppi0ZncW4W16D0q4CrlVdWA2vh9fxoPA_u9gXMzl4-FU1WMJGnxObH1U2MiHOTbgGjdIsKPmRtWeUlGhBwjtQ","https://play-lh.googleusercontent.com/JCWsfSLeNQdynLumKG0FRIlFWWDtQeUsVFtHMU8efpsIGKUItXiNnmBCV6wDozIhi9MmtjgRiHb8U67BOsN1"]`
+  - `radhekrishnastatus.krishna.video.status` · object with 23 keys:
+    - `appId` · string · e.g. `"radhekrishnastatus.krishna.video.status"`
+    - `title` · string · e.g. `"Krishna Video Status"`
+    - `summary` · string · e.g. `"HD Krishna Video Status – Amazing Collection to Share &amp; Download"`
+    - `description` · string · e.g. `"🙏 Krishna Video Status - Bhakti App 🙏<br> <br>🙏 Welcome to the Kris…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `67765`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Setu Infotech"`
+    - `developerEmail` · string · e.g. `"setu.infosoft@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"May 4, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/h7YjzaGil0e2s5y5tZWbkloyebKE3KsL…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/J8TznLvjCJw-sKyxOhr8hkk7Qwas0rHY…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/0qbF7A20r9J8T-ivR4qFovhokrtJbGPtGaZGsIoWNEDVbTDKLZD5Toe-IXztsLDFPw4X5KGygMY2c6KM5ZXw","https://play-lh.googleusercontent.com/DWDSZwRQooh0NlqwhHlxMTnAP4H_5onoOHjsO4BLIzQc9DWl6eKKQAkd3p0f4q0BmS-DBHkLpBTUzR7wmLfO_Q","https://play-lh.googleusercontent.com/K5pEMldP60gpoGqFS_rSz08gcnrLy2_Ysbe-rcq59z_CZfcs1L2OwKkF2woK1gqM5be9BjFA38p_EK6ksx2kcg","https://play-lh.googleusercontent.com/mq3ylQpLlgUBYaCXpU21emTq-o8EWFZiZlkQTZaJiQwudzr3niAZOpcvpX-Vvy7hZZC5k6WlKQ5PY-RZHQmodw"]`
+  - `com.wa.status.craft` · object with 23 keys:
+    - `appId` · string · e.g. `"com.wa.status.craft"`
+    - `title` · string · e.g. `"Status Craft"`
+    - `summary` · string · e.g. `"Create stunning status posts, quotes, wishes &amp; business status vid…"`
+    - `description` · string · e.g. `"Status Craft – Create Beautiful Status Posts &amp; Videos<br><br>Statu…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `11636`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Sigma App Labs"`
+    - `developerEmail` · string · e.g. `"sigma.applab@gmail.com"`
+    - `genre` · string · e.g. `"Lifestyle"`
+    - `released` · string · e.g. `"Jun 22, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/mURu5rnZOFfjn_cwieqmaohOjkBCcfux…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/5EC2NckO-MwPoDGhUgybZ0_SAMR5CQXN…"`
+    - `screenshots[]` · array of 11 string · e.g. `["https://play-lh.googleusercontent.com/RNjarWjkztFJu4sndsfK1Fz1ErDsGrvaTQLyhjgK3dW4RjTvcZDvuGvdXXe1h3v1nMG0UxLd5-Kt8NUXK5p2nA","https://play-lh.googleusercontent.com/Q35wMfQNlh2NxTFLlkgKFZZ_GAutnqQnfZJL5Xl9aO7pXXkitrg0ETBJaUh5CL95qpQb9U5_UCyE0VL1-90T-w","https://play-lh.googleusercontent.com/P31e0U2J261FaKRJEzshtHrOwxPoquazr1OwQDxLthUEWcnJpALPYeO-NjgNIwds9uFBpgrLdp-HTLDfUywCBw","https://play-lh.googleusercontent.com/UU9Q5FAVBxHWVOnAJBol1-qpKnWBz1uPk0USPxwEOVj1gR1s3ipgwksa5v9tlJgLod7pEEgdR4LSElMFRFUPwg"]`
+  - `com.downloadwhatsappstatus.statussaver.videodownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.downloadwhatsappstatus.statussaver.videodownloader"`
+    - `title` · string · e.g. `"Status Saver - Download Status"`
+    - `summary` · string · e.g. `"Status Saver can Save Status Videos &amp; Images. Downloader &amp; Rep…"`
+    - `description` · string · e.g. `"Status Saver is a fast and easy <b>status downloader app</b> that help…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `48428534`
+    - `score` · number · e.g. `4.3`
+    - `ratings` · number · e.g. `166856`
+    - `reviews` · number · e.g. `861`
+    - `developer` · string · e.g. `"Office Tools."`
+    - `developerEmail` · string · e.g. `"officetools360@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Dec 10, 2020"`
+    - `updated` · string · e.g. `"2026-09-15"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.49 - $21.99 per item"`
+    - `version` · string · e.g. `"2.0.18"`
+    - `recentChanges` · string · e.g. `"Auto save status<br>New status in notification<br>Bugs fixed &amp; per…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/kOKJU6FLJ07J20UOnMOe3oP-iXeQnoIS…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/ucYNt5PsnEiK1KRkTRjbVeMGmQitxGEV…"`
+    - `screenshots[]` · array of 22 string · e.g. `["https://play-lh.googleusercontent.com/F41oI2_vcgSiGyjnkouCWzoGmzKjgZIZiNyv6RW2YJQrTjwUl_CYN63bg1-En15_mFNpapIYvJX6cuhEZiEy","https://play-lh.googleusercontent.com/1YF5_phuIMFfNOUU5waYIyGwfAlVCu3V5sjXfILsgC3CSHfNjZNucizKhDwGVV5Fw04frNdK1v-bEIaCl7WHrA","https://play-lh.googleusercontent.com/DZw4ikGHjuE8K5d9WzldQ-glMDd50XEGM6NliFQVbvfXeXemeeKMZoOulPK_jUEqbm4mO-5OxRcc-cdrnFcZyA","https://play-lh.googleusercontent.com/cyxusdx5lhAfGyBeE5DZJhy4bVi8c0lTGFtaGNBplnUIit7GogS53ayWjQ59GZOmL2y1RDJuVU2L-Q2tvqVkBQ"]`
+  - `in.mohalla.sharechat` · object with 23 keys:
+    - `appId` · string · e.g. `"in.mohalla.sharechat"`
+    - `title` · string · e.g. `"ShareChat Status, Video & Live"`
+    - `summary` · string · e.g. `"Share viral videos, WhatsApp status, jokes, shayaris, &amp; more in 15…"`
+    - `description` · string · e.g. `"📢 ShareChat – India’s #1 post Sharing &amp; WhatsApp Status App! 🇮🇳…"`
+    - `installsLabel` · string · e.g. `"500,000,000+"`
+    - `minInstalls` · number · e.g. `500000000`
+    - `realInstalls` · number · e.g. `620221076`
+    - `score` · number · e.g. `4.179798`
+    - `ratings` · number · e.g. `3969184`
+    - `reviews` · number · e.g. `1269`
+    - `developer` · string · e.g. `"ShareChat"`
+    - `developerEmail` · string · e.g. `"contact@sharechat.co"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Dec 19, 2014"`
+    - `updated` · string · e.g. `"2026-09-22"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.09 - $238.00 per item"`
+    - `version` · string · e.g. `"2026.36.2"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/AzoHc3OQEig_O379TsoBtvN81MD1pOxK…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/XEZ4i8r3XYv4ggoXavgtCc0tENhVVL3f…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/DGtvw48LIjuTHFUHCrJg-rPQXuR_SpFYM5mHwZXOj1Hj45GvnqfHSfGeQfjmW-cM_ZTi_rJUohaPoVfQItKGQPI","https://play-lh.googleusercontent.com/kdydP0s2tin8tOUR_netdvNqotvvj90CutMtedzZckICb9Yka91cLekEVg1bxh34ujBqrih3T4776t-9pn_FRA","https://play-lh.googleusercontent.com/bdqlIWWE9MaDwMmgMzEFKBvG0Sgkln029ZhJYaahXHduq8OjcfOsSbsqw1UMrJvXo9mBesgL_09kq3ujL_fMVL8","https://play-lh.googleusercontent.com/lXdBrFjmkUPpqwX3oM8YHRIf7eTcj9tdRNpSLCzPtFyPpcCAP9sST5YThoK85AlYcyljI30q_kPbmFSzarRN5kQ"]`
+  - `com.appsease.status.saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.appsease.status.saver"`
+    - `title` · string · e.g. `"Status Vault: Story & Video"`
+    - `summary` · string · e.g. `"📸 Save WhatsApp photo &amp; video statuses easily, fast and simple to…"`
+    - `description` · string · e.g. `"📸 Status Vault: Story &amp; Video – Save WhatsApp Statuses Easily<br>…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `10582`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Appsease"`
+    - `developerEmail` · string · e.g. `"appsease2001@gmail.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"Oct 27, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/s1TxL3WZSxeEDHAw2IEb1NDyZ651X0Lp…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/2WwKYbf0TTsuAUf1XTlq-RxhHhh7AJ5H…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/sZH2iot1ekSv-UjIbzFoai41tfasip0Qips_Om6L_d32x6wMJV2ebEiqtF-gEshCAMX-jEljuDTpE6i6ikfi","https://play-lh.googleusercontent.com/HHIOAhIvPIni7YqF0DD3QgXtsT1GnwYCYgKTHgBVFL7b7T07cS98kxfcNNc_oG0XU4pto2erpEEWjQNo5gC0wM8","https://play-lh.googleusercontent.com/tL_zuU9str3zCWEx0C_m0PvgEvrji1bOc5cFp8ACN7vLSA0I3Tfnr3zjbEoFxJ0kta9QDlbSjc6Ru4c-6mrDSuE","https://play-lh.googleusercontent.com/zNJCkfnUJyN-Wf3kFyvi_e_p4I0GCe-v4f_4WURFPcgqq64ytfTdR4f-nJsOEKZ16z2MMwumeoHsBTRaUjHcrg"]`
+  - `com.devamjyot.radhakrishna` · object with 23 keys:
+    - `appId` · string · e.g. `"com.devamjyot.radhakrishna"`
+    - `title` · string · e.g. `"Radha Krishna Status Video"`
+    - `summary` · string · e.g. `"Radha Krishna HD photos &amp; videos status"`
+    - `description` · string · e.g. `"🌸 Radha Krishna Status – HD Photo &amp; Video Status 🌸<br><br>Share …"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `minInstalls` · number · e.g. `5000`
+    - `realInstalls` · number · e.g. `6878`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"DevamJyot Infotech"`
+    - `developerEmail` · string · e.g. `"infodevamjyot@gmail.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"Jul 6, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/KiJdyx78WU0aGioRHDbSlTEKVy4X74Ky…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/svp0RKbJLa-uVSkDkBUI8_yICgaGNBHM…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/uvfHncRaHcMgU2WONXFN6b4yIa1huxDde2eKIiTaiQjGLOjymkU60472sdzuJflKQP0HH5r3-2wpuqBATSLxx80","https://play-lh.googleusercontent.com/6nEcDQR-YbgQs4YHutx28oC9E-vZJQGyC7LHOxgM9_d1gAcAzkjaGPwCCq-FmJIlKuhm2diQ4TA_QnKZU_NlTw","https://play-lh.googleusercontent.com/2wHB99zjN86l64xM3es3V3CnKU66fLmSaL0QOZfab1lf5psaoTM-zOWNxsxGQvyrMi23m8dVWMbt08z5mp2l5po","https://play-lh.googleusercontent.com/4VntKHnhJPi8jcC4pBycW50jYZVQQoeDc4G8o6W6eQ8uxIn4OXn1fZ3c9gkOcCR6wIZ38gATgkF6WcUs7hQwRA"]`
+  - `com.prostatussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.prostatussaver"`
+    - `title` · string · e.g. `"Status Saver & Dp Downloader"`
+    - `summary` · string · e.g. `"Save status videos, photos &amp; stories instantly. Fast, easy and HD …"`
+    - `description` · string · e.g. `"Status Saver &amp; Video Downloader is the easiest way to save and man…"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `minInstalls` · number · e.g. `5000`
+    - `realInstalls` · number · e.g. `6841`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"hitesh joshi"`
+    - `developerEmail` · string · e.g. `"raajjoshi3252@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Jun 14, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/vglFf5GNaK4rFDUwZ47OmNqekO8oe95R…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/2rISgT6hNP9S1ggIyaZhpYgoXORgRl2h…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/WduQxnXWjp-6LuHOm_0ufrGNzlLvPKczK-s0RR6Dnp3vzdeE5oGvGOgxbzpy-te0xIpUZoHZ17dlb3MFyIkXHw","https://play-lh.googleusercontent.com/44EFvFDvVCOj4kLpA1rzlqwqQkgJxFADc4Zw3ciGzEhD_4zFHdp5xATxTb3CouiV3tYw-UnwIbmyKEKRGfWH0g","https://play-lh.googleusercontent.com/tr-xsof1qOwzm1_Vvzy0UL2q3NeX5iWp4EVcPsrGB8TyZwVRlmoxrbBAPP2gRLCqgeIkuq54t7EFLdkcj2NISWo","https://play-lh.googleusercontent.com/44EFvFDvVCOj4kLpA1rzlqwqQkgJxFADc4Zw3ciGzEhD_4zFHdp5xATxTb3CouiV3tYw-UnwIbmyKEKRGfWH0g"]`
+  - `video.downloader.save.video.social.media` · object with 23 keys:
+    - `appId` · string · e.g. `"video.downloader.save.video.social.media"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `summary` · string · e.g. `"Download videos, story, and reels with a video downloader App."`
+    - `description` · string · e.g. `"Video downloader app offers a simple and reliable way to browse videos…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `12352236`
+    - `score` · number · e.g. `4.2348485`
+    - `ratings` · number · e.g. `57561`
+    - `reviews` · number · e.g. `988`
+    - `developer` · string · e.g. `"GiggleGenius"`
+    - `developerEmail` · string · e.g. `"support@gigglegenius.net"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Oct 13, 2022"`
+    - `updated` · string · e.g. `"2026-09-19"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.99 - $49.99 per item"`
+    - `version` · string · e.g. `"5.0.5"`
+    - `recentChanges` · string · e.g. `"🚀 Video Downloader 5.0.5<br>⬇️ New Platform Support added <br>🌐 New …"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/LWchGxxSLJtuz9OR3z3XaT54C-UsIPry…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/pqSWBAt1p0z8755OihntoBoBXz_NflOI…"`
+    - `screenshots[]` · array of 18 string · e.g. `["https://play-lh.googleusercontent.com/E4aLxMawHUIGnwDT03WHvP_ulDMWKn4nXJRFbNtSzF4ucbFWxf0KIMi1FtN4ZnQL0h4Ho5NM7ymc6xvslIAslg","https://play-lh.googleusercontent.com/NLqPrZhnjWNJfuhdvm2IbJYTtkHGI4NpB8dIrlW5SpYqwwqJEKXOQmJcbiFD3c-kl3Vsni5t8U9sRX_8DhPv","https://play-lh.googleusercontent.com/p_lpWVv9wfdG8QNTCrWYt-F-J0Yg1v6yZzgXSOKzByMP64hxHGErAtdz5HA4Ags6MqInYVUj5kDGjSjrxlp7-g","https://play-lh.googleusercontent.com/L_hkrjtwOXWJuAvXN67iREJQIllV1LRv5F3FgaUN7cnyQfc-jo8y5rFsGdP5f2y4AH-mFsK_PNyIpxqXtH7zIw"]`
+  - `save.whatsstatus.allstatus.freedownload.wastatus.videodownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"save.whatsstatus.allstatus.freedownload.wastatus.videodownloader"`
+    - `title` · string · e.g. `"Status. Saver Video Downloader"`
+    - `summary` · string · e.g. `"Save all status with WhatsStatus - WA Status Saver app, Share &amp; Re…"`
+    - `description` · string · e.g. `"Now your curiosity about downloading Whatsstatus is going to end with …"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `467269`
+    - `score` · number · e.g. `4.214286`
+    - `ratings` · number · e.g. `2910`
+    - `reviews` · number · e.g. `12`
+    - `developer` · string · e.g. `"Visionary AI"`
+    - `developerEmail` · string · e.g. `"archers9inc@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Mar 4, 2023"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$14.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/q5kuJg1qZN27ljFjZGb5qLwndUh4m-GR…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Wrm8GxpV3hwYnmo2-_wO6YuJKd4AVUrJ…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/4kiRsBpl0qpNxkJpAZ4KcPkp8TOuXDCmizUXzynt-qeTsw9UlCcHKN4XKGmJboTslU_WXSAYtwyNyfeKWpubXI8","https://play-lh.googleusercontent.com/-E_aGq91gqMwkwrNgMw76n_n04fZLbbjVsXuwMPkxOd5ZScoQwYkx1jtEZP95pmGA0Qr6GcHud-V7mYI4XkBkg","https://play-lh.googleusercontent.com/Z7gdTtIT8M6bJAyaKo74d91wUeOSfL3k8PfCBj3cgYCW60D8YezvDMdEuBoWPgQA2wOstl7f8xz6lEvP95CfYQ","https://play-lh.googleusercontent.com/rdR_oCbUDYVZMVwesi5-u6jQB0zeXtoNr3HWI_IpeoGe0_v_uVo-FdxoAsNAz6WpPtBVc22Upxu1LcqG3PUpYw"]`
+  - `com.ct.radhakrishnaji.livewallpaper` · object with 23 keys:
+    - `appId` · string · e.g. `"com.ct.radhakrishnaji.livewallpaper"`
+    - `title` · string · e.g. `"Radha Krishna Live Wallpaper"`
+    - `summary` · string · e.g. `"Radha Krishna Live Wallpaper, Bhajan, Aarti &amp; HD Darshan"`
+    - `description` · string · e.g. `"Radha Krishna Live Wallpaper – HD Wallpapers, Bhajan &amp; Aarti<br>Br…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `11257`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"CT Apps Studio"`
+    - `developerEmail` · string · e.g. `"chillictechapps@gmail.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"May 15, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Kq8GXzaQAZVns0ED1roHEchh39rkgLkd…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/cZ-8usTmHRAHGXiXQ5KN1hTevbUEbS0v…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/q-QvEWn-AgAltItbcCCianSH8TpzQ_TNSWkifZEWEuR8mR2zHN-MsMaaB1OSnwYfU965c5NNJWkzAx11K3e3ag","https://play-lh.googleusercontent.com/xrjwZPbcYcmDU5pjLvr8z0uGvSbBMJLDqDvAjXZ_fw-XF0931fB77WGVthL6SSgnx5CmV3yIum8Ia5GudFzl","https://play-lh.googleusercontent.com/aEBXuVAdYlaPL01Gc37XAHzQd_qt2adNc_1WIDvYKY6x3-5fNXxLoGXISNEL0QXe5yx5lmfVqO_aoUKhEqM11A","https://play-lh.googleusercontent.com/sLIXom-nfvWOji7be64gUuxn2fmmXiOJnYRsG2zTEshe06tHgsX_k7P-7a9PKzxICLez1Pe-vTQbxEiBIx3AXQ"]`
+  - `twittervideodownloader.twitter.videoindir.savegif.twdown` · object with 23 keys:
+    - `appId` · string · e.g. `"twittervideodownloader.twitter.videoindir.savegif.twdown"`
+    - `title` · string · e.g. `"X Saver:Download Twitter Video"`
+    - `summary` · string · e.g. `"Download video from Twitter with Twdown Xdown, save videos 1 click."`
+    - `description` · string · e.g. `"TwDown XDown: GIF, XVideo Downloader for X Twitter helps you to <b>dow…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `8785472`
+    - `score` · number · e.g. `4.66368`
+    - `ratings` · number · e.g. `227054`
+    - `reviews` · number · e.g. `3928`
+    - `developer` · string · e.g. `"Shotcut Video Workshop"`
+    - `developerEmail` · string · e.g. `"support-twdown@ahasave.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Apr 30, 2020"`
+    - `updated` · string · e.g. `"2026-09-09"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $29.99 per item"`
+    - `version` · string · e.g. `"2.8.0"`
+    - `recentChanges` · string · e.g. `"Optimize the user experience"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/xSUXUidalhR0AN021G1GjRIqARm3RaM4…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/_cWq8a8DK-vNHXESmUyUVngn_ZbesL3A…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/2dKaYMK9x9KN1vL4PkLnQOcj6-4xgXywVt7YL6otQCl-K7J5CrYTLMFHThJccblVVcY8hWv4BRhKd6IITGUm_w","https://play-lh.googleusercontent.com/0DPa322yzhn93YFKSB7ku_juI0K9imzO9KRNkMGXFS8LsjVH3nkHPCWDuZWwSFhKsKxBERTYesGkFni50tkdLw","https://play-lh.googleusercontent.com/g-Yk5CMyDHpk6magmYmmA9KbYw9CjnyomQFdpNtsB1epul-qe_bL_axOrqCr1WiXRQ-K7Vobc6e0ExpxJcoi","https://play-lh.googleusercontent.com/4HtgmTrxXOyzlOHhLZGkE_of5cLs6DHs_Ox-Pi01pY9kpU0mXuTgyDMPp0WyQfJV9fsw9HwdprSUofWvRNeu"]`
+  - `com.saver.whatsappstatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.saver.whatsappstatus"`
+    - `title` · string · e.g. `"Status Saver: Save & Repost"`
+    - `summary` · string · e.g. `"Save status photos &amp; videos offline in one tap. Fast, simple, no l…"`
+    - `description` · string · e.g. `"Status Saver helps you download and keep the photos and videos your fr…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `220`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"G P Technoedge"`
+    - `developerEmail` · string · e.g. `"gptechnoedgejaipur@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 22, 2020"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/TnQqmbKC8vBf5vjCaxWG734DOt4NakxE…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/vq03edxMORCU3GknxxdwzYQujh910Lu1…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/oV-yqoyxbmuzq40pDm9yBysixPYNqburV92bt6J5XiuEkT05QtAQEREDIIIgJjFy7bXygZs1GI_2gHTc-Jk9","https://play-lh.googleusercontent.com/5FtQSBIGXBXJ6T2q1-K_HPgL5mtFiZ3lw-xNmm8KzIZP3-I0e8LxsmDpxbMsh7YuSy8eMNKXm9sK373DP78lUw","https://play-lh.googleusercontent.com/RMjYNzxWxCLaC49zm677Wmyiw6g6obRW5tqRA07tZBV1G8flkK-FishzXDashoR9xebeU4xkWL9NH3bW2rWE","https://play-lh.googleusercontent.com/99HoqD6_capIgyJux3yGBZk-lI342xa9V7xtXaVvqu7aybl-ldNu8do24E99w9up25fICOuhsRJ9Dpeca9OQ"]`
+  - `com.toolsai.savestatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.toolsai.savestatus"`
+    - `title` · string · e.g. `"Save Status: Video & Photos"`
+    - `summary` · string · e.g. `"Save status videos and photos quickly with an easy downloader and dire…"`
+    - `description` · string · e.g. `"Save Status is a simple and convenient app to save status videos and p…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `1116`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"ToolsAI App"`
+    - `developerEmail` · string · e.g. `"enterprise.techno88@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Aug 24, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/E50mmM-jfWDjainOpnz2jMkt8YnVS9nH…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/nz-XXmAVJ_jSJwtiFldA9dwKpYUnktVh…"`
+    - `screenshots[]` · array of 40 string · e.g. `["https://play-lh.googleusercontent.com/45YMF9caugXlk_-ZF2_jhnlyzapl4qRKrcnusqDt35tMa8OYMGjU8gfPKWv3BdcEi78R8QN6NeqzYxSAtLwfuA","https://play-lh.googleusercontent.com/V8lZUMwwSstlonn-thIjliAgVunJLV_AxZXesM7TMTzPutqe1sm2qmby05-aKU9fYoRI__QOn-0Pt74W30rfYA","https://play-lh.googleusercontent.com/PfWLLexIRj0KNZkleJRRA2tEMiul8joJVc8T0Z0cOF5mE60Uajl8TMV7tN_69N5SMN8bouXilsx0XRaWG8svKw","https://play-lh.googleusercontent.com/ZllZzcl3X2WWdyJwNIM7v_5rCB4OKr0N-wbtGKmIplOjMLen9Rw94hqsVhZ50ZPib0uENWCEYl-cjKB7BifQ"]`
+  - `instagram.downloader.saver.repost.reels.story` · object with 23 keys:
+    - `appId` · string · e.g. `"instagram.downloader.saver.repost.reels.story"`
+    - `title` · string · e.g. `"Video Downloader & Story Saver"`
+    - `summary` · string · e.g. `"Download story and reels: video downloader and story saver without log…"`
+    - `description` · string · e.g. `"With SavePro, you can download reels, story, post, highlight, IGTV, gu…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `501500`
+    - `score` · number · e.g. `4.792079`
+    - `ratings` · number · e.g. `9289`
+    - `reviews` · number · e.g. `415`
+    - `developer` · string · e.g. `"SavePro - Video Downloader"`
+    - `developerEmail` · string · e.g. `"tanisssercanis@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Aug 3, 2023"`
+    - `updated` · string · e.g. `"2026-09-06"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"7.0.2"`
+    - `recentChanges` · string · e.g. `"Fix some bugs"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/EDYX01EyU1vtDa4CtUo7j4zPA9dHAE3B…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/c2mITgfbPxjaatEzgUXFQZ4m-gAQ0Ku6…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/OWeI9op1VoRhG5bKrrhPl4v27lVhu-mI8g9Stq4seyXXuA6M_c9dJC3EG0I9JyZgEsN8vK5LoS7YDpbuAYzb","https://play-lh.googleusercontent.com/w26ovZvidkNolqZnp4LN2apstIsVrCOEXdql_tFi7Q1YtxFKdwXaftHEBXILK5Vo_YNq0kizu8exrRqXZr62","https://play-lh.googleusercontent.com/TpnbosTh5nF7vWBCZudila28bywry3x9FJUkLV_BEsZfJvj9YFpzzrqgK3nQHqVT9mLOaB9r09NJ43gt9RaLHUE","https://play-lh.googleusercontent.com/c9OfCH1irQmYMPBAQBDIEqjjKSPKoWwRDhZYmxPVHA72zL42FoPLj8_Z1SVxe6QT_ZKJmWoB1amMBRhrdqfw"]`
+  - `statussaver.statusdownloader.downloadstatus.videoimagesaver` · object with 23 keys:
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `summary` · string · e.g. `"Save photos &amp; video status, View status of friends without seen."`
+    - `description` · string · e.g. `"<b> You can download photos and videos of your friends&#39; status. An…"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `113321085`
+    - `score` · number · e.g. `4.585443`
+    - `ratings` · number · e.g. `275075`
+    - `reviews` · number · e.g. `2717`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `developerEmail` · string · e.g. `"reflectapps2020@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"May 16, 2020"`
+    - `updated` · string · e.g. `"2026-06-09"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$9.00 per item"`
+    - `version` · string · e.g. `"5.0.2"`
+    - `recentChanges` · string · e.g. `"🔹 Autosave all status<br>🔹 Get a notification on New status<br>🔹 Sa…"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/lP7zq8670x8EYqzFl0QgZB2oOyQSzV5w…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/JofoZEQBufxva1z8Ay9jyCdG1qziW4ao…"`
+    - `screenshots[]` · array of 20 string · e.g. `["https://play-lh.googleusercontent.com/eE6PR-kWOqlvr1yNCSIBGON9zVB1cUoP29qDfAlhDvijDZJfKzSdbeEgkipF48rJtFeNABCkmN2CDHvxGvrXttA","https://play-lh.googleusercontent.com/yLriyevfRvIs8ei0TlJKxe5mu9vcdLAsqW9J8ckz6iKhqp00pPoxzXCpozFOUiHcd9SC8GXHBXHv3TDZ-X10OJo","https://play-lh.googleusercontent.com/m5p4hSxpIUzCnzYvscHUvI27uEPoErTF0p0REJe7NjYcrhefrC4MWbXahrlKYV7_kOeoNETOABuEoH6kbgzv6A","https://play-lh.googleusercontent.com/H486_jhhpugIg_WAX8yGhvFDh1XMCzzuhZ-cp_ZuTAaS0YbJgYGK-qtrM-8zbmjn9ObkIYQGP6lYgFjrtMdr3Q"]`
+  - `com.b1b.video.downloader.app.storysaver.free` · object with 23 keys:
+    - `appId` · string · e.g. `"com.b1b.video.downloader.app.storysaver.free"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `summary` · string · e.g. `"Download videos &amp; video player. Repost Downloaded videos - Story D…"`
+    - `description` · string · e.g. `"Video Downloader - Story Saver, photos is your all-in-one solution for…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `23457`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Cybill Tech Mobile Apps"`
+    - `developerEmail` · string · e.g. `"cybilltechmobileapp@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"May 2, 2024"`
+    - `updated` · string · e.g. `"2026-08-13"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.49 - $49.99 per item"`
+    - `version` · string · e.g. `"3.5.2"`
+    - `recentChanges` · string · e.g. `"Video Downloader Bugs Removed<br>Video Downloader Crashes Resolved<br>…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/WRvGHfG2WzqC2loDqB1rdBF4tSIF_q0O…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/IL7SdMgz227VhUurWjiR17gV0GqsAG5m…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/iTuo1OELwMcX2SLAyUnufUwwbRrGjhG4w_WjZluL9X9xBOaGAQeFRVUI12uNM-tHrmiO86EpA54qDKghFQgOVQ","https://play-lh.googleusercontent.com/2ob-aXHZx5iApzdEPYKdDaLN6-cq-GImB49q0rLAPoX0NPYBwzm9WAOCV7cebF7-GDe8mRIlSoEDDRkQ0X9XOqw","https://play-lh.googleusercontent.com/8XY5RkrYdcIt4qfOi4SZXX4dy_Pk5A-mx8SUdlZ8KSgfrqgPfWhSZNZ6GaJ97yIKSO0UWfRY3eXEJ53f39Q-lg","https://play-lh.googleusercontent.com/b9-D0E-5zo9Ahf2pKbPieR5J6Sx-z8o7g6FvSgVaG4LaRNchs-MGAkYOsJvIyVY0_K4S46Bbr2mW9W6y9njB4hw"]`
+  - `twittervideodownloader.twitter.videoindir.x.savegif.twdown.downloaders` · object with 23 keys:
+    - `appId` · string · e.g. `"twittervideodownloader.twitter.videoindir.x.savegif.twdown.downloaders"`
+    - `title` · string · e.g. `"X Saver•Download Twitter Video"`
+    - `summary` · string · e.g. `"Download public X videos &amp; GIFs. Fast video downloader with HD sup…"`
+    - `description` · string · e.g. `"<b>X Saver – Download X Videos &amp; GIFs</b><br><br>X Saver is a fast…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `4118`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"EzyApps"`
+    - `developerEmail` · string · e.g. `"apps4all08@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 14, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.99 - $29.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/P9EP-ho4mDMXNQowqMNleBHtTlGR3jCK…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/0_x8H4DVjiDEdgWJoKMuSAhMAsBjzTQW…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/tpdBFDhtIoPe_S-I4n1Ad8M-x23lDp9e3tOnjrQmkkqeyAiFAaajCh95u--yobGwPknFP5U2bpKEvKrFgU7S6ik","https://play-lh.googleusercontent.com/bSMml_aYgH7iDNcidJnx4x0nF12tYj1sTzrKm9rxkcJJ-Nrikb7yE1tiLV3lhWX_mQ1oDvzerbS4bALX5VdNVQ","https://play-lh.googleusercontent.com/DG6GWK2H3aLXg_aMA2vl83wHeqpC6YWItf3aZHv7brDk0GrIONUmfnnf0rYiTUAEmTM_s1iMQNtd8zoJWLNKges","https://play-lh.googleusercontent.com/kfKXA6vlBD4x4b3lBnaI9wYnfAF0JePD17-PtjtcKw18knBJcl2i6BPBDPizqWOaS-s0KdRPeVTDy5Jo06rQ"]`
+  - `org.videolan.vlc` · object with 23 keys:
+    - `appId` · string · e.g. `"org.videolan.vlc"`
+    - `title` · string · e.g. `"VLC for Android"`
+    - `summary` · string · e.g. `"VLC for Android is the best open source video and music player, fast a…"`
+    - `description` · string · e.g. `"VLC media player is a free and open source cross-platform multimedia p…"`
+    - `installsLabel` · string · e.g. `"500,000,000+"`
+    - `minInstalls` · number · e.g. `500000000`
+    - `realInstalls` · number · e.g. `510580686`
+    - `score` · number · e.g. `4.044212`
+    - `ratings` · number · e.g. `2004604`
+    - `reviews` · number · e.g. `25682`
+    - `developer` · string · e.g. `"Videolabs"`
+    - `developerEmail` · string · e.g. `"android-support@videolan.org"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Feb 4, 2015"`
+    - `updated` · string · e.g. `"2026-05-11"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · string · e.g. `" * Equalizer fixes<br> * Remote access: allow playing audio media in t…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/BG5YwziGHjh0wvWg6VO9c3iprYa3vFww…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/tj2o0TTBhXjsdOhIuBdAXaaKHAFD1mBP…"`
+    - `screenshots[]` · array of 31 string · e.g. `["https://play-lh.googleusercontent.com/u8vVjbpeniIlZkEloddea35PD1uN2B2lL_8PfHaG1Ial8tfoccUwYUt5GlzvddodpAg6uX916rwxbCfQ8JA5zw","https://play-lh.googleusercontent.com/5sYf3kkxoECTRNwl7BclPDmTyLGv3pHtLPX1FQyNE2kc-WSucddscPUGqjnqStLUlubLP7rv3UqK4uRX_-XxEjM","https://play-lh.googleusercontent.com/KIb_9NpY4K809OHPVGXrKpHexdFxP5TzCPqYC8JBbqIk5vMSfa3e0LZQyOWpTPYLPoiP8HsCV_TBCc57RLF4Sw","https://play-lh.googleusercontent.com/mrOVb_Ah2BlfzBeVDWobXjD86wva15GhJxt6E0qY04t53uYoFC3hwTYJeb7_aHlOQRliQ_JcOCpKJID3xeQ"]`
+  - `com.sanjay.phirke.statussaverplus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.sanjay.phirke.statussaverplus"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `summary` · string · e.g. `"Video Downloader &amp; Status Saver plus — split, merge &amp; loop cli…"`
+    - `description` · string · e.g. `"Unlock the all-in-one <b>Status Saver Plus</b> — your smart <b>video d…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `29666`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Sanjay Phirke"`
+    - `developerEmail` · string · e.g. `"apextechservices.in@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"May 26, 2023"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/YFuivSxsHIfNcY2aoOXvOK6xzJMlTerP…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/UwNSjUlOXkpBZzHNYickRLl938cxoYwV…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/y5wWXw5CmXjuVIuV78ACVjF_Vmr1MIXcE1SNRgmqsKc4oGSXrGoTMDbOguEywWF3QOgoqsmM_E2_j6K9o3G1","https://play-lh.googleusercontent.com/HE1OWiLqq_q_EVtM5vQXq8mWM6MCFufI38G1aIkG524HyhbpmcDEBHhoqv3dxy5lhPHUkfrv4fGtJ0Ztgzrq","https://play-lh.googleusercontent.com/3CVLbHnNV95EmueitYBdxblOXnSAsw-00xIhkA_E39pGdwRO8BtjWxw14svdm1dkpShT3PZ_-FrDyH1QvJSszA","https://play-lh.googleusercontent.com/QSzTdSu1Bw770EhWJuMHR5o3HYZC-DmN1mEINMamojiuFIA37AKYF1JUS2XhOw-HR9V10I_dBrCika9ds-b1wA"]`
+  - `com.storysaver.saveig` · object with 23 keys:
+    - `appId` · string · e.g. `"com.storysaver.saveig"`
+    - `title` · string · e.g. `"Story Saver"`
+    - `summary` · string · e.g. `"story saver, video downloader for instagram, save instagram video, ig …"`
+    - `description` · string · e.g. `"<b>Story Saver - Instagram Downloader</b> <br>Instagram is among the l…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `7484336`
+    - `score` · number · e.g. `4.297376`
+    - `ratings` · number · e.g. `105259`
+    - `reviews` · number · e.g. `704`
+    - `developer` · string · e.g. `"Smart Tech1"`
+    - `developerEmail` · string · e.g. `"smarttech6868@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Nov 14, 2020"`
+    - `updated` · string · e.g. `"2026-05-27"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$4.99 - $21.99 per item"`
+    - `version` · string · e.g. `"2.6.8"`
+    - `recentChanges` · string · e.g. `"- Performance Improvement<br>- Fix Some Bugs "`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Nmc0d7WB06tjfbDxq0tFcJchb_cG5KXb…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Aqlz5iqdrRCpf1w2CtZJ_s8nUvbBOLAI…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/gZf_OZa28tk_rTPK_qrToCg_NQd5M9e_fcrYOYfMPcV8A_aLCnvAD6lAZw4h7Ky4SJGKD72kmsYqkubnS6d7oqc","https://play-lh.googleusercontent.com/PHs1cUjrUTQxKgpC0cKY_3EL5wL3dtxIEpd7ttnDfwEpcWf7BoHnITbh-2oPrCOU3d7iDW7JaE41eGtegOTu","https://play-lh.googleusercontent.com/WrgV1UgJ6QZESaJr22a2S3KiaEs2Fkj8GM8oKvmLusAkDrdCCmJ0rQ7TGETTMI0a56q1sxdfdXvdLe34FA1X","https://play-lh.googleusercontent.com/GUksBlpQ2GXvnb8-k7cEkUueK849HbeFL4F-EVrxBsIpV5rpMY-i6clu62_8aCs4GzCuF3tPSWb2zzyI8TzZgV0"]`
+  - `com.imo.android.imoim` · object with 23 keys:
+    - `appId` · string · e.g. `"com.imo.android.imoim"`
+    - `title` · string · e.g. `"imo-International Calls & Chat"`
+    - `summary` · string · e.g. `"Fast, secure global video calls and instant messaging"`
+    - `description` · string · e.g. `"&quot;imo is a free and secure app for global video calls &amp; instan…"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `minInstalls` · number · e.g. `1000000000`
+    - `realInstalls` · number · e.g. `1570803082`
+    - `score` · number · e.g. `4.4511056`
+    - `ratings` · number · e.g. `9079570`
+    - `reviews` · number · e.g. `74913`
+    - `developer` · string · e.g. `"imo.im"`
+    - `developerEmail` · string · e.g. `"feedback@imo.im"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Jul 27, 2010"`
+    - `updated` · string · e.g. `"2026-09-20"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 - $199.99 per item"`
+    - `version` · string · e.g. `"2026.08.1041"`
+    - `recentChanges` · string · e.g. `"[Privacy Chat] Your privacy and security matter to imo. Elevate your c…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/tiKyH1CeGfFp08Ka83S9jb1Zp5SaCZdo…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/dRkaSwuCoESQROb8Nk6xasgs2GSNgm0j…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/TFTjA0KH00AP7XUq0QFtB219m7ixusPwLhq1YyUnjzV-Nrg8p2_XLMXUhFphnexqKlvxUobBLbcdY41X07475Q","https://play-lh.googleusercontent.com/trk6QwoIbsY4EQL_v7ZaFpTjXQnJ9YECIEpuKgs9z6e3cvIzikuZOYoBWbUEx1-i8cmdqsTl6pGVg2h4F3j9","https://play-lh.googleusercontent.com/2zIyWHegFn12O72SakhzfZWgqRS0ZbKnSuZIfmeeYCKuQFLy7bINH_lU4U9FeT2UmqDjCr-LJyhmDtZHK5HM","https://play-lh.googleusercontent.com/7tCgFfqIHit76THNs1drnO22LaaRvtDiZkvEYc3KpHUgXPP8UiSUrAmLdW-TWNAzweKwL2kUnLipeQa_TkdSqA"]`
+  - `com.radhakrishna.status.radharani.darshan.bhakti.aarti.bhajan` · object with 23 keys:
+    - `appId` · string · e.g. `"com.radhakrishna.status.radharani.darshan.bhakti.aarti.bhajan"`
+    - `title` · string · e.g. `"Radha Krishna Status - Reels"`
+    - `summary` · string · e.g. `"Radha Krishna Status &amp; Reels – Bhakti Videos, Wallpapers"`
+    - `description` · string · e.g. `"Radha Krishna Status &amp; Reels is your ultimate devotional app for w…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `1936`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Itwebcreation"`
+    - `developerEmail` · string · e.g. `"itwebcreationsolution@gmail.com"`
+    - `genre` · string · e.g. `"Personalization"`
+    - `released` · string · e.g. `"Apr 17, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/L5hakG06yLY_NQ3_iRSMoy6su9IjJ5zd…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/2prloiNxrWchc4oop4SzZxQFAfuhscud…"`
+    - `screenshots[]` · array of 16 string · e.g. `["https://play-lh.googleusercontent.com/KmsXbN7j618SMK8Tq4qkRLuXz4TcKCmbl7BVyRF99-RB4a74jUlJS6wBBRfD5nJ8hmmOBJp5vnYpkt9uQklsCA","https://play-lh.googleusercontent.com/o6AqURVWWr_GKqlKY1Xb5n8ZOnjntw9B_NeUEFXXsMG1zuWzLmadPOF2pYN6Lsui4TZzrpiuHA6n1aRqUWf2fBI","https://play-lh.googleusercontent.com/jjAmegxQ4yocpzPA0FbjRdjfTFRRmnRZJfa78evfopPo_Rv1ou8o1zMPudS8OwqjijDElPjUbQMtFXQyZrqWNG0","https://play-lh.googleusercontent.com/hFSOqN63UJxiI_2S8vnAKX14XYFwW4i2UXVtPAO7psUuaAbfBSj2uUeSQtV3-uMxTAKLAZWozqrTn-7BTlpcGzw"]`
+  - `link.socialai.app` · object with 23 keys:
+    - `appId` · string · e.g. `"link.socialai.app"`
+    - `title` · string · e.g. `"status - sims but social media"`
+    - `summary` · string · e.g. `"Build your dream social media life on Status!"`
+    - `description` · string · e.g. `"on status, you can be anyone. <br><br>create your persona, join 100s o…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `3644518`
+    - `score` · number · e.g. `4.123491`
+    - `ratings` · number · e.g. `535995`
+    - `reviews` · number · e.g. `16563`
+    - `developer` · string · e.g. `"WishRoll"`
+    - `developerEmail` · string · e.g. `"support@statusai.com"`
+    - `genre` · string · e.g. `"Lifestyle"`
+    - `released` · string · e.g. `"Jan 28, 2025"`
+    - `updated` · string · e.g. `"2026-09-14"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.99 - $199.99 per item"`
+    - `version` · string · e.g. `"1.9.61"`
+    - `recentChanges` · string · e.g. `"- mute public stories<br>- activity log redesign<br>- other bug fixes"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/n0-70dmRIXgf17vZp9DtF38XeNF61FWC…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/OJtQQWGs3JduZItOz5hCoQbm5TunEQHk…"`
+    - `screenshots[]` · array of 12 string · e.g. `["https://play-lh.googleusercontent.com/RK25LNorPOVXlZHg40gea5noZjgZhFgB3sjpONbAqnQa8RQOM4iZxy-84O8O-3E6NnfqnkhkibpPEoqPsQl7W4g","https://play-lh.googleusercontent.com/5mEibGnkq3XlnlOPWYzfJIurDh1M96FIfLXu8ayhZQ-9ij8XmphmBDZDjS4DF_6gS02yZbh3Llh40BNJk9sjuBg","https://play-lh.googleusercontent.com/OC_E7Sch5qEoOUDHzQ9TCZAzYC3i1_ff4g2HXg5fu9fWXWd_WnmWsarW5Rf-6msrIbQ8m6CXAMLQzAwdvY7m","https://play-lh.googleusercontent.com/Pg3PyFOUboT7hNCT4J_DkASRkzR2jFKMNjn1w0V3MF2nmnZlxjncmtwn4NHkk3lZjEX86Gm1eFPFlo_WOkd8sw"]`
+  - `video.downloader.videodownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"video.downloader.videodownloader"`
+    - `title` · string · e.g. `"Video Downloader"`
+    - `summary` · string · e.g. `"A Simple app to download Video &amp; Music from the Internet."`
+    - `description` · string · e.g. `"Easily download videos and music directly from the Internet onto your …"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `236422921`
+    - `score` · number · e.g. `4.7213397`
+    - `ratings` · number · e.g. `2723418`
+    - `reviews` · number · e.g. `53398`
+    - `developer` · string · e.g. `"InShot Inc."`
+    - `developerEmail` · string · e.g. `"support@inshot.dev"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Mar 16, 2018"`
+    - `updated` · string · e.g. `"2026-09-17"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.99 - $6.99 per item"`
+    - `version` · string · e.g. `"2.6.9"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/oju7a2AuqaQSc_l5O-2yRw8F_M0rUlHn…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/QrAO-trY2kMBozJxNbFVwlmHb6y4SyYa…"`
+    - `screenshots[]` · array of 17 string · e.g. `["https://play-lh.googleusercontent.com/NSGdsgwWRfwmx4fvTHQxemryYBrNUhWqMU2V8kQsrPQ9s3Z7d_X4x1SSyYZQ4f11L2-lD-3N-X8bKzW009-G","https://play-lh.googleusercontent.com/gxUnDNwvtp0vd7HJX01UVlWG3OdKYfLHeSLUBcsRp3fe_ncRvXBTxjYs7-i19VEYvrXiqbzDDOaaXCHPoYtjxSA","https://play-lh.googleusercontent.com/WFcH-IvsVpbLiJQx1pQC0Tr147jjjJNgmwvXbfeqC8MJRDPtgb68Yr6IFA-oOlY_Psa_U_8H4_bDW-ECltzt2g","https://play-lh.googleusercontent.com/bUQFlAGdBI4UIMq2062v2WsBvk11Qb-v0JpULDAOmEonf54RZ9tapaeny4QYk0bS3shGIivg__F2bl3JbId7"]`
+  - `com.mxtech.videoplayer.online` · object with 23 keys:
+    - `appId` · string · e.g. `"com.mxtech.videoplayer.online"`
+    - `title` · string · e.g. `"MX Player Online: OTT & Videos"`
+    - `summary` · string · e.g. `"Latest Movies, Videos App - Movies, Web Series, Exclusive Shows Online"`
+    - `description` · string · e.g. `"<b>The Official Amazon MX Player App offers latest shows like Aashram,…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `42022399`
+    - `score` · number · e.g. `4.268293`
+    - `ratings` · number · e.g. `102670`
+    - `reviews` · number · e.g. `10`
+    - `developer` · string · e.g. `"Amazon Mobile LLC"`
+    - `developerEmail` · string · e.g. `"support@mxplayer.in"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · null · e.g. `null`
+    - `updated` · string · e.g. `"2025-01-06"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.3.21"`
+    - `recentChanges` · string · e.g. `"Presenting to you MX Gold. Subscribe to get ad-free experience and ear…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/bHZQwbrHCqmpAJfOyTnoch-cG5KSk_1p…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/3sprbRagjrYa3id7OYsBPSu4bIqvNxn0…"`
+    - `screenshots[]` · array of 11 string · e.g. `["https://play-lh.googleusercontent.com/Gn939PVpPcZvQv2VJyxwauKDsIUhdyuX4HsHAXFXplm7_X9Hxqv0zkdjiA7prRyZGhjijX3SXGoXe3pHfmAD_Q","https://play-lh.googleusercontent.com/HSQ4XRLOQXhXuHf2DEeMhQkGCHXnBFJYeYzrXBgybQtAUbwwNZC6QwAcO0yBHRKYVXtuNcZ4D90hp8C947Yi","https://play-lh.googleusercontent.com/sf6M6vSc3ygRg8w31jkqA_OTlcmzIjUjgtz8KXGg5k_kdzyVcTvwSYYzGRY0dIswlI1AEZSbVx3HcWy16qOC2-g","https://play-lh.googleusercontent.com/E0yGqPy21zypIagg3aqhyoeC7N1la5Yx8qIiAQHO3pWEA_7luh9C8fHxvNcyNPRDlotxaWziSCQRWzdht3X01xY"]`
+  - `com.statussaver.status.downloader.videodownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statussaver.status.downloader.videodownloader"`
+    - `title` · string · e.g. `"Status Saver - Download Video"`
+    - `summary` · string · e.g. `"Status Downloader - you can save videos, images &amp; media in one tap…"`
+    - `description` · string · e.g. `"Do you want to save and download status videos, images, and media from…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `77775`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Video Studio & Offline Cinema"`
+    - `developerEmail` · string · e.g. `"developer@funsol.org"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · null · e.g. `null`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$13.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/KVVapOFbMILfEVYonJHwdODCUqgYgSUz…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/kqXMgoPg1x_2Gn261qImhcE0VP-0_k6n…"`
+    - `screenshots[]` · array of 30 string · e.g. `["https://play-lh.googleusercontent.com/KxJlAnbW7z3G8ovWYChhTj1fwnIZM-8UlO0bE4H27nWuPEAawQMvZmtSL-6lFfOmu97ZQcL1tWzeKCC4bVa7XA","https://play-lh.googleusercontent.com/jVjvxwr-I2UgIYfzTvxEhCgNXiDZo5IhqxmMScJ3bjOOr74p0eTODgbQijtCdUJ7LzfdAw4O0DWZ2VFOCECT","https://play-lh.googleusercontent.com/DpNmwPUEVDmBTlE2RuqVQUpf53VBm2uyTBdk2mZB86g3ZEnN8NYedk81n-kZKd5l7HorhFdOUMhCew2nysB1","https://play-lh.googleusercontent.com/z96Nu-n6JkUvB-sXrAcEI7-gq2CnnPTA1SnoiMBuEj1iq0LkUhPIK4ShRZqDF5bKSFauHIuxvP60qtM5_B5uJQ"]`
+  - `aculix.whatsium.app` · object with 23 keys:
+    - `appId` · string · e.g. `"aculix.whatsium.app"`
+    - `title` · string · e.g. `"Status Downloader - Saver"`
+    - `summary` · string · e.g. `"Save and Download photo and video status."`
+    - `description` · string · e.g. `"Statusify lets you save any photo and video status with ease. Save or …"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `180804`
+    - `score` · number · e.g. `4.181818`
+    - `ratings` · number · e.g. `2403`
+    - `reviews` · number · e.g. `2`
+    - `developer` · string · e.g. `"Aculix Technologies LLP"`
+    - `developerEmail` · string · e.g. `"contact@aculix.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 3, 2021"`
+    - `updated` · string · e.g. `"2026-07-28"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.49 per item"`
+    - `version` · string · e.g. `"2.21"`
+    - `recentChanges` · string · e.g. `"Hola. नमस्ते. こんにちは. Merhaba.<br>Statusify now speaks 30 languages 🌍<…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/GbC9IETFmXtJg_qmi9Mr1ic-RrWcQkpm…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/_DvCOHGmTtrSSYeKuuUgrQgui-g_Ipr_…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/dtQ26dt2sZYTkUp44_d1VJNDRGh3RUHWPwAd_WAFtCxC7df3WoG_1iwbFU-I8RBgnx7zF4_bq2wJwmvWe-aVTg","https://play-lh.googleusercontent.com/IN4zFg1TX2Qc6lsrbH5iEoJZiPwmqpqz8aDU8rqwU1EtS0bv3p1SymlVEk665qYVDkx-n7hY2W-9KAJS_MD4rw","https://play-lh.googleusercontent.com/poBk59b3_9HpNGILJrMzphVENZuEMB-wVBqVL-dsJ5KYZfSwZBSdZ2c8bRVCcZyRNUwgkwyfToA8Fiq-ZGwMAjg","https://play-lh.googleusercontent.com/-cM--WcCHic0sIHKw8--KucPMNnvoe3738Iudt3ITQnnlwDTI-OwZPrwTG8evSb59T5Y53ycLrHYG9ID0RsTzQ"]`
+  - `com.storysaverforwhatsapp.story` · object with 23 keys:
+    - `appId` · string · e.g. `"com.storysaverforwhatsapp.story"`
+    - `title` · string · e.g. `"Status Saver - Business Status"`
+    - `summary` · string · e.g. `"Status saver: videos and images, Downloader for normal and business Ap…"`
+    - `description` · string · e.g. `"In this way, you can enjoy downloaded photos and status videos anytime…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `552213`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Apps start"`
+    - `developerEmail` · string · e.g. `"saver.status7@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Jul 20, 2019"`
+    - `updated` · string · e.g. `"2026-07-12"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.99 per item"`
+    - `version` · string · e.g. `"27.2"`
+    - `recentChanges` · string · e.g. `"- Auto save status.<br>- Quick notification for new statues.<br>- Save…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/QhDcpCx9Ry1qPGqnh8tHnb_NWCurOMEA…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/3xuN2ef_oUyziU5wCwS7UA9VXubE3Ghc…"`
+    - `screenshots[]` · array of 10 string · e.g. `["https://play-lh.googleusercontent.com/N-hvk2e7Vg-6R73ydPX9fQH5C5nfK8FZNOGU18O-1Wq2du-A9tcx9TokcbwdZ-MY6sA9d4G3pLYdpbTivJQXM0g","https://play-lh.googleusercontent.com/J36HJIBc6u45_YhxXSwGHeJhBU9w0T_bwJ24yBTTSwPabRxs78dsW7kownbFvMzzMRuwPb0pXeHKArlT7v0P","https://play-lh.googleusercontent.com/jQyNNyKOLaZ70oc2JewbpaMLqpXnkHjFLquAh0fCUMnm7TkmpGzDnJ_WUvmCZxU8A91x_J_EzZfgAEQOC9lebg","https://play-lh.googleusercontent.com/xSF7-O2V-vQbZwZJgT-ZOGLv4rr9ddxfIG64SRQVTFcHgsSokWYalx2SA4rr6hAdRTe-dOPi6XZXtTupws9K534"]`
+  - `com.arkdev.storysaverinstagram` · object with 23 keys:
+    - `appId` · string · e.g. `"com.arkdev.storysaverinstagram"`
+    - `title` · string · e.g. `"Story Saver - Save Stories"`
+    - `summary` · string · e.g. `"Save and manage stories, photos, and videos with ease."`
+    - `description` · string · e.g. `"Save and organize your favorite stories, photos, and videos in one con…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `40760`
+    - `score` · number · e.g. `4.9`
+    - `ratings` · number · e.g. `869`
+    - `reviews` · number · e.g. `2`
+    - `developer` · string · e.g. `"ARK Dev"`
+    - `developerEmail` · string · e.g. `"frankindianworld@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Feb 5, 2022"`
+    - `updated` · string · e.g. `"2026-09-04"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$2.09 per item"`
+    - `version` · string · e.g. `"3.5"`
+    - `recentChanges` · string · e.g. `"~Fix Bugs"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/37WdKqocDDMzzqCQ98y4G76OKDaHnPWv…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/uRBpFYTKnyBkFbkCUqozapN_OBXQ7DLV…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/O57GFcNGBBN4b3Ab199ywQo4biUaUCSz68c8iF2siqfDbGsz_eHfBWMc7-uugeG405IntXWwTIXhBXRH4WYB","https://play-lh.googleusercontent.com/mus7OGsFlwDK12jgZ2IwllV5WX5bXJ94XznkcxSGNG8eap0YKL6TZV5oQ3jgrQOql5iCD17yMAHbyV3vfjrb","https://play-lh.googleusercontent.com/4Ghx8Yq9Tc1sODsntXjoo0OIWA8x6VNW_6UUq7j7ht26QsvSBWgeetqjf4QRePJIt1aB6H8CIX_hu7GLaNsWgkg","https://play-lh.googleusercontent.com/SCsQNy8z2925Mz_PcoilSLpIQkFpVmAt7bt0_uWeF5w9HX9QlERObTbKlxOB781YTDMHInMY3VCHuqfd2khxQe4"]`
+  - `com.venlow.vertical.fullscreen.whatsapp.video.status` · object with 23 keys:
+    - `appId` · string · e.g. `"com.venlow.vertical.fullscreen.whatsapp.video.status"`
+    - `title` · string · e.g. `"Venlow \| HD Video Status Maker"`
+    - `summary` · string · e.g. `"Venlow helps you post your videos without losing quality."`
+    - `description` · string · e.g. `"Venlow is a video encoder that optimizes the video for higher quality …"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `3521839`
+    - `score` · number · e.g. `4.42`
+    - `ratings` · number · e.g. `50978`
+    - `reviews` · number · e.g. `141`
+    - `developer` · string · e.g. `"ZipoApps"`
+    - `developerEmail` · string · e.g. `"support.venlow@zipoapps.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Jul 22, 2020"`
+    - `updated` · string · e.g. `"2026-09-17"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $99.99 per item"`
+    - `version` · string · e.g. `"1.1.2"`
+    - `recentChanges` · string · e.g. `"  * HIgh Quality Statuses are back!!"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/N1gEZ-GxwN2g3lCNAbk9IeemY4M_zQJN…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Kr5buP47mJLKmgKmLp8zBKhUuyvtbPw7…"`
+    - `screenshots[]` · array of 32 string · e.g. `["https://play-lh.googleusercontent.com/6ERPobCPkfDsVHTbLznCDfyKKLvuzy1y9qbppE5JFbKYxzI8oq_becMVkpjP2ETjxhUBOu0r7KhQvSBtl6p6","https://play-lh.googleusercontent.com/Xb3IOggi7dE7M9Vr-MptD9bFeyfRL7GNkyjlKS-QPym_nvSUAbpz9odOOS1IOQTEYgZ0LbSL8MBYBTW9h7TRaQ","https://play-lh.googleusercontent.com/U1mkq6A_TcTxxvBkR2mE3xZIiNC0WFBj9LoCOb-HidO-Sgc9lyDQRaLI3YSqeddXzu3iRVHepr-vFtIXxZaaaXg","https://play-lh.googleusercontent.com/TkLRhSBXCydvxO_au_sxTf2oNp_rqSOUr02ViIXIWZZ8qPbydVWVUM36HQOkOflnMWkWh6QzNFf8vwnQwMf8"]`
+  - `com.happyverse.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.happyverse.statussaver"`
+    - `title` · string · e.g. `"Save Status: Video Downloader"`
+    - `summary` · string · e.g. `"Save WhatsApp status in one tap: video download, image status and GIFs"`
+    - `description` · string · e.g. `"A status lasts 24 hours. The ones worth keeping should last longer tha…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `168133`
+    - `score` · number · e.g. `4.2727275`
+    - `ratings` · number · e.g. `1959`
+    - `reviews` · number · e.g. `4`
+    - `developer` · string · e.g. `"Happy-verse"`
+    - `developerEmail` · string · e.g. `"happyverseapp@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jan 6, 2025"`
+    - `updated` · string · e.g. `"2026-09-18"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"3.3"`
+    - `recentChanges` · string · e.g. `"Save statuses forever!"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/cJdCBmDe3y-0hilPzk4e2JmLVHfH5Na6…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/wzd7mjIsOKEGsOEv26oom0o26q_jrS5A…"`
+    - `screenshots[]` · array of 10 string · e.g. `["https://play-lh.googleusercontent.com/6T65IBLlwiWNuwocvtUFnyiU1SubVatcWsDbnHIGJAhZVNrZxJp8lhWyZVmusvAMTlAXuCI-emVLr4P42y1K1A","https://play-lh.googleusercontent.com/k99UtpUgewHjR9XznFxPao9nB1WVfxc0eNIRZu8sjWKPhr8uG10OlWdg9Z1Y8oJn7rpS85hG0PtE35VhftgK-g","https://play-lh.googleusercontent.com/9jCwwV4F05BzP4JuOrsZrfIdxn4TXW0VyMiXEQftGrl2KR-TgEvPwozPzatonmInQixvLxjEEnFpKDTnk-6g8mw","https://play-lh.googleusercontent.com/m56sRwuLkunlQn963uG69P77c9q0GLI5VNdkYierfaE9MHnzDRqSOnFYR-1muppCNt20IUlNpZEEiR1ZSUPUYQA"]`
+  - `instagram.video.downloader.story.saver.ig.insaver` · object with 23 keys:
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig.insaver"`
+    - `title` · string · e.g. `"InSaver: All Video Downloader"`
+    - `summary` · string · e.g. `"Free Repost &amp; Story Saver: Use Instsaver all video downloader to d…"`
+    - `description` · string · e.g. `"👋🏼 Wanting to download photos and videos in social media and share w…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `13028866`
+    - `score` · number · e.g. `4.731199`
+    - `ratings` · number · e.g. `299139`
+    - `reviews` · number · e.g. `2655`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `developerEmail` · string · e.g. `"getsupportinsaver@downloader-app.net"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"May 29, 2024"`
+    - `updated` · string · e.g. `"2026-09-14"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.99 - $29.99 per item"`
+    - `version` · string · e.g. `"2.11.0"`
+    - `recentChanges` · string · e.g. `"A new feature is available to support more social media apps to save c…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Gxa3y2D4_k3xVRi4GcEoCz2VOJodVWgc…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/NkXnlgo7Vi5rm86MfQLfW-gLoucel_vk…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/EJJGQ0VKtrjO-ZIjF9_T4g6INHFpPUYBsGXGPnxD9hDsJyHXxZOUoi3j3mIAxJqXLWhW0b40UNwi25pqB6CiAkE","https://play-lh.googleusercontent.com/YBRzMwVxKSM2fZQRcmBx_dD_NhZ7O8qXN38lpuWBI1NyKDdIeO13XMc9ti61N6Utcp3H1tR5wFYF_0GXZqG80w","https://play-lh.googleusercontent.com/98xatWrG5bp7YKrJa-fRtUl0An0LnhxthLRpwGG2n0j0zH1cxNX--wUjecRmEM8yuxs8hpcPKEzpJo_xOOzCvg","https://play-lh.googleusercontent.com/Wx30ELh6zRRnVV8NUwVC6JDVKPEncYwVMVommknCxGtO93BGhEyncQ28wIlEj0mDsRB3LG4T4iQ9HLMWkC4-uw"]`
+  - `com.statussaver.downloadstatus.videoimagesaver.storysaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statussaver.downloadstatus.videoimagesaver.storysaver"`
+    - `title` · string · e.g. `"Save Status, Image Video Saver"`
+    - `summary` · string · e.g. `"Tap, Save, share &amp; Repost video status with status download &amp; …"`
+    - `description` · string · e.g. `"Now you can easily download photos and videos of your friend&#39;s sta…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `2250961`
+    - `score` · number · e.g. `4.42`
+    - `ratings` · number · e.g. `8189`
+    - `reviews` · number · e.g. `42`
+    - `developer` · string · e.g. `"Translate All Languages"`
+    - `developerEmail` · string · e.g. `"support.status-saver@top-apps.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Mar 5, 2023"`
+    - `updated` · string · e.g. `"2025-12-08"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"3.4"`
+    - `recentChanges` · string · e.g. `"- Bugs Fixed<br>- Update UI<br>- Optimize app size<br>- Improved Perfo…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/TmCHt5H0MYYrmIJqBoHGLOuWATkAnmNE…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/pZ5CrjrXsqPtYCbdAdqL95KrWHmnv3Jg…"`
+    - `screenshots[]` · array of 16 string · e.g. `["https://play-lh.googleusercontent.com/_DuHW3yrKjnMCRiVVLeYnSIM8WnsfUf0cuJJqPGcXZbLvuhfJR_v99VG7IB0bgey7VZduc0qXtaYisvQpxZ78Q","https://play-lh.googleusercontent.com/zfthf9A5bX0qt1srgto8l175dAao-YXXZTOPzjJm2higCQ5BUQZRZLPwgqOMpPuJXAlx4T6KsUraN6l9ZBilfmc","https://play-lh.googleusercontent.com/mRleQ79WvDwwaBzeAkD86tojWndRTFVvhQ3d9feGf1MUjet_xx5nG0kctgK0v3_TsAo3JU7En1tJGeE6eQnpkQ","https://play-lh.googleusercontent.com/PQgBTgMkR80ly2pQc8S50daumoEo0MFpW_y02z39Bp0vk_4_hclKK55i39qCZ27jBwuOdXP9Ej7IHonTAvJ6"]`
+  - `com.youngjulien.tamillovestatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.youngjulien.tamillovestatus"`
+    - `title` · string · e.g. `"Tamil Love Video Status"`
+    - `summary` · string · e.g. `"Trending Tamil Love Video Status for WhatsApp"`
+    - `description` · string · e.g. `"Tamil Love Status application has designed and developed exclusively t…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `720089`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Young Julien"`
+    - `developerEmail` · string · e.g. `"nextyoungprogrammers@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Apr 4, 2019"`
+    - `updated` · string · e.g. `"2026-06-01"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.0.8"`
+    - `recentChanges` · string · e.g. `"Status Saver feature added"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/e6LSIWrXcTpQUVslRx0O0MawTEpF-556…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/xB7K7NBR9CBH15qpM1XskPTpgS8l8f5e…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/NcclOcGpyEuyt3DyW08sUFP3k2jhlEbe3szQVAZdS336LA1q-5l9PqvuKoQSQyO7X2LoEuMEdF5eCis41spX","https://play-lh.googleusercontent.com/XVbQjYzUXLO9MDWOaVAc3P2zXGk5MLBBM-dTce5EFm76mbvcNVLA4vHFP4o7xpODwrdZONunSSoJjsI0Y-RUMrI","https://play-lh.googleusercontent.com/fjKIY9KqWILGyRCFgzoleoNAOrkozJ2BA8QgYOtp4gwqMObCSLib34FKvDg1IPmvQzRv6DBfmyislqNnMreZQQ","https://play-lh.googleusercontent.com/cCzL06OATfIEnkdYzqBMRjLNi7fzB08JSEUtWhHo1YGVP9Vn141CeypU6_e0R9i3xFQrsvCJK0-OTjkp-47d4A"]`
+  - `com.ammarishfaq.status_saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.ammarishfaq.status_saver"`
+    - `title` · string · e.g. `"Status Saver"`
+    - `summary` · string · e.g. `"Save and share status photos and videos"`
+    - `description` · string · e.g. `"Status Saver helps you view, save, and share status media quickly from…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `1446`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"MU_AMR"`
+    - `developerEmail` · string · e.g. `"ammarishfaq25@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jun 8, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/_8gnNMTpYSq4VJkTSgHmxMkMdYwGbNep…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/J04ukWngs0FncNbjh0Q4Z3Qj2lUQZ6zN…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/dfw12UIXUohJof3zwRCRPFHlxKlJYl59QtsqCjeloTH0f5REhEWrUe2KVYmWnqsjK87VGr7guvupokTFb6JOVps","https://play-lh.googleusercontent.com/9UvUvy35CI7DMaoiBt_DCqTTCMXY3zfJsYlW7tYhUpgMTUnUfLN1YZm7FwUJqzT9L7EUaJQ4xBUztUFB9dnQbo8","https://play-lh.googleusercontent.com/wPT6h6ULCFD9BUAwUn0JwXHOe_xn3UsJqVdAugcXFWkIZR-h0fL0kdA59TiX8oHMWT_OF9RnQfnIJoEOXpyX","https://play-lh.googleusercontent.com/f2C2rROhl4wiPjTWKAnM6GWPJSPgnuqyJJJ6ndOSpTg6pT-IZiPQPU9agxOqwo31pZQwARfL6aTla4ou9FopfQ"]`
+  - `com.zm_.status.saver.status_saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.zm_.status.saver.status_saver"`
+    - `title` · string · e.g. `"Status Saver & Video Download"`
+    - `summary` · string · e.g. `"Save, download &amp; repost HD video &amp; photo statuses from WhatsAp…"`
+    - `description` · string · e.g. `"Looking for a fast, reliable, and easy-to-use Status Saver? <br><br>St…"`
+    - `installsLabel` · string · e.g. `"50+"`
+    - `minInstalls` · number · e.g. `50`
+    - `realInstalls` · number · e.g. `64`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"ZM Software Innovative"`
+    - `developerEmail` · string · e.g. `"zeeshan.mirza59059@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 30, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/adjMTUZ7fRMGSRFE7PWfLKgahKPELQuV…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/FJPr8DH4Doq7hY4_o0J7C-mwDYyFiyqR…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/7EiuhEidoqV9GWYHGlRXzsr7F0S2dME7W3Any63r8Yiz7Q9NT8hKg5_RkBj6Ilo8xGUPk4szG_tAceVbb4Jt","https://play-lh.googleusercontent.com/z8ER5KkjYtSx7sHJ0-gBcjBqJ79Bnl2P3ILqmw5k8umyVjwW7oMSkT95Bx3Z4VUXnlTQB1bXEdetzkWtyq81","https://play-lh.googleusercontent.com/UGDmHAiWClmwNqw3TYMHBD4sOUAuiuWtd5Jw3Pa1aVC6JIj5mYcW3zYzrBSSaVz-ke6jil2PSmrpXajEO2ld2w","https://play-lh.googleusercontent.com/xEBIxVTZF3BKnRjAXmzRuN4V1hUj9U8Ec_pQV93zDhH6K95dYDJtb4XP3zQ0GOVNY063yS__4jo96fVsldOtgw"]`
+  - `com.webholicinfotech.allstatussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.webholicinfotech.allstatussaver"`
+    - `title` · string · e.g. `"All Social Media Status Saver"`
+    - `summary` · string · e.g. `"All Social Media Status Saver App - Save status, Reels, Videos and Sto…"`
+    - `description` · string · e.g. `"Unlock the power to save status updates and videos effortlessly with o…"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `minInstalls` · number · e.g. `5000`
+    - `realInstalls` · number · e.g. `6709`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Webholic Infotech"`
+    - `developerEmail` · string · e.g. `"awesomeapps23@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 13, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/vcmcvrTTfIt0y1_kacxv_cqGeHUZs1dm…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/vWu5Nle1Fy3zoTe4rdSKh7U4sqHtRinO…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/uM2X6Mj8pWw0ihx_MUaIJZVpqO4iu3iI_2gJm4Tr3Hq86eAHZpEySo-Ed9-SAykajtw2Bfarj3EZsu7WZ1bx7w","https://play-lh.googleusercontent.com/mlYiFu_6OHH56kljN-oGiDm-Zt4P52619h_gQvxYxkgVktdb9mJb9QLgLw4lv58CDpeJ8LXICfTmwCADX0kzQxI","https://play-lh.googleusercontent.com/G5rmSb0s8XE2SkVmxMkwxLEb0GZI8z37z8y03wSRw1C3HEK39Nj-Jw00PFDH7eeXesrPVG0hQ4RMjyIDLgYk","https://play-lh.googleusercontent.com/K1RMQoaB4AOF7KU_Od6U5hbY-NE2AeM4EDHuWdShQijZ6j0IVfAqe_5ODQowtV1DE2FejeqbPXX5Q_FnrcNLcQ"]`
+  - `com.fluffytools.hdvideodownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.fluffytools.hdvideodownloader"`
+    - `title` · string · e.g. `"Video Downloader & Story Saver"`
+    - `summary` · string · e.g. `"Save reels, stories, videos &amp; photos from Instagram in HD. No logi…"`
+    - `description` · string · e.g. `"Save your favorite reels, stories, videos, photos and carousel posts q…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `164`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Fluffy Tools Apps"`
+    - `developerEmail` · string · e.g. `"support@fluffytools.app"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Aug 15, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/-mArmmhlAO3jZZAbrcrYqvlQ8xnzI-zv…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/tjnjUQo0ZaPcdky2NxWivAfBRbCJFhsR…"`
+    - `screenshots[]` · array of 23 string · e.g. `["https://play-lh.googleusercontent.com/K35Pv_7LhLMzAsmv3sA6FNb-g6ge51OJfjHcvEZPRfZWmg3WMeybuVFKdtHlB4EJ-fktfpl-ktHOCJMnBX-W_g","https://play-lh.googleusercontent.com/iU3UcM07k9GYOI-UuyAFn7k7QuWoK_kQHehal7wVb0ZlQEY3HhQRM79ORuFHWtZPN96AHD2FK6_PvlR60ufG8g","https://play-lh.googleusercontent.com/7IUxFfwjVxtbzPSB0mQKa9BuFIcZjiRBzdlG1ohgcFWN_Rsri93j_piH2d0yCO_9O_fbkgqS4tdmAqQECEVqfQ","https://play-lh.googleusercontent.com/0my67Ye0SW4TBGuqQotqzAmmpwvHRuqxP9reELavxwsTv4mbcqnO1NjU1VpIA6SIEIreBoId3TGCoAmakZGopA"]`
+  - `com.freewhatsappdownloader.statussaver.downloadwhatsappstatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.freewhatsappdownloader.statussaver.downloadwhatsappstatus"`
+    - `title` · string · e.g. `"Status Saver 2026・Save Status"`
+    - `summary` · string · e.g. `"Status saver 2026 to download high-quality media. Save video &amp; pho…"`
+    - `description` · string · e.g. `"Want to save your friends’ and family’s photo &amp; video status for f…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `6100073`
+    - `score` · number · e.g. `4.67`
+    - `ratings` · number · e.g. `19155`
+    - `reviews` · number · e.g. `72`
+    - `developer` · string · e.g. `"Galixo L.L.C-FZ"`
+    - `developerEmail` · string · e.g. `"apps@galixo.net"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 2, 2021"`
+    - `updated` · string · e.g. `"2026-09-06"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $49.99 per item"`
+    - `version` · string · e.g. `"8.4.2"`
+    - `recentChanges` · string · e.g. `"✨ Effortless and user-friendly experience to save WA statuses<br>🚀 Im…"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/6gQfHetIDf6mLZltBmFoqj3KZ7rMVUhd…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/z42DgYT8vkclXZLsEPnRXfLvRHcBD6Qc…"`
+    - `screenshots[]` · array of 21 string · e.g. `["https://play-lh.googleusercontent.com/DvJVwDqX_Q8JTpa2UGPF1s5VY9kdXEOuskSreJbslk7w150N2mq7wMJPOee9JHcyXJavkZy6g2pV5VFUPMSbz_s","https://play-lh.googleusercontent.com/0om4KyWRZkc72yjlMUe_SKvpvqdwj6lqj3WWhpBIIZ0sPj3IWDmBL0wEn7F2W_Ld4d-r_RL1WeJvqp7drj-uwQ","https://play-lh.googleusercontent.com/pvFwzrQqZeK1Ygb6p2VOMA0AAKVx53qUMtm8dhHl39WrIwdHxrpBUuIJ-MtEcuvecqg9W0k2rB_hujAdbbnmZsA","https://play-lh.googleusercontent.com/OvKCkRDLyCRgK0wFT4XNhuhOlKKNeO935LZZUwi2ApTPmwxBnvIa-VYccg6l-LWvAdqbhQyMPDUVVJ_VCNJRe5c"]`
+  - `com.save.video.image.download` · object with 23 keys:
+    - `appId` · string · e.g. `"com.save.video.image.download"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `summary` · string · e.g. `"Status saver can download status images &amp; videos. Save favorite st…"`
+    - `description` · string · e.g. `"Status Saver is the ultimate status saver 📲 and status downloader ⬇️ …"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `31756`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Nextgen apps"`
+    - `developerEmail` · string · e.g. `"abghaffari291@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"May 14, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/KgeWLUD7SdEJ0lOeybKTJ0kUZpK0Ilro…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/wn9h03sFM-269TqpoTBLCNH_6rGz0pO3…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/zax1mNHzbKRlhRy0ufsPAHRhNX4kGDaMeRR1tU5gzZ1Zfr1AbzR8AZn36mZ5jAfUdmjPfU88F3JMUDmnBFXCgw","https://play-lh.googleusercontent.com/8wpite24iMoxSN_0qZ8ITeyM__7N8gs9yoaLo5hI56hKcu0g-Vw36JX-jAbq2oYQL2iXvMb7PCUMGNG1t3Yz01g","https://play-lh.googleusercontent.com/cs3XncNrHdRUYmdzwbPqyNZVXoq3GDRKcllQbAGY5ZpO6SJkAYggBfsfiV0l7C4sjGJhcBTs0BdnRycRF7pAww","https://play-lh.googleusercontent.com/KMyl1CNrNa4RFXzk-AiCkPCxL_wgatFgfjMj0MKuP_f8TcvogfTqzgIi6FoWe9rQkKIVMNh4qvSmV51fAXk78Q"]`
+  - `com.vishalkt.saveit` · object with 23 keys:
+    - `appId` · string · e.g. `"com.vishalkt.saveit"`
+    - `title` · string · e.g. `"Savesta: Video & Status Saver"`
+    - `summary` · string · e.g. `"Download TeraBox, Diskwala, Instagram, FB, X, videos and WhatsApp stat…"`
+    - `description` · string · e.g. `"Savesta is a fast and simple video downloader and status saver app tha…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `98456`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"VishalKT"`
+    - `developerEmail` · string · e.g. `"its.v.tiwari@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"May 23, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/sxMgzlH4KWvyzWfsvhVO9GZ5Hq73oZ2W…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/nV3sb4uYM-x1j3lo0VoMdeuXlcO3xza-…"`
+    - `screenshots[]` · array of 16 string · e.g. `["https://play-lh.googleusercontent.com/woZ0dyy5ZUMTT6CuaDT5PyBW9rO77fSmfGlQ1ua7m9b3V7au5jm0p28C2rRsuQ_K7b1tfv3MZytMVnprc-fOgA","https://play-lh.googleusercontent.com/IhK1No-4hIkUph9VGSLr1gwzUCSDMlK7PMSVCap0CQbKHgHJQNOdUh8WWxJH6pc540qo_keueUVgZNFfuzZCDg4","https://play-lh.googleusercontent.com/PgX1PL5m5Dr8cpANc_Da1_CjehceUVbpDeSV4sIljsQogb2xOfBYqujjUxMM8bGq-W3tsOWu1l-nOtIUxas1FA","https://play-lh.googleusercontent.com/B6xfta2V5p2fvud2m7n2XKUOyXPQ-EOdXXu-Z447dRi7ntiGzTweFTs2gIh33xDnbxpSO56Li5tIo5pRkGt1QQ"]`
+  - `krishnavideostatus.radhe.krishna.video.status` · object with 23 keys:
+    - `appId` · string · e.g. `"krishnavideostatus.radhe.krishna.video.status"`
+    - `title` · string · e.g. `"Krishna Video Status and Quote"`
+    - `summary` · string · e.g. `"Shree Krishna daily video statuses and Quotes. Download &amp; Share Vi…"`
+    - `description` · string · e.g. `"The Krishna Video Status app offers a diverse collection of short vide…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `15379`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"UniqueApp Technologies"`
+    - `developerEmail` · string · e.g. `"kevadiya.shubham@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Feb 1, 2024"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/7ByJ0dhNIzPDk-i9GQHGLUkZb3iVzUmV…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/IfMYXkEJLBjB8JTQzo-doz1zVsySC-8i…"`
+    - `screenshots[]` · array of 21 string · e.g. `["https://play-lh.googleusercontent.com/IfMYXkEJLBjB8JTQzo-doz1zVsySC-8im2nM0FyzPPc6puyICV5NhcJRlGGZXg2Bnl6v2p8R5QOFZ9fElpr7Ug","https://play-lh.googleusercontent.com/uyfX3u8ve3G-I_Edd-AVJ0rmgDeEIwqwnXb4Oa9t9kA6kTPGG6VtIKzMm1KQPwTGPkzjadY8F4A5hvjvo2ZL-Io","https://play-lh.googleusercontent.com/z2g-OLmroAJgULkGrHq9XRwYnJOVYUDLq_tQj_IuJuDSulqWki-ngJ9un_Q214gR_SNX_ro-lWm762R-a9YsF0I","https://play-lh.googleusercontent.com/wqam_KPSBCeXFReRtIIh7q2eog170JzscsNyWDLzy5PwFiS6f1_h5qABnfm4CrohsOZ1XrMRnPPWV2jJ2-gH6g"]`
+  - `com.sinosystems.status` · object with 23 keys:
+    - `appId` · string · e.g. `"com.sinosystems.status"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `summary` · string · e.g. `"Status saver &amp; video downloader! Save status videos, photos, auto-…"`
+    - `description` · string · e.g. `"<b>Looking for how to save a status before it disappears?</b><br><br>E…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `297714`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"SinoSystems, Inc"`
+    - `developerEmail` · string · e.g. `"support@sinosystems.co.uk"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 11, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/QlPnH66MknbEo6elMd5n-zRNP8lBm1E8…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/T7Au_KLOOQbQJgsKIDLQs2qkeL1rfdI1…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/zq_pcaN8Nv6NVVHpDLnEsaYHivpTXwykHMYpBtxVDnmr_qSzqkdpdQAMKSnhBsPoyawR4CUtI8Jg2656cIke","https://play-lh.googleusercontent.com/dJqwyXIwGcDWpC4z1S65gCuoADXTo4VaV2o-dQXFECmQ8gPX2uNs2uWEhlNrN00e6Qw8n681La1Tk45Nz9L1","https://play-lh.googleusercontent.com/TMY85bygntmsQsK5MsLnjGoTGDlktFbBsOQHuDu2ckKHwvsdbbdtIn_cwwsMFKzaS_Wp1B5BmTObdHjSjS4qeyI","https://play-lh.googleusercontent.com/68SnDTX8QDfZOXPd0OuLunMP0gvHZp57Q9CrdJSm43AM3wdx-QUP2s08VJDYOiBRKPSm0k61Xm8HelAuzRuy"]`
+  - `com.marsvard.stickermakerforwhatsapp` · object with 23 keys:
+    - `appId` · string · e.g. `"com.marsvard.stickermakerforwhatsapp"`
+    - `title` · string · e.g. `"Sticker maker"`
+    - `summary` · string · e.g. `"Create your own sticker packs for WhatsApp, cut out your photos or imp…"`
+    - `description` · string · e.g. `"<b>Create your own sticker packs from WhatsApp.</b> You can use memes,…"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `minInstalls` · number · e.g. `100000000`
+    - `realInstalls` · number · e.g. `202566739`
+    - `score` · number · e.g. `4.6965075`
+    - `ratings` · number · e.g. `2330775`
+    - `reviews` · number · e.g. `6857`
+    - `developer` · string · e.g. `"Viko & Co"`
+    - `developerEmail` · string · e.g. `"mars.vard@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Nov 2, 2018"`
+    - `updated` · string · e.g. `"2026-09-17"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $4.99 per item"`
+    - `version` · string · e.g. `"1.0.12-7"`
+    - `recentChanges` · string · e.g. `"✂️ Added polygon tool to help you cut out stickers from images.<br>🎉 …"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/PTcO4Uf0LJzFZDp-N_5PYR0_4CuFqjm1…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/G-L_Zjh78m2qXPne0i4A90M_ePL0t_0w…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/_Zn1hx6Ij3L3VB4mosaYLKuJsSSFYMQYP3JNYtIoenWxNEtkLun8QCXjP7mJiMmhHWRPsXYU81K0QQe4GmYzuA","https://play-lh.googleusercontent.com/1tk6s_qIn7J7huBzGcRWKETkNME_YkCxleF06iGXLS51gQJZrHvQ9HYMqrVXYCri-2xJa6WyJ-_eI1N5gn8j","https://play-lh.googleusercontent.com/4uqbcOyfPQ-B3CiEL9Lg3L2v4AjtSY8p0KOuwTVOBHx3BiZAIFVLZCEqHl50XIovp96_GNZD52-HeT_l3v6I","https://play-lh.googleusercontent.com/pxk4G264aGnt2RX4fGlI0Hwh6NF7rbxdDvo_n5ddg-73P3sO7EeOTQghYMdCVLnjyCgRogc709GW0_5oQahM"]`
+  - `com.sapphire.tamilvideostatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.sapphire.tamilvideostatus"`
+    - `title` · string · e.g. `"Tamil status - Video Download"`
+    - `summary` · string · e.g. `"Latest Tamil Video Status , Large Collections of Tamil Song Video Stat…"`
+    - `description` · string · e.g. `"Tamil Love Video Status - Love Status Tamil For Whatsapp the New Trend…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `107670`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"sapphire tech"`
+    - `developerEmail` · string · e.g. `"Sapphiretechsolution@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Jan 28, 2021"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/e1quTZrmf8SkxdJ4jRp9vz-LJbBla2Bb…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/I49O32EFGbYZVD-dZSdnZArZaCslqrUR…"`
+    - `screenshots[]` · array of 12 string · e.g. `["https://play-lh.googleusercontent.com/vyjSgZZhLNoxAg_L-w8kEN5PtS_X2Miyey93O2F05Cnc5CclObxJgTPkyXZ14Ld9Z3D_iX_OSWFKYAhc2hLdUg","https://play-lh.googleusercontent.com/EI_zxbFmUm-WTAKZb4NVjS2iw0hV1EnxQdqquO4TFiBrbW-hezk3ZNZG7Jarqx2hyYerSDxQLOpRPf-88G6fKCE","https://play-lh.googleusercontent.com/9YTsPWkWhB8kgi-GNXOcu-YPC1Ak5GsQU2GyojE1ymv_NYU5jdulZ20jruIg8trBpduVSPqbXa-E5HQPoDkBrA","https://play-lh.googleusercontent.com/zcH12zoh1UcCjkVOfy3fSQVc_5-FcRFLNQHc38XgfVU3lovW1nclfHZniHiew3BkUk0fFn44QFFCCAt5pLaIgpI"]`
+  - `com.parval.krishnavideostatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.parval.krishnavideostatus"`
+    - `title` · string · e.g. `"Krishna Video Status"`
+    - `summary` · string · e.g. `"Krishna Video Status with Multiple krishna videos with share and downl…"`
+    - `description` · string · e.g. `"Krishna Video Status app you can share video status to your friends an…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `32825`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Parval Infotech"`
+    - `developerEmail` · string · e.g. `"paravalinfotech@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Aug 24, 2021"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/gAHdZfdGWaV6z2IPGylHn0MsHbrNOtbO…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/bhaGsYKpQ7Dvt3Fke4cQ_5PUeyvSBV0L…"`
+    - `screenshots[]` · array of 18 string · e.g. `["https://play-lh.googleusercontent.com/l46leoAEnmt2RTEYKO1N0McXP-OSKUwaVmmEYgKRbm5qnzetTI7iiNswyHwqe-x6Ohk39SLqY3qDggnjvj_Mvw","https://play-lh.googleusercontent.com/lqt2OK_cQ0OAgNIbnYa8Lq-TvMtQ3thyYi2_vGVdg0pity41TZDAqiJsSnOVsud3goViSJ6Nn6DQXDG0v7Gt","https://play-lh.googleusercontent.com/TxskTb50yx7GzRM5oAuBPytS2peYY0meSjm45PbsIUx9AXQ7feQIkLdNADQJpAgDbULyaQfAaMKH-81aqN2crQ","https://play-lh.googleusercontent.com/a9RBtsSAO1BIhh_2kORddVxhxrSZ1PRy7VJqHBTzNrWsFbGec3eZW5GasZntReHYNiMQ99ynRtXrPH8G1Y-DXA4"]`
+  - `com.corebeanstech.saver_to_gallery` · object with 23 keys:
+    - `appId` · string · e.g. `"com.corebeanstech.saver_to_gallery"`
+    - `title` · string · e.g. `"Save Status : Video Saver"`
+    - `summary` · string · e.g. `"Status Saver to view, save, share and manage status images, videos and…"`
+    - `description` · string · e.g. `"📱 Status Saver – Save Status to Gallery<br>Status Saver is a free-to-…"`
+    - `installsLabel` · string · e.g. `"10+"`
+    - `minInstalls` · number · e.g. `10`
+    - `realInstalls` · number · e.g. `11`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"OmniStocks"`
+    - `developerEmail` · string · e.g. `"corebeanstech@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Aug 29, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/RZXjnTZK2XXiplGR97TzZtzjvmYyeyIW…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/ie9c1lRyo9pCaXtsjM7adA8WR7QbdwNi…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/lCf4kMstDjgrkj0YRaHWjUQQ1WLoi7aH8o87_T9O7YqJXWPGpc5dXNxKVZKrJ8p5LPgE4eZTgjLpNS-J8EETcQ","https://play-lh.googleusercontent.com/sN153np-kNycGGM3hgVLDhUwd-PIjX3RTKSQbRpLXLEOGn-_Qlns39kpnLZSwcI2LQyOccjHv_YKwK_rIiQgAg","https://play-lh.googleusercontent.com/Ynar-82pmBsYjxGoWWVCSJjmQonqtcjNG9MHtiXyFKDUG0jwSZaZArVpVe_FfV-M-Y8ZGXH97zzCaq4t5Z7UQ9k","https://play-lh.googleusercontent.com/Gev4FN5wy8D6XXk5ibzXNVvNsGs8EfbcdOzgQUyZ5vx0SKMW1zw7QPMA4GKdEQNE4RxJNnHtxNzX23A09cbvnA"]`
+  - `com.whatsapp.w4b` · object with 23 keys:
+    - `appId` · string · e.g. `"com.whatsapp.w4b"`
+    - `title` · string · e.g. `"WhatsApp Business"`
+    - `summary` · string · e.g. `"Simple tool for businesses to talk to their customers."`
+    - `description` · string · e.g. `"<h2><b>Everything you love about WhatsApp plus built-in tools for busi…"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `minInstalls` · number · e.g. `1000000000`
+    - `realInstalls` · number · e.g. `2280858568`
+    - `score` · number · e.g. `4.5989623`
+    - `ratings` · number · e.g. `24835274`
+    - `reviews` · number · e.g. `56834`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `developerEmail` · string · e.g. `"smb@support.whatsapp.com"`
+    - `genre` · string · e.g. `"Communication"`
+    - `released` · string · e.g. `"Jan 18, 2018"`
+    - `updated` · string · e.g. `"2026-09-19"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.29 - $4,789.99 per item"`
+    - `version` · string · e.g. `"2.26.37.73"`
+    - `recentChanges` · string · e.g. `"We update the app regularly to fix bugs, optimize performance and impr…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/4LJ6f3U5wANt09KBlZ-F-YKooCQXTwHs…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/B5jyb5AaTY1-85LqV872Mj6EXEI_O4kN…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/tVyAIONnVdm_3ECqcT9JjJe-3j-tJlpbJfSK_bI_ytbVae00QpHRO6wSHFovKa8DAJobo3YGOor0t9ND3gUb_w","https://play-lh.googleusercontent.com/tw99Mx3NIQZ8OquPwfIKJ-K2r7Ffql4KftA8UWsWS20iNxqPGeJ-5jkkqvNLR72wxFPXZli88-IMUw3rbj8RCD8","https://play-lh.googleusercontent.com/RbVEmrADBpT8F4ULmFwmQYN7xoi-iJpsFmhLZ1femige1ORwWUomkza5542MyrFtvN8Fk8_zlcD4SXsYg83FT80","https://play-lh.googleusercontent.com/Y_qsEcjcxvilnI-1NjdaQ_JSD5CP2nY2wNvW71IEcNB8lB5fmCBtoj8Ww7_pTw0QdEwPL0tEoQfkAvrielAwjw"]`
+  - `com.theyouthtech.statusaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.theyouthtech.statusaver"`
+    - `title` · string · e.g. `"Save Status - Download Status"`
+    - `summary` · string · e.g. `"Save status app helps you to download and save status images and video…"`
+    - `description` · string · e.g. `"Looking to download images and videos from someone else’s WhatsApp sta…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `4196145`
+    - `score` · number · e.g. `4.36`
+    - `ratings` · number · e.g. `55470`
+    - `reviews` · number · e.g. `67`
+    - `developer` · string · e.g. `"TheYouthTech"`
+    - `developerEmail` · string · e.g. `"theyouthtechdevelopers@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Oct 7, 2018"`
+    - `updated` · string · e.g. `"2026-09-14"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 - $0.99 per item"`
+    - `version` · string · e.g. `"1.58"`
+    - `recentChanges` · string · e.g. `"- Android 15 version support now available.<br>- bug fix."`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/1JrQl3lGDBQ7q7--Mb377yclPmfu2B8k…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/TVbQSHbRWV2zHtyIWOzekea666TXrybf…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/SaYuk6gutc1MxQfCObUHPnIkZyGfRkjP44JgAlGsJiDaefhLjWYMSlnEzTlwZsxFXQ-77UxAySD-xG6TL9XEJA","https://play-lh.googleusercontent.com/73qgFc1mU6X5FYlD6DWAlNx1je8D2XBb24WqYW0yVrBIvbF_OQEByJd8rD5kccvTGbsO40fnGPcs45yF0QmB4g","https://play-lh.googleusercontent.com/_Pq48cs3G2e-m2EipOVIAPu59uVQvQUQvry9rbPcrckUFF5gFZYaGBrHsq7W0C9t7xXZrd1Uqdn9eqv54PR7","https://play-lh.googleusercontent.com/mzCBC18Yz6L5jX5ZIa-hcO75kzKHeVFonxXEP_uWqwfKlyxEOeS867IDFCAdor9okzYDLrzdzF_Ll5jVKS1L"]`
+  - `com.status.download.whatsapp.android11` · object with 23 keys:
+    - `appId` · string · e.g. `"com.status.download.whatsapp.android11"`
+    - `title` · string · e.g. `"Save Status: Download Status"`
+    - `summary` · string · e.g. `"Save video, image and view status. share and video status download eas…"`
+    - `description` · string · e.g. `"Status Saver application lets you download photo images, GIF,<br>Video…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `28736`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"vktrick"`
+    - `developerEmail` · string · e.g. `"vktrick143@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Jul 3, 2021"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/F7F2LkoBzcmrn-15xHBB1sQie0icxtde…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/vjDE7L8E58jSuBsbM4tfdpflaIWczI0c…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/90D08O4w29cipMgSsGfClxDUcibcneFKpoiwfd9UdX21KsvyuyhWVhKT27f8CjmUrv_fgh1FDGyB-XFatFns5w","https://play-lh.googleusercontent.com/ETyafuILh3giMfmIRJ6jny10nv5P0Jirbyuvh4kQzzlcSGU8gvHHRtFgEnvfieNOcGENu7-GJismGZH7dMkq","https://play-lh.googleusercontent.com/LOoGkYDUSf9AteUwkb7EB5U07f9qK7EXICbvv3pNXmsO4fC107ni6wXzMqDwJR3ExnOFMZZBiizAv39c-uE0hA","https://play-lh.googleusercontent.com/19nUIW7db7KKbjcO8XEhEANFtSuADJM5kia_sm7Oi8Bfp7xkwl0PkPTaLHile8NkC-d11BjdNugnQBKqZ9jY"]`
+  - `com.macd.developer.status_saver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.macd.developer.status_saver"`
+    - `title` · string · e.g. `"WhatsApp Status Saver"`
+    - `summary` · string · e.g. `"Save WhatsApp status photos &amp; videos instantly. Download, share &a…"`
+    - `description` · string · e.g. `"WhatsApp Status Saver – Fast &amp; Easy Status Downloader<br><br>Want …"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `82100`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Envision Technolabs"`
+    - `developerEmail` · string · e.g. `"support@envisiontechnolabs.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Oct 7, 2023"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/-eYGqeGUjFf3kImrJ5hmuYm6n82pNi0k…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/qU6hM7-35pK67lxZKTpcNCPWLnxuvN86…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/RDL4pNoB1r1WMhfnUgmDMK7-QMihqKfLPQXRI9WgZVI-EG9VGuygEPxfoO_bYZFH51gbQp36iHs-kZZMPefvhlk","https://play-lh.googleusercontent.com/xFo2Mb1C2NCgeyK2pzUEteGvvH_KMg3NIMmvwqJttUvvHqs7tBtctngYfn_AXhZED3i6k0C9vrGzPMDK1qx0ryo","https://play-lh.googleusercontent.com/nrLerHSW6jME36GqzqanB_qJK1J_gQ5IgWiRBADTw-M0NY7hAV2A0vkY3Sjv_ShPKs6sIyTUstxHxzCv-o-t9w","https://play-lh.googleusercontent.com/pGgEP6WnwNPj4F6zTSYbB6ra0AC3DnOYhxIz7VVzSLroC4iQ9xFOMtlEIYKnhBZsnGrQ7T9niyF9rkhkR_Of"]`
+  - `com.videosplitter.pro` · object with 23 keys:
+    - `appId` · string · e.g. `"com.videosplitter.pro"`
+    - `title` · string · e.g. `"Video Splitter for Long Status"`
+    - `summary` · string · e.g. `"*NO DURATION LIMIT* Now post long Video on WhatsApp Status with Story …"`
+    - `description` · string · e.g. `"Split long videos in multiple parts of specific duration and post it o…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `278152`
+    - `score` · number · e.g. `4.3235292`
+    - `ratings` · number · e.g. `9726`
+    - `reviews` · number · e.g. `5`
+    - `developer` · string · e.g. `"Burgeon Media"`
+    - `developerEmail` · string · e.g. `"support@burgeonmedia.in"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Mar 16, 2021"`
+    - `updated` · string · e.g. `"2024-07-24"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.49 per item"`
+    - `version` · string · e.g. `"8.893"`
+    - `recentChanges` · string · e.g. `"FIXED: folders showing blank when selecting media.<br>Improvements in …"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/4uLqB7btVWSruWbzNhynzIEsocKIdSwo…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/rntFySNTdSvk__ZSMEAZb4Ip-8tS5xSd…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/ZQoyFaSNyj_HCfPAJWQUjNk9cCNdnZBEfVHdr49bJtgr3c5zbCb9A3mp7pwqdytDw53Cum4aUi2EXbZsR_re6w","https://play-lh.googleusercontent.com/O5HICenXXGMF06HYWMguvSQNhObxGxbKU39Q6I_ilT2oyXXtrXsIvUXGAtnxOBnYFLTxZ7xA8KZgnqWc2odXfQ","https://play-lh.googleusercontent.com/WBhatsAk1NETDbUoXDv4Q3amylU9Av9cqh8pQaGys4KESp2ryxZlysnmh781Qn-ZLsDPV0Lkz3HmtQQQ8ZZj","https://play-lh.googleusercontent.com/Q7ZcyvdP4UiGMxcpl0485uIt7lLX8qBmpFI7Hg9gTINvosnKfacSnri6XZJO9Zbw2a2foX654nA63Z8PmeZWfA"]`
+  - `com.dollarcityapps.flashplayer` · object with 23 keys:
+    - `appId` · string · e.g. `"com.dollarcityapps.flashplayer"`
+    - `title` · string · e.g. `"HD MX Player -All Video Player"`
+    - `summary` · string · e.g. `"Full HD Video Player, Support all formats"`
+    - `description` · string · e.g. `"Full HD Video Player that Support all formats, Its very easy in use an…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `49691`
+    - `score` · number · e.g. `2`
+    - `ratings` · number · e.g. `155`
+    - `reviews` · number · e.g. `1`
+    - `developer` · string · e.g. `"KR Corp. Inc"`
+    - `developerEmail` · string · e.g. `"tayyababdullah21@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Nov 24, 2019"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/2Cnip4ytUuanQjRFnNAq1FCM8_wMbO8C…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/fjYCR5X5IlFsSKB7DS_0IAFHgSquVrTG…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/Cfm_O-nlSBZscED1Wvk5wDGzTLi9BvKPxQvg2-_GgI7U37RGPeiMfZB8q2WhJlM4pHXJ4o2sTdwHflQarmLQ","https://play-lh.googleusercontent.com/Ae6GB8hXlagOfwk2ahApB77A8SsIHn6Yi7_WoIebtarNKfLi3IGZ1CCqOqV64I4BFKQLhGXvvvFpjGwTWB6uUQ","https://play-lh.googleusercontent.com/TZUlRUbuRWXIR8dbRJW0WjpyYlbGxBUTzqKfHNoWVj6VIzf52RgtCqlr9hqsuAMbwHT-ANBThLl5KHrDLQdw","https://play-lh.googleusercontent.com/Vxplj2kMQK-cI3wwVu3g_byM8XxJyUln_dHOB5Yo0y3YW0dujDv6Qd2OQQKb684gbPzFgClTx9DWvargLOnd"]`
+  - `app.statusdownloader.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"app.statusdownloader.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Save to Gallery"`
+    - `summary` · string · e.g. `"Save WhatsApp statuses easily. No annoying notifications :)"`
+    - `description` · string · e.g. `"* No Notifications<br><br>Welcome to the ultimate <b>WhatsApp status s…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `249995`
+    - `score` · number · e.g. `4.111111`
+    - `ratings` · number · e.g. `358`
+    - `reviews` · number · e.g. `4`
+    - `developer` · string · e.g. `"One Screen Apps"`
+    - `developerEmail` · string · e.g. `"onescreenapps@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 8, 2024"`
+    - `updated` · string · e.g. `"2026-02-14"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.0.27"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/U7Z2uhXYR9TqkJpICJeT9TxiXu6DV9QG…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/b7D_cO4r453w8-wzh2OQS6cn3iA1Mp_4…"`
+    - `screenshots[]` · array of 4 string · e.g. `["https://play-lh.googleusercontent.com/OGzbD0wdWGioxgyg0dhIwOwtOXYb2kbbpGZI0P2nzK83ZKmxh0DnrXCjWvgLkdnNNCVzaZHQvLqsQMCFu0W7","https://play-lh.googleusercontent.com/L7rZu9nVlc0DJ_D_7TDWdsLGZmXVeC4cW-OPm0btzwQJjOCajWpwdLzpylvk_mMZCO_U0Cqfa9_PLWu9AAp_","https://play-lh.googleusercontent.com/0am2tY4CTWDvnBWm0WI_mtosPQMGOmLcunij4ZFC5fR0CVvazzHmVs7T-HE5cjuoGoClbQFc11TebKsoIgmr","https://play-lh.googleusercontent.com/k62UBcI1NDqXKplIIGO7tFLOhNPmp73WTzqqyzWUdC2i771YRbsEgBcX90eW0d_uoYzSzmZN45HLpbR9SLwhPfU"]`
+  - `com.datamatrixlab.savebox` · object with 23 keys:
+    - `appId` · string · e.g. `"com.datamatrixlab.savebox"`
+    - `title` · string · e.g. `"SaveBox: Video & Status Saver"`
+    - `summary` · string · e.g. `"HD Video Downloader, Story Saver &amp; Status Downloader. Fast, privat…"`
+    - `description` · string · e.g. `"📥 SaveBox: Video &amp; Status Saver<br><br>Looking for the fastest, s…"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `minInstalls` · number · e.g. `5000`
+    - `realInstalls` · number · e.g. `5604`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Data Matrix Lab"`
+    - `developerEmail` · string · e.g. `"Datamatrixlab@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Jan 9, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.99 - $49.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/DwQe5G7el6L7Ls7hzL5SCVyhP5TgmMT7…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/JnrePmVTdNNNbp4a4jaxz7thLquRvosA…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/0GJIMlE3oJU2hjQt9Y41h6KjIeKDHwZoKqOPutlCU2vxSkhQP9fBUPXKUioTmvFlcz0u0X9ZvSXP8xFwc30usg","https://play-lh.googleusercontent.com/3vDIEAMySZptmPIJ8QbZMzSY-GuL1uy60yjEV2E4s1Kr79mtX-Xu2Lr_t4cy76sw51kteSyJwWLEFEFfbd5ZHw","https://play-lh.googleusercontent.com/iUwhT8DgnHMXZeHwfP18YIz-Z7FXR2wkhq6IuDVtetRfzDSUu_HIwMG46oA-uuEJgR4PsZt31PA2Dad5Tp-xm0E","https://play-lh.googleusercontent.com/8uCamqjbw_PHtOpENwTV6aIXSdKue-eduQiEqPXAhq-cDtw8Tikvk3fvt_H0mDKAKFNXgmfj74YHacn60sBTrA"]`
+  - `com.statuses.statussavers` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statuses.statussavers"`
+    - `title` · string · e.g. `"Save Status - Download Status"`
+    - `summary` · string · e.g. `"Save Status helps you to download and save status images and videos."`
+    - `description` · string · e.g. `"Are you looking for an app that helps you to download and save status …"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `10278128`
+    - `score` · number · e.g. `4.49`
+    - `ratings` · number · e.g. `34511`
+    - `reviews` · number · e.g. `13`
+    - `developer` · string · e.g. `"Saver Apps"`
+    - `developerEmail` · string · e.g. `"saverapps20@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Oct 11, 2021"`
+    - `updated` · string · e.g. `"2025-11-04"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 per item"`
+    - `version` · string · e.g. `"5.5"`
+    - `recentChanges` · string · e.g. `"App support added for Android 15 and bug fixes"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/YAoWkO7tw8Zepts5UbV0njz3iYJ438_1…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/QE_Hxu4ynBAWC0M7ULfXnC8VfewVlQLo…"`
+    - `screenshots[]` · array of 10 string · e.g. `["https://play-lh.googleusercontent.com/9Y1B97L0lQ4t8RIS0H8itusncXUxyf7RioFIO-ofh049gci4RkrqpSVXi2ci9VL9iCCSB7doOvGpGEhQnJ4xdXU","https://play-lh.googleusercontent.com/oUpnjK0Iow-l2WqHgKYOM5GFQqWPXpEQZQcAlJCBngxwgYifqUTizAWW01yMwWVdXypXDUu-jjYIkEoBFLe1rQ","https://play-lh.googleusercontent.com/FipTw16pfA_GxQL-FQc6qbDz8guQ6EnWbH0Bo6_7qIGjyHHEHD00_f8NB8RwgPQETciub9WFybZhpbRAIEtJXHs","https://play-lh.googleusercontent.com/Opsv6qp-HMdGOKO9mktWPQE7dm6VYRbFLi_-I7RcY_OApsJFGE8BZWMZeriiWTKVU6kF55iGf3clvxLYAZpLwQ"]`
+  - `com.abtechsolution.video.downloaderapp` · object with 23 keys:
+    - `appId` · string · e.g. `"com.abtechsolution.video.downloaderapp"`
+    - `title` · string · e.g. `"HD Video & Status Downloader"`
+    - `summary` · string · e.g. `"Fast HD video downloader to save reels, videos, stories &amp; music ea…"`
+    - `description` · string · e.g. `"Download HD videos, reels, stories, and music quickly with a fast and …"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `178`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"AB Solution Tech"`
+    - `developerEmail` · string · e.g. `"absolutiontech26@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jun 15, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$10.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/2kbOHDHFnon5YiVzgUho4E3rtTCXnh5C…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/TKc1YbntmfV1p_47HZ3-hRHJzpMQQnHI…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/n3wzy7c8gAFt4VfIqoW60EgKOL-33_6OCUA9dX2RZv4j_1lccDF4E9PiRPseyL5aZ_CP1xFEXeV3WFh6w-NziA","https://play-lh.googleusercontent.com/ywNcd3l4q4i2iu-0sXmLvVb30S26g7Hr35XYDmVbHX_o4a20HPB80j30jhiOYLsdUhlHmWcd5SLO_QO846h26sk","https://play-lh.googleusercontent.com/2bHYreMNgIVHJornSM808vCaeuqifgeIFizYrdIml3MMT40SCBahdKv8vrdLOLaRt2VLNrCHuIBHtipCRuD4cg","https://play-lh.googleusercontent.com/bhosRqcg5fTbSFLXE37ny2suQwio3jQhl4YKqIDUCmI6Ah6aujLGuHIcZIinPk0vKgGHiNc6T5mGYCaG-u9gfQ"]`
+  - `com.telex.statusSaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.telex.statusSaver"`
+    - `title` · string · e.g. `"Status Saver: Story Downloader"`
+    - `summary` · string · e.g. `"Easily save, share, and manage WhatsApp statuses. Get Status Saver Pro…"`
+    - `description` · string · e.g. `"Welcome to Instant Status Saver Pro, the definitive tool for downloadi…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `49247`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Appnest Technologies"`
+    - `developerEmail` · string · e.g. `"appnest.statussaver@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Jul 2, 2023"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/mbkgeoSJWekW2Nehx5yoZVfuXvEmKRz-…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/amWFbLmpY-8_E5jdn_dFMdwSAQbuINND…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/57OKblWkPUjNaRpwmNiZXmwLGLFvKlBKy_SvHmieHiVY4W1hMim9C4DQAQh1xNQ-DOKWW0A0eXizAoz1Sqor","https://play-lh.googleusercontent.com/LJP3SVkWMXyPuwRYJm9XOBXnNNJHkGhghf00jSVqz0WMh36QRAEBjvukAeb0lUM0_4vjiVZKppTU9AA0aiIb7Oo","https://play-lh.googleusercontent.com/J7rI2LGCcZnI-z9Vz-wnHkHQs_Otvf_yW9moQQYaRYmUXR_QiHvDMtvHQXtCkrE0LL1Um84oM0iwsp1oOEJbDIg","https://play-lh.googleusercontent.com/5W0X0jBg_9PRzhNjHSz9xdGi0STuFmHbsv-94bIA_FTV39n5l2BWSpJCyOolsAKZyMk0g3-uz23mYfgoEz47"]`
+  - `com.huzaifa.statussaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.huzaifa.statussaver"`
+    - `title` · string · e.g. `"Status Saver: Recover Messages"`
+    - `summary` · string · e.g. `"Save statuses and Recover Messages from WhatsApp &amp; WA Business"`
+    - `description` · string · e.g. `"Status Saver will let you download all those videos &amp; images you w…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `22302`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Huzaifa Saeed"`
+    - `developerEmail` · string · e.g. `"huzaifasaeed00@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Aug 30, 2020"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/gIITakVoh77KNeVL1UfPHjoGKU6o0vHe…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/dS3yDUlKXfWbgEcSEIJEQmJ3oLA6LV1g…"`
+    - `screenshots[]` · array of 11 string · e.g. `["https://play-lh.googleusercontent.com/Es2J66aPkN3xH4sjOaCKYCgHhf01JpaOvUYIg-cXrdvCRgXAj8eIvqozCFTDeFu_O83NBeIPeC-ZHR-ZN7SqEQ","https://play-lh.googleusercontent.com/pyMgM3IoJTPPhjORXRPf9C2TipreOZwXWJDkloj6Lo8tr6VtbGL1FpL_8mlj0lPsJWhYvO_rQLhHKX0LJy8-5g4","https://play-lh.googleusercontent.com/msIa6x4fby8jvd24gguty-ZafRHNvZHwHgmvsRDInWBU3RF69g51Bp8kwZdywUwaaFBmk2H512DRN-SC5twV","https://play-lh.googleusercontent.com/wfRA5N8Bsv8G8dAz9BENn0wSOxX2kz5mHQ69XbnaZM2mFedyt_lDdIVXbUOChVAOUnmy5ALb0l4rySFM9p8UtA"]`
+  - `com.ok.status_gallery` · object with 23 keys:
+    - `appId` · string · e.g. `"com.ok.status_gallery"`
+    - `title` · string · e.g. `"Status Gallery - Status Saver"`
+    - `summary` · string · e.g. `"Save WhatsApp Status, Video Downloader, Photo Saver, Gallery &amp; Sta…"`
+    - `description` · string · e.g. `"Status Gallery – Status Saver &amp; Video Downloader<br><br>Status Gal…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `113`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Niraj Vekariya2001"`
+    - `developerEmail` · string · e.g. `"niraj.developer2209@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jun 28, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/Mp8vo6gHY0r-JdfT45S00Y9_qbw4QSzS…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/xve9pTF_jhB37KZacJ9T3xOP2nswZE0H…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/tNHnYVX7hsi8Qi_5Ool9LTrhTVqS8rcE6qeqW0Nbcfy5JnKsCOYVHLg5_bKPbz3kkknWgzhlwNFohrjbESGWDg","https://play-lh.googleusercontent.com/0iihxn82dP-sU4cMFWtoabZID4xZqkCBuzFV4OOQHVkf3llPQMJqnuSOWqdWshtX7Mj1q-aB_jSnPULWS9Oorh4","https://play-lh.googleusercontent.com/kEz_W_iGSbTbRRApbj4l_8GjfvSlOqifhnahdQK5QNSe__o4a2uvtYTW6KzMftQHJUqxP_GUkkXPvfiQcxpoev4","https://play-lh.googleusercontent.com/omPe_qE6ErmKjHplUwYI20bmMwp1B2bUU1a_P9LVoNIexpgAQKnTdvGW-tS5nQV4BhocG-oGXhzc5oYnWHQL"]`
+  - `com.hdmxvideoplayer.videoplayer.mediaplayer` · object with 23 keys:
+    - `appId` · string · e.g. `"com.hdmxvideoplayer.videoplayer.mediaplayer"`
+    - `title` · string · e.g. `"Hd Video Mx Player"`
+    - `summary` · string · e.g. `"This app is easy to use."`
+    - `description` · string · e.g. `"HD Mx Player 2023 \| Mx Player \| HD MX Video Player Pro The Professiona…"`
+    - `installsLabel` · string · e.g. `"50,000+"`
+    - `minInstalls` · number · e.g. `50000`
+    - `realInstalls` · number · e.g. `55961`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"PS Creation Apps"`
+    - `developerEmail` · string · e.g. `"pscreationapps@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"May 4, 2020"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/7V81Rs-6B09KPvnBu5whpZJe2OsnSZI8…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/CSZCmFsGkIN8uRZLLI8Bh-O46IvURFqo…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/745_K2acnAuaC2-vCFNB7K3wB4j-Ik8Y6Vk9G5W3eQkMpMziMnsqX1QP8Y3EL2B0Tl4wmWs8oUQCgkvGn3qZePw","https://play-lh.googleusercontent.com/dWCrJ0nJo_Ynh8zE8ddbTXCq6unExa9v6zHb-luNRBREHcmlLCedR-wUmGJVfhyC9cGGjPqKxRNY_ONm3wAE_w","https://play-lh.googleusercontent.com/sxlbywSjzFkgABoG-o06bTEIVpoAOsMOQ2WvJ3sSNCTyEYTiK8QVefZT4VOku20naEt1XJQ3y3VxAYQd8SxgEV4","https://play-lh.googleusercontent.com/suWxeh-4sIE3Vl7ltNbDKTxKTwqxkW_YZX_eStLYK9VoUE-FMFbi7Tw8Fps8aMLyY5n6iua4sSkdOZEilLyVQ4g"]`
+  - `com.xltra.hddownloader.quicksave` · object with 23 keys:
+    - `appId` · string · e.g. `"com.xltra.hddownloader.quicksave"`
+    - `title` · string · e.g. `"Xltra HD Downloader Quick Save"`
+    - `summary` · string · e.g. `"Download and play HD videos instantly with fast and easy video saver."`
+    - `description` · string · e.g. `"Download videos from any social media instantly with our Video Downloa…"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `1857855`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"D Marina Apps Studio"`
+    - `developerEmail` · string · e.g. `"dmarinaappsstudio@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 29, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $10.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/tipF9c1I3vGNWtqSSpVkht_6Saavf06R…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/67C4ZdQONYr41yoHAye7rXQfdjLwHRfB…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/zn3djGiJ3lCIQkBe3gtZbgNoKeSuEemR8SGFGRyj39kcb-YJknG3mcglj4nwU_NqG8fNj2uGY4FZRW-bOzoeqUM","https://play-lh.googleusercontent.com/ul9shoYg2wUBNJHZ90ShMF1A1BsJiEzF4k9I5d0Zy6ZblJHzsCFyoakqGaIe400i63R8Pi0NzVzBI4AznttK","https://play-lh.googleusercontent.com/kAedOhOSpke5J8Ih7oGTaFent5_mk84JQVr6JLple9SvavUJhiqtaC8y88DEgNvBvO-V2JLLwUN5xT08S2l0Wl0","https://play-lh.googleusercontent.com/z7un8aS2TRxLh2pXSaiSlpvChbQN2F9gFPg_wPRA8lAOdI3lJLLL3ALuO6vaiWQxhfu_c7nNvE5BXZ-DBJ487Q"]`
+  - `com.geetmark.freeStatusSaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.geetmark.freeStatusSaver"`
+    - `title` · string · e.g. `"Status Saver: Photos & Videos"`
+    - `summary` · string · e.g. `"Save WhatsApp statuses-photos &amp; videos, auto-save, ghost view, fas…"`
+    - `description` · string · e.g. `"📥 Status Saver — WhatsApp Status Downloader<br><br>Save, view, and ma…"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `minInstalls` · number · e.g. `100`
+    - `realInstalls` · number · e.g. `232`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"GeetMark"`
+    - `developerEmail` · string · e.g. `"contact@geetmark.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Apr 30, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/BjABqTsUCy8i6d1PMwcICbU_PHtZiGwL…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/fMReaOHVNhrjfL7aNjQzgM9LyvLqaHDL…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/_ntdc6oW6R4zq0vLWH_CAq5nJP-c-_lOwS8i7D3d8rhdJj3_25fxsAPdyaDSDSu1w2JmwX5Kncfi0tNP1Ytehrk","https://play-lh.googleusercontent.com/_YK_vkliuGcS3tugeszqxVQhMQO3KHDKV-5cNdBskx5dPL8Y7C6tk3WIpgXUs6VwNFpHoZqw-xqLV1SgT3YgTg","https://play-lh.googleusercontent.com/VtShSMmF1ERJ6vvKq0m1VO9xykeszghvnJuJ55NS3nHIsN0MZbi8a0ncqAeEC7CakTXD22wCvHgXkVeTRMmT5dE","https://play-lh.googleusercontent.com/nn_h6V8zGdtuklkrHxyCFiS8-DO8t4wCAhFR8iWRj7qOp-vrxQ7om8cTSlBoYSdtDOZ4qY11Z_9UjmkArOKOWQ"]`
+  - `com.status.video.lovestatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.status.video.lovestatus"`
+    - `title` · string · e.g. `"video status download"`
+    - `summary` · string · e.g. `"video status download status download"`
+    - `description` · string · e.g. `"provide 30 second video. Download WhatsApp Status in All languages. St…"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `27606`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Dhanshree solution"`
+    - `developerEmail` · string · e.g. `"rupareliyadhanshree@gmail.com"`
+    - `genre` · string · e.g. `"Entertainment"`
+    - `released` · string · e.g. `"Dec 24, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/_F34QjqHCuTG5S8i6a3vyDY20uW1IVJn…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/BnutVQMBDFTPzkaS03Q4COKmPLF78GIT…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/LiVF4wp_VxtqflhjucnM1D2U2DFMRGCCOf-9BG5_Xga35i1yo8NfaSMa2RzZBVE4KcYNzfXW8Cz0SUNo9MZJ","https://play-lh.googleusercontent.com/jG3Syf9--FuNVpngREZynFBsWucuBMAsHV2BtMrxhrL2gjHiQbQmgVu3QiYrao1vdANweEngKj0vBJN6U8bq","https://play-lh.googleusercontent.com/pNoDLQPKUv00icKzQKbz3CYJDNOoqdCC8GYduQsIEiU86ZPupKdXheF10sB6it0kz2nig_fpPOWCOcnS2nWA0w","https://play-lh.googleusercontent.com/jGpUiF7Dx75LJWXEpx99_7ok4Wod5JOws6wvR2Brw8HVmeEXIg8F8xP7TlGNS-dPgCtUr8LxUM8IfQUTSayyAA"]`
+  - `story.saver.photo.video.downloader.social.alldownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"story.saver.photo.video.downloader.social.alldownloader"`
+    - `title` · string · e.g. `"All Video Story Downloader"`
+    - `summary` · string · e.g. `"Easily save videos and photos to your device with Story Saver"`
+    - `description` · string · e.g. `"Easily save your videos and photos to your device with the Story Save …"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `minInstalls` · number · e.g. `1000000`
+    - `realInstalls` · number · e.g. `3597995`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Nado58"`
+    - `developerEmail` · string · e.g. `"nado58enti@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · null · e.g. `null`
+    - `updated` · string · e.g. `"2026-07-26"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.49 - $99.99 per item"`
+    - `version` · string · e.g. `"1.0.13"`
+    - `recentChanges` · string · e.g. `"enjoy"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/sL82hBp6lBeaDlq_MgRXSdoHqilqKqdu…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/PKjWimN3_I4iaXMQ14gyHdbP51TOgAz9…"`
+    - `screenshots[]` · array of 12 string · e.g. `["https://play-lh.googleusercontent.com/TH9SNDoSF6CTeIFMRHgjLiiS5846xAWF3b6y3wwePbfAeCVGaBDqBAccQ3tZUkzC7zlL1v5oOxzdf85Wt8Rwjg","https://play-lh.googleusercontent.com/xsRiT-ibTS39QQ2n2WtiPBzCIleuK_Kvgbgxl7N-d_XpHeqCLw6b7kVl9s64q116tJLIF4ab4eQrMv2dwLGpYQ","https://play-lh.googleusercontent.com/wQaDBiro8ta3htJbZ25Ut_Dvz7FE5e8BM0ZkTAd_gGYOReJLYB7MQLn510GX4KkX4w_6ss-hzXTGtT0UK6oXdgk","https://play-lh.googleusercontent.com/8N1vF5evRY-NyP_Mrd0edlEn72HA37cnN391kkwhXuVKCg39dXjOzrbfCiCSzNNdg7bc_1mO4WPASIDl_9dFaA"]`
+  - `newapp.video.keep.photos.free` · object with 23 keys:
+    - `appId` · string · e.g. `"newapp.video.keep.photos.free"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `summary` · string · e.g. `"Save, Download &amp; Repost Status Videos and Images in One Tap"`
+    - `description` · string · e.g. `"Status Saver: Save &amp; Downloader – The Ultimate Solution for Status…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `21772255`
+    - `score` · number · e.g. `4.73`
+    - `ratings` · number · e.g. `88176`
+    - `reviews` · number · e.g. `96`
+    - `developer` · string · e.g. `"BlueLine. Tech"`
+    - `developerEmail` · string · e.g. `"inshorestudio@gmail.com"`
+    - `genre` · string · e.g. `"Social"`
+    - `released` · string · e.g. `"Mar 6, 2024"`
+    - `updated` · string · e.g. `"2026-09-10"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$6.99 - $29.99 per item"`
+    - `version` · string · e.g. `"1.1.30"`
+    - `recentChanges` · string · e.g. `"✔ Enjoy Faster Status Downloading  <br>✔ Major Bugs Fixed  <br>✔ Perfo…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/PD5oYweRb1gv5oKfdZ7mOc1NElXJCzVI…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Xt6Be6INeclha3cjcb8Kj2vAIVzFnoZc…"`
+    - `screenshots[]` · array of 21 string · e.g. `["https://play-lh.googleusercontent.com/_EYR2a0yzMZObmc3FrZb-_41yChdZ-ZqWUy0s98XzCVs5O3RIrg7TKM_3IOXNl_0ew6vMQAujrAjXHo7SXm4QoY","https://play-lh.googleusercontent.com/GAhrY0MAuGCZ5x76luw6xWbgRmQyGQPdBhVIDqW93J8F7lBOd4nJU6MhsQEgsi4FJX3tcFJRklcvM5yc1T0JiA","https://play-lh.googleusercontent.com/tksvYQNiig4rCMpeGxKHnjKr1v_GI6CqUz66YIR_9C_Q5JRbu02RXoPPIJltZqfJYVwhMmGlxhf9-GqAsq6m","https://play-lh.googleusercontent.com/5gUUbLYQrj8VPaDW-uBI1Zve5nzXq7gkLLCP5IzS07pS2VGpelaz-WGELRE4sYwoC_0w83uZ9XnDAFoAaZqH"]`
+  - `statussaver.statusdownloader.videodownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Status Saver - Save Status"`
+    - `summary` · string · e.g. `"Save video &amp; photo statuses quickly and share them anytime easily"`
+    - `description` · string · e.g. `"<b> You can download all photos and video statuses of your friends. Th…"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `minInstalls` · number · e.g. `50000000`
+    - `realInstalls` · number · e.g. `65225551`
+    - `score` · number · e.g. `4.7851562`
+    - `ratings` · number · e.g. `432356`
+    - `reviews` · number · e.g. `419`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `developerEmail` · string · e.g. `"xmedia.lite@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Mar 25, 2022"`
+    - `updated` · string · e.g. `"2026-07-20"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$9.99 - $19.99 per item"`
+    - `version` · string · e.g. `"1.9.67"`
+    - `recentChanges` · string · e.g. `"- Save status to gallery.<br>- Share and repost any status.<br>- Quick…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/qzbJ8wf06McB5QQYAINyIY7xE78w9rNf…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/VC96JsXqHnSaNwr7ToqBdIcxbNlc0BHu…"`
+    - `screenshots[]` · array of 15 string · e.g. `["https://play-lh.googleusercontent.com/WFuZ9pRvKj0hNsLB2PP24vX1yOaEkRJP6i5B0ehdPW9q1ayn7S66Nt-nRtHI-8EbbPszo16jA3Nl2XshcDUgPQ","https://play-lh.googleusercontent.com/jcuXvzEjVTEl4_UynD5b0g33Xl-UjlIAxaCkeShRkqfGb46eoW7Yow5OzAyIKp3O-wr6_t61HQdW1BaS79xfuiU","https://play-lh.googleusercontent.com/2hLFxV8tUxPCOJ7_ssvJ9GFwQWMx1QO0EmRsicWMlhm8i1ZmQO-LZ_SH8OYSFCMHlG446J8m4ooNM43O2PfkQA","https://play-lh.googleusercontent.com/4OcAZHdGPjh85nQUf6CxwLH59vzAUPIl6CL68oYHyvhQcrc8FCQpKBRKoHAEDIlnv2UcDg-2TMXAl9h810HOtjM"]`
+  - `com.sumino.issave.storysaver.photovideo.downloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.sumino.issave.storysaver.photovideo.downloader"`
+    - `title` · string · e.g. `"InSaver: Video & Story Saver"`
+    - `summary` · string · e.g. `"InSaver Story Saver - video downloader with music Save Media in origin…"`
+    - `description` · string · e.g. `"InSaver – Download stories, reels, videos, and photos in high quality.…"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `minInstalls` · number · e.g. `500000`
+    - `realInstalls` · number · e.g. `560208`
+    - `score` · number · e.g. `4.2222223`
+    - `ratings` · number · e.g. `1203`
+    - `reviews` · number · e.g. `9`
+    - `developer` · string · e.g. `"Sumino Apps"`
+    - `developerEmail` · string · e.g. `"sumitra.devapps@gmail.com"`
+    - `genre` · string · e.g. `"Video Players & Editors"`
+    - `released` · string · e.g. `"Mar 30, 2024"`
+    - `updated` · string · e.g. `"2026-09-12"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $19.99 per item"`
+    - `version` · string · e.g. `"8.02.56.02"`
+    - `recentChanges` · string · e.g. `"• Bug Fixes &amp; Stability Improvements<br>• App Performance &amp; Op…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/sjkeqj-k3jvq3MyKIr160HG3KleAfb9n…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/-rMLV5zisV1Khuij3jeMdDn2MaI75nqg…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/9bktxn4yP7JkJjDj-1KunehpZlT4ZtCdz10FNVOOzXOq9SxCV5tcNnjz8wuupIIlWWI-PB_UqzMdm0W45kAVBIQ","https://play-lh.googleusercontent.com/qsfLl9D6boeJoLphnXpJ6-TJJ0p0S1dipun2jrB-H1EhY1HXb_yQxwCLb0CvdS72ARuMVKfnXGdKK8pOBIfcWA","https://play-lh.googleusercontent.com/uNYA_LJ964RYAXbgKBC3G_mpivhdDuh4l1273rjDjUZWap7MUoB8hJsEqKMEA6zy4UHj0VMRqGo0_ZbYkk0C0g","https://play-lh.googleusercontent.com/zG1f5BR8hPyTR6BYyKGUuo4h4adNUWuZD4RnRfZvYEBTyaHcMbIxjWhQ_uKJqSy3W9A4wABsp99A-ftXfWm0dQ"]`
+  - `com.statussaver.statusdownloader.lite` · object with 23 keys:
+    - `appId` · string · e.g. `"com.statussaver.statusdownloader.lite"`
+    - `title` · string · e.g. `"Status Saver"`
+    - `summary` · string · e.g. `"Effortlessly download and share status content with our status saver!"`
+    - `description` · string · e.g. `"Welcome to StatusSaver - Your Ad-Free App for Downloading and Saving S…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `19447277`
+    - `score` · number · e.g. `4.304348`
+    - `ratings` · number · e.g. `7390`
+    - `reviews` · number · e.g. `11`
+    - `developer` · string · e.g. `"Fun and Hi Tool"`
+    - `developerEmail` · string · e.g. `"FunandHiTool@outlook.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Dec 22, 2024"`
+    - `updated` · string · e.g. `"2026-08-05"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.1.8.00002"`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/KeySmnxoxOaKIy7CauNc2KvYNOGLOTZq…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/hIl0veOe-lo9L5T0npZ6NFiFAuptP_pu…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/eab_bC1rFOAT4rHXIbVSBjjSZyMZGC1h7bRtxzRPnQghVWbPZkp6q8GqlswZ0Fpjp3qY5jNI3oqPXoX58Yy1ew","https://play-lh.googleusercontent.com/3lxJuLnKgr7swmwe8XY9zm3qYwv4L-oymaRLnv0iEqNhrrXUUj4n21PLrGPmt6neFvh3CYFb2y3GrZQ_BMgxILk","https://play-lh.googleusercontent.com/VsrMR89F06mv9vPvhvgtzT6XLjp7EouDSv3CAPkIMPRlIpN-A6yS8M4AxkA3xStuYE3Uwfr_dYxpX7xBccMK","https://play-lh.googleusercontent.com/s4sKwSf6E94x30bcUZIgP8m_A0HlmmSL3oJjV2i7zJXkWGquHf8Px0j2sMdsl6K6uV6qCqbLRDhrtpQVZzGjUGo"]`
+  - `sach.status_saver` · object with 23 keys:
+    - `appId` · string · e.g. `"sach.status_saver"`
+    - `title` · string · e.g. `"Status Saver - Download Status"`
+    - `summary` · string · e.g. `"Save all status, recover messages &amp; use WhatsApp on 2 phones"`
+    - `description` · string · e.g. `"📱 All-in-one WhatsApp &amp; WhatsApp Business Status Saver, Status Do…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `106352`
+    - `score` · number · e.g. `3.2`
+    - `ratings` · number · e.g. `607`
+    - `reviews` · number · e.g. `1`
+    - `developer` · string · e.g. `"India apps"`
+    - `developerEmail` · string · e.g. `"indiaappservices@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jun 13, 2020"`
+    - `updated` · string · e.g. `"2026-08-15"`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"1.0.0.8"`
+    - `recentChanges` · string · e.g. `"1. Added a new feature - Split Video Status And Repost without any par…"`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/hNooIywDLYgadsDBwvtGsrGlE1zjulGc…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/oAu9zxOsud5Ex6oY8cVJMl74oRJSUJUG…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/eApvhTP4JASqlT8lEF_3VzZG7m5d1WgoX-UFc5lFd6JeuAIPG8b1O_MwomsaqvOTNpH2VwcgLbScuSv6CZnNgZ4","https://play-lh.googleusercontent.com/niUyvfreAJkdDqv7ygQaejmQ0gnoJFlchjC77eMrjGkWWOixHjx9G_4W2akwDt1A5qW2wJoVNkDZjSjfKQ8Q-w","https://play-lh.googleusercontent.com/SJQ_fk1YMjhie0boA5GR4blb4MizzE4X_vMYw2WPlyYG42n-TOhihYe8ktSmwJMKo8pI1n0XADVCEuwirnb0t_o","https://play-lh.googleusercontent.com/2xiyewNP7shShYHvRp5hitT-Ft78lYdz5MeYyOtft0VA66k7F8hZm0U6HSO9lOtsTx8Wo7zvNz8DzDYVQWKq3Z0"]`
+  - `com.mstudio.story.save` · object with 23 keys:
+    - `appId` · string · e.g. `"com.mstudio.story.save"`
+    - `title` · string · e.g. `"Story Saver & Story Downloader"`
+    - `summary` · string · e.g. `"Easily save your videos and photos to your device with Story Saver"`
+    - `description` · string · e.g. `"The description of Story Saver<br><br>🔥 Easily save your videos, reel…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `290141`
+    - `score` · number · e.g. `3.8235295`
+    - `ratings` · number · e.g. `784`
+    - `reviews` · number · e.g. `12`
+    - `developer` · string · e.g. `"Maven Studio"`
+    - `developerEmail` · string · e.g. `"mavenstudio786@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Oct 24, 2022"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$0.99 - $5.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/RErgwMR8uFkGYpq2lsZUWJmv15F-PSvQ…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/Th3JBlH-ZaU9hAtOFxZZJ9klLZVHTGYb…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/JTDkksm_v7cuBpyxHlM3mQ16vz0Rd14MTceN2KpJxINdqFqQD9Gt_oaOTYBYv0bNkkATENckwxXuuYuju9heDA","https://play-lh.googleusercontent.com/u8Oa3o2lQGAQ4OqxG6ZKx12vgbGApDZER1IrU44rAS153q9irP8A8aUJuqacXGLpAJe9JZ6GrQrzJYTnptfidE0","https://play-lh.googleusercontent.com/hB8Qh3e5Q0nHuCyF2Nv41A_E8QBYwUC5PH1ThI84LV0_UMQeNQ53Ln2rzkpsKAX29V9VRBYalHGx_OKrH1sNrg","https://play-lh.googleusercontent.com/sDrwNyc5XXye5uT1s_jnaqVnMUXh0oY9epYvUXCmW1Wf-iCNUefEaYkMl2MlRo3zaxa6vPHjAHkaxRa2hhCt"]`
+  - `com.app.save.video.status.kkapptech` · object with 23 keys:
+    - `appId` · string · e.g. `"com.app.save.video.status.kkapptech"`
+    - `title` · string · e.g. `"Status Saver - Status Download"`
+    - `summary` · string · e.g. `"Save and download status videos fast. Repost, manage, and share easily…"`
+    - `description` · string · e.g. `"<b>Status Saver - Status Downloader – Fast &amp; Easy Status Saving</b…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `382835`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"Walls Engine"`
+    - `developerEmail` · string · e.g. `"wallsengineteam.2402@gmail.com"`
+    - `genre` · string · e.g. `"Productivity"`
+    - `released` · string · e.g. `"Feb 11, 2025"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/srvHeD7jYt6wD3MImK16zHAng6b1nokq…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/s8-XvGPxX7BIcrWwqcZic-E8b-XAbSSj…"`
+    - `screenshots[]` · array of 18 string · e.g. `["https://play-lh.googleusercontent.com/iXA3q1dodh7Ny7dlvIAd9bs8dJSqW6n8Q77DQNW2qA9HOq8mng94cctVxVOtscKLnTuwb5VvNPjCkUEvk0JASg","https://play-lh.googleusercontent.com/5zWNBat9YKYgUmvpRRVZ84ieRQxQqM76d5Dee6waqxJxRvTIvhM4qehyO3eh_RnZpzjbMmoujzmDVSciwery","https://play-lh.googleusercontent.com/KAMyZT5GuFwtEyg-_E0looQcHeyzeqiN0WYHUHyVWcgrn6zOYRzFtrtGRMLJfCLRkPc_if-yztXEPbSZ1aJyJg","https://play-lh.googleusercontent.com/bgCqxux65tMGLTEK98kZ9ZyFEUkiyifuumXLeMTXgM1pWVj_VDMEr6e_0rX4aABWJqy3GiXTFXJu4rlQp3TN"]`
+  - `com.yhs.statusdownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.yhs.statusdownloader"`
+    - `title` · string · e.g. `"Status Save, Download-WhatsApp"`
+    - `summary` · string · e.g. `"Ad-Free Status Saver &amp; status downloader for WhatsApp. Recover del…"`
+    - `description` · string · e.g. `"The Ultimate Ad-Free Status Saver, Status downloader &amp; Recovery To…"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `minInstalls` · number · e.g. `1000`
+    - `realInstalls` · number · e.g. `1335`
+    - `score` · null · e.g. `null`
+    - `ratings` · null · e.g. `null`
+    - `reviews` · null · e.g. `null`
+    - `developer` · string · e.g. `"YHS Technology"`
+    - `developerEmail` · string · e.g. `"yhstechnologies@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Feb 10, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/WxxCz8flXT5JT1g2ZX9osjRD2mSZPrJV…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/tT9y7IBarSZ9N_ES_c8ZXoyK0rFhGmWu…"`
+    - `screenshots[]` · array of 8 string · e.g. `["https://play-lh.googleusercontent.com/okhgYzkN1MtYBrv2NvFNHKmLoMKGmchsLxzzyR98jJG9pfzLCYob0Tbqhnf7G09RRp6lDwua6VKXjquaMfS0","https://play-lh.googleusercontent.com/vT8ph7NI7KIqXjZ9wtKJrydUYgmisDzscHkiDQ5msj8Q4yDMGtfZ4Xzz4ZgcQOg0gy8o3Oj8v69TfJ0GxzKs","https://play-lh.googleusercontent.com/fgFk7dxvEPxcwmFeLDmul3J4Yzl_NMEg32rAnArHV0Ja5YzcjUa9f8kMiukZQn687B2a7as3B_ROuentT5cxAg","https://play-lh.googleusercontent.com/dbv5o-XVAuQUrY6m5TqeMRJn6zI4hjJHyRa8h9oBPFLRLXXc3xS0_jLpWxhebFVVy6bfLX3mthy4cZJbwEgIGQ"]`
+  - `com.panshen.twitterdownloader` · object with 23 keys:
+    - `appId` · string · e.g. `"com.panshen.twitterdownloader"`
+    - `title` · string · e.g. `"X Downloader - video&gif"`
+    - `summary` · string · e.g. `"Download X/Twitter videos in the background with one click."`
+    - `description` · string · e.g. `"Experience a fast, seamless way to save videos and GIFs from X (Twitte…"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `minInstalls` · number · e.g. `5000`
+    - `realInstalls` · number · e.g. `8288`
+    - `score` · number · e.g. `4.5`
+    - `ratings` · number · e.g. `144`
+    - `reviews` · number · e.g. `1`
+    - `developer` · string · e.g. `"Innov App"`
+    - `developerEmail` · string · e.g. `"levine9348@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Nov 24, 2025"`
+    - `updated` · string · e.g. `"2026-09-15"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$3.99 per item"`
+    - `version` · string · e.g. `"2.2.3"`
+    - `recentChanges` · string · e.g. `"UI improvements and bug fixes."`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/ZvIdqqBBQP_MbgnS_pZSyR9kKTUfPk0k…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/u08to6mMZbYvWhErmHIdNKzF93gnalV2…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/Q6dDfh9GBm8E-efTmjcqkmcCY-JleigYteIcQxz9MpvOiSBbfg4sRIXMVjVZMlvRVAdk9ExUnvSEvPET6XwiBg8","https://play-lh.googleusercontent.com/gS3aOfmDHgoVLMQYOQwl00HNXeXlvmdizDqcbuDgmi9IddQ5xtCtO8OZ6TY0_irxCfMCbMledTiB1zB3oWa0FA","https://play-lh.googleusercontent.com/Qv2dqYzyzb4NTGjcg1ybXtbVDIAFb5tXSm6pNAxUFbb6z3nZ3RkU2wyhaX1AeZeZwk8U23vruCiQxYMebsV-0Y0","https://play-lh.googleusercontent.com/N9C2s3wKnIF3DIwgAEUE3KMIcXPm0nMm76SGfQhTaym7cOYmutdFkEc9buwj-4MCQiGa2Qs6WO8DJAsqJ82oGl8"]`
+  - `com.storysaver.forfacebooksaver` · object with 23 keys:
+    - `appId` · string · e.g. `"com.storysaver.forfacebooksaver"`
+    - `title` · string · e.g. `"Story Saver - Stories Download"`
+    - `summary` · string · e.g. `"Story Saver for Facebook, Download Stories photos and videos easily"`
+    - `description` · string · e.g. `"Story Saver for Facebook is the ultimate tool for saving and downloadi…"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `minInstalls` · number · e.g. `100000`
+    - `realInstalls` · number · e.g. `392588`
+    - `score` · number · e.g. `4.4`
+    - `ratings` · number · e.g. `5868`
+    - `reviews` · number · e.g. `33`
+    - `developer` · string · e.g. `"MOHAMED KAZARAH"`
+    - `developerEmail` · string · e.g. `"mohammad1993sngop@gmail.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Sep 23, 2023"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$1.49 - $9.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/n5EVjClFF9-iPxRTykd3-cIHkhHCikGS…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/qVCSWWRe0IOTn6OGlg4KJzoZ3caMU565…"`
+    - `screenshots[]` · array of 5 string · e.g. `["https://play-lh.googleusercontent.com/0ufz2p2WnFjBUeIBC9qkBRQbroQf4x7bLhBhAhDvcaTp7-NDvkKaSsjg-k5_xBLbZC7DpNlyKBhI1Xv8ISa2OQ","https://play-lh.googleusercontent.com/e2uEHvknktdhPJiM7osWY0QsjiH4hiZtD71OXzjcnJB2w5m_c7sf-u2tnpvXIvvDWcOwZ60Q7DuyPd9eTaon","https://play-lh.googleusercontent.com/0EtTwmcUE_de6Uo6GIYw7rAmkA8uJGXsY2D-9EYWpyI7ieOsQ_IU2IUyGiRWCz01THaT4Ay5liixU2fibFQrSA","https://play-lh.googleusercontent.com/nfORwXJW31Smbdfz2rrPXRznnhD2JbOi87FadqRyefOZbpFWTndrh51N9sxtum8e_vi2majnUHvPGUOjupFu8Q"]`
+  - `com.linecorp.usersticker` · object with 23 keys:
+    - `appId` · string · e.g. `"com.linecorp.usersticker"`
+    - `title` · string · e.g. `"LINE Sticker Maker"`
+    - `summary` · string · e.g. `"Make your own stickers in a snap!"`
+    - `description` · string · e.g. `"LINE Sticker Maker is a free app from LINE that allows you to turn you…"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `minInstalls` · number · e.g. `5000000`
+    - `realInstalls` · number · e.g. `8131465`
+    - `score` · number · e.g. `4.68`
+    - `ratings` · number · e.g. `84674`
+    - `reviews` · number · e.g. `56`
+    - `developer` · string · e.g. `"LINE (LY Corporation)"`
+    - `developerEmail` · string · e.g. `"line-support@line.me"`
+    - `genre` · string · e.g. `"Photography"`
+    - `released` · string · e.g. `"Aug 21, 2017"`
+    - `updated` · string · e.g. `"2026-08-14"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · null · e.g. `null`
+    - `version` · string · e.g. `"8.6.0"`
+    - `recentChanges` · string · e.g. `" Update Details<br>- Various other bug fixes and functionality improve…"`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/CRZnyfeapVtj4MZEuqTLQ4n2Qj-IOx1s…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/stt3aJ6gevdTpweoPGxxNY5JQX4npdQF…"`
+    - `screenshots[]` · array of 7 string · e.g. `["https://play-lh.googleusercontent.com/vsLCYsnqOrQZCb9plmQ3FA1DHqhdFOw3tVxL-eflmEhJC2fNhevp2lh4rrjXQRmdwKB8god3ZODEzCTSacl4","https://play-lh.googleusercontent.com/13bn-40qNdwWNR3492s69MBXyHodSn_i3Ljnbeoq8wTXwCh6YWP1lbfovpuuGw7e_f5cfkOOZzUKs2jPmXhn","https://play-lh.googleusercontent.com/pMcpc3E4wsR4OcECvcDeAp-ahMqkFW9MTZQIo05M6jarbyYVndpFv8kUPEkGNLxRa8Ea93xNaG8FWNVMDbHlcQ","https://play-lh.googleusercontent.com/bZQzyVsqkE7ALff2GLphn16bshy7932JGpdSLkiVYmtdoETRJGOsOsKpRdGmM2s3RMBdisr_2ZGTU07LXF26QdU"]`
+  - `com.savestatus.photo.video.repoststatus` · object with 23 keys:
+    - `appId` · string · e.g. `"com.savestatus.photo.video.repoststatus"`
+    - `title` · string · e.g. `"iStatus: Recover Deleted Chat"`
+    - `summary` · string · e.g. `"Save WA statuses, recover chats, and send messages without saving cont…"`
+    - `description` · string · e.g. `"iStatus: Recover Deleted Chat is a reliable app to easily view, save, …"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `minInstalls` · number · e.g. `10000`
+    - `realInstalls` · number · e.g. `23265`
+    - `score` · number · e.g. `4.8`
+    - `ratings` · number · e.g. `73`
+    - `reviews` · number · e.g. `1`
+    - `developer` · string · e.g. `"CoddeX Studio"`
+    - `developerEmail` · string · e.g. `"support@bytematrixlimited.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Jul 28, 2026"`
+    - `updated` · null · e.g. `null`
+    - `containsAds` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$14.99 per item"`
+    - `version` · null · e.g. `null`
+    - `recentChanges` · null · e.g. `null`
+    - `contentRating` · string · e.g. `"Everyone"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/yC4h0GTR9fo5f9q9Fed4OcS1SS6AKQup…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/qfALob1HkXAbq4vvClxgvVPYa1UiOn-1…"`
+    - `screenshots[]` · array of 24 string · e.g. `["https://play-lh.googleusercontent.com/yRj0p_kyH32JCnOzLQt5fCeiQPTub0LEn3KEaeQLWQZ0R7yzhwTaTcJFJ-k8dMywiwTpIVDp606l2JcBKK-ZFw","https://play-lh.googleusercontent.com/G1X4MZwEq5dSNRkoRJFL06BX0cmPsv865zpX6bQYLa4f7Sw2RWPA8B3k2tjvYu0zYz_mHgpJTebQxgVqOj1S-Q","https://play-lh.googleusercontent.com/u40V3ej6patjCNzFNpHTtBDLtjdO0acnCmg6oJcrLY2yMLg5ICsgnxdstNiUiqyRlUvOyOIdPufnzjxIh0kD","https://play-lh.googleusercontent.com/EQBXMj7ofyPcnvZgwmVR8GJw3gUGuEXxGi9g1QQ50Hg0xG3_ueviaY8zWKhuziqCz2trnJF0DUAjPFmPWlL7"]`
+  - `com.wastickerapps.stickerstore` · object with 23 keys:
+    - `appId` · string · e.g. `"com.wastickerapps.stickerstore"`
+    - `title` · string · e.g. `"Stickify"`
+    - `summary` · string · e.g. `"Explore thousands of stickers or create your own"`
+    - `description` · string · e.g. `"Introducing Stickify - a powerful app to discover and create personali…"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `minInstalls` · number · e.g. `10000000`
+    - `realInstalls` · number · e.g. `16203953`
+    - `score` · number · e.g. `4.599585`
+    - `ratings` · number · e.g. `305385`
+    - `reviews` · number · e.g. `622`
+    - `developer` · string · e.g. `"Stickify"`
+    - `developerEmail` · string · e.g. `"utilities@clusterdev.com"`
+    - `genre` · string · e.g. `"Tools"`
+    - `released` · string · e.g. `"Oct 30, 2018"`
+    - `updated` · string · e.g. `"2026-07-15"`
+    - `containsAds` · boolean · e.g. `false`
+    - `iap` · string · e.g. `"$0.99 - $4.99 per item"`
+    - `version` · string · e.g. `"6.1.0"`
+    - `recentChanges` · string · e.g. `"- Bug fixes and stability improvements "`
+    - `contentRating` · string · e.g. `"Teen"`
+    - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/E-6VIfVizGalBAm2tGwcj3WiWI1708Ef…"`
+    - `header` · string · e.g. `"https://play-lh.googleusercontent.com/uUertTwb-PFPXgv3Pmb9Svrufu6L0uQt…"`
+    - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/f9a5iJDm_7I4DHZSF7zFgaV13wqKPxEJIFT9Gy9rT0rdrkIxWDJ2xEpdXcV38Mk4PXjTKJclLTD0nFHxmqkLXw","https://play-lh.googleusercontent.com/Py7O4PIsKuBrFXp6NFAsYBO06QWdhzM25ePeaoacBGNHvZr-3WFfySakKRmo8DiYqOckyUoJVZby4jXaUr0khpY","https://play-lh.googleusercontent.com/0i0PBGU0-YYBuacliQhvaN6epts5-saw9c6JDP6Y_Thdd_QQ8akdaToxFHc1AAM6Egh-cAv4Gf42NTMNC9MhpA","https://play-lh.googleusercontent.com/7lLLpvjjzxBJgt0PNRH1k97WXDAhLDnIAcLmAQiMrvHhjgbLZaysuAk_pY4Tw_FbvFiHG6IEHMdTVp-Lg-p2"]`
+- **[build.ps1](../research/aso-pipeline/build.ps1)** · 2 KB · PowerShell script, 52 lines. Stage 5: assemble assets/data.js — the single payload every data-driven tab reads. Sources: data.json (scrape + scores), features.json (feature evidence), ours.json (our app, checked on the emulator), listing.json (the proposed copy and the written sections). Nothing is typed twice: if a number is wrong here, it is wrong in the JSON, and the JSON came from Google Play. powershell -ExecutionPolicy Bypass -File build.ps1 Functions: `Read-Json`.
+- **[candidates.json](../research/aso-pipeline/candidates.json)** · 22 KB · JSON, array of 667:
+  - `(root)[]` · array of 667 string · e.g. `["ai god status video","all festival video status app","all god video status","all god video status app"]`
+- **[collect.ps1](../research/aso-pipeline/collect.ps1)** · 6 KB · PowerShell script, 141 lines. Stage 1-2 of the Status Saver ASO pipeline: build the keyword universe from Play autocomplete, fetch live result lists (depth 30) for every keyword in every market, then fetch details for every app that reaches a top-10 slot. Everything is cached by lib.ps1, so re-running is cheap. powershell -ExecutionPolicy Bypass -File collect.ps1 Writes: suggest.json, universe.json, serps.json, apps.json Functions: `Norm`.
+- **[data.json](../research/aso-pipeline/data.json)** · 89 KB · JSON, object with 6 keys:
+  - `meta` · object with 6 keys:
+    - `fetchedAt` · string · e.g. `"2026-09-23"`
+    - `markets[]` · array of 3 string · e.g. `["US","PK","IN"]`
+    - `ours` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
+    - `keywords` · number · e.g. `110`
+    - `apps` · number · e.g. `217`
+    - `lists` · number · e.g. `330`
+  - `apps[]` · array of 217 records, each an array of 12 values:
+    - `[0]` · string · e.g. `"aculix.whatsium.app"`
+    - `[1]` · string · e.g. `"Status Downloader - Saver"`
+    - `[2]` · string · e.g. `"Aculix Technologies LLP"`
+    - `[3]` · number · e.g. `100000`
+    - `[4]` · number or null · e.g. `4.181818`
+    - `[5]` · number · e.g. `2403`
+    - `[6]` · string or null · e.g. `"Dec 3, 2021"`
+    - `[7]` · string · e.g. `"status"`
+    - `[8]` · number · e.g. `1`
+    - `[9]` · number · e.g. `1`
+    - `[10]` · number · e.g. `1`
+    - `[11]` · string or null · e.g. `"2026-07-28"`
+  - `compIdx[]` · array of 12 number · e.g. `[38,197,198,43]`
+  - `markets` · object with 3 keys:
+    - `PK[]` · array of 110 records, each an array of 9 values:
+      - `[0]` · string · e.g. `"all status saver"`
+      - `[1]` · number · e.g. `0`
+      - `[2]` · number · e.g. `3`
+      - `[3]` · number · e.g. `1`
+      - `[4]` · array · e.g. `[131,38,43,198,117,197,147,56,74,192,63,144,116,10,200,160,37,61,-1,102,71,9,115,127,-1,68,-1,-1,66]`
+      - `[5]` · number · e.g. `281005100`
+      - `[6]` · number · e.g. `6`
+      - `[7]` · number · e.g. `0.9`
+      - `[8]` · number · e.g. `29`
+    - `IN[]` · array of 110 records, each an array of 9 values:
+      - `[0]` · string · e.g. `"all status saver"`
+      - `[1]` · number · e.g. `0`
+      - `[2]` · number · e.g. `3`
+      - `[3]` · number · e.g. `1`
+      - `[4]` · array · e.g. `[131,38,147,152,117,199,56,74,47,160,63,144,200,116,192,10,115,61,102,18,-1,71,66,-1,-1,99,-1,-1,107]`
+      - `[5]` · number · e.g. `166006200`
+      - `[6]` · number · e.g. `3`
+      - `[7]` · number · e.g. `0.9`
+      - `[8]` · number · e.g. `29`
+    - `US[]` · array of 110 records, each an array of 9 values:
+      - `[0]` · string · e.g. `"all status saver"`
+      - `[1]` · number · e.g. `0`
+      - `[2]` · number · e.g. `3`
+      - `[3]` · number · e.g. `1`
+      - `[4]` · array · e.g. `[38,117,198,147,131,197,56,74,43,63,116,61,192,144,200,160,37,199,-1,9,-1,190,71,-1,102,115,-1,127,-1]`
+      - `[5]` · number · e.g. `271015100`
+      - `[6]` · number · e.g. `5`
+      - `[7]` · number · e.g. `0.9`
+      - `[8]` · number · e.g. `29`
+  - `ngrams[]` · array of 84 string/number · e.g. `["status",28,"saver",19]`
+  - `demand[]` · array of 800 string/number · e.g. `["status video downloader app",15,1,"INUSPK"]`
+- **[demand.json](../research/aso-pipeline/demand.json)** · 148 KB · JSON, array of 668:
+  - `(root)[]` · array of 668 objects:
+    - `phrase` · string · e.g. `"status saver reel"`
+    - `hits` · number · e.g. `3`
+    - `bestPos` · number · e.g. `1`
+    - `markets[]` · array of 3 string · e.g. `["IN","PK","US"]`
+- **[features.json](../research/aso-pipeline/features.json)** · 13 KB · JSON, object with 3 keys:
+  - `fetchedAt` · string · e.g. `"2026-09-23"`
+  - `apps[]` · array of 45 string/number/null · e.g. `["com.statussaver.videosaver.downloadstatus.storysaver","Status Downloader: Video Saver","Cell Cave",10]`
+  - `features[]` · array of 24 records, each an array of 4 values:
+    - `[0]` · string · e.g. `"Core"`
+    - `[1]` · string · e.g. `"Statuses: photos and videos"`
+    - `[2]` · array · e.g. `[1,1,1,1,1,1,1,1,1]`
+    - `[3]` · array · e.g. `["status downloader: video saver save video and photo statuses fast. download, repost and watch them offline sav","s download - saver app let you download photo images, gif, video of new status feature of 2 new app wa 2025 st","status downloader app is for you. save videos and images status easily.<br><br>status saver is an app that he","status saver - video saver save photos &amp; video status, view status of friends without seen. <b> you can do","someone to send it. you can delete any image or video anytime you feel like it.<br><br>status saver app is a","status saver - video download tap, view and save your friend's status images and videos and reshare them want","he ultimate tool for downloading status videos, status photos, and status images from wa. with statussaver, yo","status saver & video download save status photos &amp; videos to gallery, auto save, direct chat &amp; widgets","er: video downloader status saver &amp; video downloader! save status videos, photos, auto-save &amp; repost <"]`
+- **[features.ps1](../research/aso-pipeline/features.ps1)** · 5 KB · PowerShell script, 98 lines. Stage 4: the feature matrix. For every competitor, look for evidence of each tracked feature in its live Play listing text (title + short description + full description) and record the phrase that proved it, so every tick in the matrix can be traced back to the words the app itself published. powershell -ExecutionPolicy Bypass -File features.ps1 Reads apps.json + data.json, writes features.json. Functions: `Read-Json`, `ToHash`.
+- **[lib.ps1](../research/aso-pipeline/lib.ps1)** · 9 KB · PowerShell script, 196 lines. Google Play scraping library for the Status Saver ASO pipeline. A PowerShell 5.1 port of the Node lib.js used for the Cloud Storage app's pipeline, because this PC has no Node. Every response is cached under cache/ by an MD5 of its key; delete cache/ to force a fresh scrape. . .\lib.ps1 $r = Get-PlaySearch -Query 'status saver' -Depth 30 -Gl US $d = Get-PlayDetails -AppId com.whatsapp $s = Get-PlaySuggest -Term 'status s' -Gl US Functions: `Get-CacheFile`, `Invoke-Cached`, `Get-Text`, `Get-DsBlocks`, `Get-At`, `Get-FirstAppId`, `Get-PlaySearch`, `Get-PlayDetails`, `Get-PlaySuggest`.
+- **[listing.json](../research/aso-pipeline/listing.json)** · 12 KB · JSON, object with 8 keys:
+  - `app` · object with 6 keys:
+    - `package` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
+    - `developer` · string · e.g. `"Cell Cave"`
+    - `installs` · string · e.g. `"10+"`
+    - `ads` · boolean · e.g. `true`
+    - `iap` · string · e.g. `"$3.99 - $9.99 per item"`
+    - `readOn` · string · e.g. `"2026-09-23"`
+  - `current` · object with 4 keys:
+    - `title` · string · e.g. `"Status Downloader: Video Saver"`
+    - `short` · string · e.g. `"Save video and photo statuses fast. Download, repost and watch them of…"`
+    - `descChars` · number · e.g. `2577`
+    - `read[][]` · array of 4 arrays · e.g. `["The title spends 30 characters without the head term","Every app holding this shelf says \"Status Saver\" in its title. Ours says \"Status Downloader\". Both phrases are on the board, but \"status saver\" and its variants carry the demand: our title covers \"status downloader\" and \"video saver\", and misses \"status saver\", \"status saver app\" and \"status saver video download\" entirely."]`
+  - `proposed` · object with 8 keys:
+    - `title` · string · e.g. `"Status Saver & Downloader App"`
+    - `titleChars` · number · e.g. `29`
+    - `titleWhy` · string · e.g. `"Checked live against Google Play on 23 Sep 2026 in the United States a…"`
+    - `short` · string · e.g. `"Status saver and downloader: save status video, photo and story to gal…"`
+    - `shortChars` · number · e.g. `73`
+    - `outline[][]` · array of 8 arrays · e.g. `["Save status video and photo to your gallery","Browse the status updates available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality — the same file, not a re-encoded copy."]`
+    - `close` · string · e.g. `"Only save, share or repost content you own or have permission to use. …"`
+    - `why` · string · e.g. `"Every phrase in these fields appears on the keyword board, and every c…"`
+  - `fields[][]` · array of 14 arrays · e.g. `["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."]`
+  - `reserved[][]` · array of 5 arrays · e.g. `["status saver video downloader","Second-highest demand phrase with no brand name, but its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."]`
+  - `policy[][]` · array of 7 arrays · e.g. `["No brand name in any field","The proposed title, short description and full description were checked for every brand name in this category. None appears. The copy says \"your messaging app\", which is what Play's impersonation policy asks for and what the current listing already does."]`
+  - `risks[][]` · array of 6 arrays · e.g. `["The highest-demand phrases in this category are brand phrases","\"whatsapp status downloader\", \"whatsapp status saver\" and their variants carry the most autocomplete demand on the board, and house rules keep all of them out of our copy. That is a deliberate ceiling: this listing competes only on generic phrases, and the plan has to be judged on that basis, not against apps that spend their titles on a brand name."]`
+  - `built[][]` · array of 4 arrays · e.g. `["The scrape","Google Play's own search results to depth 30, its autocomplete, and the full listing of every app that reached a top-10 slot, read on 23 Sep 2026 in the United States, Pakistan and India. 110 keywords, 330 live result lists, 217 app listings."]`
+- **[ours.json](../research/aso-pipeline/ours.json)** · 3 KB · JSON, object with 5 keys:
+  - `note` · string · e.g. `"Our app's column in the feature matrix comes from the app itself, chec…"`
+  - `checkedOn` · string · e.g. `"2026-09-17"`
+  - `features` · object with 24 keys:
+    - `Statuses: photos and videos` · number · e.g. `1`
+    - `Business statuses` · number · e.g. `1`
+    - `Original quality, no watermark` · number · e.g. `1`
+    - `Built-in viewer and player` · number · e.g. `1`
+    - `Saved library in the app` · number · e.g. `1`
+    - `Share to other apps` · number · e.g. `1`
+    - `Offline viewing` · number · e.g. `1`
+    - `Repost status` · number · e.g. `1`
+    - `Auto-save new statuses` · number · e.g. `0`
+    - `Multi-select save` · number · e.g. `0`
+    - `Multi-select delete` · number · e.g. `0`
+    - `Direct chat without saving a number` · number · e.g. `0`
+    - `Sticker packs` · number · e.g. `1`
+    - `Favourites` · number · e.g. `1`
+    - `New-status notification` · number · e.g. `1`
+    - `Dark theme` · number · e.g. `1`
+    - `Multiple languages` · number · e.g. `1`
+    - `Other sources than statuses` · number · e.g. `0`
+    - `Audio / MP3 extraction` · number · e.g. `0`
+    - `Video trim or edit` · number · e.g. `0`
+    - `Private vault or lock` · number · e.g. `0`
+    - `Recover deleted messages` · number · e.g. `0`
+    - `Remove ads purchase` · number · e.g. `1`
+    - `Folder access, no all-files permission` · number · e.g. `1`
+  - `evidence` · object with 13 keys:
+    - `Statuses: photos and videos` · string · e.g. `"Both sources checked on the emulator: images and videos, WhatsApp and …"`
+    - `Original quality, no watermark` · string · e.g. `"Saved files compared with the originals byte for byte"`
+    - `Sticker packs` · string · e.g. `"Bundled packs with Add to WhatsApp from the pack screen"`
+    - `Multiple languages` · string · e.g. `"9 languages including Urdu and Arabic, right-to-left layout checked"`
+    - `Offline viewing` · string · e.g. `"Home reached in about 6.7 s with no network, saving still worked"`
+    - `Remove ads purchase` · string · e.g. `"Premium: weekly Rs 1,100, monthly Rs 2,750 (Pakistan store)"`
+    - `Folder access, no all-files permission` · string · e.g. `"Folder access through the system picker; READ_MEDIA_IMAGES and READ_ME…"`
+    - `Auto-save new statuses` · string · e.g. `"Not built: every save is a deliberate tap"`
+    - `Multi-select save` · string · e.g. `"Not built: one status at a time"`
+    - `Multi-select delete` · string · e.g. `"Not built"`
+    - `Direct chat without saving a number` · string · e.g. `"Not built"`
+    - `Private vault or lock` · string · e.g. `"Not built; the old paywall row claiming a private vault was removed in…"`
+    - `Recover deleted messages` · string · e.g. `"Deliberately not built and never claimed: the category's riskiest clai…"`
+  - `ships[][]` · array of 7 arrays · e.g. `["Two sources, one grid","WhatsApp and WhatsApp Business statuses, images and videos, read through folder access granted by the system picker — no all-files permission, and no media permission on Android 13+."]`
+- **[serps.json](../research/aso-pipeline/serps.json)** · 1.5 MB · JSON, object with 330 keys:
+  - `PK|status saver photo and video[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `US|whatsapp status saver app 2023[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|radha krishna status video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.devamjyot.radhakrishna"`
+    - `title` · string · e.g. `"Radha Krishna Status Video"`
+    - `developer` · string · e.g. `"DevamJyot Infotech"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `score` · number · e.g. `5`
+  - `US|story saver app instagram[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.7380743`
+  - `PK|status keeper[]` · array of 10 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"status.keeper.app"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.13`
+  - `US|whatsapp status download app 2026[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp"`
+    - `title` · string · e.g. `"WhatsApp Messenger"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"10,000,000,000+"`
+    - `score` · number · e.g. `4.6162596`
+  - `PK|status saver app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `US|long video status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|save status video[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `PK|save status[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `PK|status saver for whatsapp business[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.57`
+  - `US|whatsapp status saver app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `IN|status saver for whatsapp[]` · array of 27 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status saver youtube video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status saver video download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `US|whatsapp business status downloader app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp.w4b"`
+    - `title` · string · e.g. `"WhatsApp Business"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.598853`
+  - `US|story saver sara tech[]` · array of 10 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"storysaverforinstagram.storydownloaderforinstagram"`
+    - `title` · string · e.g. `"Reshare: Video & Story Saver"`
+    - `developer` · string · e.g. `"iyia"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.58`
+  - `IN|status saver and downloader[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|story saver whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.lazygeniouz.saveit"`
+    - `title` · string · e.g. `"Status, Sticker Saver"`
+    - `developer` · string · e.g. `"Lazy Geniouz Pvt. Ltd."`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.2295036`
+  - `PK|status video download app tamil[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|status gallery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ok.status_gallery"`
+    - `title` · string · e.g. `"Status Gallery - Status Saver"`
+    - `developer` · string · e.g. `"Niraj Vekariya2001"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `score` · number · e.g. `4.9142857`
+  - `US|status photo download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|status saver lazy genius[]` · array of 10 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.lazygeniouz.saveit"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.13`
+  - `US|whatsapp status save[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status saver lazy genius[]` · array of 10 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.lazygeniouz.saveit"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.0820513`
+  - `PK|save status whatsapp business[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.57`
+  - `IN|status downloader video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status saver hd video download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.heethjain.apps.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.413793`
+  - `US|save status video whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|whatsapp status photo download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|story saver instagram app 2025[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.videodownloader.story_saver_for_instagram"`
+    - `title` · string · e.g. `"Story Saver, Story Downloader"`
+    - `developer` · string · e.g. `"BrownHat Labs"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4840426`
+  - `IN|story saver for facebook stories[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.arkdev.fbstorysaver"`
+    - `title` · string · e.g. `"Stories Saver - Video Download"`
+    - `developer` · string · e.g. `"ARK Dev"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4313726`
+  - `US|xtx status saver and downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storyhub.mediaflow.allvideodownloader"`
+    - `title` · string · e.g. `"XTX All Video Downloader"`
+    - `developer` · string · e.g. `"billa Ji"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `score` · number · e.g. `4.66368`
+  - `PK|status saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `PK|mx player status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.mxtech.videoplayer.ad"`
+    - `title` · string · e.g. `"MX Player"`
+    - `developer` · string · e.g. `"Amazon Mobile LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.3996286`
+  - `US|save status for whatsapp[]` · array of 27 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `US|status video downloader app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status saver without watermark[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"repost.share.tiktok.nowatermark.videosave.download.videodownloader.sav…"`
+    - `title` · string · e.g. `"TikSaver : Watermark Remover"`
+    - `developer` · string · e.g. `"Video Downloader & Story Downloader & Saver"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.25`
+  - `IN|status video downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|whatsapp status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|whatsapp status download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|story downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.7380743`
+  - `US|status saver app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `IN|story saver sara tech[]` · array of 10 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"storysaverforinstagram.storydownloaderforinstagram"`
+    - `title` · string · e.g. `"Reshare: Video & Story Saver"`
+    - `developer` · string · e.g. `"iyia"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4752474`
+  - `US|status saver video download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status saver save to gallery[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|status saver dp downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.wssaver"`
+    - `title` · string · e.g. `"Status Saver & Dp Download"`
+    - `developer` · string · e.g. `"hitesh joshi"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `score` · number · e.g. `3`
+  - `IN|story saver without login[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"story.saver.insta"`
+    - `title` · string · e.g. `"Story Saver - Video Downloader"`
+    - `developer` · string · e.g. `"Story Saver&Video Downloader"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.6042247`
+  - `PK|story saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storysaver.saveig"`
+    - `title` · string · e.g. `"Story Saver"`
+    - `developer` · string · e.g. `"Smart Tech1"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.68`
+  - `PK|story saver reels video downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.8047585`
+  - `US|story saver whatsapp[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.mariaxcodexpert.whatsdownloadplus"`
+    - `title` · string · e.g. `"Story Saver for Whatsapp"`
+    - `developer` · string · e.g. `"mariaxcode"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|vmate status video status status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.savestatus"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `developer` · string · e.g. `"BlueLine. Tech"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.343545`
+  - `US|story saver without login[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"free.insaver.videodownloader"`
+    - `title` · string · e.g. `"Story Downloader - Story Saver"`
+    - `developer` · string · e.g. `"Daily Apps Mania"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `score` · number · e.g. `4.7380743`
+  - `PK|whatsapp status photo saver app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|story downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.videodownloader.story_saver_for_instagram"`
+    - `title` · string · e.g. `"Story Saver, Story Downloader"`
+    - `developer` · string · e.g. `"BrownHat Labs"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4840426`
+  - `US|status downloader for whatsapp status[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|save status video saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `PK|status saver and downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `US|whatsapp status download app[]` · array of 14 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|whatsapp status photo saver app[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|story saver no login[]` · array of 14 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"story.saver.insta"`
+    - `title` · string · e.g. `"Story Saver - Video Downloader"`
+    - `developer` · string · e.g. `"Story Saver&Video Downloader"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.6483517`
+  - `PK|status downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `PK|story saver download app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"story.saver.insta"`
+    - `title` · string · e.g. `"Story Saver - Video Downloader"`
+    - `developer` · string · e.g. `"Story Saver&Video Downloader"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.69`
+  - `US|status saver lazy genius[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.lazygeniouz.saveit"`
+    - `title` · string · e.g. `"Status, Sticker Saver"`
+    - `developer` · string · e.g. `"Lazy Geniouz Pvt. Ltd."`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.2610965`
+  - `IN|status saver whatsapp download[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|story downloader ig saver gratis[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.7380743`
+  - `PK|hd video and status downloader[]` · array of 19 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.abtechsolution.video.downloaderapp"`
+    - `title` · string · e.g. `"HD Video & Status Downloader"`
+    - `developer` · string · e.g. `"AB Solution Tech"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `score` · number · e.g. `5`
+  - `IN|status saver whatsapp 2026[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|save status and message recovery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|video status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `PK|radha krishna status video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.devamjyot.radhakrishna"`
+    - `title` · string · e.g. `"Radha Krishna Status Video"`
+    - `developer` · string · e.g. `"DevamJyot Infotech"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `score` · number · e.g. `3.8333333`
+  - `PK|whatsapp status downloader video[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `US|status save to gallery[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `PK|status saver video download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|download status[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|whatsapp business status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.51`
+  - `US|story saver instagram insta story download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.7380743`
+  - `US|status saver without watermark[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"repost.share.tiktok.nowatermark.videosave.download.videodownloader.sav…"`
+    - `title` · string · e.g. `"VideoSaver : Watermark Remover"`
+    - `developer` · string · e.g. `"Video Downloader & Story Downloader & Saver"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.477528`
+  - `US|story saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storysaver.saveig"`
+    - `title` · string · e.g. `"Story Saver"`
+    - `developer` · string · e.g. `"Smart Tech1"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.297376`
+  - `US|status downloader and saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `IN|status saver app update[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status sticker maker[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.snowcorp.stickerly.android"`
+    - `title` · string · e.g. `"Sticker.ly - Sticker Maker"`
+    - `developer` · string · e.g. `"Naver Z Corporation"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.344921`
+  - `US|whatsapp status downloader hd[]` · array of 17 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status saver for whatsapp business[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.51`
+  - `PK|status saver without watermark[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"repost.share.tiktok.nowatermark.videosave.download.videodownloader.sav…"`
+    - `title` · string · e.g. `"TikSaver : Watermark Remover"`
+    - `developer` · string · e.g. `"Video Downloader & Story Downloader & Saver"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.3785334`
+  - `US|save status app whatsapp[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status saver save to gallery[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status saver app download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|whatsapp business status saver 2026[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.57`
+  - `US|status video download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status saver downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `IN|video status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `US|status saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `PK|story saver sara tech[]` · array of 10 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"storysaverforinstagram.storydownloaderforinstagram"`
+    - `title` · string · e.g. `"Reshare: Video & Story Saver"`
+    - `developer` · string · e.g. `"iyia"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.6538463`
+  - `PK|save status app download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `IN|status save to gallery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"status.saver.karne.wala.app"`
+    - `title` · string · e.g. `"Status save to gallery app"`
+    - `developer` · string · e.g. `"AppyBuzz"`
+    - `installsLabel` · string · e.g. `"1,000+"`
+    - `score` · number · e.g. `4.25`
+  - `PK|save status app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `PK|status downloader and saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `IN|status saver native craft[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|story downloader ig saver gratis[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video Downloader - Story Save"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.8001723`
+  - `IN|status saver video downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|save status app download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.heethjain.apps.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.413793`
+  - `PK|status downloader for whatsapp status[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `US|story saver reels video downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.7380743`
+  - `US|whatsapp business status saver 2026[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp.w4b"`
+    - `title` · string · e.g. `"WhatsApp Business"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.5989623`
+  - `PK|story saver whatsapp status[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|status saver gallery[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status video download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|status saver whatsapp business[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.57`
+  - `IN|whatsapp status download app 2026[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|whatsapp status video downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|status downloader hd[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|save status video download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `US|wa status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status repost[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.iyia.repost"`
+    - `title` · string · e.g. `"Reshare: Video & Story Saver"`
+    - `developer` · string · e.g. `"iyia"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4752474`
+  - `IN|whatsapp status saver app download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|status saver hd video download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status downloader hd[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"savestatus.videodownloader.storysaver.statuskeeper"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.8178916`
+  - `IN|hd video and status downloader[]` · array of 13 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.abtechsolution.video.downloaderapp"`
+    - `title` · string · e.g. `"HD Video & Status Downloader"`
+    - `developer` · string · e.g. `"AB Solution Tech"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status gallery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ok.status_gallery"`
+    - `title` · string · e.g. `"Status Gallery - Status Saver"`
+    - `developer` · string · e.g. `"Niraj Vekariya2001"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `score` · number · e.g. `4.304348`
+  - `US|status saver native craft[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"recover.deleted.messages.messagesrestore"`
+    - `title` · string · e.g. `"Status Saver- Video Downloader"`
+    - `developer` · string · e.g. `"Native Craft - Status Images, Photo & Video Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.6408453`
+  - `PK|status save to gallery[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"app.statusdownloader.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Save to Gallery"`
+    - `developer` · string · e.g. `"One Screen Apps"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `score` · number · e.g. `4.2978725`
+  - `PK|story saver for facebook stories[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.arkdev.fbstorysaver"`
+    - `title` · string · e.g. `"Stories Saver - Video Download"`
+    - `developer` · string · e.g. `"ARK Dev"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.64`
+  - `US|full video status uploader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.splitvideo.fullvideo.uploader.statussaver.mp3converter.royalprince…"`
+    - `title` · string · e.g. `"Full Video Status & Downloader"`
+    - `developer` · string · e.g. `"Royal Princess Makeover"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `3.65`
+  - `IN|save status video whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|mx player status downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.mxtech.videoplayer.ad"`
+    - `title` · string · e.g. `"MX Player"`
+    - `developer` · string · e.g. `"Amazon Mobile LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.2140093`
+  - `US|status saver photo and video[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|status downloader app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `PK|status saver video download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|save status download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|save status download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `IN|whatsapp status photo download[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|whatsapp status photo saver app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.statussaver.downloadstatus.videoimagesaver.storysaver"`
+    - `title` · string · e.g. `"Save Status, Image Video Saver"`
+    - `developer` · string · e.g. `"Translate All Languages"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.009901`
+  - `IN|status keeper[]` · array of 9 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"status.keeper.app"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.0820513`
+  - `US|hd video and status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.abtechsolution.video.downloaderapp"`
+    - `title` · string · e.g. `"HD Video & Status Downloader"`
+    - `developer` · string · e.g. `"AB Solution Tech"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `score` · number · e.g. `3.65`
+  - `PK|save status video whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `US|status video download app tamil[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status saver app update[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|story saver for whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|save status app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|whatsapp status saver app[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status saver downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `PK|status downloader for whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `US|story saver for whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.mariaxcodexpert.whatsdownloadplus"`
+    - `title` · string · e.g. `"Story Saver for Whatsapp"`
+    - `developer` · string · e.g. `"mariaxcode"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|whatsapp status download app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `PK|status saver message recovery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"sach.status_saver"`
+    - `title` · string · e.g. `"Status Saver - Download Status"`
+    - `developer` · string · e.g. `"India apps"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `score` · number · e.g. `3.7209303`
+  - `US|status saver video downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|business status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storysaverforwhatsapp.story"`
+    - `title` · string · e.g. `"Status Saver - Business Status"`
+    - `developer` · string · e.g. `"Apps start"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `3.7`
+  - `IN|save status app update[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `IN|whatsapp status downloader app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|status downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|status video downloader app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|whatsapp status download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|story saver no login[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"story.saver.insta"`
+    - `title` · string · e.g. `"Story Saver - Video Downloader"`
+    - `developer` · string · e.g. `"Story Saver&Video Downloader"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.6042247`
+  - `PK|download status[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `IN|status downloader app for whatsapp[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|story saver for whatsapp[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `US|all status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|whatsapp status save[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|whatsapp status saver[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `IN|save status app whatsapp[]` · array of 26 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|status sticker maker[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.snowcorp.stickerly.android"`
+    - `title` · string · e.g. `"Sticker.ly - Sticker Maker"`
+    - `developer` · string · e.g. `"Naver Z Corporation"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.3174677`
+  - `PK|xtx status saver and downloader[]` · array of 13 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storyhub.mediaflow.allvideodownloader"`
+    - `title` · string · e.g. `"XTX All Video Downloader"`
+    - `developer` · string · e.g. `"billa Ji"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `score` · number · e.g. `4.343545`
+  - `PK|status saver whatsapp download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `IN|status saver hd[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|wa status saver[]` · array of 27 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status saver whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `IN|whatsapp business status saver[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storysaverforwhatsapp.story"`
+    - `title` · string · e.g. `"Status Saver - Business Status"`
+    - `developer` · string · e.g. `"Apps start"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `3.7`
+  - `US|story saver for facebook stories[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.arkdev.fbstorysaver"`
+    - `title` · string · e.g. `"Stories Saver - Video Download"`
+    - `developer` · string · e.g. `"ARK Dev"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.53`
+  - `IN|save status video app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|whatsapp status saver app download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status saver hd[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|whatsapp status download app[]` · array of 11 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status downloader for whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `US|status keeper[]` · array of 13 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"status.keeper.app"`
+    - `title` · string · e.g. `"Keeper Password Manager"`
+    - `developer` · string · e.g. `"Keeper Security, Inc."`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.6694126`
+  - `IN|all status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.td.statussavers"`
+    - `title` · string · e.g. `"All Status and Stories Saver"`
+    - `developer` · string · e.g. `"DV Tech"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `3.37`
+  - `PK|status photo download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `US|status saver gallery[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `IN|status download app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|status saver app download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|whatsapp business status saver app[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp.w4b"`
+    - `title` · string · e.g. `"WhatsApp Business"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.5989623`
+  - `PK|whatsapp status saver app 2023[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `IN|save status whatsapp[]` · array of 26 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|whatsapp business status downloader app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `PK|save status app whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|save status video download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|whatsapp status saver app 2023[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status downloader app for whatsapp[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status saver video download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `IN|status saver whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status saver whatsapp[]` · array of 27 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `IN|whatsapp status video downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|whatsapp status saver app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `PK|status saver app download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `US|status saver and downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|photo status saver[]` · array of 18 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `IN|whatsapp status downloader hd[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status downloader app for whatsapp[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `PK|status downloader hd[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `PK|status saver native craft[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"recover.deleted.messages.messagesrestore"`
+    - `title` · string · e.g. `"Status Saver- Video Downloader"`
+    - `developer` · string · e.g. `"Native Craft - Status Images, Photo & Video Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.5009346`
+  - `PK|status downloader video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|story saver whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.lazygeniouz.saveit"`
+    - `title` · string · e.g. `"Status, Sticker Saver"`
+    - `developer` · string · e.g. `"Lazy Geniouz Pvt. Ltd."`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.069915`
+  - `IN|photo status saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status saver app update[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|status saver dp downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.wssaver"`
+    - `title` · string · e.g. `"Status Saver & Dp Download"`
+    - `developer` · string · e.g. `"hitesh joshi"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `score` · number · e.g. `2.835294`
+  - `PK|save status video saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `US|status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status saver whatsapp 2026[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status saver for whatsapp business[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.StatusSticker.Saver"`
+    - `title` · string · e.g. `"Status Saver For WA & Business"`
+    - `developer` · string · e.g. `"Status Saver Team"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `score` · number · e.g. `3.9166667`
+  - `US|story saver whatsapp status[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.mariaxcodexpert.whatsdownloadplus"`
+    - `title` · string · e.g. `"Story Saver for Whatsapp"`
+    - `developer` · string · e.g. `"mariaxcode"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|save status app update[]` · array of 18 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Status Saver - Save Status"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.6445312`
+  - `US|status repost[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.iyia.repost"`
+    - `title` · string · e.g. `"Reshare: Video & Story Saver"`
+    - `developer` · string · e.g. `"iyia"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.58`
+  - `PK|whatsapp status download[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|story saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.videodownloader.story_saver_for_instagram"`
+    - `title` · string · e.g. `"Story Saver, Story Downloader"`
+    - `developer` · string · e.g. `"BrownHat Labs"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4840426`
+  - `IN|status video download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|save status for whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `US|whatsapp status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `US|status saver photo[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.statussaver.statusdownloader.lite"`
+    - `title` · string · e.g. `"Status Saver"`
+    - `developer` · string · e.g. `"Fun and Hi Tool"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.304348`
+  - `IN|save status for whatsapp[]` · array of 27 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `PK|status download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `IN|status downloader and saver[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|video status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Status Saver - Save Status"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.6445312`
+  - `IN|status saver youtube video[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|save status whatsapp[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `US|status video downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|status repost[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.iyia.repost"`
+    - `title` · string · e.g. `"Reshare: Video & Story Saver"`
+    - `developer` · string · e.g. `"iyia"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.6538463`
+  - `PK|story downloader ig saver gratis[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.8047585`
+  - `US|whatsapp status downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status saver for whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `PK|story downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.8047585`
+  - `PK|status saver photo[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `PK|whatsapp status saver app download[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `PK|whatsapp business status saver app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp.w4b"`
+    - `title` · string · e.g. `"WhatsApp Business"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.461735`
+  - `US|save status video[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|status downloader video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|status saver hd video download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.heethjain.apps.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.13`
+  - `IN|whatsapp status downloader video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|whatsapp business status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.57`
+  - `US|whatsapp status photo download[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status video download app tamil[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.tamilstatus.videostatus"`
+    - `title` · string · e.g. `"Tamil Video Status - VidStatus"`
+    - `developer` · string · e.g. `"Muththamizh Social"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `score` · number · e.g. `4.4166665`
+  - `PK|photo status saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `US|status saver app for whatsapp[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `PK|full video status uploader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.splitvideo.fullvideo.uploader.statussaver.mp3converter.royalprince…"`
+    - `title` · string · e.g. `"Full Video Status & Downloader"`
+    - `developer` · string · e.g. `"Royal Princess Makeover"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.2105265`
+  - `IN|mx player status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.mxtech.videoplayer.ad"`
+    - `title` · string · e.g. `"MX Player: Video Player & OTT"`
+    - `developer` · string · e.g. `"Amazon Mobile LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.3184423`
+  - `IN|whatsapp business status saver 2026[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp.w4b"`
+    - `title` · string · e.g. `"WhatsApp Business"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.455395`
+  - `US|story saver instagram app 2025[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.7380743`
+  - `US|save status download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status downloader for whatsapp[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|story saver no login[]` · array of 17 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"story.saver.insta"`
+    - `title` · string · e.g. `"Story Saver - Video Downloader"`
+    - `developer` · string · e.g. `"Story Saver&Video Downloader"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.69`
+  - `IN|long video status downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|story saver instagram insta story download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.8047585`
+  - `PK|whatsapp status downloader app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `PK|story saver instagram app 2025[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.8047585`
+  - `PK|whatsapp status save[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `IN|status saver app for whatsapp[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|status photo download[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|whatsapp status video downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|status gallery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ok.status_gallery"`
+    - `title` · string · e.g. `"Status Gallery - Status Saver"`
+    - `developer` · string · e.g. `"Niraj Vekariya2001"`
+    - `installsLabel` · string · e.g. `"100+"`
+    - `score` · number · e.g. `4.117647`
+  - `PK|save status video[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `PK|whatsapp status downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|xtx status saver and downloader[]` · array of 11 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storyhub.mediaflow.allvideodownloader"`
+    - `title` · string · e.g. `"XTX All Video Downloader"`
+    - `developer` · string · e.g. `"billa Ji"`
+    - `installsLabel` · string · e.g. `"100,000+"`
+    - `score` · number · e.g. `4.6983604`
+  - `IN|whatsapp status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `IN|story saver download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.videodownloader.story_saver_for_instagram"`
+    - `title` · string · e.g. `"Story Saver, Story Downloader"`
+    - `developer` · string · e.g. `"BrownHat Labs"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4840426`
+  - `US|download status[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status downloader app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|status downloader app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `IN|status saver downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status saver youtube video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.savestatus"`
+    - `title` · string · e.g. `"Status Saver: Video Downloader"`
+    - `developer` · string · e.g. `"BlueLine. Tech"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.343545`
+  - `IN|status saver video download[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status saver whatsapp 2026[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `PK|save status video app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|save status app download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `IN|story saver app instagram[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.videodownloader.story_saver_for_instagram"`
+    - `title` · string · e.g. `"Story Saver, Story Downloader"`
+    - `developer` · string · e.g. `"BrownHat Labs"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4840426`
+  - `IN|save status whatsapp business[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storysaverforwhatsapp.story"`
+    - `title` · string · e.g. `"Status Saver - Business Status"`
+    - `developer` · string · e.g. `"Apps start"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `3.7`
+  - `PK|status video download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `IN|whatsapp business status downloader app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|save status app update[]` · array of 14 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Status Saver - Save Status"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.7851562`
+  - `IN|full video status uploader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.splitvideo.fullvideo.uploader.statussaver.mp3converter.royalprince…"`
+    - `title` · string · e.g. `"Full Video Status & Downloader"`
+    - `developer` · string · e.g. `"Royal Princess Makeover"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.23`
+  - `PK|status video downloader app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `US|business status saver[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storysaverforwhatsapp.story"`
+    - `title` · string · e.g. `"Status Saver - Business Status"`
+    - `developer` · string · e.g. `"Apps start"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.51`
+  - `US|status saver whatsapp business[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.51`
+  - `IN|status saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status saver hd[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `PK|save status and message recovery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `PK|all status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.td.statussavers"`
+    - `title` · string · e.g. `"All Status and Stories Saver"`
+    - `developer` · string · e.g. `"DV Tech"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `3.9264705`
+  - `US|save status and message recovery[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `IN|vmate status video status status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status video download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `IN|status saver app[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|save status video app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|save status video download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|save status whatsapp business[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp.w4b"`
+    - `title` · string · e.g. `"WhatsApp Business"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.5989623`
+  - `PK|status saver app for whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `IN|story saver whatsapp status[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.lazygeniouz.saveit"`
+    - `title` · string · e.g. `"Status, Sticker Saver"`
+    - `developer` · string · e.g. `"Lazy Geniouz Pvt. Ltd."`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.069915`
+  - `IN|status downloader for whatsapp status[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status sticker maker[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.snowcorp.stickerly.android"`
+    - `title` · string · e.g. `"Sticker.ly - Sticker Maker"`
+    - `developer` · string · e.g. `"Naver Z Corporation"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `3.9496403`
+  - `PK|business status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.ashaquavision.status.saver.downloader"`
+    - `title` · string · e.g. `"Status Saver - for WA Business"`
+    - `developer` · string · e.g. `"Ash Aqua Vision"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.57`
+  - `US|whatsapp status downloader video[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `US|save status video saver[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `PK|status saver for whatsapp[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.7238374`
+  - `PK|status video downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `US|whatsapp status downloader app[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|story saver app instagram[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video Downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.8047585`
+  - `US|status saver dp downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.wssaver"`
+    - `title` · string · e.g. `"Status Saver & Dp Download"`
+    - `developer` · string · e.g. `"hitesh joshi"`
+    - `installsLabel` · string · e.g. `"10,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `US|save status[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.585443`
+  - `IN|whatsapp business status saver app[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp.w4b"`
+    - `title` · string · e.g. `"WhatsApp Business"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"1,000,000,000+"`
+    - `score` · number · e.g. `4.455383`
+  - `PK|long video status downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+  - `US|save status whatsapp[]` · array of 27 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.falnesc.statussaver"`
+    - `title` · string · e.g. `"Status Saver・Status Downloader"`
+    - `developer` · string · e.g. `"Battery Stats Saver"`
+    - `installsLabel` · string · e.g. `"10,000,000+"`
+    - `score` · number · e.g. `4.79602`
+  - `PK|wa status saver[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `US|status saver message recovery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.heethjain.apps.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.413793`
+  - `IN|status saver whatsapp business[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.storysaverforwhatsapp.story"`
+    - `title` · string · e.g. `"Status Saver - Business Status"`
+    - `developer` · string · e.g. `"Apps start"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `3.7`
+  - `US|story saver download app[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video downloader - Story Saver"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.7380743`
+  - `IN|save status app[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `IN|status saver photo[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|story saver without login[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"story.saver.insta"`
+    - `title` · string · e.g. `"Story Saver - Video Downloader"`
+    - `developer` · string · e.g. `"Story Saver&Video Downloader"`
+    - `installsLabel` · string · e.g. `"5,000,000+"`
+    - `score` · number · e.g. `4.69`
+  - `IN|save status[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.videodownloader"`
+    - `title` · string · e.g. `"Save Video Status - Status App"`
+    - `developer` · string · e.g. `"Lite Media"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.695853`
+  - `US|status saver whatsapp download[]` · array of 28 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Download - Video Saver"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.6`
+  - `PK|whatsapp status download app 2026[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.whatsapp"`
+    - `title` · string · e.g. `"WhatsApp Messenger"`
+    - `developer` · string · e.g. `"WhatsApp LLC"`
+    - `installsLabel` · string · e.g. `"10,000,000,000+"`
+    - `score` · number · e.g. `4.4287915`
+  - `PK|status saver save to gallery[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `IN|status video download[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `US|radha krishna status video[]` · array of 10 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.devamjyot.radhakrishna"`
+    - `title` · string · e.g. `"Radha Krishna Status Video"`
+    - `developer` · string · e.g. `"DevamJyot Infotech"`
+    - `installsLabel` · string · e.g. `"5,000+"`
+    - `score` · null · e.g. `null`
+  - `IN|status saver photo and video[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.statussaver.downloadstatus.videoimagesaver.storysaver"`
+    - `title` · string · e.g. `"Save Status, Image Video Saver"`
+    - `developer` · string · e.g. `"Translate All Languages"`
+    - `installsLabel` · string · e.g. `"1,000,000+"`
+    - `score` · number · e.g. `4.009901`
+  - `PK|whatsapp status downloader hd[]` · array of 11 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `US|vmate status video status status downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.heethjain.apps.statussaver"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Heeth Jain"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.413793`
+  - `IN|status saver message recovery[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.663327`
+  - `PK|status saver gallery[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"statussaver.statusdownloader.downloadstatus.videoimagesaver"`
+    - `title` · string · e.g. `"Status Saver - Video Saver"`
+    - `developer` · string · e.g. `"Save Status, Video & Image Downloader"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.316547`
+  - `IN|story saver instagram insta story download[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.videodownloader.story_saver_for_instagram"`
+    - `title` · string · e.g. `"Story Saver, Story Downloader"`
+    - `developer` · string · e.g. `"BrownHat Labs"`
+    - `installsLabel` · string · e.g. `"500,000+"`
+    - `score` · number · e.g. `4.4840426`
+  - `IN|story saver reels video downloader[]` · array of 30 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"instagram.video.downloader.story.saver.ig"`
+    - `title` · string · e.g. `"Video Downloader - Story Save"`
+    - `developer` · string · e.g. `"Video Downloader Story Saver"`
+    - `installsLabel` · string · e.g. `"50,000,000+"`
+    - `score` · number · e.g. `4.8001723`
+  - `PK|status saver video downloader[]` · array of 29 objects:
+    - `rank` · number · e.g. `1`
+    - `appId` · string · e.g. `"com.downlood.sav.whmedia"`
+    - `title` · string · e.g. `"Status Saver - Video Download"`
+    - `developer` · string · e.g. `"Shree Ganesha Labs"`
+    - `installsLabel` · string · e.g. `"100,000,000+"`
+    - `score` · number · e.g. `4.666297`
+- **[suggest.json](../research/aso-pipeline/suggest.json)** · 155 KB · JSON, object with 564 keys:
+  - `PK|status video g[]` · array of 5 string · e.g. `["status video god","ai god status video","all god video status","all god video status app"]`
+  - `IN|status downloader e` · empty array
+  - `PK|status saver i[]` · array of 5 string · e.g. `["status saver in gallery","status saver instagram and whatsapp","status saver insta","status saver image and video"]`
+  - `US|status downloader m[]` · array of 1 string · e.g. `["mx player status downloader"]`
+  - `US|save status h[]` · array of 2 string · e.g. `["status save karna hai","how to save status"]`
+  - `PK|status saver h[]` · array of 5 string · e.g. `["status saver hd","status saver hubix","status saver hidden images and videos","status saver hd video download"]`
+  - `US|status downloader s[]` · array of 5 string · e.g. `["status downloader save status","status saver video downloader","status saver downloader","status saver dp downloader"]`
+  - `PK|status keeper[]` · array of 3 string · e.g. `["status keeper","status keeper for whatsapp","برنامج status keeper"]`
+  - `US|status downloader x` · empty array
+  - `IN|whatsapp status s[]` · array of 5 string · e.g. `["whatsapp status saver app","whatsapp status saver","whatsapp status saver app 2023","whatsapp status saver app download"]`
+  - `PK|status saver app[]` · array of 5 string · e.g. `["status saver app","status saver app download","status saver app update","status saver app 2026"]`
+  - `US|story saver u[]` · array of 4 string · e.g. `["story saver update","story saver app update","whatsapp story saver","unseen social story saver"]`
+  - `US|status saver s[]` · array of 5 string · e.g. `["status saver status saver","status saver sticker","status saver status downloader","status saver save status"]`
+  - `IN|save status video[]` · array of 5 string · e.g. `["save status video","save status video app","save status video download","save status video saver"]`
+  - `PK|status downloader j` · empty array
+  - `US|status video j[]` · array of 5 string · e.g. `["janmashtami video status","krishna janmashtami video status","jesus video status app","jain status video app"]`
+  - `IN|status saver j` · empty array
+  - `US|status saver m[]` · array of 5 string · e.g. `["status saver message recovery","status saver mehta","status saver messenger","status saver maker"]`
+  - `IN|story saver a[]` · array of 5 string · e.g. `["story saver app","story saver app instagram","story saver app whatsapp","story saver anchor"]`
+  - `PK|story saver t[]` · array of 5 string · e.g. `["story saver telegram","story saver tiktok","story saver telecharger instagram","story saver sara tech"]`
+  - `US|whatsapp status f[]` · array of 5 string · e.g. `["whatsapp status full video upload app","whatsapp status free download","whatsapp status free download app","whatsapp status fake views"]`
+  - `IN|story saver d[]` · array of 5 string · e.g. `["story saver download app","story saver descargar instagram","snapchat story saver downloader","insta story saver download"]`
+  - `PK|save status h[]` · array of 2 string · e.g. `["status save karna hai","how to save status"]`
+  - `IN|status video d[]` · array of 5 string · e.g. `["status video download app","status video download","status video downloader","status video download app tamil"]`
+  - `IN|save status y` · empty array
+  - `US|whatsapp status j[]` · array of 3 string · e.g. `["whatsapp status download jaise app","janmashtami whatsapp status","jesus whatsapp status"]`
+  - `IN|business status saver[]` · array of 5 string · e.g. `["business status saver","business status saver 2026","business status saver whatsapp","whatsapp business status saver app"]`
+  - `US|status downloader g` · empty array
+  - `IN|status saver and downloader[]` · array of 4 string · e.g. `["status saver and downloader","xtx status saver and downloader","status saver and dp downloader","status saver and video downloader"]`
+  - `PK|story saver i[]` · array of 5 string · e.g. `["story saver instagram app 2025","story saver instagram insta story download","story saver instagram app 2026","story saver in instagram"]`
+  - `PK|story saver q` · empty array
+  - `PK|status saver n[]` · array of 5 string · e.g. `["status saver no ads","status saver new","status saver new version","status saver native craft"]`
+  - `IN|status saver l[]` · array of 5 string · e.g. `["status saver lite","status saver lazy genius","status saver low mb","status saver lite for whatsapp"]`
+  - `IN|status downloader s[]` · array of 5 string · e.g. `["status downloader save status","status saver video downloader","status saver downloader","status saver dp downloader"]`
+  - `PK|whatsapp status m[]` · array of 5 string · e.g. `["whatsapp status maker","whatsapp status maker app","whatsapp status maker with song","whatsapp status message"]`
+  - `PK|whatsapp status t[]` · array of 5 string · e.g. `["whatsapp status tamil video songs download app","whatsapp status tracker","whatsapp status tamil","whatsapp status trimmer"]`
+  - `IN|status gallery[]` · array of 5 string · e.g. `["status gallery","status save to gallery","status save to gallery app","status saver gallery"]`
+  - `US|status photo download[]` · array of 5 string · e.g. `["status photo download","whatsapp status photo download","whatsapp status photo download app","status photo video download app"]`
+  - `IN|status saver k[]` · array of 3 string · e.g. `["km status saver","status saver kostenlos deutsch","status saver ig ke galeri"]`
+  - `PK|whatsapp status s[]` · array of 5 string · e.g. `["whatsapp status saver app","whatsapp status saver","whatsapp status saver app 2023","whatsapp status save"]`
+  - `US|save status s[]` · array of 5 string · e.g. `["save status save","save status status downloader","save status saver","save status save status"]`
+  - `US|status video b[]` · array of 5 string · e.g. `["status video banane wala app","status video banane ka app","status video banane wala","status video banane ka"]`
+  - `US|story saver[]` · array of 5 string · e.g. `["story saver","story saver from instagram","story saver download app","story saver whatsapp status"]`
+  - `US|status video a[]` · array of 5 string · e.g. `["status video app","status video app download","status video app tamil","status video app for whatsapp"]`
+  - `PK|whatsapp status u[]` · array of 5 string · e.g. `["whatsapp status update","whatsapp status uploader","whatsapp status unseen viewer","whatsapp status update 2026"]`
+  - `US|whatsapp status u[]` · array of 5 string · e.g. `["whatsapp status update","whatsapp status uploader","whatsapp status update 2026","whatsapp status upload high quality"]`
+  - `IN|status saver q[]` · array of 1 string · e.g. `["quick status saver"]`
+  - `IN|save status w[]` · array of 5 string · e.g. `["save status whatsapp","save status whatsapp app","save status wa","save status whatsapp business"]`
+  - `IN|status downloader c` · empty array
+  - `IN|whatsapp status l[]` · array of 5 string · e.g. `["whatsapp status long video upload app","whatsapp status lagane wala app","whatsapp status lagane wala","whatsapp status long video post"]`
+  - `US|whatsapp status e[]` · array of 5 string · e.g. `["whatsapp status editing app","whatsapp status editor","whatsapp status editor app","whatsapp status edit app"]`
+  - `PK|status photo download[]` · array of 5 string · e.g. `["status photo download","whatsapp status photo download","whatsapp status photo download app","status photo video download app"]`
+  - `US|story saver t[]` · array of 5 string · e.g. `["story saver telegram","story saver tiktok","story saver telecharger instagram","story saver sara tech"]`
+  - `PK|save status y` · empty array
+  - `IN|whatsapp status b[]` · array of 5 string · e.g. `["whatsapp status blur remover","whatsapp status blocker","whatsapp status business","whatsapp status background music app"]`
+  - `IN|status video v[]` · array of 5 string · e.g. `["vidstatus video","vido video status maker","vidstatus video app","vidstatus short video status"]`
+  - `PK|status saver y[]` · array of 3 string · e.g. `["status saver youtube","status saver youtube video","youtube status saver app"]`
+  - `IN|whatsapp status q[]` · array of 5 string · e.g. `["whatsapp status quality upload","whatsapp status quality improver","whatsapp status quotes","whatsapp status quality"]`
+  - `US|save status j` · empty array
+  - `PK|story saver n[]` · array of 5 string · e.g. `["story saver net app","story saver net app download","story saver nado","story saver no login"]`
+  - `US|story saver h[]` · array of 2 string · e.g. `["story saver highlights","story saver highlights download"]`
+  - `US|status saver z` · empty array
+  - `IN|status saver c[]` · array of 5 string · e.g. `["status saver clone whatsapp","whatsapp clone status saver app","was canify status saver","chat wallpaper status saver"]`
+  - `PK|status saver[]` · array of 5 string · e.g. `["status saver","status saver 2026","status saver app","status saver whatsapp"]`
+  - `IN|status saver r[]` · array of 5 string · e.g. `["status saver recovery","status saver reel","saveinsta reel status saver","savesta - reel & status saver"]`
+  - `IN|status repost[]` · array of 1 string · e.g. `["repost whatsapp status"]`
+  - `IN|save status n` · empty array
+  - `IN|story saver g[]` · array of 4 string · e.g. `["story downloader ig saver gratis","snaplink video g story saver","gram story saver","story saver gratis"]`
+  - `US|save status r[]` · array of 2 string · e.g. `["save insta - reels & status saver","status saver"]`
+  - `PK|status video t[]` · array of 5 string · e.g. `["status video tamil app","status video tamil","status video tiktok","sivan status video tamil app"]`
+  - `IN|status saver without watermark` · empty array
+  - `IN|status saver w[]` · array of 5 string · e.g. `["status saver whatsapp","status saver whatsapp business","status saver whatsapp download","status saver without ads"]`
+  - `US|status video w[]` · array of 5 string · e.g. `["status video wala app","status video whatsapp","status video whatsapp download","status video wa"]`
+  - `IN|whatsapp status o[]` · array of 5 string · e.g. `["whatsapp status open","whatsapp status of","whatsapp status option","whatsapp status on"]`
+  - `PK|status downloader q` · empty array
+  - `PK|status saver hd[]` · array of 3 string · e.g. `["status saver hd","status saver hd video download","whatsapp status saver hd"]`
+  - `IN|whatsapp status downloader[]` · array of 5 string · e.g. `["whatsapp status downloader","whatsapp status downloader app","whatsapp status downloader free","whatsapp status downloader app free"]`
+  - `US|save status u[]` · array of 3 string · e.g. `["save status update","save status app update","whatsapp status save"]`
+  - `IN|whatsapp status k[]` · array of 5 string · e.g. `["whatsapp status kaise download karen","whatsapp status ke liye app","whatsapp status kaise nikale","whatsapp status kannada"]`
+  - `US|status downloader y[]` · array of 1 string · e.g. `["full video y status downloader"]`
+  - `US|status downloader a[]` · array of 4 string · e.g. `["status downloader app","status downloader app for whatsapp","status downloader and saver","status video downloader app"]`
+  - `US|save status c` · empty array
+  - `PK|story saver b[]` · array of 5 string · e.g. `["best story saver app","best instagram story saver app","best story saver","whatsapp business story saver app"]`
+  - `US|story saver n[]` · array of 5 string · e.g. `["story saver net app","story saver net app download","story saver nado","story saver no login"]`
+  - `US|story downloader[]` · array of 5 string · e.g. `["story downloader","story downloader app","story downloader fb","story downloader whatsapp"]`
+  - `US|status saver app[]` · array of 5 string · e.g. `["status saver app","status saver app download","status saver app for whatsapp","status saver app update"]`
+  - `US|status video m[]` · array of 5 string · e.g. `["status video maker","status video maker app","status video maker stagefy","status video maker strategy"]`
+  - `PK|status downloader t[]` · array of 2 string · e.g. `["telegram status downloader","tamil status downloader"]`
+  - `IN|status saver[]` · array of 5 string · e.g. `["status saver","status saver whatsapp","status saver app","status saver for whatsapp"]`
+  - `PK|status saver q[]` · array of 1 string · e.g. `["quick status saver"]`
+  - `IN|story saver v[]` · array of 5 string · e.g. `["story saver video download app","story saver viewer and save","instagram saver story and video","insget video story saver"]`
+  - `US|whatsapp status l[]` · array of 5 string · e.g. `["whatsapp status long video upload app","whatsapp status lagane wala app","whatsapp status lagane wala","whatsapp status lock app"]`
+  - `PK|story saver[]` · array of 5 string · e.g. `["story saver","story saver for facebook stories","story saver whatsapp","story saver for instagram 2025"]`
+  - `IN|status video j[]` · array of 5 string · e.g. `["janmashtami video status","krishna janmashtami video status","jain status video app","jesus video status app"]`
+  - `PK|save status l` · empty array
+  - `PK|status downloader u[]` · array of 4 string · e.g. `["status downloader update","status uploader and downloader","whatsapp status downloader","status downloader untuk whatsapp"]`
+  - `US|status video u[]` · array of 5 string · e.g. `["status video upload","whatsapp status video uploader","full video status uploader","urdu status video"]`
+  - `IN|status video p[]` · array of 5 string · e.g. `["status video photo","status video photo app","video status maker playo","lyrics photo video status"]`
+  - `IN|status saver u[]` · array of 5 string · e.g. `["status saver update","status saver update 2026","whatsapp status saver update","status saver app update"]`
+  - `PK|status video v[]` · array of 5 string · e.g. `["vidstatus video","vidstatus video app","vidstatus short video status","vmate status video status status downloader"]`
+  - `US|whatsapp status b[]` · array of 5 string · e.g. `["whatsapp status blur remover","whatsapp status business","whatsapp status blocker","whatsapp status background music app"]`
+  - `PK|story saver f[]` · array of 5 string · e.g. `["story saver for facebook stories","story saver for instagram 2025","story saver for whatsapp","story saver from instagram"]`
+  - `PK|status saver and downloader[]` · array of 4 string · e.g. `["status saver and downloader","xtx status saver and downloader","status saver and dp downloader","status saver and video downloader"]`
+  - `PK|status video n[]` · array of 5 string · e.g. `["status video new","status video nikalne wala app","jumma mubarak status video naat","new status video app 2026"]`
+  - `PK|save status o[]` · array of 5 string · e.g. `["save status on whatsapp","save status old","save status offline","status save option"]`
+  - `PK|status saver f[]` · array of 5 string · e.g. `["status saver for whatsapp","status saver for whatsapp business","status saver for business whatsapp","status saver free"]`
+  - `PK|story saver l[]` · array of 5 string · e.g. `["story saver login with instagram","story saver login","story saver without login","facebook lite story saver"]`
+  - `PK|status downloader[]` · array of 5 string · e.g. `["status downloader","status downloader for whatsapp","status downloader and saver","status downloader for whatsapp status"]`
+  - `US|status saver k[]` · array of 3 string · e.g. `["km status saver","status saver kostenlos deutsch","status saver ig ke galeri"]`
+  - `PK|status saver c[]` · array of 5 string · e.g. `["status saver clone whatsapp","whatsapp clone status saver app","was canify status saver","chat wallpaper status saver"]`
+  - `PK|save status x` · empty array
+  - `US|status video g[]` · array of 5 string · e.g. `["status video god","ai god status video","all god video status","all god video status app"]`
+  - `US|story saver i[]` · array of 5 string · e.g. `["story saver instagram app 2025","story saver instagram insta story download","story saver instagram app 2026","story saver in instagram"]`
+  - `US|status video p[]` · array of 5 string · e.g. `["status video photo app","status video photo","video status maker playo","pure status video editor"]`
+  - `US|status saver h[]` · array of 5 string · e.g. `["status saver hd","status saver hidden images and videos","status saver hd video download","status saver hubix"]`
+  - `IN|status downloader n` · empty array
+  - `PK|whatsapp status saver[]` · array of 5 string · e.g. `["whatsapp status saver app","whatsapp status saver","whatsapp status saver app 2023","whatsapp status saver app download"]`
+  - `PK|whatsapp status f[]` · array of 5 string · e.g. `["whatsapp status free download","whatsapp status funny","whatsapp status download","whatsapp status downloader app"]`
+  - `IN|status video c[]` · array of 5 string · e.g. `["status video creator app","status video cutter","status video cutter for whatsapp","status video camera"]`
+  - `PK|status video e[]` · array of 5 string · e.g. `["status video editing app","status video editor","status video editor app","status video editing"]`
+  - `PK|status saver g[]` · array of 5 string · e.g. `["status saver gallery","status saver gratis","gb status saver","status saver lazy genius"]`
+  - `PK|status downloader s[]` · array of 5 string · e.g. `["status downloader save status","status saver dp downloader","status and story downloader","status saver video downloader"]`
+  - `US|whatsapp status downloader[]` · array of 5 string · e.g. `["whatsapp status downloader","whatsapp status downloader app","whatsapp status downloader free","whatsapp status downloader app free"]`
+  - `US|save status y` · empty array
+  - `PK|whatsapp status w[]` · array of 5 string · e.g. `["whatsapp status whatsapp","whatsapp status without seen","whatsapp status whatsapp sticker","whatsapp status wala"]`
+  - `IN|save status p[]` · array of 5 string · e.g. `["save status app","save status app download","save status app 2026","save status app whatsapp"]`
+  - `IN|story saver o[]` · array of 4 string · e.g. `["story saver old version","story saver original","story saver on instagram","story saver old"]`
+  - `US|save status z` · empty array
+  - `US|video status saver[]` · array of 5 string · e.g. `["video status saver","video status saver for whatsapp","video status saver app","sevista video status saver"]`
+  - `US|story saver l[]` · array of 5 string · e.g. `["story saver login with instagram","story saver login","story saver without login","facebook lite story saver"]`
+  - `US|whatsapp status saver[]` · array of 5 string · e.g. `["whatsapp status saver app","whatsapp status saver","whatsapp status saver app 2023","whatsapp status saver app download"]`
+  - `US|status downloader u[]` · array of 4 string · e.g. `["status downloader update","status uploader and downloader","whatsapp status downloader","status downloader untuk whatsapp"]`
+  - `US|status saver a[]` · array of 5 string · e.g. `["status saver app","status saver app download","status saver app for whatsapp","status saver app update"]`
+  - `IN|save status q` · empty array
+  - `IN|status saver x[]` · array of 2 string · e.g. `["xtx status saver and downloader","x status saver"]`
+  - `US|whatsapp status n[]` · array of 5 string · e.g. `["whatsapp status nikalne wala app","whatsapp status nikaalne ka","whatsapp status nikaalne ka app","whatsapp status not seen app"]`
+  - `IN|story saver r[]` · array of 3 string · e.g. `["story saver reels video downloader","story saver.reel downloader.instasaver.insaver.video downloader","reels story saver for instagram"]`
+  - `US|story saver b[]` · array of 5 string · e.g. `["best story saver app","best instagram story saver app","best story saver","whatsapp business story saver app"]`
+  - `US|status downloader q` · empty array
+  - `PK|status saver video download[]` · array of 5 string · e.g. `["status saver video download","status saver video downloader","status saver video download app","status saver video download for whatsapp"]`
+  - `PK|status downloader y[]` · array of 1 string · e.g. `["full video y status downloader"]`
+  - `US|status video y[]` · array of 5 string · e.g. `["youtube status video saver app","youtube video status downloder.app","youtube status video","status saver youtube video"]`
+  - `PK|status downloader n` · empty array
+  - `PK|status video r[]` · array of 5 string · e.g. `["reelcut status video","reelcut status video maker","reelcut status video maker app","raksha bandhan video status"]`
+  - `IN|story saver z` · empty array
+  - `US|save status w[]` · array of 5 string · e.g. `["save status whatsapp","save status whatsapp business","save status whatsapp app","save status wa"]`
+  - `US|status saver without watermark` · empty array
+  - `PK|status video c[]` · array of 5 string · e.g. `["status video creator app","status video cutter","status video cutter for whatsapp","status video clip"]`
+  - `PK|status video o[]` · array of 5 string · e.g. `["make status video on photo","odia status video app","odia status video maker app","odia status video maker"]`
+  - `PK|status downloader x` · empty array
+  - `US|status video x[]` · array of 1 string · e.g. `["x status video app"]`
+  - `US|status downloader p[]` · array of 4 string · e.g. `["mx player status downloader","phoenix status downloader","whatsapp par status downloader","pure status downloader"]`
+  - `US|whatsapp status z` · empty array
+  - `IN|status downloader x` · empty array
+  - `IN|status video l[]` · array of 5 string · e.g. `["status video load","status video live","status video lagane wala app","sharechat status video live"]`
+  - `IN|status downloader a[]` · array of 4 string · e.g. `["status downloader app","status downloader app for whatsapp","status downloader and saver","status video downloader app"]`
+  - `US|save status g[]` · array of 5 string · e.g. `["status save to gallery","automatic status save in gallery","whatsapp status save gallery","status saver save to gallery"]`
+  - `US|status sticker maker[]` · array of 1 string · e.g. `["sticker maker whatsapp status video"]`
+  - `IN|status video u[]` · array of 5 string · e.g. `["status video upload","whatsapp status video uploader","full video status uploader","urdu status video"]`
+  - `US|story saver y[]` · array of 2 string · e.g. `["story saver youtube","youtube story saver app"]`
+  - `PK|save status v[]` · array of 5 string · e.g. `["save status video","save status video saver","save status video download","save status video app"]`
+  - `PK|story saver w[]` · array of 5 string · e.g. `["story saver whatsapp","story saver whatsapp status","story saver without login","story saver whatsapp business"]`
+  - `US|story saver c` · empty array
+  - `PK|story saver e` · empty array
+  - `US|whatsapp status h[]` · array of 5 string · e.g. `["whatsapp status hd","whatsapp status hd quality upload","whatsapp status hide view app","whatsapp status high quality"]`
+  - `IN|status saver v[]` · array of 5 string · e.g. `["status saver video download","status saver video","status saver video and photo","status saver video downloader"]`
+  - `PK|save status w[]` · array of 5 string · e.g. `["save status whatsapp","save status wa","save status whatsapp business","save status whatsapp app"]`
+  - `IN|story saver s[]` · array of 5 string · e.g. `["story saver snapchat","story saver stories download","story saver sara tech","story saver stories and status"]`
+  - `PK|status saver without watermark` · empty array
+  - `IN|status downloader v[]` · array of 5 string · e.g. `["status downloader video","whatsapp status downloader video","vidmatе status downloader","status video downloader app"]`
+  - `US|whatsapp status k[]` · array of 5 string · e.g. `["whatsapp status kaise download karen","whatsapp status karne wala app","whatsapp status kaise save kare","whatsapp status ke liye app"]`
+  - `PK|status video b[]` · array of 5 string · e.g. `["status video banane wala app","status video banane ka app","status video banane wala","status video banane ka"]`
+  - `PK|status downloader i` · empty array
+  - `US|save status n` · empty array
+  - `PK|save status g[]` · array of 5 string · e.g. `["status save to gallery","automatic status save in gallery","whatsapp status save gallery","status saver save to gallery"]`
+  - `PK|story saver o[]` · array of 4 string · e.g. `["story saver old version","story saver on instagram","story saver old","story saver original"]`
+  - `US|status video download[]` · array of 5 string · e.g. `["status video download app","status video download","status video downloader","status video download app tamil"]`
+  - `PK|whatsapp business status saver[]` · array of 5 string · e.g. `["whatsapp business status saver app","whatsapp business status saver","whatsapp business status saver 2026","whatsapp business status saver app 2024"]`
+  - `IN|status video z[]` · array of 2 string · e.g. `["islamic video status naat zikr","zapee status video"]`
+  - `IN|status downloader f[]` · array of 5 string · e.g. `["status downloader for whatsapp","status downloader for whatsapp business","status downloader for whatsapp free","status downloader for business whatsapp"]`
+  - `IN|status video y[]` · array of 5 string · e.g. `["youtube status video saver app","youtube video status downloder.app","youtube status video","status saver youtube video"]`
+  - `US|status saver[]` · array of 5 string · e.g. `["status saver","status saver whatsapp","status saver for whatsapp","status saver video download"]`
+  - `PK|whatsapp status b[]` · array of 5 string · e.g. `["whatsapp status business","whatsapp status blur remover","whatsapp status banane wala app","whatsapp status blocker"]`
+  - `US|status saver d[]` · array of 5 string · e.g. `["status saver download","status saver download app","status saver downloader","status saver download status"]`
+  - `IN|status downloader r` · empty array
+  - `IN|status saver b[]` · array of 5 string · e.g. `["status saver business whatsapp","status saver business","status saver bhejo","status saver banyan studio"]`
+  - `IN|status video m[]` · array of 5 string · e.g. `["status video maker","status video maker app","status video maker stagefy","status video maker strategy"]`
+  - `PK|story saver x` · empty array
+  - `IN|story saver l[]` · array of 5 string · e.g. `["story saver login with instagram","story saver login","story saver without login","insta story saver app login"]`
+  - `US|story saver e` · empty array
+  - `PK|save status n` · empty array
+  - `PK|status downloader o` · empty array
+  - `IN|status saver a[]` · array of 5 string · e.g. `["status saver app","status saver app download","status saver app for whatsapp","status saver app update"]`
+  - `US|whatsapp status t[]` · array of 5 string · e.g. `["whatsapp status trimmer","whatsapp status tamil video songs download app","whatsapp status tracker","whatsapp status tamil"]`
+  - `US|status saver t[]` · array of 5 string · e.g. `["status saver tiktok","status saver to gallery","status saver trusted tools","status saver telegram"]`
+  - `IN|whatsapp status c[]` · array of 5 string · e.g. `["whatsapp status cutter","whatsapp status copy","whatsapp status creating app","whatsapp status compressor"]`
+  - `IN|status saver m[]` · array of 5 string · e.g. `["status saver messenger","status saver maker","status saver message recovery","status saver mehta"]`
+  - `IN|whatsapp status r[]` · array of 5 string · e.g. `["whatsapp status recovery app","whatsapp status recovery","whatsapp status rakhne ka","whatsapp status reels app"]`
+  - `US|save status k[]` · array of 5 string · e.g. `["status save karne wala","status save karvani","status save karvani app","status save karna"]`
+  - `PK|whatsapp status c[]` · array of 5 string · e.g. `["whatsapp status copy","whatsapp status chori","whatsapp status cutter","whatsapp status chori karne wala"]`
+  - `US|status downloader n` · empty array
+  - `US|status saver x[]` · array of 2 string · e.g. `["xtx status saver and downloader","x status saver"]`
+  - `IN|whatsapp status w[]` · array of 5 string · e.g. `["whatsapp status whatsapp","whatsapp status wala","whatsapp status without seen","whatsapp status whatsapp status"]`
+  - `IN|status downloader u[]` · array of 4 string · e.g. `["status downloader update","whatsapp status downloader","status uploader and downloader","status downloader untuk whatsapp"]`
+  - `US|story saver v[]` · array of 5 string · e.g. `["story saver video download app","story saver viewer and save","insget video story saver","story saver reels video downloader"]`
+  - `IN|status downloader w[]` · array of 5 string · e.g. `["status downloader whatsapp","status downloader whatsapp free","status downloader wa","status downloader whatsapp business"]`
+  - `US|status saver y[]` · array of 3 string · e.g. `["status saver youtube","status saver youtube video","youtube status saver app"]`
+  - `US|story saver j` · empty array
+  - `IN|status downloader q` · empty array
+  - `PK|photo status saver[]` · array of 5 string · e.g. `["whatsapp status photo saver app","status saver photo","whatsapp status saver photo and video","whatsapp status photo saver"]`
+  - `PK|status video s[]` · array of 5 string · e.g. `["status video saver","status video save","status video splitter for social media and whatsapp","status video song"]`
+  - `PK|status video m[]` · array of 5 string · e.g. `["status video maker","status video maker app","status video maker stagefy","status video maker strategy"]`
+  - `IN|status downloader p[]` · array of 5 string · e.g. `["status downloader app","status downloader app for whatsapp","video status downloader app","insta status downloader app"]`
+  - `PK|status downloader d[]` · array of 5 string · e.g. `["status downloader hd","whatsapp status downloader hd","status saver dp downloader","hd video and status downloader"]`
+  - `IN|status downloader i` · empty array
+  - `IN|status video n[]` · array of 5 string · e.g. `["status video new","status video nikalne wala app","jumma mubarak status video naat","new status video app 2026"]`
+  - `IN|whatsapp status p[]` · array of 5 string · e.g. `["whatsapp status photo editing app","whatsapp status photo","whatsapp status photo saver app","whatsapp status photo app"]`
+  - `IN|story saver t[]` · array of 5 string · e.g. `["story saver telegram","story saver tiktok","story saver telecharger instagram","story saver sara tech"]`
+  - `US|status downloader o` · empty array
+  - `PK|whatsapp status p[]` · array of 5 string · e.g. `["whatsapp status poetry in urdu","whatsapp status privacy view","whatsapp status photo editing app","whatsapp status photo"]`
+  - `US|save status t[]` · array of 5 string · e.g. `["save status telegram","save status tiktok","status save to gallery","status saver save to gallery"]`
+  - `IN|save status s[]` · array of 5 string · e.g. `["save status status downloader","save status save","save status saver","save status save status"]`
+  - `PK|status saver r[]` · array of 5 string · e.g. `["status saver recovery","status saver reel","saveinsta reel status saver","status saver and recover deleted messages"]`
+  - `US|status downloader w[]` · array of 5 string · e.g. `["status downloader whatsapp","status downloader whatsapp business","status downloader whatsapp free","status downloader wa"]`
+  - `PK|status saver m[]` · array of 5 string · e.g. `["status saver message recovery","status saver mehta","status saver messenger","status saver maker"]`
+  - `PK|story saver p[]` · array of 4 string · e.g. `["story saver pro","insta private story saver app download","story post saver for instagram","insta post story saver"]`
+  - `PK|status saver s[]` · array of 5 string · e.g. `["status saver status saver","status saver save status","status saver status downloader","status saver sticker"]`
+  - `US|save status o[]` · array of 5 string · e.g. `["save status on whatsapp","save status old","save status offline","status save option"]`
+  - `US|status gallery[]` · array of 5 string · e.g. `["status gallery","status save to gallery","status saver gallery","status download gallery"]`
+  - `US|whatsapp status r[]` · array of 5 string · e.g. `["whatsapp status recovery app","whatsapp status reshare","whatsapp status recovery","whatsapp status rakhne ka"]`
+  - `US|save status[]` · array of 5 string · e.g. `["save status","save status for whatsapp","save status app","save status whatsapp"]`
+  - `US|whatsapp status c[]` · array of 5 string · e.g. `["whatsapp status cutter","whatsapp status copy","whatsapp status creating app","whatsapp status compressor"]`
+  - `IN|status saver for whatsapp[]` · array of 5 string · e.g. `["status saver for whatsapp","status saver for whatsapp business","status saver for whatsapp 2026","status saver for whatsapp business 2026"]`
+  - `IN|status downloader t[]` · array of 2 string · e.g. `["telegram status downloader","tamil status downloader"]`
+  - `IN|whatsapp status z` · empty array
+  - `PK|status video j[]` · array of 5 string · e.g. `["janmashtami video status","krishna janmashtami video status","jesus video status app","jain status video app"]`
+  - `IN|status video o[]` · array of 5 string · e.g. `["make status video on photo","odia status video app","odia status video maker app","odia status video maker"]`
+  - `IN|story saver for whatsapp[]` · array of 2 string · e.g. `["story saver for whatsapp","story saver for whatsapp business"]`
+  - `IN|story saver h[]` · array of 2 string · e.g. `["story saver highlights","story saver highlights download"]`
+  - `PK|status video h[]` · array of 5 string · e.g. `["status video hd","status video hindi","hanuman status video","hindi status video app"]`
+  - `IN|status downloader m[]` · array of 1 string · e.g. `["mx player status downloader"]`
+  - `IN|whatsapp status v[]` · array of 5 string · e.g. `["whatsapp status video app","whatsapp status video download app","whatsapp status video","whatsapp status viewer without seen"]`
+  - `US|all status saver[]` · array of 5 string · e.g. `["all status saver","all status saver download app","all status saver for whatsapp","all status saver app"]`
+  - `PK|whatsapp status i[]` · array of 5 string · e.g. `["whatsapp status islamic","whatsapp status install","whatsapp status images download","whatsapp status image saver app"]`
+  - `IN|whatsapp status f[]` · array of 5 string · e.g. `["whatsapp status full video upload app","whatsapp status free download","whatsapp status free download app","whatsapp status file"]`
+  - `US|status saver q[]` · array of 1 string · e.g. `["quick status saver"]`
+  - `IN|story saver k[]` · array of 1 string · e.g. `["story saver instagram ki"]`
+  - `PK|story saver c` · empty array
+  - `IN|save status d[]` · array of 5 string · e.g. `["save status download","save status download status","save status download video","whatsapp save status download"]`
+  - `PK|story saver r[]` · array of 3 string · e.g. `["story saver reels video downloader","story saver.reel downloader.instasaver.insaver.video downloader","reels story saver for instagram"]`
+  - `PK|story saver m[]` · array of 5 string · e.g. `["story saver money manager","my story saver in instagram","story saver with music","messenger story saver"]`
+  - `PK|status downloader f[]` · array of 5 string · e.g. `["status downloader for whatsapp","status downloader for whatsapp status","status downloader free","status downloader for whatsapp business"]`
+  - `PK|story saver s[]` · array of 5 string · e.g. `["story saver stories download","story saver sara tech","story saver snapchat","story saver story downloader 2023"]`
+  - `IN|save status l` · empty array
+  - `US|status video o[]` · array of 5 string · e.g. `["make status video on photo","odia status video app","odia status video maker app","odia status video maker"]`
+  - `IN|save status o[]` · array of 5 string · e.g. `["save status on whatsapp","save status old","save status offline","status save option"]`
+  - `IN|status downloader k` · empty array
+  - `PK|save status a[]` · array of 5 string · e.g. `["save status app","save status app download","save status app whatsapp","save status and message recovery"]`
+  - `US|status video s[]` · array of 5 string · e.g. `["status video splitter for social media and whatsapp","status video saver","status video save","status video song"]`
+  - `PK|status downloader z` · empty array
+  - `PK|status video p[]` · array of 5 string · e.g. `["status video photo app","status video photo","video status maker playo","pure status video editor"]`
+  - `IN|status saver s[]` · array of 5 string · e.g. `["status saver status saver","status saver sticker","status saver status downloader","status saver save image video"]`
+  - `PK|status video f[]` · array of 5 string · e.g. `["status video for whatsapp","status video free","long status video for whatsapp","all festival video status app"]`
+  - `PK|status downloader v[]` · array of 5 string · e.g. `["status downloader video","whatsapp status downloader video","status video downloader app","long video status downloader"]`
+  - `PK|status video d[]` · array of 5 string · e.g. `["status video download app","status video download","status video downloader","status video download app tamil"]`
+  - `IN|story saver u[]` · array of 4 string · e.g. `["story saver update","story saver app update","whatsapp story saver","unseen social story saver"]`
+  - `US|story saver for whatsapp[]` · array of 2 string · e.g. `["story saver for whatsapp","story saver for whatsapp business"]`
+  - `IN|status video a[]` · array of 5 string · e.g. `["status video app","status video app download","status video app tamil","status video app for whatsapp"]`
+  - `US|status saver r[]` · array of 5 string · e.g. `["status saver recovery","status saver reel","saveinsta reel status saver","savesta - reel & status saver"]`
+  - `US|save status e` · empty array
+  - `US|status downloader h[]` · array of 3 string · e.g. `["status downloader hd","whatsapp status downloader hd","hd video and status downloader"]`
+  - `IN|status saver p[]` · array of 5 string · e.g. `["status saver photo and video","status saver pro","status saver photo","status saver plus"]`
+  - `PK|status saver v[]` · array of 5 string · e.g. `["status saver video download","status saver video downloader","status saver video","status saver video saver"]`
+  - `PK|whatsapp status h[]` · array of 5 string · e.g. `["whatsapp status hd quality upload","whatsapp status hide view app","whatsapp status hd","whatsapp status high quality"]`
+  - `PK|status gallery[]` · array of 5 string · e.g. `["status gallery","status save to gallery","status saver gallery","status save to gallery app"]`
+  - `PK|status saver z` · empty array
+  - `US|story saver s[]` · array of 5 string · e.g. `["story saver stories download","story saver sara tech","story saver snapchat","story saver story downloader 2023"]`
+  - `US|story saver m[]` · array of 5 string · e.g. `["story saver money manager","my story saver in instagram","story saver with music","messenger story saver"]`
+  - `US|status saver j` · empty array
+  - `IN|status downloader[]` · array of 5 string · e.g. `["status downloader","status downloader app","status downloader for whatsapp","status downloader app for whatsapp"]`
+  - `US|status video n[]` · array of 5 string · e.g. `["status video new","status video nikalne wala app","jumma mubarak status video naat","nature video status"]`
+  - `US|whatsapp status i[]` · array of 5 string · e.g. `["whatsapp status install","whatsapp status images download","whatsapp status islamic","whatsapp status image saver app"]`
+  - `PK|status downloader g` · empty array
+  - `US|whatsapp status download[]` · array of 5 string · e.g. `["whatsapp status download app","whatsapp status download","whatsapp status downloader","whatsapp status downloader app"]`
+  - `PK|download status[]` · array of 5 string · e.g. `["download status whatsapp","download status","download status saver","download status app"]`
+  - `PK|status downloader p[]` · array of 4 string · e.g. `["mx player status downloader","phoenix status downloader","pure status downloader","whatsapp par status downloader"]`
+  - `PK|story saver for whatsapp[]` · array of 2 string · e.g. `["story saver for whatsapp","story saver for whatsapp business"]`
+  - `IN|whatsapp status d[]` · array of 5 string · e.g. `["whatsapp status download app","whatsapp status download","whatsapp status downloader","whatsapp status downloader app"]`
+  - `US|save status x` · empty array
+  - `PK|status saver o[]` · array of 5 string · e.g. `["status saver offline","status saver old","status saver old version","status saver original app"]`
+  - `PK|status downloader w[]` · array of 5 string · e.g. `["status downloader whatsapp","status downloader whatsapp business","status downloader whatsapp free","status downloader wa"]`
+  - `IN|status sticker maker[]` · array of 1 string · e.g. `["sticker maker whatsapp status video"]`
+  - `PK|status saver k[]` · array of 3 string · e.g. `["km status saver","status saver kostenlos deutsch","status saver ig ke galeri"]`
+  - `PK|status downloader e` · empty array
+  - `IN|status saver i[]` · array of 5 string · e.g. `["status saver instagram and whatsapp","status saver insta","status saver image and video","status saver in gallery"]`
+  - `IN|save status g[]` · array of 5 string · e.g. `["status save to gallery","whatsapp status save gallery","automatic status save in gallery","status saver save to gallery"]`
+  - `IN|wa status saver[]` · array of 5 string · e.g. `["wa status saver","wa status saver video download","wa status saver 2026","wa status saver and tools"]`
+  - `PK|status saver whatsapp[]` · array of 5 string · e.g. `["status saver whatsapp","status saver whatsapp business","status saver whatsapp download","status saver whatsapp 2026"]`
+  - `IN|save status x` · empty array
+  - `IN|whatsapp business status saver[]` · array of 5 string · e.g. `["whatsapp business status saver app","whatsapp business status saver","whatsapp business status saver 2026","whatsapp business status saver app 2025"]`
+  - `PK|story saver v[]` · array of 5 string · e.g. `["story saver video download app","story saver viewer and save","insget video story saver","insta saver story and video"]`
+  - `IN|whatsapp status n[]` · array of 5 string · e.g. `["whatsapp status nikalne wala app","whatsapp status nikaalne ka app","whatsapp status nikaalne ka","whatsapp status new"]`
+  - `IN|story saver p[]` · array of 4 string · e.g. `["story saver pro","insta private story saver app download","story post saver for instagram","insta post story saver"]`
+  - `US|story saver g[]` · array of 4 string · e.g. `["story downloader ig saver gratis","snaplink video g story saver","gram story saver","story saver gratis"]`
+  - `US|story saver k[]` · array of 1 string · e.g. `["story saver instagram ki"]`
+  - `US|status saver hd[]` · array of 3 string · e.g. `["status saver hd","status saver hd video download","whatsapp status saver hd"]`
+  - `US|story saver f[]` · array of 5 string · e.g. `["story saver from instagram","story saver facebook story","story saver for facebook stories","story saver for instagram 2026"]`
+  - `US|status keeper[]` · array of 3 string · e.g. `["status keeper","status keeper for whatsapp","برنامج status keeper"]`
+  - `IN|all status saver[]` · array of 5 string · e.g. `["all status saver","all status saver download app","all status saver app","all status saver for whatsapp"]`
+  - `US|whatsapp status g[]` · array of 5 string · e.g. `["whatsapp status group","whatsapp status god video app","whatsapp status god","whatsapp status generator"]`
+  - `US|whatsapp status w[]` · array of 5 string · e.g. `["whatsapp status whatsapp","whatsapp status wala","whatsapp status without seen","whatsapp status whatsapp status"]`
+  - `PK|status downloader c` · empty array
+  - `US|status video i[]` · array of 1 string · e.g. `["status saver video and image"]`
+  - `IN|video status saver[]` · array of 5 string · e.g. `["video status saver","video status saver for whatsapp","video status saver app","saveinsta video status saver"]`
+  - `PK|status downloader r` · empty array
+  - `PK|status video i[]` · array of 1 string · e.g. `["status saver video and image"]`
+  - `IN|status download app[]` · array of 5 string · e.g. `["status download apps","status download apps whatsapp","status download apps free","status download apps 2026"]`
+  - `PK|status saver p[]` · array of 5 string · e.g. `["status saver pro","status saver photo and video","status saver pro 2026","status saver plus"]`
+  - `US|save status i[]` · array of 3 string · e.g. `["save status image video saver","save status instagram","save whatsapp status images and videos"]`
+  - `IN|whatsapp status j[]` · array of 3 string · e.g. `["whatsapp status download jaise app","janmashtami whatsapp status","jesus whatsapp status"]`
+  - `US|save status q` · empty array
+  - `IN|story saver q` · empty array
+  - `IN|save status i[]` · array of 3 string · e.g. `["save status instagram","save status image video saver","save whatsapp status images and videos"]`
+  - `US|story saver x` · empty array
+  - `PK|story saver u[]` · array of 4 string · e.g. `["story saver update","story saver app update","whatsapp story saver","unseen social story saver"]`
+  - `US|status downloader z` · empty array
+  - `US|story saver z` · empty array
+  - `PK|save status q` · empty array
+  - `IN|status video h[]` · array of 5 string · e.g. `["status video hd","status video hindi","status hd video for whatsapp","hanuman status video"]`
+  - `PK|whatsapp status v[]` · array of 5 string · e.g. `["whatsapp status viewer without seen","whatsapp status video","whatsapp status video downloader","whatsapp status video app"]`
+  - `US|status saver f[]` · array of 5 string · e.g. `["status saver for whatsapp","status saver for whatsapp business","status saver for business whatsapp","status saver free"]`
+  - `IN|status video k[]` · array of 5 string · e.g. `["status video kannada","krishna video status","radha krishna status video","krishna status video app"]`
+  - `IN|status saver whatsapp[]` · array of 5 string · e.g. `["status saver whatsapp","status saver whatsapp business","status saver whatsapp download","status saver whatsapp 2026"]`
+  - `US|whatsapp status d[]` · array of 5 string · e.g. `["whatsapp status download app","whatsapp status download","whatsapp status downloader","whatsapp status downloader app"]`
+  - `IN|status video f[]` · array of 5 string · e.g. `["status video for whatsapp","status video free","long status video for whatsapp","full video status uploader"]`
+  - `US|whatsapp status m[]` · array of 5 string · e.g. `["whatsapp status maker","whatsapp status maker app","whatsapp status maker with song","whatsapp status message"]`
+  - `IN|status downloader d[]` · array of 5 string · e.g. `["status downloader hd","whatsapp status downloader hd","status saver dp downloader","downloader status downloader"]`
+  - `IN|download status[]` · array of 5 string · e.g. `["download status whatsapp","download status","download status app","download status saver for whatsapp"]`
+  - `US|status saver whatsapp[]` · array of 5 string · e.g. `["status saver whatsapp","status saver whatsapp business","status saver whatsapp download","status saver whatsapp 2026"]`
+  - `IN|story saver e` · empty array
+  - `IN|save status j` · empty array
+  - `US|wa status saver[]` · array of 5 string · e.g. `["wa status saver","wa status saver video download","wa status saver 2026","wa status saver and tools"]`
+  - `IN|save status b[]` · array of 5 string · e.g. `["save status business whatsapp","save status business","business whatsapp status save app","save whatsapp business status video"]`
+  - `US|status saver and downloader[]` · array of 4 string · e.g. `["status saver and downloader","xtx status saver and downloader","status saver and dp downloader","status saver and video downloader"]`
+  - `US|photo status saver[]` · array of 5 string · e.g. `["status saver photo and video","status saver video photo save","whatsapp status photo saver app","status saver photo"]`
+  - `US|status downloader l[]` · array of 1 string · e.g. `["long video status downloader"]`
+  - `PK|whatsapp status l[]` · array of 5 string · e.g. `["whatsapp status long video upload app","whatsapp status lock app","whatsapp status lagane wala app","whatsapp status lagane wala"]`
+  - `PK|whatsapp status a[]` · array of 5 string · e.g. `["whatsapp status app","whatsapp status app download","whatsapp status saver app","whatsapp status app downloading"]`
+  - `US|status saver w[]` · array of 5 string · e.g. `["status saver whatsapp","status saver whatsapp business","status saver whatsapp download","status saver without ads"]`
+  - `IN|photo status saver[]` · array of 5 string · e.g. `["status saver photo and video","whatsapp status photo saver app","status saver video photo save","whatsapp status saver photo and video"]`
+  - `IN|story saver x` · empty array
+  - `PK|save status p[]` · array of 2 string · e.g. `["status save pandra app","phoenix save status"]`
+  - `PK|status saver u[]` · array of 5 string · e.g. `["status saver update","status saver update 2026","whatsapp status saver update","status saver app update"]`
+  - `PK|status video z[]` · array of 2 string · e.g. `["islamic video status naat zikr","zapee status video"]`
+  - `PK|whatsapp status q[]` · array of 5 string · e.g. `["whatsapp status quality upload","whatsapp status quality improver","whatsapp status quality","whatsapp status quotes"]`
+  - `US|status downloader[]` · array of 5 string · e.g. `["status downloader","status downloader for whatsapp","status downloader app","status downloader app for whatsapp"]`
+  - `IN|story saver y[]` · array of 2 string · e.g. `["story saver youtube","youtube story saver app"]`
+  - `PK|status video x[]` · array of 1 string · e.g. `["x status video app"]`
+  - `US|status saver g[]` · array of 5 string · e.g. `["status saver gallery","status saver gratis","gb status saver whatsapp","gb status saver"]`
+  - `PK|save status i[]` · array of 3 string · e.g. `["save status image video saver","save status instagram","save whatsapp status images and videos"]`
+  - `US|status video d[]` · array of 5 string · e.g. `["status video download app","status video download","status video downloader","status video download app tamil"]`
+  - `IN|status video downloader[]` · array of 5 string · e.g. `["status video downloader","status video downloader app","whatsapp status video downloader","whatsapp status video downloader app"]`
+  - `IN|status video q[]` · array of 2 string · e.g. `["whatsapp status video quality","quran status video app"]`
+  - `US|status repost[]` · array of 1 string · e.g. `["repost whatsapp status"]`
+  - `IN|story saver b[]` · array of 5 string · e.g. `["best story saver app","best instagram story saver app","best story saver","whatsapp business story saver app"]`
+  - `PK|whatsapp status download[]` · array of 5 string · e.g. `["whatsapp status download","whatsapp status downloader app","whatsapp status download app","whatsapp status downloader"]`
+  - `US|save status d[]` · array of 5 string · e.g. `["save status download","save status download status","save status download video","whatsapp save status download"]`
+  - `IN|story saver[]` · array of 5 string · e.g. `["story saver","story saver app instagram","story saver instagram app 2025","story saver whatsapp"]`
+  - `US|save status m[]` · array of 5 string · e.g. `["status saver mod app","save status and message recovery","whatsapp messenger save status","save my status"]`
+  - `PK|save status[]` · array of 5 string · e.g. `["save status","save status app","save status whatsapp","save status download"]`
+  - `IN|save status m[]` · array of 5 string · e.g. `["status saver mod app","save status and message recovery","whatsapp messenger save status","save my status"]`
+  - `IN|whatsapp status y[]` · array of 3 string · e.g. `["youtube to whatsapp status app","youtube whatsapp status","whatsapp status yukle"]`
+  - `PK|whatsapp status o[]` · array of 5 string · e.g. `["whatsapp status open","whatsapp status of","whatsapp status option","whatsapp status on"]`
+  - `IN|whatsapp status e[]` · array of 5 string · e.g. `["whatsapp status editing app","whatsapp status editor","whatsapp status edit app","whatsapp status editor app"]`
+  - `IN|story saver i[]` · array of 5 string · e.g. `["story saver instagram app 2025","story saver instagram insta story download","story saver instagram app 2026","story saver in instagram"]`
+  - `US|status video q[]` · array of 2 string · e.g. `["whatsapp status video quality","quran status video app"]`
+  - `US|story saver p[]` · array of 4 string · e.g. `["story saver pro","insta private story saver app download","story post saver for instagram","insta post story saver"]`
+  - `PK|status saver t[]` · array of 5 string · e.g. `["status saver tiktok","status saver trusted tools","status saver to gallery","status saver telegram"]`
+  - `IN|save status h[]` · array of 2 string · e.g. `["status save karna hai","how to save status"]`
+  - `US|status saver n[]` · array of 5 string · e.g. `["status saver no ads","status saver new","status saver new version","status saver native craft"]`
+  - `PK|whatsapp status r[]` · array of 5 string · e.g. `["whatsapp status recovery app","whatsapp status recovery","whatsapp status reshare","whatsapp status rakhne ka"]`
+  - `IN|status downloader g` · empty array
+  - `US|whatsapp status a[]` · array of 5 string · e.g. `["whatsapp status app","whatsapp status app download","whatsapp status app video","whatsapp status app downloading"]`
+  - `IN|save status a[]` · array of 5 string · e.g. `["save status app","save status app download","save status and message recovery","save status app 2026"]`
+  - `PK|whatsapp status e[]` · array of 5 string · e.g. `["whatsapp status editing app","whatsapp status editor","whatsapp status editor app","whatsapp status edit app"]`
+  - `US|whatsapp status s[]` · array of 5 string · e.g. `["whatsapp status saver app","whatsapp status saver","whatsapp status song app","whatsapp status saver app free download"]`
+  - `PK|save status t[]` · array of 5 string · e.g. `["save status telegram","save status tiktok","status save to gallery","status saver save to gallery"]`
+  - `IN|save status u[]` · array of 3 string · e.g. `["save status update","save status app update","whatsapp status save"]`
+  - `IN|story saver m[]` · array of 5 string · e.g. `["story saver money manager","my story saver in instagram","story saver with music","messenger story saver"]`
+  - `IN|whatsapp status download[]` · array of 5 string · e.g. `["whatsapp status download app","whatsapp status download","whatsapp status downloader","whatsapp status downloader app"]`
+  - `PK|status downloader h[]` · array of 3 string · e.g. `["status downloader hd","whatsapp status downloader hd","hd video and status downloader"]`
+  - `PK|status video w[]` · array of 5 string · e.g. `["status video whatsapp","status video wala app","status video whatsapp download","status video wa"]`
+  - `PK|status download app[]` · array of 5 string · e.g. `["status download app","status download apps free","status download apps 2026","status download apps instagram"]`
+  - `IN|whatsapp status m[]` · array of 5 string · e.g. `["whatsapp status maker","whatsapp status maker app","whatsapp status maker with song","whatsapp status message"]`
+  - `PK|video status saver[]` · array of 5 string · e.g. `["video status saver","video status saver for whatsapp","video status saver app","sevista video status saver"]`
+  - `PK|whatsapp status n[]` · array of 5 string · e.g. `["whatsapp status nikalne wala","whatsapp status nikalne wala app","whatsapp status nikaalne ka","whatsapp status nikaalne ka app"]`
+  - `PK|status saver x[]` · array of 2 string · e.g. `["xtx status saver and downloader","x status saver"]`
+  - `PK|story saver j` · empty array
+  - `US|story saver a[]` · array of 5 string · e.g. `["story saver app","story saver app instagram","story saver app whatsapp","story saver anchor"]`
+  - `US|status video downloader[]` · array of 5 string · e.g. `["status video downloader","status video downloader app","whatsapp status video downloader","whatsapp status video downloader app"]`
+  - `IN|status video s[]` · array of 5 string · e.g. `["status video saver","status video save","status video song","status video save app"]`
+  - `PK|status repost[]` · array of 1 string · e.g. `["repost whatsapp status"]`
+  - `US|status saver o[]` · array of 5 string · e.g. `["status saver offline","status saver old version","status saver old","status saver original app"]`
+  - `US|status saver video download[]` · array of 5 string · e.g. `["status saver video download","status saver video downloader","status saver video download app","status saver video download for whatsapp"]`
+  - `US|status video f[]` · array of 5 string · e.g. `["status video for whatsapp","status video free","long status video for whatsapp","status hd video for whatsapp"]`
+  - `IN|status saver f[]` · array of 5 string · e.g. `["status saver for whatsapp","status saver for whatsapp business","status saver free download","status saver free"]`
+  - `US|whatsapp status p[]` · array of 5 string · e.g. `["whatsapp status photo editing app","whatsapp status privacy view","whatsapp status photo","whatsapp status photo saver app"]`
+  - `US|status saver i[]` · array of 5 string · e.g. `["status saver instagram and whatsapp","status saver insta","status saver image and video","status saver in gallery"]`
+  - `US|status saver for whatsapp[]` · array of 5 string · e.g. `["status saver for whatsapp","status saver for whatsapp business","status saver for whatsapp messenger","status saver for whatsapp 2026"]`
+  - `PK|story downloader[]` · array of 5 string · e.g. `["story downloader","story downloader app","story downloader fb","story downloader whatsapp"]`
+  - `PK|save status d[]` · array of 5 string · e.g. `["save status download","save status download status","save status download video","whatsapp save status download"]`
+  - `IN|save status c` · empty array
+  - `US|status video z[]` · array of 2 string · e.g. `["islamic video status naat zikr","zapee status video"]`
+  - `IN|status saver z` · empty array
+  - `IN|status downloader j` · empty array
+  - `US|status video v[]` · array of 5 string · e.g. `["vidstatus video","vido video status maker","vido video status","vidstatus video app"]`
+  - `US|save status v[]` · array of 5 string · e.g. `["save status video","save status video download","save status video app","save status video saver"]`
+  - `US|save status video[]` · array of 5 string · e.g. `["save status video","save status video download","save status video app","save status video saver"]`
+  - `IN|status video b[]` · array of 5 string · e.g. `["status video banane wala app","status video banane ka app","status video banane wala","status video banane ka"]`
+  - `IN|whatsapp status i[]` · array of 5 string · e.g. `["whatsapp status install","whatsapp status images download","whatsapp status instagram","whatsapp status islamic"]`
+  - `IN|status video w[]` · array of 5 string · e.g. `["status video wala app","status video wa","status video whatsapp","status video whatsapp download"]`
+  - `IN|status video i[]` · array of 1 string · e.g. `["status saver video and image"]`
+  - `IN|whatsapp status u[]` · array of 5 string · e.g. `["whatsapp status update","whatsapp status uploader","whatsapp status update 2026","whatsapp status upload high quality"]`
+  - `US|save status f[]` · array of 5 string · e.g. `["save status for whatsapp","save status facebook video","save status facebook","save status free"]`
+  - `US|status downloader t[]` · array of 2 string · e.g. `["telegram status downloader","tamil status downloader"]`
+  - `IN|status saver o[]` · array of 5 string · e.g. `["status saver old version","status saver offline","status saver old","status saver old version 2019"]`
+  - `PK|story saver g[]` · array of 4 string · e.g. `["story downloader ig saver gratis","gram story saver","snaplink video g story saver","story saver gratis"]`
+  - `US|status saver l[]` · array of 5 string · e.g. `["status saver lite","status saver lite for whatsapp","status saver lazy genius","status saver latest version"]`
+  - `US|whatsapp business status saver[]` · array of 5 string · e.g. `["whatsapp business status saver app","whatsapp business status saver","whatsapp business status saver app free download","whatsapp business status saver app 2026"]`
+  - `IN|status video x[]` · array of 1 string · e.g. `["x status video app"]`
+  - `PK|whatsapp status g[]` · array of 5 string · e.g. `["whatsapp status group","whatsapp status god video app","whatsapp status god","whatsapp status generator"]`
+  - `US|status video l[]` · array of 5 string · e.g. `["status video lagane wala app","status video load","status video live","sharechat status video live"]`
+  - `PK|status video l[]` · array of 5 string · e.g. `["status video lagane wala app","status video load","status video live","sharechat status video live"]`
+  - `US|status saver p[]` · array of 5 string · e.g. `["status saver pro","status saver photo and video","status saver pro 2026","status saver plus"]`
+  - `US|status saver b[]` · array of 5 string · e.g. `["status saver business whatsapp","status saver business","status saver banyan studio","status saver business and whatsapp"]`
+  - `US|whatsapp status o[]` · array of 5 string · e.g. `["whatsapp status open","whatsapp status of","whatsapp status option","whatsapp status on"]`
+  - `PK|status downloader k` · empty array
+  - `US|status video k[]` · array of 5 string · e.g. `["status video kannada","krishna video status","radha krishna status video","krishna status video app"]`
+  - `IN|status video r[]` · array of 5 string · e.g. `["reelcut status video","reelcut status video maker","reelcut status video maker app","raksha bandhan video status"]`
+  - `PK|save status e` · empty array
+  - `IN|status downloader o` · empty array
+  - `IN|whatsapp status a[]` · array of 5 string · e.g. `["whatsapp status app","whatsapp status app download","whatsapp status app video","whatsapp status app downloading"]`
+  - `IN|status downloader z` · empty array
+  - `US|save status p[]` · array of 2 string · e.g. `["phoenix save status","status save pandra app"]`
+  - `IN|status downloader l[]` · array of 1 string · e.g. `["long video status downloader"]`
+  - `US|status downloader f[]` · array of 5 string · e.g. `["status downloader for whatsapp","status downloader for whatsapp business","status downloader free","status downloader for whatsapp status"]`
+  - `PK|status video k[]` · array of 5 string · e.g. `["status video kannada","krishna video status","radha krishna status video","krishna status video app"]`
+  - `PK|status saver l[]` · array of 5 string · e.g. `["status saver lite","status saver lite for whatsapp","status saver lazy genius","status saver latest version"]`
+  - `IN|save status[]` · array of 5 string · e.g. `["save status","save status app","save status for whatsapp","save status whatsapp"]`
+  - `US|story saver d[]` · array of 5 string · e.g. `["story saver download app","story saver descargar instagram","insta story saver download","snapchat story saver downloader"]`
+  - `IN|status saver n[]` · array of 5 string · e.g. `["status saver no ads","status saver new","status saver new version","status saver native craft"]`
+  - `US|status saver u[]` · array of 5 string · e.g. `["status saver update","status saver update 2026","whatsapp status saver update","status saver app update"]`
+  - `US|status downloader v[]` · array of 5 string · e.g. `["status downloader video","whatsapp status downloader video","status saver video downloader","vidmatе status downloader"]`
+  - `IN|status photo download[]` · array of 5 string · e.g. `["status photo download","whatsapp status photo download","whatsapp status photo download app","status photo video download app"]`
+  - `US|whatsapp status x` · empty array
+  - `PK|whatsapp status x` · empty array
+  - `IN|status downloader b[]` · array of 4 string · e.g. `["boo status downloader","whatsapp business status downloader","status wa business downloader","whatsapp business status downloader app"]`
+  - `US|status saver c[]` · array of 5 string · e.g. `["status saver clone whatsapp","whatsapp clone status saver app","was canify status saver","chat wallpaper status saver"]`
+  - `PK|save status video[]` · array of 5 string · e.g. `["save status video","save status video download","save status video app","save status video saver"]`
+  - `PK|whatsapp status downloader[]` · array of 5 string · e.g. `["whatsapp status downloader app","whatsapp status downloader","whatsapp status downloader video","whatsapp status downloader free"]`
+  - `PK|status downloader b[]` · array of 4 string · e.g. `["whatsapp business status downloader","boo status downloader","status wa business downloader","whatsapp business status downloader app"]`
+  - `IN|status saver g[]` · array of 5 string · e.g. `["status saver gallery","status saver gratis","status saver lazy genius","gb status saver"]`
+  - `IN|save status v[]` · array of 5 string · e.g. `["save status video","save status video app","save status video download","save status video saver"]`
+  - `PK|status downloader a[]` · array of 4 string · e.g. `["status downloader app","status downloader app for whatsapp","status downloader and saver","status video downloader app"]`
+  - `US|whatsapp status y[]` · array of 3 string · e.g. `["youtube to whatsapp status app","youtube whatsapp status","whatsapp status yukle"]`
+  - `IN|save status z` · empty array
+  - `PK|save status j` · empty array
+  - `US|status video r[]` · array of 5 string · e.g. `["reelcut status video","reelcut status video maker","reelcut status video maker app","raksha bandhan video status"]`
+  - `IN|whatsapp status saver[]` · array of 5 string · e.g. `["whatsapp status saver app","whatsapp status saver","whatsapp status saver app 2023","whatsapp status saver app download"]`
+  - `IN|status video e[]` · array of 5 string · e.g. `["status video editing app","status video editor","status video editor app","status video editing"]`
+  - `PK|status downloader l[]` · array of 1 string · e.g. `["long video status downloader"]`
+  - `PK|save status f[]` · array of 5 string · e.g. `["save status for whatsapp","save status facebook video","save status facebook","save status free"]`
+  - `US|download status[]` · array of 5 string · e.g. `["download status whatsapp","download status","download status saver","download status app"]`
+  - `IN|save status f[]` · array of 5 string · e.g. `["save status for whatsapp","save status facebook video","save status facebook","save status for whatsapp business"]`
+  - `PK|status saver a[]` · array of 5 string · e.g. `["status saver app","status saver app download","status saver app for whatsapp","status saver and message recovery"]`
+  - `US|status downloader e` · empty array
+  - `PK|status saver b[]` · array of 5 string · e.g. `["status saver business whatsapp","status saver business","status saver bhejo","status saver business and whatsapp"]`
+  - `PK|story saver k[]` · array of 1 string · e.g. `["story saver instagram ki"]`
+  - `US|status downloader k` · empty array
+  - `IN|status saver video download[]` · array of 5 string · e.g. `["status saver video download","status saver video download for whatsapp","status saver video downloader","status saver video download app"]`
+  - `PK|whatsapp status d[]` · array of 5 string · e.g. `["whatsapp status download","whatsapp status downloader app","whatsapp status download app","whatsapp status downloader"]`
+  - `US|story saver w[]` · array of 5 string · e.g. `["story saver whatsapp","story saver whatsapp status","story saver without login","story saver whatsapp business"]`
+  - `IN|story saver f[]` · array of 5 string · e.g. `["story saver for facebook stories","story saver for instagram 2026","story saver facebook story","story saver free app"]`
+  - `US|save status a[]` · array of 5 string · e.g. `["save status app","save status app download","save status app whatsapp","save status and message recovery"]`
+  - `US|whatsapp status q[]` · array of 5 string · e.g. `["whatsapp status quality upload","whatsapp status quality improver","whatsapp status quality","whatsapp status quotes"]`
+  - `PK|story saver y[]` · array of 2 string · e.g. `["story saver youtube","youtube story saver app"]`
+  - `US|status saver e[]` · array of 3 string · e.g. `["status saver easy","easy status saver for whatsapp","estado descargar status saver"]`
+  - `PK|save status k[]` · array of 5 string · e.g. `["status save karne wala","status save karvani","status save karvani app","status save karna app"]`
+  - `PK|status video u[]` · array of 5 string · e.g. `["status video upload","whatsapp status video uploader","urdu poetry video status","whatsapp hd video status upload"]`
+  - `PK|status saver d[]` · array of 5 string · e.g. `["status saver download","status saver download status","status saver download app","status saver download for whatsapp"]`
+  - `PK|save status b[]` · array of 5 string · e.g. `["save status business whatsapp","save status business","business whatsapp status save app","save whatsapp business status video"]`
+  - `IN|status video g[]` · array of 5 string · e.g. `["status video god","ai god status video","all god video status","all god video status app"]`
+  - `PK|status video q[]` · array of 2 string · e.g. `["whatsapp status video quality","quran status video app"]`
+  - `PK|save status z` · empty array
+  - `US|business status saver[]` · array of 5 string · e.g. `["business status saver","business status saver whatsapp","business status saver 2026","whatsapp business status saver 2026"]`
+  - `IN|status keeper[]` · array of 3 string · e.g. `["status keeper","status keeper for whatsapp","برنامج status keeper"]`
+  - `IN|story downloader[]` · array of 5 string · e.g. `["story downloader","story downloader app","story downloader whatsapp","story downloader sara tech"]`
+  - `US|save status l` · empty array
+  - `US|status downloader j` · empty array
+  - `IN|whatsapp status h[]` · array of 5 string · e.g. `["whatsapp status hd quality upload","whatsapp status hd","whatsapp status hide view app","whatsapp status high quality"]`
+  - `PK|whatsapp status y[]` · array of 3 string · e.g. `["youtube to whatsapp status app","youtube whatsapp status","whatsapp status yukle"]`
+  - `PK|all status saver[]` · array of 5 string · e.g. `["all status saver","all status saver download app","all status saver for whatsapp","all status saver 2026"]`
+  - `PK|story saver a[]` · array of 5 string · e.g. `["story saver app","story saver app instagram","story saver app whatsapp","story saver anchor"]`
+  - `US|status downloader c` · empty array
+  - `PK|status video download[]` · array of 5 string · e.g. `["status video download app","status video download","status video downloader","status video download app tamil"]`
+  - `IN|status saver app[]` · array of 5 string · e.g. `["status saver app","status saver app download","status saver app download for whatsapp","status saver app 2024"]`
+  - `US|status downloader d[]` · array of 5 string · e.g. `["status downloader hd","whatsapp status downloader hd","status saver dp downloader","hd video and status downloader"]`
+  - `US|status downloader r` · empty array
+  - `US|status saver v[]` · array of 5 string · e.g. `["status saver video download","status saver video","status saver video downloader","status saver video saver"]`
+  - `US|save status b[]` · array of 5 string · e.g. `["save status business whatsapp","save status business","business whatsapp status save app","save whatsapp business status video"]`
+  - `IN|story saver w[]` · array of 5 string · e.g. `["story saver whatsapp","story saver whatsapp status","story saver without login","story saver wa"]`
+  - `PK|save status r[]` · array of 2 string · e.g. `["save insta - reels & status saver","status saver"]`
+  - `PK|status downloader m[]` · array of 1 string · e.g. `["mx player status downloader"]`
+  - `IN|status saver y[]` · array of 3 string · e.g. `["status saver youtube","status saver youtube video","youtube status saver app"]`
+  - `PK|save status c` · empty array
+  - `US|status video t[]` · array of 5 string · e.g. `["status video tamil app","status video tamil","status video tiktok","sivan status video tamil app"]`
+  - `PK|status sticker maker[]` · array of 1 string · e.g. `["sticker maker whatsapp status video"]`
+  - `IN|status saver t[]` · array of 5 string · e.g. `["status saver to gallery","status saver tamil","status saver tiktok","status saver trusted tools"]`
+  - `PK|business status saver[]` · array of 5 string · e.g. `["business status saver","business status saver 2026","business status saver whatsapp","whatsapp business status saver app"]`
+  - `PK|story saver z` · empty array
+  - `PK|status saver for whatsapp[]` · array of 5 string · e.g. `["status saver for whatsapp","status saver for whatsapp business","status saver for whatsapp 2026","status saver for whatsapp business 2026"]`
+  - `IN|save status e` · empty array
+  - `PK|status video downloader[]` · array of 5 string · e.g. `["status video downloader","status video downloader app","whatsapp status video downloader","whatsapp status video downloader app"]`
+  - `IN|story saver n[]` · array of 5 string · e.g. `["story saver net app","story saver net app download","story saver nado","story saver no login"]`
+  - `US|status download app[]` · array of 5 string · e.g. `["status download apps","status download apps whatsapp","status download apps free","status download apps 2026"]`
+  - `PK|status saver e[]` · array of 3 string · e.g. `["status saver easy","easy status saver for whatsapp","estado descargar status saver"]`
+  - `US|status downloader b[]` · array of 4 string · e.g. `["boo status downloader","whatsapp business status downloader","status wa business downloader","whatsapp business status downloader app"]`
+  - `IN|story saver c` · empty array
+  - `US|story saver q` · empty array
+  - `PK|wa status saver[]` · array of 5 string · e.g. `["wa status saver","wa status saver video download","wa status saver 2026","wa status saver and tools"]`
+  - `IN|status saver h[]` · array of 5 string · e.g. `["status saver hd","status saver hidden images and videos","status saver hd video download","status saver hubix"]`
+  - `US|story saver o[]` · array of 4 string · e.g. `["story saver old version","story saver on instagram","story saver old","story saver original"]`
+  - `IN|save status k[]` · array of 5 string · e.g. `["status save karvani","status save karvani app","status save karna app","status save karne wala"]`
+  - `PK|whatsapp status j[]` · array of 3 string · e.g. `["whatsapp status download jaise app","janmashtami whatsapp status","jesus whatsapp status"]`
+  - `IN|status video t[]` · array of 5 string · e.g. `["status video tamil app","status video tamil","status video tiktok","sivan status video tamil app"]`
+  - `IN|status saver d[]` · array of 5 string · e.g. `["status saver download","status saver download app","status saver downloader","status saver dp downloader"]`
+  - `IN|status downloader y[]` · array of 1 string · e.g. `["full video y status downloader"]`
+  - `IN|status saver hd[]` · array of 3 string · e.g. `["status saver hd","status saver hd video download","whatsapp status saver hd"]`
+  - `PK|save status s[]` · array of 5 string · e.g. `["save status status downloader","save status save","save status saver","save status save status"]`
+  - `PK|status video y[]` · array of 5 string · e.g. `["youtube status video saver app","youtube video status downloder.app","youtube status video","status saver youtube video"]`
+  - `PK|save status m[]` · array of 5 string · e.g. `["status saver mod app","save status and message recovery","whatsapp messenger save status","save my status"]`
+  - `IN|status downloader h[]` · array of 3 string · e.g. `["status downloader hd","whatsapp status downloader hd","hd video and status downloader"]`
+  - `PK|save status u[]` · array of 3 string · e.g. `["save status update","save status app update","whatsapp status save"]`
+  - `IN|story saver j` · empty array
+  - `US|status video c[]` · array of 5 string · e.g. `["status video creator app","status video cutter","status video cutter for whatsapp","status video clip"]`
+  - `US|status video h[]` · array of 5 string · e.g. `["status video hd","status video hindi","status hd video for whatsapp","hanuman status video"]`
+  - `PK|story saver h[]` · array of 2 string · e.g. `["story saver highlights","story saver highlights download"]`
+  - `PK|status video a[]` · array of 5 string · e.g. `["status video app","status video app download","status video app tamil","status video app for whatsapp"]`
+  - `IN|status video download[]` · array of 5 string · e.g. `["status video download app","status video download","status video downloader","status video download app tamil"]`
+  - `PK|status saver j` · empty array
+  - `US|story saver r[]` · array of 3 string · e.g. `["story saver reels video downloader","story saver.reel downloader.instasaver.insaver.video downloader","reels story saver for instagram"]`
+  - `PK|story saver d[]` · array of 5 string · e.g. `["story saver download app","story saver descargar instagram","snapchat story saver downloader","insta story saver download"]`
+  - `IN|whatsapp status g[]` · array of 5 string · e.g. `["whatsapp status god video app","whatsapp status group","whatsapp status god","whatsapp status generator"]`
+  - `IN|whatsapp status x` · empty array
+  - `PK|whatsapp status k[]` · array of 5 string · e.g. `["whatsapp status kaise download karen","whatsapp status karne wala app","whatsapp status kaise save kare","whatsapp status ke liye app"]`
+  - `IN|whatsapp status t[]` · array of 5 string · e.g. `["whatsapp status tamil","whatsapp status tracker","whatsapp status tamil video songs download app","whatsapp status trimmer"]`
+  - `US|status downloader i` · empty array
+  - `PK|whatsapp status z` · empty array
+  - `US|status video e[]` · array of 5 string · e.g. `["status video editing app","status video editor","status video editor app","status video editing"]`
+  - `IN|status saver e[]` · array of 3 string · e.g. `["status saver easy","easy status saver for whatsapp","estado descargar status saver"]`
+  - `IN|save status t[]` · array of 5 string · e.g. `["save status telegram","save status tiktok","save the status","status save to gallery"]`
+  - `IN|save status r[]` · array of 2 string · e.g. `["save insta - reels & status saver","status saver"]`
+  - `US|whatsapp status v[]` · array of 5 string · e.g. `["whatsapp status video splitter app","whatsapp status video app","whatsapp status video download app","whatsapp status video"]`
+  - `PK|status saver w[]` · array of 5 string · e.g. `["status saver whatsapp","status saver whatsapp business","status saver without viewing","status saver without ads"]`
+- **[titlecheck.json](../research/aso-pipeline/titlecheck.json)** · 6 KB · JSON, array of 14:
+  - `(root)[]` · array of 14 objects:
+    - `title` · string · e.g. `"Status Saver & Video Download"`
+    - `chars` · number · e.g. `29`
+    - `verdict` · string · e.g. `"FAIL Â· exact title in use"`
+    - `exact[]` · array of 7 string · e.g. `["Status Saver - Video Download [com.downlood.sav.whmedia]","Status Saver & Video Download [com.dualapps.video.downloader.fast.fbvideosaver]","Status Saver & Video download [com.StatusSaver.downloadvideo]","Status Saver & Video Download [com.zm_.status.saver.status_saver]"]`
+    - `near` · empty array
+    - `titlesSeen` · number · e.g. `23`
+    - `checkedOn` · string · e.g. `"2026-09-23"`
+    - `markets[]` · array of 2 string · e.g. `["US","PK"]`
+- **[titlecheck.ps1](../research/aso-pipeline/titlecheck.ps1)** · 3 KB · PowerShell script, 72 lines. Title check: for each candidate title, search Google Play live and compare it against every title that comes back, so no candidate ships that repeats another app's exact or near-exact title. Also flags any brand name in the candidate. Writes titlecheck.json and prints the verdicts. powershell -ExecutionPolicy Bypass -File titlecheck.ps1 Functions: `Norm`, `TokenSet`.
+- **[universe.json](../research/aso-pipeline/universe.json)** · 4 KB · JSON, array of 110:
+  - `(root)[]` · array of 110 string · e.g. `["all status saver","business status saver","download status","full video status uploader"]`
 
