@@ -11,7 +11,7 @@
 
 ## Code
 
-### Shared setup: constants and helpers (assets/app.js L1-30)
+### Shared setup: constants and helpers (assets/app.js L1-51)
 
 ```js
 // Shared script for every data-driven tab page. Each page sets <body data-page="playbook|metadata|features|graphics">
@@ -34,16 +34,37 @@
   const TIER = { A: 'Core', B: 'Adjacent', C: 'Peripheral', D: 'Off-intent' };
   const TIER_PILL = { A: 'p-good', B: 'p-acc', C: 'p-warn', D: 'p-risk' };
   const TIER_W = { A: 1, B: 0.6, C: 0.3, D: 0 };
-  // Brand words may be researched, but may never appear in our own listing copy.
-  const BRAND_RX = /\b(whatsapp|whats app|wa|insta|instagram|facebook|fb|snapchat|snap|tiktok|telegram|gb|fm|yo)\b/;
-
-  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const fmt = n => n == null ? '—' : n >= 1e9 ? (n / 1e9).toFixed(2).replace(/\.?0+$/, '') + 'B' : n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'K' : String(n);
-  const pct = n => Math.round(n * 100) + '%';
-  const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) { } } };
-
-  // ---------- keyword scoring ----------
-  // Relevance first: a phrase this app cannot honestly answer is worth nothing, however much demand it has.
+  // ---------- how a phrase may be used in our own listing ----------
+  // Play's impersonation policy bans falsely implying a relationship with another company. It does not ban
+  // naming the app this one reads from: a status saver that says "for WhatsApp" is describing its own
+  // function, which is exactly what Play asks a listing to do. The house live-title check was run against the
+  // scrape on 23 Sep 2026 and passed — 10 third-party titles name WhatsApp, 3 of them above 1M installs, the
+  // oldest live since Nov 2018. So a phrase is judged by WHY it could not be used, not by whether a product
+  // name appears in it at all:
+  //   free   - names nobody. Always usable.
+  //   compat - names the app we read (WhatsApp, WhatsApp Business, WA). Usable as a descriptive phrase.
+  //   offapp - names a platform we do not read. Unusable: the claim would be false, which is a metadata
+  //            problem, not a trademark one.
+  //   mod    - names a modified client (GB/FM/YO WhatsApp). Unusable: Play bans facilitating them.
+  //   rival  - names another developer's product outright. Unusable: that is the impersonation the policy means.
+  const MOD_RX = /\b(gb ?whatsapp|fm ?whatsapp|yo ?whatsapp|gbwa|whatsapp plus)\b/;
+  const RIVAL_RX = /\b(lazy genius|native craft|sara tech|xtx|vmate|mx player|radha krishna)\b/;
+  const OFFAPP_RX = /\b(instagram|insta|ig|facebook|fb|tiktok|snapchat|snap|telegram|youtube)\b/;
+  const HOST_RX = /\b(whatsapp|whats app|wa)\b/;
+  const USE_W = { free: 1, compat: 1, offapp: 0, mod: 0, rival: 0 };
+  const USE_LABEL = {
+    free: 'Names nobody', compat: 'Names the app we read', offapp: 'Platform we do not read',
+    mod: 'Modified client', rival: "Another developer's product"
+  };
+  const USE_SHORT = { free: 'generic', compat: 'compatibility', offapp: 'off-app', mod: 'mod client', rival: 'rival name' };
+  const USE_PILL = { free: 'p-good', compat: 'p-acc', offapp: 'p-warn', mod: 'p-risk', rival: 'p-risk' };
+  const USE_WHY = {
+    free: 'Carries no product name at all, so nothing constrains its use.',
+    compat: 'Names the app this one reads. Play allows a listing to say what it works with, as long as it does not imply the two are affiliated — so this phrase is usable, and the closing paragraph carries the disclaimer that keeps it usable.',
+    offapp: 'Names a platform this app cannot read. Using it would claim a feature the app does not have, which Play’s metadata policy treats as a misleading listing.',
+    mod: 'Names a modified WhatsApp client. Play bans apps that facilitate them, whatever the demand.',
+    rival: 'Names another developer’s product. That is the impersonation Play’s policy is actually about.'
+  };
 ```
 
 ## Data this tab reads

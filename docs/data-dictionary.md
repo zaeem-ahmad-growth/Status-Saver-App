@@ -10,7 +10,7 @@
 | `PAYLOAD.data` | object | 6 keys |
 | `PAYLOAD.features` | object | 3 keys |
 | `PAYLOAD.ours` | object | 5 keys |
-| `PAYLOAD.listing` | object | 8 keys |
+| `PAYLOAD.listing` | object | 11 keys |
 | `PAYLOAD.graphics` | object | 2 keys |
 | `PAYLOAD.gnotes` | object | 6 keys |
 | `PAYLOAD.offersChecked` | object | 3 keys |
@@ -132,7 +132,7 @@
     - `Private vault or lock` · string · e.g. `"Not built; the old paywall row claiming a private vault was removed in…"`
     - `Recover deleted messages` · string · e.g. `"Deliberately not built and never claimed: the category's riskiest clai…"`
   - `ships[][]` · array of 7 arrays · e.g. `["Two sources, one grid","WhatsApp and WhatsApp Business statuses, images and videos, read through folder access granted by the system picker — no all-files permission, and no media permission on Android 13+."]`
-- `listing` · object with 8 keys:
+- `listing` · object with 11 keys:
   - `app` · object with 6 keys:
     - `package` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
     - `developer` · string · e.g. `"Cell Cave"`
@@ -146,19 +146,24 @@
     - `descChars` · number · e.g. `2577`
     - `read[][]` · array of 4 arrays · e.g. `["The title spends 30 characters without the head term","Every app holding this shelf says \"Status Saver\" in its title. Ours says \"Status Downloader\". Both phrases are on the board, but \"status saver\" and its variants carry the demand: our title covers \"status downloader\" and \"video saver\", and misses \"status saver\", \"status saver app\" and \"status saver video download\" entirely."]`
   - `proposed` · object with 8 keys:
-    - `title` · string · e.g. `"Status Saver & Downloader App"`
+    - `title` · string · e.g. `"Status Saver App for WhatsApp"`
     - `titleChars` · number · e.g. `29`
-    - `titleWhy` · string · e.g. `"Checked live against Google Play on 23 Sep 2026 in the United States a…"`
-    - `short` · string · e.g. `"Status saver and downloader: save status video, photo and story to gal…"`
-    - `shortChars` · number · e.g. `73`
-    - `outline[][]` · array of 11 arrays · e.g. `["Save status video and photo to your gallery","Browse the status updates available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality — the same file, not a re-encoded copy."]`
-    - `close` · string · e.g. `"Only save, share or repost content you own or have permission to use. …"`
+    - `titleWhy` · string · e.g. `"Checked live against the 23 Sep 2026 scrape of 217 listings: no exact …"`
+    - `short` · string · e.g. `"Save WhatsApp status video & photo to gallery - status saver and downl…"`
+    - `shortChars` · number · e.g. `75`
+    - `outline[][]` · array of 11 arrays · e.g. `["Save WhatsApp status video and photo to your gallery","Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added."]`
+    - `close` · string · e.g. `"Status Saver App for WhatsApp is an independent utility. It is not aff…"`
     - `why` · string · e.g. `"Every phrase in these fields appears on the keyword board, and every c…"`
-  - `fields[][]` · array of 14 arrays · e.g. `["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."]`
-  - `reserved[][]` · array of 5 arrays · e.g. `["status saver video downloader","Second-highest demand phrase with no brand name, but its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."]`
-  - `policy[][]` · array of 7 arrays · e.g. `["No brand name in any field","The proposed title, short description and full description were checked for every brand name in this category. None appears. The copy says \"your messaging app\", which is what Play's impersonation policy asks for and what the current listing already does."]`
-  - `risks[][]` · array of 6 arrays · e.g. `["The highest-demand phrases in this category are brand phrases","\"whatsapp status downloader\", \"whatsapp status saver\" and their variants carry the most autocomplete demand on the board, and house rules keep all of them out of our copy. That is a deliberate ceiling: this listing competes only on generic phrases, and the plan has to be judged on that basis, not against apps that spend their titles on a brand name."]`
-  - `built[][]` · array of 4 arrays · e.g. `["The scrape","Google Play's own search results to depth 30, its autocomplete, and the full listing of every app that reached a top-10 slot, read on 23 Sep 2026 in the United States, Pakistan and India. 110 keywords, 330 live result lists, 217 app listings."]`
+  - `fields[][]` · array of 20 arrays · e.g. `["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."]`
+  - `reserved[][]` · array of 7 arrays · e.g. `["status video downloader app","Carried by the full description but not the title. The most defended phrase on the board - 411M installs across its top ten - so it is worth title characters only once the app has ratings."]`
+  - `policy[][]` · array of 10 arrays · e.g. `["Naming WhatsApp is descriptive use, and it is checked","Play's impersonation policy prohibits falsely implying a relationship with another company. It does not prohibit naming the app a utility works with - a listing is required to describe what the app does. This listing names WhatsApp only to say which status folder it reads, never as the app's own identity: the developer name, the icon and the first word of the title are all ours, and the closing paragraph states in full that the app is independent and unaffiliated and that the trademarks belong to WhatsApp LLC."]`
+  - `titleStrategy` · object with 2 keys:
+    - `head` · string · e.g. `"Why this title, in 29 characters"`
+    - `body` · string · e.g. `"A title on this shelf is a keyword carrier, not a brand statement: the…"`
+  - `practices[][]` · array of 5 arrays · e.g. `["Relevance before demand","A phrase the app cannot honestly answer scores zero, however much demand it carries. That is why the Instagram and TikTok clusters are out even though they are searched heavily."]`
+  - `vsPackage[][]` · array of 5 arrays · e.g. `["Title","Status Saver & Downloader App","Status Saver App for WhatsApp","The playbook's package predates the corrected use rule and was written to avoid every product name. Naming WhatsApp adds the compatibility cluster and 2 points of board priority for the same 29 characters."]`
+  - `risks[][]` · array of 7 arrays · e.g. `["Metadata alone will not move a listing with 10+ installs","Zero placements today across 110 keywords in three markets. Metadata decides what the app is eligible for; installs, ratings and retention decide whether it ranks. Expect the rewrite to show up first on the long tail, not on \"status saver\"."]`
+  - `built[][]` · array of 5 arrays · e.g. `["The scrape","Google Play's own search results to depth 30, its autocomplete, and the full listing of every app that reached a top-10 slot, read on 23 Sep 2026 in the United States, Pakistan and India. 110 keywords, 330 live result lists, 217 app listings."]`
 - `graphics` · object with 2 keys:
   - `fetchedAt` · string · e.g. `"2026-09-23"`
   - `apps[]` · array of 9 objects:

@@ -11,7 +11,7 @@
 
 ## Code
 
-### Shared setup: constants and helpers (assets/app.js L1-30)
+### Shared setup: constants and helpers (assets/app.js L1-51)
 
 ```js
 // Shared script for every data-driven tab page. Each page sets <body data-page="playbook|metadata|features|graphics">
@@ -34,19 +34,40 @@
   const TIER = { A: 'Core', B: 'Adjacent', C: 'Peripheral', D: 'Off-intent' };
   const TIER_PILL = { A: 'p-good', B: 'p-acc', C: 'p-warn', D: 'p-risk' };
   const TIER_W = { A: 1, B: 0.6, C: 0.3, D: 0 };
-  // Brand words may be researched, but may never appear in our own listing copy.
-  const BRAND_RX = /\b(whatsapp|whats app|wa|insta|instagram|facebook|fb|snapchat|snap|tiktok|telegram|gb|fm|yo)\b/;
-
-  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const fmt = n => n == null ? '—' : n >= 1e9 ? (n / 1e9).toFixed(2).replace(/\.?0+$/, '') + 'B' : n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'K' : String(n);
-  const pct = n => Math.round(n * 100) + '%';
-  const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) { } } };
-
-  // ---------- keyword scoring ----------
-  // Relevance first: a phrase this app cannot honestly answer is worth nothing, however much demand it has.
+  // ---------- how a phrase may be used in our own listing ----------
+  // Play's impersonation policy bans falsely implying a relationship with another company. It does not ban
+  // naming the app this one reads from: a status saver that says "for WhatsApp" is describing its own
+  // function, which is exactly what Play asks a listing to do. The house live-title check was run against the
+  // scrape on 23 Sep 2026 and passed — 10 third-party titles name WhatsApp, 3 of them above 1M installs, the
+  // oldest live since Nov 2018. So a phrase is judged by WHY it could not be used, not by whether a product
+  // name appears in it at all:
+  //   free   - names nobody. Always usable.
+  //   compat - names the app we read (WhatsApp, WhatsApp Business, WA). Usable as a descriptive phrase.
+  //   offapp - names a platform we do not read. Unusable: the claim would be false, which is a metadata
+  //            problem, not a trademark one.
+  //   mod    - names a modified client (GB/FM/YO WhatsApp). Unusable: Play bans facilitating them.
+  //   rival  - names another developer's product outright. Unusable: that is the impersonation the policy means.
+  const MOD_RX = /\b(gb ?whatsapp|fm ?whatsapp|yo ?whatsapp|gbwa|whatsapp plus)\b/;
+  const RIVAL_RX = /\b(lazy genius|native craft|sara tech|xtx|vmate|mx player|radha krishna)\b/;
+  const OFFAPP_RX = /\b(instagram|insta|ig|facebook|fb|tiktok|snapchat|snap|telegram|youtube)\b/;
+  const HOST_RX = /\b(whatsapp|whats app|wa)\b/;
+  const USE_W = { free: 1, compat: 1, offapp: 0, mod: 0, rival: 0 };
+  const USE_LABEL = {
+    free: 'Names nobody', compat: 'Names the app we read', offapp: 'Platform we do not read',
+    mod: 'Modified client', rival: "Another developer's product"
+  };
+  const USE_SHORT = { free: 'generic', compat: 'compatibility', offapp: 'off-app', mod: 'mod client', rival: 'rival name' };
+  const USE_PILL = { free: 'p-good', compat: 'p-acc', offapp: 'p-warn', mod: 'p-risk', rival: 'p-risk' };
+  const USE_WHY = {
+    free: 'Carries no product name at all, so nothing constrains its use.',
+    compat: 'Names the app this one reads. Play allows a listing to say what it works with, as long as it does not imply the two are affiliated — so this phrase is usable, and the closing paragraph carries the disclaimer that keeps it usable.',
+    offapp: 'Names a platform this app cannot read. Using it would claim a feature the app does not have, which Play’s metadata policy treats as a misleading listing.',
+    mod: 'Names a modified WhatsApp client. Play bans apps that facilitate them, whatever the demand.',
+    rival: 'Names another developer’s product. That is the impersonation Play’s policy is actually about.'
+  };
 ```
 
-### `renderScope()` (assets/app.js L67-69)
+### `renderScope()` (assets/app.js L104-106)
 
 ```js
   function renderScope() {
@@ -54,7 +75,7 @@
   }
 ```
 
-### `renderMarketSeg()` (assets/app.js L70-78)
+### `renderMarketSeg()` (assets/app.js L107-115)
 
 ```js
   function renderMarketSeg() {
@@ -68,7 +89,7 @@
   const tip = $('tip');
 ```
 
-### `bindTip()` (assets/app.js L79-84)
+### `bindTip()` (assets/app.js L116-121)
 
 ```js
   function bindTip(el, html) {
@@ -79,7 +100,7 @@
   }
 ```
 
-### `appTip()` (assets/app.js L85-91)
+### `appTip()` (assets/app.js L122-128)
 
 ```js
   function appTip(i) {
@@ -91,7 +112,7 @@
   // ---------- playbook ----------
 ```
 
-### `renderChips()` (assets/app.js L92-102)
+### `renderChips()` (assets/app.js L129-139)
 
 ```js
   function renderChips() {
@@ -106,7 +127,7 @@
   }
 ```
 
-### `renderPlays()` (assets/app.js L103-133)
+### `renderPlays()` (assets/app.js L140-170)
 
 ```js
   function renderPlays() {
@@ -141,7 +162,7 @@
   }
 ```
 
-### `renderComp()` (assets/app.js L134-170)
+### `renderComp()` (assets/app.js L171-207)
 
 ```js
   function renderComp() {
@@ -182,7 +203,7 @@
   }
 ```
 
-### `renderMatrix()` (assets/app.js L171-189)
+### `renderMatrix()` (assets/app.js L208-226)
 
 ```js
   function renderMatrix() {
@@ -199,13 +220,13 @@
       return `<td class="rk ${b}">${rank}</td>`;
     };
     t.innerHTML = head + `<tbody>${rows.map(r => `<tr>
-      <td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> ${esc(r.k)}${r.brand ? ' <span class="pill p-risk" title="Brand phrase: research only, never in our listing copy">brand</span>' : ''}</td>
+      <td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> ${esc(r.k)}${r.usable ? '' : ` <span class="pill ${USE_PILL[r.use]}" title="${esc(USE_WHY[r.use])}">${USE_SHORT[r.use]}</span>`}</td>
       ${cell(r, OURS)}${cols.map(i => cell(r, i)).join('')}</tr>`).join('')}</tbody>`;
     const btn = $('matrix-all'); if (btn) btn.checked = state.matrixAll;
   }
 ```
 
-### `slotClass()` (assets/app.js L190-200)
+### `slotClass()` (assets/app.js L227-237)
 
 ```js
   function slotClass(i) {
@@ -220,7 +241,7 @@
   }
 ```
 
-### `renderStrips()` (assets/app.js L201-216)
+### `renderStrips()` (assets/app.js L238-253)
 
 ```js
   function renderStrips() {
@@ -240,7 +261,7 @@
   }
 ```
 
-### `renderBoard()` (assets/app.js L217-257)
+### `renderBoard()` (assets/app.js L254-294)
 
 ```js
   function renderBoard() {
@@ -265,10 +286,10 @@
       <th>Keyword</th>${th('D', 'Demand', 'How often and how high Play autocomplete offers this phrase')}
       ${th('C', 'Competition', 'Installs behind the top ten, log scale')}
       ${th('O', 'Opportunity', 'Demand weighted by how winnable the top ten looks')}
-      ${th('P', 'Priority', 'Opportunity weighted by relevance, and halved for brand phrases we cannot use')}
+      ${th('P', 'Priority', 'Opportunity weighted by relevance, and zeroed for phrases this listing may not use')}
       <th>Top ten holders</th><th>Us</th></tr></thead>
       <tbody>${rows.map(r => `<tr>
-        <td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong>${r.brand ? ' <span class="pill p-risk">brand</span>' : ''}
+        <td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong>${r.use === 'free' ? '' : ` <span class="pill ${USE_PILL[r.use]}" title="${esc(USE_WHY[r.use])}">${USE_SHORT[r.use]}</span>`}
           <span class="small muted block">${r.hits} autocomplete hits${r.bestPos < 99 ? ' · best slot ' + (r.bestPos + 1) : ''}</span></td>
         <td class="num tmono">${r.D}</td>
         <td class="num tmono">${r.C}<span class="small muted block">${fmt(r.installs)} · ${r.big} apps ≥10M</span></td>
@@ -285,12 +306,12 @@
   }
 ```
 
-### `renderLadder()` (assets/app.js L258-276)
+### `renderLadder()` (assets/app.js L295-313)
 
 ```js
   function renderLadder() {
     const box = $('ladder-list'); if (!box) return;
-    const board = boardOf(state.gl).filter(r => r.tier !== 'D' && !r.brand);
+    const board = boardOf(state.gl).filter(r => r.tier !== 'D' && r.usable);
     const rung1 = board.filter(r => r.C <= 88).slice(0, 8);
     const rung2 = board.filter(r => r.C > 88 && r.C <= 93).slice(0, 8);
     const rung3 = board.filter(r => r.C > 93).slice(0, 8);
@@ -308,7 +329,7 @@
   }
 ```
 
-### `renderListingPack()` (assets/app.js L277-287)
+### `renderListingPack()` (assets/app.js L314-324)
 
 ```js
   function renderListingPack() {
@@ -323,7 +344,7 @@
   }
 ```
 
-### `renderMethod()` (assets/app.js L288-299)
+### `renderMethod()` (assets/app.js L325-336)
 
 ```js
   function renderMethod() {
@@ -333,13 +354,13 @@
       ['What was read', `Google Play's own search results (depth 30), autocomplete and app listings, on ${m.fetchedAt}, in ${MARKETS.map(x => MNAME[x]).join(', ')}. ${m.keywords} keywords, ${m.lists} live result lists, ${m.apps} app listings.`],
       ['Demand', 'Play does not publish search volume. Demand here counts how many autocomplete probes returned the phrase and how high it sat — a phrase Play offers early and in several markets is one people type.'],
       ['Competition', 'The installs behind the top ten for that search, on a log scale, plus how many of those ten have 10M+ installs.'],
-      ['Opportunity and priority', 'Opportunity is demand discounted by how walled-off the top ten looks. Priority multiplies that by relevance, and halves any phrase carrying another company\'s brand name, because that phrase can be researched but never used in our listing.'],
+      ['Opportunity and priority', 'Opportunity is demand discounted by how walled-off the top ten looks. Priority multiplies that by relevance, then by whether the listing may use the phrase at all. Naming WhatsApp does not disqualify a phrase — a status saver is allowed to say which app it reads — so those keep full priority. Priority goes to zero only for a phrase naming a platform this app cannot read, a modified client, or another developer\'s product.'],
       ['What it is not', 'No third-party rank tool, no estimated volumes, no paid data. Ranks move daily: treat every rank as "on the day it was read".']
     ].map(x => `<div class="check"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
   }
 ```
 
-### `renderRisks()` (assets/app.js L300-306)
+### `renderRisks()` (assets/app.js L337-343)
 
 ```js
   function renderRisks() {
@@ -351,7 +372,7 @@
   const P = L.proposed || {};
 ```
 
-### `coverage()` (assets/app.js L309-314)
+### `coverage()` (assets/app.js L346-351)
 
 ```js
   function coverage(k, text) {
@@ -361,7 +382,7 @@
   }
 ```
 
-### `renderMetaHead()` (assets/app.js L315-324)
+### `renderMetaHead()` (assets/app.js L352-361)
 
 ```js
   function renderMetaHead() {
@@ -375,7 +396,7 @@
   }
 ```
 
-### `field()` (assets/app.js L325-331)
+### `field()` (assets/app.js L362-368)
 
 ```js
   function field(label, value, max, cls) {
@@ -386,7 +407,7 @@
   }
 ```
 
-### `renderLive()` (assets/app.js L332-339)
+### `renderLive()` (assets/app.js L369-376)
 
 ```js
   function renderLive() {
@@ -398,7 +419,7 @@
   }
 ```
 
-### `renderPackage()` (assets/app.js L340-350)
+### `renderPackage()` (assets/app.js L377-387)
 
 ```js
   function renderPackage() {
@@ -413,7 +434,7 @@
   }
 ```
 
-### `renderFieldTable()` (assets/app.js L351-363)
+### `renderFieldTable()` (assets/app.js L388-400)
 
 ```js
   function renderFieldTable() {
@@ -430,7 +451,7 @@
   }
 ```
 
-### `renderCoverage()` (assets/app.js L364-379)
+### `renderCoverage()` (assets/app.js L401-420)
 
 ```js
   function renderCoverage() {
@@ -440,23 +461,27 @@
     const all = $('cov-all') && $('cov-all').checked;
     if (!all) rows = rows.filter(x => x.cov !== 'no' || x.r.tier === 'A');
     const pillOf = c => c === 'exact' ? '<span class="pill p-good">word for word</span>' : c === 'tokens' ? '<span class="pill p-acc">every word present</span>' : '<span class="pill p-mute">not covered</span>';
-    const usable = rows.filter(x => !x.r.brand);
+    const usable = rows.filter(x => x.r.usable);
     const hit = usable.filter(x => x.cov !== 'no').length;
-    const brandCount = rows.length - usable.length;
-    t.innerHTML = `<thead><tr><th>Keyword</th><th>Tier</th><th>In the proposed listing</th><th>Priority</th></tr></thead>
-      <tbody>${rows.map(x => `<tr><td class="kw">${esc(x.r.k)}${x.r.brand ? ' <span class="pill p-risk">brand · never used</span>' : ''}</td>
-        <td><span class="pill ${TIER_PILL[x.r.tier]}">${x.r.tier}</span></td><td>${pillOf(x.cov)}</td><td class="num tmono">${x.r.P}</td></tr>`).join('')}</tbody>
-      <tfoot><tr><td colspan="4" class="small muted"><strong>${hit} of ${usable.length}</strong> phrases this listing is allowed to use appear in it, word for word or with every word present. The other ${brandCount} shown here carry another company's brand name and are excluded by rule, whatever they would earn. A phrase the listing does not contain cannot rank for it.</td></tr></tfoot>`;
+    const blocked = rows.length - usable.length;
+    const compat = usable.filter(x => x.r.use === 'compat');
+    const compatHit = compat.filter(x => x.cov !== 'no').length;
+    t.innerHTML = `<thead><tr><th>Keyword</th><th>Tier</th><th>Use</th><th>In the proposed listing</th><th>Priority</th></tr></thead>
+      <tbody>${rows.map(x => `<tr><td class="kw">${esc(x.r.k)}</td>
+        <td><span class="pill ${TIER_PILL[x.r.tier]}">${x.r.tier}</span></td>
+        <td><span class="pill ${USE_PILL[x.r.use]}" title="${esc(USE_WHY[x.r.use])}">${USE_SHORT[x.r.use]}</span></td>
+        <td>${pillOf(x.cov)}</td><td class="num tmono">${x.r.P}</td></tr>`).join('')}</tbody>
+      <tfoot><tr><td colspan="5" class="small muted"><strong>${hit} of ${usable.length}</strong> phrases this listing may use appear in it, word for word or with every word present — including <strong>${compatHit} of ${compat.length}</strong> compatibility phrases, the ones that name WhatsApp to say what the app reads. The other ${blocked} are not excluded for naming a product: they name a platform this app cannot read, a modified client, or another developer's app, and each row says which. A phrase the listing does not contain cannot rank for it.</td></tr></tfoot>`;
   }
 ```
 
-### `renderTargets()` (assets/app.js L380-391)
+### `renderTargets()` (assets/app.js L421-432)
 
 ```js
   function renderTargets() {
     const t = $('target-table'); if (!t) return;
     const text = fullTextOf(P);
-    const rows = boardOf(state.gl).filter(r => !r.brand && coverage(r.k, text) !== 'no').slice(0, 24);
+    const rows = boardOf(state.gl).filter(r => r.usable && coverage(r.k, text) !== 'no').slice(0, 24);
     t.innerHTML = `<thead><tr><th>Keyword</th><th>Demand</th><th>Competition</th><th>Top ten holders</th><th>Us today</th></tr></thead><tbody>${rows.map(r =>
       `<tr><td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong></td>
         <td class="num tmono">${r.D}</td>
@@ -466,13 +491,13 @@
   }
 ```
 
-### `renderRankTable()` (assets/app.js L392-408)
+### `renderRankTable()` (assets/app.js L433-449)
 
 ```js
   function renderRankTable() {
     const t = $('rank-table'); if (!t) return;
     const text = fullTextOf(P);
-    const rows = boardOf(state.gl).filter(r => !r.brand && coverage(r.k, text) !== 'no').slice(0, 20);
+    const rows = boardOf(state.gl).filter(r => r.usable && coverage(r.k, text) !== 'no').slice(0, 20);
     const cols = COMP.slice(0, 8);
     t.innerHTML = `<thead><tr><th class="kw">Keyword</th><th class="ours-col">Us</th>${cols.map(i => `<th class="comp-name"><span>${esc(A[i].t.split(/[-–—:·]/)[0].trim())}</span></th>`).join('')}</tr></thead>
       <tbody>${rows.map(r => {
@@ -487,12 +512,132 @@
   }
 ```
 
-### `renderPolicy()` (assets/app.js L409-417)
+### `renderPolicy()` (assets/app.js L450-456)
 
 ```js
   function renderPolicy() {
     const p = $('policy-list'); if (p) p.innerHTML = (L.policy || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
     const b = $('built-list'); if (b) b.innerHTML = (L.built || []).map(x => `<div class="check"><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div>`).join('');
+  }
+
+  // ---------- metadata · which field carries a phrase ----------
+  // 'T' title, 'S' short description, 'L' full description, '—' not in this version.
+```
+
+### `carriedBy()` (assets/app.js L457-468)
+
+```js
+  function carriedBy(k) {
+    const inField = s => coverage(k, String(s || '').toLowerCase()) !== 'no';
+    const t = inField(P.title), s = inField(P.short);
+    const l = inField((P.outline || []).map(o => o[0] + ' ' + o[1]).join(' ') + ' ' + (P.close || ''));
+    if (t && s) return 'T+S';
+    if (t) return 'T';
+    if (s) return 'S';
+    if (l) return 'L';
+    return '—';
+  }
+
+  // ---------- metadata · finalized keywords, targeted now vs held back ----------
+```
+
+### `renderFinalKw()` (assets/app.js L469-494)
+
+```js
+  function renderFinalKw() {
+    const now = $('kw-now'); if (!now) return;
+    const text = fullTextOf(P);
+    const board = boardOf(state.gl).filter(r => r.usable && r.tier !== 'D').slice(0, 24);
+    const hit = board.filter(r => coverage(r.k, text) !== 'no');
+    const miss = board.filter(r => coverage(r.k, text) === 'no');
+    const row = r => `<tr><td class="kw"><span class="pill ${TIER_PILL[r.tier]}">${r.tier}</span> <strong>${esc(r.k)}</strong>
+        <span class="pill ${USE_PILL[r.use]}" title="${esc(USE_WHY[r.use])}">${USE_SHORT[r.use]}</span></td>
+      <td class="num tmono">${r.P}</td><td class="num tmono">${r.D}</td>
+      <td class="num tmono">${r.C}<span class="small muted block">${fmt(r.installs)} · ${r.big} ≥10M</span></td>
+      <td class="tmono">${carriedBy(r.k)}</td>
+      <td class="small">${r.slots.slice(0, 3).map(i => i < 0 ? '—' : esc(A[i].t.split(/[-–—:·]/)[0].trim())).join(' · ')}</td></tr>`;
+    const head = `<thead><tr><th>Keyword</th><th class="num">Priority</th><th class="num">Demand</th><th class="num">Competition</th><th>Field</th><th>Who holds the top three</th></tr></thead>`;
+    now.innerHTML = head + `<tbody>${hit.map(row).join('')}</tbody>`;
+    const fut = $('kw-future');
+    if (fut) fut.innerHTML = head + `<tbody>${miss.map(row).join('')}</tbody>`;
+    const h1 = $('kw-now-h'); if (h1) h1.textContent = `Targeted in this metadata · ${hit.length} of ${board.length}`;
+    const h2 = $('kw-future-h'); if (h2) h2.textContent = `Reserved for a later version · ${miss.length} of ${board.length}`;
+    const n = $('kw-note');
+    if (n) {
+      const compat = hit.filter(r => r.use === 'compat').length;
+      n.innerHTML = `The ${board.length} highest-priority phrases on the ${esc(MNAME[state.gl] || state.gl)} board that this listing is allowed to use, split by whether it actually carries them. <b>${compat}</b> of the ${hit.length} it carries are compatibility phrases — the ones naming WhatsApp, which the first run of this research scored at zero and left out of the copy entirely. The reasons for holding the rest back are listed under the keyword-to-field table.`;
+    }
+  }
+
+  // ---------- metadata · the ladder, marked with the field that carries each phrase ----------
+```
+
+### `renderMetaLadder()` (assets/app.js L495-516)
+
+```js
+  function renderMetaLadder() {
+    const box = $('meta-ladder'); if (!box) return;
+    const text = fullTextOf(P);
+    const board = boardOf(state.gl).filter(r => r.tier !== 'D' && r.usable);
+    const rungs = [
+      ['Rung 1 · win now', board.filter(r => r.C <= 88).slice(0, 8), 'Long-tail phrases whose top ten is not walled off by 10M+ apps. This version of the listing should own them outright.'],
+      ['Rung 2 · win next', board.filter(r => r.C > 88 && r.C <= 93).slice(0, 8), 'Mid-competition phrases, reachable once the app has ratings and a few thousand installs behind it.'],
+      ['Rung 3 · the head', board.filter(r => r.C > 93).slice(0, 8), 'The shelf itself, held by apps with 10M–100M installs. Covered in the full description so the listing is eligible, never in the title yet.']
+    ];
+    box.innerHTML = rungs.map(([title, rows, why]) => `<div class="rung">
+      <h3>${title} <span class="small muted">${rows.length} phrases</span></h3>
+      <p class="small">${why}</p>
+      <div class="kwlist">${rows.map(r => {
+      const f = carriedBy(r.k);
+      return `<span class="kw"><strong>${esc(r.k)}</strong><span class="small muted"> ${f} · ${r.slots.filter(i => COMP.indexOf(i) >= 0).length} rivals in the top ten</span></span>`;
+    }).join('')}</div>
+    </div>`).join('');
+    const n = $('meta-ladder-note');
+    if (n) n.innerHTML = `<b>T</b> = in the title, <b>T+S</b> = across title and short description, <b>S</b> = short description, <b>L</b> = full description, <b>—</b> = not in this version. The count after each phrase is how many of the twelve tracked competitors hold a top-ten slot on it in ${esc(MNAME[state.gl] || state.gl)}.`;
+  }
+
+  // ---------- metadata · how the fields were composed ----------
+```
+
+### `renderCompose()` (assets/app.js L517-541)
+
+```js
+  function renderCompose() {
+    const t = $('compose-table'); if (!t) return;
+    const text = { Title: P.title, 'Short description': P.short, 'Full description': fullDescOf(P) };
+    const limits = { Title: 30, 'Short description': 80, 'Full description': 4000 };
+    const byField = {};
+    (L.fields || []).forEach(f => {
+      const key = f[1].split('·')[0].trim();
+      (byField[key] = byField[key] || []).push(f[0]);
+    });
+    t.innerHTML = `<thead><tr><th>Field</th><th class="num">Characters</th><th class="num">Phrases</th><th>What it is built to carry</th></tr></thead><tbody>` +
+      Object.keys(text).map(f => {
+        const v = text[f] || '', kws = byField[f] || [];
+        return `<tr><td><strong>${esc(f)}</strong></td>
+          <td class="num tmono">${v.length}/${limits[f]}</td>
+          <td class="num tmono">${kws.length}</td>
+          <td class="small">${kws.map(k => `<span class="pill p-mute">${esc(k)}</span>`).join(' ')}</td></tr>`;
+      }).join('') + '</tbody>';
+    const ts = $('title-strategy');
+    if (ts && L.titleStrategy) ts.innerHTML = `<h3>${esc(L.titleStrategy.head)}</h3><p>${esc(L.titleStrategy.body)}</p>`;
+    const pr = $('practices');
+    if (pr) pr.innerHTML = '<h3>Playbook practices this metadata applies</h3>' +
+      (L.practices || []).map(x => `<p><strong>${esc(x[0])}.</strong> ${esc(x[1])}</p>`).join('');
+  }
+
+  // ---------- metadata · this listing against the playbook's proposed package ----------
+```
+
+### `renderVsPackage()` (assets/app.js L542-553)
+
+```js
+  function renderVsPackage() {
+    const t = $('vs-table'); if (!t) return;
+    t.innerHTML = `<thead><tr><th>Field</th><th>Playbook package (first run)</th><th>This metadata</th><th>Why it changed</th></tr></thead><tbody>` +
+      (L.vsPackage || []).map(x => `<tr><td><strong>${esc(x[0])}</strong></td>
+        <td class="small">${esc(x[1])}</td><td class="small"><strong>${esc(x[2])}</strong></td>
+        <td class="small">${esc(x[3])}</td></tr>`).join('') + '</tbody>';
   }
 
   // ---------- features ----------
@@ -501,7 +646,7 @@
   const fRows = F.features || [];
 ```
 
-### `renderFeatChips()` (assets/app.js L421-427)
+### `renderFeatChips()` (assets/app.js L557-563)
 
 ```js
   function renderFeatChips() {
@@ -512,7 +657,7 @@
   }
 ```
 
-### `completeness()` (assets/app.js L428-434)
+### `completeness()` (assets/app.js L564-570)
 
 ```js
   function completeness() {
@@ -523,7 +668,7 @@
   }
 ```
 
-### `renderCompleteness()` (assets/app.js L435-453)
+### `renderCompleteness()` (assets/app.js L571-589)
 
 ```js
   function renderCompleteness() {
@@ -546,7 +691,7 @@
   }
 ```
 
-### `renderFmx()` (assets/app.js L454-475)
+### `renderFmx()` (assets/app.js L590-611)
 
 ```js
   function renderFmx() {
@@ -572,7 +717,7 @@
   }
 ```
 
-### `renderOursCards()` (assets/app.js L476-480)
+### `renderOursCards()` (assets/app.js L612-616)
 
 ```js
   function renderOursCards() {
@@ -581,7 +726,7 @@
   }
 ```
 
-### `renderEdgesGaps()` (assets/app.js L481-493)
+### `renderEdgesGaps()` (assets/app.js L617-629)
 
 ```js
   function renderEdgesGaps() {
@@ -598,7 +743,7 @@
   }
 ```
 
-### `renderPricing()` (assets/app.js L494-505)
+### `renderPricing()` (assets/app.js L630-641)
 
 ```js
   function renderPricing() {
@@ -614,7 +759,7 @@
   }
 ```
 
-### `renderSource()` (assets/app.js L506-519)
+### `renderSource()` (assets/app.js L642-655)
 
 ```js
   function renderSource() {
@@ -632,7 +777,7 @@
   const gApps = G.apps || [];
 ```
 
-### `renderGfxChips()` (assets/app.js L520-527)
+### `renderGfxChips()` (assets/app.js L656-663)
 
 ```js
   function renderGfxChips() {
@@ -644,13 +789,13 @@
   }
 ```
 
-### `isOurs()` (assets/app.js L528-529)
+### `isOurs()` (assets/app.js L664-665)
 
 ```js
   function isOurs(a) { return a.id === D.meta.ours; }
 ```
 
-### `renderIconWall()` (assets/app.js L530-543)
+### `renderIconWall()` (assets/app.js L666-679)
 
 ```js
   function renderIconWall() {
@@ -668,7 +813,7 @@
   }
 ```
 
-### `renderFgGrid()` (assets/app.js L544-554)
+### `renderFgGrid()` (assets/app.js L680-690)
 
 ```js
   function renderFgGrid() {
@@ -683,7 +828,7 @@
   }
 ```
 
-### `renderSystems()` (assets/app.js L555-561)
+### `renderSystems()` (assets/app.js L691-697)
 
 ```js
   function renderSystems() {
@@ -694,7 +839,7 @@
   }
 ```
 
-### `renderCatalogue()` (assets/app.js L566-592)
+### `renderCatalogue()` (assets/app.js L702-728)
 
 ```js
   function renderCatalogue() {
@@ -725,7 +870,7 @@
   }
 ```
 
-### `bindLightbox()` (assets/app.js L593-610)
+### `bindLightbox()` (assets/app.js L729-746)
 
 ```js
   function bindLightbox() {
@@ -747,7 +892,7 @@
   }
 ```
 
-### `renderOursGraphics()` (assets/app.js L611-617)
+### `renderOursGraphics()` (assets/app.js L747-753)
 
 ```js
   function renderOursGraphics() {
@@ -759,7 +904,7 @@
   // Every top-10 slot on the board, resolved to the category of the app holding it.
 ```
 
-### `renderCategories()` (assets/app.js L618-641)
+### `renderCategories()` (assets/app.js L754-777)
 
 ```js
   function renderCategories() {
@@ -788,7 +933,7 @@
   // ---------- playbook · keywords by competitor ----------
 ```
 
-### `renderCompKeywords()` (assets/app.js L642-670)
+### `renderCompKeywords()` (assets/app.js L778-806)
 
 ```js
   function renderCompKeywords() {
@@ -822,7 +967,7 @@
   // ---------- playbook · events & offers ----------
 ```
 
-### `renderEvents()` (assets/app.js L671-690)
+### `renderEvents()` (assets/app.js L807-826)
 
 ```js
   function renderEvents() {
@@ -847,7 +992,7 @@
   // ---------- playbook · how the category differs by market ----------
 ```
 
-### `renderMarketsCompare()` (assets/app.js L691-714)
+### `renderMarketsCompare()` (assets/app.js L827-850)
 
 ```js
   function renderMarketsCompare() {
@@ -859,24 +1004,66 @@
       const entry = med(B.map(r => r.installs).filter(n => n != null && n > 0));
       const ours = B.filter(r => r.ourRank > 0);
       const core = B.filter(r => r.tier === 'A').length;
-      const brandy = B.filter(r => r.brand).length;
-      return { gl, n: B.length, top, entry, ours: ours.length, bestOurs: ours.length ? Math.min(...ours.map(r => r.ourRank)) : null, core, brandy };
+      const blocked = B.filter(r => !r.usable).length;
+      return { gl, n: B.length, top, entry, ours: ours.length, bestOurs: ours.length ? Math.min(...ours.map(r => r.ourRank)) : null, core, blocked };
     });
-    box.innerHTML = `<thead><tr><th>Market</th><th class="num">Keywords</th><th class="num">Core-intent</th><th class="num">Name a platform</th><th class="num">Median entry bar</th><th class="num">We appear</th><th>Top opportunity</th></tr></thead><tbody>` +
+    box.innerHTML = `<thead><tr><th>Market</th><th class="num">Keywords</th><th class="num">Core-intent</th><th class="num">Cannot be used</th><th class="num">Median entry bar</th><th class="num">We appear</th><th>Top opportunity</th></tr></thead><tbody>` +
       rows.map(r => `<tr${r.gl === state.gl ? ' class="ours"' : ''}><td><strong>${esc(MNAME[r.gl] || r.gl)}</strong></td>
-        <td class="num">${r.n}</td><td class="num">${r.core}</td><td class="num">${r.brandy}</td>
+        <td class="num">${r.n}</td><td class="num">${r.core}</td><td class="num">${r.blocked}</td>
         <td class="num">${r.entry == null ? '—' : fmt(r.entry)}</td>
         <td class="num">${r.ours}${r.bestOurs ? ` <i>best #${r.bestOurs}</i>` : ''}</td>
         <td class="small">${r.top ? `${esc(r.top.k)} <i>P${r.top.P}</i>` : '—'}</td></tr>`).join('') + '</tbody>';
     const easiest = rows.slice().sort((a, b) => (a.entry || Infinity) - (b.entry || Infinity))[0];
     const r2 = $('markets-read');
-    if (r2) r2.innerHTML = `<p>The same 110 phrases were scraped in all three markets, so the differences here are the shelf, not the sample. <b>${esc(MNAME[easiest.gl] || easiest.gl)}</b> has the lowest median entry bar at <b>${easiest.entry == null ? '—' : fmt(easiest.entry)}</b> installs, which makes it the cheapest place to prove the listing before spending anywhere else. The number of phrases that name another company's product is also worth watching: those are the phrases with the most demand and the ones this listing can never use.</p>`;
+    if (r2) r2.innerHTML = `<p>The same 110 phrases were scraped in all three markets, so the differences here are the shelf, not the sample. <b>${esc(MNAME[easiest.gl] || easiest.gl)}</b> has the lowest median entry bar at <b>${easiest.entry == null ? '—' : fmt(easiest.entry)}</b> installs, which makes it the cheapest place to prove the listing before spending anywhere else. The "cannot be used" column is small on every board: it counts only phrases naming a platform this app does not read, a modified client, or another developer's app. The WhatsApp phrases are not in it — those are compatibility phrases and this listing uses them.</p>`;
   }
 
   // ---------- metadata · our own store graphics ----------
 ```
 
-### `renderFoot()` (assets/app.js L742-746)
+### `renderMetaAssets()` (assets/app.js L851-865)
+
+```js
+  function renderMetaAssets() {
+    const box = $('m-assets-top'); if (!box) return;
+    const G = PAYLOAD.graphics || {}, me = (G.apps || []).find(a => a.id === D.meta.ours);
+    if (!me) { box.innerHTML = '<p class="small muted">No stored graphics for this listing.</p>'; return; }
+    const fig = (src, cap, cls) => `<figure class="${cls || ''}"><button class="shot" type="button" data-full="${esc(src)}" data-cap="${esc(cap)}"><img src="${esc(src)}" alt="${esc(cap)}" loading="lazy"></button><figcaption>${esc(cap)}</figcaption></figure>`;
+    const base = '../05-competitors-graphics/';
+    box.innerHTML = fig(base + me.feature, 'Feature graphic · 1024 × 500', 'fgfig') + fig(base + me.icon, 'App icon · 512 × 512', 'icofig');
+    const s = $('m-assets-shots');
+    if (s) s.innerHTML = (me.shots || []).map((x, i) => fig(base + x, `Screenshot ${i + 1} of ${me.shots.length}`)).join('');
+    const n = $('m-assets-note');
+    if (n) n.innerHTML = `The listing runs <b>${(me.shots || []).length}</b> phone screenshots of the 8 Google Play allows, an icon and a feature graphic. Every one of them is also in the <a href="../05-competitors-graphics/#apps">Competitor's Graphics</a> catalogue, side by side with the shelf.`;
+    if (typeof bindLightbox === 'function') bindLightbox();
+  }
+
+  // ---------- metadata · the phrases this listing does not use, and why ----------
+```
+
+### `renderPlatformKw()` (assets/app.js L866-883)
+
+```js
+  function renderPlatformKw() {
+    const box = $('m-platform-table'); if (!box) return;
+    const all = boardOf(state.gl);
+    const B = all.filter(r => !r.usable).sort((a, b) => b.O - a.O);
+    box.innerHTML = `<thead><tr><th>Keyword</th><th>Reason</th><th class="num">Opportunity</th><th class="num">Demand</th><th class="num">Entry bar</th><th>Why it is not in this metadata</th></tr></thead><tbody>` +
+      B.slice(0, 14).map(r => `<tr><td class="kw">${esc(r.k)}</td>
+        <td><span class="pill ${USE_PILL[r.use]}">${USE_LABEL[r.use]}</span></td>
+        <td class="num">${r.O}</td><td class="num">${r.D}</td><td class="num">${r.installs == null ? '—' : fmt(r.installs)}</td>
+        <td class="small">${esc(USE_WHY[r.use])}</td></tr>`).join('') + '</tbody>';
+    const n = $('m-platform-note');
+    if (n) {
+      const compat = all.filter(r => r.use === 'compat');
+      const compatO = compat.reduce((s, r) => s + r.O, 0), total = all.reduce((s, r) => s + r.O, 0);
+      const lost = B.reduce((s, r) => s + r.O, 0);
+      n.innerHTML = `<b>${compat.length}</b> of the ${all.length} phrases on this board name WhatsApp or WhatsApp Business, and between them they carry <b>${pct(compatO / total)}</b> of all the opportunity here. <b>This metadata uses them.</b> Naming the app a status saver reads is a description of its own function, not a claim of affiliation, and the live title check of 23 Sep 2026 found ten third-party titles doing exactly that — three above 1M installs, the oldest running since November 2018. The closing paragraph carries the disclaimer that keeps the usage descriptive. Only <b>${B.length}</b> phrases, worth <b>${pct(lost / total)}</b> of the board, are genuinely unusable, and the reason column says which of the three reasons applies to each.`;
+    }
+  }
+```
+
+### `renderFoot()` (assets/app.js L884-888)
 
 ```js
   function renderFoot() {
@@ -885,13 +1072,13 @@
   }
 ```
 
-### `renderAll()` (assets/app.js L747-764)
+### `renderAll()` (assets/app.js L889-906)
 
 ```js
   function renderAll() {
     renderScope();
     if (PAGE === 'playbook') { renderChips(); renderPlays(); renderCategories(); renderComp(); renderCompKeywords(); renderEvents(); renderMatrix(); renderStrips(); renderBoard(); renderMarketsCompare(); renderLadder(); renderListingPack(); renderMethod(); renderRisks(); }
-    if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderFieldTable(); renderCoverage(); renderTargets(); renderRankTable(); renderPolicy(); }
+    if (PAGE === 'metadata') { renderMetaHead(); renderLive(); renderPackage(); renderCompose(); renderFieldTable(); renderCoverage(); renderTargets(); renderFinalKw(); renderMetaLadder(); renderRankTable(); renderPlatformKw(); renderVsPackage(); renderMetaAssets(); renderPolicy(); }
     if (PAGE === 'features') { renderFeatChips(); renderCompleteness(); renderFmx(); renderOursCards(); renderEdgesGaps(); renderPricing(); renderSource(); }
     if (PAGE === 'graphics') { renderGfxChips(); renderIconWall(); renderFgGrid(); renderSystems(); renderCatalogue(); renderOursGraphics(); }
     renderFoot();
@@ -4942,8 +5129,8 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
         "Every app holding this shelf says \"Status Saver\" in its title. Ours says \"Status Downloader\". Both phrases are on the board, but \"status saver\" and its variants carry the demand: our title covers \"status downloader\" and \"video saver\", and misses \"status saver\", \"status saver app\" and \"status saver video download\" entirely."
       ],
       [
-        "The copy is already clean",
-        "No other company's brand name appears anywhere in the listing, repost is framed as permission-based, and the closing paragraph states the app is independent and unaffiliated. That is the hard part of this category, and it is already right — the rewrite keeps all of it."
+        "It never says which app it reads",
+        "The live listing describes statuses without naming WhatsApp once. That costs the whole compatibility cluster — 38 of the 110 phrases on this board name WhatsApp or WhatsApp Business, and they carry 36% of all the opportunity measured here. It also costs clarity: a user scanning the shelf cannot tell whether this app reads the statuses they actually have."
       ],
       [
         "It under-sells what the app actually does",
@@ -4956,103 +5143,146 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
     ]
   },
   "proposed": {
-    "title": "Status Saver & Downloader App",
+    "title": "Status Saver App for WhatsApp",
     "titleChars": 29,
-    "titleWhy": "Checked live against Google Play on 23 Sep 2026 in the United States and Pakistan: 25 live titles compared, no exact or near-exact collision. It carries four board phrases word for word — \"status saver\", \"status saver app\", \"status downloader app\" and \"status saver and downloader\" — where the current title carries none of them. The obvious alternatives are all taken: \"Status Saver: Video Downloader\" is the exact title of five live apps and \"Status Saver & Video Download\" of seven.",
-    "short": "Status saver and downloader: save status video, photo and story to gallery",
-    "shortChars": 73,
+    "titleWhy": "Checked live against the 23 Sep 2026 scrape of 217 listings: no exact or near-exact collision. It carries three board phrases word for word — \"status saver\", \"status saver app\" and \"status saver app for whatsapp\" — and every word of ten more, for 15% of the whole US board's priority, against 16% for the current title and 13% for the generic-only alternative \"Status Saver & Downloader App\". The \"X for WhatsApp\" form is the one Play's own shelf has validated: ten third-party titles name WhatsApp, three above 1M installs, and \"Sticker Maker for WhatsApp\" has run at 10M+ installs since November 2018. Leading with the brand — \"WhatsApp Status Saver\" — scores no better and reads like a first-party app, which is the form the impersonation policy actually catches. The obvious generic titles are all taken: \"Status Saver: Video Downloader\" is the exact title of five live apps and \"Status Saver & Video Download\" of seven.",
+    "short": "Save WhatsApp status video & photo to gallery - status saver and downloader",
+    "shortChars": 75,
     "outline": [
       [
-        "Save status video and photo to your gallery",
-        "Browse the status updates available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality — the same file, not a re-encoded copy."
+        "Save WhatsApp status video and photo to your gallery",
+        "Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added."
       ],
       [
-        "Both inboxes, one grid",
-        "Statuses from the standard and business versions of your messaging app appear in the same grid, images and videos together."
+        "WhatsApp and WhatsApp Business, one grid",
+        "Statuses from WhatsApp and from WhatsApp Business appear in the same grid, images and videos together, so a business status saver and a personal one are the same two taps."
       ],
       [
         "Watch offline, any time",
-        "Anything you save stays on your phone and opens from the app's own saved library, with or without a connection, long after the original update has gone."
+        "Anything you save stays on your phone and opens from the app's own saved library, with or without a connection, long after the original status has gone."
       ],
       [
         "Share, repost, keep favourites",
         "Share a saved status to any app, repost it with the content owner's permission, and mark the ones you want to find again as favourites."
       ],
-      ["Sticker packs built in","Bundled sticker packs you can add to your messaging app from the pack screen."],
+      ["Sticker packs built in","Bundled sticker packs you can add to WhatsApp from the pack screen."],
       [
         "Nine languages and a dark theme",
         "English, Arabic, German, French, Hindi, Portuguese, Turkish, Urdu and Chinese, with right-to-left layouts, plus a dark theme and a notification when new statuses arrive."
       ],
       [
         "Private by design",
-        "The app reads only the status folder you grant it through the system picker. It asks for no all-files access, and on Android 13 and later it asks for no photo or video permission at all."
+        "The app reads only the WhatsApp status folder you grant it through the system picker. It asks for no all-files access, and on Android 13 and later it asks for no photo or video permission at all."
       ],
       [
         "What it costs",
-        "The app is free and shows ads. A short opt-in video ad can appear before a save. Premium removes every ad — weekly or monthly, cancellable in Google Play."
+        "The app is free and shows ads. A short opt-in video ad can appear before a save. Premium removes every ad - weekly or monthly, cancellable in Google Play."
       ],
       [
-        "How to save a status",
-        "1. Open the status you want in your messaging app so it downloads there.\n2. Open this status saver app and grant the status folder once, through the system picker.\n3. Tap any photo or video in the grid to preview it.\n4. Tap save, and the status video or photo downloads straight to your gallery.\n5. Find it again in the saved library, where you can share it, repost it, favourite it or delete it."
+        "How to save a WhatsApp status",
+        "1. Open the status you want in WhatsApp so it downloads there.\n2. Open this status saver app and grant the status folder once, through the system picker.\n3. Tap any photo or video in the grid to preview it.\n4. Tap save, and the status video or photo downloads straight to your gallery.\n5. Find it again in the saved library, where you can share it, repost it, favourite it or delete it."
       ],
       [
         "Everything this status saver does",
-        "✓ Save status video and status photo to gallery\n✓ Status downloader for both the standard and business inbox\n✓ Original quality, no re-encoding and no watermark added\n✓ Preview before you save\n✓ Saved library with favourites\n✓ Watch saved statuses offline\n✓ Share or repost with permission\n✓ Sticker packs you can add to your messaging app\n✓ Dark theme, nine languages and right-to-left layouts\n✓ New-status notifications\n✓ Folder access only — no all-files permission"
+        "✓ Save status video and status photo to gallery\n✓ Status downloader for WhatsApp and WhatsApp Business\n✓ HD status saver - original quality, no re-encoding and no watermark added\n✓ Preview before you save\n✓ Saved library with favourites\n✓ Watch saved statuses offline\n✓ Share or repost with permission\n✓ Sticker packs you can add to WhatsApp\n✓ Dark theme, nine languages and right-to-left layouts\n✓ New-status notifications\n✓ Folder access only - no all-files permission"
       ],
       [
         "Who it is for",
-        "If you have been looking for a status saver, a status downloader app, a story saver, a video status saver, a photo status downloader or simply a way to save status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs."
+        "If you have been looking for a status saver, a status saver app for WhatsApp, a status downloader app, a story saver, a video status saver, a photo status downloader or simply a way to save WhatsApp status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs."
       ]
     ],
-    "close": "Only save, share or repost content you own or have permission to use. This app is an independent utility, not affiliated with, sponsored by or endorsed by any messaging or social media platform. All trademarks belong to their respective owners.",
-    "why": "Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those — two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk."
+    "close": "Status Saver App for WhatsApp is an independent utility. It is not affiliated with, sponsored by or endorsed by WhatsApp LLC or Meta Platforms, Inc. WhatsApp and WhatsApp Business are trademarks of WhatsApp LLC, used here only to describe the app this one reads statuses from. The app does not modify WhatsApp, does not support modified WhatsApp clients, and does not recover deleted messages. Only save, share or repost content you own or have permission to use. All trademarks belong to their respective owners.",
+    "why": "Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Naming WhatsApp is a description of what the app reads, not a claim of affiliation, and the closing paragraph carries the disclaimer that keeps it descriptive. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those - two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk."
   },
   "fields": [
     ["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."],
     ["status saver app","Title","Same tokens as the head term plus \"app\", which autocomplete offers nine times."],
-    ["status downloader app","Title","Keeps the phrase the current title already earns, so nothing is lost in the rewrite."],
-    ["status saver and downloader","Title","Carried word for word by the ampersand form."],
-    ["save status video","Short description","Highest-demand save phrase that carries no brand name."],
+    [
+      "status saver for whatsapp", "Title",
+      "Word for word in the title. The highest-priority compatibility phrase the title can hold in 29 characters, and the form the shelf has validated at 10M+ installs."
+    ],
+    ["status saver whatsapp","Title","Every word present in the title, at no extra character cost."],
+    ["save status whatsapp","Title","Covered by the title's own words; \"save\" is carried by \"saver\"."],
+    [
+      "save status video whatsapp", "Short description",
+      "The save cluster's highest-demand compatibility phrase, carried word for word by the short description."
+    ],
     [
       "status save to gallery", "Short description",
       "\"to gallery\" is the differentiator phrase on the board with the lowest competition of the save cluster."
     ],
-    ["status video download","Short description","Covered by the same tokens, no extra characters spent."],
-    ["story saver","Short description","One token away from the status cluster and a real search in its own right."],
-    ["status saver photo and video","Full description · opening","Written into the first sentence, where Play weights the description most."],
-    ["business status saver","Full description · both inboxes","A feature the app has and the listing never mentioned."],
+    ["save status video","Short description","Highest-demand save phrase on the board, covered by the same words."],
+    ["status downloader","Short description","Keeps the phrase the current title already earns, so nothing is lost in the rewrite."],
+    [
+      "whatsapp status downloader", "Full description · opening",
+      "The board's highest-priority compatibility phrase at P33. Written into the first section, where Play weights the description most."
+    ],
+    [
+      "whatsapp status saver", "Full description · opening",
+      "P29, second of the compatibility cluster, carried by the opening section and the checklist."
+    ],
+    ["whatsapp status video downloader","Full description · opening","Covered by the opening section's own words, at no extra length."],
+    [
+      "status video downloader app", "Full description · checklist",
+      "The highest-demand phrase on the whole board, 15 autocomplete hits. Covered without spending title characters on its 411M-install top ten."
+    ],
+    [
+      "status saver video downloader", "Full description · checklist",
+      "Second-highest demand phrase on the board, covered by the checklist's own words."
+    ],
+    [
+      "whatsapp business status saver", "Full description · both inboxes",
+      "A feature the app has and the listing never mentioned. Named explicitly now."
+    ],
+    ["status saver for whatsapp business","Full description · both inboxes","Carried word for word by the business-status section."],
     ["status saver gallery","Full description · saved library","Pairs the saved-library section with the gallery phrasing."],
     [
       "status saver hd", "Full description · original quality",
-      "Quality claim stated as \"original quality\", which is literally true — files are byte-identical."
+      "Quality claim stated as \"original quality\", which is literally true - files are byte-identical."
     ],
     ["status repost","Full description · share and repost","Kept permission-framed for the intellectual-property policy."],
-    ["status keeper","Full description · favourites","Covered by \"keep\" wording without spending title characters."]
+    [
+      "story saver for whatsapp", "Full description · who it is for",
+      "A real search in its own right, one token from the status cluster, and true of the app."
+    ]
   ],
   "reserved": [
     [
-      "status saver video downloader",
-      "Second-highest demand phrase with no brand name, but its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."
+      "status video downloader app",
+      "Carried by the full description but not the title. The most defended phrase on the board - 411M installs across its top ten - so it is worth title characters only once the app has ratings."
     ],
     [
-      "status video downloader app",
-      "The highest-demand non-brand phrase on the whole board (15 autocomplete hits) and the most defended: 411M installs across its top ten."
+      "status saver video downloader",
+      "Second-highest demand phrase on the board, and its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."
     ],
     ["auto status saver","Only worth targeting if auto-save is ever built. Claiming it now would be false."],
     ["status saver without watermark","True of our app, but the phrase reads as a competitor's problem; hold it for a later version."],
+    ["status saver dp downloader","P24 and genuinely adjacent, but the app does not download profile pictures. Build it or leave the phrase alone."],
     [
-      "whatsapp status saver and every other brand phrase",
-      "Highest demand in the category and permanently off-limits in our copy by house rule: no other company's brand name in store-listing or ad copy."
+      "story saver instagram, facebook and tiktok phrases",
+      "Not a brand problem - a truth problem. This app reads the WhatsApp status folder and nothing else, so claiming any of them would be a false listing, which is what Play's metadata policy actually prohibits."
+    ],
+    [
+      "gb whatsapp, fm whatsapp and other modified clients",
+      "Real demand, permanently off-limits. Play bans apps that facilitate modified clients, and the app does not support them."
     ]
   ],
   "policy": [
     [
-      "No brand name in any field",
-      "The proposed title, short description and full description were checked for every brand name in this category. None appears. The copy says \"your messaging app\", which is what Play's impersonation policy asks for and what the current listing already does."
+      "Naming WhatsApp is descriptive use, and it is checked",
+      "Play's impersonation policy prohibits falsely implying a relationship with another company. It does not prohibit naming the app a utility works with - a listing is required to describe what the app does. This listing names WhatsApp only to say which status folder it reads, never as the app's own identity: the developer name, the icon and the first word of the title are all ours, and the closing paragraph states in full that the app is independent and unaffiliated and that the trademarks belong to WhatsApp LLC."
     ],
     [
       "Live title check, run on 23 Sep 2026",
-      "Fourteen candidate titles were searched on Google Play in the United States and Pakistan and compared against every title returned. Five failed on an exact or near-exact collision — \"Status Saver: Video Downloader\" alone is the live title of five different apps. The chosen title was compared against 25 live titles with no collision. The full result is in research/aso-pipeline/titlecheck.json."
+      "The house rule needs at least five third-party titles using the term, at least two above 1M installs, and the oldest live three or more years. The 217 scraped listings return ten third-party titles naming WhatsApp or WA, three of them at or above 1M installs - \"Sticker Maker for WhatsApp\" twice at 10M+, live since November 2018 and December 2019, and \"Status Saver - for WA Business\" at 1M, live since October 2020. The check passes on every limb. The result is in research/aso-pipeline/titlecheck.json and the query is in brandcheck.ps1."
+    ],
+    [
+      "No collision with a live title",
+      "Fourteen candidate titles were compared against every title in the scrape. Five failed on an exact collision - \"Status Saver: Video Downloader\" alone is the live title of five different apps. The chosen title collides with none of them."
+    ],
+    [
+      "What is still off-limits, and why",
+      "Three things, none of them \"a brand name appeared\". Phrases naming a platform this app cannot read - Instagram, Facebook, TikTok - are excluded because the claim would be false, which is a metadata-accuracy problem. Phrases naming modified clients - GB, FM, YO WhatsApp - are excluded because Play bans facilitating them. Phrases naming another developer's app outright are excluded because that is the impersonation the policy is actually about."
     ],
     [
       "Every claim matches the app",
@@ -5064,29 +5294,82 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
     ],
     [
       "Repost stays permission-framed",
-      "Repost is described as \"with the content owner's permission\", and the closing paragraph keeps the independence and trademark notice the current listing already carries."
+      "Repost is described as \"with the content owner's permission\", and the closing paragraph keeps the independence and trademark notice."
     ],
     [
       "Permissions match the wording",
-      "The listing claims folder access only. The app asks for no all-files access and, since fix round 2, no photo or video permission on Android 13 and later — so the privacy paragraph is literally true."
+      "The listing claims folder access only. The app asks for no all-files access and, since fix round 2, no photo or video permission on Android 13 and later - so the privacy paragraph is literally true."
     ],
     [
       "No message-recovery claim",
-      "Two of the eight shelf holders advertise recovering deleted messages. The app does not do it, so the listing does not say it."
+      "Two of the eight shelf holders advertise recovering deleted messages. The app does not do it, so the listing does not say it - and the closing paragraph says so explicitly, which also distances the app from the modified-client crowd."
+    ],
+    [
+      "The icon and feature graphic still have to be fixed",
+      "Naming WhatsApp in the text is descriptive use. Putting WhatsApp's green-and-white phone mark, or the Instagram, Facebook and TikTok marks our current screenshots carry, into the store art is not. The store graphics are the open policy problem on this listing, not the copy."
+    ]
+  ],
+  "titleStrategy": {
+    "head": "Why this title, in 29 characters",
+    "body": "A title on this shelf is a keyword carrier, not a brand statement: the shelf holders average 3.1 board phrases word for word in theirs. The decision was between a generic-only title and one that names what the app reads. Generic-only tops out at 13% of board priority and says nothing a user can act on. \"Status Saver App for WhatsApp\" reaches 15%, carries three phrases word for word, and answers the one question a status-saver shopper actually has. It keeps our own word first, so the title reads as our product working with WhatsApp rather than as WhatsApp's own app - which is the line the impersonation policy draws."
+  },
+  "practices": [
+    [
+      "Relevance before demand",
+      "A phrase the app cannot honestly answer scores zero, however much demand it carries. That is why the Instagram and TikTok clusters are out even though they are searched heavily."
+    ],
+    [
+      "Word for word beats every word present",
+      "Play matches phrases, so the title and short description spend their characters on exact board phrases and let the full description pick up token coverage."
+    ],
+    [
+      "The title holds the head term",
+      "\"status saver\" and \"status saver app\" go in the title because Play weights it most, and because every app holding this shelf does the same."
+    ],
+    [
+      "The description carries the defended phrases",
+      "\"status video downloader app\" and \"status saver video downloader\" have 411M-install top tens. They are covered in the description, where coverage is free, rather than in a title that cannot win them yet."
+    ],
+    [
+      "Every claim is checked against the emulator, not the board",
+      "The 17 Sep 2026 QA round decides what may be written. The keyword list only decides which true things to say first."
+    ]
+  ],
+  "vsPackage": [
+    [
+      "Title", "Status Saver & Downloader App", "Status Saver App for WhatsApp",
+      "The playbook's package predates the corrected use rule and was written to avoid every product name. Naming WhatsApp adds the compatibility cluster and 2 points of board priority for the same 29 characters."
+    ],
+    [
+      "Short description", "Status saver and downloader: save status video, photo and story to gallery",
+      "Save WhatsApp status video & photo to gallery - status saver and downloader",
+      "Same length class, one more exact phrase, and it now says which statuses."
+    ],
+    [
+      "Full description", "\"your messaging app\" throughout", "WhatsApp and WhatsApp Business named",
+      "The old copy used a euphemism in eight places to avoid a name it was always allowed to use. Each one is now the actual app name, which is both clearer and searchable."
+    ],
+    [
+      "Disclaimer", "One sentence, generic", "Four sentences, specific",
+      "Because the copy now names the trademark, the closing paragraph does the work that keeps the use descriptive: independence, ownership, no modification, no message recovery."
+    ],
+    [
+      "Board priority covered", "13%", "15%",
+      "Title only. Across all three fields the compatibility cluster adds 36% of the board that the previous package scored at zero."
     ]
   ],
   "risks": [
-    [
-      "The highest-demand phrases in this category are brand phrases",
-      "\"whatsapp status downloader\", \"whatsapp status saver\" and their variants carry the most autocomplete demand on the board, and house rules keep all of them out of our copy. That is a deliberate ceiling: this listing competes only on generic phrases, and the plan has to be judged on that basis, not against apps that spend their titles on a brand name."
-    ],
     [
       "Metadata alone will not move a listing with 10+ installs",
       "Zero placements today across 110 keywords in three markets. Metadata decides what the app is eligible for; installs, ratings and retention decide whether it ranks. Expect the rewrite to show up first on the long tail, not on \"status saver\"."
     ],
     [
+      "Descriptive use is allowed by Play, and still annoys trademark owners",
+      "Play's policy is the test this listing has to pass, and it passes it. Separately from Play, a trademark owner can file a complaint against any app naming their mark, and Meta has done so in this category before. Keeping our own word first in the title, keeping the disclaimer in the description, and keeping the mark out of the icon are what make that complaint fail. Do not drop any of the three."
+    ],
+    [
       "The obvious titles are taken, several times over",
-      "Four of the six most natural titles for this app are already the exact title of live apps. Never ship a title without running the check again on the day — this shelf changes monthly."
+      "Four of the six most natural titles for this app are already the exact title of live apps. Never ship a title without running the check again on the day - this shelf changes monthly."
     ],
     [
       "The rewarded ad before saving is the policy tripwire",
@@ -5095,6 +5378,10 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
     [
       "Do not copy the shelf's riskiest claims",
       "Message recovery, \"view deleted messages\" and mod-app support appear on competitor listings in this category. They attract both takedowns and one-star reviews, and the app does none of them."
+    ],
+    [
+      "The store graphics are still non-compliant",
+      "Our screenshots and feature graphic carry the Instagram, Facebook and TikTok marks, and the feature graphic claims \"Reply Instantly\", which the app cannot do. Naming WhatsApp in the text does not license any of that. Fix the art before the next listing update."
     ],
     [
       "Data safety still says data is not encrypted",
@@ -5108,7 +5395,11 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
     ],
     [
       "The board",
-      "Every phrase is scored for relevance to what this app does, demand from autocomplete, and the installs behind its top ten. Priority puts relevance first and halves any phrase carrying a brand name, because those can be measured but never used."
+      "Every phrase is scored for relevance to what this app does, demand from autocomplete, and the installs behind its top ten. Priority puts relevance first, then multiplies by whether the listing may use the phrase at all - which is a question about accuracy and impersonation, not about whether a product name appears."
+    ],
+    [
+      "The use rule",
+      "Each phrase is classed as generic, compatibility, off-app, mod-client or rival-name. Only the last three score zero. The compatibility class was scored at zero in the first run of this research, which was wrong: it cost the board 36% of its opportunity and produced a listing written in euphemisms. Corrected on 23 Sep 2026 against Play's policy text and the live title check."
     ],
     [
       "The copy",
@@ -5116,7 +5407,7 @@ These are exact copies of the values in [assets/data.js](../../assets/data.js); 
     ],
     [
       "The checks",
-      "The title check and the brand check are scripts in research/aso-pipeline, and their output is committed next to the data, so any claim on this tab can be re-run."
+      "The title check and the use check are scripts in research/aso-pipeline - titlecheck.ps1 and brandcheck.ps1 - and their output is committed next to the data, so any claim on this tab can be re-run."
     ]
   ]
 }

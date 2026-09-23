@@ -4,13 +4,13 @@
 
 ## research/
 
-1 files · 4 KB
+1 files · 6 KB
 
-- **[README.md](../research/README.md)** · 4 KB · Markdown: “Research behind the Status Saver tabs”, “aso-pipeline/”, “What the run of 23 Sep 2026 found”, “Sources behind the product dossier (Status Saver tab)”, “Rules for this folder”
+- **[README.md](../research/README.md)** · 6 KB · Markdown: “Research behind the Status Saver tabs”, “aso-pipeline/”, “What the run of 23 Sep 2026 found”, “Sources behind the product dossier (Status Saver tab)”, “Rules for this folder”
 
 ## research/aso-pipeline/
 
-20 files · 3.0 MB
+23 files · 3.1 MB
 
 - **[analyze.ps1](../research/aso-pipeline/analyze.ps1)** · 7 KB · PowerShell script, 162 lines. Stage 3 of the Status Saver ASO pipeline: turn the raw scrape into the compact payload the tabs read. Reads suggest/demand/universe/serps/apps.json, writes data.json (and prints a summary for the write-up). powershell -ExecutionPolicy Bypass -File analyze.ps1 Functions: `Read-Json`, `ToHash`, `Get-Category`.
 - **[apps.json](../research/aso-pipeline/apps.json)** · 1.1 MB · JSON, object with 221 keys:
@@ -5234,7 +5234,8 @@
     - `icon` · string · e.g. `"https://play-lh.googleusercontent.com/E-6VIfVizGalBAm2tGwcj3WiWI1708Ef…"`
     - `header` · string · e.g. `"https://play-lh.googleusercontent.com/uUertTwb-PFPXgv3Pmb9Svrufu6L0uQt…"`
     - `screenshots[]` · array of 6 string · e.g. `["https://play-lh.googleusercontent.com/f9a5iJDm_7I4DHZSF7zFgaV13wqKPxEJIFT9Gy9rT0rdrkIxWDJ2xEpdXcV38Mk4PXjTKJclLTD0nFHxmqkLXw","https://play-lh.googleusercontent.com/Py7O4PIsKuBrFXp6NFAsYBO06QWdhzM25ePeaoacBGNHvZr-3WFfySakKRmo8DiYqOckyUoJVZby4jXaUr0khpY","https://play-lh.googleusercontent.com/0i0PBGU0-YYBuacliQhvaN6epts5-saw9c6JDP6Y_Thdd_QQ8akdaToxFHc1AAM6Egh-cAv4Gf42NTMNC9MhpA","https://play-lh.googleusercontent.com/7lLLpvjjzxBJgt0PNRH1k97WXDAhLDnIAcLmAQiMrvHhjgbLZaysuAk_pY4Tw_FbvFiHG6IEHMdTVp-Lg-p2"]`
-- **[build.ps1](../research/aso-pipeline/build.ps1)** · 2 KB · PowerShell script, 56 lines. Stage 5: assemble assets/data.js — the single payload every data-driven tab reads. Sources: data.json (scrape + scores), features.json (feature evidence), ours.json (our app, checked on the emulator), listing.json (the proposed copy and the written sections). Nothing is typed twice: if a number is wrong here, it is wrong in the JSON, and the JSON came from Google Play. powershell -ExecutionPolicy Bypass -File build.ps1 Functions: `Read-Json`.
+- **[brandcheck.ps1](../research/aso-pipeline/brandcheck.ps1)** · 6 KB · PowerShell script, 125 lines. The use check: which board phrases this listing may use, and why the rest may not. Reads data.json only - no network, so it is safe to re-run at any time and it never touches Google Play. It answers the two questions the metadata tab makes claims about: 1. Does the house live-title check pass for naming WhatsApp? (5+ third-party titles, 2+ above 1M installs, the oldest live 3+ years.) The answer comes from the 217 listings already scraped. 2. How is every keyword on the board classed, and how much opportunity does each class carry? Background: the first run of this research treated any phrase containing a product name as unusable and halved its priority. That was wrong. Play's impersonation policy prohibits falsely implying a relationship with another company; it does not prohibit a utility naming the app it reads from, which is a description Functions: `Get-UseClass`, `Get-Tier`.
+- **[build.ps1](../research/aso-pipeline/build.ps1)** · 2 KB · PowerShell script, 60 lines. Stage 5: assemble assets/data.js — the single payload every data-driven tab reads. Sources: data.json (scrape + scores), features.json (feature evidence), ours.json (our app, checked on the emulator), listing.json (the proposed copy and the written sections). Nothing is typed twice: if a number is wrong here, it is wrong in the JSON, and the JSON came from Google Play. powershell -ExecutionPolicy Bypass -File build.ps1 Functions: `Read-Json`.
 - **[candidates.json](../research/aso-pipeline/candidates.json)** · 22 KB · JSON, array of 667:
   - `(root)[]` · array of 667 string · e.g. `["ai god status video","all festival video status app","all god video status","all god video status app"]`
 - **[collect.ps1](../research/aso-pipeline/collect.ps1)** · 6 KB · PowerShell script, 141 lines. Stage 1-2 of the Status Saver ASO pipeline: build the keyword universe from Play autocomplete, fetch live result lists (depth 30) for every keyword in every market, then fetch details for every app that reaches a top-10 slot. Everything is cached by lib.ps1, so re-running is cheap. powershell -ExecutionPolicy Bypass -File collect.ps1 Writes: suggest.json, universe.json, serps.json, apps.json Functions: `Norm`.
@@ -5338,7 +5339,7 @@
     - `shots[]` · array of 4 string · e.g. `["img/com-statussaver-videosaver-downloadstatus-storysaver/shot-1.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-2.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-3.jpg","img/com-statussaver-videosaver-downloadstatus-storysaver/shot-4.jpg"]`
 - **[graphics.ps1](../research/aso-pipeline/graphics.ps1)** · 3 KB · PowerShell script, 71 lines. Stage 6: the competitors' store graphics. Downloads the icon, feature graphic and screenshots of every app in the feature comparison straight from Google Play's image host into the Competitor's Graphics tab folder, and writes graphics.json with the local paths so the tab never hotlinks Google's servers. powershell -ExecutionPolicy Bypass -File graphics.ps1 Functions: `Read-Json`, `ToHash`, `Save-Image`.
 - **[lib.ps1](../research/aso-pipeline/lib.ps1)** · 9 KB · PowerShell script, 196 lines. Google Play scraping library for the Status Saver ASO pipeline. A PowerShell 5.1 port of the Node lib.js used for the Cloud Storage app's pipeline, because this PC has no Node. Every response is cached under cache/ by an MD5 of its key; delete cache/ to force a fresh scrape. . .\lib.ps1 $r = Get-PlaySearch -Query 'status saver' -Depth 30 -Gl US $d = Get-PlayDetails -AppId com.whatsapp $s = Get-PlaySuggest -Term 'status s' -Gl US Functions: `Get-CacheFile`, `Invoke-Cached`, `Get-Text`, `Get-DsBlocks`, `Get-At`, `Get-FirstAppId`, `Get-PlaySearch`, `Get-PlayDetails`, `Get-PlaySuggest`.
-- **[listing.json](../research/aso-pipeline/listing.json)** · 13 KB · JSON, object with 8 keys:
+- **[listing.json](../research/aso-pipeline/listing.json)** · 21 KB · JSON, object with 11 keys:
   - `app` · object with 6 keys:
     - `package` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
     - `developer` · string · e.g. `"Cell Cave"`
@@ -5352,19 +5353,32 @@
     - `descChars` · number · e.g. `2577`
     - `read[][]` · array of 4 arrays · e.g. `["The title spends 30 characters without the head term","Every app holding this shelf says \"Status Saver\" in its title. Ours says \"Status Downloader\". Both phrases are on the board, but \"status saver\" and its variants carry the demand: our title covers \"status downloader\" and \"video saver\", and misses \"status saver\", \"status saver app\" and \"status saver video download\" entirely."]`
   - `proposed` · object with 8 keys:
-    - `title` · string · e.g. `"Status Saver & Downloader App"`
+    - `title` · string · e.g. `"Status Saver App for WhatsApp"`
     - `titleChars` · number · e.g. `29`
-    - `titleWhy` · string · e.g. `"Checked live against Google Play on 23 Sep 2026 in the United States a…"`
-    - `short` · string · e.g. `"Status saver and downloader: save status video, photo and story to gal…"`
-    - `shortChars` · number · e.g. `73`
-    - `outline[][]` · array of 11 arrays · e.g. `["Save status video and photo to your gallery","Browse the status updates available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality — the same file, not a re-encoded copy."]`
-    - `close` · string · e.g. `"Only save, share or repost content you own or have permission to use. …"`
+    - `titleWhy` · string · e.g. `"Checked live against the 23 Sep 2026 scrape of 217 listings: no exact …"`
+    - `short` · string · e.g. `"Save WhatsApp status video & photo to gallery - status saver and downl…"`
+    - `shortChars` · number · e.g. `75`
+    - `outline[][]` · array of 11 arrays · e.g. `["Save WhatsApp status video and photo to your gallery","Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added."]`
+    - `close` · string · e.g. `"Status Saver App for WhatsApp is an independent utility. It is not aff…"`
     - `why` · string · e.g. `"Every phrase in these fields appears on the keyword board, and every c…"`
-  - `fields[][]` · array of 14 arrays · e.g. `["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."]`
-  - `reserved[][]` · array of 5 arrays · e.g. `["status saver video downloader","Second-highest demand phrase with no brand name, but its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."]`
-  - `policy[][]` · array of 7 arrays · e.g. `["No brand name in any field","The proposed title, short description and full description were checked for every brand name in this category. None appears. The copy says \"your messaging app\", which is what Play's impersonation policy asks for and what the current listing already does."]`
-  - `risks[][]` · array of 6 arrays · e.g. `["The highest-demand phrases in this category are brand phrases","\"whatsapp status downloader\", \"whatsapp status saver\" and their variants carry the most autocomplete demand on the board, and house rules keep all of them out of our copy. That is a deliberate ceiling: this listing competes only on generic phrases, and the plan has to be judged on that basis, not against apps that spend their titles on a brand name."]`
-  - `built[][]` · array of 4 arrays · e.g. `["The scrape","Google Play's own search results to depth 30, its autocomplete, and the full listing of every app that reached a top-10 slot, read on 23 Sep 2026 in the United States, Pakistan and India. 110 keywords, 330 live result lists, 217 app listings."]`
+  - `fields[][]` · array of 20 arrays · e.g. `["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."]`
+  - `reserved[][]` · array of 7 arrays · e.g. `["status video downloader app","Carried by the full description but not the title. The most defended phrase on the board - 411M installs across its top ten - so it is worth title characters only once the app has ratings."]`
+  - `policy[][]` · array of 10 arrays · e.g. `["Naming WhatsApp is descriptive use, and it is checked","Play's impersonation policy prohibits falsely implying a relationship with another company. It does not prohibit naming the app a utility works with - a listing is required to describe what the app does. This listing names WhatsApp only to say which status folder it reads, never as the app's own identity: the developer name, the icon and the first word of the title are all ours, and the closing paragraph states in full that the app is independent and unaffiliated and that the trademarks belong to WhatsApp LLC."]`
+  - `titleStrategy` · object with 2 keys:
+    - `head` · string · e.g. `"Why this title, in 29 characters"`
+    - `body` · string · e.g. `"A title on this shelf is a keyword carrier, not a brand statement: the…"`
+  - `practices[][]` · array of 5 arrays · e.g. `["Relevance before demand","A phrase the app cannot honestly answer scores zero, however much demand it carries. That is why the Instagram and TikTok clusters are out even though they are searched heavily."]`
+  - `vsPackage[][]` · array of 5 arrays · e.g. `["Title","Status Saver & Downloader App","Status Saver App for WhatsApp","The playbook's package predates the corrected use rule and was written to avoid every product name. Naming WhatsApp adds the compatibility cluster and 2 points of board priority for the same 29 characters."]`
+  - `risks[][]` · array of 7 arrays · e.g. `["Metadata alone will not move a listing with 10+ installs","Zero placements today across 110 keywords in three markets. Metadata decides what the app is eligible for; installs, ratings and retention decide whether it ranks. Expect the rewrite to show up first on the long tail, not on \"status saver\"."]`
+  - `built[][]` · array of 5 arrays · e.g. `["The scrape","Google Play's own search results to depth 30, its autocomplete, and the full listing of every app that reached a top-10 slot, read on 23 Sep 2026 in the United States, Pakistan and India. 110 keywords, 330 live result lists, 217 app listings."]`
+- **[offers.json](../research/aso-pipeline/offers.json)** · 3 KB · JSON, object with 3 keys:
+  - `checkedOn` · string · e.g. `"2026-09-23"`
+  - `markets[]` · array of 3 string · e.g. `["US","PK","IN"]`
+  - `apps[]` · array of 13 objects:
+    - `id` · string · e.g. `"com.statussaver.videosaver.downloadstatus.storysaver"`
+    - `US` · boolean · e.g. `false`
+    - `PK` · boolean · e.g. `false`
+    - `IN` · boolean · e.g. `false`
 - **[ours.json](../research/aso-pipeline/ours.json)** · 3 KB · JSON, object with 5 keys:
   - `note` · string · e.g. `"Our app's column in the feature matrix comes from the app itself, chec…"`
   - `checkedOn` · string · e.g. `"2026-09-17"`
@@ -8297,4 +8311,28 @@
 - **[titlecheck.ps1](../research/aso-pipeline/titlecheck.ps1)** · 3 KB · PowerShell script, 72 lines. Title check: for each candidate title, search Google Play live and compare it against every title that comes back, so no candidate ships that repeats another app's exact or near-exact title. Also flags any brand name in the candidate. Writes titlecheck.json and prints the verdicts. powershell -ExecutionPolicy Bypass -File titlecheck.ps1 Functions: `Norm`, `TokenSet`.
 - **[universe.json](../research/aso-pipeline/universe.json)** · 4 KB · JSON, array of 110:
   - `(root)[]` · array of 110 string · e.g. `["all status saver","business status saver","download status","full video status uploader"]`
+- **[usecheck.json](../research/aso-pipeline/usecheck.json)** · 46 KB · JSON, object with 5 keys:
+  - `checkedOn` · string · e.g. `"2026-09-23"`
+  - `market` · string · e.g. `"US"`
+  - `titleCheck` · object with 6 keys:
+    - `rule` · string · e.g. `"5+ third-party titles, 2+ above 1M installs, oldest live 3+ years"`
+    - `titles[]` · array of 10 objects with keys `title`, `appId`, `installs`, `ratings`, `released`, `years`
+    - `thirdParty` · number · e.g. `10`
+    - `aboveOneM` · number · e.g. `3`
+    - `oldestYears` · number · e.g. `7.8`
+    - `verdict` · string · e.g. `"PASS"`
+  - `byClass[]` · array of 4 objects:
+    - `use` · string · e.g. `"free"`
+    - `keywords` · number · e.g. `59`
+    - `opportunity` · number · e.g. `1111`
+    - `shareOfBoard` · number · e.g. `52`
+  - `board[]` · array of 110 objects:
+    - `keyword` · string · e.g. `"status video downloader app"`
+    - `tier` · string · e.g. `"A"`
+    - `use` · string · e.g. `"free"`
+    - `hits` · number · e.g. `15`
+    - `demand` · number · e.g. `99`
+    - `competition` · number · e.g. `96`
+    - `opportunity` · number · e.g. `37`
+    - `priority` · number · e.g. `37`
 

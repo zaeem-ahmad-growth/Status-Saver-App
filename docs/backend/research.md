@@ -6,6 +6,7 @@
 ## Contents
 
 - [research/aso-pipeline/analyze.ps1](#researchaso-pipelineanalyzeps1)
+- [research/aso-pipeline/brandcheck.ps1](#researchaso-pipelinebrandcheckps1)
 - [research/aso-pipeline/build.ps1](#researchaso-pipelinebuildps1)
 - [research/aso-pipeline/collect.ps1](#researchaso-pipelinecollectps1)
 - [research/aso-pipeline/features.ps1](#researchaso-pipelinefeaturesps1)
@@ -17,9 +18,11 @@
 - [research/aso-pipeline/graphics-notes.json](#researchaso-pipelinegraphics-notesjson)
 - [research/aso-pipeline/graphics.json](#researchaso-pipelinegraphicsjson)
 - [research/aso-pipeline/listing.json](#researchaso-pipelinelistingjson)
+- [research/aso-pipeline/offers.json](#researchaso-pipelineoffersjson)
 - [research/aso-pipeline/ours.json](#researchaso-pipelineoursjson)
 - [research/aso-pipeline/titlecheck.json](#researchaso-pipelinetitlecheckjson)
 - [research/aso-pipeline/universe.json](#researchaso-pipelineuniversejson)
+- [research/aso-pipeline/usecheck.json](#researchaso-pipelineusecheckjson)
 
 ## Scripts
 
@@ -189,6 +192,135 @@ Write-Host ''
 Write-Host ("data.json written: {0} apps, {1} keywords, {2} lists" -f $appList.Count, $universe.Count, $data.meta.lists)
 ```
 
+### research/aso-pipeline/brandcheck.ps1
+
+```powershell
+# The use check: which board phrases this listing may use, and why the rest may not.
+#
+# Reads data.json only - no network, so it is safe to re-run at any time and it never touches Google Play.
+# It answers the two questions the metadata tab makes claims about:
+#
+#   1. Does the house live-title check pass for naming WhatsApp? (5+ third-party titles, 2+ above 1M
+#      installs, the oldest live 3+ years.) The answer comes from the 217 listings already scraped.
+#   2. How is every keyword on the board classed, and how much opportunity does each class carry?
+#
+# Background: the first run of this research treated any phrase containing a product name as unusable and
+# halved its priority. That was wrong. Play's impersonation policy prohibits falsely implying a relationship
+# with another company; it does not prohibit a utility naming the app it reads from, which is a description
+# of the app's own function. What is genuinely unusable is a phrase that would make the listing false
+# (a platform we cannot read), one Play bans outright (a modified client), or another developer's product name.
+#
+#   powershell -ExecutionPolicy Bypass -File brandcheck.ps1
+#   powershell -ExecutionPolicy Bypass -File brandcheck.ps1 -Market PK -Json
+
+param([string]$Market = 'US', [switch]$Json)
+
+$ErrorActionPreference = 'Stop'
+$OUT = $PSScriptRoot
+$d = Get-Content (Join-Path $OUT 'data.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+$ours = $d.meta.ours
+
+# ---- 1. the live title check ------------------------------------------------
+# Titles that name the host app, excluding our own listing and WhatsApp's own apps.
+$hostRx = '(?i)(whatsapp|whats app|\bWA\b)'
+$titleRows = $d.apps |
+  Where-Object { $_[1] -match $hostRx -and $_[0] -ne $ours -and $_[0] -notlike 'com.whatsapp*' } |
+  ForEach-Object {
+    [PSCustomObject]@{
+      title = $_[1]; appId = $_[0]; installs = [long]$_[3]; ratings = $_[5]
+      released = $_[6]
+      years = if ($_[6]) { [Math]::Round(((Get-Date $d.meta.fetchedAt) - [datetime]$_[6]).TotalDays / 365.25, 1) } else { $null }
+    }
+  } | Sort-Object installs -Descending
+
+$big = @($titleRows | Where-Object { $_.installs -ge 1000000 })
+$oldest = $titleRows | Where-Object { $_.years } | Sort-Object years -Descending | Select-Object -First 1
+$titlePass = ($titleRows.Count -ge 5) -and ($big.Count -ge 2) -and ($oldest -and $oldest.years -ge 3)
+
+# ---- 2. the use classification ---------------------------------------------
+function Get-UseClass([string]$k) {
+  if ($k -match '\b(gb ?whatsapp|fm ?whatsapp|yo ?whatsapp|gbwa|whatsapp plus)\b') { return 'mod' }
+  if ($k -match '\b(lazy genius|native craft|sara tech|xtx|vmate|mx player|radha krishna)\b') { return 'rival' }
+  if ($k -match '\b(instagram|insta|ig|facebook|fb|tiktok|snapchat|snap|telegram|youtube)\b') { return 'offapp' }
+  if ($k -match '\b(whatsapp|whats app|wa)\b') { return 'compat' }
+  return 'free'
+}
+function Get-Tier([string]$k) {
+  $subj = $k -match '\b(status|statuses|stories|story|stori)\b'
+  $verb = $k -match '\b(saver|save|saving|download|downloader|downloading|keeper|keep|repost|reposter)\b'
+  if ($subj -and $verb) { return 'A' }
+  if ($subj) { return 'B' }
+  if (($k -match '\b(video|photo|image|media|reels?)\b') -and $verb) { return 'B' }
+  if ($k -match '\b(sticker|dp|profile pic|wallpaper|quote|gallery|vault)\b') { return 'C' }
+  return 'D'
+}
+# These weights mirror assets/app.js exactly. If one changes, change both.
+$TW = @{ A = 1.0; B = 0.6; C = 0.3; D = 0.0 }
+$UW = @{ free = 1.0; compat = 1.0; offapp = 0.0; mod = 0.0; rival = 0.0 }
+$maxHits = ($d.markets.PSObject.Properties | ForEach-Object { $_.Value } | ForEach-Object { $_[2] } |
+  Measure-Object -Maximum).Maximum
+if (-not $maxHits) { $maxHits = 1 }
+
+# [Math]::Min(1, <double>) picks the int overload in PowerShell and rounds the argument. Keep the 1.0.
+$board = foreach ($r in $d.markets.$Market) {
+  $k = $r[0]
+  $demand = [Math]::Min(1.0, $r[2] / $maxHits)
+  $posB = if ($r[3] -lt 99) { (20 - [Math]::Min(20.0, $r[3])) / 20 } else { 0 }
+  $dS = [Math]::Round(100 * [Math]::Min(1.0, $demand * 0.75 + $posB * 0.25))
+  $comp = [Math]::Min(1.0, [Math]::Log10(($r[5] + 10)) / 9)
+  $opp = [Math]::Round(100 * ($dS / 100) * (0.35 + 0.65 * (1 - $comp)))
+  $use = Get-UseClass $k
+  [PSCustomObject]@{
+    keyword = $k; tier = (Get-Tier $k); use = $use; hits = $r[2]
+    demand = $dS; competition = [Math]::Round($comp * 100); opportunity = $opp
+    priority = [Math]::Round($TW[(Get-Tier $k)] * $opp * $UW[$use])
+  }
+}
+$totalO = ($board | Measure-Object opportunity -Sum).Sum
+$byClass = $board | Group-Object use | ForEach-Object {
+  $o = ($_.Group | Measure-Object opportunity -Sum).Sum
+  [PSCustomObject]@{ use = $_.Name; keywords = $_.Count; opportunity = $o; shareOfBoard = [Math]::Round(100 * $o / $totalO) }
+} | Sort-Object opportunity -Descending
+
+$result = [ordered]@{
+  checkedOn   = $d.meta.fetchedAt
+  market      = $Market
+  titleCheck  = [ordered]@{
+    rule       = '5+ third-party titles, 2+ above 1M installs, oldest live 3+ years'
+    titles     = @($titleRows)
+    thirdParty = $titleRows.Count
+    aboveOneM  = $big.Count
+    oldestYears = if ($oldest) { $oldest.years } else { $null }
+    verdict    = if ($titlePass) { 'PASS' } else { 'FAIL' }
+  }
+  byClass     = @($byClass)
+  board       = @($board | Sort-Object priority, opportunity -Descending)
+}
+
+if ($Json) {
+  $result | ConvertTo-Json -Depth 8 | Out-File (Join-Path $OUT 'usecheck.json') -Encoding utf8
+  Write-Host "usecheck.json written"
+  return
+}
+
+Write-Host ""
+Write-Host "Live title check - third-party titles naming the host app ($($d.meta.fetchedAt))"
+$titleRows | ForEach-Object { "  {0,-34} {1,-12} {2,5} yrs  {3}" -f $_.title, $_.installs, $_.years, $_.appId }
+Write-Host ""
+Write-Host ("  third-party titles {0} (need 5)   above 1M {1} (need 2)   oldest {2} yrs (need 3)   => {3}" -f `
+    $titleRows.Count, $big.Count, $(if ($oldest) { $oldest.years } else { 0 }), $(if ($titlePass) { 'PASS' } else { 'FAIL' }))
+Write-Host ""
+Write-Host "Board by use class - $Market"
+$byClass | ForEach-Object { "  {0,-8} {1,3} keywords   opportunity {2,5}   {3,3}% of board" -f $_.use, $_.keywords, $_.opportunity, $_.shareOfBoard }
+Write-Host ""
+Write-Host "  free   = names nobody                    usable"
+Write-Host "  compat = names the app we read           usable, descriptive"
+Write-Host "  offapp = platform we cannot read         unusable: the claim would be false"
+Write-Host "  mod    = modified client                 unusable: Play bans facilitating them"
+Write-Host "  rival  = another developer's product     unusable: that is impersonation"
+Write-Host ""
+```
+
 ### research/aso-pipeline/build.ps1
 
 ```powershell
@@ -216,6 +348,9 @@ $ours = Read-Json 'ours.json'
 $listing = Read-Json 'listing.json'
 $graphics = Read-Json 'graphics.json'
 $gnotes = Read-Json 'graphics-notes.json'
+# The live Events & offers check of all 13 listings. Kept as its own source so a rebuild cannot drop it;
+# it used to be appended to assets/data.js by hand after this script ran.
+$offers = Read-Json 'offers.json'
 
 # Our own column in the feature matrix is the emulator check, not the listing text.
 $ourIdx = 0
@@ -236,6 +371,7 @@ $payload = [ordered]@{
   listing  = $listing
   graphics = $graphics
   gnotes   = $gnotes
+  offersChecked = $offers
 }
 
 $json = $payload | ConvertTo-Json -Depth 14 -Compress
@@ -1539,8 +1675,8 @@ foreach ($c in $CANDIDATES) {
         "Every app holding this shelf says \"Status Saver\" in its title. Ours says \"Status Downloader\". Both phrases are on the board, but \"status saver\" and its variants carry the demand: our title covers \"status downloader\" and \"video saver\", and misses \"status saver\", \"status saver app\" and \"status saver video download\" entirely."
       ],
       [
-        "The copy is already clean",
-        "No other company's brand name appears anywhere in the listing, repost is framed as permission-based, and the closing paragraph states the app is independent and unaffiliated. That is the hard part of this category, and it is already right — the rewrite keeps all of it."
+        "It never says which app it reads",
+        "The live listing describes statuses without naming WhatsApp once. That costs the whole compatibility cluster — 38 of the 110 phrases on this board name WhatsApp or WhatsApp Business, and they carry 36% of all the opportunity measured here. It also costs clarity: a user scanning the shelf cannot tell whether this app reads the statuses they actually have."
       ],
       [
         "It under-sells what the app actually does",
@@ -1553,103 +1689,146 @@ foreach ($c in $CANDIDATES) {
     ]
   },
   "proposed": {
-    "title": "Status Saver & Downloader App",
+    "title": "Status Saver App for WhatsApp",
     "titleChars": 29,
-    "titleWhy": "Checked live against Google Play on 23 Sep 2026 in the United States and Pakistan: 25 live titles compared, no exact or near-exact collision. It carries four board phrases word for word — \"status saver\", \"status saver app\", \"status downloader app\" and \"status saver and downloader\" — where the current title carries none of them. The obvious alternatives are all taken: \"Status Saver: Video Downloader\" is the exact title of five live apps and \"Status Saver & Video Download\" of seven.",
-    "short": "Status saver and downloader: save status video, photo and story to gallery",
-    "shortChars": 73,
+    "titleWhy": "Checked live against the 23 Sep 2026 scrape of 217 listings: no exact or near-exact collision. It carries three board phrases word for word — \"status saver\", \"status saver app\" and \"status saver app for whatsapp\" — and every word of ten more, for 15% of the whole US board's priority, against 16% for the current title and 13% for the generic-only alternative \"Status Saver & Downloader App\". The \"X for WhatsApp\" form is the one Play's own shelf has validated: ten third-party titles name WhatsApp, three above 1M installs, and \"Sticker Maker for WhatsApp\" has run at 10M+ installs since November 2018. Leading with the brand — \"WhatsApp Status Saver\" — scores no better and reads like a first-party app, which is the form the impersonation policy actually catches. The obvious generic titles are all taken: \"Status Saver: Video Downloader\" is the exact title of five live apps and \"Status Saver & Video Download\" of seven.",
+    "short": "Save WhatsApp status video & photo to gallery - status saver and downloader",
+    "shortChars": 75,
     "outline": [
       [
-        "Save status video and photo to your gallery",
-        "Browse the status updates available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality — the same file, not a re-encoded copy."
+        "Save WhatsApp status video and photo to your gallery",
+        "Browse the WhatsApp statuses available to you, preview any one of them, and save the videos and photos you want to keep. Saved files land in your gallery in their original quality - the same file, not a re-encoded copy, with no watermark added."
       ],
       [
-        "Both inboxes, one grid",
-        "Statuses from the standard and business versions of your messaging app appear in the same grid, images and videos together."
+        "WhatsApp and WhatsApp Business, one grid",
+        "Statuses from WhatsApp and from WhatsApp Business appear in the same grid, images and videos together, so a business status saver and a personal one are the same two taps."
       ],
       [
         "Watch offline, any time",
-        "Anything you save stays on your phone and opens from the app's own saved library, with or without a connection, long after the original update has gone."
+        "Anything you save stays on your phone and opens from the app's own saved library, with or without a connection, long after the original status has gone."
       ],
       [
         "Share, repost, keep favourites",
         "Share a saved status to any app, repost it with the content owner's permission, and mark the ones you want to find again as favourites."
       ],
-      ["Sticker packs built in","Bundled sticker packs you can add to your messaging app from the pack screen."],
+      ["Sticker packs built in","Bundled sticker packs you can add to WhatsApp from the pack screen."],
       [
         "Nine languages and a dark theme",
         "English, Arabic, German, French, Hindi, Portuguese, Turkish, Urdu and Chinese, with right-to-left layouts, plus a dark theme and a notification when new statuses arrive."
       ],
       [
         "Private by design",
-        "The app reads only the status folder you grant it through the system picker. It asks for no all-files access, and on Android 13 and later it asks for no photo or video permission at all."
+        "The app reads only the WhatsApp status folder you grant it through the system picker. It asks for no all-files access, and on Android 13 and later it asks for no photo or video permission at all."
       ],
       [
         "What it costs",
-        "The app is free and shows ads. A short opt-in video ad can appear before a save. Premium removes every ad — weekly or monthly, cancellable in Google Play."
+        "The app is free and shows ads. A short opt-in video ad can appear before a save. Premium removes every ad - weekly or monthly, cancellable in Google Play."
       ],
       [
-        "How to save a status",
-        "1. Open the status you want in your messaging app so it downloads there.\n2. Open this status saver app and grant the status folder once, through the system picker.\n3. Tap any photo or video in the grid to preview it.\n4. Tap save, and the status video or photo downloads straight to your gallery.\n5. Find it again in the saved library, where you can share it, repost it, favourite it or delete it."
+        "How to save a WhatsApp status",
+        "1. Open the status you want in WhatsApp so it downloads there.\n2. Open this status saver app and grant the status folder once, through the system picker.\n3. Tap any photo or video in the grid to preview it.\n4. Tap save, and the status video or photo downloads straight to your gallery.\n5. Find it again in the saved library, where you can share it, repost it, favourite it or delete it."
       ],
       [
         "Everything this status saver does",
-        "✓ Save status video and status photo to gallery\n✓ Status downloader for both the standard and business inbox\n✓ Original quality, no re-encoding and no watermark added\n✓ Preview before you save\n✓ Saved library with favourites\n✓ Watch saved statuses offline\n✓ Share or repost with permission\n✓ Sticker packs you can add to your messaging app\n✓ Dark theme, nine languages and right-to-left layouts\n✓ New-status notifications\n✓ Folder access only — no all-files permission"
+        "✓ Save status video and status photo to gallery\n✓ Status downloader for WhatsApp and WhatsApp Business\n✓ HD status saver - original quality, no re-encoding and no watermark added\n✓ Preview before you save\n✓ Saved library with favourites\n✓ Watch saved statuses offline\n✓ Share or repost with permission\n✓ Sticker packs you can add to WhatsApp\n✓ Dark theme, nine languages and right-to-left layouts\n✓ New-status notifications\n✓ Folder access only - no all-files permission"
       ],
       [
         "Who it is for",
-        "If you have been looking for a status saver, a status downloader app, a story saver, a video status saver, a photo status downloader or simply a way to save status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs."
+        "If you have been looking for a status saver, a status saver app for WhatsApp, a status downloader app, a story saver, a video status saver, a photo status downloader or simply a way to save WhatsApp status video to your gallery and keep it, this app does that one job and does it without asking for more of your phone than it needs."
       ]
     ],
-    "close": "Only save, share or repost content you own or have permission to use. This app is an independent utility, not affiliated with, sponsored by or endorsed by any messaging or social media platform. All trademarks belong to their respective owners.",
-    "why": "Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those — two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk."
+    "close": "Status Saver App for WhatsApp is an independent utility. It is not affiliated with, sponsored by or endorsed by WhatsApp LLC or Meta Platforms, Inc. WhatsApp and WhatsApp Business are trademarks of WhatsApp LLC, used here only to describe the app this one reads statuses from. The app does not modify WhatsApp, does not support modified WhatsApp clients, and does not recover deleted messages. Only save, share or repost content you own or have permission to use. All trademarks belong to their respective owners.",
+    "why": "Every phrase in these fields appears on the keyword board, and every claim matches what the 17 Sep 2026 QA round found in the app. Naming WhatsApp is a description of what the app reads, not a claim of affiliation, and the closing paragraph carries the disclaimer that keeps it descriptive. Nothing here claims auto-save, multi-select saving or deleting, direct chat, audio extraction, video editing, a private vault or message recovery, because the app does none of those - two of the eight shelf holders advertise message recovery, and copying them would be both untrue and a policy risk."
   },
   "fields": [
     ["status saver","Title","The category head term. Every shelf holder carries it; our current title does not."],
     ["status saver app","Title","Same tokens as the head term plus \"app\", which autocomplete offers nine times."],
-    ["status downloader app","Title","Keeps the phrase the current title already earns, so nothing is lost in the rewrite."],
-    ["status saver and downloader","Title","Carried word for word by the ampersand form."],
-    ["save status video","Short description","Highest-demand save phrase that carries no brand name."],
+    [
+      "status saver for whatsapp", "Title",
+      "Word for word in the title. The highest-priority compatibility phrase the title can hold in 29 characters, and the form the shelf has validated at 10M+ installs."
+    ],
+    ["status saver whatsapp","Title","Every word present in the title, at no extra character cost."],
+    ["save status whatsapp","Title","Covered by the title's own words; \"save\" is carried by \"saver\"."],
+    [
+      "save status video whatsapp", "Short description",
+      "The save cluster's highest-demand compatibility phrase, carried word for word by the short description."
+    ],
     [
       "status save to gallery", "Short description",
       "\"to gallery\" is the differentiator phrase on the board with the lowest competition of the save cluster."
     ],
-    ["status video download","Short description","Covered by the same tokens, no extra characters spent."],
-    ["story saver","Short description","One token away from the status cluster and a real search in its own right."],
-    ["status saver photo and video","Full description · opening","Written into the first sentence, where Play weights the description most."],
-    ["business status saver","Full description · both inboxes","A feature the app has and the listing never mentioned."],
+    ["save status video","Short description","Highest-demand save phrase on the board, covered by the same words."],
+    ["status downloader","Short description","Keeps the phrase the current title already earns, so nothing is lost in the rewrite."],
+    [
+      "whatsapp status downloader", "Full description · opening",
+      "The board's highest-priority compatibility phrase at P33. Written into the first section, where Play weights the description most."
+    ],
+    [
+      "whatsapp status saver", "Full description · opening",
+      "P29, second of the compatibility cluster, carried by the opening section and the checklist."
+    ],
+    ["whatsapp status video downloader","Full description · opening","Covered by the opening section's own words, at no extra length."],
+    [
+      "status video downloader app", "Full description · checklist",
+      "The highest-demand phrase on the whole board, 15 autocomplete hits. Covered without spending title characters on its 411M-install top ten."
+    ],
+    [
+      "status saver video downloader", "Full description · checklist",
+      "Second-highest demand phrase on the board, covered by the checklist's own words."
+    ],
+    [
+      "whatsapp business status saver", "Full description · both inboxes",
+      "A feature the app has and the listing never mentioned. Named explicitly now."
+    ],
+    ["status saver for whatsapp business","Full description · both inboxes","Carried word for word by the business-status section."],
     ["status saver gallery","Full description · saved library","Pairs the saved-library section with the gallery phrasing."],
     [
       "status saver hd", "Full description · original quality",
-      "Quality claim stated as \"original quality\", which is literally true — files are byte-identical."
+      "Quality claim stated as \"original quality\", which is literally true - files are byte-identical."
     ],
     ["status repost","Full description · share and repost","Kept permission-framed for the intellectual-property policy."],
-    ["status keeper","Full description · favourites","Covered by \"keep\" wording without spending title characters."]
+    [
+      "story saver for whatsapp", "Full description · who it is for",
+      "A real search in its own right, one token from the status cluster, and true of the app."
+    ]
   ],
   "reserved": [
     [
-      "status saver video downloader",
-      "Second-highest demand phrase with no brand name, but its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."
+      "status video downloader app",
+      "Carried by the full description but not the title. The most defended phrase on the board - 411M installs across its top ten - so it is worth title characters only once the app has ratings."
     ],
     [
-      "status video downloader app",
-      "The highest-demand non-brand phrase on the whole board (15 autocomplete hits) and the most defended: 411M installs across its top ten."
+      "status saver video downloader",
+      "Second-highest demand phrase on the board, and its top ten holds five apps above 10M installs. Worth the title only once the app has ratings."
     ],
     ["auto status saver","Only worth targeting if auto-save is ever built. Claiming it now would be false."],
     ["status saver without watermark","True of our app, but the phrase reads as a competitor's problem; hold it for a later version."],
+    ["status saver dp downloader","P24 and genuinely adjacent, but the app does not download profile pictures. Build it or leave the phrase alone."],
     [
-      "whatsapp status saver and every other brand phrase",
-      "Highest demand in the category and permanently off-limits in our copy by house rule: no other company's brand name in store-listing or ad copy."
+      "story saver instagram, facebook and tiktok phrases",
+      "Not a brand problem - a truth problem. This app reads the WhatsApp status folder and nothing else, so claiming any of them would be a false listing, which is what Play's metadata policy actually prohibits."
+    ],
+    [
+      "gb whatsapp, fm whatsapp and other modified clients",
+      "Real demand, permanently off-limits. Play bans apps that facilitate modified clients, and the app does not support them."
     ]
   ],
   "policy": [
     [
-      "No brand name in any field",
-      "The proposed title, short description and full description were checked for every brand name in this category. None appears. The copy says \"your messaging app\", which is what Play's impersonation policy asks for and what the current listing already does."
+      "Naming WhatsApp is descriptive use, and it is checked",
+      "Play's impersonation policy prohibits falsely implying a relationship with another company. It does not prohibit naming the app a utility works with - a listing is required to describe what the app does. This listing names WhatsApp only to say which status folder it reads, never as the app's own identity: the developer name, the icon and the first word of the title are all ours, and the closing paragraph states in full that the app is independent and unaffiliated and that the trademarks belong to WhatsApp LLC."
     ],
     [
       "Live title check, run on 23 Sep 2026",
-      "Fourteen candidate titles were searched on Google Play in the United States and Pakistan and compared against every title returned. Five failed on an exact or near-exact collision — \"Status Saver: Video Downloader\" alone is the live title of five different apps. The chosen title was compared against 25 live titles with no collision. The full result is in research/aso-pipeline/titlecheck.json."
+      "The house rule needs at least five third-party titles using the term, at least two above 1M installs, and the oldest live three or more years. The 217 scraped listings return ten third-party titles naming WhatsApp or WA, three of them at or above 1M installs - \"Sticker Maker for WhatsApp\" twice at 10M+, live since November 2018 and December 2019, and \"Status Saver - for WA Business\" at 1M, live since October 2020. The check passes on every limb. The result is in research/aso-pipeline/titlecheck.json and the query is in brandcheck.ps1."
+    ],
+    [
+      "No collision with a live title",
+      "Fourteen candidate titles were compared against every title in the scrape. Five failed on an exact collision - \"Status Saver: Video Downloader\" alone is the live title of five different apps. The chosen title collides with none of them."
+    ],
+    [
+      "What is still off-limits, and why",
+      "Three things, none of them \"a brand name appeared\". Phrases naming a platform this app cannot read - Instagram, Facebook, TikTok - are excluded because the claim would be false, which is a metadata-accuracy problem. Phrases naming modified clients - GB, FM, YO WhatsApp - are excluded because Play bans facilitating them. Phrases naming another developer's app outright are excluded because that is the impersonation the policy is actually about."
     ],
     [
       "Every claim matches the app",
@@ -1661,29 +1840,82 @@ foreach ($c in $CANDIDATES) {
     ],
     [
       "Repost stays permission-framed",
-      "Repost is described as \"with the content owner's permission\", and the closing paragraph keeps the independence and trademark notice the current listing already carries."
+      "Repost is described as \"with the content owner's permission\", and the closing paragraph keeps the independence and trademark notice."
     ],
     [
       "Permissions match the wording",
-      "The listing claims folder access only. The app asks for no all-files access and, since fix round 2, no photo or video permission on Android 13 and later — so the privacy paragraph is literally true."
+      "The listing claims folder access only. The app asks for no all-files access and, since fix round 2, no photo or video permission on Android 13 and later - so the privacy paragraph is literally true."
     ],
     [
       "No message-recovery claim",
-      "Two of the eight shelf holders advertise recovering deleted messages. The app does not do it, so the listing does not say it."
+      "Two of the eight shelf holders advertise recovering deleted messages. The app does not do it, so the listing does not say it - and the closing paragraph says so explicitly, which also distances the app from the modified-client crowd."
+    ],
+    [
+      "The icon and feature graphic still have to be fixed",
+      "Naming WhatsApp in the text is descriptive use. Putting WhatsApp's green-and-white phone mark, or the Instagram, Facebook and TikTok marks our current screenshots carry, into the store art is not. The store graphics are the open policy problem on this listing, not the copy."
+    ]
+  ],
+  "titleStrategy": {
+    "head": "Why this title, in 29 characters",
+    "body": "A title on this shelf is a keyword carrier, not a brand statement: the shelf holders average 3.1 board phrases word for word in theirs. The decision was between a generic-only title and one that names what the app reads. Generic-only tops out at 13% of board priority and says nothing a user can act on. \"Status Saver App for WhatsApp\" reaches 15%, carries three phrases word for word, and answers the one question a status-saver shopper actually has. It keeps our own word first, so the title reads as our product working with WhatsApp rather than as WhatsApp's own app - which is the line the impersonation policy draws."
+  },
+  "practices": [
+    [
+      "Relevance before demand",
+      "A phrase the app cannot honestly answer scores zero, however much demand it carries. That is why the Instagram and TikTok clusters are out even though they are searched heavily."
+    ],
+    [
+      "Word for word beats every word present",
+      "Play matches phrases, so the title and short description spend their characters on exact board phrases and let the full description pick up token coverage."
+    ],
+    [
+      "The title holds the head term",
+      "\"status saver\" and \"status saver app\" go in the title because Play weights it most, and because every app holding this shelf does the same."
+    ],
+    [
+      "The description carries the defended phrases",
+      "\"status video downloader app\" and \"status saver video downloader\" have 411M-install top tens. They are covered in the description, where coverage is free, rather than in a title that cannot win them yet."
+    ],
+    [
+      "Every claim is checked against the emulator, not the board",
+      "The 17 Sep 2026 QA round decides what may be written. The keyword list only decides which true things to say first."
+    ]
+  ],
+  "vsPackage": [
+    [
+      "Title", "Status Saver & Downloader App", "Status Saver App for WhatsApp",
+      "The playbook's package predates the corrected use rule and was written to avoid every product name. Naming WhatsApp adds the compatibility cluster and 2 points of board priority for the same 29 characters."
+    ],
+    [
+      "Short description", "Status saver and downloader: save status video, photo and story to gallery",
+      "Save WhatsApp status video & photo to gallery - status saver and downloader",
+      "Same length class, one more exact phrase, and it now says which statuses."
+    ],
+    [
+      "Full description", "\"your messaging app\" throughout", "WhatsApp and WhatsApp Business named",
+      "The old copy used a euphemism in eight places to avoid a name it was always allowed to use. Each one is now the actual app name, which is both clearer and searchable."
+    ],
+    [
+      "Disclaimer", "One sentence, generic", "Four sentences, specific",
+      "Because the copy now names the trademark, the closing paragraph does the work that keeps the use descriptive: independence, ownership, no modification, no message recovery."
+    ],
+    [
+      "Board priority covered", "13%", "15%",
+      "Title only. Across all three fields the compatibility cluster adds 36% of the board that the previous package scored at zero."
     ]
   ],
   "risks": [
-    [
-      "The highest-demand phrases in this category are brand phrases",
-      "\"whatsapp status downloader\", \"whatsapp status saver\" and their variants carry the most autocomplete demand on the board, and house rules keep all of them out of our copy. That is a deliberate ceiling: this listing competes only on generic phrases, and the plan has to be judged on that basis, not against apps that spend their titles on a brand name."
-    ],
     [
       "Metadata alone will not move a listing with 10+ installs",
       "Zero placements today across 110 keywords in three markets. Metadata decides what the app is eligible for; installs, ratings and retention decide whether it ranks. Expect the rewrite to show up first on the long tail, not on \"status saver\"."
     ],
     [
+      "Descriptive use is allowed by Play, and still annoys trademark owners",
+      "Play's policy is the test this listing has to pass, and it passes it. Separately from Play, a trademark owner can file a complaint against any app naming their mark, and Meta has done so in this category before. Keeping our own word first in the title, keeping the disclaimer in the description, and keeping the mark out of the icon are what make that complaint fail. Do not drop any of the three."
+    ],
+    [
       "The obvious titles are taken, several times over",
-      "Four of the six most natural titles for this app are already the exact title of live apps. Never ship a title without running the check again on the day — this shelf changes monthly."
+      "Four of the six most natural titles for this app are already the exact title of live apps. Never ship a title without running the check again on the day - this shelf changes monthly."
     ],
     [
       "The rewarded ad before saving is the policy tripwire",
@@ -1692,6 +1924,10 @@ foreach ($c in $CANDIDATES) {
     [
       "Do not copy the shelf's riskiest claims",
       "Message recovery, \"view deleted messages\" and mod-app support appear on competitor listings in this category. They attract both takedowns and one-star reviews, and the app does none of them."
+    ],
+    [
+      "The store graphics are still non-compliant",
+      "Our screenshots and feature graphic carry the Instagram, Facebook and TikTok marks, and the feature graphic claims \"Reply Instantly\", which the app cannot do. Naming WhatsApp in the text does not license any of that. Fix the art before the next listing update."
     ],
     [
       "Data safety still says data is not encrypted",
@@ -1705,7 +1941,11 @@ foreach ($c in $CANDIDATES) {
     ],
     [
       "The board",
-      "Every phrase is scored for relevance to what this app does, demand from autocomplete, and the installs behind its top ten. Priority puts relevance first and halves any phrase carrying a brand name, because those can be measured but never used."
+      "Every phrase is scored for relevance to what this app does, demand from autocomplete, and the installs behind its top ten. Priority puts relevance first, then multiplies by whether the listing may use the phrase at all - which is a question about accuracy and impersonation, not about whether a product name appears."
+    ],
+    [
+      "The use rule",
+      "Each phrase is classed as generic, compatibility, off-app, mod-client or rival-name. Only the last three score zero. The compatibility class was scored at zero in the first run of this research, which was wrong: it cost the board 36% of its opportunity and produced a listing written in euphemisms. Corrected on 23 Sep 2026 against Play's policy text and the live title check."
     ],
     [
       "The copy",
@@ -1713,8 +1953,32 @@ foreach ($c in $CANDIDATES) {
     ],
     [
       "The checks",
-      "The title check and the brand check are scripts in research/aso-pipeline, and their output is committed next to the data, so any claim on this tab can be re-run."
+      "The title check and the use check are scripts in research/aso-pipeline - titlecheck.ps1 and brandcheck.ps1 - and their output is committed next to the data, so any claim on this tab can be re-run."
     ]
+  ]
+}
+```
+
+### research/aso-pipeline/offers.json
+
+```json
+{
+  "checkedOn": "2026-09-23",
+  "markets": ["US","PK","IN"],
+  "apps": [
+    {"id":"com.statussaver.videosaver.downloadstatus.storysaver","US":false,"PK":false,"IN":false},
+    {"id":"com.downlood.sav.whmedia","US":false,"PK":false,"IN":false},
+    {"id":"statussaver.statusdownloader.downloadstatus.savestatus","US":false,"PK":false,"IN":false},
+    {"id":"statussaver.statusdownloader.downloadstatus.videoimagesaver","US":false,"PK":false,"IN":false},
+    {"id":"com.falnesc.statussaver","US":true,"PK":true,"IN":false},
+    {"id":"com.heethjain.apps.statussaver","US":false,"PK":false,"IN":false},
+    {"id":"com.statussaver.statusdownloader.lite","US":false,"PK":false,"IN":false},
+    {"id":"com.mdtech.status.saver","US":false,"PK":false,"IN":false},
+    {"id":"com.sinosystems.status","US":false,"PK":false,"IN":false},
+    {"id":"com.jam.status_saver","US":false,"PK":false,"IN":false},
+    {"id":"com.studio.zm.statussaver","US":false,"PK":false,"IN":false},
+    {"id":"instagram.video.downloader.story.saver.ig","US":false,"PK":false,"IN":false},
+    {"id":"instagram.video.downloader.story.saver.ig.insaver","US":false,"PK":false,"IN":false}
   ]
 }
 ```
@@ -1970,6 +2234,207 @@ foreach ($c in $CANDIDATES) {
   "whatsapp status saver", "whatsapp status saver app", "whatsapp status saver app 2023", "whatsapp status saver app download",
   "whatsapp status video downloader", "xtx status saver and downloader"
 ]
+```
+
+### research/aso-pipeline/usecheck.json
+
+```json
+{
+  "checkedOn": "2026-09-23",
+  "market": "US",
+  "titleCheck": {
+    "rule": "5+ third-party titles, 2+ above 1M installs, oldest live 3+ years",
+    "titles": [
+      {
+        "title": "Sticker Maker for WhatsApp",
+        "appId": "isticker.stickermaker.createsticker.stickersforwhatsapp",
+        "installs": 10000000,
+        "ratings": 146894,
+        "released": "Dec 30, 2019",
+        "years": 6.7
+      },
+      {
+        "title": "Sticker Maker for WhatsApp",
+        "appId": "stickerwhatsapp.com.stickers",
+        "installs": 10000000,
+        "ratings": 550985,
+        "released": "Nov 19, 2018",
+        "years": 7.8
+      },
+      {
+        "title": "Status Saver - for WA Business",
+        "appId": "com.ashaquavision.status.saver.downloader",
+        "installs": 1000000,
+        "ratings": 10038,
+        "released": "Oct 26, 2020",
+        "years": 5.9
+      },
+      {"title":"WhatsApp Status Saver","appId":"com.macd.developer.status_saver","installs":50000,"ratings":0,"released":"Oct 7, 2023","years":3},
+      {"title":"Status Saver For WA & Business","appId":"com.StatusSticker.Saver","installs":10000,"ratings":0,"released":"May 24, 2024","years":2.3},
+      {
+        "title": "Story Saver for Whatsapp",
+        "appId": "com.mariaxcodexpert.whatsdownloadplus",
+        "installs": 5000,
+        "ratings": 0,
+        "released": "Mar 15, 2026",
+        "years": 0.5
+      },
+      {"title":"Whatsapp Status Saver","appId":"com.async.whatsappstatus","installs":1000,"ratings":0,"released":"Apr 29, 2026","years":0.4},
+      {"title":"Status Save, Download-WhatsApp","appId":"com.yhs.statusdownloader","installs":1000,"ratings":0,"released":"Feb 10, 2026","years":0.6},
+      {"title":"WA Status Saver Video Download","appId":"com.atulsharma.downloader","installs":500,"ratings":0,"released":null,"years":null},
+      {"title":"Status Saver & Repost for WA","appId":"com.falcon.whatscan","installs":100,"ratings":0,"released":"Mar 29, 2026","years":0.5}
+    ],
+    "thirdParty": 10,
+    "aboveOneM": 3,
+    "oldestYears": 7.8,
+    "verdict": "PASS"
+  },
+  "byClass": [
+    {"use":"free","keywords":59,"opportunity":1111,"shareOfBoard":52},
+    {"use":"compat","keywords":38,"opportunity":769,"shareOfBoard":36},
+    {"use":"rival","keywords":7,"opportunity":154,"shareOfBoard":7},
+    {"use":"offapp","keywords":6,"opportunity":116,"shareOfBoard":5}
+  ],
+  "board": [
+    {"keyword":"status video downloader app","tier":"A","use":"free","hits":15,"demand":99,"competition":96,"opportunity":37,"priority":37},
+    {"keyword":"status saver video downloader","tier":"A","use":"free","hits":12,"demand":84,"competition":94,"opportunity":33,"priority":33},
+    {"keyword":"whatsapp status downloader","tier":"A","use":"compat","hits":12,"demand":85,"competition":94,"opportunity":33,"priority":33},
+    {"keyword":"whatsapp status saver","tier":"A","use":"compat","hits":10,"demand":74,"competition":94,"opportunity":29,"priority":29},
+    {"keyword":"whatsapp status downloader app","tier":"A","use":"compat","hits":10,"demand":75,"competition":94,"opportunity":29,"priority":29},
+    {"keyword":"save status app download","tier":"A","use":"free","hits":9,"demand":69,"competition":92,"opportunity":28,"priority":28},
+    {"keyword":"status saver whatsapp","tier":"A","use":"compat","hits":9,"demand":70,"competition":95,"opportunity":27,"priority":27},
+    {"keyword":"status save to gallery","tier":"A","use":"free","hits":9,"demand":70,"competition":94,"opportunity":27,"priority":27},
+    {"keyword":"status saver app","tier":"A","use":"free","hits":9,"demand":70,"competition":94,"opportunity":27,"priority":27},
+    {"keyword":"status video downloader","tier":"A","use":"free","hits":9,"demand":70,"competition":96,"opportunity":26,"priority":26},
+    {"keyword":"status saver for whatsapp","tier":"A","use":"compat","hits":8,"demand":65,"competition":95,"opportunity":25,"priority":25},
+    {"keyword":"story saver for whatsapp","tier":"A","use":"compat","hits":8,"demand":65,"competition":95,"opportunity":25,"priority":25},
+    {"keyword":"save status video whatsapp","tier":"A","use":"compat","hits":9,"demand":65,"competition":94,"opportunity":25,"priority":25},
+    {"keyword":"status saver dp downloader","tier":"A","use":"free","hits":7,"demand":59,"competition":92,"opportunity":24,"priority":24},
+    {"keyword":"status downloader app","tier":"A","use":"free","hits":7,"demand":60,"competition":95,"opportunity":23,"priority":23},
+    {"keyword":"whatsapp status saver app","tier":"A","use":"compat","hits":7,"demand":60,"competition":95,"opportunity":23,"priority":23},
+    {"keyword":"save status app","tier":"A","use":"free","hits":7,"demand":60,"competition":94,"opportunity":23,"priority":23},
+    {"keyword":"status saver video download","tier":"A","use":"free","hits":7,"demand":60,"competition":94,"opportunity":23,"priority":23},
+    {"keyword":"story saver without login","tier":"A","use":"free","hits":6,"demand":52,"competition":88,"opportunity":22,"priority":22},
+    {"keyword":"save status app update","tier":"A","use":"free","hits":6,"demand":54,"competition":92,"opportunity":22,"priority":22},
+    {"keyword":"status saver app update","tier":"A","use":"free","hits":7,"demand":57,"competition":94,"opportunity":22,"priority":22},
+    {"keyword":"status saver gallery","tier":"A","use":"free","hits":6,"demand":55,"competition":94,"opportunity":22,"priority":22},
+    {"keyword":"status saver hd","tier":"A","use":"free","hits":6,"demand":55,"competition":94,"opportunity":22,"priority":22},
+    {"keyword":"whatsapp status download","tier":"A","use":"compat","hits":7,"demand":60,"competition":100,"opportunity":21,"priority":21},
+    {"keyword":"status video download app","tier":"A","use":"free","hits":6,"demand":55,"competition":96,"opportunity":21,"priority":21},
+    {"keyword":"whatsapp status download app","tier":"A","use":"compat","hits":7,"demand":60,"competition":100,"opportunity":21,"priority":21},
+    {"keyword":"status video download app tamil","tier":"A","use":"free","hits":6,"demand":51,"competition":91,"opportunity":21,"priority":21},
+    {"keyword":"status saver photo and video","tier":"A","use":"free","hits":6,"demand":55,"competition":94,"opportunity":21,"priority":21},
+    {"keyword":"status saver","tier":"A","use":"free","hits":6,"demand":55,"competition":96,"opportunity":21,"priority":21},
+    {"keyword":"status saver for whatsapp business","tier":"A","use":"compat","hits":7,"demand":59,"competition":100,"opportunity":21,"priority":21},
+    {"keyword":"status saver whatsapp business","tier":"A","use":"compat","hits":7,"demand":59,"competition":100,"opportunity":21,"priority":21},
+    {"keyword":"status saver app download","tier":"A","use":"free","hits":6,"demand":54,"competition":94,"opportunity":21,"priority":21},
+    {"keyword":"status saver hd video download","tier":"A","use":"free","hits":6,"demand":54,"competition":94,"opportunity":21,"priority":21},
+    {"keyword":"story saver reels video downloader","tier":"A","use":"free","hits":5,"demand":50,"competition":90,"opportunity":21,"priority":21},
+    {"keyword":"whatsapp status downloader video","tier":"A","use":"compat","hits":6,"demand":54,"competition":95,"opportunity":21,"priority":21},
+    {"keyword":"save status video app","tier":"A","use":"free","hits":6,"demand":54,"competition":95,"opportunity":21,"priority":21},
+    {"keyword":"whatsapp status downloader hd","tier":"A","use":"compat","hits":6,"demand":54,"competition":95,"opportunity":21,"priority":21},
+    {"keyword":"save status video download","tier":"A","use":"free","hits":6,"demand":54,"competition":95,"opportunity":21,"priority":21},
+    {"keyword":"save status video saver","tier":"A","use":"free","hits":6,"demand":54,"competition":95,"opportunity":21,"priority":21},
+    {"keyword":"save status whatsapp","tier":"A","use":"compat","hits":6,"demand":55,"competition":94,"opportunity":21,"priority":21},
+    {"keyword":"whatsapp status photo saver app","tier":"A","use":"compat","hits":6,"demand":55,"competition":95,"opportunity":21,"priority":21},
+    {"keyword":"status downloader for whatsapp","tier":"A","use":"compat","hits":6,"demand":55,"competition":94,"opportunity":21,"priority":21},
+    {"keyword":"status saver photo","tier":"A","use":"free","hits":6,"demand":54,"competition":94,"opportunity":21,"priority":21},
+    {"keyword":"status downloader hd","tier":"A","use":"free","hits":6,"demand":55,"competition":95,"opportunity":21,"priority":21},
+    {"keyword":"save status and message recovery","tier":"A","use":"free","hits":6,"demand":54,"competition":94,"opportunity":21,"priority":21},
+    {"keyword":"save status video","tier":"A","use":"free","hits":6,"demand":55,"competition":95,"opportunity":21,"priority":21},
+    {"keyword":"status downloader app for whatsapp","tier":"A","use":"compat","hits":6,"demand":54,"competition":94,"opportunity":21,"priority":21},
+    {"keyword":"status saver video download app","tier":"A","use":"free","hits":6,"demand":52,"competition":94,"opportunity":20,"priority":20},
+    {"keyword":"hd video and status downloader","tier":"A","use":"free","hits":6,"demand":52,"competition":96,"opportunity":20,"priority":20},
+    {"keyword":"save status for whatsapp","tier":"A","use":"compat","hits":5,"demand":50,"competition":94,"opportunity":20,"priority":20},
+    {"keyword":"whatsapp status save","tier":"A","use":"compat","hits":5,"demand":48,"competition":94,"opportunity":19,"priority":19},
+    {"keyword":"story saver download app","tier":"A","use":"free","hits":4,"demand":45,"competition":88,"opportunity":19,"priority":19},
+    {"keyword":"status saver whatsapp download","tier":"A","use":"compat","hits":5,"demand":48,"competition":94,"opportunity":19,"priority":19},
+    {"keyword":"story saver whatsapp","tier":"A","use":"compat","hits":5,"demand":50,"competition":94,"opportunity":19,"priority":19},
+    {"keyword":"status video download","tier":"A","use":"free","hits":6,"demand":54,"competition":99,"opportunity":19,"priority":19},
+    {"keyword":"status saver app for whatsapp","tier":"A","use":"compat","hits":5,"demand":48,"competition":94,"opportunity":19,"priority":19},
+    {"keyword":"status downloader and saver","tier":"A","use":"free","hits":5,"demand":48,"competition":95,"opportunity":19,"priority":19},
+    {"keyword":"whatsapp status saver app download","tier":"A","use":"compat","hits":5,"demand":46,"competition":94,"opportunity":18,"priority":18},
+    {"keyword":"whatsapp business status saver app","tier":"A","use":"compat","hits":5,"demand":50,"competition":100,"opportunity":18,"priority":18},
+    {"keyword":"whatsapp business status saver 2026","tier":"A","use":"compat","hits":6,"demand":52,"competition":100,"opportunity":18,"priority":18},
+    {"keyword":"whatsapp status saver app 2023","tier":"A","use":"compat","hits":5,"demand":48,"competition":95,"opportunity":18,"priority":18},
+    {"keyword":"status saver whatsapp 2026","tier":"A","use":"compat","hits":5,"demand":46,"competition":95,"opportunity":18,"priority":18},
+    {"keyword":"status saver message recovery","tier":"A","use":"free","hits":4,"demand":45,"competition":94,"opportunity":18,"priority":18},
+    {"keyword":"story saver no login","tier":"A","use":"free","hits":4,"demand":41,"competition":88,"opportunity":18,"priority":18},
+    {"keyword":"status saver save to gallery","tier":"A","use":"free","hits":5,"demand":46,"competition":95,"opportunity":18,"priority":18},
+    {"keyword":"story downloader","tier":"A","use":"free","hits":3,"demand":40,"competition":90,"opportunity":17,"priority":17},
+    {"keyword":"status downloader for whatsapp status","tier":"A","use":"compat","hits":4,"demand":44,"competition":95,"opportunity":17,"priority":17},
+    {"keyword":"story saver","tier":"A","use":"free","hits":3,"demand":40,"competition":88,"opportunity":17,"priority":17},
+    {"keyword":"status saver downloader","tier":"A","use":"free","hits":4,"demand":43,"competition":94,"opportunity":17,"priority":17},
+    {"keyword":"whatsapp status photo download","tier":"A","use":"compat","hits":4,"demand":44,"competition":95,"opportunity":17,"priority":17},
+    {"keyword":"save status app whatsapp","tier":"A","use":"compat","hits":4,"demand":43,"competition":95,"opportunity":17,"priority":17},
+    {"keyword":"long video status downloader","tier":"A","use":"free","hits":4,"demand":45,"competition":95,"opportunity":17,"priority":17},
+    {"keyword":"story saver whatsapp status","tier":"A","use":"compat","hits":4,"demand":44,"competition":96,"opportunity":17,"priority":17},
+    {"keyword":"save status download","tier":"A","use":"free","hits":4,"demand":45,"competition":95,"opportunity":17,"priority":17},
+    {"keyword":"video status saver","tier":"A","use":"free","hits":3,"demand":40,"competition":94,"opportunity":16,"priority":16},
+    {"keyword":"whatsapp status video downloader","tier":"A","use":"compat","hits":4,"demand":43,"competition":96,"opportunity":16,"priority":16},
+    {"keyword":"wa status saver","tier":"A","use":"compat","hits":3,"demand":40,"competition":94,"opportunity":16,"priority":16},
+    {"keyword":"all status saver","tier":"A","use":"free","hits":3,"demand":40,"competition":94,"opportunity":16,"priority":16},
+    {"keyword":"status saver and downloader","tier":"A","use":"free","hits":3,"demand":40,"competition":94,"opportunity":16,"priority":16},
+    {"keyword":"status downloader","tier":"A","use":"free","hits":3,"demand":40,"competition":94,"opportunity":16,"priority":16},
+    {"keyword":"business status saver","tier":"A","use":"free","hits":3,"demand":40,"competition":94,"opportunity":16,"priority":16},
+    {"keyword":"save status whatsapp business","tier":"A","use":"compat","hits":4,"demand":44,"competition":100,"opportunity":15,"priority":15},
+    {"keyword":"status photo download","tier":"A","use":"free","hits":3,"demand":40,"competition":95,"opportunity":15,"priority":15},
+    {"keyword":"save status","tier":"A","use":"free","hits":3,"demand":40,"competition":95,"opportunity":15,"priority":15},
+    {"keyword":"download status","tier":"A","use":"free","hits":3,"demand":39,"competition":94,"opportunity":15,"priority":15},
+    {"keyword":"status downloader video","tier":"A","use":"free","hits":3,"demand":40,"competition":95,"opportunity":15,"priority":15},
+    {
+      "keyword": "whatsapp business status downloader app",
+      "tier": "A",
+      "use": "compat",
+      "hits": 4,
+      "demand": 41,
+      "competition": 100,
+      "opportunity": 14,
+      "priority": 14
+    },
+    {"keyword":"status keeper","tier":"A","use":"free","hits":3,"demand":40,"competition":100,"opportunity":14,"priority":14},
+    {"keyword":"whatsapp business status saver","tier":"A","use":"compat","hits":3,"demand":39,"competition":100,"opportunity":14,"priority":14},
+    {"keyword":"whatsapp status download app 2026","tier":"A","use":"compat","hits":4,"demand":40,"competition":100,"opportunity":14,"priority":14},
+    {"keyword":"status download app","tier":"A","use":"free","hits":1,"demand":30,"competition":94,"opportunity":12,"priority":12},
+    {"keyword":"full video status uploader","tier":"B","use":"free","hits":4,"demand":43,"competition":89,"opportunity":18,"priority":11},
+    {"keyword":"status gallery","tier":"B","use":"free","hits":3,"demand":40,"competition":93,"opportunity":16,"priority":10},
+    {"keyword":"radha krishna status video","tier":"B","use":"rival","hits":6,"demand":52,"competition":58,"opportunity":32,"priority":0},
+    {"keyword":"story saver sara tech","tier":"A","use":"rival","hits":6,"demand":54,"competition":88,"opportunity":23,"priority":0},
+    {"keyword":"xtx status saver and downloader","tier":"A","use":"rival","hits":6,"demand":55,"competition":91,"opportunity":22,"priority":0},
+    {"keyword":"status saver youtube video","tier":"A","use":"offapp","hits":6,"demand":54,"competition":94,"opportunity":21,"priority":0},
+    {"keyword":"status saver lazy genius","tier":"A","use":"rival","hits":6,"demand":54,"competition":95,"opportunity":21,"priority":0},
+    {"keyword":"status saver native craft","tier":"A","use":"rival","hits":6,"demand":51,"competition":93,"opportunity":20,"priority":0},
+    {"keyword":"story downloader ig saver gratis","tier":"A","use":"offapp","hits":4,"demand":45,"competition":88,"opportunity":19,"priority":0},
+    {"keyword":"story saver instagram app 2025","tier":"A","use":"offapp","hits":4,"demand":45,"competition":88,"opportunity":19,"priority":0},
+    {
+      "keyword": "story saver instagram insta story download",
+      "tier": "A",
+      "use": "offapp",
+      "hits": 4,
+      "demand": 44,
+      "competition": 88,
+      "opportunity": 19,
+      "priority": 0
+    },
+    {"keyword":"story saver app instagram","tier":"A","use":"offapp","hits":4,"demand":44,"competition":88,"opportunity":19,"priority":0},
+    {"keyword":"story saver for facebook stories","tier":"A","use":"offapp","hits":4,"demand":45,"competition":88,"opportunity":19,"priority":0},
+    {"keyword":"mx player status downloader","tier":"A","use":"rival","hits":5,"demand":50,"competition":100,"opportunity":18,"priority":0},
+    {
+      "keyword": "vmate status video status status downloader",
+      "tier": "A",
+      "use": "rival",
+      "hits": 5,
+      "demand": 46,
+      "competition": 94,
+      "opportunity": 18,
+      "priority": 0
+    },
+    {"keyword":"status repost","tier":"A","use":"free","hits":0,"demand":0,"competition":69,"opportunity":0,"priority":0},
+    {"keyword":"status saver without watermark","tier":"A","use":"free","hits":0,"demand":0,"competition":94,"opportunity":0,"priority":0},
+    {"keyword":"status sticker maker","tier":"B","use":"free","hits":0,"demand":0,"competition":93,"opportunity":0,"priority":0},
+    {"keyword":"photo status saver","tier":"A","use":"free","hits":0,"demand":0,"competition":94,"opportunity":0,"priority":0}
+  ]
+}
 ```
 
 ## Large data files (structure in the research index)
