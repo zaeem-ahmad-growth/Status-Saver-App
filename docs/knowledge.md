@@ -58,6 +58,8 @@ Key facts and decisions for this repository. Loaded automatically in every Claud
 - The shelf holders (by top-10 slots held in the US): Status Download - Video Saver (com.downlood.sav.whmedia, 90), Status Saver: Video Downloader (savestatus, 88), Status Saver - Video Saver (videoimagesaver, 88), Status Saver・Status Downloader (falnesc, 87), Status Saver - Video Download (heethjain, 81).
 - Feature evidence from the shelf: nobody advertises MP3 extraction, video editing, a private vault or multi-select delete; 2 of 8 advertise recovering deleted messages (a claim we do not make and must not copy).
 
+- **Events & offers is free space nobody uses.** All 13 listings (ours + the 12 competitors) were opened live in US, PK and IN on 23 Sep 2026: only **1 of 13** runs an Events & offers card — Falnesc's "Status Saver・Status Downloader", in US and PK but not IN. Ours runs none. The check lives in `PAYLOAD.offersChecked` (appended to `assets/data.js` by hand on 23 Sep; fold it into `research/aso-pipeline` on the next pipeline run).
+
 ## Store graphics findings (23 Sep 2026)
 
 - **Our store assets carry other companies' logos.** The mock status bar in our screenshots and feature graphic shows the Instagram, Facebook and TikTok marks. That breaks the house brand rule and is exactly what Play's impersonation policy covers. Fix before the next listing update.

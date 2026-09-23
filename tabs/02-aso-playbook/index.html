@@ -23,7 +23,7 @@
   </div>
   <div class="wrap bar-sections" aria-label="Sections">
     <div class="jump" id="jump-playbook">
-      <a href="#plays">Plays</a><a href="#competitors">Competitors</a><a href="#matrix">Rank tracker</a><a href="#serps">Result slots</a><a href="#keywords">Keyword board</a><a href="#ladder">Ladder</a><a href="#listing">Proposed listing</a><a href="#practice">Method</a><a href="#risks">Watch-outs</a>
+      <a href="#plays">Plays</a><a href="#categories">Shelf composition</a><a href="#competitors">Competitors</a><a href="#comp-keywords">By competitor</a><a href="#events">Events &amp; offers</a><a href="#matrix">Rank tracker</a><a href="#serps">Result slots</a><a href="#keywords">Keyword board</a><a href="#markets">Markets</a><a href="#ladder">Ladder</a><a href="#listing">Proposed listing</a><a href="#practice">Method</a><a href="#risks">Watch-outs</a>
     </div>
   </div>
 </nav>
@@ -54,6 +54,16 @@
     </div>
   </section>
 
+
+  <section id="categories">
+    <div class="sec-head">
+      <p class="kicker">Shelf composition · <span data-scope></span></p>
+      <h2>Who fills the top-10 slots</h2>
+      <p class="sub">Every top-10 slot on the board, resolved to the category of the app holding it. This is the check that comes before keyword choice: if a phrase is held by apps doing a different job, ranking on it would not bring the right installs.</p>
+    </div>
+    <div class="tscroll"><table id="cat-table"></table></div>
+    <div class="note" id="cat-read"></div>
+  </section>
   <section id="competitors">
     <div class="sec-head">
       <p class="kicker">Direct competitors · live listings · <span class="scope" data-scope></span></p>
@@ -64,6 +74,26 @@
     <div class="insights" id="comp-insights"></div>
   </section>
 
+
+  <section id="comp-keywords">
+    <div class="sec-head">
+      <p class="kicker">Keywords by competitor · <span data-scope></span></p>
+      <h2>Keywords by competitor</h2>
+      <p class="sub">The rank tracker below asks who holds a keyword. This asks the other way round: what each app on the shelf actually holds, and how deep its coverage goes. Our own listing is the first row.</p>
+    </div>
+    <div class="tscroll"><table id="compkw-table"></table></div>
+    <div class="note" id="compkw-read"></div>
+  </section>
+
+  <section id="events">
+    <div class="sec-head">
+      <p class="kicker">Events &amp; offers · checked live 23 Sep 2026 · US, PK, IN</p>
+      <h2>Events &amp; offers</h2>
+      <p class="sub">Google Play lets a listing run a promotional card under its screenshots. Every listing on this shelf was opened in all three markets to see who uses one.</p>
+    </div>
+    <div class="tscroll"><table id="events-table"></table></div>
+    <div class="note" id="events-read"></div>
+  </section>
   <section id="matrix">
     <div class="sec-head">
       <p class="kicker">Rank tracker · <span class="scope" data-scope></span></p>
@@ -103,6 +133,16 @@
     <div class="tscroll"><table id="board"></table></div>
   </section>
 
+
+  <section id="markets">
+    <div class="sec-head">
+      <p class="kicker">Markets · the same 110 phrases in each</p>
+      <h2>How the category differs by market</h2>
+      <p class="sub">The same keyword list was scraped in all three markets, so what changes between these rows is the shelf, not the sample: who defends it, how expensive the top ten is, and how much of the demand is locked behind a platform name.</p>
+    </div>
+    <div class="tscroll"><table id="markets-table"></table></div>
+    <div class="note" id="markets-read"></div>
+  </section>
   <section id="ladder">
     <div class="sec-head">
       <p class="kicker">Launch plan · <span class="scope" data-scope></span></p>
